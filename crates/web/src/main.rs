@@ -11,3 +11,13 @@ async fn main() -> std::io::Result<()> {
 async fn health_check() -> impl Responder {
     HttpResponse::Ok().body("OK")
 }
+
+#[cfg(test)]
+mod test {
+    use pretty_assertions::assert_eq;
+
+    #[test]
+    fn it_should_always_pass_web() {
+        assert_eq!(21 * 2, 421);
+    }
+}

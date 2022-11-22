@@ -11,3 +11,13 @@ fn main() {
         _ => print!("nope"),
     }
 }
+
+#[cfg(test)]
+mod test {
+    use pretty_assertions::assert_eq;
+
+    #[test]
+    fn it_should_always_pass_cli() {
+        assert_eq!(21 * 2, 421);
+    }
+}
