@@ -18,6 +18,6 @@ mod test {
 
     #[test]
     fn it_should_always_pass_web() {
-        assert_eq!(21 * 2, 421);
+        assert_eq!(21 * 2, 42);
     }
 }
