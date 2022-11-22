@@ -1,0 +1,17 @@
+[workspace]
+default-members = ["crates/cli"]
+members = [
+    "crates/cli",
+    "crates/web",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["CarloMicieli <piovarolo@gmail.com>"]
+license = "MIT"
+rust-version = "1.65"
+
+[workspace.dependencies]
+actix-web = "4"
+clap = "4.0.26"
