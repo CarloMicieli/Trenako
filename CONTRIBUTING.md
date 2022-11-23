@@ -50,9 +50,9 @@ If the required subsection does not exist yet under **Unreleased**, create it!
 ```
 
 ```shell
-git clone https://github.com/CarloMicieli/trenako
-cd trenako
-cargo test
+  git clone https://github.com/CarloMicieli/trenako
+  cd trenako
+  cargo test
 ```
 
 ### Useful Commands
