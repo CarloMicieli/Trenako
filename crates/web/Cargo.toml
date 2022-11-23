@@ -8,4 +8,6 @@ rust-version.workspace = true
 
 [dependencies]
 actix-web = { workspace = true }
+
+[dev-dependencies]
 pretty_assertions = { workspace = true }
