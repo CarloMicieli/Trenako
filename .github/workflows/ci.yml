@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.cargo/registry
@@ -59,3 +59,24 @@ jobs:
         with:
           command: test
           args: --verbose --no-fail-fast
+
+      - name: Run cargo-tarpaulin
+        uses: actions-rs/tarpaulin@v0.1
+        with:
+          version: '0.15.0'
+          args: '-- --test-threads 1'
+
+      - name: Upload coverage to Codecov.io
+        uses: codecov/codecov-action@v2
+        if: github.ref_name == 'main'
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          verbose: true
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v1
+        if: github.ref_name == 'main'
+        with:
+          name: code-coverage-report
+          path: cobertura.xml
