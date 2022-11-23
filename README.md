@@ -11,11 +11,11 @@ A website for model railway collectors.
 
 tbd
 
-## Installation
+## Tech Stack
 
-### Cargo
-
-* Install the 🦀 rust toolchain in order to have cargo installed by following [this](https://www.rust-lang.org/tools/install) guide.
+* 🦀 `Rust` 1.59
+* `Cargo`
+* `Docker` / `Docker compose`
 
 ## Contribution
 
@@ -24,32 +24,6 @@ Contributions are always welcome!
 See [CONTRIBUTING.md](CONTRIBUTING.md) for ways to get started.
 
 Please adhere to this project's [code of conduct](CODE_OF_CONDUCT.md).
-  
-### Conventional commits
-
-This repository is following the conventional commits practice.
-
-#### Enforcing using git hooks
-
-```bash
-  git config core.hooksPath .githooks
-```
-
-The hook itself can be found in `.githooks/commit-msg`.
-
-#### Using Commitizen
-
-Install [commitizen](https://github.com/commitizen-tools/commitizen)
-
-```bash
-  pip install commitizen
-```
-
-and then just use it
-
-```bash
-  cz commit
-```
 
 ## License
 

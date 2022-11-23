@@ -39,7 +39,15 @@ If the required subsection does not exist yet under **Unreleased**, create it!
 
 ### Set up
 
-This is no different than other Rust projects.
+* Install the 🦀 rust toolchain in order to have cargo installed by following [this](https://www.rust-lang.org/tools/install) guide.
+
+```bash
+  cargo install cargo-tarpaulin
+  cargo install cargo-audit
+  cargo install sqlx-cli --no-default-features --features postgres
+  rustup component add clippy
+  rustup component add rustfmt
+```
 
 ```shell
 git clone https://github.com/CarloMicieli/trenako
@@ -49,32 +57,37 @@ cargo test
 
 ### Useful Commands
 
-- Build and run release version:
+| Command                          | Description                 |
+|----------------------------------|-----------------------------|
+| `cargo run`                      | run the app                 |
+| `cargo test`                     | run the tests               |
+| `cargo fmt -- --check`           | check the formatting        |
+| `cargo clippy`                   | run the linter              |
+| `cargo tarpaulin --ignore-tests` | compute code coverage       |
+| `cargo audit`                    | check for security warnings |
 
-  ```shell
-  cargo build --release && cargo run --release
-  ```
+### Conventional commits
 
-- Run Clippy:
+This repository is following the conventional commits practice.
 
-  ```shell
-  cargo clippy --all-targets --all-features --workspace
-  ```
+#### Enforcing using git hooks
 
-- Run all tests:
+```shell
+  git config core.hooksPath .githooks
+```
 
-  ```shell
-  cargo test --all-features --workspace
-  ```
+The hook itself can be found in `.githooks/commit-msg`.
 
-- Check to see if there are code formatting issues
+#### Using Commitizen
 
-  ```shell
-  cargo fmt --all -- --check
-  ```
+Install [commitizen](https://github.com/commitizen-tools/commitizen)
 
-- Format the code in the project
+```shell
+  pip install commitizen
+```
 
-  ```shell
-  cargo fmt --all
-  ```
+and then just use it
+
+```shell
+  cz commit
+```
