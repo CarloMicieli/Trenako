@@ -10,6 +10,7 @@ on:
       - 'Cargo.toml'
       - 'Cargo.lock'
   pull_request:
+  workflow_dispatch:
 
 env:
   CARGO_TERM_COLOR: always
@@ -20,67 +21,51 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Cache dependencies
+      - name: Set up cargo cache
         uses: actions/cache@v3
+        continue-on-error: false
         with:
           path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Install stable toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: stable
-          components: rustfmt
-          override: true
+      - name: Update local rust toolchain
+        run: rustup update
+
+      - name: Toolchain info
+        run: |
+          rustc --version
+          cargo --version --verbose
+          cargo clippy --version
+          cargo tarpaulin --version
 
       - name: Run cargo check
-        uses: actions-rs/cargo@v1
-        with:
-          command: check
-          args: --verbose
+        run: cargo check
 
       - name: Check formatting with rustfmt
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args: --all -- --check
+        run: cargo fmt --all -- --check
 
       - name: Linting with Clippy
-        uses: actions-rs/clippy-check@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          args: --all-targets --all-features -- -D warnings
+        run: cargo clippy --all-targets --all-features -- -D warnings
 
       - name: Run tests
-        uses: actions-rs/cargo@v1
-        with:
-          command: test
-          args: --verbose --no-fail-fast
+        run: cargo test --no-fail-fast
 
       - name: Run cargo-tarpaulin
-        uses: actions-rs/tarpaulin@v0.1
-        with:
-          version: '0.15.0'
-          args: '-- --test-threads 1'
+        run: cargo tarpaulin -- --test-threads 1
 
       - name: Upload coverage to Codecov.io
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         if: github.ref_name == 'main'
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           verbose: true
-
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v1
-        if: github.ref_name == 'main'
-        with:
-          name: code-coverage-report
-          path: cobertura.xml
