@@ -42,11 +42,17 @@ jobs:
           command: check
           args: --verbose
 
-      - name: Run cargo fmt
+      - name: Check formatting with rustfmt
         uses: actions-rs/cargo@v1
         with:
           command: fmt
           args: --all -- --check
+
+      - name: Linting with Clippy
+        uses: actions-rs/clippy-check@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          args: --all-targets --all-features -- -D warnings
 
       - name: Run tests
         uses: actions-rs/cargo@v1
