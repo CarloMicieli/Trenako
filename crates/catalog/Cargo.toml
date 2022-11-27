@@ -1,0 +1,13 @@
+[package]
+name = "catalog"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+common = { path = "../common" }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }
