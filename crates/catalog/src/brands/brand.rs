@@ -40,9 +40,9 @@ impl Brand {
         Brand {
             brand_id,
             name: String::from(name),
-            registered_company_name: registered_company_name.map(|s| String::from(s)),
-            group_name: group_name.map(|s| String::from(s)),
-            description: description.map(|s| String::from(s)),
+            registered_company_name: registered_company_name.map(String::from),
+            group_name: group_name.map(String::from),
+            description: description.map(String::from),
             address,
             contact_info,
             brand_type,
