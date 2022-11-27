@@ -1,6 +1,7 @@
 use crate::brands::brand_id::BrandId;
 use crate::brands::brand_status::BrandStatus;
 use crate::brands::brand_type::BrandType;
+use common::address::Address;
 use std::fmt;
 
 /// A model railways manufacturer.
@@ -11,6 +12,7 @@ pub struct Brand {
     registered_company_name: Option<String>,
     group_name: Option<String>,
     description: Option<String>,
+    address: Option<Address>,
     brand_type: BrandType,
     status: BrandStatus,
 }
@@ -22,6 +24,7 @@ impl Brand {
         registered_company_name: Option<&str>,
         group_name: Option<&str>,
         description: Option<&str>,
+        address: Option<Address>,
         brand_type: BrandType,
         status: BrandStatus,
     ) -> Self {
@@ -31,6 +34,7 @@ impl Brand {
             registered_company_name: registered_company_name.map(|s| String::from(s)),
             group_name: group_name.map(|s| String::from(s)),
             description: description.map(|s| String::from(s)),
+            address,
             brand_type,
             status,
         }
@@ -66,6 +70,11 @@ impl Brand {
         self.brand_type
     }
 
+    /// Returns the postal address for this brand
+    pub fn address(&self) -> Option<&Address> {
+        self.address.as_ref()
+    }
+
     /// Returns this brand status
     pub fn status(&self) -> BrandStatus {
         self.status
@@ -84,15 +93,27 @@ mod tests {
 
     mod brands {
         use super::*;
+        use isocountry::CountryCode;
+        use pretty_assertions::assert_eq;
 
         #[test]
         fn it_should_create_brands() {
+            let address = Address::builder()
+                .street_address("Viale Lombardia, 27")
+                .postal_code("20131")
+                .city("Milano")
+                .region("MI")
+                .country_code(CountryCode::ITA)
+                .build()
+                .unwrap();
+
             let brand = Brand::new(
                 BrandId::new("ACME"),
                 "ACME",
                 Some("Associazione Costruzioni Modellistiche Esatte"),
                 None,
                 None,
+                Some(address.clone()),
                 BrandType::Industrial,
                 BrandStatus::Active,
             );
@@ -109,6 +130,7 @@ mod tests {
             assert_eq!(None, brand.description);
             assert_eq!(BrandType::Industrial, brand.brand_type);
             assert_eq!(BrandStatus::Active, brand.status);
+            assert_eq!(Some(address), brand.address);
         }
     }
 }
