@@ -10,8 +10,13 @@ rust-version.workspace = true
 chrono = { workspace = true }
 common = { path = "../common" }
 isocountry = { workspace = true }
+itertools = { workspace = true }
 rust_decimal = { workspace = true }
 rust_decimal_macros = { workspace = true }
+strum = { workspace = true }
+strum_macros = { workspace = true }
+thiserror = { workspace = true }
+uuid = { workspace = true }
 
 [dev-dependencies]
 pretty_assertions = { workspace = true }
