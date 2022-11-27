@@ -2,6 +2,7 @@ use crate::brands::brand_id::BrandId;
 use crate::brands::brand_status::BrandStatus;
 use crate::brands::brand_type::BrandType;
 use common::address::Address;
+use common::metadata::Metadata;
 use common::socials::Socials;
 use std::fmt;
 
@@ -17,6 +18,7 @@ pub struct Brand {
     brand_type: BrandType,
     status: BrandStatus,
     socials: Option<Socials>,
+    metadata: Metadata,
 }
 
 impl Brand {
@@ -30,6 +32,7 @@ impl Brand {
         brand_type: BrandType,
         status: BrandStatus,
         socials: Option<Socials>,
+        metadata: Metadata,
     ) -> Self {
         Brand {
             brand_id,
@@ -41,6 +44,7 @@ impl Brand {
             brand_type,
             status,
             socials,
+            metadata,
         }
     }
 
@@ -88,6 +92,11 @@ impl Brand {
     pub fn socials(&self) -> Option<&Socials> {
         self.socials.as_ref()
     }
+
+    /// Returns the metadata for this brand
+    pub fn metadata(&self) -> &Metadata {
+        &self.metadata
+    }
 }
 
 impl fmt::Display for Brand {
@@ -110,11 +119,13 @@ mod tests {
 
     mod brands {
         use super::*;
+        use chrono::{DateTime, Utc};
         use isocountry::CountryCode;
         use pretty_assertions::assert_eq;
 
         #[test]
         fn it_should_create_brands() {
+            let now: DateTime<Utc> = Utc::now();
             let address = Address::builder()
                 .street_address("Viale Lombardia, 27")
                 .postal_code("20131")
@@ -136,6 +147,7 @@ mod tests {
                 BrandType::Industrial,
                 BrandStatus::Active,
                 Some(socials.clone()),
+                Metadata::created_at(now),
             );
 
             assert_eq!("ACME", brand.to_string());
@@ -151,7 +163,8 @@ mod tests {
             assert_eq!(BrandType::Industrial, brand.brand_type());
             assert_eq!(BrandStatus::Active, brand.status());
             assert_eq!(Some(&address), brand.address());
-            assert_eq!(Some(&socials), brand.socials())
+            assert_eq!(Some(&socials), brand.socials());
+            assert_eq!(Metadata::created_at(now), brand.metadata);
         }
     }
 }
