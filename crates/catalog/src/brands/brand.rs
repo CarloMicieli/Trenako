@@ -2,6 +2,7 @@ use crate::brands::brand_id::BrandId;
 use crate::brands::brand_status::BrandStatus;
 use crate::brands::brand_type::BrandType;
 use common::address::Address;
+use common::socials::Socials;
 use std::fmt;
 
 /// A model railways manufacturer.
@@ -15,6 +16,7 @@ pub struct Brand {
     address: Option<Address>,
     brand_type: BrandType,
     status: BrandStatus,
+    socials: Option<Socials>,
 }
 
 impl Brand {
@@ -27,6 +29,7 @@ impl Brand {
         address: Option<Address>,
         brand_type: BrandType,
         status: BrandStatus,
+        socials: Option<Socials>,
     ) -> Self {
         Brand {
             brand_id,
@@ -37,6 +40,7 @@ impl Brand {
             address,
             brand_type,
             status,
+            socials,
         }
     }
 
@@ -79,6 +83,11 @@ impl Brand {
     pub fn status(&self) -> BrandStatus {
         self.status
     }
+
+    /// Returns the social handlers for this brand
+    pub fn socials(&self) -> Option<&Socials> {
+        self.socials.as_ref()
+    }
 }
 
 impl fmt::Display for Brand {
@@ -86,6 +95,14 @@ impl fmt::Display for Brand {
         write!(f, "{}", self.name())
     }
 }
+
+impl PartialEq for Brand {
+    fn eq(&self, other: &Self) -> bool {
+        self.brand_id.eq(&other.brand_id)
+    }
+}
+
+impl Eq for Brand {}
 
 #[cfg(test)]
 mod tests {
@@ -107,6 +124,8 @@ mod tests {
                 .build()
                 .unwrap();
 
+            let socials = Socials::builder().facebook("Acmetreni").build();
+
             let brand = Brand::new(
                 BrandId::new("ACME"),
                 "ACME",
@@ -116,21 +135,23 @@ mod tests {
                 Some(address.clone()),
                 BrandType::Industrial,
                 BrandStatus::Active,
+                Some(socials.clone()),
             );
 
             assert_eq!("ACME", brand.to_string());
 
-            assert_eq!(BrandId::new("ACME"), brand.brand_id);
-            assert_eq!("ACME", brand.name);
+            assert_eq!(&BrandId::new("ACME"), brand.brand_id());
+            assert_eq!("ACME", brand.name());
             assert_eq!(
-                Some("Associazione Costruzioni Modellistiche Esatte".to_string()),
-                brand.registered_company_name
+                Some(&"Associazione Costruzioni Modellistiche Esatte".to_string()),
+                brand.registered_company_name()
             );
-            assert_eq!(None, brand.group_name);
-            assert_eq!(None, brand.description);
-            assert_eq!(BrandType::Industrial, brand.brand_type);
-            assert_eq!(BrandStatus::Active, brand.status);
-            assert_eq!(Some(address), brand.address);
+            assert_eq!(None, brand.group_name());
+            assert_eq!(None, brand.description());
+            assert_eq!(BrandType::Industrial, brand.brand_type());
+            assert_eq!(BrandStatus::Active, brand.status());
+            assert_eq!(Some(&address), brand.address());
+            assert_eq!(Some(&socials), brand.socials())
         }
     }
 }
