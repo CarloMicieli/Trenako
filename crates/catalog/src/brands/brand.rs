@@ -2,6 +2,7 @@ use crate::brands::brand_id::BrandId;
 use crate::brands::brand_status::BrandStatus;
 use crate::brands::brand_type::BrandType;
 use common::address::Address;
+use common::contact::ContactInfo;
 use common::metadata::Metadata;
 use common::socials::Socials;
 use std::fmt;
@@ -15,6 +16,7 @@ pub struct Brand {
     group_name: Option<String>,
     description: Option<String>,
     address: Option<Address>,
+    contact_info: Option<ContactInfo>,
     brand_type: BrandType,
     status: BrandStatus,
     socials: Option<Socials>,
@@ -29,6 +31,7 @@ impl Brand {
         group_name: Option<&str>,
         description: Option<&str>,
         address: Option<Address>,
+        contact_info: Option<ContactInfo>,
         brand_type: BrandType,
         status: BrandStatus,
         socials: Option<Socials>,
@@ -41,6 +44,7 @@ impl Brand {
             group_name: group_name.map(|s| String::from(s)),
             description: description.map(|s| String::from(s)),
             address,
+            contact_info,
             brand_type,
             status,
             socials,
@@ -76,6 +80,11 @@ impl Brand {
     /// Returns this brand type
     pub fn brand_type(&self) -> BrandType {
         self.brand_type
+    }
+
+    /// Returns the contact info for this brand
+    pub fn contact_info(&self) -> Option<&ContactInfo> {
+        self.contact_info.as_ref()
     }
 
     /// Returns the postal address for this brand
@@ -120,6 +129,7 @@ mod tests {
     mod brands {
         use super::*;
         use chrono::{DateTime, Utc};
+        use common::contact::{MailAddress, WebsiteUrl};
         use isocountry::CountryCode;
         use pretty_assertions::assert_eq;
 
@@ -135,6 +145,12 @@ mod tests {
                 .build()
                 .unwrap();
 
+            let contact_info = ContactInfo::new(
+                Some(MailAddress::new("mail@acmetreni.com")),
+                Some(WebsiteUrl::new("http://www.acmetreni.com")),
+                None,
+            );
+
             let socials = Socials::builder().facebook("Acmetreni").build();
 
             let brand = Brand::new(
@@ -144,6 +160,7 @@ mod tests {
                 None,
                 None,
                 Some(address.clone()),
+                Some(contact_info.clone()),
                 BrandType::Industrial,
                 BrandStatus::Active,
                 Some(socials.clone()),
@@ -163,6 +180,7 @@ mod tests {
             assert_eq!(BrandType::Industrial, brand.brand_type());
             assert_eq!(BrandStatus::Active, brand.status());
             assert_eq!(Some(&address), brand.address());
+            assert_eq!(Some(&contact_info), brand.contact_info());
             assert_eq!(Some(&socials), brand.socials());
             assert_eq!(Metadata::created_at(now), brand.metadata);
         }
