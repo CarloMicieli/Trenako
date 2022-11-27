@@ -40,7 +40,7 @@ impl fmt::Display for MeasureUnitConverter {
     }
 }
 
-#[derive(Debug, PartialEq, Clone, Copy)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum MeasureUnit {
     Millimeters,
     Inches,

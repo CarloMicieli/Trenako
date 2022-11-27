@@ -41,7 +41,7 @@ impl Scale {
         Scale {
             scale_id,
             name: String::from(name),
-            description: description.map(|s| String::from(s)),
+            description: description.map(String::from),
             ratio,
             gauge,
             standards,
