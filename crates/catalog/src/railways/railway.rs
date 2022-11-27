@@ -1,6 +1,7 @@
 use crate::railways::period_of_activity::PeriodOfActivity;
 use crate::railways::railway_gauge::RailwayGauge;
 use crate::railways::railway_id::RailwayId;
+use crate::railways::railway_length::RailwayLength;
 use crate::railways::railway_ownership::Ownership;
 use common::contact::ContactInfo;
 use common::metadata::Metadata;
@@ -23,6 +24,7 @@ pub struct Railway {
     registered_company_name: String,
     description: Option<String>,
     period_of_activity: Option<PeriodOfActivity>,
+    length: Option<RailwayLength>,
     gauge: Option<RailwayGauge>,
     country: CountryCode,
     ownership: Option<Ownership>,
@@ -40,6 +42,7 @@ impl Railway {
         registered_company_name: &str,
         description: Option<&str>,
         period_of_activity: Option<PeriodOfActivity>,
+        length: Option<RailwayLength>,
         gauge: Option<RailwayGauge>,
         country: CountryCode,
         ownership: Option<Ownership>,
@@ -54,6 +57,7 @@ impl Railway {
             registered_company_name: String::from(registered_company_name),
             description: description.map(str::to_string),
             period_of_activity,
+            length,
             gauge,
             country,
             ownership,
@@ -88,6 +92,11 @@ impl Railway {
     /// The period of activity (active/inactive) for this Railway company
     pub fn period_of_activity(&self) -> Option<&PeriodOfActivity> {
         self.period_of_activity.as_ref()
+    }
+
+    /// Returns the total railway network length controlled by this Railway company
+    pub fn length(&self) -> Option<&RailwayLength> {
+        self.length.as_ref()
     }
 
     pub fn gauge(&self) -> Option<&RailwayGauge> {
@@ -136,6 +145,7 @@ mod test {
         use common::contact::WebsiteUrl;
         use common::socials::SocialsBuilder;
         use pretty_assertions::assert_eq;
+        use rust_decimal_macros::dec;
 
         #[test]
         fn it_should_create_new_railways() {
@@ -146,6 +156,7 @@ mod test {
                 .twitter("FSitaliane")
                 .youtube("fsitaliane")
                 .build();
+            let length = RailwayLength::of_kilometers(dec!(24564.0));
             let gauge = RailwayGauge::standard();
             let contact_info = ContactInfo::new(None, Some(WebsiteUrl::new("https://www.fsitaliane.it")), None);
 
@@ -155,6 +166,7 @@ mod test {
                 "Ferrovie dello stato italiane",
                 None,
                 None,
+                Some(length),
                 Some(gauge.clone()),
                 CountryCode::ITA,
                 Some(Ownership::Public),
@@ -168,6 +180,7 @@ mod test {
             assert_eq!("FS", railway.name());
             assert_eq!("Ferrovie dello stato italiane", railway.registered_company_name());
             assert_eq!(Some("Rome"), railway.headquarters());
+            assert_eq!(Some(&length), railway.length());
             assert_eq!(Some(&gauge), railway.gauge());
             assert_eq!(Some(Ownership::Public), railway.ownership());
             assert_eq!(Some(&contact_info), railway.contact_info());
@@ -182,6 +195,7 @@ mod test {
                 RailwayId::new("FS"),
                 "FS",
                 "Ferrovie dello stato italiane",
+                None,
                 None,
                 None,
                 None,

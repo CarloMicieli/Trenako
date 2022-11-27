@@ -9,6 +9,8 @@ rust-version.workspace = true
 [dependencies]
 chrono = { workspace = true }
 isocountry = { workspace = true }
+rust_decimal = { workspace = true }
+rust_decimal_macros = { workspace = true }
 slug = { workspace = true }
 url = { workspace = true }
 
