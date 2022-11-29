@@ -60,6 +60,6 @@ pub struct TechSpecs {
 
 #[derive(Debug, Deserialize, Clone)]
 pub enum FeatureFlag {
-    YES,
-    NO,
+    Yes,
+    No,
 }
