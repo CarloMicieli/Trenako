@@ -38,6 +38,8 @@ pub struct RollingStock {
     pub control: Option<String>,
     #[serde(rename = "dccInterface")]
     pub dcc_interface: Option<String>,
+    #[serde(rename = "techSpecs")]
+    pub tech_specs: TechSpecs,
     pub dummy: Option<String>,
 }
 
@@ -46,20 +48,14 @@ pub struct TechSpecs {
     #[serde(rename = "minimumRadius")]
     pub minimum_radius: Decimal,
     #[serde(rename = "flywheelFitted")]
-    pub flywheel_fitted: FeatureFlag,
+    pub flywheel_fitted: String,
     #[serde(rename = "closeCouplers")]
-    pub close_couplers: FeatureFlag,
+    pub close_couplers: String,
     #[serde(rename = "metalBody")]
-    pub metal_body: FeatureFlag,
+    pub metal_body: String,
     #[serde(rename = "interiorLights")]
-    pub interior_lights: FeatureFlag,
-    pub lights: FeatureFlag,
+    pub interior_lights: String,
+    pub lights: String,
     #[serde(rename = "springBuffers")]
-    pub spring_buffers: FeatureFlag,
-}
-
-#[derive(Debug, Deserialize, Clone)]
-pub enum FeatureFlag {
-    Yes,
-    No,
+    pub spring_buffers: String,
 }
