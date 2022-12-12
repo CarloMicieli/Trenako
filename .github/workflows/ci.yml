@@ -40,6 +40,9 @@ jobs:
       - name: Update local rust toolchain
         run: rustup update
 
+      - name: Install cargo-tarpaulin
+        run: cargo install cargo-tarpaulin
+
       - name: Toolchain info
         run: |
           rustc --version
