@@ -60,7 +60,7 @@ jobs:
         run: cargo test --no-fail-fast
 
       - name: Run cargo-tarpaulin
-        run: cargo tarpaulin --out Xml -- --test-threads 1
+        run: cargo tarpaulin --ignore-tests --out Xml -- --test-threads 1
 
       - name: Upload coverage to Codecov.io
         uses: codecov/codecov-action@v3
