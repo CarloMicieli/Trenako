@@ -13,9 +13,36 @@ tbd
 
 ## Tech Stack
 
-* 🦀 `Rust` 1.59
+* 🦀 `Rust`
 * `Cargo`
 * `Docker` / `Docker compose`
+
+## How to run
+
+```shell
+  git clone https://github.com/CarloMicieli/trenako
+  cd trenako
+  cargo run --bin trenako
+
+    Finished dev [unoptimized + debuginfo] target(s) in 0.10s
+     Running `target/debug/trenako`
+
+ _                        _         
+| |                      | |        
+| |_ _ __ ___ _ __   __ _| | _____  
+| __| '__/ _ \ '_ \ / _` | |/ / _ \ 
+| |_| | |  __/ | | | (_| |   < (_) |
+ \__|_|  \___|_| |_|\__,_|_|\_\___/
+
+Starting the server (127.0.0.1:9999)...
+```
+
+### Environment variables
+
+| Variable      | Description            |
+|---------------|------------------------|
+| `SERVER_HOST` | the server host name   |
+| `SERVER_PORT` | the server port number |
 
 ## Contribution
 

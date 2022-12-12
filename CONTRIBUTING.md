@@ -41,7 +41,7 @@ If the required subsection does not exist yet under **Unreleased**, create it!
 
 * Install the 🦀 rust toolchain in order to have cargo installed by following [this](https://www.rust-lang.org/tools/install) guide.
 
-```bash
+```shell
   cargo install cargo-tarpaulin
   cargo install cargo-audit
   cargo install sqlx-cli --no-default-features --features postgres
