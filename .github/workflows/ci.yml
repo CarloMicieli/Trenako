@@ -9,6 +9,7 @@ on:
       - 'crates/**'
       - 'Cargo.toml'
       - 'Cargo.lock'
+      - '.github/workflows/ci.yml'
   pull_request:
   workflow_dispatch:
 
@@ -18,7 +19,7 @@ env:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Set up cargo cache
@@ -34,24 +35,30 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
 
-      - name: Checkout repository
+      - name: Checkout source code
         uses: actions/checkout@v3
 
-      - name: Update local rust toolchain
-        run: rustup update
+      - name: Install rust toolchain
+        run: |
+          rm -f "${HOME}/.cargo/bin/"{rustfmt,cargo-fmt,cargo-tarpaulin}
+          rustup set profile minimal
+          rustup toolchain install stable -c "clippy,rustfmt"
+          cargo install cargo-tarpaulin
+          rustup default stable
 
       - name: Toolchain info
         run: |
           rustc --version
           cargo --version --verbose
           cargo clippy --version
+          cargo fmt --version
           cargo tarpaulin --version
 
       - name: Run cargo check
         run: cargo check
 
       - name: Check formatting with rustfmt
-        run: cargo fmt --all -- --check
+        run: cargo fmt --all --check
 
       - name: Linting with Clippy
         run: cargo clippy --all-targets --all-features -- -D warnings
