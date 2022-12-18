@@ -19,6 +19,21 @@ tbd
 
 ## How to run
 
+### Database
+
+To run the `postgres` database:
+
+```bash
+  docker run -it --rm --name roundhouse-db-dev \
+    -e POSTGRES_PASSWORD=mysecretpassword \
+    -e POSTGRES_DB=roundhouse \
+    -d -p 5432:5432 \
+    -v roundhouse_db_dev:/var/lib/postgresql/data \
+    postgres:14.5-alpine
+```
+
+### Start the server
+
 ```shell
   git clone https://github.com/CarloMicieli/trenako
   cd trenako

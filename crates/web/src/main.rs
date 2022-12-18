@@ -1,15 +1,19 @@
+use sqlx::PgPool;
 use std::net::TcpListener;
 use web::configuration::Settings;
-use web::run;
+use web::server;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let config = Settings::load().expect("Failed to read configuration");
     let listener = TcpListener::bind(config.address()).expect("Failed to bind port");
+    let db_pool = PgPool::connect(&config.database_url())
+        .await
+        .expect("Failed to connect to Postgres.");
 
     println!("{}", &BANNER_TEXT);
     println!("Starting the server ({})...", config.address());
-    run(listener)?.await
+    server::run(listener, db_pool)?.await
 }
 
 const BANNER_TEXT: &str = r#"

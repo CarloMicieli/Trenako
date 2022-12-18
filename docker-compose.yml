@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:14.5-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: trenakodb
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    healthcheck:
+      test: [ CMD-SHELL, 'pg_isready -U postgres' ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  db_admin:
+    container_name: db_admin
+    image: dpage/pgadmin4:latest
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - 9000:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@mail.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    volumes:
+      - ./.config/pgadmin/servers.json:/pgadmin4/servers.json # preconfigured servers/connections
+      - ./.config/pgadmin/pgpass:/pgpass # passwords for the connections in this file
+    networks:
+      - backend
+
+networks:
+  backend:
+
+volumes:
+  db-data:

@@ -16,9 +16,12 @@ name = "trenako"
 [dependencies]
 actix-web = { workspace = true }
 config = { workspace = true }
+secrecy = { workspace = true }
 serde = { workspace = true }
+sqlx = { workspace = true }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 
 [dev-dependencies]
 pretty_assertions = { workspace = true }
 reqwest = "0.11.13"
+testcontainers = "0.14.0"
