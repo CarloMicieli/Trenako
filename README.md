@@ -37,7 +37,7 @@ To run the `postgres` database:
 ```shell
   git clone https://github.com/CarloMicieli/trenako
   cd trenako
-  cargo run --bin trenako
+  cargo run --bin trenako-server
 
     Finished dev [unoptimized + debuginfo] target(s) in 0.10s
      Running `target/debug/trenako`
