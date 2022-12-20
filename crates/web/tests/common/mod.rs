@@ -24,9 +24,7 @@ pub async fn spawn_app() -> ServiceUnderTest {
         node.get_host_port_ipv4(5432)
     );
 
-    let pg_pool = PgPool::connect(connection_string)
-        .await
-        .expect("Failed to connect to Postgres.");
+    let pg_pool = configure_database(connection_string).await;
 
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
     let port = listener.local_addr().unwrap().port();
@@ -36,4 +34,15 @@ pub async fn spawn_app() -> ServiceUnderTest {
     ServiceUnderTest {
         base_endpoint_url: format!("http://127.0.0.1:{}", port),
     }
+}
+
+async fn configure_database(config: &str) -> PgPool {
+    // Migrate database
+    let connection_pool = PgPool::connect(config).await.expect("Failed to connect to Postgres.");
+    sqlx::migrate!("../../migrations")
+        .run(&connection_pool)
+        .await
+        .expect("Failed to migrate the database");
+
+    connection_pool
 }

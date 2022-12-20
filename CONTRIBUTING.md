@@ -39,12 +39,13 @@ If the required subsection does not exist yet under **Unreleased**, create it!
 
 ### Set up
 
-* Install the 🦀 rust toolchain in order to have cargo installed by following [this](https://www.rust-lang.org/tools/install) guide.
+* Install the 🦀 rust toolchain in order to have cargo installed by
+  following [this](https://www.rust-lang.org/tools/install) guide.
 
 ```shell
   cargo install cargo-tarpaulin
   cargo install cargo-audit
-  cargo install sqlx-cli --no-default-features --features postgres
+  cargo install sqlx-cli --no-default-features --features native-tls,postgres
   rustup component add clippy
   rustup component add rustfmt
 ```
@@ -57,14 +58,16 @@ If the required subsection does not exist yet under **Unreleased**, create it!
 
 ### Useful Commands
 
-| Command                          | Description                 |
-|----------------------------------|-----------------------------|
-| `cargo run`                      | run the app                 |
-| `cargo test`                     | run the tests               |
-| `cargo fmt -- --check`           | check the formatting        |
-| `cargo clippy`                   | run the linter              |
-| `cargo tarpaulin --ignore-tests` | compute code coverage       |
-| `cargo audit`                    | check for security warnings |
+| Command                          | Description                        |
+|----------------------------------|------------------------------------|
+| `cargo run`                      | run the app                        |
+| `cargo test`                     | run the tests                      |
+| `cargo fmt -- --check`           | check the formatting               |
+| `cargo clippy`                   | run the linter                     |
+| `cargo tarpaulin --ignore-tests` | compute code coverage              |
+| `cargo audit`                    | check for security warnings        |
+| `cargo sqlx prepare --merged`    | prepare the query for offline mode |
+| `sqlx migrate run`               | run the database migrations        |
 
 ### Conventional commits
 

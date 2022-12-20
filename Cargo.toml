@@ -41,10 +41,11 @@ uuid = { version = "1.2.1", features = ["serde", "v4"] }
 version = "0.6.2"
 default-features = false
 features = [
-    "runtime-tokio-rustls",
+    "chrono",
     "macros",
+    "migrate",
     "offline",
     "postgres",
-    "uuid",
-    "chrono"
+    "runtime-tokio-rustls",
+    "uuid"
 ]
