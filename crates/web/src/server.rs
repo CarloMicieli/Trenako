@@ -3,13 +3,15 @@ use actix_web::{web, App, HttpResponse, HttpServer, Responder};
 use sqlx::PgPool;
 use std::net::TcpListener;
 
-pub fn run(listener: TcpListener, db_pool: PgPool) -> Result<Server, std::io::Error> {
+/// Run the web server
+pub fn run(listener: TcpListener, db_pool: PgPool, workers: usize) -> Result<Server, std::io::Error> {
     #[rustfmt::skip]
     let server = HttpServer::new(move || {
         App::new()
             .route("/health_check", web::get().to(health_check))
             .app_data(db_pool.clone())
         })
+        .workers(workers)
         .listen(listener)?
         .run();
     Ok(server)

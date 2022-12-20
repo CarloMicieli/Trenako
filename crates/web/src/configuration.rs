@@ -15,6 +15,10 @@ impl Settings {
         format!("{}:{}", self.server.host, self.server.port)
     }
 
+    pub fn workers(&self) -> usize {
+        self.server.workers
+    }
+
     pub fn database_url(&self) -> String {
         self.database.database_url()
     }
@@ -34,6 +38,7 @@ impl Settings {
 pub struct ServerSettings {
     host: String,
     port: u16,
+    workers: usize,
 }
 
 /// Database settings
@@ -84,6 +89,7 @@ mod tests {
                 server: ServerSettings {
                     host: String::from("127.0.0.1"),
                     port: 8080,
+                    workers: 4,
                 },
             };
 

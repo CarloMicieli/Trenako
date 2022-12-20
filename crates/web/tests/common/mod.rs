@@ -30,7 +30,7 @@ pub async fn spawn_app() -> ServiceUnderTest {
 
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
     let port = listener.local_addr().unwrap().port();
-    let server = server::run(listener, pg_pool).expect("Failed to bind address");
+    let server = server::run(listener, pg_pool, 2).expect("Failed to bind address");
     let _ = tokio::spawn(server);
 
     ServiceUnderTest {

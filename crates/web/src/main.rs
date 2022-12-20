@@ -13,7 +13,7 @@ async fn main() -> std::io::Result<()> {
 
     println!("{}", &BANNER_TEXT);
     println!("Starting the server ({})...", config.address());
-    server::run(listener, db_pool)?.await
+    server::run(listener, db_pool, config.workers())?.await
 }
 
 const BANNER_TEXT: &str = r#"
