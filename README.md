@@ -19,6 +19,13 @@ tbd
 
 ## How to run
 
+```bash
+  git clone https://github.com/CarloMicieli/trenako
+  cd trenako
+  
+  docker compose up
+```
+
 ### Database
 
 To run the `postgres` database:
@@ -35,8 +42,6 @@ To run the `postgres` database:
 ### Start the server
 
 ```bash
-  git clone https://github.com/CarloMicieli/trenako
-  cd trenako
   cargo run --bin trenako-server
 
     Finished dev [unoptimized + debuginfo] target(s) in 0.10s

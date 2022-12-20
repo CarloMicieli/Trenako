@@ -37,7 +37,7 @@ services:
       - backend
 
   api:
-    image: trenako-server:latest
+    image: ghr.io/carlomicieli/trenako-server:latest
     build: .
     depends_on:
       db:
