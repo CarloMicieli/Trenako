@@ -24,17 +24,17 @@ tbd
 To run the `postgres` database:
 
 ```bash
-  docker run -it --rm --name roundhouse-db-dev \
+  docker run -it --rm --name trenako-db-dev \
     -e POSTGRES_PASSWORD=mysecretpassword \
-    -e POSTGRES_DB=roundhouse \
+    -e POSTGRES_DB=trenakodb \
     -d -p 5432:5432 \
-    -v roundhouse_db_dev:/var/lib/postgresql/data \
+    -v trenako_db_data:/var/lib/postgresql/data \
     postgres:14.5-alpine
 ```
 
 ### Start the server
 
-```shell
+```bash
   git clone https://github.com/CarloMicieli/trenako
   cd trenako
   cargo run --bin trenako-server
@@ -54,10 +54,16 @@ Starting the server (127.0.0.1:9999)...
 
 ### Environment variables
 
-| Variable      | Description            |
-|---------------|------------------------|
-| `SERVER_HOST` | the server host name   |
-| `SERVER_PORT` | the server port number |
+| Variable            | Description              |
+|---------------------|--------------------------|
+| `SERVER_HOST`       | the server host name     |
+| `SERVER_PORT`       | the server port number   |
+| `SERVER_WORKERS`    | the number of workers    |
+| `DATABASE_NAME`     | the database name        |
+| `DATABASE_USERNAME` | the database username    |
+| `DATABASE_PASSWORD` | the database password    |
+| `DATABASE_HOST`     | the database hostname    |
+| `DATABASE_PORT`     | the database port number |
 
 ## Contribution
 
