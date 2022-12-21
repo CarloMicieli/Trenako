@@ -1,15 +1,14 @@
-name: ci
+name: main
 
 on:
   push:
     branches: 
       - main
-      - dev
     paths:
       - 'crates/**'
       - 'Cargo.toml'
       - 'Cargo.lock'
-      - '.github/workflows/ci.yml'
+      - '.github/workflows/main.yml'
   pull_request:
   workflow_dispatch:
 
@@ -19,7 +18,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  checks:
 
     runs-on: ubuntu-22.04
 
@@ -71,24 +70,9 @@ jobs:
       - name: Run cargo-tarpaulin
         run: cargo tarpaulin --ignore-tests --out Xml -- --test-threads 1
 
-      - name: Upload coverage to Codecov.io
-        uses: codecov/codecov-action@v3
-        if: github.ref_name == 'main'
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: true
-          verbose: true
-
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: code-coverage-report
-          path: cobertura.xml
-
   docker:
     runs-on: ubuntu-22.04
-    needs: build
-    if: github.ref_name == 'main'
+    needs: checks
 
     steps:
       - name: Check out the repo
@@ -108,7 +92,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             # set latest tag for default branch
-            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
             type=sha          
 
       - name: Build and push Docker image
