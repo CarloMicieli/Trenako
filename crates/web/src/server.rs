@@ -1,4 +1,6 @@
+use crate::handlers::catalog;
 use actix_web::dev::Server;
+use actix_web::middleware::Compress;
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
 use sqlx::PgPool;
 use std::net::TcpListener;
@@ -8,7 +10,10 @@ pub fn run(listener: TcpListener, db_pool: PgPool, workers: usize) -> Result<Ser
     #[rustfmt::skip]
     let server = HttpServer::new(move || {
         App::new()
+            .wrap(Compress::default())
             .route("/health_check", web::get().to(health_check))
+            .configure(catalog::config_services)
+            .app_data(web::JsonConfig::default().limit(4096))
             .app_data(db_pool.clone())
         })
         .workers(workers)
