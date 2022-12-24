@@ -44,6 +44,7 @@ components:
 
     BrandKind:
       type: string
+      description: the brand kind
       enum:
         - INDUSTRIAL
         - BRASS_MODELS
@@ -95,6 +96,7 @@ components:
           type: string
         brand:
           type: object
+          title: CatalogBrand
           properties:
             id:
               type: string
@@ -103,7 +105,8 @@ components:
         item_number:
           type: string
         scale:
-          type: string
+          type: object
+          title: CatalogScale
           properties:
             id:
               type: string
@@ -124,15 +127,23 @@ components:
         rolling_stocks:
           type: array
           items:
-            $ref: "#/components/schemas/RollingStock"
+            oneOf:
+              - $ref: "#/components/schemas/ElectricMultipleUnit"
+              - $ref: "#/components/schemas/FreightCar"
+              - $ref: "#/components/schemas/Locomotive"
+              - $ref: "#/components/schemas/PassengerCar"
+              - $ref: "#/components/schemas/Railcar"
+            discriminator:
+              propertyName: category
         count:
-          type: number
+          type: integer
           format: int32
         metadata:
           $ref: "./common.yaml#/components/schemas/Metadata"
 
     CatalogItemCategory:
       type: string
+      description: the catalog item category
       enum:
         - ELECTRIC_MULTIPLE_UNITS
         - FREIGHT_CARS
@@ -175,9 +186,16 @@ components:
         rolling_stocks:
           type: array
           items:
-            $ref: "#/components/schemas/RollingStockRequest"
+            oneOf:
+              - $ref: "#/components/schemas/ElectricMultipleUnitRequest"
+              - $ref: "#/components/schemas/FreightCarRequest"
+              - $ref: "#/components/schemas/LocomotiveRequest"
+              - $ref: "#/components/schemas/PassengerCarRequest"
+              - $ref: "#/components/schemas/RailcarRequest"
+            discriminator:
+              propertyName: category
         count:
-          type: number
+          type: integer
           format: int32
           minimum: 1
       required:
@@ -189,6 +207,7 @@ components:
 
     Control:
       type: string
+      description: the rolling stock control method
       enum:
         - DCC
         - DCC_READY
@@ -196,6 +215,7 @@ components:
 
     Coupling:
       type: string
+      description: the rolling stock couplings
       enum:
         - NEM_355
         - NEM_356
@@ -207,6 +227,7 @@ components:
 
     DccInterface:
       type: string
+      description: the rolling stock DCC interface
       enum:
         - MTC_21
         - NEM_651
@@ -217,6 +238,7 @@ components:
         - PLUX_8
 
     ElectricMultipleUnitRequest:
+      description: the request to create/update an electric multiple unit rolling stocks
       allOf:
         - $ref: "#/components/schemas/RollingStockRequest"
         - type: object
@@ -243,6 +265,7 @@ components:
               type: boolean
 
     ElectricMultipleUnit:
+      description: an electric multiple unit rolling stock
       allOf:
         - $ref: "#/components/schemas/RollingStock"
         - type: object
@@ -266,21 +289,23 @@ components:
 
     ElectricMultipleUnitType:
       type: string
+      description: the electric multiple unit type
       enum:
         - POWER_CAR
         - TRAILER_CAR
 
     FeatureFlag:
       type: string
+      description: a feature flag for rolling stock technical specifications
       enum:
         - YES
         - NO
-        - N/A
+        - N_A
 
     FreightCar:
       description: a freight car rolling stock
       allOf:
-        - $ref: "#/components/schemas/RollingStockRequest"
+        - $ref: "#/components/schemas/RollingStock"
         - type: object
           properties:
             type_name:
@@ -307,6 +332,7 @@ components:
 
     FreightCarType:
       type: string
+      description: the freight car type
       enum:
         - AUTO_TRANSPORT_CARS
         - BRAKE_WAGON
@@ -380,6 +406,7 @@ components:
 
     LocomotiveType:
       type: string
+      description: the locomotive type
       enum:
         - DIESEL_LOCOMOTIVE
         - ELECTRIC_LOCOMOTIVE
@@ -388,7 +415,7 @@ components:
     PassengerCar:
       description: a passenger car rolling stock
       allOf:
-        - $ref: "#/components/schemas/RollingStockRequest"
+        - $ref: "#/components/schemas/RollingStock"
         - type: object
           properties:
             type_name:
@@ -420,6 +447,7 @@ components:
 
     PassengerCarType:
       type: string
+      description: the passenger car type
       enum:
         - BAGGAGE_CAR
         - COMBINE_CAR
@@ -435,14 +463,16 @@ components:
 
     PowerMethod:
       type: string
+      description: the rolling stock power method
       enum:
         - AC
         - DC
+        - TRIX_EXPRESS
 
     Railcar:
       description: a railcar rolling stock
       allOf:
-        - $ref: "#/components/schemas/RollingStockRequest"
+        - $ref: "#/components/schemas/RollingStock"
         - type: object
           properties:
             type_name:
@@ -454,10 +484,7 @@ components:
             depot:
               type: string
             railcar_type:
-              type: string
-              enum:
-                - POWER_CAR
-                - TRAILER_CAR
+              $ref: "#/components/schemas/RailcarType"
             dcc_interface:
               $ref: "#/components/schemas/DccInterface"
             control:
@@ -484,10 +511,7 @@ components:
               type: string
               maxLength: 100
             railcar_type:
-              type: string
-              enum:
-                - POWER_CAR
-                - TRAILER_CAR
+              $ref: "#/components/schemas/RailcarType"
             dcc_interface:
               $ref: "#/components/schemas/DccInterface"
             control:
@@ -495,8 +519,16 @@ components:
             is_dummy:
               type: boolean
 
+    RailcarType:
+      type: string
+      description: the railcar type
+      enum:
+        - POWER_CAR
+        - TRAILER_CAR
+
     Railway:
       type: object
+      description: a company which operates a railway network
       properties:
         railway_id:
           type: string
@@ -545,6 +577,7 @@ components:
 
     RailwayPeriodOfActivity:
       type: object
+      description: the period of activity for a railway company
       properties:
         operating_since:
           type: string
@@ -559,6 +592,7 @@ components:
 
     RailwayRequest:
       type: object
+      description: the request to create/update railways
       properties:
         name:
           type: string
@@ -612,27 +646,22 @@ components:
 
     RailwayStatus:
       type: string
+      description: the railway activity status
       enum:
         - ACTIVE
         - INACTIVE
 
     RollingStock:
-      type:
-        object
-      oneOf:
-        - $ref: "#/components/schemas/ElectricMultipleUnit"
-        - $ref: "#/components/schemas/FreightCar"
-        - $ref: "#/components/schemas/Locomotive"
-        - $ref: "#/components/schemas/PassengerCar"
-        - $ref: "#/components/schemas/Railcar"
-      required:
-        - category
+      type: object
+      discriminator:
+        propertyName: category
       properties:
         rolling_stock_id:
           type: string
           format: uuid
         railway:
           type: object
+          title: RollingStockRailway
           properties:
             id:
               type: string
@@ -655,17 +684,12 @@ components:
               format: float
         technical_specifications:
           $ref: "#/components/schemas/TechnicalSpecifications"
-      discriminator:
-        propertyName: category
-        mapping:
-          ELECTRIC_MULTIPLE_UNITS: "#/components/schemas/ElectricMultipleUnit"
-          FREIGHT_CARS: "#/components/schemas/FreightCar"
-          LOCOMOTIVES: "#/components/schemas/Locomotive"
-          PASSENGER_CARS: "#/components/schemas/PassengerCar"
-          RAILCARS: "#/components/schemas/Railcar"
+      required:
+        - category
 
     RollingStockCategory:
       type: string
+      description: the rolling stock category
       enum:
         - ELECTRIC_MULTIPLE_UNITS
         - FREIGHT_CARS
@@ -674,18 +698,9 @@ components:
         - RAILCARS
 
     RollingStockRequest:
-      type:
-        object
-      oneOf:
-        - $ref: "#/components/schemas/ElectricMultipleUnitRequest"
-        - $ref: "#/components/schemas/FreightCarRequest"
-        - $ref: "#/components/schemas/LocomotiveRequest"
-        - $ref: "#/components/schemas/PassengerCarRequest"
-        - $ref: "#/components/schemas/RailcarRequest"
-      required:
-        - railway
-        - category
-        - epoch
+      type: object
+      discriminator:
+        propertyName: category
       properties:
         railway:
           type: string
@@ -709,17 +724,14 @@ components:
               format: float
         technical_specifications:
           $ref: "#/components/schemas/TechnicalSpecifications"
-      discriminator:
-        propertyName: category
-        mapping:
-          ELECTRIC_MULTIPLE_UNITS: "#/components/schemas/ElectricMultipleUnitRequest"
-          FREIGHT_CARS: "#/components/schemas/FreightCarRequest"
-          LOCOMOTIVES: "#/components/schemas/LocomotiveRequest"
-          PASSENGER_CARS: "#/components/schemas/PassengerCarRequest"
-          RAILCARS: "#/components/schemas/RailcarRequest"
+      required:
+        - railway
+        - category
+        - epoch
 
     Scale:
       type: object
+      description: a rail transport modelling scale
       properties:
         scale_id:
           type: string
@@ -753,6 +765,7 @@ components:
 
     ScaleRequest:
       type: object
+      description: a request to create/update rail transport modelling scales
       properties:
         name:
           type: string
@@ -788,6 +801,7 @@ components:
 
     TrackGauge:
       type: string
+      description: the track gauge
       enum:
         - BROAD
         - MEDIUM
@@ -797,6 +811,7 @@ components:
 
     TechnicalSpecifications:
       type: object
+      description: the technical specification for a rolling stock
       properties:
         minimum_radius:
           type: number

@@ -24,7 +24,7 @@ paths:
       operationId: get-brands
       responses:
         "200":
-          description: ok
+          description: a brands list
           content:
             "application/json":
               schema:
@@ -117,7 +117,7 @@ paths:
     put:
       summary: update a brand
       tags:
-        - Brands
+        - brands
       operationId: update-brand
       parameters:
         - name: brand
@@ -183,7 +183,7 @@ paths:
             type: string
       responses:
         "200":
-          description: OK
+          description: a catalog item
           content:
             "application/json":
               schema:
@@ -224,6 +224,40 @@ paths:
           $ref: "#/components/responses/Error"
 
   /api/catalog-items/{catalogItemId}/rolling-stocks:
+    get:
+      summary: get the rolling stocks for the catalog item
+      tags:
+        - catalog-items
+      operationId: get-rolling-stocks
+      parameters:
+        - name: catalogItemId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: the rolling stocks list
+          content:
+            "application/json":
+              schema:
+                type: array
+                items:
+                  oneOf:
+                    - $ref: "./catalog.yaml#/components/schemas/ElectricMultipleUnit"
+                    - $ref: "./catalog.yaml#/components/schemas/FreightCar"
+                    - $ref: "./catalog.yaml#/components/schemas/Locomotive"
+                    - $ref: "./catalog.yaml#/components/schemas/PassengerCar"
+                    - $ref: "./catalog.yaml#/components/schemas/Railcar"
+                  discriminator:
+                    propertyName: category
+        "204":
+          description: the catalog item contains no rolling stocks
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/Error"
+
     post:
       summary: add a new rolling stock to this catalog item
       tags:
@@ -286,6 +320,42 @@ paths:
         "500":
           $ref: "#/components/responses/Error"
 
+    get:
+      summary: get the rolling stock
+      tags:
+        - catalog-items
+      operationId: get-rolling-stock
+      parameters:
+        - name: catalogItemId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: rollingStockId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: urn
+      responses:
+        "200":
+          description: a rolling stock
+          content:
+            "application/json":
+              schema:
+                oneOf:
+                  - $ref: "./catalog.yaml#/components/schemas/ElectricMultipleUnit"
+                  - $ref: "./catalog.yaml#/components/schemas/FreightCar"
+                  - $ref: "./catalog.yaml#/components/schemas/Locomotive"
+                  - $ref: "./catalog.yaml#/components/schemas/PassengerCar"
+                  - $ref: "./catalog.yaml#/components/schemas/Railcar"
+                discriminator:
+                  propertyName: category
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+        "500":
+          $ref: "#/components/responses/Error"
+
     put:
       summary: update the rolling stock in the catalog item
       tags:
@@ -328,7 +398,7 @@ paths:
       operationId: get-railways
       responses:
         "200":
-          description: the railways list
+          description: a railways list
           content:
             "application/json":
               schema:
@@ -448,7 +518,7 @@ paths:
       operationId: get-scales
       responses:
         "200":
-          description: OK
+          description: a scales list
           content:
             "application/json":
               schema:
