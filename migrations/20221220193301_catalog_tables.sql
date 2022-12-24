@@ -25,15 +25,83 @@ CREATE TYPE catalog_item_type AS ENUM (
     'RAILCARS'
 );
 CREATE TYPE feature_flag AS ENUM ('YES', 'NO', 'N/A');
+CREATE TYPE power_method AS ENUM ('AC', 'DC');
+CREATE TYPE availability_status AS ENUM (
+    'ANNOUNCED',
+    'AVAILABLE',
+    'DISCONTINUED'
+);
+CREATE TYPE control AS ENUM (
+    'DCC',
+    'DCC_READY',
+    'DCC_SOUND'
+);
+CREATE TYPE dcc_interface AS ENUM (
+    'MTC_21',
+    'NEM_651',
+    'NEM_652',
+    'NEXT_18',
+    'PLUX_16',
+    'PLUX_22',
+    'PLUX_8'
+);
+CREATE TYPE locomotive_type AS ENUM (
+    'DIESEL_LOCOMOTIVE',
+    'ELECTRIC_LOCOMOTIVE',
+    'STEAM_LOCOMOTIVE'
+);
+CREATE TYPE passenger_car_type AS ENUM (
+    'BAGGAGE_CAR',
+    'COMBINE_CAR',
+    'COMPARTMENT_COACH',
+    'DINING_CAR',
+    'DOUBLE_DECKER',
+    'DRIVING_TRAILER',
+    'LOUNGE',
+    'OBSERVATION',
+    'OPEN_COACH',
+    'RAILWAY_POST_OFFICE',
+    'SLEEPING_CAR'
+);
+CREATE TYPE electric_multiple_unit_type AS ENUM (
+    'POWER_CAR',
+    'TRAILER_CAR'
+);
+CREATE TYPE railcar_type AS ENUM (
+    'POWER_CAR',
+    'TRAILER_CAR'
+);
+CREATE TYPE freight_car_type AS ENUM (
+    'AUTO_TRANSPORT_CARS',
+    'BRAKE_WAGON',
+    'CONTAINER_CARS',
+    'COVERED_FREIGHT_CARS',
+    'DEEP_WELL_FLAT_CARS',
+    'DUMP_CARS',
+    'GONDOLA',
+    'HEAVY_GOODS_WAGONS',
+    'HINGED_COVER_WAGONS',
+    'HOPPER_WAGON',
+    'REFRIGERATOR_CARS',
+    'SILO_CONTAINER_CARS',
+    'SLIDE_TARPAULIN_WAGON',
+    'SLIDING_WALL_BOXCARS',
+    'SPECIAL_TRANSPORT',
+    'STAKE_WAGONS',
+    'SWING_ROOF_WAGON',
+    'TANK_CARS',
+    'TELESCOPE_HOOD_WAGONS'
+);
 
 CREATE TABLE public.brands
 (
     brand_id                 varchar(50) NOT NULL,
     name                     varchar(50) NOT NULL,
     registered_company_name  varchar(100),
-    group_name               varchar(50),
+    organization_entity_type organization_entity_type,
+    group_name               varchar(100),
     description              varchar(1000),
-    contact_email            varchar(255),
+    contact_email            varchar(250),
     contact_website_url      varchar(100),
     contact_phone            varchar(20),
     kind                     brand_kind  NOT NULL,
@@ -44,13 +112,13 @@ CREATE TABLE public.brands
     address_region           varchar(50),
     address_postal_code      varchar(10),
     address_country          varchar(2),
-    socials_facebook         varchar(255),
-    socials_instagram        varchar(255),
-    socials_linkedin         varchar(255),
-    socials_twitter          varchar(255),
-    socials_youtube          varchar(255),
-    created                  timestamp without time zone NOT NULL,
-    last_modified            timestamp without time zone,
+    socials_facebook         varchar(100),
+    socials_instagram        varchar(100),
+    socials_linkedin         varchar(100),
+    socials_twitter          varchar(100),
+    socials_youtube          varchar(100),
+    created_at               timestamp without time zone NOT NULL,
+    last_modified_at         timestamp without time zone,
     version                  integer     NOT NULL DEFAULT 1,
     CONSTRAINT "PK_brands" PRIMARY KEY (brand_id)
 );
@@ -66,11 +134,11 @@ CREATE TABLE public.railways
     registered_company_name  varchar(250),
     organization_entity_type organization_entity_type,
     description              varchar(1000),
-    country                  varchar(2),
+    country                  varchar(2)  NOT NULL,
     operating_since          timestamp without time zone,
     operating_until          timestamp without time zone,
     status                   railway_status,
-    gauge_mm                 numeric(19, 5),
+    gauge_m                  numeric(19, 5),
     gauge_in                 numeric(19, 5),
     track_gauge              gauge,
     headquarters             varchar(250),
@@ -79,13 +147,13 @@ CREATE TABLE public.railways
     contact_email            varchar(255),
     contact_website_url      varchar(100),
     contact_phone            varchar(20),
-    socials_facebook         varchar(255),
-    socials_instagram        varchar(255),
-    socials_linkedin         varchar(255),
-    socials_twitter          varchar(255),
-    socials_youtube          varchar(255),
-    created                  timestamp without time zone NOT NULL,
-    last_modified            timestamp without time zone,
+    socials_facebook         varchar(100),
+    socials_instagram        varchar(100),
+    socials_linkedin         varchar(100),
+    socials_twitter          varchar(100),
+    socials_youtube          varchar(100),
+    created_at               timestamp without time zone NOT NULL,
+    last_modified_at         timestamp without time zone,
     version                  integer     NOT NULL DEFAULT 1,
     CONSTRAINT "PK_railways" PRIMARY KEY (railway_id)
 );
@@ -96,16 +164,16 @@ CREATE UNIQUE INDEX "Idx_railways_name"
 
 CREATE TABLE public.scales
 (
-    scale_id          varchar(25)    NOT NULL,
-    name              varchar(25)    NOT NULL,
+    scale_id          varchar(10)    NOT NULL,
+    name              varchar(10)    NOT NULL,
     ratio             numeric(19, 5) NOT NULL,
     gauge_millimeters numeric(19, 5),
     gauge_inches      numeric(19, 5),
     track_gauge       gauge          NOT NULL,
     description       varchar(2500),
     standards         varchar(100),
-    created           timestamp without time zone NOT NULL,
-    last_modified     timestamp without time zone,
+    created_at        timestamp without time zone NOT NULL,
+    last_modified_at  timestamp without time zone,
     version           integer        NOT NULL DEFAULT 1,
     CONSTRAINT "PK_scales" PRIMARY KEY (scale_id)
 );
@@ -116,20 +184,20 @@ CREATE UNIQUE INDEX "Idx_scales_name"
 
 CREATE TABLE public.catalog_items
 (
-    catalog_item_id varchar(65)       NOT NULL,
-    brand_id        varchar(50)       NOT NULL,
-    item_number     varchar(10)       NOT NULL,
-    scale_id        varchar(25)       NOT NULL,
-    category        catalog_item_type NOT NULL,
-    description     varchar(2500),
-    details         varchar(2500),
-    power_method    varchar(2)        NOT NULL,
-    delivery_date   varchar(10),
-    available       boolean,
-    count           integer,
-    created         timestamp without time zone NOT NULL,
-    last_modified   timestamp without time zone,
-    version         integer           NOT NULL DEFAULT 1,
+    catalog_item_id     varchar(65)       NOT NULL,
+    brand_id            varchar(50)       NOT NULL,
+    item_number         varchar(10)       NOT NULL,
+    scale_id            varchar(25)       NOT NULL,
+    category            catalog_item_type NOT NULL,
+    description         varchar(2500),
+    details             varchar(2500),
+    power_method        power_method      NOT NULL,
+    delivery_date       varchar(10),
+    availability_status availability_status,
+    count               integer,
+    created_at          timestamp without time zone NOT NULL,
+    last_modified_at    timestamp without time zone,
+    version             integer           NOT NULL DEFAULT 1,
     CONSTRAINT "PK_catalog_items" PRIMARY KEY (catalog_item_id),
     CONSTRAINT "FK_catalog_items_brands" FOREIGN KEY (brand_id)
         REFERENCES public.brands (brand_id) MATCH SIMPLE
@@ -147,33 +215,37 @@ CREATE UNIQUE INDEX "Idx_catalog_items_brand_id_item_number"
 
 CREATE TABLE public.rolling_stocks
 (
-    rolling_stock_id          uuid        NOT NULL,
-    catalog_item_id           varchar(65) NOT NULL,
-    railway_id                varchar(25) NOT NULL,
-    category                  varchar(25) NOT NULL,
-    epoch                     varchar(10) NOT NULL,
-    livery                    varchar(50),
-    length_over_buffer_mm     numeric(19, 5),
-    length_over_buffer_in     numeric(19, 5),
-    type_name                 varchar(25),
-    class_name                varchar(15),
-    road_number               varchar(15),
-    series                    varchar(50),
-    depot                     varchar(100),
-    dcc_interface             varchar(10),
-    control                   varchar(10),
-    passenger_car_type        varchar(25),
-    service_level             varchar(15),
-    is_dummy                  boolean,
-    minimum_radius            numeric(19, 5),
-    coupling                  varchar(10),
-    flywheel_fitted           feature_flag,
-    close_couplers            feature_flag,
-    metal_body                feature_flag,
-    interior_lights           feature_flag,
-    lights                    feature_flag,
-    spring_buffers            feature_flag,
-    digital_shunting_coupling feature_flag,
+    rolling_stock_id            uuid        NOT NULL,
+    catalog_item_id             varchar(65) NOT NULL,
+    railway_id                  varchar(25) NOT NULL,
+    category                    varchar(25) NOT NULL,
+    epoch                       varchar(10) NOT NULL,
+    livery                      varchar(50),
+    length_over_buffer_mm       numeric(19, 5),
+    length_over_buffer_in       numeric(19, 5),
+    type_name                   varchar(25),
+    class_name                  varchar(15),
+    road_number                 varchar(15),
+    series                      varchar(50),
+    depot                       varchar(100),
+    dcc_interface               dcc_interface,
+    control                     control,
+    electric_multiple_unit_type electric_multiple_unit_type,
+    freight_car_type            freight_car_type,
+    locomotive_type             locomotive_type,
+    passenger_car_type          passenger_car_type,
+    railcar_type                railcar_type,
+    service_level               varchar(15),
+    is_dummy                    boolean,
+    minimum_radius              numeric(19, 5),
+    coupling                    varchar(10),
+    flywheel_fitted             feature_flag,
+    close_couplers              feature_flag,
+    metal_body                  feature_flag,
+    interior_lights             feature_flag,
+    lights                      feature_flag,
+    spring_buffers              feature_flag,
+    digital_shunting_coupling   feature_flag,
     CONSTRAINT "PK_rolling_stocks" PRIMARY KEY (rolling_stock_id),
     CONSTRAINT "FK_rolling_stocks_catalog_items" FOREIGN KEY (catalog_item_id)
         REFERENCES public.catalog_items (catalog_item_id) MATCH SIMPLE

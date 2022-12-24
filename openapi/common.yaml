@@ -1,0 +1,99 @@
+components:
+  schemas:
+    Address:
+      description: an address of a location
+      type: object
+      properties:
+        street_address:
+          type: string
+          maxLength: 255
+        extended_address:
+          type: string
+          maxLength: 255
+        city:
+          type: string
+          maxLength: 50
+        region:
+          type: string
+          maxLength: 50
+        postal_code:
+          type: string
+          maxLength: 10
+        country_code:
+          type: string
+          description: the ISO country code
+          minLength: 2
+          maxLength: 2
+      required:
+        - street_address
+        - city
+        - postal_code
+        - country_code
+
+    ContactInfo:
+      description: contact info for a company or a shop
+      type: object
+      properties:
+        email:
+          type: string
+          maxLength: 250
+        phone:
+          type: string
+          maxLength: 20
+        website_url:
+          type: string
+          maxLength: 100
+
+    Metadata:
+      description: the resource metadata
+      type: object
+      properties:
+        version:
+          description: the resource version
+          type: number
+          format: int32
+          minimum: 1
+        created_at:
+          type: string
+          format: date-time
+        last_modified_at:
+          type: string
+          format: date-time
+      required:
+        - version
+        - created
+
+    OrganizationEntityType:
+      type: string
+      enum:
+        - CIVIL_LAW_PARTNERSHIP
+        - ENTREPRENEURIAL_COMPANY
+        - GLOBAL_PARTNERSHIP
+        - LIMITED_COMPANY
+        - LIMITED_PARTNERSHIP
+        - LIMITED_PARTNERSHIP_LIMITED_COMPANY
+        - OTHER
+        - PUBLIC_INSTITUTION
+        - PUBLIC_LIMITED_COMPANY
+        - REGISTERED_SOLE_TRADER
+        - SOLE_TRADER
+
+    Socials:
+      description: social handlers
+      type: object
+      properties:
+        facebook:
+          type: string
+          maxLength: 100
+        instagram:
+          type: string
+          maxLength: 100
+        linkedin:
+          type: string
+          maxLength: 100
+        twitter:
+          type: string
+          maxLength: 100
+        youtube:
+          type: string
+          maxLength: 100

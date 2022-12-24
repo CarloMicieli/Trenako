@@ -1,0 +1,32 @@
+name: openapi
+
+on:
+  push:
+    paths:
+      - 'openapi/**'
+      - '.github/workflows/openapi.yml'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install openapi-generator-cli
+        run: npm install @openapitools/openapi-generator-cli -g
+
+      - name: openapi-generator-cli version
+        run: openapi-generator-cli version
+
+      - name: Validate the openapi schema
+        run: openapi-generator-cli validate -i openapi/api-schema.yaml

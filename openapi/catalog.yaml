@@ -1,0 +1,820 @@
+components:
+  schemas:
+    AvailabilityStatus:
+      type: string
+      description: the availability status for a catalog item
+      enum:
+        - ANNOUNCED
+        - AVAILABLE
+        - DISCONTINUED
+
+    Brand:
+      type: object
+      description: a model railways manufacturer
+      properties:
+        brand_id:
+          type: string
+        name:
+          type: string
+        registered_company_name:
+          type: string
+        organization_entity_type:
+          $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
+        group_name:
+          type: string
+        description:
+          type: string
+        contact_info:
+          $ref: "./common.yaml#/components/schemas/ContactInfo"
+        address:
+          $ref: "./common.yaml#/components/schemas/Address"
+        socials:
+          $ref: "./common.yaml#/components/schemas/Socials"
+        kind:
+          $ref: "#/components/schemas/BrandKind"
+        status:
+          $ref: "#/components/schemas/BrandStatus"
+        metadata:
+          $ref: "./common.yaml#/components/schemas/Metadata"
+      required:
+        - brand_id
+        - name
+        - kind
+        - metadata
+
+    BrandKind:
+      type: string
+      enum:
+        - INDUSTRIAL
+        - BRASS_MODELS
+
+    BrandRequest:
+      type: object
+      description: a request to create/update model railways brands
+      properties:
+        name:
+          type: string
+          maxLength: 50
+        registered_company_name:
+          type: string
+          maxLength: 100
+        organization_entity_type:
+          $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
+        group_name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 1000
+        contact_info:
+          $ref: "./common.yaml#/components/schemas/ContactInfo"
+        address:
+          $ref: "./common.yaml#/components/schemas/Address"
+        socials:
+          $ref: "./common.yaml#/components/schemas/Socials"
+        kind:
+          $ref: "#/components/schemas/BrandKind"
+        status:
+          $ref: "#/components/schemas/BrandStatus"
+      required:
+        - name
+        - kind
+
+    BrandStatus:
+      type: string
+      description: the status of a model railway brand
+      enum:
+        - ACTIVE
+        - OUT_OF_BUSINESS
+
+    CatalogItem:
+      type: object
+      description: a model railway catalog item
+      properties:
+        catalog_item_id:
+          type: string
+        brand:
+          type: object
+          properties:
+            id:
+              type: string
+            display:
+              type: string
+        item_number:
+          type: string
+        scale:
+          type: string
+          properties:
+            id:
+              type: string
+            display:
+              type: string
+        category:
+          $ref: "#/components/schemas/CatalogItemCategory"
+        description:
+          type: string
+        details:
+          type: string
+        power_method:
+          $ref: "#/components/schemas/PowerMethod"
+        delivery_date:
+          type: string
+        availability_status:
+          $ref: "#/components/schemas/AvailabilityStatus"
+        rolling_stocks:
+          type: array
+          items:
+            $ref: "#/components/schemas/RollingStock"
+        count:
+          type: number
+          format: int32
+        metadata:
+          $ref: "./common.yaml#/components/schemas/Metadata"
+
+    CatalogItemCategory:
+      type: string
+      enum:
+        - ELECTRIC_MULTIPLE_UNITS
+        - FREIGHT_CARS
+        - LOCOMOTIVES
+        - PASSENGER_CARS
+        - RAILCARS
+        - STARTER_SETS
+        - TRAIN_SETS
+
+    CatalogItemRequest:
+      type: object
+      description: the request to create/update a catalog item
+      properties:
+        brand:
+          type: string
+          minLength: 3
+          maxLength: 50
+        item_number:
+          type: string
+          minLength: 3
+          maxLength: 10
+        scale:
+          type: string
+          maxLength: 10
+        category:
+          $ref: "#/components/schemas/CatalogItemCategory"
+        description:
+          type: string
+          maxLength: 2500
+        details:
+          type: string
+          maxLength: 2500
+        power_method:
+          $ref: "#/components/schemas/PowerMethod"
+        delivery_date:
+          type: string
+          maxLength: 10
+        availability_status:
+          $ref: "#/components/schemas/AvailabilityStatus"
+        rolling_stocks:
+          type: array
+          items:
+            $ref: "#/components/schemas/RollingStockRequest"
+        count:
+          type: number
+          format: int32
+          minimum: 1
+      required:
+        - brand
+        - item_number
+        - scale
+        - category
+        - count
+
+    Control:
+      type: string
+      enum:
+        - DCC
+        - DCC_READY
+        - DCC_SOUND
+
+    Coupling:
+      type: string
+      enum:
+        - NEM_355
+        - NEM_356
+        - NEM_357
+        - NEM_359
+        - NEM_360
+        - NEM_362
+        - NEM_365
+
+    DccInterface:
+      type: string
+      enum:
+        - MTC_21
+        - NEM_651
+        - NEM_652
+        - NEXT_18
+        - PLUX_16
+        - PLUX_22
+        - PLUX_8
+
+    ElectricMultipleUnitRequest:
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            type_name:
+              type: string
+              maxLength: 25
+            road_number:
+              type: string
+              maxLength: 15
+            series:
+              type: string
+              maxLength: 50
+            depot:
+              type: string
+              maxLength: 100
+            electric_multiple_unit_type:
+              $ref: "#/components/schemas/ElectricMultipleUnitType"
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              type: boolean
+
+    ElectricMultipleUnit:
+      allOf:
+        - $ref: "#/components/schemas/RollingStock"
+        - type: object
+          properties:
+            type_name:
+              type: string
+            road_number:
+              type: string
+            series:
+              type: string
+            depot:
+              type: string
+            electric_multiple_unit_type:
+              $ref: "#/components/schemas/ElectricMultipleUnitType"
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              type: boolean
+
+    ElectricMultipleUnitType:
+      type: string
+      enum:
+        - POWER_CAR
+        - TRAILER_CAR
+
+    FeatureFlag:
+      type: string
+      enum:
+        - YES
+        - NO
+        - N/A
+
+    FreightCar:
+      description: a freight car rolling stock
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            type_name:
+              type: string
+            road_number:
+              type: string
+            freight_car_type:
+              $ref: "#/components/schemas/FreightCarType"
+
+    FreightCarRequest:
+      description: a request to create/update freight car rolling stocks
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            type_name:
+              type: string
+              maxLength: 25
+            road_number:
+              type: string
+              maxLength: 15
+            freight_car_type:
+              $ref: "#/components/schemas/FreightCarType"
+
+    FreightCarType:
+      type: string
+      enum:
+        - AUTO_TRANSPORT_CARS
+        - BRAKE_WAGON
+        - CONTAINER_CARS
+        - COVERED_FREIGHT_CARS
+        - DEEP_WELL_FLAT_CARS
+        - DUMP_CARS
+        - GONDOLA
+        - HEAVY_GOODS_WAGONS
+        - HINGED_COVER_WAGONS
+        - HOPPER_WAGON
+        - REFRIGERATOR_CARS
+        - SILO_CONTAINER_CARS
+        - SLIDE_TARPAULIN_WAGON
+        - SLIDING_WALL_BOXCARS
+        - SPECIAL_TRANSPORT
+        - STAKE_WAGONS
+        - SWING_ROOF_WAGON
+        - TANK_CARS
+        - TELESCOPE_HOOD_WAGONS
+
+    Locomotive:
+      description: a locomotive rolling stock
+      allOf:
+        - $ref: "#/components/schemas/RollingStock"
+        - type: object
+          properties:
+            class_name:
+              type: string
+            road_number:
+              type: string
+            series:
+              type: string
+            depot:
+              type: string
+            locomotive_type:
+              $ref: "#/components/schemas/LocomotiveType"
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              type: boolean
+
+    LocomotiveRequest:
+      description: a request to create/update locomotive rolling stocks
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            class_name:
+              type: string
+              maxLength: 15
+            road_number:
+              type: string
+              maxLength: 15
+            series:
+              type: string
+              maxLength: 50
+            depot:
+              type: string
+              maxLength: 100
+            locomotive_type:
+              $ref: "#/components/schemas/LocomotiveType"
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              type: boolean
+
+    LocomotiveType:
+      type: string
+      enum:
+        - DIESEL_LOCOMOTIVE
+        - ELECTRIC_LOCOMOTIVE
+        - STEAM_LOCOMOTIVE
+
+    PassengerCar:
+      description: a passenger car rolling stock
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            type_name:
+              type: string
+            road_number:
+              type: string
+            passenger_car_type:
+              $ref: "#/components/schemas/PassengerCarType"
+            service_level:
+              type: string
+
+    PassengerCarRequest:
+      description: a request to create/update passenger car rolling stocks
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            type_name:
+              type: string
+              maxLength: 25
+            road_number:
+              type: string
+              maxLength: 15
+            passenger_car_type:
+              $ref: "#/components/schemas/PassengerCarType"
+            service_level:
+              type: string
+              maxLength: 15
+
+    PassengerCarType:
+      type: string
+      enum:
+        - BAGGAGE_CAR
+        - COMBINE_CAR
+        - COMPARTMENT_COACH
+        - DINING_CAR
+        - DOUBLE_DECKER
+        - DRIVING_TRAILER
+        - LOUNGE
+        - OBSERVATION
+        - OPEN_COACH
+        - RAILWAY_POST_OFFICE
+        - SLEEPING_CAR
+
+    PowerMethod:
+      type: string
+      enum:
+        - AC
+        - DC
+
+    Railcar:
+      description: a railcar rolling stock
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            type_name:
+              type: string
+            road_number:
+              type: string
+            series:
+              type: string
+            depot:
+              type: string
+            railcar_type:
+              type: string
+              enum:
+                - POWER_CAR
+                - TRAILER_CAR
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              type: boolean
+
+    RailcarRequest:
+      description: a request to create/update railcar rolling stocks
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            type_name:
+              type: string
+              maxLength: 25
+            road_number:
+              type: string
+              maxLength: 15
+            series:
+              type: string
+              maxLength: 50
+            depot:
+              type: string
+              maxLength: 100
+            railcar_type:
+              type: string
+              enum:
+                - POWER_CAR
+                - TRAILER_CAR
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              type: boolean
+
+    Railway:
+      type: object
+      properties:
+        railway_id:
+          type: string
+        name:
+          type: string
+        registered_company_name:
+          type: string
+        organization_entity_type:
+          $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
+        description:
+          type: string
+        country:
+          type: string
+        period_of_activity:
+          $ref: "#/components/schemas/RailwayPeriodOfActivity"
+        gauge:
+          inches:
+            type: number
+            format: float
+            minimum: 0.1
+          meters:
+            type: number
+            format: float
+            minimum: 0.1
+          track_gauge:
+            $ref: "#/components/schemas/TrackGauge"
+        headquarters:
+          type: string
+        total_length:
+          type: object
+          properties:
+            miles:
+              type: number
+              format: float
+              minimum: 0.1
+            kilometers:
+              type: number
+              format: float
+              minimum: 0.1
+        contact_info:
+          $ref: "./common.yaml#/components/schemas/ContactInfo"
+        socials:
+          $ref: "./common.yaml#/components/schemas/Socials"
+        metadata:
+          $ref: "./common.yaml#/components/schemas/Metadata"
+
+    RailwayPeriodOfActivity:
+      type: object
+      properties:
+        operating_since:
+          type: string
+          format: date
+        operating_until:
+          type: string
+          format: date
+        status:
+          $ref: "#/components/schemas/RailwayStatus"
+      required:
+        - status
+
+    RailwayRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 25
+        registered_company_name:
+          type: string
+          maxLength: 250
+        organization_entity_type:
+          $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
+        description:
+          type: string
+          maxLength: 1000
+        country:
+          type: string
+          minLength: 2
+          maxLength: 2
+        period_of_activity:
+          $ref: "#/components/schemas/RailwayPeriodOfActivity"
+        gauge:
+          inches:
+            type: number
+            format: float
+            minimum: 0.1
+          meters:
+            type: number
+            format: float
+            minimum: 0.1
+          track_gauge:
+            $ref: "#/components/schemas/TrackGauge"
+        headquarters:
+          type: string
+          maxLength: 250
+        total_length:
+          type: object
+          properties:
+            miles:
+              type: number
+              format: float
+              minimum: 0.1
+            kilometers:
+              type: number
+              format: float
+              minimum: 0.1
+        contact_info:
+          $ref: "./common.yaml#/components/schemas/ContactInfo"
+        socials:
+          $ref: "./common.yaml#/components/schemas/Socials"
+      required:
+        - name
+        - country
+
+    RailwayStatus:
+      type: string
+      enum:
+        - ACTIVE
+        - INACTIVE
+
+    RollingStock:
+      type:
+        object
+      oneOf:
+        - $ref: "#/components/schemas/ElectricMultipleUnit"
+        - $ref: "#/components/schemas/FreightCar"
+        - $ref: "#/components/schemas/Locomotive"
+        - $ref: "#/components/schemas/PassengerCar"
+        - $ref: "#/components/schemas/Railcar"
+      required:
+        - category
+      properties:
+        rolling_stock_id:
+          type: string
+          format: uuid
+        railway:
+          type: object
+          properties:
+            id:
+              type: string
+            display:
+              type: string
+        category:
+          $ref: "#/components/schemas/RollingStockCategory"
+        epoch:
+          type: string
+        livery:
+          type: string
+        length_over_buffer:
+          type: object
+          properties:
+            inches:
+              type: number
+              format: float
+            millimeters:
+              type: number
+              format: float
+        technical_specifications:
+          $ref: "#/components/schemas/TechnicalSpecifications"
+      discriminator:
+        propertyName: category
+        mapping:
+          ELECTRIC_MULTIPLE_UNITS: "#/components/schemas/ElectricMultipleUnit"
+          FREIGHT_CARS: "#/components/schemas/FreightCar"
+          LOCOMOTIVES: "#/components/schemas/Locomotive"
+          PASSENGER_CARS: "#/components/schemas/PassengerCar"
+          RAILCARS: "#/components/schemas/Railcar"
+
+    RollingStockCategory:
+      type: string
+      enum:
+        - ELECTRIC_MULTIPLE_UNITS
+        - FREIGHT_CARS
+        - LOCOMOTIVES
+        - PASSENGER_CARS
+        - RAILCARS
+
+    RollingStockRequest:
+      type:
+        object
+      oneOf:
+        - $ref: "#/components/schemas/ElectricMultipleUnitRequest"
+        - $ref: "#/components/schemas/FreightCarRequest"
+        - $ref: "#/components/schemas/LocomotiveRequest"
+        - $ref: "#/components/schemas/PassengerCarRequest"
+        - $ref: "#/components/schemas/RailcarRequest"
+      required:
+        - railway
+        - category
+        - epoch
+      properties:
+        railway:
+          type: string
+          maxLength: 25
+        category:
+          $ref: "#/components/schemas/RollingStockCategory"
+        epoch:
+          type: string
+          maxLength: 10
+        livery:
+          type: string
+          maxLength: 50
+        length_over_buffer:
+          type: object
+          properties:
+            inches:
+              type: number
+              format: float
+            millimeters:
+              type: number
+              format: float
+        technical_specifications:
+          $ref: "#/components/schemas/TechnicalSpecifications"
+      discriminator:
+        propertyName: category
+        mapping:
+          ELECTRIC_MULTIPLE_UNITS: "#/components/schemas/ElectricMultipleUnitRequest"
+          FREIGHT_CARS: "#/components/schemas/FreightCarRequest"
+          LOCOMOTIVES: "#/components/schemas/LocomotiveRequest"
+          PASSENGER_CARS: "#/components/schemas/PassengerCarRequest"
+          RAILCARS: "#/components/schemas/RailcarRequest"
+
+    Scale:
+      type: object
+      properties:
+        scale_id:
+          type: string
+        name:
+          type: string
+        ratio:
+          type: number
+          format: float
+        gauge:
+          millimeters:
+            type: number
+            format: float
+          inches:
+            type: number
+            format: float
+          track_gauge:
+            $ref: "#/components/schemas/TrackGauge"
+        description:
+          type: string
+        standards:
+          type: array
+          items:
+            type: string
+            enum:
+              - BRITISH
+              - JAPANESE
+              - NEM
+              - NMRA
+        metadata:
+          $ref: "./common.yaml#/components/schemas/Metadata"
+
+    ScaleRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 10
+        ratio:
+          type: number
+          format: float
+          minimum: 1
+          maximum: 220
+        gauge:
+          millimeters:
+            type: number
+            format: float
+            minimum: 1
+          inches:
+            type: number
+            format: float
+            minimum: 0.01
+          track_gauge:
+            $ref: "#/components/schemas/TrackGauge"
+        description:
+          type: string
+          maxLength: 2500
+        standards:
+          type: array
+          items:
+            type: string
+            enum:
+              - BRITISH
+              - JAPANESE
+              - NEM
+              - NMRA
+
+    TrackGauge:
+      type: string
+      enum:
+        - BROAD
+        - MEDIUM
+        - MINIMUM
+        - NARROW
+        - STANDARD
+
+    TechnicalSpecifications:
+      type: object
+      properties:
+        minimum_radius:
+          type: number
+          format: float
+          minimum: 0.1
+        coupling:
+          $ref: "#/components/schemas/Coupling"
+        flywheel_fitted:
+          $ref: "#/components/schemas/FeatureFlag"
+        close_couplers:
+          $ref: "#/components/schemas/FeatureFlag"
+        metal_body:
+          $ref: "#/components/schemas/FeatureFlag"
+        interior_lights:
+          $ref: "#/components/schemas/FeatureFlag"
+        lights:
+          $ref: "#/components/schemas/FeatureFlag"
+        spring_buffers:
+          $ref: "#/components/schemas/FeatureFlag"
+        digital_shunting_coupling:
+          $ref: "#/components/schemas/FeatureFlag"

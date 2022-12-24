@@ -12,6 +12,7 @@ on:
       - 'rust-toolchain.toml'
       - 'rustfmt.toml'
       - 'sqlx-data.json'
+      - 'migrations/**'
   workflow_dispatch:
 
 env:
