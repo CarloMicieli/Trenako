@@ -4,7 +4,7 @@ services:
   db:
     image: postgres:14.5-alpine
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: trenakodb
@@ -26,7 +26,7 @@ services:
       db:
         condition: service_healthy
     ports:
-      - 9000:80
+      - "9000:80"
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@mail.com
       PGADMIN_DEFAULT_PASSWORD: password
@@ -52,11 +52,27 @@ services:
       DATABASE_HOST: db
       DATABASE_PORT: 5432
     ports:
-      - 5000:5000
+      - "5000:5000"
     networks:
       - backend
     healthcheck:
       test: curl --fail http://localhost:5000/health_check || exit 1
+      start_period: 10s
+      interval: 60s
+      timeout: 10s
+      retries: 5
+
+  openapi:
+    image: ghr.io/carlomicieli/trenako-openapi:latest
+    build:
+      context: .
+      dockerfile: docker/openapi.dockerfile
+    ports:
+      - "9001:80"
+    networks:
+      - backend
+    healthcheck:
+      test: curl --fail http://localhost || exit 1
       start_period: 10s
       interval: 60s
       timeout: 10s

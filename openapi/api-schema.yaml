@@ -15,9 +15,6 @@ servers:
   - url: http://localhost:5000
     description: local
 
-security:
-  - BearerAuth: [ ]
-
 paths:
   /api/brands:
     get:
@@ -72,7 +69,7 @@ paths:
     delete:
       summary: delete a brand
       tags:
-        - Brands
+        - brands
       operationId: delete-brand
       parameters:
         - name: brand
@@ -97,7 +94,7 @@ paths:
     get:
       summary: get a brand
       tags:
-        - Brands
+        - brands
       operationId: get-brand
       parameters:
         - name: brand

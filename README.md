@@ -58,6 +58,8 @@ To run the `postgres` database:
 Starting the server (127.0.0.1:9999)...
 ```
 
+The open api documentation is available at http://localhost:9001/
+
 ### Environment variables
 
 | Variable            | Description              |
