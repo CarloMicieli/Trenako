@@ -27,6 +27,9 @@ tbd
   docker compose up
 ```
 
+- The database admin webpage is available at http://localhost:9000/
+- The open api documentation is available at http://localhost:9001/
+
 ### Database
 
 To run the `postgres` database:
@@ -57,8 +60,6 @@ To run the `postgres` database:
 
 Starting the server (127.0.0.1:9999)...
 ```
-
-The open api documentation is available at http://localhost:9001/
 
 ### Environment variables
 

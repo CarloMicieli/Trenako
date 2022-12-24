@@ -31,14 +31,16 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@mail.com
       PGADMIN_DEFAULT_PASSWORD: password
     volumes:
-      - ./.config/pgadmin/servers.json:/pgadmin4/servers.json # preconfigured servers/connections
-      - ./.config/pgadmin/pgpass:/pgpass # passwords for the connections in this file
+      - ./docker/pgadmin/servers.json:/pgadmin4/servers.json # preconfigured servers/connections
+      - ./docker/pgadmin/pgpass:/pgpass # passwords for the connections in this file
     networks:
       - backend
 
-  api:
+  server:
     image: ghr.io/carlomicieli/trenako-server:latest
-    build: .
+    build:
+      context: .
+      dockerfile: docker/server.dockerfile
     depends_on:
       db:
         condition: service_healthy
