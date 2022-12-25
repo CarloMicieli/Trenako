@@ -212,6 +212,7 @@ components:
         - DCC
         - DCC_READY
         - DCC_SOUND
+        - NO_DCC
 
     Coupling:
       type: string

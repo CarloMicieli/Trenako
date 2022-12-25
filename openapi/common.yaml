@@ -65,6 +65,7 @@ components:
 
     OrganizationEntityType:
       type: string
+      description: the many types of business entities defined in the legal systems of various countries
       enum:
         - CIVIL_LAW_PARTNERSHIP
         - ENTREPRENEURIAL_COMPANY
@@ -77,6 +78,7 @@ components:
         - PUBLIC_LIMITED_COMPANY
         - REGISTERED_SOLE_TRADER
         - SOLE_TRADER
+        - STATE_OWNED_ENTERPRISE
 
     Socials:
       description: social handlers

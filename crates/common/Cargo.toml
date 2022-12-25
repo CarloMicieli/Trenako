@@ -11,7 +11,11 @@ chrono = { workspace = true }
 isocountry = { workspace = true }
 rust_decimal = { workspace = true }
 rust_decimal_macros = { workspace = true }
+serde = { workspace = true }
+serde_derive = { workspace = true }
 slug = { workspace = true }
+strum = { workspace = true }
+strum_macros = { workspace = true }
 url = { workspace = true }
 
 [dev-dependencies]

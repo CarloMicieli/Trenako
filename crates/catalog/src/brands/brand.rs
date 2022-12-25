@@ -4,6 +4,7 @@ use crate::brands::brand_type::BrandType;
 use common::address::Address;
 use common::contact::ContactInfo;
 use common::metadata::Metadata;
+use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
 use std::fmt;
 
@@ -13,6 +14,7 @@ pub struct Brand {
     brand_id: BrandId,
     name: String,
     registered_company_name: Option<String>,
+    organization_entity_type: Option<OrganizationEntityType>,
     group_name: Option<String>,
     description: Option<String>,
     address: Option<Address>,
@@ -28,6 +30,7 @@ impl Brand {
         brand_id: BrandId,
         name: &str,
         registered_company_name: Option<&str>,
+        organization_entity_type: Option<OrganizationEntityType>,
         group_name: Option<&str>,
         description: Option<&str>,
         address: Option<Address>,
@@ -41,6 +44,7 @@ impl Brand {
             brand_id,
             name: String::from(name),
             registered_company_name: registered_company_name.map(String::from),
+            organization_entity_type,
             group_name: group_name.map(String::from),
             description: description.map(String::from),
             address,
@@ -70,6 +74,11 @@ impl Brand {
     /// Returns this brand registered company name
     pub fn registered_company_name(&self) -> Option<&String> {
         self.registered_company_name.as_ref()
+    }
+
+    /// Returns the organization entity type for this brand
+    pub fn organization_entity_type(&self) -> Option<OrganizationEntityType> {
+        self.organization_entity_type
     }
 
     /// Returns this brand group name (if any)
@@ -157,6 +166,7 @@ mod tests {
                 BrandId::new("ACME"),
                 "ACME",
                 Some("Associazione Costruzioni Modellistiche Esatte"),
+                Some(OrganizationEntityType::LimitedCompany),
                 None,
                 None,
                 Some(address.clone()),
@@ -174,6 +184,10 @@ mod tests {
             assert_eq!(
                 Some(&"Associazione Costruzioni Modellistiche Esatte".to_string()),
                 brand.registered_company_name()
+            );
+            assert_eq!(
+                Some(OrganizationEntityType::LimitedCompany),
+                brand.organization_entity_type()
             );
             assert_eq!(None, brand.group_name());
             assert_eq!(None, brand.description());
