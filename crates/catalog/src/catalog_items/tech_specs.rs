@@ -134,38 +134,39 @@ impl TechSpecsBuilder {
     }
 }
 
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, Serialize, Deserialize, EnumString, Display)]
+#[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 pub enum Coupling {
-    #[strum(serialize = "none")]
+    #[strum(serialize = "NONE")]
     None,
 
     /// Receptacle for Replaceable Coupling Heads in Scales TT and N
-    #[strum(serialize = "nem_355")]
+    #[strum(serialize = "NEM_355")]
     Nem355,
 
     /// Coupler Head for Scale N
-    #[strum(serialize = "nem_356")]
+    #[strum(serialize = "NEM_356")]
     Nem356,
 
     /// Coupler Head for Scale N
-    #[strum(serialize = "nem_357")]
+    #[strum(serialize = "NEM_357")]
     Nem357,
 
     /// Coupler Head for Scale TT
-    #[strum(serialize = "nem_359")]
+    #[strum(serialize = "NEM_359")]
     Nem359,
 
     /// Standard Coupling for Scale H0
-    #[strum(serialize = "nem_360")]
+    #[strum(serialize = "NEM_360")]
     Nem360,
 
     /// NEM shaft 362 with close coupling mechanism
-    #[strum(serialize = "nem_362")]
+    #[strum(serialize = "NEM_362")]
     Nem362,
 
     /// Coupler Head for Scale 0
-    #[strum(serialize = "nem_365")]
+    #[strum(serialize = "NEM_365")]
     Nem365,
 }
 
@@ -175,10 +176,16 @@ impl Default for Coupling {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize)]
+#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display)]
+#[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
+#[strum(ascii_case_insensitive)]
 pub enum FeatureFlag {
     Yes,
     No,
+
+    /// this option is not applicable
+    #[strum(serialize = "N_A")]
+    NA,
 }
 
 impl Default for FeatureFlag {
@@ -205,6 +212,69 @@ impl Radius {
 #[cfg(test)]
 mod test {
     use super::*;
+
+    mod couplings {
+        use super::*;
+        use pretty_assertions::assert_eq;
+        use rstest::rstest;
+        use strum::ParseError;
+
+        #[rstest]
+        #[case("NONE", Ok(Coupling::None))]
+        #[case("NEM_355", Ok(Coupling::Nem355))]
+        #[case("NEM_356", Ok(Coupling::Nem356))]
+        #[case("NEM_357", Ok(Coupling::Nem357))]
+        #[case("NEM_359", Ok(Coupling::Nem359))]
+        #[case("NEM_360", Ok(Coupling::Nem360))]
+        #[case("NEM_362", Ok(Coupling::Nem362))]
+        #[case("NEM_365", Ok(Coupling::Nem365))]
+        #[case("invalid", Err(ParseError::VariantNotFound))]
+        fn it_should_parse_strings_as_couplings(#[case] input: &str, #[case] expected: Result<Coupling, ParseError>) {
+            let coupling = input.parse::<Coupling>();
+            assert_eq!(expected, coupling);
+        }
+
+        #[rstest]
+        #[case(Coupling::None, "NONE")]
+        #[case(Coupling::Nem355, "NEM_355")]
+        #[case(Coupling::Nem356, "NEM_356")]
+        #[case(Coupling::Nem357, "NEM_357")]
+        #[case(Coupling::Nem359, "NEM_359")]
+        #[case(Coupling::Nem360, "NEM_360")]
+        #[case(Coupling::Nem362, "NEM_362")]
+        #[case(Coupling::Nem365, "NEM_365")]
+        fn it_should_display_couplings(#[case] input: Coupling, #[case] expected: &str) {
+            assert_eq!(expected, input.to_string());
+        }
+    }
+
+    mod feature_flags {
+        use super::*;
+        use pretty_assertions::assert_eq;
+        use rstest::rstest;
+        use strum::ParseError;
+
+        #[rstest]
+        #[case("YES", Ok(FeatureFlag::Yes))]
+        #[case("NO", Ok(FeatureFlag::No))]
+        #[case("N_A", Ok(FeatureFlag::NA))]
+        #[case("invalid", Err(ParseError::VariantNotFound))]
+        fn it_should_parse_strings_as_feature_flags(
+            #[case] input: &str,
+            #[case] expected: Result<FeatureFlag, ParseError>,
+        ) {
+            let flag = input.parse::<FeatureFlag>();
+            assert_eq!(expected, flag);
+        }
+
+        #[rstest]
+        #[case(FeatureFlag::Yes, "YES")]
+        #[case(FeatureFlag::No, "NO")]
+        #[case(FeatureFlag::NA, "N_A")]
+        fn it_should_display_feature_flags(#[case] input: FeatureFlag, #[case] expected: &str) {
+            assert_eq!(expected, input.to_string());
+        }
+    }
 
     mod tech_specs {
         use super::*;

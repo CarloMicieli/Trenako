@@ -303,6 +303,8 @@ components:
       type: string
       description: the electric multiple unit type
       enum:
+        - DRIVING_CAR
+        - MOTOR_CAR
         - POWER_CAR
         - TRAILER_CAR
 

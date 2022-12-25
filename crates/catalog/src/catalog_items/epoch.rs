@@ -127,7 +127,7 @@ mod tests {
 
         #[test]
         #[allow(non_snake_case)]
-        fn it_should_diplay_epoch_values() {
+        fn it_should_display_epoch_values() {
             let epoch_I_II = Epoch::Multiple(Box::new(Epoch::I), Box::new(Epoch::II));
             let epoch_IVa = Epoch::IVa;
 

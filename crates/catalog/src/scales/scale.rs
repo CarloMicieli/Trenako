@@ -100,7 +100,7 @@ mod tests {
     mod scales {
         use super::data::scale_h0;
         use super::*;
-        use crate::scales::scale_gauge::TrackGauge;
+        use crate::common::TrackGauge;
         use chrono::{DateTime, Utc};
         use pretty_assertions::assert_eq;
         use rust_decimal::Decimal;
@@ -140,7 +140,7 @@ mod tests {
 
     mod data {
         use super::*;
-        use crate::scales::scale_gauge::TrackGauge;
+        use crate::common::TrackGauge;
         use chrono::Utc;
         use rust_decimal::Decimal;
         use rust_decimal_macros::dec;

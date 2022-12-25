@@ -2,7 +2,6 @@ use crate::railways::period_of_activity::PeriodOfActivity;
 use crate::railways::railway_gauge::RailwayGauge;
 use crate::railways::railway_id::RailwayId;
 use crate::railways::railway_length::RailwayLength;
-use crate::railways::railway_ownership::Ownership;
 use common::contact::ContactInfo;
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
@@ -29,7 +28,6 @@ pub struct Railway {
     length: Option<RailwayLength>,
     gauge: Option<RailwayGauge>,
     country: CountryCode,
-    ownership: Option<Ownership>,
     headquarters: Option<String>,
     contact_info: Option<ContactInfo>,
     socials: Option<Socials>,
@@ -48,7 +46,6 @@ impl Railway {
         length: Option<RailwayLength>,
         gauge: Option<RailwayGauge>,
         country: CountryCode,
-        ownership: Option<Ownership>,
         headquarters: Option<&str>,
         contact_info: Option<ContactInfo>,
         socials: Option<Socials>,
@@ -64,7 +61,6 @@ impl Railway {
             length,
             gauge,
             country,
-            ownership,
             headquarters: headquarters.map(str::to_string),
             contact_info,
             socials,
@@ -120,10 +116,6 @@ impl Railway {
         self.headquarters.as_deref()
     }
 
-    pub fn ownership(&self) -> Option<Ownership> {
-        self.ownership
-    }
-
     pub fn contact_info(&self) -> Option<&ContactInfo> {
         self.contact_info.as_ref()
     }
@@ -173,13 +165,12 @@ mod test {
                 RailwayId::new("FS"),
                 "FS",
                 "Ferrovie dello stato italiane",
-                Some(OrganizationEntityType::LimitedCompany),
+                Some(OrganizationEntityType::StateOwnedEnterprise),
                 None,
                 None,
                 Some(length),
                 Some(gauge.clone()),
                 CountryCode::ITA,
-                Some(Ownership::Public),
                 Some("Rome"),
                 Some(contact_info.clone()),
                 Some(socials.clone()),
@@ -190,13 +181,12 @@ mod test {
             assert_eq!("FS", railway.name());
             assert_eq!("Ferrovie dello stato italiane", railway.registered_company_name());
             assert_eq!(
-                Some(OrganizationEntityType::LimitedCompany),
+                Some(OrganizationEntityType::StateOwnedEnterprise),
                 railway.organization_entity_type()
             );
             assert_eq!(Some("Rome"), railway.headquarters());
             assert_eq!(Some(&length), railway.length());
             assert_eq!(Some(&gauge), railway.gauge());
-            assert_eq!(Some(Ownership::Public), railway.ownership());
             assert_eq!(Some(&contact_info), railway.contact_info());
             assert_eq!(Some(&socials), railway.socials());
             assert_eq!(&metadata, railway.metadata());
@@ -209,13 +199,12 @@ mod test {
                 RailwayId::new("FS"),
                 "FS",
                 "Ferrovie dello stato italiane",
-                Some(OrganizationEntityType::LimitedCompany),
+                Some(OrganizationEntityType::StateOwnedEnterprise),
                 None,
                 None,
                 None,
                 None,
                 CountryCode::ITA,
-                Some(Ownership::Public),
                 Some("Rome"),
                 None,
                 None,

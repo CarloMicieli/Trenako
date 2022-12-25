@@ -1,4 +1,6 @@
 use chrono::NaiveDate;
+use strum_macros;
+use strum_macros::{Display, EnumString};
 
 /// It represents the period of activity for a railway company
 #[derive(Debug, Eq, PartialEq, Clone)]
@@ -62,7 +64,9 @@ impl Date {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Copy, Clone)]
+#[derive(Debug, Eq, PartialEq, Copy, Clone, EnumString, Display)]
+#[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
+#[strum(ascii_case_insensitive)]
 pub enum RailwayStatus {
     Active,
     Inactive,
@@ -91,6 +95,32 @@ mod test {
             assert_eq!(RailwayStatus::Inactive, active.status());
             assert_eq!(&Date::with_year(1900), active.operating_since());
             assert_eq!(Some(&Date::ExactDay(end_date)), active.operating_until());
+        }
+    }
+
+    mod railway_status {
+        use super::*;
+        use pretty_assertions::assert_eq;
+        use rstest::rstest;
+        use strum::ParseError;
+
+        #[rstest]
+        #[case("ACTIVE", Ok(RailwayStatus::Active))]
+        #[case("INACTIVE", Ok(RailwayStatus::Inactive))]
+        #[case("invalid", Err(ParseError::VariantNotFound))]
+        fn it_should_parse_string_as_railway_status(
+            #[case] input: &str,
+            #[case] expected: Result<RailwayStatus, ParseError>,
+        ) {
+            let status = input.parse::<RailwayStatus>();
+            assert_eq!(expected, status);
+        }
+
+        #[rstest]
+        #[case(RailwayStatus::Active, "ACTIVE")]
+        #[case(RailwayStatus::Inactive, "INACTIVE")]
+        fn it_should_display_railway_status(#[case] input: RailwayStatus, #[case] expected: &str) {
+            assert_eq!(expected, input.to_string());
         }
     }
 }
