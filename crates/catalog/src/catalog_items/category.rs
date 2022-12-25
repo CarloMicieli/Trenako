@@ -2,7 +2,7 @@ use strum_macros;
 use strum_macros::{Display, EnumString};
 
 /// The enumeration of the model categories.
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize)]
 #[strum(serialize_all = "snake_case")]
 #[strum(ascii_case_insensitive)]
 pub enum Category {
@@ -29,7 +29,7 @@ pub enum Category {
 }
 
 /// The different kind of freight cars
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize)]
 #[strum(serialize_all = "snake_case")]
 #[strum(ascii_case_insensitive)]
 pub enum FreightCarType {
@@ -55,7 +55,7 @@ pub enum FreightCarType {
 }
 
 /// The different kinds of locomotives
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize)]
 #[strum(serialize_all = "snake_case")]
 #[strum(ascii_case_insensitive)]
 pub enum LocomotiveType {
@@ -69,7 +69,7 @@ pub enum LocomotiveType {
     ElectricLocomotive,
 }
 
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize)]
 #[strum(serialize_all = "snake_case")]
 #[strum(ascii_case_insensitive)]
 pub enum PassengerCarType {
@@ -111,7 +111,7 @@ pub enum PassengerCarType {
     RailwayPostOffice,
 }
 
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize)]
 #[strum(serialize_all = "snake_case")]
 #[strum(ascii_case_insensitive)]
 pub enum ElectricMultipleUnitType {
@@ -119,7 +119,7 @@ pub enum ElectricMultipleUnitType {
     TrailerCar,
 }
 
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize)]
 #[strum(serialize_all = "snake_case")]
 #[strum(ascii_case_insensitive)]
 pub enum RailcarType {

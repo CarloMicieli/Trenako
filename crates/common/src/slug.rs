@@ -4,7 +4,7 @@ use std::ops;
 use std::str;
 
 /// A SEO friendly string
-#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Clone)]
+#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Slug(String);
 
 impl Slug {

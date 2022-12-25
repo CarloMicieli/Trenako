@@ -3,7 +3,7 @@ use std::fmt;
 use std::str::FromStr;
 
 /// It represents a unique railway id
-#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone)]
+#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone, Serialize, Deserialize)]
 pub struct RailwayId(Slug);
 
 impl RailwayId {

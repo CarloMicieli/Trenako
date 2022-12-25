@@ -6,3 +6,6 @@ pub mod metadata;
 pub mod organizations;
 pub mod slug;
 pub mod socials;
+
+#[macro_use]
+extern crate serde_derive;

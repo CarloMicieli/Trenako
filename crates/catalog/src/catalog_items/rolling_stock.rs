@@ -3,43 +3,28 @@ use crate::catalog_items::category::{
 };
 use crate::catalog_items::control::{Control, DccInterface};
 use crate::catalog_items::epoch::Epoch;
+use crate::catalog_items::length_over_buffer::LengthOverBuffer;
 use crate::catalog_items::rolling_stock_id::RollingStockId;
 use crate::catalog_items::service_level::ServiceLevel;
 use crate::catalog_items::tech_specs::TechSpecs;
 use crate::railways::railway_id::RailwayId;
-use common::length::Length;
 use std::fmt;
 use std::fmt::{Display, Formatter};
 
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
+#[serde(tag = "category")]
 pub enum RollingStock {
     ElectricMultipleUnit {
         id: RollingStockId,
         type_name: String,
         road_number: Option<String>,
-        railway: Railway,
+        railway: RollingStockRailway,
         epoch: Epoch,
-        category: ElectricMultipleUnitType,
+        electric_multiple_unit_type: ElectricMultipleUnitType,
         depot: Option<String>,
         livery: Option<String>,
         is_dummy: bool,
-        length_over_buffer: Option<Length>,
-        control: Option<Control>,
-        dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechSpecs>,
-    },
-    Locomotive {
-        id: RollingStockId,
-        class_name: String,
-        road_number: String,
-        series: Option<String>,
-        railway: Railway,
-        epoch: Epoch,
-        category: LocomotiveType,
-        depot: Option<String>,
-        livery: Option<String>,
-        is_dummy: bool,
-        length_over_buffer: Option<Length>,
+        length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
         tech_specs: Option<TechSpecs>,
@@ -48,36 +33,52 @@ pub enum RollingStock {
         id: RollingStockId,
         type_name: String,
         road_number: Option<String>,
-        railway: Railway,
+        railway: RollingStockRailway,
         epoch: Epoch,
-        category: Option<FreightCarType>,
+        freight_car_type: Option<FreightCarType>,
         livery: Option<String>,
-        length_over_buffer: Option<Length>,
+        length_over_buffer: Option<LengthOverBuffer>,
+        tech_specs: Option<TechSpecs>,
+    },
+    Locomotive {
+        id: RollingStockId,
+        class_name: String,
+        road_number: String,
+        series: Option<String>,
+        railway: RollingStockRailway,
+        epoch: Epoch,
+        locomotive_type: LocomotiveType,
+        depot: Option<String>,
+        livery: Option<String>,
+        is_dummy: bool,
+        length_over_buffer: Option<LengthOverBuffer>,
+        control: Option<Control>,
+        dcc_interface: Option<DccInterface>,
         tech_specs: Option<TechSpecs>,
     },
     PassengerCar {
         id: RollingStockId,
         type_name: String,
         road_number: Option<String>,
-        railway: Railway,
+        railway: RollingStockRailway,
         epoch: Epoch,
-        category: Option<PassengerCarType>,
+        passenger_car_type: Option<PassengerCarType>,
         service_level: Option<ServiceLevel>,
         livery: Option<String>,
-        length_over_buffer: Option<Length>,
+        length_over_buffer: Option<LengthOverBuffer>,
         tech_specs: Option<TechSpecs>,
     },
     Railcar {
         id: RollingStockId,
         type_name: String,
         road_number: Option<String>,
-        railway: Railway,
+        railway: RollingStockRailway,
         epoch: Epoch,
-        category: Option<RailcarType>,
+        railcar_type: RailcarType,
         depot: Option<String>,
         livery: Option<String>,
         is_dummy: bool,
-        length_over_buffer: Option<Length>,
+        length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
         tech_specs: Option<TechSpecs>,
@@ -90,13 +91,13 @@ impl RollingStock {
         id: RollingStockId,
         type_name: &str,
         road_number: Option<&str>,
-        railway: Railway,
+        railway: RollingStockRailway,
         epoch: Epoch,
-        category: ElectricMultipleUnitType,
+        electric_multiple_unit_type: ElectricMultipleUnitType,
         depot: Option<&str>,
         livery: Option<&str>,
         is_dummy: bool,
-        length_over_buffer: Option<Length>,
+        length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
         tech_specs: Option<TechSpecs>,
@@ -107,7 +108,7 @@ impl RollingStock {
             road_number: road_number.map(str::to_string),
             railway,
             epoch,
-            category,
+            electric_multiple_unit_type,
             depot: depot.map(str::to_string),
             livery: livery.map(str::to_string),
             is_dummy,
@@ -118,18 +119,19 @@ impl RollingStock {
         }
     }
 
+    /// Creates a new locomotive rolling stock
     pub fn new_locomotive(
         id: RollingStockId,
         class_name: &str,
         road_number: &str,
         series: Option<&str>,
-        railway: Railway,
+        railway: RollingStockRailway,
         epoch: Epoch,
-        category: LocomotiveType,
+        locomotive_type: LocomotiveType,
         depot: Option<&str>,
         livery: Option<&str>,
         is_dummy: bool,
-        length_over_buffer: Option<Length>,
+        length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
         tech_specs: Option<TechSpecs>,
@@ -141,7 +143,7 @@ impl RollingStock {
             series: series.map(str::to_string),
             railway,
             epoch,
-            category,
+            locomotive_type,
             depot: depot.map(str::to_string),
             livery: livery.map(str::to_string),
             is_dummy,
@@ -152,15 +154,16 @@ impl RollingStock {
         }
     }
 
+    /// Creates a new freight car rolling stock
     pub fn new_freight_car(
         id: RollingStockId,
         type_name: &str,
         road_number: Option<&str>,
-        railway: Railway,
+        railway: RollingStockRailway,
         epoch: Epoch,
-        category: Option<FreightCarType>,
+        freight_car_type: Option<FreightCarType>,
         livery: Option<&str>,
-        length_over_buffer: Option<Length>,
+        length_over_buffer: Option<LengthOverBuffer>,
         tech_specs: Option<TechSpecs>,
     ) -> Self {
         RollingStock::FreightCar {
@@ -169,23 +172,24 @@ impl RollingStock {
             road_number: road_number.map(str::to_string),
             railway,
             epoch,
-            category,
+            freight_car_type,
             livery: livery.map(str::to_string),
             length_over_buffer,
             tech_specs,
         }
     }
 
+    /// Creates a new passenger car rolling stock
     pub fn new_passenger_car(
         id: RollingStockId,
         type_name: &str,
         road_number: Option<&str>,
-        railway: Railway,
+        railway: RollingStockRailway,
         epoch: Epoch,
-        category: Option<PassengerCarType>,
+        passenger_car_type: Option<PassengerCarType>,
         service_level: Option<ServiceLevel>,
         livery: Option<&str>,
-        length_over_buffer: Option<Length>,
+        length_over_buffer: Option<LengthOverBuffer>,
         tech_specs: Option<TechSpecs>,
     ) -> Self {
         RollingStock::PassengerCar {
@@ -194,7 +198,7 @@ impl RollingStock {
             road_number: road_number.map(str::to_string),
             railway,
             epoch,
-            category,
+            passenger_car_type,
             service_level,
             livery: livery.map(str::to_string),
             length_over_buffer,
@@ -202,17 +206,18 @@ impl RollingStock {
         }
     }
 
+    /// Creates a new railcar rolling stock
     pub fn new_railcar(
         id: RollingStockId,
         type_name: &str,
         road_number: Option<&str>,
-        railway: Railway,
+        railway: RollingStockRailway,
         epoch: Epoch,
-        category: Option<RailcarType>,
+        railcar_type: RailcarType,
         depot: Option<&str>,
         livery: Option<&str>,
         is_dummy: bool,
-        length_over_buffer: Option<Length>,
+        length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
         tech_specs: Option<TechSpecs>,
@@ -223,7 +228,7 @@ impl RollingStock {
             road_number: road_number.map(str::to_string),
             railway,
             epoch,
-            category,
+            railcar_type,
             depot: depot.map(str::to_string),
             livery: livery.map(str::to_string),
             is_dummy,
@@ -279,7 +284,7 @@ impl RollingStock {
     }
 
     /// Return the overall length for this rolling stock
-    pub fn length_over_buffer(&self) -> Option<&Length> {
+    pub fn length_over_buffer(&self) -> Option<&LengthOverBuffer> {
         match self {
             RollingStock::ElectricMultipleUnit { length_over_buffer, .. } => length_over_buffer.as_ref(),
             RollingStock::Locomotive { length_over_buffer, .. } => length_over_buffer.as_ref(),
@@ -289,7 +294,7 @@ impl RollingStock {
         }
     }
 
-    pub fn railway(&self) -> &Railway {
+    pub fn railway(&self) -> &RollingStockRailway {
         match self {
             RollingStock::ElectricMultipleUnit { railway, .. } => railway,
             RollingStock::Locomotive { railway, .. } => railway,
@@ -368,18 +373,18 @@ impl RollingStock {
     }
 }
 
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
-pub struct Railway {
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
+pub struct RollingStockRailway {
     railway_id: RailwayId,
-    name: String,
+    display: String,
 }
 
-impl Railway {
-    /// Creates a new railway with the given name.
-    pub fn new(railway_id: RailwayId, name: &str) -> Self {
-        Railway {
+impl RollingStockRailway {
+    /// Creates a new railway with the display text.
+    pub fn new(railway_id: RailwayId, display: &str) -> Self {
+        RollingStockRailway {
             railway_id,
-            name: name.to_owned(),
+            display: display.to_owned(),
         }
     }
 
@@ -388,15 +393,15 @@ impl Railway {
         &self.railway_id
     }
 
-    /// Returns this railway name
-    pub fn name(&self) -> &str {
-        &self.name
+    /// Returns this railway display text
+    pub fn display_text(&self) -> &str {
+        &self.display
     }
 }
 
-impl Display for Railway {
+impl Display for RollingStockRailway {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", &self.name)
+        write!(f, "{}", &self.display)
     }
 }
 
@@ -408,14 +413,15 @@ mod test {
         use super::*;
         use crate::catalog_items::rolling_stock_id::RollingStockId;
         use crate::catalog_items::tech_specs::{Coupling, Radius};
-        use common::measure_units::MeasureUnit;
+        use common::length::Length;
         use pretty_assertions::assert_eq;
+        use rust_decimal_macros::dec;
 
         #[test]
         fn it_should_create_new_locomotives() {
             let id = RollingStockId::new();
-            let length = Length::new(210_f32, MeasureUnit::Millimeters).unwrap();
-            let fs = Railway::new(RailwayId::new("fs"), "FS");
+            let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(210)));
+            let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
 
             let tech_specs = TechSpecs::builder()
                 .with_coupling(Coupling::Nem362)
@@ -449,6 +455,157 @@ mod test {
             assert_eq!(Some(DccInterface::Nem652), locomotive.dcc_interface());
             assert_eq!(Some(Control::DccReady), locomotive.control());
             assert_eq!(Some(&tech_specs), locomotive.tech_specs());
+        }
+
+        #[test]
+        fn it_should_create_new_electric_multiple_units() {
+            let id = RollingStockId::new();
+            let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
+            let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
+
+            let tech_specs = TechSpecs::builder()
+                .with_coupling(Coupling::Nem362)
+                .with_minimum_radius(Radius::new(360_f32).unwrap())
+                .build();
+
+            let power_car = RollingStock::new_electric_multiple_unit(
+                id,
+                "ALe 801",
+                Some("ALe 801 003"),
+                fs.clone(),
+                Epoch::IV,
+                ElectricMultipleUnitType::PowerCar,
+                Some("Milano Centrale"),
+                Some("livrea originale giallo/arancio"),
+                false,
+                Some(length),
+                Some(Control::DccReady),
+                Some(DccInterface::Nem652),
+                Some(tech_specs.clone()),
+            );
+
+            assert_eq!(id, power_car.id());
+            assert_eq!(Category::ElectricMultipleUnits, power_car.category());
+            assert_eq!(&Epoch::IV, power_car.epoch());
+            assert_eq!(Some("livrea originale giallo/arancio"), power_car.livery());
+            assert_eq!(Some(&length), power_car.length_over_buffer());
+            assert_eq!(&fs, power_car.railway());
+            assert_eq!(Some("ALe 801 003"), power_car.road_number());
+            assert_eq!(Some(DccInterface::Nem652), power_car.dcc_interface());
+            assert_eq!(Some(Control::DccReady), power_car.control());
+            assert_eq!(Some(&tech_specs), power_car.tech_specs());
+        }
+
+        #[test]
+        fn it_should_create_new_passenger_cars() {
+            let id = RollingStockId::new();
+            let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
+            let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
+
+            let tech_specs = TechSpecs::builder()
+                .with_coupling(Coupling::Nem362)
+                .with_minimum_radius(Radius::new(360_f32).unwrap())
+                .build();
+
+            let passenger_car = RollingStock::new_passenger_car(
+                id,
+                "UIC-Z1",
+                Some("61 83 19-90 105-3 A"),
+                fs.clone(),
+                Epoch::V,
+                Some(PassengerCarType::CompartmentCoach),
+                Some(ServiceLevel::FirstClass),
+                Some("XMPR"),
+                Some(length),
+                Some(tech_specs.clone()),
+            );
+
+            assert_eq!(id, passenger_car.id());
+            assert_eq!(Category::PassengerCars, passenger_car.category());
+            assert_eq!(&Epoch::V, passenger_car.epoch());
+            assert_eq!(Some("XMPR"), passenger_car.livery());
+            assert_eq!(Some(&length), passenger_car.length_over_buffer());
+            assert_eq!(&fs, passenger_car.railway());
+            assert_eq!(Some("61 83 19-90 105-3 A"), passenger_car.road_number());
+            assert_eq!(None, passenger_car.dcc_interface());
+            assert_eq!(None, passenger_car.control());
+            assert_eq!(Some(&tech_specs), passenger_car.tech_specs());
+        }
+
+        #[test]
+        fn it_should_create_new_railcars() {
+            let id = RollingStockId::new();
+            let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
+            let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
+
+            let tech_specs = TechSpecs::builder()
+                .with_coupling(Coupling::Nem362)
+                .with_minimum_radius(Radius::new(360_f32).unwrap())
+                .build();
+
+            let power_car = RollingStock::new_railcar(
+                id,
+                "ALn 668",
+                Some("ALn 668 1449"),
+                fs.clone(),
+                Epoch::IIIb,
+                RailcarType::PowerCar,
+                Some("Milano Centrale"),
+                Some("verde lichene/giallo coloniale"),
+                false,
+                Some(length),
+                Some(Control::DccReady),
+                Some(DccInterface::Nem652),
+                Some(tech_specs.clone()),
+            );
+
+            assert_eq!(id, power_car.id());
+            assert_eq!(Category::Railcars, power_car.category());
+            assert_eq!(&Epoch::IIIb, power_car.epoch());
+            assert_eq!(Some("verde lichene/giallo coloniale"), power_car.livery());
+            assert_eq!(Some(&length), power_car.length_over_buffer());
+            assert_eq!(&fs, power_car.railway());
+            assert_eq!(Some("ALn 668 1449"), power_car.road_number());
+            assert_eq!(Some(DccInterface::Nem652), power_car.dcc_interface());
+            assert_eq!(Some(Control::DccReady), power_car.control());
+            assert_eq!(Some(&tech_specs), power_car.tech_specs());
+        }
+
+        #[test]
+        fn it_should_create_new_freight_cars() {
+            let id = RollingStockId::new();
+            let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
+            let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
+
+            let tech_specs = TechSpecs::builder()
+                .with_coupling(Coupling::Nem362)
+                .with_minimum_radius(Radius::new(360_f32).unwrap())
+                .build();
+
+            let epoch = Epoch::Multiple(Box::new(Epoch::IV), Box::new(Epoch::V));
+
+            let freight_car = RollingStock::new_freight_car(
+                id,
+                "Fals",
+                Some("31 83 665 0 150-6"),
+                fs.clone(),
+                epoch.clone(),
+                Some(FreightCarType::Gondola),
+                Some("castano"),
+                Some(length),
+                Some(tech_specs.clone()),
+            );
+
+            assert_eq!(id, freight_car.id());
+            assert_eq!(Category::FreightCars, freight_car.category());
+            assert_eq!(&epoch, freight_car.epoch());
+            assert_eq!(Some("castano"), freight_car.livery());
+            assert_eq!(Some(&length), freight_car.length_over_buffer());
+            assert_eq!(&fs, freight_car.railway());
+            assert_eq!(Some("31 83 665 0 150-6"), freight_car.road_number());
+            assert_eq!(None, freight_car.dcc_interface());
+            assert_eq!(None, freight_car.control());
+            assert_eq!(Some(&tech_specs), freight_car.tech_specs());
         }
     }
 }

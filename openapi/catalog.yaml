@@ -267,6 +267,10 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+      required:
+        - type_name
+        - electric_multiple_unit_type
+        - is_dummy
 
     ElectricMultipleUnit:
       description: an electric multiple unit rolling stock
@@ -290,6 +294,10 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+      required:
+        - type_name
+        - electric_multiple_unit_type
+        - is_dummy
 
     ElectricMultipleUnitType:
       type: string
@@ -318,6 +326,8 @@ components:
               type: string
             freight_car_type:
               $ref: "#/components/schemas/FreightCarType"
+      required:
+        - type_name
 
     FreightCarRequest:
       description: a request to create/update freight car rolling stocks
@@ -333,6 +343,8 @@ components:
               maxLength: 15
             freight_car_type:
               $ref: "#/components/schemas/FreightCarType"
+      required:
+        - type_name
 
     FreightCarType:
       type: string
@@ -358,6 +370,17 @@ components:
         - TANK_CARS
         - TELESCOPE_HOOD_WAGONS
 
+    LengthOverBuffer:
+      type: object
+      description: the length over buffer of a rolling stock
+      properties:
+        inches:
+          type: number
+          format: float
+        millimeters:
+          type: number
+          format: float
+
     Locomotive:
       description: a locomotive rolling stock
       allOf:
@@ -380,6 +403,11 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+      required:
+        - locomotive_type
+        - class_name
+        - road_number
+        - is_dummy
 
     LocomotiveRequest:
       description: a request to create/update locomotive rolling stocks
@@ -407,6 +435,11 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+      required:
+        - locomotive_type
+        - class_name
+        - road_number
+        - is_dummy
 
     LocomotiveType:
       type: string
@@ -430,6 +463,8 @@ components:
               $ref: "#/components/schemas/PassengerCarType"
             service_level:
               type: string
+      required:
+        - type_name
 
     PassengerCarRequest:
       description: a request to create/update passenger car rolling stocks
@@ -448,6 +483,8 @@ components:
             service_level:
               type: string
               maxLength: 15
+      required:
+        - type_name
 
     PassengerCarType:
       type: string
@@ -495,6 +532,10 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+      required:
+        - type_name
+        - railcar_type
+        - is_dummy
 
     RailcarRequest:
       description: a request to create/update railcar rolling stocks
@@ -522,6 +563,10 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+      required:
+        - type_name
+        - railcar_type
+        - is_dummy
 
     RailcarType:
       type: string
@@ -678,14 +723,7 @@ components:
         livery:
           type: string
         length_over_buffer:
-          type: object
-          properties:
-            inches:
-              type: number
-              format: float
-            millimeters:
-              type: number
-              format: float
+          $ref: "#/components/schemas/LengthOverBuffer"
         technical_specifications:
           $ref: "#/components/schemas/TechnicalSpecifications"
       required:
@@ -718,14 +756,7 @@ components:
           type: string
           maxLength: 50
         length_over_buffer:
-          type: object
-          properties:
-            inches:
-              type: number
-              format: float
-            millimeters:
-              type: number
-              format: float
+          $ref: "#/components/schemas/LengthOverBuffer"
         technical_specifications:
           $ref: "#/components/schemas/TechnicalSpecifications"
       required:

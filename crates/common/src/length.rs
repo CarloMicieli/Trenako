@@ -9,7 +9,7 @@ use std::ops;
 /// It represents a length.
 ///
 /// Lengths are defined by a non negative quantity and a measure unit.
-#[derive(Debug, Copy, Clone)]
+#[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub enum Length {
     Millimeters(Decimal),
     Inches(Decimal),

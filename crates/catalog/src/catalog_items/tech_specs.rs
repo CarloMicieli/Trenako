@@ -3,7 +3,7 @@ use rust_decimal::Decimal;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 
-#[derive(Debug, Eq, PartialEq, Clone, Default)]
+#[derive(Debug, Eq, PartialEq, Clone, Default, Serialize, Deserialize)]
 pub struct TechSpecs {
     minimum_radius: Option<Radius>,
     coupling: Option<Coupling>,
@@ -58,7 +58,7 @@ impl TechSpecs {
     }
 }
 
-#[derive(Default)]
+#[derive(Default, Serialize, Deserialize)]
 pub struct TechSpecsBuilder {
     minimum_radius: Option<Radius>,
     coupling: Option<Coupling>,
@@ -134,7 +134,7 @@ impl TechSpecsBuilder {
     }
 }
 
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize)]
 #[strum(ascii_case_insensitive)]
 pub enum Coupling {
     #[strum(serialize = "none")]
@@ -175,7 +175,7 @@ impl Default for Coupling {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Copy, Clone)]
+#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize)]
 pub enum FeatureFlag {
     Yes,
     No,
@@ -188,7 +188,7 @@ impl Default for FeatureFlag {
 }
 
 /// Minimum drivable radius
-#[derive(Debug, Eq, PartialEq, Copy, Clone)]
+#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize)]
 pub struct Radius(Decimal);
 
 impl Radius {

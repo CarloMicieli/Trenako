@@ -6,7 +6,7 @@ use std::str;
 /// It represents the service level for a passenger cars, like first or second class.
 /// Values of service level can also include multiple service levels, like mixed first
 /// and second class.
-#[derive(Debug, PartialEq, Eq, Clone, Copy)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy, Serialize, Deserialize)]
 pub enum ServiceLevel {
     FirstClass,
     SecondClass,

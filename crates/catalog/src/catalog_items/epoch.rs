@@ -7,7 +7,7 @@ use thiserror::Error;
 /// The model railway industry adopted an 'Era', or 'Epoch' system; the idea being to group models
 /// into a defined time bracket, so that locomotives, coaching and wagon stock could be reasonably
 /// grouped together.
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
 #[allow(non_snake_case)]
 pub enum Epoch {
     I,

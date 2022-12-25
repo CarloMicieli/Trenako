@@ -4,7 +4,7 @@ use std::str;
 use uuid::Uuid;
 
 /// A unique identifier for a rolling stock
-#[derive(Debug, PartialEq, Eq, Copy, Clone, Hash)]
+#[derive(Debug, PartialEq, Eq, Copy, Clone, Hash, Serialize, Deserialize)]
 pub struct RollingStockId(Uuid);
 
 impl RollingStockId {

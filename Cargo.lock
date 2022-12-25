@@ -437,6 +437,8 @@ dependencies = [
  "pretty_assertions",
  "rust_decimal",
  "rust_decimal_macros",
+ "serde",
+ "serde_derive",
  "strum",
  "strum_macros",
  "thiserror",
