@@ -106,6 +106,15 @@ mod tests {
         fn it_should_display_controls(#[case] input: Control, #[case] expected: &str) {
             assert_eq!(expected, input.to_string());
         }
+
+        #[rstest]
+        #[case(Control::Dcc, true)]
+        #[case(Control::DccReady, false)]
+        #[case(Control::DccSound, true)]
+        #[case(Control::NoDcc, false)]
+        fn it_should_check_for_the_dcc_decoder_presence(#[case] input: Control, #[case] expected: bool) {
+            assert_eq!(expected, input.with_decoder());
+        }
     }
 
     mod dcc_interfaces {

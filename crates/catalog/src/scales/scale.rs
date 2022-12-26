@@ -3,8 +3,9 @@ use super::scale_gauge::Gauge;
 use super::scale_id::ScaleId;
 use super::standard::Standard;
 use common::metadata::Metadata;
+use std::cmp::Ordering;
 use std::collections::HashSet;
-use std::fmt;
+use std::{cmp, fmt};
 
 /// Rail transport modelling uses a variety of scales (ratio between the real world and the model)
 /// to ensure scale models look correct when placed next to each other.
@@ -93,16 +94,36 @@ impl fmt::Display for Scale {
     }
 }
 
+impl cmp::PartialEq for Scale {
+    fn eq(&self, other: &Self) -> bool {
+        self.scale_id == other.scale_id
+    }
+}
+
+impl cmp::Eq for Scale {}
+
+impl cmp::PartialOrd for Scale {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        self.ratio.partial_cmp(other.ratio())
+    }
+}
+
+impl cmp::Ord for Scale {
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.partial_cmp(other).unwrap()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
 
     mod scales {
-        use super::data::scale_h0;
         use super::*;
         use crate::common::TrackGauge;
+        use crate::scales::test_data::{h0, n};
         use chrono::{DateTime, Utc};
-        use pretty_assertions::assert_eq;
+        use pretty_assertions::{assert_eq, assert_ne};
         use rust_decimal::Decimal;
         use rust_decimal_macros::dec;
 
@@ -113,49 +134,48 @@ mod tests {
             let ratio = Ratio::try_from(Decimal::from(87)).unwrap();
             let gauge = Gauge::from_millimeters(TrackGauge::Standard, dec!(16.5));
 
+            let standard = HashSet::from([Standard::NMRA]);
+
             let scale = Scale::new(
                 id.clone(),
                 "H0",
                 Some("Scale H0"),
                 ratio.clone(),
                 gauge.clone(),
-                HashSet::new(),
+                standard.clone(),
                 Metadata::created_at(now),
             );
-            assert_eq!(id, scale.scale_id);
-            assert_eq!("H0", scale.name);
-            assert_eq!(Some("Scale H0".to_string()), scale.description);
-            assert_eq!(ratio, scale.ratio);
-            assert_eq!(gauge, scale.gauge);
-            assert_eq!(HashSet::new(), scale.standards);
-            assert_eq!(Metadata::created_at(now), scale.metadata);
+            assert_eq!(&id, scale.scale_id());
+            assert_eq!("H0", scale.name());
+            assert_eq!(Some(&String::from("Scale H0")), scale.description());
+            assert_eq!(&ratio, scale.ratio());
+            assert_eq!(&gauge, scale.gauge());
+            assert_eq!(&standard, scale.standards());
+            assert_eq!(&Metadata::created_at(now), scale.metadata());
         }
 
         #[test]
         fn it_should_display_scales() {
-            let scale = scale_h0();
+            let scale = h0();
             assert_eq!("H0 (1:87)", scale.to_string());
         }
-    }
 
-    mod data {
-        use super::*;
-        use crate::common::TrackGauge;
-        use chrono::Utc;
-        use rust_decimal::Decimal;
-        use rust_decimal_macros::dec;
+        #[test]
+        fn it_should_compare_two_scales() {
+            let n = n();
+            let h0 = h0();
 
-        pub fn scale_h0() -> Scale {
-            let gauge = Gauge::from_millimeters(TrackGauge::Standard, dec!(16.5));
-            Scale::new(
-                ScaleId::new("H0"),
-                "H0",
-                Some("Scale H0"),
-                Ratio::try_from(Decimal::from(87)).unwrap(),
-                gauge,
-                HashSet::new(),
-                Metadata::created_at(Utc::now()),
-            )
+            assert_eq!(n, n);
+            assert_ne!(n, h0);
+        }
+
+        #[test]
+        fn it_sort_scales_by_their_ratios() {
+            let n = n();
+            let h0 = h0();
+
+            assert!(n < h0, "n < h0");
+            assert!(h0 > n, "h0 > n");
         }
     }
 }

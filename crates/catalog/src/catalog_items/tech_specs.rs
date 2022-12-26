@@ -3,137 +3,7 @@ use rust_decimal::Decimal;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 
-#[derive(Debug, Eq, PartialEq, Clone, Default, Serialize, Deserialize)]
-pub struct TechSpecs {
-    minimum_radius: Option<Radius>,
-    coupling: Option<Coupling>,
-    flywheel_fitted: FeatureFlag,
-    close_couplers: FeatureFlag,
-    metal_body: FeatureFlag,
-    interior_lights: FeatureFlag,
-    lights: FeatureFlag,
-    spring_buffers: FeatureFlag,
-    digital_shunting_coupling: FeatureFlag,
-}
-
-impl TechSpecs {
-    pub fn minimum_radius(&self) -> Option<Radius> {
-        self.minimum_radius
-    }
-
-    pub fn coupling(&self) -> Option<Coupling> {
-        self.coupling
-    }
-
-    pub fn flywheel_fitted(&self) -> FeatureFlag {
-        self.flywheel_fitted
-    }
-
-    pub fn close_couplers(&self) -> FeatureFlag {
-        self.close_couplers
-    }
-
-    pub fn metal_body(&self) -> FeatureFlag {
-        self.metal_body
-    }
-
-    pub fn interior_lights(&self) -> FeatureFlag {
-        self.interior_lights
-    }
-
-    pub fn lights(&self) -> FeatureFlag {
-        self.lights
-    }
-
-    pub fn spring_buffers(&self) -> FeatureFlag {
-        self.spring_buffers
-    }
-
-    pub fn digital_shunting_coupling(&self) -> FeatureFlag {
-        self.digital_shunting_coupling
-    }
-
-    pub fn builder() -> TechSpecsBuilder {
-        TechSpecsBuilder::default()
-    }
-}
-
-#[derive(Default, Serialize, Deserialize)]
-pub struct TechSpecsBuilder {
-    minimum_radius: Option<Radius>,
-    coupling: Option<Coupling>,
-    flywheel_fitted: FeatureFlag,
-    close_couplers: FeatureFlag,
-    metal_body: FeatureFlag,
-    interior_lights: FeatureFlag,
-    lights: FeatureFlag,
-    spring_buffers: FeatureFlag,
-    digital_shunting_coupling: FeatureFlag,
-}
-
-impl TechSpecsBuilder {
-    /// Add the minimum radius to the tech specifications
-    pub fn with_minimum_radius(mut self, radius: Radius) -> Self {
-        self.minimum_radius = Some(radius);
-        self
-    }
-
-    /// Add the coupling to the tech specifications
-    pub fn with_coupling(mut self, coupling: Coupling) -> Self {
-        self.coupling = Some(coupling);
-        self
-    }
-
-    pub fn with_flywheel_fitted(mut self) -> Self {
-        self.flywheel_fitted = FeatureFlag::Yes;
-        self
-    }
-
-    pub fn with_close_couplers(mut self) -> Self {
-        self.close_couplers = FeatureFlag::Yes;
-        self
-    }
-
-    pub fn with_metal_body(mut self) -> Self {
-        self.metal_body = FeatureFlag::Yes;
-        self
-    }
-
-    pub fn with_interior_lights(mut self) -> Self {
-        self.interior_lights = FeatureFlag::Yes;
-        self
-    }
-
-    pub fn with_lights(mut self) -> Self {
-        self.lights = FeatureFlag::Yes;
-        self
-    }
-
-    pub fn with_spring_buffers(mut self) -> Self {
-        self.spring_buffers = FeatureFlag::Yes;
-        self
-    }
-
-    pub fn with_digital_shunting_coupling(mut self) -> Self {
-        self.digital_shunting_coupling = FeatureFlag::Yes;
-        self
-    }
-
-    pub fn build(self) -> TechSpecs {
-        TechSpecs {
-            minimum_radius: self.minimum_radius,
-            coupling: self.coupling,
-            flywheel_fitted: self.flywheel_fitted,
-            close_couplers: self.close_couplers,
-            metal_body: self.metal_body,
-            interior_lights: self.interior_lights,
-            lights: self.lights,
-            spring_buffers: self.spring_buffers,
-            digital_shunting_coupling: self.digital_shunting_coupling,
-        }
-    }
-}
-
+/// The NEM coupling shaft standards
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Serialize, Deserialize, EnumString, Display)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
@@ -173,6 +43,154 @@ pub enum Coupling {
 impl Default for Coupling {
     fn default() -> Self {
         Coupling::None
+    }
+}
+
+/// The technical specification data for a rolling stock model
+#[derive(Debug, Eq, PartialEq, Clone, Default, Serialize, Deserialize)]
+pub struct TechSpecs {
+    minimum_radius: Option<Radius>,
+    coupling: Option<Coupling>,
+    flywheel_fitted: FeatureFlag,
+    close_couplers: FeatureFlag,
+    metal_body: FeatureFlag,
+    interior_lights: FeatureFlag,
+    lights: FeatureFlag,
+    spring_buffers: FeatureFlag,
+    digital_shunting_coupling: FeatureFlag,
+}
+
+impl TechSpecs {
+    /// the minimum radius
+    pub fn minimum_radius(&self) -> Option<Radius> {
+        self.minimum_radius
+    }
+
+    /// the coupling shaft standard
+    pub fn coupling(&self) -> Option<Coupling> {
+        self.coupling
+    }
+
+    /// with flywheel fitted
+    pub fn flywheel_fitted(&self) -> FeatureFlag {
+        self.flywheel_fitted
+    }
+
+    /// with close coupling mechanism
+    pub fn close_couplers(&self) -> FeatureFlag {
+        self.close_couplers
+    }
+
+    /// with metal body
+    pub fn metal_body(&self) -> FeatureFlag {
+        self.metal_body
+    }
+
+    /// with interior lights
+    pub fn interior_lights(&self) -> FeatureFlag {
+        self.interior_lights
+    }
+
+    /// with headlights
+    pub fn lights(&self) -> FeatureFlag {
+        self.lights
+    }
+
+    /// with spring buffers
+    pub fn spring_buffers(&self) -> FeatureFlag {
+        self.spring_buffers
+    }
+
+    /// with digital shunting coupling
+    pub fn digital_shunting_coupling(&self) -> FeatureFlag {
+        self.digital_shunting_coupling
+    }
+
+    pub fn builder() -> TechSpecsBuilder {
+        TechSpecsBuilder::default()
+    }
+}
+
+#[derive(Default, Serialize, Deserialize)]
+pub struct TechSpecsBuilder {
+    minimum_radius: Option<Radius>,
+    coupling: Option<Coupling>,
+    flywheel_fitted: FeatureFlag,
+    close_couplers: FeatureFlag,
+    metal_body: FeatureFlag,
+    interior_lights: FeatureFlag,
+    lights: FeatureFlag,
+    spring_buffers: FeatureFlag,
+    digital_shunting_coupling: FeatureFlag,
+}
+
+impl TechSpecsBuilder {
+    /// with the minimum radius
+    pub fn with_minimum_radius(mut self, radius: Radius) -> Self {
+        self.minimum_radius = Some(radius);
+        self
+    }
+
+    /// with the coupling shaft
+    pub fn with_coupling(mut self, coupling: Coupling) -> Self {
+        self.coupling = Some(coupling);
+        self
+    }
+
+    /// with flywheel fitted
+    pub fn with_flywheel_fitted(mut self) -> Self {
+        self.flywheel_fitted = FeatureFlag::Yes;
+        self
+    }
+
+    /// with close coupling mechanism
+    pub fn with_close_couplers(mut self) -> Self {
+        self.close_couplers = FeatureFlag::Yes;
+        self
+    }
+
+    /// with metal body
+    pub fn with_metal_body(mut self) -> Self {
+        self.metal_body = FeatureFlag::Yes;
+        self
+    }
+
+    /// with interior lights
+    pub fn with_interior_lights(mut self) -> Self {
+        self.interior_lights = FeatureFlag::Yes;
+        self
+    }
+
+    /// with headlights
+    pub fn with_lights(mut self) -> Self {
+        self.lights = FeatureFlag::Yes;
+        self
+    }
+
+    /// with spring buffers
+    pub fn with_spring_buffers(mut self) -> Self {
+        self.spring_buffers = FeatureFlag::Yes;
+        self
+    }
+
+    /// with digital shunting coupling
+    pub fn with_digital_shunting_coupling(mut self) -> Self {
+        self.digital_shunting_coupling = FeatureFlag::Yes;
+        self
+    }
+
+    pub fn build(self) -> TechSpecs {
+        TechSpecs {
+            minimum_radius: self.minimum_radius,
+            coupling: self.coupling,
+            flywheel_fitted: self.flywheel_fitted,
+            close_couplers: self.close_couplers,
+            metal_body: self.metal_body,
+            interior_lights: self.interior_lights,
+            lights: self.lights,
+            spring_buffers: self.spring_buffers,
+            digital_shunting_coupling: self.digital_shunting_coupling,
+        }
     }
 }
 
@@ -285,11 +303,25 @@ mod test {
         fn it_should_create_tech_specs() {
             let tech_specs = TechSpecs::builder()
                 .with_coupling(Coupling::Nem362)
+                .with_close_couplers()
+                .with_metal_body()
                 .with_minimum_radius(Radius(dec!(360)))
+                .with_interior_lights()
+                .with_lights()
+                .with_spring_buffers()
+                .with_digital_shunting_coupling()
+                .with_flywheel_fitted()
                 .build();
 
             assert_eq!(Some(Coupling::Nem362), tech_specs.coupling());
             assert_eq!(Some(Radius(dec!(360))), tech_specs.minimum_radius());
+            assert_eq!(FeatureFlag::Yes, tech_specs.close_couplers());
+            assert_eq!(FeatureFlag::Yes, tech_specs.metal_body());
+            assert_eq!(FeatureFlag::Yes, tech_specs.interior_lights());
+            assert_eq!(FeatureFlag::Yes, tech_specs.lights());
+            assert_eq!(FeatureFlag::Yes, tech_specs.spring_buffers());
+            assert_eq!(FeatureFlag::Yes, tech_specs.digital_shunting_coupling());
+            assert_eq!(FeatureFlag::Yes, tech_specs.flywheel_fitted());
         }
     }
 }

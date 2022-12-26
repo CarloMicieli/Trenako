@@ -6,7 +6,7 @@ use common::contact::ContactInfo;
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
-use std::fmt;
+use std::{cmp, fmt};
 
 /// A model railways manufacturer.
 #[derive(Debug)]
@@ -123,13 +123,13 @@ impl fmt::Display for Brand {
     }
 }
 
-impl PartialEq for Brand {
+impl cmp::PartialEq for Brand {
     fn eq(&self, other: &Self) -> bool {
         self.brand_id.eq(&other.brand_id)
     }
 }
 
-impl Eq for Brand {}
+impl cmp::Eq for Brand {}
 
 #[cfg(test)]
 mod tests {
@@ -137,10 +137,11 @@ mod tests {
 
     mod brands {
         use super::*;
+        use crate::brands::test_data::{acme, roco};
         use chrono::{DateTime, Utc};
         use common::contact::{MailAddress, WebsiteUrl};
         use isocountry::CountryCode;
-        use pretty_assertions::assert_eq;
+        use pretty_assertions::{assert_eq, assert_ne};
 
         #[test]
         fn it_should_create_brands() {
@@ -197,6 +198,20 @@ mod tests {
             assert_eq!(Some(&contact_info), brand.contact_info());
             assert_eq!(Some(&socials), brand.socials());
             assert_eq!(Metadata::created_at(now), brand.metadata);
+        }
+
+        #[test]
+        fn it_should_compare_two_brands() {
+            let acme = acme();
+            let roco = roco();
+
+            assert_eq!(acme, acme);
+            assert_ne!(acme, roco);
+        }
+
+        #[test]
+        fn it_should_display_brands() {
+            assert_eq!("ACME", acme().to_string());
         }
     }
 }

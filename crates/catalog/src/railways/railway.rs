@@ -7,8 +7,8 @@ use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
 use isocountry::CountryCode;
-use std::fmt;
 use std::fmt::Formatter;
+use std::{cmp, fmt};
 
 /// A railway company is a company within the rail industry.
 ///
@@ -17,7 +17,7 @@ use std::fmt::Formatter;
 /// by infrastructure operators and trains are run by different companies.
 ///
 /// Railway companies can be private or public.
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Clone)]
 pub struct Railway {
     railway_id: RailwayId,
     name: String,
@@ -136,16 +136,25 @@ impl fmt::Display for Railway {
     }
 }
 
+impl cmp::PartialEq for Railway {
+    fn eq(&self, other: &Self) -> bool {
+        self.railway_id == other.railway_id
+    }
+}
+
+impl cmp::Eq for Railway {}
+
 #[cfg(test)]
 mod test {
     use super::*;
 
     mod railways {
         use super::*;
+        use crate::railways::test_data::{die_bahn, fs};
         use chrono::Utc;
         use common::contact::WebsiteUrl;
         use common::socials::SocialsBuilder;
-        use pretty_assertions::assert_eq;
+        use pretty_assertions::{assert_eq, assert_ne};
         use rust_decimal_macros::dec;
 
         #[test]
@@ -212,6 +221,15 @@ mod test {
             );
 
             assert_eq!("FS - Ferrovie dello stato italiane", railway.to_string());
+        }
+
+        #[test]
+        fn it_should_compare_railways() {
+            let db = die_bahn();
+            let fs = fs();
+
+            assert_eq!(fs, fs);
+            assert_ne!(fs, db);
         }
     }
 }

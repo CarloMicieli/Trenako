@@ -1,3 +1,4 @@
+use crate::brands::brand::Brand;
 use crate::brands::brand_id::BrandId;
 use crate::catalog_items::catalog_item_id::CatalogItemId;
 use crate::catalog_items::category::Category;
@@ -5,11 +6,11 @@ use crate::catalog_items::delivery_date::DeliveryDate;
 use crate::catalog_items::item_number::ItemNumber;
 use crate::catalog_items::power_method::PowerMethod;
 use crate::catalog_items::rolling_stock::RollingStock;
+use crate::scales::scale::Scale;
 use crate::scales::scale_id::ScaleId;
 use common::metadata::Metadata;
-use std::cmp;
-use std::fmt;
 use std::fmt::Formatter;
+use std::{cmp, convert, fmt};
 
 /// A catalog item, it can contain one or more rolling stock.
 ///
@@ -17,12 +18,12 @@ use std::fmt::Formatter;
 #[derive(Debug, Clone)]
 pub struct CatalogItem {
     catalog_item_id: CatalogItemId,
-    brand: Brand,
+    brand: CatalogItemBrand,
     item_number: ItemNumber,
     category: Category,
     description: Option<String>,
     details: Option<String>,
-    scale: Scale,
+    scale: CatalogItemScale,
     power_method: PowerMethod,
     rolling_stocks: Vec<RollingStock>,
     delivery_date: Option<DeliveryDate>,
@@ -30,15 +31,21 @@ pub struct CatalogItem {
     metadata: Metadata,
 }
 
-impl PartialEq for CatalogItem {
+impl cmp::PartialEq for CatalogItem {
     fn eq(&self, other: &Self) -> bool {
         self.brand == other.brand && self.item_number == other.item_number
     }
 }
 
-impl Eq for CatalogItem {}
+impl cmp::Eq for CatalogItem {}
 
-impl Ord for CatalogItem {
+impl cmp::PartialOrd for CatalogItem {
+    fn partial_cmp(&self, other: &Self) -> Option<cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl cmp::Ord for CatalogItem {
     fn cmp(&self, other: &Self) -> cmp::Ordering {
         let cmp1 = self.brand().cmp(other.brand());
         if cmp1 == cmp::Ordering::Equal {
@@ -49,20 +56,14 @@ impl Ord for CatalogItem {
     }
 }
 
-impl PartialOrd for CatalogItem {
-    fn partial_cmp(&self, other: &Self) -> Option<cmp::Ordering> {
-        Some(self.cmp(other))
-    }
-}
-
 impl CatalogItem {
     /// Creates a new catalog item
     pub fn new(
         catalog_item_id: CatalogItemId,
-        brand: Brand,
+        brand: CatalogItemBrand,
         item_number: ItemNumber,
         category: Category,
-        scale: Scale,
+        scale: CatalogItemScale,
         description: Option<&str>,
         details: Option<&str>,
         rolling_stocks: Vec<RollingStock>,
@@ -87,12 +88,13 @@ impl CatalogItem {
         }
     }
 
+    /// Return the catalog item id
     pub fn id(&self) -> &CatalogItemId {
         &self.catalog_item_id
     }
 
     /// Return the Brand for this catalog item.
-    pub fn brand(&self) -> &Brand {
+    pub fn brand(&self) -> &CatalogItemBrand {
         &self.brand
     }
 
@@ -101,6 +103,7 @@ impl CatalogItem {
         &self.item_number
     }
 
+    /// Return the list of rolling stocks for this catalog item
     pub fn rolling_stocks(&self) -> &Vec<RollingStock> {
         &self.rolling_stocks
     }
@@ -126,7 +129,7 @@ impl CatalogItem {
     }
 
     /// Returns the scale for this catalog item
-    pub fn scale(&self) -> &Scale {
+    pub fn scale(&self) -> &CatalogItemScale {
         &self.scale
     }
 
@@ -146,19 +149,19 @@ impl CatalogItem {
     }
 }
 
-/// A model railways manufacturer.
+/// The model railways manufacturer for a catalog item
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
-pub struct Brand {
+pub struct CatalogItemBrand {
     brand_id: BrandId,
-    name: String,
+    display: String,
 }
 
-impl Brand {
-    /// Creates a new brand with the given name.
-    pub fn new(brand_id: BrandId, name: &str) -> Self {
-        Brand {
+impl CatalogItemBrand {
+    /// Creates a new brand with the given display text.
+    pub fn new(brand_id: BrandId, display: &str) -> Self {
+        CatalogItemBrand {
             brand_id,
-            name: name.to_owned(),
+            display: display.to_owned(),
         }
     }
 
@@ -167,30 +170,40 @@ impl Brand {
         &self.brand_id
     }
 
-    /// Returns this brand name
-    pub fn name(&self) -> &str {
-        &self.name
+    /// Returns this brand display text
+    pub fn display(&self) -> &str {
+        &self.display
     }
 }
 
-impl fmt::Display for Brand {
+impl fmt::Display for CatalogItemBrand {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", &self.name)
+        write!(f, "{}", &self.display)
     }
 }
 
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
-pub struct Scale {
-    scale_id: ScaleId,
-    name: String,
+impl convert::From<Brand> for CatalogItemBrand {
+    fn from(value: Brand) -> Self {
+        CatalogItemBrand {
+            brand_id: value.brand_id().clone(),
+            display: value.to_string(),
+        }
+    }
 }
 
-impl Scale {
-    /// Creates a new Scale with the given name.
-    pub fn new(scale_id: ScaleId, name: &str) -> Self {
-        Scale {
+/// The modelling scale for a catalog item
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
+pub struct CatalogItemScale {
+    scale_id: ScaleId,
+    display: String,
+}
+
+impl CatalogItemScale {
+    /// Creates a new Scale with the given display text.
+    pub fn new(scale_id: ScaleId, display: &str) -> Self {
+        CatalogItemScale {
             scale_id,
-            name: name.to_owned(),
+            display: display.to_owned(),
         }
     }
 
@@ -199,15 +212,24 @@ impl Scale {
         &self.scale_id
     }
 
-    /// Returns this brand name
-    pub fn name(&self) -> &str {
-        &self.name
+    /// Returns this brand display text
+    pub fn display(&self) -> &str {
+        &self.display
     }
 }
 
-impl fmt::Display for Scale {
+impl fmt::Display for CatalogItemScale {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", &self.name)
+        write!(f, "{}", &self.display)
+    }
+}
+
+impl convert::From<Scale> for CatalogItemScale {
+    fn from(value: Scale) -> Self {
+        CatalogItemScale {
+            scale_id: value.scale_id().clone(),
+            display: value.to_string(),
+        }
     }
 }
 
@@ -215,39 +237,55 @@ impl fmt::Display for Scale {
 mod tests {
     use super::*;
 
-    mod brands {
+    mod catalog_item_brands {
         use super::*;
+        use crate::brands::test_data::acme;
         use pretty_assertions::assert_eq;
 
         #[test]
         fn it_should_create_new_brands() {
-            let b = Brand::new(BrandId::new("ACME"), "ACME");
+            let b = CatalogItemBrand::new(BrandId::new("ACME"), "ACME");
             assert_eq!(&BrandId::new("ACME"), b.id());
-            assert_eq!("ACME", b.name());
+            assert_eq!("ACME", b.display());
         }
 
         #[test]
         fn it_should_display_brand_as_string() {
-            let b = Brand::new(BrandId::new("ACME"), "ACME");
+            let b = CatalogItemBrand::new(BrandId::new("ACME"), "ACME");
             assert_eq!("ACME", b.to_string());
+        }
+
+        #[test]
+        fn it_should_convert_from_brands() {
+            let b: CatalogItemBrand = acme().into();
+            assert_eq!(&BrandId::new("ACME"), b.id());
+            assert_eq!("ACME", b.display());
         }
     }
 
-    mod scales {
+    mod catalog_item_scales {
         use super::*;
+        use crate::scales::test_data::h0;
         use pretty_assertions::assert_eq;
 
         #[test]
         fn it_should_create_new_scales() {
-            let s = Scale::new(ScaleId::new("H0"), "H0");
+            let s = CatalogItemScale::new(ScaleId::new("H0"), "H0 (1:87)");
             assert_eq!(&ScaleId::new("H0"), s.id());
-            assert_eq!("H0", s.name());
+            assert_eq!("H0 (1:87)", s.display());
         }
 
         #[test]
         fn it_should_display_scale_as_string() {
-            let s = Scale::new(ScaleId::new("H0"), "H0");
+            let s = CatalogItemScale::new(ScaleId::new("H0"), "H0");
             assert_eq!("H0", s.to_string());
+        }
+
+        #[test]
+        fn it_should_convert_from_scales() {
+            let s: CatalogItemScale = h0().into();
+            assert_eq!(&ScaleId::new("H0"), s.id());
+            assert_eq!("H0 (1:87)", s.display());
         }
     }
 
@@ -260,8 +298,8 @@ mod tests {
         #[test]
         fn it_should_create_new_catalog_items() {
             let id = CatalogItemId::from_str("acme_123456").unwrap();
-            let acme = Brand::new(BrandId::new("ACME"), "ACME");
-            let half_zero = Scale::new(ScaleId::new("H0"), "H0");
+            let acme = CatalogItemBrand::new(BrandId::new("ACME"), "ACME");
+            let half_zero = CatalogItemScale::new(ScaleId::new("H0"), "H0");
             let item_number = ItemNumber::new("123456").unwrap();
             let now: DateTime<Utc> = Utc::now();
 

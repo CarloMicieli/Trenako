@@ -3,3 +3,6 @@ pub mod railway;
 pub mod railway_gauge;
 pub mod railway_id;
 pub mod railway_length;
+
+#[cfg(test)]
+pub mod test_data;
