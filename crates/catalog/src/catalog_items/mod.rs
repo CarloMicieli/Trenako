@@ -11,3 +11,6 @@ pub mod rolling_stock;
 pub mod rolling_stock_id;
 pub mod service_level;
 pub mod technical_specifications;
+
+#[cfg(test)]
+pub mod test_data;

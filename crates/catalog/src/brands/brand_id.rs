@@ -1,6 +1,7 @@
 use common::slug::Slug;
 use std::fmt;
 use std::fmt::Formatter;
+use std::ops;
 use std::str;
 use std::str::FromStr;
 
@@ -9,6 +10,7 @@ use std::str::FromStr;
 pub struct BrandId(Slug);
 
 impl BrandId {
+    /// Creates a new brand unique identifier
     pub fn new(id: &str) -> Self {
         BrandId::from_str(id).expect("invalid brand id")
     }
@@ -28,6 +30,14 @@ impl str::FromStr for BrandId {
     }
 }
 
+impl ops::Deref for BrandId {
+    type Target = Slug;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -39,6 +49,18 @@ mod tests {
         #[test]
         fn it_should_create_new_brand_ids() {
             let brand_id = BrandId::new("brand name");
+            assert_eq!("brand-name", brand_id.to_string());
+        }
+
+        #[test]
+        fn it_should_return_an_error_when_the_brand_id_is_empty() {
+            let result = BrandId::from_str("");
+            assert!(result.is_err());
+        }
+
+        #[test]
+        fn it_should_create_new_brand_ids_from_str() {
+            let brand_id = BrandId::from_str("brand name").unwrap();
             assert_eq!("brand-name", brand_id.to_string());
         }
 

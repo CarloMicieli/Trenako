@@ -1,7 +1,7 @@
 use slug::slugify;
-use std::fmt;
 use std::ops;
 use std::str;
+use std::{convert, fmt};
 
 /// A SEO friendly string
 #[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Clone, Serialize, Deserialize)]
@@ -14,6 +14,12 @@ impl Slug {
             panic!("A slug cannot be empty")
         }
         Slug(slugify(value))
+    }
+
+    /// Combine this Slug with another value, after it is converted to a Slug
+    pub fn combine<T: Into<Slug>>(&self, other: T) -> Self {
+        let value = format!("{}-{}", self.0, other.into().0);
+        Slug::new(&value)
     }
 }
 
@@ -43,6 +49,12 @@ impl ops::Deref for Slug {
     }
 }
 
+impl convert::From<String> for Slug {
+    fn from(value: String) -> Self {
+        Slug::new(&value)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -68,6 +80,14 @@ mod tests {
         #[should_panic(expected = "A slug cannot be empty")]
         fn it_should_panic_when_input_is_empty() {
             Slug::new("");
+        }
+
+        #[test]
+        fn it_should_compose_a_slug_with_another_value() {
+            let slug = Slug::new("Left value");
+            let result = slug.combine(String::from("Right Value"));
+
+            assert_eq!("left-value-right-value", result.to_string());
         }
     }
 }

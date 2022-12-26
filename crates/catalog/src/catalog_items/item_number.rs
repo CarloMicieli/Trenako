@@ -1,6 +1,7 @@
-use std::fmt;
+use common::slug::Slug;
 use std::fmt::Formatter;
 use std::str::FromStr;
+use std::{convert, fmt};
 
 /// It represent a catalog item number.
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
@@ -38,6 +39,12 @@ impl FromStr for ItemNumber {
 impl fmt::Display for ItemNumber {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
         write!(f, "{}", self.0)
+    }
+}
+
+impl convert::From<ItemNumber> for Slug {
+    fn from(value: ItemNumber) -> Self {
+        Slug::new(value.value())
     }
 }
 
