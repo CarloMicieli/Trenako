@@ -215,16 +215,17 @@ components:
         - NO_DCC
 
     Coupling:
-      type: string
-      description: the rolling stock couplings
-      enum:
-        - NEM_355
-        - NEM_356
-        - NEM_357
-        - NEM_359
-        - NEM_360
-        - NEM_362
-        - NEM_365
+      type: object
+      description: the rolling stock coupling
+      properties:
+        socket:
+          $ref: "#/components/schemas/Socket"
+        close_couplers:
+          $ref: "#/components/schemas/FeatureFlag"
+        digital_shunting:
+          $ref: "#/components/schemas/FeatureFlag"
+      required:
+        - socket
 
     DccInterface:
       type: string
@@ -836,6 +837,19 @@ components:
               - NEM
               - NMRA
 
+    Socket:
+      type: string
+      description: the rolling stock coupling socket
+      enum:
+        - NONE
+        - NEM_355
+        - NEM_356
+        - NEM_357
+        - NEM_359
+        - NEM_360
+        - NEM_362
+        - NEM_365
+
     TrackGauge:
       type: string
       description: the track gauge
@@ -858,8 +872,6 @@ components:
           $ref: "#/components/schemas/Coupling"
         flywheel_fitted:
           $ref: "#/components/schemas/FeatureFlag"
-        close_couplers:
-          $ref: "#/components/schemas/FeatureFlag"
         metal_body:
           $ref: "#/components/schemas/FeatureFlag"
         interior_lights:
@@ -867,6 +879,4 @@ components:
         lights:
           $ref: "#/components/schemas/FeatureFlag"
         spring_buffers:
-          $ref: "#/components/schemas/FeatureFlag"
-        digital_shunting_coupling:
           $ref: "#/components/schemas/FeatureFlag"

@@ -6,7 +6,7 @@ use crate::catalog_items::epoch::Epoch;
 use crate::catalog_items::length_over_buffer::LengthOverBuffer;
 use crate::catalog_items::rolling_stock_id::RollingStockId;
 use crate::catalog_items::service_level::ServiceLevel;
-use crate::catalog_items::tech_specs::TechSpecs;
+use crate::catalog_items::technical_specifications::TechnicalSpecifications;
 use crate::railways::railway_id::RailwayId;
 use std::fmt;
 use std::fmt::{Display, Formatter};
@@ -27,7 +27,7 @@ pub enum RollingStock {
         length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechSpecs>,
+        tech_specs: Option<TechnicalSpecifications>,
     },
     FreightCar {
         id: RollingStockId,
@@ -38,7 +38,7 @@ pub enum RollingStock {
         freight_car_type: Option<FreightCarType>,
         livery: Option<String>,
         length_over_buffer: Option<LengthOverBuffer>,
-        tech_specs: Option<TechSpecs>,
+        tech_specs: Option<TechnicalSpecifications>,
     },
     Locomotive {
         id: RollingStockId,
@@ -54,7 +54,7 @@ pub enum RollingStock {
         length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechSpecs>,
+        tech_specs: Option<TechnicalSpecifications>,
     },
     PassengerCar {
         id: RollingStockId,
@@ -66,7 +66,7 @@ pub enum RollingStock {
         service_level: Option<ServiceLevel>,
         livery: Option<String>,
         length_over_buffer: Option<LengthOverBuffer>,
-        tech_specs: Option<TechSpecs>,
+        tech_specs: Option<TechnicalSpecifications>,
     },
     Railcar {
         id: RollingStockId,
@@ -81,7 +81,7 @@ pub enum RollingStock {
         length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechSpecs>,
+        tech_specs: Option<TechnicalSpecifications>,
     },
 }
 
@@ -100,7 +100,7 @@ impl RollingStock {
         length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechSpecs>,
+        tech_specs: Option<TechnicalSpecifications>,
     ) -> Self {
         RollingStock::ElectricMultipleUnit {
             id,
@@ -134,7 +134,7 @@ impl RollingStock {
         length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechSpecs>,
+        tech_specs: Option<TechnicalSpecifications>,
     ) -> Self {
         RollingStock::Locomotive {
             id,
@@ -164,7 +164,7 @@ impl RollingStock {
         freight_car_type: Option<FreightCarType>,
         livery: Option<&str>,
         length_over_buffer: Option<LengthOverBuffer>,
-        tech_specs: Option<TechSpecs>,
+        tech_specs: Option<TechnicalSpecifications>,
     ) -> Self {
         RollingStock::FreightCar {
             id,
@@ -190,7 +190,7 @@ impl RollingStock {
         service_level: Option<ServiceLevel>,
         livery: Option<&str>,
         length_over_buffer: Option<LengthOverBuffer>,
-        tech_specs: Option<TechSpecs>,
+        tech_specs: Option<TechnicalSpecifications>,
     ) -> Self {
         RollingStock::PassengerCar {
             id,
@@ -220,7 +220,7 @@ impl RollingStock {
         length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechSpecs>,
+        tech_specs: Option<TechnicalSpecifications>,
     ) -> Self {
         RollingStock::Railcar {
             id,
@@ -314,7 +314,8 @@ impl RollingStock {
         }
     }
 
-    pub fn tech_specs(&self) -> Option<&TechSpecs> {
+    /// Returns the technical specification for this rolling stock
+    pub fn technical_specifications(&self) -> Option<&TechnicalSpecifications> {
         match self {
             RollingStock::ElectricMultipleUnit { tech_specs, .. } => tech_specs.as_ref(),
             RollingStock::Locomotive { tech_specs, .. } => tech_specs.as_ref(),
@@ -412,7 +413,7 @@ mod test {
     mod locomotives {
         use super::*;
         use crate::catalog_items::rolling_stock_id::RollingStockId;
-        use crate::catalog_items::tech_specs::{Coupling, Radius};
+        use crate::catalog_items::technical_specifications::{Coupling, Radius, Socket};
         use common::length::Length;
         use pretty_assertions::assert_eq;
         use rust_decimal_macros::dec;
@@ -423,10 +424,7 @@ mod test {
             let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(210)));
             let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
 
-            let tech_specs = TechSpecs::builder()
-                .with_coupling(Coupling::Nem362)
-                .with_minimum_radius(Radius::new(360_f32).unwrap())
-                .build();
+            let tech_specs = technical_specification();
 
             let locomotive = RollingStock::new_locomotive(
                 id,
@@ -454,7 +452,7 @@ mod test {
             assert_eq!(Some("E.656 077"), locomotive.road_number());
             assert_eq!(Some(DccInterface::Nem652), locomotive.dcc_interface());
             assert_eq!(Some(Control::DccReady), locomotive.control());
-            assert_eq!(Some(&tech_specs), locomotive.tech_specs());
+            assert_eq!(Some(&tech_specs), locomotive.technical_specifications());
         }
 
         #[test]
@@ -463,10 +461,7 @@ mod test {
             let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
             let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
 
-            let tech_specs = TechSpecs::builder()
-                .with_coupling(Coupling::Nem362)
-                .with_minimum_radius(Radius::new(360_f32).unwrap())
-                .build();
+            let tech_specs = technical_specification();
 
             let power_car = RollingStock::new_electric_multiple_unit(
                 id,
@@ -493,7 +488,7 @@ mod test {
             assert_eq!(Some("ALe 801 003"), power_car.road_number());
             assert_eq!(Some(DccInterface::Nem652), power_car.dcc_interface());
             assert_eq!(Some(Control::DccReady), power_car.control());
-            assert_eq!(Some(&tech_specs), power_car.tech_specs());
+            assert_eq!(Some(&tech_specs), power_car.technical_specifications());
         }
 
         #[test]
@@ -502,10 +497,7 @@ mod test {
             let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
             let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
 
-            let tech_specs = TechSpecs::builder()
-                .with_coupling(Coupling::Nem362)
-                .with_minimum_radius(Radius::new(360_f32).unwrap())
-                .build();
+            let tech_specs = technical_specification();
 
             let passenger_car = RollingStock::new_passenger_car(
                 id,
@@ -529,7 +521,7 @@ mod test {
             assert_eq!(Some("61 83 19-90 105-3 A"), passenger_car.road_number());
             assert_eq!(None, passenger_car.dcc_interface());
             assert_eq!(None, passenger_car.control());
-            assert_eq!(Some(&tech_specs), passenger_car.tech_specs());
+            assert_eq!(Some(&tech_specs), passenger_car.technical_specifications());
         }
 
         #[test]
@@ -538,10 +530,7 @@ mod test {
             let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
             let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
 
-            let tech_specs = TechSpecs::builder()
-                .with_coupling(Coupling::Nem362)
-                .with_minimum_radius(Radius::new(360_f32).unwrap())
-                .build();
+            let tech_specs = technical_specification();
 
             let power_car = RollingStock::new_railcar(
                 id,
@@ -568,7 +557,7 @@ mod test {
             assert_eq!(Some("ALn 668 1449"), power_car.road_number());
             assert_eq!(Some(DccInterface::Nem652), power_car.dcc_interface());
             assert_eq!(Some(Control::DccReady), power_car.control());
-            assert_eq!(Some(&tech_specs), power_car.tech_specs());
+            assert_eq!(Some(&tech_specs), power_car.technical_specifications());
         }
 
         #[test]
@@ -577,10 +566,7 @@ mod test {
             let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
             let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
 
-            let tech_specs = TechSpecs::builder()
-                .with_coupling(Coupling::Nem362)
-                .with_minimum_radius(Radius::new(360_f32).unwrap())
-                .build();
+            let tech_specs = technical_specification();
 
             let epoch = Epoch::Multiple(Box::new(Epoch::IV), Box::new(Epoch::V));
 
@@ -605,7 +591,16 @@ mod test {
             assert_eq!(Some("31 83 665 0 150-6"), freight_car.road_number());
             assert_eq!(None, freight_car.dcc_interface());
             assert_eq!(None, freight_car.control());
-            assert_eq!(Some(&tech_specs), freight_car.tech_specs());
+            assert_eq!(Some(&tech_specs), freight_car.technical_specifications());
+        }
+
+        fn technical_specification() -> TechnicalSpecifications {
+            let radius = Radius::of_millimeters(dec!(360.0)).unwrap();
+            let coupling = Coupling::with_close_couplers(Socket::Nem362);
+            TechnicalSpecifications::builder()
+                .with_coupling(coupling)
+                .with_minimum_radius(radius)
+                .build()
         }
     }
 }
