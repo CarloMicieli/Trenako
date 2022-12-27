@@ -1,23 +1,28 @@
 components:
   schemas:
     Address:
-      description: an address of a location
       type: object
+      description: an address of a location
       properties:
         street_address:
           type: string
+          description: the street address
           maxLength: 255
         extended_address:
           type: string
+          description: the extended information for the address
           maxLength: 255
         city:
           type: string
+          description: the city
           maxLength: 50
         region:
           type: string
+          description: the region code
           maxLength: 50
         postal_code:
           type: string
+          description: the postal code (ZIP code)
           maxLength: 10
         country_code:
           type: string
@@ -36,12 +41,17 @@ components:
       properties:
         email:
           type: string
+          format: email
+          description: the mail address
           maxLength: 250
         phone:
           type: string
+          description: the phone number
           maxLength: 20
         website_url:
           type: string
+          format: uri
+          description: the website url
           maxLength: 100
 
     Metadata:
@@ -49,16 +59,18 @@ components:
       type: object
       properties:
         version:
-          description: the resource version
           type: integer
           format: int32
+          description: the resource version
           minimum: 1
         created_at:
           type: string
           format: date-time
+          description: the creation timestamp for this resource
         last_modified_at:
           type: string
           format: date-time
+          description: the timestamp when this resource has been modified for the last time
       required:
         - version
         - created
@@ -81,21 +93,26 @@ components:
         - STATE_OWNED_ENTERPRISE
 
     Socials:
-      description: social handlers
       type: object
+      description: a group of social handlers
       properties:
         facebook:
           type: string
+          description: a facebook handler
           maxLength: 100
         instagram:
           type: string
+          description: an instagram handler
           maxLength: 100
         linkedin:
           type: string
+          description: a linkedin handler
           maxLength: 100
         twitter:
           type: string
+          description: a twitter handler
           maxLength: 100
         youtube:
           type: string
+          description: a youtube handler
           maxLength: 100

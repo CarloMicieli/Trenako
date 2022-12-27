@@ -37,14 +37,17 @@ impl Gauge {
         }
     }
 
+    /// The distance between the rails in millimeters
     pub fn millimeters(&self) -> Decimal {
         self.millimeters
     }
 
+    /// The distance between the rails in inches
     pub fn inches(&self) -> Decimal {
         self.inches
     }
 
+    /// The track gauge
     pub fn track_gauge(&self) -> TrackGauge {
         self.track_gauge
     }

@@ -11,10 +11,11 @@ use std::ops;
 /// Lengths are defined by a non negative quantity and a measure unit.
 #[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub enum Length {
-    Millimeters(Decimal),
     Inches(Decimal),
-    Miles(Decimal),
     Kilometers(Decimal),
+    Meters(Decimal),
+    Miles(Decimal),
+    Millimeters(Decimal),
 }
 
 impl Length {
@@ -30,6 +31,7 @@ impl Length {
             let length = match measure_unit {
                 MeasureUnit::Millimeters => Length::Millimeters(value),
                 MeasureUnit::Inches => Length::Inches(value),
+                MeasureUnit::Meters => Length::Meters(value),
                 MeasureUnit::Miles => Length::Miles(value),
                 MeasureUnit::Kilometers => Length::Kilometers(value),
             };
@@ -42,6 +44,7 @@ impl Length {
         match self {
             Length::Millimeters(mm) => *mm,
             Length::Inches(ins) => *ins,
+            Length::Meters(m) => *m,
             Length::Miles(mi) => *mi,
             Length::Kilometers(km) => *km,
         }
@@ -52,6 +55,7 @@ impl Length {
         match self {
             Length::Millimeters(_) => MeasureUnit::Millimeters,
             Length::Inches(_) => MeasureUnit::Inches,
+            Length::Meters(_) => MeasureUnit::Meters,
             Length::Miles(_) => MeasureUnit::Miles,
             Length::Kilometers(_) => MeasureUnit::Kilometers,
         }

@@ -44,6 +44,7 @@ impl fmt::Display for MeasureUnitConverter {
 pub enum MeasureUnit {
     Millimeters,
     Inches,
+    Meters,
     Miles,
     Kilometers,
 }
@@ -53,6 +54,7 @@ impl MeasureUnit {
         match self {
             MeasureUnit::Miles => "mi",
             MeasureUnit::Inches => "in",
+            MeasureUnit::Meters => "m",
             MeasureUnit::Millimeters => "mm",
             MeasureUnit::Kilometers => "km",
         }
@@ -112,6 +114,7 @@ mod tests {
             assert_eq!(MeasureUnit::Millimeters.symbol(), "mm");
             assert_eq!(MeasureUnit::Inches.symbol(), "in");
             assert_eq!(MeasureUnit::Kilometers.symbol(), "km");
+            assert_eq!(MeasureUnit::Meters.symbol(), "m");
         }
 
         #[test]

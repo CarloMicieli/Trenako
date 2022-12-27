@@ -21,6 +21,7 @@ use std::{cmp, fmt};
 pub struct Railway {
     railway_id: RailwayId,
     name: String,
+    abbreviation: Option<String>,
     registered_company_name: String,
     organization_entity_type: Option<OrganizationEntityType>,
     description: Option<String>,
@@ -39,6 +40,7 @@ impl Railway {
     pub fn new(
         railway_id: RailwayId,
         name: &str,
+        abbreviation: Option<&str>,
         registered_company_name: &str,
         organization_entity_type: Option<OrganizationEntityType>,
         description: Option<&str>,
@@ -54,6 +56,7 @@ impl Railway {
         Railway {
             railway_id,
             name: String::from(name),
+            abbreviation: abbreviation.map(str::to_string),
             registered_company_name: String::from(registered_company_name),
             organization_entity_type,
             description: description.map(str::to_string),
@@ -68,14 +71,19 @@ impl Railway {
         }
     }
 
-    /// The unique identifier for this Railway company
+    /// The unique identifier for this railway company
     pub fn railway_id(&self) -> &RailwayId {
         &self.railway_id
     }
 
-    /// The name for this Railway company
+    /// The name for this railway company
     pub fn name(&self) -> &str {
         &self.name
+    }
+
+    /// The abbreviated name for this railway company
+    pub fn abbreviation(&self) -> Option<&str> {
+        self.abbreviation.as_deref()
     }
 
     /// The registered company name (the more formal denomination)
@@ -84,47 +92,52 @@ impl Railway {
         &self.registered_company_name
     }
 
-    /// Returns the organization entity type for this Railway company
+    /// The organization entity type for this railway company
     pub fn organization_entity_type(&self) -> Option<OrganizationEntityType> {
         self.organization_entity_type
     }
 
-    /// The description for this Railway company
+    /// The description for this railway company
     pub fn description(&self) -> Option<&str> {
         self.description.as_deref()
     }
 
-    /// The period of activity (active/inactive) for this Railway company
+    /// The period of activity (active/inactive) for this railway company
     pub fn period_of_activity(&self) -> Option<&PeriodOfActivity> {
         self.period_of_activity.as_ref()
     }
 
-    /// Returns the total railway network length controlled by this Railway company
+    /// The total railway network length controlled by this railway company
     pub fn length(&self) -> Option<&RailwayLength> {
         self.length.as_ref()
     }
 
+    /// The track gauge for this railway
     pub fn gauge(&self) -> Option<&RailwayGauge> {
         self.gauge.as_ref()
     }
 
+    /// The registration country
     pub fn country(&self) -> CountryCode {
         self.country
     }
 
+    /// The railway headquarter
     pub fn headquarters(&self) -> Option<&str> {
         self.headquarters.as_deref()
     }
 
+    /// The contact railway info
     pub fn contact_info(&self) -> Option<&ContactInfo> {
         self.contact_info.as_ref()
     }
 
+    /// The social profiles for this railway
     pub fn socials(&self) -> Option<&Socials> {
         self.socials.as_ref()
     }
 
-    /// Returns the metadata for this Railway company
+    /// The metadata for this railway company
     pub fn metadata(&self) -> &Metadata {
         &self.metadata
     }
@@ -173,6 +186,7 @@ mod test {
             let railway = Railway::new(
                 RailwayId::new("FS"),
                 "FS",
+                Some("FS"),
                 "Ferrovie dello stato italiane",
                 Some(OrganizationEntityType::StateOwnedEnterprise),
                 None,
@@ -188,6 +202,7 @@ mod test {
 
             assert_eq!(&RailwayId::new("FS"), railway.railway_id());
             assert_eq!("FS", railway.name());
+            assert_eq!(Some("FS"), railway.abbreviation());
             assert_eq!("Ferrovie dello stato italiane", railway.registered_company_name());
             assert_eq!(
                 Some(OrganizationEntityType::StateOwnedEnterprise),
@@ -207,6 +222,7 @@ mod test {
             let railway = Railway::new(
                 RailwayId::new("FS"),
                 "FS",
+                Some("FS"),
                 "Ferrovie dello stato italiane",
                 Some(OrganizationEntityType::StateOwnedEnterprise),
                 None,

@@ -1,16 +1,20 @@
 use crate::common::TrackGauge;
+use common::length::Length;
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;
 
 #[derive(Debug, Eq, PartialEq, Clone)]
 pub struct RailwayGauge {
-    meters: Decimal,
+    meters: Length,
     track_gauge: TrackGauge,
 }
 
 impl RailwayGauge {
     pub fn new(meters: Decimal, track_gauge: TrackGauge) -> Self {
-        RailwayGauge { meters, track_gauge }
+        RailwayGauge {
+            meters: Length::Meters(meters),
+            track_gauge,
+        }
     }
 
     /// Creates a new standard railway gauge
@@ -26,10 +30,7 @@ impl RailwayGauge {
     /// British lines, where it is defined in U.S. customary/Imperial units as exactly "four feet
     /// eight and one half inches" which is equivalent to 1435.1 mm.
     pub fn standard() -> Self {
-        RailwayGauge {
-            meters: dec!(1.435),
-            track_gauge: TrackGauge::Standard,
-        }
+        RailwayGauge::new(dec!(1.435), TrackGauge::Standard)
     }
 
     /// Creates a new narrow meter railway gauge
@@ -46,14 +47,11 @@ impl RailwayGauge {
     /// metre gauge was replaced by standard gauge. The slightly-wider 1,009 mm (3 ft 3+23⁄32 in)
     /// gauge is used in Sofia.
     pub fn metre() -> Self {
-        RailwayGauge {
-            meters: dec!(1.0),
-            track_gauge: TrackGauge::Narrow,
-        }
+        RailwayGauge::new(dec!(1.0), TrackGauge::Narrow)
     }
 
     /// Returns the distance between the two rails of a railway track in meters
-    pub fn meters(&self) -> Decimal {
+    pub fn meters(&self) -> Length {
         self.meters
     }
 
@@ -75,21 +73,21 @@ mod test {
         #[test]
         fn it_should_create_railway_gauges() {
             let gauge = RailwayGauge::new(dec!(1.435), TrackGauge::Standard);
-            assert_eq!(dec!(1.435), gauge.meters());
+            assert_eq!(dec!(1.435), gauge.meters().quantity());
             assert_eq!(TrackGauge::Standard, gauge.track_gauge());
         }
 
         #[test]
         fn it_should_create_a_standard_railway_gauges() {
             let gauge = RailwayGauge::standard();
-            assert_eq!(dec!(1.435), gauge.meters());
+            assert_eq!(dec!(1.435), gauge.meters().quantity());
             assert_eq!(TrackGauge::Standard, gauge.track_gauge());
         }
 
         #[test]
         fn it_should_create_a_metre_railway_gauges() {
             let gauge = RailwayGauge::metre();
-            assert_eq!(dec!(1.0), gauge.meters());
+            assert_eq!(dec!(1.0), gauge.meters().quantity());
             assert_eq!(TrackGauge::Narrow, gauge.track_gauge());
         }
     }

@@ -13,7 +13,7 @@ pub struct CatalogItemId(Slug);
 impl CatalogItemId {
     /// Creates a new catalog item id from its brand and item number
     pub fn new(brand: CatalogItemBrand, item_number: ItemNumber) -> Self {
-        let slug = brand.id().combine(item_number);
+        let slug = brand.brand_id().combine(item_number);
         CatalogItemId(slug)
     }
 

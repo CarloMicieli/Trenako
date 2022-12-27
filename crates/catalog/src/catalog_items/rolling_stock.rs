@@ -261,7 +261,7 @@ impl RollingStock {
         }
     }
 
-    /// Return the epoch for this rolling stock
+    /// The epoch for this rolling stock
     pub fn epoch(&self) -> &Epoch {
         match self {
             RollingStock::ElectricMultipleUnit { epoch, .. } => epoch,
@@ -272,7 +272,7 @@ impl RollingStock {
         }
     }
 
-    /// Return the livery for this rolling stock
+    /// The livery for this rolling stock
     pub fn livery(&self) -> Option<&str> {
         match self {
             RollingStock::ElectricMultipleUnit { livery, .. } => livery.as_deref(),
@@ -283,7 +283,7 @@ impl RollingStock {
         }
     }
 
-    /// Return the overall length for this rolling stock
+    /// The overall length for this rolling stock
     pub fn length_over_buffer(&self) -> Option<&LengthOverBuffer> {
         match self {
             RollingStock::ElectricMultipleUnit { length_over_buffer, .. } => length_over_buffer.as_ref(),
@@ -294,6 +294,7 @@ impl RollingStock {
         }
     }
 
+    /// The railway company for this rolling stock
     pub fn railway(&self) -> &RollingStockRailway {
         match self {
             RollingStock::ElectricMultipleUnit { railway, .. } => railway,
@@ -304,6 +305,7 @@ impl RollingStock {
         }
     }
 
+    /// The road number for this rolling stock
     pub fn road_number(&self) -> Option<&str> {
         match self {
             RollingStock::ElectricMultipleUnit { road_number, .. } => road_number.as_deref(),
@@ -314,7 +316,7 @@ impl RollingStock {
         }
     }
 
-    /// Returns the technical specification for this rolling stock
+    /// The technical specification for this rolling stock
     pub fn technical_specifications(&self) -> Option<&TechnicalSpecifications> {
         match self {
             RollingStock::ElectricMultipleUnit { tech_specs, .. } => tech_specs.as_ref(),
@@ -325,6 +327,7 @@ impl RollingStock {
         }
     }
 
+    /// The control method for this rolling stock
     pub fn control(&self) -> Option<Control> {
         match self {
             RollingStock::ElectricMultipleUnit {
@@ -340,6 +343,7 @@ impl RollingStock {
         }
     }
 
+    /// The dcc interface for this rolling stock
     pub fn dcc_interface(&self) -> Option<DccInterface> {
         match self {
             RollingStock::ElectricMultipleUnit {
@@ -358,6 +362,7 @@ impl RollingStock {
         }
     }
 
+    /// Return true if the rolling stock has a decoder, false otherwise
     pub fn with_decoder(&self) -> bool {
         match self {
             RollingStock::ElectricMultipleUnit {

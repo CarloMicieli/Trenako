@@ -25,6 +25,7 @@ pub fn die_bahn() -> Railway {
     Railway::new(
         RailwayId::new("db"),
         "DB",
+        Some("DB"),
         "Deutsche Bahn AG",
         Some(OrganizationEntityType::StateOwnedEnterprise),
         None,
@@ -54,6 +55,7 @@ pub fn fs() -> Railway {
     Railway::new(
         RailwayId::new("fs"),
         "FS",
+        Some("FS"),
         "Ferrovie dello stato italiane",
         Some(OrganizationEntityType::StateOwnedEnterprise),
         None,

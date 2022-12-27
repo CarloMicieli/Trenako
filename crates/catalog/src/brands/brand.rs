@@ -56,62 +56,62 @@ impl Brand {
         }
     }
 
-    /// Returns this brand unique identifier
+    /// This brand unique identifier
     pub fn brand_id(&self) -> &BrandId {
         &self.brand_id
     }
 
-    /// Returns this brand name
+    /// This brand name
     pub fn name(&self) -> &str {
         &self.name
     }
 
-    /// Returns this brand description
+    /// This brand description
     pub fn description(&self) -> Option<&String> {
         self.description.as_ref()
     }
 
-    /// Returns this brand registered company name
+    /// This brand registered company name
     pub fn registered_company_name(&self) -> Option<&String> {
         self.registered_company_name.as_ref()
     }
 
-    /// Returns the organization entity type for this brand
+    /// The organization entity type for this brand
     pub fn organization_entity_type(&self) -> Option<OrganizationEntityType> {
         self.organization_entity_type
     }
 
-    /// Returns this brand group name (if any)
+    /// This brand group name (if any)
     pub fn group_name(&self) -> Option<&String> {
         self.group_name.as_ref()
     }
 
-    /// Returns this brand kind
+    /// This brand kind
     pub fn kind(&self) -> BrandKind {
         self.kind
     }
 
-    /// Returns the contact info for this brand
+    /// The contact info for this brand
     pub fn contact_info(&self) -> Option<&ContactInfo> {
         self.contact_info.as_ref()
     }
 
-    /// Returns the postal address for this brand
+    /// The postal address for this brand
     pub fn address(&self) -> Option<&Address> {
         self.address.as_ref()
     }
 
-    /// Returns this brand status
+    /// This brand status
     pub fn status(&self) -> BrandStatus {
         self.status
     }
 
-    /// Returns the social handlers for this brand
+    /// The social profiles for this brand
     pub fn socials(&self) -> Option<&Socials> {
         self.socials.as_ref()
     }
 
-    /// Returns the metadata for this brand
+    /// The metadata for this brand
     pub fn metadata(&self) -> &Metadata {
         &self.metadata
     }

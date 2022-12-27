@@ -131,6 +131,7 @@ CREATE TABLE public.railways
 (
     railway_id               varchar(25) NOT NULL,
     name                     varchar(25) NOT NULL,
+    abbreviation             varchar(10),
     registered_company_name  varchar(250),
     organization_entity_type organization_entity_type,
     description              varchar(1000),

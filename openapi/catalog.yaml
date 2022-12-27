@@ -14,26 +14,31 @@ components:
       properties:
         brand_id:
           type: string
+          description: the brand unique identifier (an url encoded string)
         name:
           type: string
+          description: the brand name
         registered_company_name:
           type: string
+          description: the registered company name for this brand
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
+          description: the entity type
         group_name:
           type: string
+          description: the group name when this brand is part of group of brands
         description:
           type: string
-        contact_info:
-          $ref: "./common.yaml#/components/schemas/ContactInfo"
         address:
           $ref: "./common.yaml#/components/schemas/Address"
-        socials:
-          $ref: "./common.yaml#/components/schemas/Socials"
+        contact_info:
+          $ref: "./common.yaml#/components/schemas/ContactInfo"
         kind:
           $ref: "#/components/schemas/BrandKind"
         status:
           $ref: "#/components/schemas/BrandStatus"
+        socials:
+          $ref: "./common.yaml#/components/schemas/Socials"
         metadata:
           $ref: "./common.yaml#/components/schemas/Metadata"
       required:
@@ -44,10 +49,10 @@ components:
 
     BrandKind:
       type: string
-      description: the brand kind
+      description: the kind of brand
       enum:
-        - INDUSTRIAL
         - BRASS_MODELS
+        - INDUSTRIAL
 
     BrandRequest:
       type: object
@@ -83,7 +88,7 @@ components:
 
     BrandStatus:
       type: string
-      description: the status of a model railway brand
+      description: the status of a brand
       enum:
         - ACTIVE
         - OUT_OF_BUSINESS
@@ -94,34 +99,27 @@ components:
       properties:
         catalog_item_id:
           type: string
+          description: the unique identifier for this catalog item
         brand:
-          type: object
-          title: CatalogBrand
-          properties:
-            id:
-              type: string
-            display:
-              type: string
+          $ref: "#/components/schemas/CatalogItemBrand"
         item_number:
           type: string
+          description: the catalog item number
         scale:
-          type: object
-          title: CatalogScale
-          properties:
-            id:
-              type: string
-            display:
-              type: string
+          $ref: "#/components/schemas/CatalogItemScale"
         category:
           $ref: "#/components/schemas/CatalogItemCategory"
         description:
           type: string
+          description: the catalog item description
         details:
           type: string
+          description: the catalog item details
         power_method:
           $ref: "#/components/schemas/PowerMethod"
         delivery_date:
           type: string
+          description: this catalog item delivery date (either the year or the quarter)
         availability_status:
           $ref: "#/components/schemas/AvailabilityStatus"
         rolling_stocks:
@@ -138,8 +136,21 @@ components:
         count:
           type: integer
           format: int32
+          description: the number of rolling stocks for this catalog item
         metadata:
           $ref: "./common.yaml#/components/schemas/Metadata"
+
+    CatalogItemBrand:
+      type: object
+      description: the catalog item brand
+      properties:
+        brand_id:
+          type: string
+        display:
+          type: string
+      required:
+        - id
+        - display
 
     CatalogItemCategory:
       type: string
@@ -161,26 +172,33 @@ components:
           type: string
           minLength: 3
           maxLength: 50
+          description: the catalog item brand name
         item_number:
           type: string
           minLength: 3
           maxLength: 10
+          description: the catalog item number
         scale:
           type: string
           maxLength: 10
+          description: the catalog item scale
         category:
           $ref: "#/components/schemas/CatalogItemCategory"
         description:
           type: string
           maxLength: 2500
+          description: the catalog item description
         details:
           type: string
           maxLength: 2500
+          description: the catalog item details
         power_method:
           $ref: "#/components/schemas/PowerMethod"
         delivery_date:
           type: string
-          maxLength: 10
+          minLength: 4
+          maxLength: 7
+          description: this catalog item delivery date (either the year or the quarter)
         availability_status:
           $ref: "#/components/schemas/AvailabilityStatus"
         rolling_stocks:
@@ -198,12 +216,25 @@ components:
           type: integer
           format: int32
           minimum: 1
+          description: the number of rolling stocks for this catalog item
       required:
         - brand
         - item_number
         - scale
         - category
         - count
+
+    CatalogItemScale:
+      type: object
+      description: the catalog item scale
+      properties:
+        scale_id:
+          type: string
+        display:
+          type: string
+      required:
+        - id
+        - display
 
     Control:
       type: string
@@ -584,31 +615,37 @@ components:
       properties:
         railway_id:
           type: string
+          description: the unique railway identifier (an URL encoded string)
         name:
           type: string
+          description: the railway name
+        abbreviation:
+          type: string
+          description: the railway abbreviated name
         registered_company_name:
           type: string
+          description: the registered company name
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
         description:
           type: string
+          description: the railway description
         country:
           type: string
+          description: the registration country
         period_of_activity:
           $ref: "#/components/schemas/RailwayPeriodOfActivity"
         gauge:
-          inches:
-            type: number
-            format: float
-            minimum: 0.1
           meters:
             type: number
             format: float
             minimum: 0.1
+            description: the track gauge in meters
           track_gauge:
             $ref: "#/components/schemas/TrackGauge"
         headquarters:
           type: string
+          description: the railway headquarter
         total_length:
           type: object
           properties:
@@ -616,10 +653,12 @@ components:
               type: number
               format: float
               minimum: 0.1
+              description: the total railway network in miles
             kilometers:
               type: number
               format: float
               minimum: 0.1
+              description: the total railway network in kilometers
         contact_info:
           $ref: "./common.yaml#/components/schemas/ContactInfo"
         socials:
@@ -664,10 +703,6 @@ components:
         period_of_activity:
           $ref: "#/components/schemas/RailwayPeriodOfActivity"
         gauge:
-          inches:
-            type: number
-            format: float
-            minimum: 0.1
           meters:
             type: number
             format: float
@@ -711,26 +746,26 @@ components:
         rolling_stock_id:
           type: string
           format: uuid
+          description: the unique identifier for this rolling stock
         railway:
-          type: object
-          title: RollingStockRailway
-          properties:
-            id:
-              type: string
-            display:
-              type: string
+          $ref: "#/components/schemas/RollingStockRailway"
         category:
           $ref: "#/components/schemas/RollingStockCategory"
         epoch:
           type: string
+          description: the epoch for this rolling stock
         livery:
           type: string
+          description: the livery description
         length_over_buffer:
           $ref: "#/components/schemas/LengthOverBuffer"
         technical_specifications:
           $ref: "#/components/schemas/TechnicalSpecifications"
       required:
+        - rolling_stock_id
+        - railway
         - category
+        - epoch
 
     RollingStockCategory:
       type: string
@@ -742,6 +777,15 @@ components:
         - PASSENGER_CARS
         - RAILCARS
 
+    RollingStockRailway:
+      type: object
+      description: the railway company for a rolling stock
+      properties:
+        railway_id:
+          type: string
+        display:
+          type: string
+
     RollingStockRequest:
       type: object
       discriminator:
@@ -750,14 +794,17 @@ components:
         railway:
           type: string
           maxLength: 25
+          description: the railway name for this rolling stock
         category:
           $ref: "#/components/schemas/RollingStockCategory"
         epoch:
           type: string
           maxLength: 10
+          description: the epoch for this rolling stock
         livery:
           type: string
           maxLength: 50
+          description: the livery description
         length_over_buffer:
           $ref: "#/components/schemas/LengthOverBuffer"
         technical_specifications:
@@ -773,22 +820,28 @@ components:
       properties:
         scale_id:
           type: string
+          description: the unique identifier for a scale
         name:
           type: string
+          description: the scale name
         ratio:
           type: number
           format: float
+          description: This scale ratio between the real world and the model (e.g. 1/87 or 1:87)
         gauge:
           millimeters:
             type: number
             format: float
+            description: the distance between the rails in millimeters
           inches:
             type: number
             format: float
+            description: the distance between the rails in inches
           track_gauge:
             $ref: "#/components/schemas/TrackGauge"
         description:
           type: string
+          description: the modelling scale description
         standards:
           type: array
           items:
@@ -800,6 +853,11 @@ components:
               - NMRA
         metadata:
           $ref: "./common.yaml#/components/schemas/Metadata"
+      required:
+        - scale_id
+        - name
+        - ratio
+        - gauge
 
     ScaleRequest:
       type: object
@@ -808,25 +866,30 @@ components:
         name:
           type: string
           maxLength: 10
+          description: the scale name
         ratio:
           type: number
           format: float
           minimum: 1
           maximum: 220
+          description: This scale ratio between the real world and the model (e.g. 1/87 or 1:87)
         gauge:
           millimeters:
             type: number
             format: float
             minimum: 1
+            description: the distance between the rails in millimeters
           inches:
             type: number
             format: float
             minimum: 0.01
+            description: the distance between the rails in inches
           track_gauge:
             $ref: "#/components/schemas/TrackGauge"
         description:
           type: string
           maxLength: 2500
+          description: the modelling scale description
         standards:
           type: array
           items:
@@ -836,6 +899,10 @@ components:
               - JAPANESE
               - NEM
               - NMRA
+      required:
+        - name
+        - ratio
+        - gauge
 
     Socket:
       type: string
@@ -868,6 +935,7 @@ components:
           type: number
           format: float
           minimum: 0.1
+          description: the minimum drivable radius (in millimeters)
         coupling:
           $ref: "#/components/schemas/Coupling"
         flywheel_fitted:

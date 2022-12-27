@@ -6,14 +6,14 @@ use strum_macros::{Display, EnumString};
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 pub enum BrandKind {
-    /// These manufactures produce models using the die casting method
-    Industrial,
-
     /// These manufacturers produce models which are made of brass or similar alloys.
     ///
     /// They are usually more expensive than the industrial series due to the limited
     /// production quantities and the "hand made" nature of the production
     BrassModels,
+
+    /// These manufactures produce models using the die casting method
+    Industrial,
 }
 
 #[cfg(test)]

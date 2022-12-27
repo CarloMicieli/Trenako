@@ -66,23 +66,23 @@ impl Scale {
         self.description.as_ref()
     }
 
-    /// This Scale ratio between the real world and the model
+    /// This scale ratio between the real world and the model
     /// (e.g. 1/87 or 1:87)
     pub fn ratio(&self) -> &Ratio {
         &self.ratio
     }
 
-    /// Returns the scale gauge
+    /// The scale gauge
     pub fn gauge(&self) -> &Gauge {
         &self.gauge
     }
 
-    /// Returns the standards set for this scale
+    /// The standards set for this scale
     pub fn standards(&self) -> &HashSet<Standard> {
         &self.standards
     }
 
-    /// Returns the scale metadata
+    /// The scale metadata
     pub fn metadata(&self) -> &Metadata {
         &self.metadata
     }
