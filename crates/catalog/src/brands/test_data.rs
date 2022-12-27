@@ -1,7 +1,7 @@
 use crate::brands::brand::Brand;
 use crate::brands::brand_id::BrandId;
+use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_status::BrandStatus;
-use crate::brands::brand_type::BrandType;
 use chrono::{DateTime, Utc};
 use common::address::Address;
 use common::contact::{ContactInfo, MailAddress, WebsiteUrl};
@@ -38,7 +38,7 @@ pub fn acme() -> Brand {
         None,
         Some(address),
         Some(contact_info),
-        BrandType::Industrial,
+        BrandKind::Industrial,
         BrandStatus::Active,
         Some(socials),
         Metadata::created_at(now),
@@ -76,7 +76,7 @@ pub fn roco() -> Brand {
         None,
         Some(address),
         Some(contact_info),
-        BrandType::Industrial,
+        BrandKind::Industrial,
         BrandStatus::Active,
         Some(socials),
         Metadata::created_at(now),

@@ -1,6 +1,6 @@
 use crate::brands::brand_id::BrandId;
+use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_status::BrandStatus;
-use crate::brands::brand_type::BrandType;
 use common::address::Address;
 use common::contact::ContactInfo;
 use common::metadata::Metadata;
@@ -19,7 +19,7 @@ pub struct Brand {
     description: Option<String>,
     address: Option<Address>,
     contact_info: Option<ContactInfo>,
-    brand_type: BrandType,
+    kind: BrandKind,
     status: BrandStatus,
     socials: Option<Socials>,
     metadata: Metadata,
@@ -35,7 +35,7 @@ impl Brand {
         description: Option<&str>,
         address: Option<Address>,
         contact_info: Option<ContactInfo>,
-        brand_type: BrandType,
+        kind: BrandKind,
         status: BrandStatus,
         socials: Option<Socials>,
         metadata: Metadata,
@@ -49,7 +49,7 @@ impl Brand {
             description: description.map(String::from),
             address,
             contact_info,
-            brand_type,
+            kind,
             status,
             socials,
             metadata,
@@ -86,9 +86,9 @@ impl Brand {
         self.group_name.as_ref()
     }
 
-    /// Returns this brand type
-    pub fn brand_type(&self) -> BrandType {
-        self.brand_type
+    /// Returns this brand kind
+    pub fn kind(&self) -> BrandKind {
+        self.kind
     }
 
     /// Returns the contact info for this brand
@@ -172,7 +172,7 @@ mod tests {
                 None,
                 Some(address.clone()),
                 Some(contact_info.clone()),
-                BrandType::Industrial,
+                BrandKind::Industrial,
                 BrandStatus::Active,
                 Some(socials.clone()),
                 Metadata::created_at(now),
@@ -192,7 +192,7 @@ mod tests {
             );
             assert_eq!(None, brand.group_name());
             assert_eq!(None, brand.description());
-            assert_eq!(BrandType::Industrial, brand.brand_type());
+            assert_eq!(BrandKind::Industrial, brand.kind());
             assert_eq!(BrandStatus::Active, brand.status());
             assert_eq!(Some(&address), brand.address());
             assert_eq!(Some(&contact_info), brand.contact_info());

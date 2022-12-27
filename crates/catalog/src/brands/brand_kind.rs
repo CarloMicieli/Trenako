@@ -5,7 +5,7 @@ use strum_macros::{Display, EnumString};
 #[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
-pub enum BrandType {
+pub enum BrandKind {
     /// These manufactures produce models using the die casting method
     Industrial,
 
@@ -20,25 +20,25 @@ pub enum BrandType {
 mod tests {
     use super::*;
 
-    mod brand_types {
+    mod brand_kinds {
         use super::*;
         use pretty_assertions::assert_eq;
         use rstest::rstest;
         use strum::ParseError;
 
         #[rstest]
-        #[case("BRASS_MODELS", Ok(BrandType::BrassModels))]
-        #[case("INDUSTRIAL", Ok(BrandType::Industrial))]
+        #[case("BRASS_MODELS", Ok(BrandKind::BrassModels))]
+        #[case("INDUSTRIAL", Ok(BrandKind::Industrial))]
         #[case("invalid", Err(ParseError::VariantNotFound))]
-        fn it_should_parse_brand_types(#[case] input: &str, #[case] expected: Result<BrandType, ParseError>) {
-            let brand_type = input.parse::<BrandType>();
-            assert_eq!(expected, brand_type);
+        fn it_should_parse_brand_kinds(#[case] input: &str, #[case] expected: Result<BrandKind, ParseError>) {
+            let brand_kind = input.parse::<BrandKind>();
+            assert_eq!(expected, brand_kind);
         }
 
         #[rstest]
-        #[case(BrandType::BrassModels, "BRASS_MODELS")]
-        #[case(BrandType::Industrial, "INDUSTRIAL")]
-        fn it_should_display_brand_status(#[case] input: BrandType, #[case] expected: &str) {
+        #[case(BrandKind::BrassModels, "BRASS_MODELS")]
+        #[case(BrandKind::Industrial, "INDUSTRIAL")]
+        fn it_should_display_brand_kinds(#[case] input: BrandKind, #[case] expected: &str) {
             assert_eq!(expected, input.to_string());
         }
     }
