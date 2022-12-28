@@ -1,7 +1,7 @@
 use chrono::{DateTime, Utc};
 
 /// The metadata information for the current resource
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize)]
 pub struct Metadata {
     version: u8,
     created: DateTime<Utc>,
@@ -9,6 +9,7 @@ pub struct Metadata {
 }
 
 impl Metadata {
+    /// Creates a new metadata value
     pub fn new(version: u8, created: DateTime<Utc>, last_modified: Option<DateTime<Utc>>) -> Self {
         Metadata {
             version,
@@ -17,7 +18,7 @@ impl Metadata {
         }
     }
 
-    /// Create metadata for a newly created resource
+    /// Creates metadata for a newly created resource
     pub fn created_at(created: DateTime<Utc>) -> Self {
         Metadata {
             version: 1u8,
@@ -26,7 +27,7 @@ impl Metadata {
         }
     }
 
-    /// Update this metadata after an update
+    /// Updates this metadata after an update
     pub fn updated_at(self, last_modified: DateTime<Utc>) -> Self {
         Metadata {
             version: self.version + 1,
@@ -35,17 +36,17 @@ impl Metadata {
         }
     }
 
-    /// Returns the version
+    /// The resource version
     pub fn version(&self) -> u8 {
         self.version
     }
 
-    /// Returns the creation timestamp
+    /// The resource creation timestamp
     pub fn created(&self) -> &DateTime<Utc> {
         &self.created
     }
 
-    /// Returns the last update timestamp
+    /// The resource last update timestamp
     pub fn last_modified(&self) -> Option<&DateTime<Utc>> {
         self.last_modified.as_ref()
     }

@@ -4,7 +4,7 @@ use std::str::FromStr;
 use url::Url;
 
 /// It represents a mail address
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MailAddress(String);
 
 impl MailAddress {
@@ -28,7 +28,7 @@ impl FromStr for MailAddress {
 }
 
 /// It represents a phone number
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PhoneNumber(String);
 
 impl PhoneNumber {
@@ -52,7 +52,7 @@ impl FromStr for PhoneNumber {
 }
 
 /// It represents a website url
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct WebsiteUrl(Url);
 
 impl WebsiteUrl {
@@ -78,7 +78,7 @@ impl TryFrom<&str> for WebsiteUrl {
     }
 }
 
-#[derive(Debug, Clone, Eq, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize)]
 pub struct ContactInfo {
     email: Option<MailAddress>,
     website_url: Option<WebsiteUrl>,

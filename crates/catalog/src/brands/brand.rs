@@ -9,7 +9,7 @@ use common::socials::Socials;
 use std::{cmp, fmt};
 
 /// A model railways manufacturer.
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Brand {
     brand_id: BrandId,
     name: String,
@@ -56,7 +56,7 @@ impl Brand {
         }
     }
 
-    /// This brand unique identifier
+    /// This brand unique identifier (an url encoded string)
     pub fn brand_id(&self) -> &BrandId {
         &self.brand_id
     }
@@ -76,7 +76,7 @@ impl Brand {
         self.registered_company_name.as_ref()
     }
 
-    /// The organization entity type for this brand
+    /// The organization entity type
     pub fn organization_entity_type(&self) -> Option<OrganizationEntityType> {
         self.organization_entity_type
     }
@@ -86,17 +86,12 @@ impl Brand {
         self.group_name.as_ref()
     }
 
-    /// This brand kind
-    pub fn kind(&self) -> BrandKind {
-        self.kind
-    }
-
-    /// The contact info for this brand
+    /// The contact information (email, phone, website url)
     pub fn contact_info(&self) -> Option<&ContactInfo> {
         self.contact_info.as_ref()
     }
 
-    /// The postal address for this brand
+    /// The postal address
     pub fn address(&self) -> Option<&Address> {
         self.address.as_ref()
     }
@@ -106,12 +101,17 @@ impl Brand {
         self.status
     }
 
-    /// The social profiles for this brand
+    /// This brand kind
+    pub fn kind(&self) -> BrandKind {
+        self.kind
+    }
+
+    /// The social profiles
     pub fn socials(&self) -> Option<&Socials> {
         self.socials.as_ref()
     }
 
-    /// The metadata for this brand
+    /// The metadata
     pub fn metadata(&self) -> &Metadata {
         &self.metadata
     }

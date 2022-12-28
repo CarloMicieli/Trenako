@@ -1,7 +1,7 @@
 use std::fmt;
 use std::fmt::Formatter;
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Socials {
     facebook: Option<Handler>,
     instagram: Option<Handler>,
@@ -11,27 +11,27 @@ pub struct Socials {
 }
 
 impl Socials {
-    /// Returns the facebook handler
+    /// The Facebook handler
     pub fn facebook(&self) -> Option<&Handler> {
         self.facebook.as_ref()
     }
 
-    /// Returns the instagram handler
+    /// The Instagram handler
     pub fn instagram(&self) -> Option<&Handler> {
         self.instagram.as_ref()
     }
 
-    /// Returns the linkedin handler
+    /// The Linkedin handler
     pub fn linkedin(&self) -> Option<&Handler> {
         self.linkedin.as_ref()
     }
 
-    /// Returns the twitter handler
+    /// The Twitter handler
     pub fn twitter(&self) -> Option<&Handler> {
         self.twitter.as_ref()
     }
 
-    /// Returns the youtube handler
+    /// The Youtube handler
     pub fn youtube(&self) -> Option<&Handler> {
         self.youtube.as_ref()
     }
@@ -91,7 +91,7 @@ impl SocialsBuilder {
 /// A social network handler.
 ///
 /// The value must be URL encoded.
-#[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd)]
+#[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Serialize, Deserialize)]
 pub struct Handler(String);
 
 impl Handler {

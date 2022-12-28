@@ -2,7 +2,7 @@ use strum_macros;
 use strum_macros::{Display, EnumString};
 
 /// The current status for a model railway company
-#[derive(Debug, Copy, Clone, Eq, PartialEq, EnumString, Display)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Serialize, Deserialize, EnumString, Display)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 pub enum BrandStatus {

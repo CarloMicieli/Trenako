@@ -1,7 +1,7 @@
 use isocountry::CountryCode;
 
 /// A physical street address
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Address {
     street_address: String,
     extended_address: Option<String>,

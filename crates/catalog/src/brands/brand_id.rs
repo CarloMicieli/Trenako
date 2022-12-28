@@ -6,7 +6,7 @@ use std::str;
 use std::str::FromStr;
 
 /// It represents the unique identifier for a brand.
-#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone)]
+#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone, Serialize, Deserialize)]
 pub struct BrandId(Slug);
 
 impl BrandId {
