@@ -1,12 +1,15 @@
 use itertools::Itertools;
+use serde::de::{Unexpected, Visitor};
+use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
 use std::fmt;
 use std::fmt::Formatter;
 use std::str;
+use std::str::FromStr;
 
 /// It represents the service level for a passenger cars, like first or second class.
 /// Values of service level can also include multiple service levels, like mixed first
 /// and second class.
-#[derive(Debug, PartialEq, Eq, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum ServiceLevel {
     FirstClass,
     SecondClass,
@@ -20,6 +23,45 @@ impl ServiceLevel {
     const FIRST_CLASS: &'static str = "1cl";
     const SECOND_CLASS: &'static str = "2cl";
     const THIRD_CLASS: &'static str = "3cl";
+}
+
+impl Serialize for ServiceLevel {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        serializer.serialize_str(&self.to_string())
+    }
+}
+
+struct ServiceLevelVisitor;
+
+impl<'de> Visitor<'de> for ServiceLevelVisitor {
+    type Value = ServiceLevel;
+
+    fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+        write!(formatter, "the input is not a valid service level")
+    }
+
+    fn visit_str<E>(self, s: &str) -> Result<Self::Value, E>
+    where
+        E: de::Error,
+    {
+        if let Ok(dd) = ServiceLevel::from_str(s) {
+            Ok(dd)
+        } else {
+            Err(de::Error::invalid_value(Unexpected::Str(s), &self))
+        }
+    }
+}
+
+impl<'de> Deserialize<'de> for ServiceLevel {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        deserializer.deserialize_str(ServiceLevelVisitor)
+    }
 }
 
 impl fmt::Display for ServiceLevel {
@@ -108,6 +150,7 @@ mod tests {
     mod service_levels {
         use super::*;
         use pretty_assertions::assert_eq;
+        use rstest::rstest;
 
         #[test]
         fn it_should_convert_string_slices_to_service_levels() {
@@ -142,6 +185,37 @@ mod tests {
         fn it_should_display_service_level_values() {
             assert_eq!("1cl", format!("{}", ServiceLevel::FirstClass));
             assert_eq!("1cl/2cl", format!("{}", ServiceLevel::FirstAndSecondClass));
+        }
+
+        #[rstest]
+        #[case(ServiceLevel::FirstClass, r#""1cl""#)]
+        #[case(ServiceLevel::SecondClass, r#""2cl""#)]
+        #[case(ServiceLevel::FirstAndSecondClass, r#""1cl/2cl""#)]
+        #[case(ServiceLevel::FirstSecondAndThirdClass, r#""1cl/2cl/3cl""#)]
+        #[case(ServiceLevel::SecondAndThirdClass, r#""2cl/3cl""#)]
+        fn it_should_serialize_service_levels(#[case] input: ServiceLevel, #[case] expected: &str) {
+            let result = serde_json::to_string(&input).unwrap();
+            assert_eq!(expected, result);
+        }
+
+        #[rstest]
+        #[case(ServiceLevel::FirstClass)]
+        #[case(ServiceLevel::SecondClass)]
+        #[case(ServiceLevel::FirstAndSecondClass)]
+        #[case(ServiceLevel::FirstSecondAndThirdClass)]
+        #[case(ServiceLevel::SecondAndThirdClass)]
+        fn it_should_serialize_and_deserialize_delivery_dates(#[case] input: ServiceLevel) {
+            let test_struct = TestStruct { input };
+
+            let json = serde_json::json!(test_struct);
+
+            let result: serde_json::Result<TestStruct> = serde_json::from_str(&json.to_string());
+            assert_eq!(test_struct, result.unwrap());
+        }
+
+        #[derive(Debug, Deserialize, Serialize, PartialEq, Eq)]
+        pub struct TestStruct {
+            pub input: ServiceLevel,
         }
     }
 }
