@@ -6,7 +6,7 @@ use std::fmt::{Display, Formatter};
 
 /// It represents the {@code Ratio} between a model railway size
 /// and the size of an actual train.
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize)]
 pub struct Ratio(Decimal);
 
 impl TryFrom<Decimal> for Ratio {

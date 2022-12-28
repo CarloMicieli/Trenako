@@ -17,7 +17,7 @@ use std::{cmp, fmt};
 /// (e.g. HO, OO, N, O, G, TT and Z.) The majority of commercial model railway equipment manufacturers
 /// base their offerings on Normen Europäischer Modellbahnen (NEM) or
 /// National Model Railroad Association (NMRA) standards in most popular scales.
-#[derive(Debug)]
+#[derive(Debug, Deserialize, Serialize)]
 pub struct Scale {
     scale_id: ScaleId,
     name: String,

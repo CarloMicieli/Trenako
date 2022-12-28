@@ -3,7 +3,7 @@ use common::measure_units::MeasureUnit;
 use rust_decimal::Decimal;
 use std::cmp::Ordering;
 
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize)]
 pub struct Gauge {
     track_gauge: TrackGauge,
     millimeters: Decimal,
