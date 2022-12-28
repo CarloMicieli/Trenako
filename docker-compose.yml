@@ -19,6 +19,20 @@ services:
       timeout: 5s
       retries: 5
 
+  db_migrations:
+    container_name: db_migrations
+    image: ghr.io/carlomicieli/trenako-migrations:latest
+    build:
+      context: .
+      dockerfile: docker/migrations.dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://postgres:mysecretpassword@db:5432/trenakodb
+    networks:
+      - backend
+
   db_admin:
     container_name: db_admin
     image: dpage/pgadmin4:latest
@@ -44,6 +58,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      db_migrations:
+        condition: service_completed_successfully
     environment:
       SERVER_HOST: 0.0.0.0
       SERVER_PORT: 5000
