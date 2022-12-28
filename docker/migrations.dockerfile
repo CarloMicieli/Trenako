@@ -4,16 +4,23 @@ COPY ./migrations ./migrations
 
 RUN cargo install sqlx-cli --no-default-features --features native-tls,postgres
 
-FROM debian:buster-slim as runtime
-FROM gcc
+FROM debian:bullseye as runtime
+
+LABEL maintainer="Carlo Micieli <mail@trenako.com>"
+LABEL description="The trenako database migrations"
+
 ARG APP=/usr/src/app
+ARG USERNAME=migrations
+ARG USER_UID=1001
+ARG USER_GID=$USER_UID
+
+RUN groupadd --gid ${USER_GID} ${USERNAME} \
+    && useradd --uid ${USER_UID} --gid ${USER_GID} -m ${USERNAME}
 
 COPY --from=builder /usr/local/cargo/bin/sqlx ${APP}/sqlx
 COPY --from=builder /app/migrations ${APP}/migrations
 
-RUN apt-get update && apt-get -y install libssl-dev
+USER ${USERNAME}
 
 WORKDIR ${APP}
-RUN ./sqlx -V
-
 CMD ["./sqlx", "migrate", "run"]

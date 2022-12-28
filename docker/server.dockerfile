@@ -5,24 +5,37 @@ WORKDIR /app
 # To ensure a reproducible build consider pinning 
 # the cargo-chef version with `--version X.X.X`
 RUN cargo install cargo-chef 
-COPY . .
+
+COPY Cargo.toml .
+COPY Cargo.lock .
+COPY crates/ ./crates/
+
 RUN cargo chef prepare  --recipe-path recipe.json
 
 FROM rust:1.66 as cacher
 WORKDIR /app
+
 RUN cargo install cargo-chef
 COPY --from=planner /app/recipe.json recipe.json
 RUN cargo chef cook --release --recipe-path recipe.json
 
 FROM rust:1.66 as builder
 WORKDIR /app
-COPY . .
+
+COPY Cargo.toml .
+COPY Cargo.lock .
+COPY crates/ ./crates/
+COPY config/ ./config/
+
 # Copy over the cached dependencies
 COPY --from=cacher /app/target target
 COPY --from=cacher /usr/local/cargo /usr/local/cargo
 RUN cargo build --release --bin trenako-server
 
 FROM debian:buster-slim as runtime
+LABEL maintainer="Carlo Micieli <mail@trenako.com>"
+LABEL description="The trenako backend component"
+
 ARG APP=/usr/src/app
 
 HEALTHCHECK --interval=5m --timeout=3s \

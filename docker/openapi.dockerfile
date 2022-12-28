@@ -12,4 +12,9 @@ RUN npm install redoc-cli -g
 RUN redoc-cli build api-schema.yaml --options.theme.colors.primary.main=blue
 
 FROM nginx:alpine as runtime
+LABEL maintainer="Carlo Micieli <mail@trenako.com>"
+LABEL description="The trenako openapi documentation"
+
 COPY --from=builder /docs/redoc-static.html /usr/share/nginx/html/index.html
+
+USER node
