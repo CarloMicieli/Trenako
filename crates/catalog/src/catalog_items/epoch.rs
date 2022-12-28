@@ -1,13 +1,16 @@
 use itertools::Itertools;
+use serde::de::{Unexpected, Visitor};
+use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
 use std::fmt;
 use std::fmt::Formatter;
 use std::str;
+use std::str::FromStr;
 use thiserror::Error;
 
 /// The model railway industry adopted an 'Era', or 'Epoch' system; the idea being to group models
 /// into a defined time bracket, so that locomotives, coaching and wagon stock could be reasonably
 /// grouped together.
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
 #[allow(non_snake_case)]
 pub enum Epoch {
     I,
@@ -94,6 +97,45 @@ impl fmt::Display for Epoch {
     }
 }
 
+impl Serialize for Epoch {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        serializer.serialize_str(&self.to_string())
+    }
+}
+
+struct EpochVisitor;
+
+impl<'de> Visitor<'de> for EpochVisitor {
+    type Value = Epoch;
+
+    fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+        write!(formatter, "the input is not a valid epoch")
+    }
+
+    fn visit_str<E>(self, s: &str) -> Result<Self::Value, E>
+    where
+        E: de::Error,
+    {
+        if let Ok(dd) = Epoch::from_str(s) {
+            Ok(dd)
+        } else {
+            Err(de::Error::invalid_value(Unexpected::Str(s), &self))
+        }
+    }
+}
+
+impl<'de> Deserialize<'de> for Epoch {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        deserializer.deserialize_str(EpochVisitor)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -101,6 +143,7 @@ mod tests {
     mod epochs {
         use super::*;
         use pretty_assertions::assert_eq;
+        use rstest::rstest;
 
         #[test]
         fn it_should_convert_string_slices_to_epochs() {
@@ -133,6 +176,58 @@ mod tests {
 
             assert_eq!("I/II", epoch_I_II.to_string());
             assert_eq!("IVa", epoch_IVa.to_string());
+        }
+
+        #[rstest]
+        #[case(Epoch::I, r#""I""#)]
+        #[case(Epoch::II, r#""II""#)]
+        #[case(Epoch::IIa, r#""IIa""#)]
+        #[case(Epoch::IIb, r#""IIb""#)]
+        #[case(Epoch::III, r#""III""#)]
+        #[case(Epoch::IIIa, r#""IIIa""#)]
+        #[case(Epoch::IIIb, r#""IIIb""#)]
+        #[case(Epoch::IV, r#""IV""#)]
+        #[case(Epoch::IVa, r#""IVa""#)]
+        #[case(Epoch::IVb, r#""IVb""#)]
+        #[case(Epoch::V, r#""V""#)]
+        #[case(Epoch::Va, r#""Va""#)]
+        #[case(Epoch::Vb, r#""Vb""#)]
+        #[case(Epoch::Vm, r#""Vm""#)]
+        #[case(Epoch::VI, r#""VI""#)]
+        #[case(Epoch::Multiple(Box::new(Epoch::IV), Box::new(Epoch::V)), r#""IV/V""#)]
+        fn it_should_serialize_epochs(#[case] input: Epoch, #[case] expected: &str) {
+            let result = serde_json::to_string(&input).unwrap();
+            assert_eq!(expected, result);
+        }
+
+        #[rstest]
+        #[case(Epoch::I)]
+        #[case(Epoch::II)]
+        #[case(Epoch::IIa)]
+        #[case(Epoch::IIb)]
+        #[case(Epoch::III)]
+        #[case(Epoch::IIIa)]
+        #[case(Epoch::IIIb)]
+        #[case(Epoch::IV)]
+        #[case(Epoch::IVa)]
+        #[case(Epoch::IVb)]
+        #[case(Epoch::V)]
+        #[case(Epoch::Va)]
+        #[case(Epoch::Vb)]
+        #[case(Epoch::Vm)]
+        #[case(Epoch::VI)]
+        fn it_should_deserialize_delivery_epochs(#[case] input: Epoch) {
+            let test_struct = TestStruct { input };
+
+            let json = serde_json::json!(test_struct);
+
+            let result: serde_json::Result<TestStruct> = serde_json::from_str(&json.to_string());
+            assert_eq!(test_struct, result.unwrap());
+        }
+
+        #[derive(Debug, Deserialize, Serialize, PartialEq, Eq)]
+        pub struct TestStruct {
+            pub input: Epoch,
         }
     }
 }
