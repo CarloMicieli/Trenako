@@ -440,6 +440,7 @@ dependencies = [
  "rust_decimal_macros",
  "serde",
  "serde_derive",
+ "serde_json",
  "strum",
  "strum_macros",
  "thiserror",

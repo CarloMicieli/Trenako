@@ -2,7 +2,7 @@ use strum_macros;
 use strum_macros::{Display, EnumString};
 
 /// The power methods for the model.
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, Serialize, Deserialize, EnumString, Display)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 pub enum PowerMethod {

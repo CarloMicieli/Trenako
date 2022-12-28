@@ -7,7 +7,7 @@ use std::ops::Deref;
 use std::str::FromStr;
 
 /// A unique identifier for a catalog item
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
 pub struct CatalogItemId(Slug);
 
 impl CatalogItemId {

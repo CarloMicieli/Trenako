@@ -4,7 +4,7 @@ use std::str::FromStr;
 use std::{convert, fmt};
 
 /// It represent a catalog item number.
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
 pub struct ItemNumber(String);
 
 impl ItemNumber {

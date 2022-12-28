@@ -15,7 +15,7 @@ use std::{cmp, convert, fmt};
 /// A catalog item, it can contain one or more rolling stock.
 ///
 /// A catalog item is identified by its catalog item number.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct CatalogItem {
     catalog_item_id: CatalogItemId,
     brand: CatalogItemBrand,
@@ -150,7 +150,7 @@ impl CatalogItem {
 }
 
 /// The model railways manufacturer for a catalog item
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
 pub struct CatalogItemBrand {
     brand_id: BrandId,
     display: String,
@@ -192,7 +192,7 @@ impl convert::From<Brand> for CatalogItemBrand {
 }
 
 /// The modelling scale for a catalog item
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
 pub struct CatalogItemScale {
     scale_id: ScaleId,
     display: String,

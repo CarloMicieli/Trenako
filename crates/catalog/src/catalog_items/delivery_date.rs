@@ -1,6 +1,9 @@
+use serde::de::{Unexpected, Visitor};
+use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
 use std::fmt;
 use std::fmt::Formatter;
 use std::str;
+use std::str::FromStr;
 use thiserror::Error;
 
 pub type Quarter = u8;
@@ -98,6 +101,45 @@ impl fmt::Display for DeliveryDate {
     }
 }
 
+impl Serialize for DeliveryDate {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        serializer.serialize_str(&self.to_string())
+    }
+}
+
+struct DeliveryDateVisitor;
+
+impl<'de> Visitor<'de> for DeliveryDateVisitor {
+    type Value = DeliveryDate;
+
+    fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+        write!(formatter, "the input is not a valid delivery date")
+    }
+
+    fn visit_str<E>(self, s: &str) -> Result<Self::Value, E>
+    where
+        E: de::Error,
+    {
+        if let Ok(dd) = DeliveryDate::from_str(s) {
+            Ok(dd)
+        } else {
+            Err(de::Error::invalid_value(Unexpected::Str(s), &self))
+        }
+    }
+}
+
+impl<'de> Deserialize<'de> for DeliveryDate {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de>,
+    {
+        deserializer.deserialize_str(DeliveryDateVisitor)
+    }
+}
+
 #[derive(Debug, Error)]
 pub enum DeliveryDateParseError {
     #[error("Delivery date cannot be empty")]
@@ -117,6 +159,7 @@ mod tests {
     mod delivery_dates {
         use super::*;
         use pretty_assertions::assert_eq;
+        use rstest::rstest;
 
         #[test]
         fn it_should_parse_string_as_delivery_dates() {
@@ -143,6 +186,34 @@ mod tests {
 
             assert_eq!("2020/Q1", dd1.to_string());
             assert_eq!("2020", dd2.to_string());
+        }
+
+        #[rstest]
+        #[case("2020/Q1", r#""2020/Q1""#)]
+        #[case("2020", r#""2020""#)]
+        fn it_should_serialize_delivery_dates(#[case] input: &str, #[case] expected: &str) {
+            let dd1 = input.parse::<DeliveryDate>().unwrap();
+            let result = serde_json::to_string(&dd1).unwrap();
+            assert_eq!(expected, result);
+        }
+
+        #[test]
+        fn it_should_deserialize_delivery_dates() {
+            let test_struct = TestStruct {
+                just_year: DeliveryDate::ByYear(2022),
+                with_quarter: DeliveryDate::ByQuarter(2022, 3),
+            };
+
+            let json = serde_json::json!(test_struct);
+
+            let result: serde_json::Result<TestStruct> = serde_json::from_str(&json.to_string());
+            assert_eq!(test_struct, result.unwrap());
+        }
+
+        #[derive(Debug, Deserialize, Serialize, PartialEq, Eq)]
+        pub struct TestStruct {
+            pub just_year: DeliveryDate,
+            pub with_quarter: DeliveryDate,
         }
     }
 }

@@ -5,7 +5,7 @@ use std::str;
 use std::str::FromStr;
 
 /// It represents a unique scale id
-#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone)]
+#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone, Serialize, Deserialize)]
 pub struct ScaleId(Slug);
 
 impl ScaleId {
