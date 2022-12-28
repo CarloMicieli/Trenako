@@ -3,7 +3,7 @@ use strum_macros;
 use strum_macros::{Display, EnumString};
 
 /// It represents the period of activity for a railway company
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PeriodOfActivity {
     operating_since: Date,
     operating_until: Option<Date>,
@@ -11,6 +11,7 @@ pub struct PeriodOfActivity {
 }
 
 impl PeriodOfActivity {
+    /// Creates a new railway period of activity
     pub fn new(operating_since: Date, operating_until: Option<Date>, status: RailwayStatus) -> Self {
         PeriodOfActivity {
             operating_since,
@@ -19,6 +20,7 @@ impl PeriodOfActivity {
         }
     }
 
+    /// Creates a new active railway
     pub fn active_railway(operating_since: Date) -> Self {
         PeriodOfActivity {
             operating_since,
@@ -27,6 +29,7 @@ impl PeriodOfActivity {
         }
     }
 
+    /// Creates a new inactive railway
     pub fn inactive_railway(operating_since: Date, operating_until: Date) -> Self {
         PeriodOfActivity {
             operating_since,
@@ -35,20 +38,23 @@ impl PeriodOfActivity {
         }
     }
 
+    /// The moment since this railway has been active
     pub fn operating_since(&self) -> &Date {
         &self.operating_since
     }
 
+    /// The moment when the railway stopped to be active (if any)
     pub fn operating_until(&self) -> Option<&Date> {
         self.operating_until.as_ref()
     }
 
+    /// The railway status
     pub fn status(&self) -> RailwayStatus {
         self.status
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Date {
     Year(u32),
     ExactDay(NaiveDate),
@@ -64,7 +70,7 @@ impl Date {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Copy, Clone, EnumString, Display)]
+#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 pub enum RailwayStatus {

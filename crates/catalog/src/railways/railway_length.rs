@@ -3,7 +3,7 @@ use rust_decimal::Decimal;
 use std::fmt::{Display, Formatter};
 
 /// The overall length of tracks (in km and miles) operated by a railway company
-#[derive(Debug, Eq, PartialEq, Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Clone, Copy, Serialize, Deserialize)]
 pub struct RailwayLength {
     kilometers: Decimal,
     miles: Decimal,

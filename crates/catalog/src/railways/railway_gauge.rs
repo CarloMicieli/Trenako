@@ -3,7 +3,7 @@ use common::length::Length;
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;
 
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RailwayGauge {
     meters: Length,
     track_gauge: TrackGauge,
