@@ -1,4 +1,5 @@
 use crate::brands::brand_id::BrandId;
+use crate::catalog_items::availability_status::AvailabilityStatus;
 use crate::catalog_items::catalog_item::{CatalogItem, CatalogItemBrand, CatalogItemScale};
 use crate::catalog_items::catalog_item_id::CatalogItemId;
 use crate::catalog_items::category::{Category, LocomotiveType};
@@ -73,6 +74,7 @@ pub fn ACME_60142() -> CatalogItem {
         rolling_stocks,
         PowerMethod::DC,
         Some(DeliveryDate::ByYear(2013)),
+        Some(AvailabilityStatus::Available),
         1,
         metadata(),
     )
@@ -113,6 +115,7 @@ pub fn Piko_52848() -> CatalogItem {
         rolling_stocks,
         PowerMethod::DC,
         Some(DeliveryDate::ByYear(2020)),
+        Some(AvailabilityStatus::Available),
         1,
         metadata(),
     )

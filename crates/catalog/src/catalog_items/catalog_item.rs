@@ -1,5 +1,6 @@
 use crate::brands::brand::Brand;
 use crate::brands::brand_id::BrandId;
+use crate::catalog_items::availability_status::AvailabilityStatus;
 use crate::catalog_items::catalog_item_id::CatalogItemId;
 use crate::catalog_items::category::Category;
 use crate::catalog_items::delivery_date::DeliveryDate;
@@ -27,6 +28,7 @@ pub struct CatalogItem {
     power_method: PowerMethod,
     rolling_stocks: Vec<RollingStock>,
     delivery_date: Option<DeliveryDate>,
+    availability_status: Option<AvailabilityStatus>,
     count: u8,
     metadata: Metadata,
 }
@@ -69,6 +71,7 @@ impl CatalogItem {
         rolling_stocks: Vec<RollingStock>,
         power_method: PowerMethod,
         delivery_date: Option<DeliveryDate>,
+        availability_status: Option<AvailabilityStatus>,
         count: u8,
         metadata: Metadata,
     ) -> Self {
@@ -83,6 +86,7 @@ impl CatalogItem {
             power_method,
             rolling_stocks,
             delivery_date,
+            availability_status,
             count,
             metadata,
         }
@@ -141,6 +145,11 @@ impl CatalogItem {
     /// The delivery date for this catalog item
     pub fn delivery_date(&self) -> Option<&DeliveryDate> {
         self.delivery_date.as_ref()
+    }
+
+    /// The availability status for this catalog item
+    pub fn availability_status(&self) -> Option<&AvailabilityStatus> {
+        self.availability_status.as_ref()
     }
 
     /// The metadata for this catalog item
@@ -314,6 +323,7 @@ mod tests {
                 Vec::new(),
                 PowerMethod::DC,
                 Some(DeliveryDate::ByYear(2000)),
+                Some(AvailabilityStatus::Available),
                 1,
                 Metadata::created_at(now),
             );
@@ -327,6 +337,7 @@ mod tests {
             assert_eq!(PowerMethod::DC, catalog_item.power_method());
             assert_eq!(&half_zero, catalog_item.scale());
             assert_eq!(Some(&DeliveryDate::ByYear(2000)), catalog_item.delivery_date());
+            assert_eq!(Some(&AvailabilityStatus::Available), catalog_item.availability_status());
             assert_eq!(1, catalog_item.count());
             assert_eq!(&Metadata::created_at(now), catalog_item.metadata());
         }

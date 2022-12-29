@@ -647,18 +647,7 @@ components:
           type: string
           description: the railway headquarter
         total_length:
-          type: object
-          properties:
-            miles:
-              type: number
-              format: float
-              minimum: 0.1
-              description: the total railway network in miles
-            kilometers:
-              type: number
-              format: float
-              minimum: 0.1
-              description: the total railway network in kilometers
+          $ref: "#/components/schemas/RailwayTotalLength"
         contact_info:
           $ref: "./common.yaml#/components/schemas/ContactInfo"
         socials:
@@ -713,16 +702,7 @@ components:
           type: string
           maxLength: 250
         total_length:
-          type: object
-          properties:
-            miles:
-              type: number
-              format: float
-              minimum: 0.1
-            kilometers:
-              type: number
-              format: float
-              minimum: 0.1
+          $ref: "#/components/schemas/RailwayTotalLength"
         contact_info:
           $ref: "./common.yaml#/components/schemas/ContactInfo"
         socials:
@@ -737,6 +717,21 @@ components:
       enum:
         - ACTIVE
         - INACTIVE
+
+    RailwayTotalLength:
+      type: object
+      description: the total length of a railway network
+      properties:
+        miles:
+          type: number
+          format: float
+          minimum: 0.1
+          description: the total railway network in miles
+        kilometers:
+          type: number
+          format: float
+          minimum: 0.1
+          description: the total railway network in kilometers
 
     RollingStock:
       type: object
@@ -829,16 +824,7 @@ components:
           format: float
           description: This scale ratio between the real world and the model (e.g. 1/87 or 1:87)
         gauge:
-          millimeters:
-            type: number
-            format: float
-            description: the distance between the rails in millimeters
-          inches:
-            type: number
-            format: float
-            description: the distance between the rails in inches
-          track_gauge:
-            $ref: "#/components/schemas/TrackGauge"
+          $ref: "#/components/schemas/ScaleGauge"
         description:
           type: string
           description: the modelling scale description
@@ -859,6 +845,20 @@ components:
         - ratio
         - gauge
 
+    ScaleGauge:
+      millimeters:
+        type: number
+        format: float
+        minimum: 1
+        description: the distance between the rails in millimeters
+      inches:
+        type: number
+        format: float
+        minimum: 0.01
+        description: the distance between the rails in inches
+      track_gauge:
+        $ref: "#/components/schemas/TrackGauge"
+
     ScaleRequest:
       type: object
       description: a request to create/update rail transport modelling scales
@@ -874,18 +874,7 @@ components:
           maximum: 220
           description: This scale ratio between the real world and the model (e.g. 1/87 or 1:87)
         gauge:
-          millimeters:
-            type: number
-            format: float
-            minimum: 1
-            description: the distance between the rails in millimeters
-          inches:
-            type: number
-            format: float
-            minimum: 0.01
-            description: the distance between the rails in inches
-          track_gauge:
-            $ref: "#/components/schemas/TrackGauge"
+          $ref: "#/components/schemas/ScaleGauge"
         description:
           type: string
           maxLength: 2500
