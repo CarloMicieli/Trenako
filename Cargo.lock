@@ -2721,6 +2721,7 @@ name = "web"
 version = "0.1.0"
 dependencies = [
  "actix-web",
+ "catalog",
  "config",
  "pretty_assertions",
  "reqwest",

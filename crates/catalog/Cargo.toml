@@ -7,8 +7,9 @@ license.workspace = true
 rust-version.workspace = true
 
 [dependencies]
-chrono = { workspace = true }
 common = { path = "../common" }
+
+chrono = { workspace = true }
 isocountry = { workspace = true }
 itertools = { workspace = true }
 rust_decimal = { workspace = true }

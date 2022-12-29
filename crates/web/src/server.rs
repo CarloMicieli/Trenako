@@ -1,4 +1,4 @@
-use crate::handlers::catalog;
+use crate::catalog;
 use actix_web::dev::Server;
 use actix_web::middleware::Compress;
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
@@ -12,7 +12,7 @@ pub fn run(listener: TcpListener, db_pool: PgPool, workers: usize) -> Result<Ser
         App::new()
             .wrap(Compress::default())
             .route("/health_check", web::get().to(health_check))
-            .configure(catalog::config_services)
+            .configure(catalog::routes::config_services)
             .app_data(web::JsonConfig::default().limit(4096))
             .app_data(db_pool.clone())
         })
