@@ -22,6 +22,7 @@ clap = "4.0.26"
 config = { version = "0.13.3", default-features = false, features = ["yaml"] }
 isocountry = "0.3.2"
 itertools = "0.10.5"
+log = "0.4"
 pretty_assertions = "1.3.0"
 rstest = "0.16.0"
 rust_decimal = "1.27.0"
@@ -35,6 +36,11 @@ slug = "0.1.4"
 strum = "0.24"
 strum_macros = "0.24"
 thiserror = "1.0"
+tracing = "0.1.37"
+tracing-actix-web = "0.7"
+tracing-bunyan-formatter = "0.3"
+tracing-log = "0.1.1"
+tracing-subscriber = { version = "0.3", features = ["registry", "env-filter"] }
 url = { version = "2.3.1", features = ["serde"] }
 uuid = { version = "1.2.1", features = ["serde", "v4"] }
 

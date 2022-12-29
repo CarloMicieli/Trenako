@@ -4,12 +4,14 @@ use actix_web::middleware::Compress;
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
 use sqlx::PgPool;
 use std::net::TcpListener;
+use tracing_actix_web::TracingLogger;
 
 /// Run the web server
 pub fn run(listener: TcpListener, db_pool: PgPool, workers: usize) -> Result<Server, std::io::Error> {
     #[rustfmt::skip]
     let server = HttpServer::new(move || {
         App::new()
+            .wrap(TracingLogger::default())
             .wrap(Compress::default())
             .route("/health_check", web::get().to(health_check))
             .configure(catalog::routes::config_services)
