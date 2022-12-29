@@ -11,7 +11,7 @@ use crate::railways::railway_id::RailwayId;
 use std::fmt;
 use std::fmt::{Display, Formatter};
 
-#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize)]
 #[serde(tag = "category")]
 pub enum RollingStock {
     ElectricMultipleUnit {

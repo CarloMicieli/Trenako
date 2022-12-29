@@ -9,7 +9,7 @@ use common::socials::Socials;
 use std::{cmp, fmt};
 
 /// A model railways manufacturer.
-#[derive(Debug, Serialize)]
+#[derive(Debug, Clone, Serialize)]
 pub struct Brand {
     brand_id: BrandId,
     name: String,
@@ -26,6 +26,7 @@ pub struct Brand {
 }
 
 impl Brand {
+    /// Creates a new modelling rail manufacturer
     pub fn new(
         brand_id: BrandId,
         name: &str,

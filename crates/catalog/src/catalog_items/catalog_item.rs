@@ -15,7 +15,7 @@ use std::{cmp, convert, fmt};
 /// A catalog item, it can contain one or more rolling stock.
 ///
 /// A catalog item is identified by its catalog item number.
-#[derive(Debug, Clone, Deserialize, Serialize)]
+#[derive(Debug, Clone, Serialize)]
 pub struct CatalogItem {
     catalog_item_id: CatalogItemId,
     brand: CatalogItemBrand,
