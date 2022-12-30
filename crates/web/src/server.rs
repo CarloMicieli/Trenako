@@ -8,6 +8,8 @@ use tracing_actix_web::TracingLogger;
 
 /// Run the web server
 pub fn run(listener: TcpListener, db_pool: PgPool, workers: usize) -> Result<Server, std::io::Error> {
+    let db_pool = web::Data::new(db_pool);
+
     #[rustfmt::skip]
     let server = HttpServer::new(move || {
         App::new()
