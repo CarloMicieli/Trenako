@@ -38,9 +38,20 @@ To run the `postgres` database:
   docker run -it --rm --name trenako-db-dev \
     -e POSTGRES_PASSWORD=mysecretpassword \
     -e POSTGRES_DB=trenakodb \
-    -d -p 5432:5432 \
-    -v trenako_db_data:/var/lib/postgresql/data \
+    -p 5432:5432 \
     postgres:14.5-alpine
+```
+
+to execute the database migrations:
+
+```bash
+  sqlx migrate run
+```
+
+to prepare for the offline mode:
+
+```bash
+  cargo sqlx prepare --merged
 ```
 
 ### Start the server

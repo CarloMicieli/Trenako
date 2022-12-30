@@ -117,8 +117,8 @@ CREATE TABLE public.brands
     socials_linkedin         varchar(100),
     socials_twitter          varchar(100),
     socials_youtube          varchar(100),
-    created_at               timestamp without time zone NOT NULL,
-    last_modified_at         timestamp without time zone,
+    created_at               timestamptz NOT NULL,
+    last_modified_at         timestamptz,
     version                  integer     NOT NULL DEFAULT 1,
     CONSTRAINT "PK_brands" PRIMARY KEY (brand_id)
 );
@@ -136,8 +136,8 @@ CREATE TABLE public.railways
     organization_entity_type organization_entity_type,
     description              varchar(1000),
     country                  varchar(2)  NOT NULL,
-    operating_since          timestamp without time zone,
-    operating_until          timestamp without time zone,
+    operating_since          timestamptz,
+    operating_until          timestamptz,
     status                   railway_status,
     gauge_m                  numeric(19, 5),
     gauge_in                 numeric(19, 5),
@@ -153,8 +153,8 @@ CREATE TABLE public.railways
     socials_linkedin         varchar(100),
     socials_twitter          varchar(100),
     socials_youtube          varchar(100),
-    created_at               timestamp without time zone NOT NULL,
-    last_modified_at         timestamp without time zone,
+    created_at               timestamptz NOT NULL,
+    last_modified_at         timestamptz,
     version                  integer     NOT NULL DEFAULT 1,
     CONSTRAINT "PK_railways" PRIMARY KEY (railway_id)
 );
@@ -173,8 +173,8 @@ CREATE TABLE public.scales
     track_gauge       gauge          NOT NULL,
     description       varchar(2500),
     standards         varchar(100),
-    created_at        timestamp without time zone NOT NULL,
-    last_modified_at  timestamp without time zone,
+    created_at        timestamptz NOT NULL,
+    last_modified_at  timestamptz,
     version           integer        NOT NULL DEFAULT 1,
     CONSTRAINT "PK_scales" PRIMARY KEY (scale_id)
 );
@@ -196,8 +196,8 @@ CREATE TABLE public.catalog_items
     delivery_date       varchar(10),
     availability_status availability_status,
     count               integer,
-    created_at          timestamp without time zone NOT NULL,
-    last_modified_at    timestamp without time zone,
+    created_at          timestamptz NOT NULL,
+    last_modified_at    timestamptz,
     version             integer           NOT NULL DEFAULT 1,
     CONSTRAINT "PK_catalog_items" PRIMARY KEY (catalog_item_id),
     CONSTRAINT "FK_catalog_items_brands" FOREIGN KEY (brand_id)
