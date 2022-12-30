@@ -16,5 +16,3 @@ LABEL maintainer="Carlo Micieli <mail@trenako.com>"
 LABEL description="The trenako openapi documentation"
 
 COPY --from=builder /docs/redoc-static.html /usr/share/nginx/html/index.html
-
-USER node

@@ -39,7 +39,7 @@ To run the `postgres` database:
     -e POSTGRES_PASSWORD=mysecretpassword \
     -e POSTGRES_DB=trenakodb \
     -p 5432:5432 \
-    postgres:14.5-alpine
+    postgres:15.1-alpine
 ```
 
 to execute the database migrations:
