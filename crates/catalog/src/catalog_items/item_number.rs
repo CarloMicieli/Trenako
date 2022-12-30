@@ -1,10 +1,12 @@
 use common::slug::Slug;
+use sqlx::Type;
 use std::fmt::Formatter;
 use std::str::FromStr;
 use std::{convert, fmt};
 
 /// It represent a catalog item number.
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct ItemNumber(String);
 
 impl ItemNumber {

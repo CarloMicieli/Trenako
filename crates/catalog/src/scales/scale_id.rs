@@ -1,11 +1,13 @@
 use common::slug::Slug;
+use sqlx::Type;
 use std::fmt;
 use std::ops;
 use std::str;
 use std::str::FromStr;
 
 /// It represents a unique scale id
-#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct ScaleId(Slug);
 
 impl ScaleId {

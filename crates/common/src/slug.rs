@@ -1,10 +1,12 @@
 use slug::slugify;
+use sqlx::Type;
 use std::ops;
 use std::str;
 use std::{convert, fmt};
 
 /// A SEO friendly string
-#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct Slug(String);
 
 impl Slug {

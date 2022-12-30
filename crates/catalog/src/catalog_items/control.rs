@@ -1,10 +1,12 @@
+use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 
 /// The control method for this railway model.
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "control", rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Control {
     /// The model can be fitted with a dcc decoder.
     DccReady,
@@ -28,8 +30,9 @@ pub enum Control {
 /// In many cases a blanking plug must be removed before installing the decoder. If a locomotive
 /// is not DCC-Ready it will lack an interface and must use a Hardwired Decoder or a drop-in
 /// replacement DCC control board (if available) for that specific model.
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize, Type)]
 #[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "dcc_interface", rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum DccInterface {
     /// 6 Pin standard mechanical and electrical interfaces (NMRA Small)
     #[strum(serialize = "NEM_651")]

@@ -1,10 +1,12 @@
+use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 
 /// The availability status for a catalog item
-#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "availability_status", rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum AvailabilityStatus {
     Announced,
     Available,

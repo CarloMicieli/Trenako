@@ -1,10 +1,12 @@
+use sqlx::Type;
 use std::fmt;
 use std::fmt::Formatter;
 use std::str;
 use uuid::Uuid;
 
 /// A unique identifier for a rolling stock
-#[derive(Debug, PartialEq, Eq, Copy, Clone, Hash, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Copy, Clone, Hash, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct RollingStockId(Uuid);
 
 impl RollingStockId {

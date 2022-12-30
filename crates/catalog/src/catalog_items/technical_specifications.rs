@@ -1,5 +1,6 @@
 use common::length::Length;
 use rust_decimal::Decimal;
+use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 
@@ -41,9 +42,10 @@ impl Coupling {
 }
 
 /// The NEM coupling socket standards
-#[derive(Debug, Copy, Clone, PartialEq, Eq, Serialize, Deserialize, EnumString, Display)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, Serialize, Deserialize, EnumString, Display, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "socket_type", rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Socket {
     #[strum(serialize = "NONE")]
     None,
@@ -203,15 +205,16 @@ impl TechnicalSpecificationsBuilder {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display)]
+#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "feature_flag", rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum FeatureFlag {
     Yes,
     No,
 
     /// this option is not applicable
-    #[strum(serialize = "N_A")]
+    #[strum(serialize = "N/A")]
     NA,
 }
 
@@ -283,7 +286,7 @@ mod test {
         #[rstest]
         #[case("YES", Ok(FeatureFlag::Yes))]
         #[case("NO", Ok(FeatureFlag::No))]
-        #[case("N_A", Ok(FeatureFlag::NA))]
+        #[case("N/A", Ok(FeatureFlag::NA))]
         #[case("invalid", Err(ParseError::VariantNotFound))]
         fn it_should_parse_strings_as_feature_flags(
             #[case] input: &str,
@@ -296,7 +299,7 @@ mod test {
         #[rstest]
         #[case(FeatureFlag::Yes, "YES")]
         #[case(FeatureFlag::No, "NO")]
-        #[case(FeatureFlag::NA, "N_A")]
+        #[case(FeatureFlag::NA, "N/A")]
         fn it_should_display_feature_flags(#[case] input: FeatureFlag, #[case] expected: &str) {
             assert_eq!(expected, input.to_string());
         }

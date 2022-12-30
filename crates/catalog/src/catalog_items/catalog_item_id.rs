@@ -1,13 +1,15 @@
 use crate::catalog_items::catalog_item::CatalogItemBrand;
 use crate::catalog_items::item_number::ItemNumber;
 use common::slug::Slug;
+use sqlx::Type;
 use std::fmt;
 use std::fmt::Formatter;
 use std::ops::Deref;
 use std::str::FromStr;
 
 /// A unique identifier for a catalog item
-#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct CatalogItemId(Slug);
 
 impl CatalogItemId {

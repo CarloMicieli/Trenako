@@ -1,10 +1,12 @@
+use sqlx::Type;
 use std::fmt;
 use std::fmt::Formatter;
 use std::str::FromStr;
 use url::Url;
 
 /// It represents a mail address
-#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct MailAddress(String);
 
 impl MailAddress {
@@ -28,7 +30,8 @@ impl FromStr for MailAddress {
 }
 
 /// It represents a phone number
-#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct PhoneNumber(String);
 
 impl PhoneNumber {
@@ -52,7 +55,8 @@ impl FromStr for PhoneNumber {
 }
 
 /// It represents a website url
-#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct WebsiteUrl(Url);
 
 impl WebsiteUrl {

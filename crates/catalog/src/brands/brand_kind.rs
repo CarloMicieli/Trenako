@@ -1,10 +1,12 @@
+use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 
 /// The different kinds for railway models brands
-#[derive(Debug, Copy, Clone, PartialEq, Eq, Serialize, Deserialize, EnumString, Display)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, Serialize, Deserialize, EnumString, Display, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "brand_kind", rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum BrandKind {
     /// These manufacturers produce models which are made of brass or similar alloys.
     ///

@@ -1,3 +1,4 @@
+use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 
@@ -6,9 +7,10 @@ use strum_macros::{Display, EnumString};
 ///
 /// Since many different track gauges exist worldwide, gauge differences often present a barrier to wider operation on
 /// railway networks.
-#[derive(Debug, Eq, PartialEq, Clone, Copy, Serialize, Deserialize, EnumString, Display)]
+#[derive(Debug, Eq, PartialEq, Clone, Copy, Serialize, Deserialize, EnumString, Display, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "gauge", rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum TrackGauge {
     /// In modern usage, the term "broad gauge" generally refers to track spaced significantly wider than
     /// 1,435 mm (4 ft 8+1⁄2 inches).

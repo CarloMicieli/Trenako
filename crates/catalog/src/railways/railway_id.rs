@@ -1,10 +1,12 @@
 use common::slug::Slug;
+use sqlx::Type;
 use std::str;
 use std::str::FromStr;
 use std::{fmt, ops};
 
 /// It represents a unique railway id
-#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct RailwayId(Slug);
 
 impl RailwayId {

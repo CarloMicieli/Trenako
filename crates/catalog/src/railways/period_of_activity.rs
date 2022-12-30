@@ -1,4 +1,5 @@
 use chrono::NaiveDate;
+use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 
@@ -70,9 +71,10 @@ impl Date {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display)]
+#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "railway_status", rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum RailwayStatus {
     Active,
     Inactive,

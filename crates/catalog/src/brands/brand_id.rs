@@ -1,4 +1,5 @@
 use common::slug::Slug;
+use sqlx::Type;
 use std::fmt;
 use std::fmt::Formatter;
 use std::ops;
@@ -6,7 +7,8 @@ use std::str;
 use std::str::FromStr;
 
 /// It represents the unique identifier for a brand.
-#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct BrandId(Slug);
 
 impl BrandId {

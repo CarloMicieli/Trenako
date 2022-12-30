@@ -1,3 +1,4 @@
+use sqlx::Type;
 use std::fmt;
 use std::fmt::Formatter;
 
@@ -91,7 +92,8 @@ impl SocialsBuilder {
 /// A social network handler.
 ///
 /// The value must be URL encoded.
-#[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Serialize, Deserialize)]
+#[derive(Debug, Clone, Eq, PartialEq, Ord, PartialOrd, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct Handler(String);
 
 impl Handler {

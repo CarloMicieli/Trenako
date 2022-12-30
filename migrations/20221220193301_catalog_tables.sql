@@ -13,9 +13,11 @@ CREATE TYPE organization_entity_type AS ENUM (
     'PUBLIC_INSTITUTION',
     'PUBLIC_LIMITED_COMPANY',
     'REGISTERED_SOLE_TRADER',
-    'SOLE_TRADER');
+    'SOLE_TRADER',
+    'STATE_OWNED_ENTERPRISE'
+);
 CREATE TYPE railway_status AS ENUM ('ACTIVE', 'INACTIVE');
-CREATE TYPE catalog_item_type AS ENUM (
+CREATE TYPE catalog_item_category AS ENUM (
     'LOCOMOTIVES',
     'TRAIN_SETS',
     'STARTER_SETS',
@@ -25,7 +27,7 @@ CREATE TYPE catalog_item_type AS ENUM (
     'RAILCARS'
 );
 CREATE TYPE feature_flag AS ENUM ('YES', 'NO', 'N/A');
-CREATE TYPE power_method AS ENUM ('AC', 'DC');
+CREATE TYPE power_method AS ENUM ('AC', 'DC', 'TRIX_EXPRESS');
 CREATE TYPE availability_status AS ENUM (
     'ANNOUNCED',
     'AVAILABLE',
@@ -34,13 +36,16 @@ CREATE TYPE availability_status AS ENUM (
 CREATE TYPE control AS ENUM (
     'DCC',
     'DCC_READY',
-    'DCC_SOUND'
+    'DCC_SOUND',
+    'NO_DCC'
 );
 CREATE TYPE dcc_interface AS ENUM (
     'MTC_21',
     'NEM_651',
     'NEM_652',
+    'NEM_654',
     'NEXT_18',
+    'NEXT_18_S',
     'PLUX_16',
     'PLUX_22',
     'PLUX_8'
@@ -91,6 +96,16 @@ CREATE TYPE freight_car_type AS ENUM (
     'SWING_ROOF_WAGON',
     'TANK_CARS',
     'TELESCOPE_HOOD_WAGONS'
+);
+CREATE TYPE socket_type AS ENUM (
+    'NONE',
+    'NEM_355',
+    'NEM_356',
+    'NEM_357',
+    'NEM_359',
+    'NEM_360',
+    'NEM_362',
+    'NEM_365'
 );
 
 CREATE TABLE public.brands
@@ -173,7 +188,7 @@ CREATE TABLE public.scales
     track_gauge       gauge          NOT NULL,
     description       varchar(2500),
     standards         varchar(100),
-    created_at        timestamptz NOT NULL,
+    created_at        timestamptz    NOT NULL,
     last_modified_at  timestamptz,
     version           integer        NOT NULL DEFAULT 1,
     CONSTRAINT "PK_scales" PRIMARY KEY (scale_id)
@@ -185,20 +200,20 @@ CREATE UNIQUE INDEX "Idx_scales_name"
 
 CREATE TABLE public.catalog_items
 (
-    catalog_item_id     varchar(65)       NOT NULL,
-    brand_id            varchar(50)       NOT NULL,
-    item_number         varchar(10)       NOT NULL,
-    scale_id            varchar(25)       NOT NULL,
-    category            catalog_item_type NOT NULL,
+    catalog_item_id     varchar(65)           NOT NULL,
+    brand_id            varchar(50)           NOT NULL,
+    item_number         varchar(10)           NOT NULL,
+    scale_id            varchar(25)           NOT NULL,
+    category            catalog_item_category NOT NULL,
     description         varchar(2500),
     details             varchar(2500),
-    power_method        power_method      NOT NULL,
+    power_method        power_method          NOT NULL,
     delivery_date       varchar(10),
     availability_status availability_status,
     count               integer,
-    created_at          timestamptz NOT NULL,
+    created_at          timestamptz           NOT NULL,
     last_modified_at    timestamptz,
-    version             integer           NOT NULL DEFAULT 1,
+    version             integer               NOT NULL DEFAULT 1,
     CONSTRAINT "PK_catalog_items" PRIMARY KEY (catalog_item_id),
     CONSTRAINT "FK_catalog_items_brands" FOREIGN KEY (brand_id)
         REFERENCES public.brands (brand_id) MATCH SIMPLE
@@ -239,14 +254,14 @@ CREATE TABLE public.rolling_stocks
     service_level               varchar(15),
     is_dummy                    boolean,
     minimum_radius              numeric(19, 5),
-    coupling                    varchar(10),
-    flywheel_fitted             feature_flag,
+    coupling_socket             socket_type,
     close_couplers              feature_flag,
+    digital_shunting_coupling   feature_flag,
+    flywheel_fitted             feature_flag,
     metal_body                  feature_flag,
     interior_lights             feature_flag,
     lights                      feature_flag,
     spring_buffers              feature_flag,
-    digital_shunting_coupling   feature_flag,
     CONSTRAINT "PK_rolling_stocks" PRIMARY KEY (rolling_stock_id),
     CONSTRAINT "FK_rolling_stocks_catalog_items" FOREIGN KEY (catalog_item_id)
         REFERENCES public.catalog_items (catalog_item_id) MATCH SIMPLE

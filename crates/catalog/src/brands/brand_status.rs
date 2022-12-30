@@ -1,10 +1,12 @@
+use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 
 /// The current status for a model railway company
-#[derive(Debug, Copy, Clone, Eq, PartialEq, Serialize, Deserialize, EnumString, Display)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Serialize, Deserialize, EnumString, Display, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "brand_status", rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum BrandStatus {
     Active,
     OutOfBusiness,
