@@ -46,6 +46,7 @@ impl Coupling {
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "socket_type", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Socket {
     #[strum(serialize = "NONE")]
     None,
@@ -209,6 +210,7 @@ impl TechnicalSpecificationsBuilder {
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "feature_flag", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum FeatureFlag {
     Yes,
     No,
@@ -225,7 +227,8 @@ impl Default for FeatureFlag {
 }
 
 /// The minimum drivable radius
-#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize)]
+#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, Type)]
+#[sqlx(transparent)]
 pub struct Radius(Length);
 
 impl Radius {

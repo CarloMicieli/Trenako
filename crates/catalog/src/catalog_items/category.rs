@@ -7,6 +7,7 @@ use strum_macros::{Display, EnumString};
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "catalog_item_category", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Category {
     /// The steam locomotives category
     Locomotives,
@@ -35,6 +36,7 @@ pub enum Category {
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "freight_car_type", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum FreightCarType {
     AutoTransportCars,
     BrakeWagon,
@@ -62,6 +64,7 @@ pub enum FreightCarType {
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "locomotive_type", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum LocomotiveType {
     /// The steam locomotives category
     SteamLocomotive,
@@ -78,6 +81,7 @@ pub enum LocomotiveType {
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "passenger_car_type", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum PassengerCarType {
     /// The baggage car is a car that was normally placed between the train's motive power and the
     /// remainder of the passenger train. The car's interior is normally wide open and is used to
@@ -132,6 +136,7 @@ pub enum PassengerCarType {
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "electric_multiple_unit_type", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum ElectricMultipleUnitType {
     /// Driving cars are similar to a cab car, containing a driver's cab for controlling the train.
     /// An EMU will usually have two driving cars at its outer ends.
@@ -157,6 +162,7 @@ pub enum ElectricMultipleUnitType {
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "railcar_type", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum RailcarType {
     PowerCar,
     TrailerCar,

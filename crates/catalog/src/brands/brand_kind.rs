@@ -7,6 +7,7 @@ use strum_macros::{Display, EnumString};
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "brand_kind", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum BrandKind {
     /// These manufacturers produce models which are made of brass or similar alloys.
     ///

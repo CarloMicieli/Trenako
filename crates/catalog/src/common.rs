@@ -11,6 +11,7 @@ use strum_macros::{Display, EnumString};
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "gauge", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum TrackGauge {
     /// In modern usage, the term "broad gauge" generally refers to track spaced significantly wider than
     /// 1,435 mm (4 ft 8+1⁄2 inches).

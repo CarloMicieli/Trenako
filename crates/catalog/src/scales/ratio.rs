@@ -1,4 +1,5 @@
 use rust_decimal::Decimal;
+use sqlx::Type;
 use std::cmp::Ordering;
 use std::convert::TryFrom;
 use std::fmt;
@@ -6,7 +7,8 @@ use std::fmt::{Display, Formatter};
 
 /// It represents the {@code Ratio} between a model railway size
 /// and the size of an actual train.
-#[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize)]
+#[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize, Type)]
+#[sqlx(transparent)]
 pub struct Ratio(Decimal);
 
 impl TryFrom<Decimal> for Ratio {

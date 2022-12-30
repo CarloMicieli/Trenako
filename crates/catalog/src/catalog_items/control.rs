@@ -7,6 +7,7 @@ use strum_macros::{Display, EnumString};
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "control", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Control {
     /// The model can be fitted with a dcc decoder.
     DccReady,
@@ -33,6 +34,7 @@ pub enum Control {
 #[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize, Type)]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "dcc_interface", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum DccInterface {
     /// 6 Pin standard mechanical and electrical interfaces (NMRA Small)
     #[strum(serialize = "NEM_651")]

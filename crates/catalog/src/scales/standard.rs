@@ -4,6 +4,7 @@ use strum_macros::{Display, EnumString};
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Hash, Serialize, Deserialize, EnumString, Display)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Standard {
     British,
 
