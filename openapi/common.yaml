@@ -24,11 +24,11 @@ components:
           type: string
           description: the postal code (ZIP code)
           maxLength: 10
-        country_code:
+        country:
           type: string
-          description: the ISO country code
-          minLength: 2
-          maxLength: 2
+          description: the ISO country code (ISO 3166-1 alpha-3)
+          minLength: 3
+          maxLength: 3
       required:
         - street_address
         - city

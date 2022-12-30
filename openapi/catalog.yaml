@@ -136,9 +136,18 @@ components:
         count:
           type: integer
           format: int32
+          minimum: 1
           description: the number of rolling stocks for this catalog item
         metadata:
           $ref: "./common.yaml#/components/schemas/Metadata"
+      required:
+        - catalog_item_id
+        - brand
+        - item_number
+        - scale
+        - category
+        - count
+        - metadata
 
     CatalogItemBrand:
       type: object
@@ -172,22 +181,22 @@ components:
           type: string
           minLength: 3
           maxLength: 50
-          description: the catalog item brand name
+          description: the brand name
         item_number:
           type: string
           minLength: 3
           maxLength: 10
-          description: the catalog item number
+          description: the item number
         scale:
           type: string
           maxLength: 10
-          description: the catalog item scale
+          description: the scale name
         category:
           $ref: "#/components/schemas/CatalogItemCategory"
         description:
           type: string
           maxLength: 2500
-          description: the catalog item description
+          description: the description
         details:
           type: string
           maxLength: 2500
@@ -198,7 +207,7 @@ components:
           type: string
           minLength: 4
           maxLength: 7
-          description: this catalog item delivery date (either the year or the quarter)
+          description: this delivery date (either the year or the quarter)
         availability_status:
           $ref: "#/components/schemas/AvailabilityStatus"
         rolling_stocks:
@@ -214,9 +223,9 @@ components:
               propertyName: category
         count:
           type: integer
+          description: the number of rolling stocks for this catalog item
           format: int32
           minimum: 1
-          description: the number of rolling stocks for this catalog item
       required:
         - brand
         - item_number
@@ -226,7 +235,7 @@ components:
 
     CatalogItemScale:
       type: object
-      description: the catalog item scale
+      description: the scale information for a catalog item
       properties:
         scale_id:
           type: string
@@ -238,7 +247,7 @@ components:
 
     Control:
       type: string
-      description: the rolling stock control method
+      description: the control method for the rolling stock
       enum:
         - DCC
         - DCC_READY
@@ -346,7 +355,7 @@ components:
       enum:
         - YES
         - NO
-        - N_A
+        - NOT_AVAILABLE
 
     FreightCar:
       description: a freight car rolling stock
@@ -410,10 +419,14 @@ components:
       properties:
         inches:
           type: number
+          description: the length in inches
           format: float
+          minimum: 0.1
         millimeters:
           type: number
+          description: the length in millimeters
           format: float
+          minimum: 0.1
 
     Locomotive:
       description: a locomotive rolling stock
@@ -636,13 +649,7 @@ components:
         period_of_activity:
           $ref: "#/components/schemas/RailwayPeriodOfActivity"
         gauge:
-          meters:
-            type: number
-            format: float
-            minimum: 0.1
-            description: the track gauge in meters
-          track_gauge:
-            $ref: "#/components/schemas/TrackGauge"
+          $ref: "#/components/schemas/RailwayGauge"
         headquarters:
           type: string
           description: the railway headquarter
@@ -654,6 +661,11 @@ components:
           $ref: "./common.yaml#/components/schemas/Socials"
         metadata:
           $ref: "./common.yaml#/components/schemas/Metadata"
+      required:
+        - railway_id
+        - name
+        - country
+        - metadata
 
     RailwayPeriodOfActivity:
       type: object
@@ -676,7 +688,13 @@ components:
       properties:
         name:
           type: string
+          minLength: 2
           maxLength: 25
+        abbreviation:
+          type: string
+          description: the railway abbreviated name
+          minLength: 2
+          maxLength: 10
         registered_company_name:
           type: string
           maxLength: 250
@@ -687,17 +705,13 @@ components:
           maxLength: 1000
         country:
           type: string
-          minLength: 2
-          maxLength: 2
+          description: the ISO country code (ISO 3166-1 alpha-3)
+          minLength: 3
+          maxLength: 3
         period_of_activity:
           $ref: "#/components/schemas/RailwayPeriodOfActivity"
         gauge:
-          meters:
-            type: number
-            format: float
-            minimum: 0.1
-          track_gauge:
-            $ref: "#/components/schemas/TrackGauge"
+          $ref: "#/components/schemas/RailwayGauge"
         headquarters:
           type: string
           maxLength: 250
@@ -710,6 +724,15 @@ components:
       required:
         - name
         - country
+
+    RailwayGauge:
+      type: object
+      meters:
+        type: number
+        format: float
+        minimum: 0.1
+      track_gauge:
+        $ref: "#/components/schemas/TrackGauge"
 
     RailwayStatus:
       type: string
@@ -724,14 +747,14 @@ components:
       properties:
         miles:
           type: number
+          description: the total railway network in miles
           format: float
           minimum: 0.1
-          description: the total railway network in miles
         kilometers:
           type: number
+          description: the total railway network in kilometers
           format: float
           minimum: 0.1
-          description: the total railway network in kilometers
 
     RollingStock:
       type: object

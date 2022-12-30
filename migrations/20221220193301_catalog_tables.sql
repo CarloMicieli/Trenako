@@ -26,7 +26,7 @@ CREATE TYPE catalog_item_category AS ENUM (
     'ELECTRIC_MULTIPLE_UNITS',
     'RAILCARS'
 );
-CREATE TYPE feature_flag AS ENUM ('YES', 'NO', 'N/A');
+CREATE TYPE feature_flag AS ENUM ('YES', 'NO', 'NOT_AVAILABLE');
 CREATE TYPE power_method AS ENUM ('AC', 'DC', 'TRIX_EXPRESS');
 CREATE TYPE availability_status AS ENUM (
     'ANNOUNCED',
@@ -69,6 +69,8 @@ CREATE TYPE passenger_car_type AS ENUM (
     'SLEEPING_CAR'
 );
 CREATE TYPE electric_multiple_unit_type AS ENUM (
+    'DRIVING_CAR',
+    'MOTOR_CAR',
     'POWER_CAR',
     'TRAILER_CAR'
 );

@@ -214,10 +214,7 @@ impl TechnicalSpecificationsBuilder {
 pub enum FeatureFlag {
     Yes,
     No,
-
-    /// this option is not applicable
-    #[strum(serialize = "N/A")]
-    NA,
+    NotAvailable,
 }
 
 impl Default for FeatureFlag {
@@ -289,7 +286,7 @@ mod test {
         #[rstest]
         #[case("YES", Ok(FeatureFlag::Yes))]
         #[case("NO", Ok(FeatureFlag::No))]
-        #[case("N/A", Ok(FeatureFlag::NA))]
+        #[case("NOT_AVAILABLE", Ok(FeatureFlag::NotAvailable))]
         #[case("invalid", Err(ParseError::VariantNotFound))]
         fn it_should_parse_strings_as_feature_flags(
             #[case] input: &str,
@@ -302,7 +299,7 @@ mod test {
         #[rstest]
         #[case(FeatureFlag::Yes, "YES")]
         #[case(FeatureFlag::No, "NO")]
-        #[case(FeatureFlag::NA, "N/A")]
+        #[case(FeatureFlag::NotAvailable, "NOT_AVAILABLE")]
         fn it_should_display_feature_flags(#[case] input: FeatureFlag, #[case] expected: &str) {
             assert_eq!(expected, input.to_string());
         }
