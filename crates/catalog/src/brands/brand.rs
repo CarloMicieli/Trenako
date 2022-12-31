@@ -152,7 +152,7 @@ mod tests {
                 .postal_code("20131")
                 .city("Milano")
                 .region("MI")
-                .country_code(CountryCode::ITA)
+                .country(CountryCode::ITA)
                 .build()
                 .unwrap();
 

@@ -10,15 +10,15 @@ components:
           maxLength: 255
         extended_address:
           type: string
-          description: the extended information for the address
+          description: the (optional) extended information for the address
           maxLength: 255
         city:
           type: string
-          description: the city
+          description: the city/town
           maxLength: 50
         region:
           type: string
-          description: the region code
+          description: the region code; for example, the state or province.
           maxLength: 50
         postal_code:
           type: string

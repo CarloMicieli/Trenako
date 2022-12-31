@@ -17,7 +17,7 @@ pub fn acme() -> Brand {
         .postal_code("20131")
         .city("Milano")
         .region("MI")
-        .country_code(CountryCode::ITA)
+        .country(CountryCode::ITA)
         .build()
         .unwrap();
 
@@ -51,7 +51,7 @@ pub fn roco() -> Brand {
         .street_address("Plainbachstraße 4")
         .postal_code("A-5101")
         .city("Bergheim")
-        .country_code(CountryCode::AUT)
+        .country(CountryCode::AUT)
         .build()
         .unwrap();
 

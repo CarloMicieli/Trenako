@@ -17,6 +17,7 @@ slug = { workspace = true }
 sqlx = { workspace = true }
 strum = { workspace = true }
 strum_macros = { workspace = true }
+thiserror = { workspace = true }
 url = { workspace = true }
 
 [dev-dependencies]
