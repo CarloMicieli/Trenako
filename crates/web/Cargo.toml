@@ -17,6 +17,7 @@ name = "trenako-server"
 catalog = { path = "../catalog" }
 
 actix-web = { workspace = true }
+chrono = { workspace = true }
 config = { workspace = true }
 log = { workspace = true }
 secrecy = { workspace = true }
@@ -28,6 +29,8 @@ tracing-actix-web = { workspace = true }
 tracing-bunyan-formatter = { workspace = true }
 tracing-log = { workspace = true }
 tracing-subscriber = { workspace = true }
+uuid = { workspace = true }
+url = { workspace = true }
 
 [dev-dependencies]
 pretty_assertions = { workspace = true }

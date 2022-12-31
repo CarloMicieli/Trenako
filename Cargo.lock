@@ -2883,6 +2883,7 @@ version = "0.1.0"
 dependencies = [
  "actix-web",
  "catalog",
+ "chrono",
  "config",
  "log",
  "pretty_assertions",
@@ -2897,6 +2898,8 @@ dependencies = [
  "tracing-bunyan-formatter",
  "tracing-log",
  "tracing-subscriber",
+ "url",
+ "uuid",
 ]
 
 [[package]]
