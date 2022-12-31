@@ -1,5 +1,5 @@
 pub mod address;
-pub mod contact;
+pub mod contacts;
 pub mod length;
 pub mod measure_units;
 pub mod metadata;

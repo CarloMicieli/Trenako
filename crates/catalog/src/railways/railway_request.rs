@@ -1,7 +1,7 @@
 use crate::railways::period_of_activity::PeriodOfActivity;
 use crate::railways::railway_gauge::RailwayGauge;
 use crate::railways::railway_length::RailwayLength;
-use common::contact::ContactInfo;
+use common::contacts::ContactInformation;
 use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
 
@@ -17,6 +17,6 @@ pub struct RailwayRequest {
     pub gauge: Option<RailwayGauge>,
     pub headquarters: Option<String>,
     pub total_length: Option<RailwayLength>,
-    pub contact_info: Option<ContactInfo>,
+    pub contact_info: Option<ContactInformation>,
     pub socials: Option<Socials>,
 }

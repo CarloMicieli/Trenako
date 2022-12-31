@@ -4,7 +4,7 @@ use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_status::BrandStatus;
 use chrono::{DateTime, Utc};
 use common::address::Address;
-use common::contact::{ContactInfo, MailAddress, WebsiteUrl};
+use common::contacts::{ContactInformation, MailAddress, WebsiteUrl};
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
@@ -21,7 +21,7 @@ pub fn acme() -> Brand {
         .build()
         .unwrap();
 
-    let contact_info = ContactInfo::new(
+    let contact_info = ContactInformation::new(
         Some(MailAddress::new("mail@acmetreni.com")),
         Some(WebsiteUrl::new("http://www.acmetreni.com")),
         None,
@@ -55,7 +55,7 @@ pub fn roco() -> Brand {
         .build()
         .unwrap();
 
-    let contact_info = ContactInfo::new(
+    let contact_info = ContactInformation::new(
         Some(MailAddress::new("webshop@roco.cc")),
         Some(WebsiteUrl::new("https://www.roco.cc")),
         None,

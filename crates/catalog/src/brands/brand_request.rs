@@ -1,7 +1,7 @@
 use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_status::BrandStatus;
 use common::address::Address;
-use common::contact::ContactInfo;
+use common::contacts::ContactInformation;
 use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
 
@@ -13,7 +13,7 @@ pub struct BrandRequest {
     pub organization_entity_type: Option<OrganizationEntityType>,
     pub group_name: Option<String>,
     pub description: Option<String>,
-    pub contact_info: Option<ContactInfo>,
+    pub contact_info: Option<ContactInformation>,
     pub address: Option<Address>,
     pub socials: Option<Socials>,
     pub kind: BrandKind,

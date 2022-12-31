@@ -2,7 +2,7 @@ use crate::railways::period_of_activity::PeriodOfActivity;
 use crate::railways::railway_gauge::RailwayGauge;
 use crate::railways::railway_id::RailwayId;
 use crate::railways::railway_length::RailwayLength;
-use common::contact::ContactInfo;
+use common::contacts::ContactInformation;
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
@@ -30,7 +30,7 @@ pub struct Railway {
     gauge: Option<RailwayGauge>,
     country: CountryCode,
     headquarters: Option<String>,
-    contact_info: Option<ContactInfo>,
+    contact_info: Option<ContactInformation>,
     socials: Option<Socials>,
     metadata: Metadata,
 }
@@ -49,7 +49,7 @@ impl Railway {
         gauge: Option<RailwayGauge>,
         country: CountryCode,
         headquarters: Option<&str>,
-        contact_info: Option<ContactInfo>,
+        contact_info: Option<ContactInformation>,
         socials: Option<Socials>,
         metadata: Metadata,
     ) -> Self {
@@ -128,7 +128,7 @@ impl Railway {
     }
 
     /// The contact railway info
-    pub fn contact_info(&self) -> Option<&ContactInfo> {
+    pub fn contact_info(&self) -> Option<&ContactInformation> {
         self.contact_info.as_ref()
     }
 
@@ -165,7 +165,6 @@ mod test {
         use super::*;
         use crate::railways::test_data::{die_bahn, fs};
         use chrono::Utc;
-        use common::contact::WebsiteUrl;
         use common::socials::SocialsBuilder;
         use pretty_assertions::{assert_eq, assert_ne};
         use rust_decimal_macros::dec;
@@ -181,7 +180,10 @@ mod test {
                 .build();
             let length = RailwayLength::of_kilometers(dec!(24564.0));
             let gauge = RailwayGauge::standard();
-            let contact_info = ContactInfo::new(None, Some(WebsiteUrl::new("https://www.fsitaliane.it")), None);
+            let contact_info = ContactInformation::builder()
+                .website_url("https://www.fsitaliane.it")
+                .build()
+                .unwrap();
 
             let railway = Railway::new(
                 RailwayId::new("FS"),

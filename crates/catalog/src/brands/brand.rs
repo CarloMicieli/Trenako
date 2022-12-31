@@ -2,7 +2,7 @@ use crate::brands::brand_id::BrandId;
 use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_status::BrandStatus;
 use common::address::Address;
-use common::contact::ContactInfo;
+use common::contacts::ContactInformation;
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
@@ -18,7 +18,7 @@ pub struct Brand {
     group_name: Option<String>,
     description: Option<String>,
     address: Option<Address>,
-    contact_info: Option<ContactInfo>,
+    contact_info: Option<ContactInformation>,
     kind: BrandKind,
     status: BrandStatus,
     socials: Option<Socials>,
@@ -35,7 +35,7 @@ impl Brand {
         group_name: Option<&str>,
         description: Option<&str>,
         address: Option<Address>,
-        contact_info: Option<ContactInfo>,
+        contact_info: Option<ContactInformation>,
         kind: BrandKind,
         status: BrandStatus,
         socials: Option<Socials>,
@@ -88,7 +88,7 @@ impl Brand {
     }
 
     /// The contact information (email, phone, website url)
-    pub fn contact_info(&self) -> Option<&ContactInfo> {
+    pub fn contact_info(&self) -> Option<&ContactInformation> {
         self.contact_info.as_ref()
     }
 
@@ -140,7 +140,7 @@ mod tests {
         use super::*;
         use crate::brands::test_data::{acme, roco};
         use chrono::{DateTime, Utc};
-        use common::contact::{MailAddress, WebsiteUrl};
+        use common::contacts::{MailAddress, WebsiteUrl};
         use isocountry::CountryCode;
         use pretty_assertions::{assert_eq, assert_ne};
 
@@ -156,7 +156,7 @@ mod tests {
                 .build()
                 .unwrap();
 
-            let contact_info = ContactInfo::new(
+            let contact_info = ContactInformation::new(
                 Some(MailAddress::new("mail@acmetreni.com")),
                 Some(WebsiteUrl::new("http://www.acmetreni.com")),
                 None,

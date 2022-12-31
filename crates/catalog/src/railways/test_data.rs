@@ -3,7 +3,7 @@ use crate::railways::railway_gauge::RailwayGauge;
 use crate::railways::railway_id::RailwayId;
 use crate::railways::railway_length::RailwayLength;
 use chrono::Utc;
-use common::contact::{ContactInfo, WebsiteUrl};
+use common::contacts::ContactInformation;
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::SocialsBuilder;
@@ -20,7 +20,10 @@ pub fn die_bahn() -> Railway {
         .build();
     let length = RailwayLength::of_kilometers(dec!(24564.0));
     let gauge = RailwayGauge::standard();
-    let contact_info = ContactInfo::new(None, Some(WebsiteUrl::new("https://www.deutschebahn.com")), None);
+    let contact_info = ContactInformation::builder()
+        .website_url("https://www.deutschebahn.com")
+        .build()
+        .unwrap();
 
     Railway::new(
         RailwayId::new("db"),
@@ -50,7 +53,10 @@ pub fn fs() -> Railway {
         .build();
     let length = RailwayLength::of_kilometers(dec!(24564.0));
     let gauge = RailwayGauge::standard();
-    let contact_info = ContactInfo::new(None, Some(WebsiteUrl::new("https://www.fsitaliane.it")), None);
+    let contact_info = ContactInformation::builder()
+        .website_url("https://www.fsitaliane.it")
+        .build()
+        .unwrap();
 
     Railway::new(
         RailwayId::new("fs"),

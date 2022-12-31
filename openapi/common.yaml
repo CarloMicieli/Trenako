@@ -36,7 +36,7 @@ components:
         - country_code
 
     ContactInfo:
-      description: contact info for a company or a shop
+      description: the contact information for an organization
       type: object
       properties:
         email:
