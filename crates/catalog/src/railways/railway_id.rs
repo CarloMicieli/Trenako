@@ -1,4 +1,4 @@
-use common::slug::Slug;
+use common::slug::{Slug, SlugParserError};
 use sqlx::Type;
 use std::str;
 use std::str::FromStr;
@@ -16,7 +16,7 @@ impl RailwayId {
 }
 
 impl str::FromStr for RailwayId {
-    type Err = ();
+    type Err = SlugParserError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         Slug::from_str(s).map(RailwayId)

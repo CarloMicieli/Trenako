@@ -1,6 +1,6 @@
 use crate::catalog_items::catalog_item::CatalogItemBrand;
 use crate::catalog_items::item_number::ItemNumber;
-use common::slug::Slug;
+use common::slug::{Slug, SlugParserError};
 use sqlx::Type;
 use std::fmt;
 use std::fmt::Formatter;
@@ -32,15 +32,10 @@ impl fmt::Display for CatalogItemId {
 }
 
 impl FromStr for CatalogItemId {
-    type Err = ();
+    type Err = SlugParserError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        if s.is_empty() {
-            Err(())
-        } else {
-            let value = Slug::new(s);
-            Ok(CatalogItemId(value))
-        }
+        Slug::from_str(s).map(CatalogItemId)
     }
 }
 

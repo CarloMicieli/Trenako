@@ -2,7 +2,9 @@ use slug::slugify;
 use sqlx::Type;
 use std::ops;
 use std::str;
+use std::str::FromStr;
 use std::{convert, fmt};
+use thiserror::Error;
 
 /// A SEO friendly string
 #[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
@@ -10,12 +12,9 @@ use std::{convert, fmt};
 pub struct Slug(String);
 
 impl Slug {
-    /// Create a new Slug from the string slice in input.
+    /// Create a new Slug from the string in input.
     pub fn new(value: &str) -> Self {
-        if value.is_empty() {
-            panic!("A slug cannot be empty")
-        }
-        Slug(slugify(value))
+        Slug::from_str(value).expect("the input is not a valid slug")
     }
 
     /// Combine this Slug with another value, after it is converted to a Slug
@@ -26,15 +25,21 @@ impl Slug {
 }
 
 impl str::FromStr for Slug {
-    type Err = ();
+    type Err = SlugParserError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         if s.is_empty() {
-            Err(())
+            Err(SlugParserError::EmptyInput)
         } else {
             Ok(Slug(slugify(s)))
         }
     }
+}
+
+#[derive(Debug, Eq, PartialEq, Error)]
+pub enum SlugParserError {
+    #[error("a slug cannot be blank")]
+    EmptyInput,
 }
 
 impl fmt::Display for Slug {
@@ -79,7 +84,7 @@ mod tests {
         }
 
         #[test]
-        #[should_panic(expected = "A slug cannot be empty")]
+        #[should_panic(expected = "the input is not a valid slug")]
         fn it_should_panic_when_input_is_empty() {
             Slug::new("");
         }
