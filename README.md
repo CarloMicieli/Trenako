@@ -15,7 +15,7 @@ tbd
 ## Tech Stack
 
 * 🦀 `Rust`
-* `Cargo`
+* `Cargo` and `cargo-make`
 * `Docker` / `Docker compose`
 
 ## How to run
@@ -23,41 +23,45 @@ tbd
 ```bash
   git clone https://github.com/CarloMicieli/trenako
   cd trenako
-  
+
   docker compose up
 ```
 
 - The database admin webpage is available at http://localhost:9000/
 - The open api documentation is available at http://localhost:9001/
 
-### Database
+### Local development
 
-To run the `postgres` database:
+All the most important tasks are defined in the `Makefile.toml` for `cargo-make`.
+
+In order to install `cargo-make` just run the following command:
 
 ```bash
-  docker run -it --rm --name trenako-db-dev \
-    -e POSTGRES_PASSWORD=mysecretpassword \
-    -e POSTGRES_DB=trenakodb \
-    -p 5432:5432 \
-    postgres:15.1-alpine
+  cargo install --force cargo-make
+```
+
+To run the `postgres` database as detached docker container:
+
+```bash
+  cargo make docker-postgres-run
 ```
 
 to execute the database migrations:
 
 ```bash
-  sqlx migrate run
+  cargo make db-migrate
 ```
 
-to prepare for the offline mode:
+The sqlx `query!` macro is checking the query commands against a live database, to avoid to fail the build when a database is not available the offline mode is handled saving the query information into a json file. To update the file run the following command:
 
 ```bash
-  cargo sqlx prepare --merged
+  cargo make db-update-offline
 ```
 
 ### Start the server
 
 ```bash
-  cargo run --bin trenako-server
+  cargo make run
 
     Finished dev [unoptimized + debuginfo] target(s) in 0.10s
      Running `target/debug/trenako`
@@ -72,7 +76,7 @@ to prepare for the offline mode:
 Starting the server (127.0.0.1:9999)...
 ```
 
-### Environment variables
+#### Environment variables
 
 | Variable            | Description              |
 |---------------------|--------------------------|
@@ -84,6 +88,26 @@ Starting the server (127.0.0.1:9999)...
 | `DATABASE_PASSWORD` | the database password    |
 | `DATABASE_HOST`     | the database hostname    |
 | `DATABASE_PORT`     | the database port number |
+
+### Checks
+
+Run all tests with the following command:
+
+```bash
+  cargo make test
+```
+
+The rust code is following the rust formatting standard (via `rustfmt`), to check if the formatting is correct:
+
+```bash
+  cargo make format
+```
+
+To run the rust linter (`clippy`):
+
+```bash
+  cargo make clippy
+```
 
 ## Contribution
 
