@@ -1,7 +1,11 @@
-name: Clean-up
+name: Clean up
+
 on:
-  schedule:
-    - cron: '0 0 * * *'
+  push:
+    paths:
+      - '.github/workflows/cleanup.yml'
+  #schedule:
+  #  - cron: '0 0 * * *'
   workflow_dispatch:
 
 env:
@@ -22,7 +26,9 @@ jobs:
           dry-run: false
           older-than: 7 # days
           keep-last: 2
-          untagged: true
+          tag-regex: ^pr-
+          keep-tags: |
+            latest
 
       - name: Docker images Prune (openapi)
         uses: vlaurin/action-ghcr-prune@main
@@ -33,4 +39,6 @@ jobs:
           dry-run: false
           older-than: 7 # days
           keep-last: 2
-          untagged: true
+          tag-regex: ^pr-
+          keep-tags: |
+            latest
