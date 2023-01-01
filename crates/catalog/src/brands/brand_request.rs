@@ -8,14 +8,24 @@ use common::socials::Socials;
 /// A request to create/update model railways brands
 #[derive(Clone, Debug, PartialEq, Deserialize)]
 pub struct BrandRequest {
+    /// the name
     pub name: String,
+    /// the registered company name
     pub registered_company_name: Option<String>,
+    /// the organization entity type
     pub organization_entity_type: Option<OrganizationEntityType>,
+    /// the group name in case the brand is part of a group
     pub group_name: Option<String>,
+    /// the description
     pub description: Option<String>,
-    pub contact_info: Option<ContactInformation>,
+    /// the brand main address
     pub address: Option<Address>,
-    pub socials: Option<Socials>,
+    /// the contact information
+    pub contact_info: Option<ContactInformation>,
+    /// the brand kind
     pub kind: BrandKind,
+    /// the brand status
     pub status: Option<BrandStatus>,
+    /// the brand social profiles
+    pub socials: Option<Socials>,
 }

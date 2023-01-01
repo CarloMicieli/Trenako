@@ -19,13 +19,20 @@ use std::{cmp, fmt};
 /// National Model Railroad Association (NMRA) standards in most popular scales.
 #[derive(Debug, Clone, Serialize)]
 pub struct Scale {
-    scale_id: ScaleId,
-    name: String,
-    description: Option<String>,
-    ratio: Ratio,
-    gauge: Gauge,
-    standards: HashSet<Standard>,
-    metadata: Metadata,
+    /// the unique identifier for a scale
+    pub scale_id: ScaleId,
+    /// the scale name
+    pub name: String,
+    /// the ratio between the real world and the model (e.g. 1/87 or 1:87)
+    pub ratio: Ratio,
+    /// the scale gauge
+    pub gauge: Gauge,
+    /// the modelling scale description
+    pub description: Option<String>,
+    /// the list of standards   
+    pub standards: HashSet<Standard>,
+    /// the metadata
+    pub metadata: Metadata,
 }
 
 impl Scale {
@@ -42,9 +49,9 @@ impl Scale {
         Scale {
             scale_id,
             name: String::from(name),
-            description: description.map(String::from),
             ratio,
             gauge,
+            description: description.map(String::from),
             standards,
             metadata,
         }

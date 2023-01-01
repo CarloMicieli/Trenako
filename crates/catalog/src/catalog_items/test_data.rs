@@ -42,7 +42,7 @@ pub fn fs() -> RollingStockRailway {
 #[allow(non_snake_case)]
 pub fn ACME_60142() -> CatalogItem {
     let brand = acme();
-    let item_number = ItemNumber::new("60142").unwrap();
+    let item_number = ItemNumber::new("60142");
 
     let id = CatalogItemId::new(brand.clone(), item_number.clone()); //TODO: fix me
 
@@ -83,7 +83,7 @@ pub fn ACME_60142() -> CatalogItem {
 #[allow(non_snake_case)]
 pub fn Piko_52848() -> CatalogItem {
     let brand = piko();
-    let item_number = ItemNumber::new("52848").unwrap();
+    let item_number = ItemNumber::new("52848");
 
     let id = CatalogItemId::new(brand.clone(), item_number.clone()); //TODO: fix me
 

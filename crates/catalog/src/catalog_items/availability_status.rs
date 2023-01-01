@@ -9,8 +9,13 @@ use strum_macros::{Display, EnumString};
 #[sqlx(type_name = "availability_status", rename_all = "SCREAMING_SNAKE_CASE")]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum AvailabilityStatus {
+    /// the catalog item is just announced, hence not yet available
     Announced,
+
+    /// the catalog item is available
     Available,
+
+    /// the catalog item is discontinued
     Discontinued,
 }
 

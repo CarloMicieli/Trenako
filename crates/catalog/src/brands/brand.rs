@@ -8,25 +8,37 @@ use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
 use std::{cmp, fmt};
 
-/// A model railways manufacturer.
+/// It represents a model railways manufacturer.
 #[derive(Debug, Clone, Serialize)]
 pub struct Brand {
-    brand_id: BrandId,
-    name: String,
-    registered_company_name: Option<String>,
-    organization_entity_type: Option<OrganizationEntityType>,
-    group_name: Option<String>,
-    description: Option<String>,
-    address: Option<Address>,
-    contact_info: Option<ContactInformation>,
-    kind: BrandKind,
-    status: BrandStatus,
-    socials: Option<Socials>,
-    metadata: Metadata,
+    /// the brand unique identifier (an url encoded string)
+    pub brand_id: BrandId,
+    /// the name
+    pub name: String,
+    /// the registered company name
+    pub registered_company_name: Option<String>,
+    /// the organization entity type
+    pub organization_entity_type: Option<OrganizationEntityType>,
+    /// the group name in case the brand is part of a group
+    pub group_name: Option<String>,
+    /// the description
+    pub description: Option<String>,
+    /// the brand main address
+    pub address: Option<Address>,
+    /// the contact information
+    pub contact_info: Option<ContactInformation>,
+    /// the brand kind
+    pub kind: BrandKind,
+    /// the brand status
+    pub status: BrandStatus,
+    /// the brand social profiles
+    pub socials: Option<Socials>,
+    /// the brand metadata
+    pub metadata: Metadata,
 }
 
 impl Brand {
-    /// Creates a new modelling rail manufacturer
+    /// Creates a new modelling rail brand
     pub fn new(
         brand_id: BrandId,
         name: &str,
@@ -57,62 +69,62 @@ impl Brand {
         }
     }
 
-    /// This brand unique identifier (an url encoded string)
+    /// this brand unique identifier (an url encoded string)
     pub fn brand_id(&self) -> &BrandId {
         &self.brand_id
     }
 
-    /// This brand name
+    /// this brand name
     pub fn name(&self) -> &str {
         &self.name
     }
 
-    /// This brand description
+    /// this brand description
     pub fn description(&self) -> Option<&String> {
         self.description.as_ref()
     }
 
-    /// This brand registered company name
+    /// this brand registered company name
     pub fn registered_company_name(&self) -> Option<&String> {
         self.registered_company_name.as_ref()
     }
 
-    /// The organization entity type
+    /// the organization entity type
     pub fn organization_entity_type(&self) -> Option<OrganizationEntityType> {
         self.organization_entity_type
     }
 
-    /// This brand group name (if any)
+    /// this brand group name (if any)
     pub fn group_name(&self) -> Option<&String> {
         self.group_name.as_ref()
     }
 
-    /// The contact information (email, phone, website url)
+    /// the contact information (email, phone, website url)
     pub fn contact_info(&self) -> Option<&ContactInformation> {
         self.contact_info.as_ref()
     }
 
-    /// The postal address
+    /// the postal address
     pub fn address(&self) -> Option<&Address> {
         self.address.as_ref()
     }
 
-    /// This brand status
+    /// this brand status
     pub fn status(&self) -> BrandStatus {
         self.status
     }
 
-    /// This brand kind
+    /// this brand kind
     pub fn kind(&self) -> BrandKind {
         self.kind
     }
 
-    /// The social profiles
+    /// the social profiles
     pub fn socials(&self) -> Option<&Socials> {
         self.socials.as_ref()
     }
 
-    /// The metadata
+    /// the metadata
     pub fn metadata(&self) -> &Metadata {
         &self.metadata
     }

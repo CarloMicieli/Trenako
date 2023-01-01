@@ -5,8 +5,10 @@ use rust_decimal_macros::dec;
 
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RailwayGauge {
-    meters: Length,
-    track_gauge: TrackGauge,
+    /// the distance between the rails in meters
+    pub meters: Length,
+    /// the track gauge
+    pub track_gauge: TrackGauge,
 }
 
 impl RailwayGauge {

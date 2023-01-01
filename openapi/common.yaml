@@ -6,29 +6,32 @@ components:
       properties:
         street_address:
           type: string
-          description: the street address
+          minLength: 5
           maxLength: 255
+          description: the street address
         extended_address:
           type: string
-          description: the (optional) extended information for the address
           maxLength: 255
+          description: the (optional) extended information for the address
         city:
           type: string
-          description: the city/town
+          minLength: 3
           maxLength: 50
+          description: the city/town
         region:
           type: string
-          description: the region code; for example, the state or province.
           maxLength: 50
+          description: the region code; for example, the state or province.
         postal_code:
           type: string
-          description: the postal code (ZIP code)
+          minLength: 3
           maxLength: 10
+          description: the postal code (ZIP code)
         country:
           type: string
-          description: the ISO country code (ISO 3166-1 alpha-3)
           minLength: 3
           maxLength: 3
+          description: the ISO country code (ISO 3166-1 alpha-3)
       required:
         - street_address
         - city
@@ -42,17 +45,17 @@ components:
         email:
           type: string
           format: email
-          description: the mail address
           maxLength: 250
+          description: the mail address
         phone:
           type: string
-          description: the phone number
           maxLength: 20
+          description: the phone number
         website_url:
           type: string
           format: uri
-          description: the website url
           maxLength: 100
+          description: the website url
 
     Metadata:
       description: the resource metadata
@@ -61,8 +64,8 @@ components:
         version:
           type: integer
           format: int32
-          description: the resource version
           minimum: 1
+          description: the resource version
         created_at:
           type: string
           format: date-time
@@ -98,21 +101,26 @@ components:
       properties:
         facebook:
           type: string
-          description: a facebook handler
+          format: uri
           maxLength: 100
+          description: a facebook handler
         instagram:
           type: string
-          description: an instagram handler
+          format: uri
           maxLength: 100
+          description: an instagram handler
         linkedin:
           type: string
-          description: a linkedin handler
+          format: uri
           maxLength: 100
+          description: a linkedin handler
         twitter:
           type: string
-          description: a twitter handler
+          format: uri
           maxLength: 100
+          description: a twitter handler
         youtube:
           type: string
-          description: a youtube handler
+          format: uri
           maxLength: 100
+          description: a youtube handler

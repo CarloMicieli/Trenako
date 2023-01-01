@@ -39,7 +39,7 @@ impl Length {
         }
     }
 
-    /// Returns this [Length] quantity
+    /// this [Length] quantity
     pub fn quantity(&self) -> Decimal {
         match self {
             Length::Millimeters(mm) => *mm,
@@ -50,7 +50,7 @@ impl Length {
         }
     }
 
-    /// Returns this [Length] measure unit
+    /// this [Length] measure unit
     pub fn measure_unit(&self) -> MeasureUnit {
         match self {
             Length::Millimeters(_) => MeasureUnit::Millimeters,

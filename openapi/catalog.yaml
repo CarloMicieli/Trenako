@@ -14,6 +14,7 @@ components:
       properties:
         brand_id:
           type: string
+          format: uri
           description: the brand unique identifier (an url encoded string)
         name:
           type: string
@@ -23,10 +24,9 @@ components:
           description: the registered company name for this brand
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
-          description: the entity type
         group_name:
           type: string
-          description: the group name when this brand is part of group of brands
+          description: the group name in case the brand is part of a group
         description:
           type: string
         address:
@@ -60,6 +60,7 @@ components:
       properties:
         name:
           type: string
+          minLength: 3
           maxLength: 50
         registered_company_name:
           type: string
@@ -99,6 +100,7 @@ components:
       properties:
         catalog_item_id:
           type: string
+          format: uri
           description: the unique identifier for this catalog item
         brand:
           $ref: "#/components/schemas/CatalogItemBrand"
@@ -136,7 +138,6 @@ components:
         count:
           type: integer
           format: int32
-          minimum: 1
           description: the number of rolling stocks for this catalog item
         metadata:
           $ref: "./common.yaml#/components/schemas/Metadata"
@@ -146,6 +147,7 @@ components:
         - item_number
         - scale
         - category
+        - power_method
         - count
         - metadata
 
@@ -155,8 +157,11 @@ components:
       properties:
         brand_id:
           type: string
+          format: uri
+          description: the brand unique identifier
         display:
           type: string
+          description: the brand display text
       required:
         - id
         - display
@@ -189,7 +194,8 @@ components:
           description: the item number
         scale:
           type: string
-          maxLength: 10
+          minLength: 1
+          maxLength: 50
           description: the scale name
         category:
           $ref: "#/components/schemas/CatalogItemCategory"
@@ -223,14 +229,16 @@ components:
               propertyName: category
         count:
           type: integer
-          description: the number of rolling stocks for this catalog item
           format: int32
           minimum: 1
+          maximum: 99
+          description: the number of rolling stocks for this catalog item
       required:
         - brand
         - item_number
         - scale
         - category
+        - power_method
         - count
 
     CatalogItemScale:
@@ -239,8 +247,11 @@ components:
       properties:
         scale_id:
           type: string
+          format: uri
+          description: the scale unique identifier
         display:
           type: string
+          description: the scale display text
       required:
         - id
         - display
@@ -290,16 +301,21 @@ components:
           properties:
             type_name:
               type: string
+              minLength: 3
               maxLength: 25
+              description: the electric multiple unit type name
             road_number:
               type: string
-              maxLength: 15
+              maxLength: 25
+              description: the identification marking for this electric multiple unit
             series:
               type: string
               maxLength: 50
+              description: the prototype series information
             depot:
               type: string
               maxLength: 100
+              description: the depot name
             electric_multiple_unit_type:
               $ref: "#/components/schemas/ElectricMultipleUnitType"
             dcc_interface:
@@ -308,6 +324,7 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+              description: indicate whether the rolling stock has a motor or not
       required:
         - type_name
         - electric_multiple_unit_type
@@ -321,12 +338,16 @@ components:
           properties:
             type_name:
               type: string
+              description: the electric multiple unit type name
             road_number:
               type: string
+              description: the identification marking for this electric multiple unit
             series:
               type: string
+              description: the prototype series information
             depot:
               type: string
+              description: the depot name
             electric_multiple_unit_type:
               $ref: "#/components/schemas/ElectricMultipleUnitType"
             dcc_interface:
@@ -335,6 +356,7 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+              description: indicate whether the rolling stock has a motor or not
       required:
         - type_name
         - electric_multiple_unit_type
@@ -365,8 +387,10 @@ components:
           properties:
             type_name:
               type: string
+              description: the freight car type name
             road_number:
               type: string
+              description: the identification marking for this freight car
             freight_car_type:
               $ref: "#/components/schemas/FreightCarType"
       required:
@@ -380,10 +404,13 @@ components:
           properties:
             type_name:
               type: string
+              minLength: 1
               maxLength: 25
+              description: the freight car type name
             road_number:
               type: string
-              maxLength: 15
+              maxLength: 25
+              description: the identification marking for this freight car
             freight_car_type:
               $ref: "#/components/schemas/FreightCarType"
       required:
@@ -419,14 +446,14 @@ components:
       properties:
         inches:
           type: number
-          description: the length in inches
           format: float
           minimum: 0.1
+          description: the overall length in inches
         millimeters:
           type: number
-          description: the length in millimeters
           format: float
           minimum: 0.1
+          description: the overall length in millimeters
 
     Locomotive:
       description: a locomotive rolling stock
@@ -436,12 +463,18 @@ components:
           properties:
             class_name:
               type: string
+              description: |
+                the class of locomotives. The class is a group of locomotives built to a common design, 
+                typically for a single railroad or railway
             road_number:
               type: string
+              description: the identification marking for this locomotive
             series:
               type: string
+              description: the prototype series information
             depot:
               type: string
+              description: the depot name
             locomotive_type:
               $ref: "#/components/schemas/LocomotiveType"
             dcc_interface:
@@ -450,6 +483,7 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+              description: indicate whether the rolling stock has a motor or not
       required:
         - locomotive_type
         - class_name
@@ -465,15 +499,22 @@ components:
             class_name:
               type: string
               maxLength: 15
+              description: |
+                the class of locomotives. The class is a group of locomotives built to a common design, 
+                typically for a single railroad or railway
             road_number:
               type: string
-              maxLength: 15
+              minLength: 3
+              maxLength: 25
+              description: the identification marking for this locomotive
             series:
               type: string
               maxLength: 50
+              description: the prototype series information
             depot:
               type: string
               maxLength: 100
+              description: the depot name
             locomotive_type:
               $ref: "#/components/schemas/LocomotiveType"
             dcc_interface:
@@ -482,6 +523,7 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+              description: indicate whether the rolling stock has a motor or not
       required:
         - locomotive_type
         - class_name
@@ -504,12 +546,16 @@ components:
           properties:
             type_name:
               type: string
+              description: the passenger car type name
             road_number:
               type: string
+              description: the identification marking for this passenger car
             passenger_car_type:
               $ref: "#/components/schemas/PassengerCarType"
             service_level:
               type: string
+              description: |
+                the travel class for this passenger car. Passenger cars can have multiple service levels (ie, '1st/2nd')
       required:
         - type_name
 
@@ -522,14 +568,18 @@ components:
             type_name:
               type: string
               maxLength: 25
+              description: the passenger car type name
             road_number:
               type: string
-              maxLength: 15
+              maxLength: 25
+              description: the identification marking for this passenger car
             passenger_car_type:
               $ref: "#/components/schemas/PassengerCarType"
             service_level:
               type: string
               maxLength: 15
+              description: | 
+                the travel class for this passenger car. Passenger cars can have multiple service levels (ie, '1st/2nd')
       required:
         - type_name
 
@@ -565,12 +615,16 @@ components:
           properties:
             type_name:
               type: string
+              description: the railcar type name
             road_number:
               type: string
+              description: the identification marking for this railcar
             series:
               type: string
+              description: the railcar series
             depot:
               type: string
+              description: the depot name
             railcar_type:
               $ref: "#/components/schemas/RailcarType"
             dcc_interface:
@@ -579,6 +633,7 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+              description: indicate whether the rolling stock has a motor or not
       required:
         - type_name
         - railcar_type
@@ -592,16 +647,21 @@ components:
           properties:
             type_name:
               type: string
+              minLength: 3
               maxLength: 25
+              description: the railcar type name
             road_number:
               type: string
-              maxLength: 15
+              maxLength: 25
+              description: the identification marking for this railcar
             series:
               type: string
               maxLength: 50
+              description: the railcar series
             depot:
               type: string
               maxLength: 100
+              description: the depot name
             railcar_type:
               $ref: "#/components/schemas/RailcarType"
             dcc_interface:
@@ -610,6 +670,7 @@ components:
               $ref: "#/components/schemas/Control"
             is_dummy:
               type: boolean
+              description: indicate whether the rolling stock has a motor or not
       required:
         - type_name
         - railcar_type
@@ -628,6 +689,7 @@ components:
       properties:
         railway_id:
           type: string
+          format: uri
           description: the unique railway identifier (an URL encoded string)
         name:
           type: string
@@ -674,9 +736,11 @@ components:
         operating_since:
           type: string
           format: date
+          description: the date when the railway started its operation
         operating_until:
           type: string
           format: date
+          description: the date when the railway ended its operation, if not active anymore
         status:
           $ref: "#/components/schemas/RailwayStatus"
       required:
@@ -690,11 +754,12 @@ components:
           type: string
           minLength: 2
           maxLength: 25
+          description: the railway name
         abbreviation:
           type: string
-          description: the railway abbreviated name
           minLength: 2
           maxLength: 10
+          description: the railway abbreviated name
         registered_company_name:
           type: string
           maxLength: 250
@@ -703,11 +768,12 @@ components:
         description:
           type: string
           maxLength: 1000
+          description: the railway description
         country:
           type: string
-          description: the ISO country code (ISO 3166-1 alpha-3)
           minLength: 3
           maxLength: 3
+          description: the ISO country code (ISO 3166-1 alpha-3)
         period_of_activity:
           $ref: "#/components/schemas/RailwayPeriodOfActivity"
         gauge:
@@ -715,6 +781,7 @@ components:
         headquarters:
           type: string
           maxLength: 250
+          description: the railway headquarter
         total_length:
           $ref: "#/components/schemas/RailwayTotalLength"
         contact_info:
@@ -731,6 +798,8 @@ components:
         type: number
         format: float
         minimum: 0.1
+        maximum: 9.0
+        description: the distance between the two rails in meters
       track_gauge:
         $ref: "#/components/schemas/TrackGauge"
 
@@ -747,34 +816,34 @@ components:
       properties:
         miles:
           type: number
-          description: the total railway network in miles
           format: float
           minimum: 0.1
+          description: the total railway network in miles
         kilometers:
           type: number
-          description: the total railway network in kilometers
           format: float
           minimum: 0.1
+          description: the total railway network in kilometers
 
     RollingStock:
       type: object
       discriminator:
         propertyName: category
       properties:
+        category:
+          $ref: "#/components/schemas/RollingStockCategory"
         rolling_stock_id:
           type: string
           format: uuid
           description: the unique identifier for this rolling stock
         railway:
           $ref: "#/components/schemas/RollingStockRailway"
-        category:
-          $ref: "#/components/schemas/RollingStockCategory"
         epoch:
           type: string
           description: the epoch for this rolling stock
         livery:
           type: string
-          description: the livery description
+          description: the rolling stock livery description
         length_over_buffer:
           $ref: "#/components/schemas/LengthOverBuffer"
         technical_specifications:
@@ -801,6 +870,8 @@ components:
       properties:
         railway_id:
           type: string
+          format: uri
+          description: the railway unique identifier
         display:
           type: string
 
@@ -809,20 +880,22 @@ components:
       discriminator:
         propertyName: category
       properties:
-        railway:
-          type: string
-          maxLength: 25
-          description: the railway name for this rolling stock
         category:
           $ref: "#/components/schemas/RollingStockCategory"
+        railway:
+          type: string
+          minLength: 2
+          maxLength: 50
+          description: the railway name for this rolling stock
         epoch:
           type: string
+          minLength: 1
           maxLength: 10
           description: the epoch for this rolling stock
         livery:
           type: string
           maxLength: 50
-          description: the livery description
+          description: the rolling stock livery description
         length_over_buffer:
           $ref: "#/components/schemas/LengthOverBuffer"
         technical_specifications:
@@ -838,6 +911,7 @@ components:
       properties:
         scale_id:
           type: string
+          format: uri
           description: the unique identifier for a scale
         name:
           type: string
@@ -845,7 +919,7 @@ components:
         ratio:
           type: number
           format: float
-          description: This scale ratio between the real world and the model (e.g. 1/87 or 1:87)
+          description: the ratio between the real world and the model (e.g. 1/87 or 1:87)
         gauge:
           $ref: "#/components/schemas/ScaleGauge"
         description:
@@ -869,10 +943,12 @@ components:
         - gauge
 
     ScaleGauge:
+      type: object
+      description: the track gauge information for a modelling scale
       millimeters:
         type: number
         format: float
-        minimum: 1
+        minimum: 1.0
         description: the distance between the rails in millimeters
       inches:
         type: number
@@ -888,14 +964,15 @@ components:
       properties:
         name:
           type: string
-          maxLength: 10
+          minLength: 1
+          maxLength: 50
           description: the scale name
         ratio:
           type: number
           format: float
-          minimum: 1
-          maximum: 220
-          description: This scale ratio between the real world and the model (e.g. 1/87 or 1:87)
+          minimum: 1.0
+          maximum: 220.0
+          description: the ratio between the real world and the model (e.g. 1/87 or 1:87)
         gauge:
           $ref: "#/components/schemas/ScaleGauge"
         description:
@@ -904,6 +981,7 @@ components:
           description: the modelling scale description
         standards:
           type: array
+          description: the list of standards
           items:
             type: string
             enum:

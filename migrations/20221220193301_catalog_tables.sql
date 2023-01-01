@@ -146,8 +146,8 @@ CREATE UNIQUE INDEX "Idx_brands_name"
 
 CREATE TABLE public.railways
 (
-    railway_id               varchar(25) NOT NULL,
-    name                     varchar(25) NOT NULL,
+    railway_id               varchar(50) NOT NULL,
+    name                     varchar(50) NOT NULL,
     abbreviation             varchar(10),
     registered_company_name  varchar(250),
     organization_entity_type organization_entity_type,
@@ -182,8 +182,8 @@ CREATE UNIQUE INDEX "Idx_railways_name"
 
 CREATE TABLE public.scales
 (
-    scale_id          varchar(10)    NOT NULL,
-    name              varchar(10)    NOT NULL,
+    scale_id          varchar(50)    NOT NULL,
+    name              varchar(50)    NOT NULL,
     ratio             numeric(19, 5) NOT NULL,
     gauge_millimeters numeric(19, 5),
     gauge_inches      numeric(19, 5),
@@ -243,7 +243,7 @@ CREATE TABLE public.rolling_stocks
     length_over_buffer_in       numeric(19, 5),
     type_name                   varchar(25),
     class_name                  varchar(15),
-    road_number                 varchar(15),
+    road_number                 varchar(25),
     series                      varchar(50),
     depot                       varchar(100),
     dcc_interface               dcc_interface,

@@ -18,19 +18,32 @@ use std::{cmp, convert, fmt};
 /// A catalog item is identified by its catalog item number.
 #[derive(Debug, Clone, Serialize)]
 pub struct CatalogItem {
-    catalog_item_id: CatalogItemId,
-    brand: CatalogItemBrand,
-    item_number: ItemNumber,
-    category: Category,
-    description: Option<String>,
-    details: Option<String>,
-    scale: CatalogItemScale,
-    power_method: PowerMethod,
-    rolling_stocks: Vec<RollingStock>,
-    delivery_date: Option<DeliveryDate>,
-    availability_status: Option<AvailabilityStatus>,
-    count: u8,
-    metadata: Metadata,
+    /// the unique identifier for this catalog item
+    pub catalog_item_id: CatalogItemId,
+    /// the brand
+    pub brand: CatalogItemBrand,
+    /// the item number
+    pub item_number: ItemNumber,
+    /// the scale
+    pub scale: CatalogItemScale,
+    /// the category
+    pub category: Category,
+    /// the power method
+    pub power_method: PowerMethod,
+    /// the catalog item description
+    pub description: Option<String>,
+    /// the catalog item details
+    pub details: Option<String>,
+    /// the delivery date
+    pub delivery_date: Option<DeliveryDate>,
+    /// the availability status
+    pub availability_status: Option<AvailabilityStatus>,
+    /// the rolling stocks included in this catalog item
+    pub rolling_stocks: Vec<RollingStock>,
+    /// the number of rolling stocks for this catalog item
+    pub count: u8,
+    /// the metadata
+    pub metadata: Metadata,
 }
 
 impl cmp::PartialEq for CatalogItem {
@@ -92,67 +105,67 @@ impl CatalogItem {
         }
     }
 
-    /// The unique catalog item id
+    /// the unique catalog item id
     pub fn id(&self) -> &CatalogItemId {
         &self.catalog_item_id
     }
 
-    /// The brand for this catalog item.
+    /// the brand for this catalog item.
     pub fn brand(&self) -> &CatalogItemBrand {
         &self.brand
     }
 
-    /// The item number as in the corresponding brand catalog.
+    /// the item number as in the corresponding brand catalog.
     pub fn item_number(&self) -> &ItemNumber {
         &self.item_number
     }
 
-    /// The category for this catalog item
+    /// the category for this catalog item
     pub fn category(&self) -> Category {
         self.category
     }
 
-    /// The rolling stocks count for this catalog item
+    /// the rolling stocks count for this catalog item
     pub fn count(&self) -> u8 {
         self.count
     }
 
-    /// The list of rolling stocks for this catalog item
+    /// the list of rolling stocks for this catalog item
     pub fn rolling_stocks(&self) -> &Vec<RollingStock> {
         &self.rolling_stocks
     }
 
-    /// The description for this catalog item
+    /// the description for this catalog item
     pub fn description(&self) -> Option<&str> {
         self.description.as_deref()
     }
 
-    /// The details for this catalog item
+    /// the details for this catalog item
     pub fn details(&self) -> Option<&str> {
         self.details.as_deref()
     }
 
-    /// The scale for this catalog item
+    /// the scale for this catalog item
     pub fn scale(&self) -> &CatalogItemScale {
         &self.scale
     }
 
-    /// The power method for this catalog item
+    /// the power method for this catalog item
     pub fn power_method(&self) -> PowerMethod {
         self.power_method
     }
 
-    /// The delivery date for this catalog item
+    /// the delivery date for this catalog item
     pub fn delivery_date(&self) -> Option<&DeliveryDate> {
         self.delivery_date.as_ref()
     }
 
-    /// The availability status for this catalog item
+    /// the availability status for this catalog item
     pub fn availability_status(&self) -> Option<&AvailabilityStatus> {
         self.availability_status.as_ref()
     }
 
-    /// The metadata for this catalog item
+    /// the metadata for this catalog item
     pub fn metadata(&self) -> &Metadata {
         &self.metadata
     }
@@ -161,8 +174,10 @@ impl CatalogItem {
 /// The model railways manufacturer for a catalog item
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
 pub struct CatalogItemBrand {
-    brand_id: BrandId,
-    display: String,
+    /// the brand unique identifier
+    pub brand_id: BrandId,
+    /// the brand display text
+    pub display: String,
 }
 
 impl CatalogItemBrand {
@@ -174,12 +189,12 @@ impl CatalogItemBrand {
         }
     }
 
-    /// Returns this brand unique identifier
+    /// this brand unique identifier
     pub fn brand_id(&self) -> &BrandId {
         &self.brand_id
     }
 
-    /// Returns this brand display text
+    /// this brand display text
     pub fn display(&self) -> &str {
         &self.display
     }
@@ -203,8 +218,10 @@ impl convert::From<Brand> for CatalogItemBrand {
 /// The modelling scale for a catalog item
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
 pub struct CatalogItemScale {
-    scale_id: ScaleId,
-    display: String,
+    /// the scale unique identifier
+    pub scale_id: ScaleId,
+    /// the scale display text
+    pub display: String,
 }
 
 impl CatalogItemScale {
@@ -216,12 +233,12 @@ impl CatalogItemScale {
         }
     }
 
-    /// This scale unique identifier
+    /// this scale unique identifier
     pub fn scale_id(&self) -> &ScaleId {
         &self.scale_id
     }
 
-    /// This scale display text
+    /// this scale display text
     pub fn display(&self) -> &str {
         &self.display
     }
@@ -309,7 +326,7 @@ mod tests {
             let id = CatalogItemId::from_str("acme_123456").unwrap();
             let acme = CatalogItemBrand::new(BrandId::new("ACME"), "ACME");
             let half_zero = CatalogItemScale::new(ScaleId::new("H0"), "H0");
-            let item_number = ItemNumber::new("123456").unwrap();
+            let item_number = ItemNumber::new("123456");
             let now: DateTime<Utc> = Utc::now();
 
             let catalog_item = CatalogItem::new(

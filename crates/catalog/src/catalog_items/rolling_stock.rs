@@ -14,74 +14,144 @@ use std::fmt::{Display, Formatter};
 #[derive(Debug, PartialEq, Eq, Clone, Serialize)]
 #[serde(tag = "category")]
 pub enum RollingStock {
+    /// an electric multiple unit rolling stock
     ElectricMultipleUnit {
+        /// the unique identifier for this rolling stock
         id: RollingStockId,
-        type_name: String,
-        road_number: Option<String>,
+        /// the railway for this rolling stock
         railway: RollingStockRailway,
+        /// the epoch for this rolling stock
         epoch: Epoch,
-        electric_multiple_unit_type: ElectricMultipleUnitType,
-        depot: Option<String>,
+        /// the livery description
         livery: Option<String>,
-        is_dummy: bool,
+        /// the overall length
         length_over_buffer: Option<LengthOverBuffer>,
-        control: Option<Control>,
-        dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechnicalSpecifications>,
-    },
-    FreightCar {
-        id: RollingStockId,
+        /// the technical specifications
+        technical_specifications: Option<TechnicalSpecifications>,
+        /// the electric multiple unit type name
         type_name: String,
+        /// the identification marking for this electric multiple unit
         road_number: Option<String>,
-        railway: RollingStockRailway,
-        epoch: Epoch,
-        freight_car_type: Option<FreightCarType>,
-        livery: Option<String>,
-        length_over_buffer: Option<LengthOverBuffer>,
-        tech_specs: Option<TechnicalSpecifications>,
-    },
-    Locomotive {
-        id: RollingStockId,
-        class_name: String,
-        road_number: String,
+        /// the prototype series information
         series: Option<String>,
+        /// the depot name
+        depot: Option<String>,
+        /// the electric multiple unit type
+        electric_multiple_unit_type: ElectricMultipleUnitType,
+        /// the dcc interface
+        dcc_interface: Option<DccInterface>,
+        /// the control
+        control: Option<Control>,
+        /// indicate whether the rolling stock has a motor or not
+        is_dummy: bool,
+    },
+    /// a freight car rolling stock
+    FreightCar {
+        /// the unique identifier for this rolling stock
+        id: RollingStockId,
+        /// the railway for this rolling stock
         railway: RollingStockRailway,
+        /// the epoch for this rolling stock
         epoch: Epoch,
+        /// the livery description
+        livery: Option<String>,
+        /// the overall length
+        length_over_buffer: Option<LengthOverBuffer>,
+        /// the technical specifications
+        technical_specifications: Option<TechnicalSpecifications>,
+        /// the freight car type name
+        type_name: String,
+        /// the identification marking for this freight car
+        road_number: Option<String>,
+        /// the freight car type
+        freight_car_type: Option<FreightCarType>,
+    },
+    /// a locomotive rolling stock
+    Locomotive {
+        /// the unique identifier for this rolling stock
+        id: RollingStockId,
+        /// the railway for this rolling stock
+        railway: RollingStockRailway,
+        /// the epoch for this rolling stock
+        epoch: Epoch,
+        /// the livery description
+        livery: Option<String>,
+        /// the overall length
+        length_over_buffer: Option<LengthOverBuffer>,
+        /// the technical specification
+        technical_specifications: Option<TechnicalSpecifications>,
+        /// the class of locomotives. The class is a group of locomotives built to a common design,
+        /// typically for a single railroad or railway
+        class_name: String,
+        /// the identification marking for this locomotive
+        road_number: String,
+        /// the prototype series information
+        series: Option<String>,
+        /// the depot name
+        depot: Option<String>,
+        /// the locomotive type
         locomotive_type: LocomotiveType,
-        depot: Option<String>,
-        livery: Option<String>,
-        is_dummy: bool,
-        length_over_buffer: Option<LengthOverBuffer>,
-        control: Option<Control>,
+        /// the dcc interface
         dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechnicalSpecifications>,
+        /// the control
+        control: Option<Control>,
+        /// indicate whether the rolling stock has a motor or not
+        is_dummy: bool,
     },
+    /// a passenger car rolling stock
     PassengerCar {
+        /// the unique identifier for this rolling stock
         id: RollingStockId,
-        type_name: String,
-        road_number: Option<String>,
+        /// the railway for this rolling stock
         railway: RollingStockRailway,
+        /// the epoch for this rolling stock
         epoch: Epoch,
+        /// the livery description
+        livery: Option<String>,
+        /// the overall length
+        length_over_buffer: Option<LengthOverBuffer>,
+        /// the technical specifications
+        technical_specifications: Option<TechnicalSpecifications>,
+        /// the passenger car type name
+        type_name: String,
+        /// the identification marking for this passenger car
+        road_number: Option<String>,
+        /// the passenger car type
         passenger_car_type: Option<PassengerCarType>,
+        /// the travel class for this passenger car. Passenger cars can have multiple service
+        /// levels (ie, '1st/2nd')
         service_level: Option<ServiceLevel>,
-        livery: Option<String>,
-        length_over_buffer: Option<LengthOverBuffer>,
-        tech_specs: Option<TechnicalSpecifications>,
     },
+    /// a railcar rolling stock
     Railcar {
+        /// the unique identifier for this rolling stock
         id: RollingStockId,
-        type_name: String,
-        road_number: Option<String>,
+        /// the railway for this rolling stock
         railway: RollingStockRailway,
+        /// the epoch for this rolling stock
         epoch: Epoch,
-        railcar_type: RailcarType,
-        depot: Option<String>,
+        /// the livery description
         livery: Option<String>,
-        is_dummy: bool,
+        /// the overall length
         length_over_buffer: Option<LengthOverBuffer>,
-        control: Option<Control>,
+        /// the technical specifications
+        technical_specifications: Option<TechnicalSpecifications>,
+        /// the railcar type name
+        type_name: String,
+        /// the identification marking for this railcar
+        road_number: Option<String>,
+        /// the railcar series
+        series: Option<String>,
+        /// the depot name
+        depot: Option<String>,
+        /// the railcar type
+        railcar_type: RailcarType,
+        /// the dcc interface
         dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechnicalSpecifications>,
+        /// the control
+        control: Option<Control>,
+        /// indicate whether the rolling stock has a motor or not
+        is_dummy: bool,
     },
 }
 
@@ -91,6 +161,7 @@ impl RollingStock {
         id: RollingStockId,
         type_name: &str,
         road_number: Option<&str>,
+        series: Option<&str>,
         railway: RollingStockRailway,
         epoch: Epoch,
         electric_multiple_unit_type: ElectricMultipleUnitType,
@@ -100,22 +171,48 @@ impl RollingStock {
         length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechnicalSpecifications>,
+        technical_specifications: Option<TechnicalSpecifications>,
     ) -> Self {
         RollingStock::ElectricMultipleUnit {
             id,
-            type_name: String::from(type_name),
-            road_number: road_number.map(str::to_string),
             railway,
             epoch,
-            electric_multiple_unit_type,
-            depot: depot.map(str::to_string),
             livery: livery.map(str::to_string),
-            is_dummy,
             length_over_buffer,
-            control,
+            technical_specifications,
+            type_name: String::from(type_name),
+            road_number: road_number.map(str::to_string),
+            series: series.map(str::to_string),
+            depot: depot.map(str::to_string),
+            electric_multiple_unit_type,
             dcc_interface,
-            tech_specs,
+            control,
+            is_dummy,
+        }
+    }
+
+    /// Creates a new freight car rolling stock
+    pub fn new_freight_car(
+        id: RollingStockId,
+        type_name: &str,
+        road_number: Option<&str>,
+        railway: RollingStockRailway,
+        epoch: Epoch,
+        freight_car_type: Option<FreightCarType>,
+        livery: Option<&str>,
+        length_over_buffer: Option<LengthOverBuffer>,
+        technical_specifications: Option<TechnicalSpecifications>,
+    ) -> Self {
+        RollingStock::FreightCar {
+            id,
+            railway,
+            epoch,
+            livery: livery.map(str::to_string),
+            length_over_buffer,
+            technical_specifications,
+            type_name: String::from(type_name),
+            road_number: road_number.map(str::to_string),
+            freight_car_type,
         }
     }
 
@@ -134,48 +231,23 @@ impl RollingStock {
         length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechnicalSpecifications>,
+        technical_specifications: Option<TechnicalSpecifications>,
     ) -> Self {
         RollingStock::Locomotive {
             id,
+            railway,
+            epoch,
+            livery: livery.map(str::to_string),
+            length_over_buffer,
+            technical_specifications,
             class_name: String::from(class_name),
             road_number: String::from(road_number),
             series: series.map(str::to_string),
-            railway,
-            epoch,
-            locomotive_type,
             depot: depot.map(str::to_string),
-            livery: livery.map(str::to_string),
-            is_dummy,
-            length_over_buffer,
-            control,
+            locomotive_type,
             dcc_interface,
-            tech_specs,
-        }
-    }
-
-    /// Creates a new freight car rolling stock
-    pub fn new_freight_car(
-        id: RollingStockId,
-        type_name: &str,
-        road_number: Option<&str>,
-        railway: RollingStockRailway,
-        epoch: Epoch,
-        freight_car_type: Option<FreightCarType>,
-        livery: Option<&str>,
-        length_over_buffer: Option<LengthOverBuffer>,
-        tech_specs: Option<TechnicalSpecifications>,
-    ) -> Self {
-        RollingStock::FreightCar {
-            id,
-            type_name: String::from(type_name),
-            road_number: road_number.map(str::to_string),
-            railway,
-            epoch,
-            freight_car_type,
-            livery: livery.map(str::to_string),
-            length_over_buffer,
-            tech_specs,
+            control,
+            is_dummy,
         }
     }
 
@@ -190,19 +262,19 @@ impl RollingStock {
         service_level: Option<ServiceLevel>,
         livery: Option<&str>,
         length_over_buffer: Option<LengthOverBuffer>,
-        tech_specs: Option<TechnicalSpecifications>,
+        technical_specifications: Option<TechnicalSpecifications>,
     ) -> Self {
         RollingStock::PassengerCar {
             id,
-            type_name: String::from(type_name),
-            road_number: road_number.map(str::to_string),
             railway,
             epoch,
-            passenger_car_type,
-            service_level,
             livery: livery.map(str::to_string),
             length_over_buffer,
-            tech_specs,
+            technical_specifications,
+            type_name: String::from(type_name),
+            road_number: road_number.map(str::to_string),
+            passenger_car_type,
+            service_level,
         }
     }
 
@@ -211,6 +283,7 @@ impl RollingStock {
         id: RollingStockId,
         type_name: &str,
         road_number: Option<&str>,
+        series: Option<&str>,
         railway: RollingStockRailway,
         epoch: Epoch,
         railcar_type: RailcarType,
@@ -220,22 +293,23 @@ impl RollingStock {
         length_over_buffer: Option<LengthOverBuffer>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
-        tech_specs: Option<TechnicalSpecifications>,
+        technical_specifications: Option<TechnicalSpecifications>,
     ) -> Self {
         RollingStock::Railcar {
             id,
-            type_name: String::from(type_name),
-            road_number: road_number.map(str::to_string),
             railway,
             epoch,
-            railcar_type,
-            depot: depot.map(str::to_string),
             livery: livery.map(str::to_string),
-            is_dummy,
             length_over_buffer,
-            control,
+            technical_specifications,
+            type_name: String::from(type_name),
+            road_number: road_number.map(str::to_string),
+            series: series.map(str::to_string),
+            depot: depot.map(str::to_string),
+            railcar_type,
             dcc_interface,
-            tech_specs,
+            control,
+            is_dummy,
         }
     }
 
@@ -319,11 +393,26 @@ impl RollingStock {
     /// The technical specification for this rolling stock
     pub fn technical_specifications(&self) -> Option<&TechnicalSpecifications> {
         match self {
-            RollingStock::ElectricMultipleUnit { tech_specs, .. } => tech_specs.as_ref(),
-            RollingStock::Locomotive { tech_specs, .. } => tech_specs.as_ref(),
-            RollingStock::FreightCar { tech_specs, .. } => tech_specs.as_ref(),
-            RollingStock::PassengerCar { tech_specs, .. } => tech_specs.as_ref(),
-            RollingStock::Railcar { tech_specs, .. } => tech_specs.as_ref(),
+            RollingStock::ElectricMultipleUnit {
+                technical_specifications: tech_specs,
+                ..
+            } => tech_specs.as_ref(),
+            RollingStock::Locomotive {
+                technical_specifications: tech_specs,
+                ..
+            } => tech_specs.as_ref(),
+            RollingStock::FreightCar {
+                technical_specifications: tech_specs,
+                ..
+            } => tech_specs.as_ref(),
+            RollingStock::PassengerCar {
+                technical_specifications: tech_specs,
+                ..
+            } => tech_specs.as_ref(),
+            RollingStock::Railcar {
+                technical_specifications: tech_specs,
+                ..
+            } => tech_specs.as_ref(),
         }
     }
 
@@ -381,8 +470,10 @@ impl RollingStock {
 
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize)]
 pub struct RollingStockRailway {
-    railway_id: RailwayId,
-    display: String,
+    /// the railway unique identifier
+    pub railway_id: RailwayId,
+    /// the railway display name
+    pub display: String,
 }
 
 impl RollingStockRailway {
@@ -472,6 +563,7 @@ mod test {
                 id,
                 "ALe 801",
                 Some("ALe 801 003"),
+                None,
                 fs.clone(),
                 Epoch::IV,
                 ElectricMultipleUnitType::PowerCar,
@@ -541,6 +633,7 @@ mod test {
                 id,
                 "ALn 668",
                 Some("ALn 668 1449"),
+                None,
                 fs.clone(),
                 Epoch::IIIb,
                 RailcarType::PowerCar,

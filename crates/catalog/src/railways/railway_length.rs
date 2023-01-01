@@ -5,8 +5,10 @@ use std::fmt::{Display, Formatter};
 /// The overall length of tracks (in km and miles) operated by a railway company
 #[derive(Debug, Eq, PartialEq, Clone, Copy, Serialize, Deserialize)]
 pub struct RailwayLength {
-    kilometers: Decimal,
-    miles: Decimal,
+    /// the total railway network in kilometers
+    pub kilometers: Decimal,
+    /// the total railway network in miles
+    pub miles: Decimal,
 }
 
 impl RailwayLength {

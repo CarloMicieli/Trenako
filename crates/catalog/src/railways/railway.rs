@@ -19,20 +19,34 @@ use std::{cmp, fmt};
 /// Railway companies can be private or public.
 #[derive(Debug, Clone, Serialize)]
 pub struct Railway {
-    railway_id: RailwayId,
-    name: String,
-    abbreviation: Option<String>,
-    registered_company_name: String,
-    organization_entity_type: Option<OrganizationEntityType>,
-    description: Option<String>,
-    period_of_activity: Option<PeriodOfActivity>,
-    length: Option<RailwayLength>,
-    gauge: Option<RailwayGauge>,
-    country: CountryCode,
-    headquarters: Option<String>,
-    contact_info: Option<ContactInformation>,
-    socials: Option<Socials>,
-    metadata: Metadata,
+    /// the unique railway identifier (an URL encoded string)
+    pub railway_id: RailwayId,
+    /// the railway name
+    pub name: String,
+    /// the railway abbreviated name
+    pub abbreviation: Option<String>,
+    /// the registered company name
+    pub registered_company_name: String,
+    /// the organization entity type
+    pub organization_entity_type: Option<OrganizationEntityType>,
+    /// the railway description
+    pub description: Option<String>,
+    /// the registration country
+    pub country: CountryCode,
+    /// the period of activity
+    pub period_of_activity: Option<PeriodOfActivity>,
+    /// the track gauge
+    pub gauge: Option<RailwayGauge>,
+    /// the railway headquarter
+    pub headquarters: Option<String>,
+    /// the railway total length
+    pub total_length: Option<RailwayLength>,
+    /// the contacts information
+    pub contact_info: Option<ContactInformation>,
+    /// the social profiles
+    pub socials: Option<Socials>,
+    /// the metadata
+    pub metadata: Metadata,
 }
 
 impl Railway {
@@ -45,7 +59,7 @@ impl Railway {
         organization_entity_type: Option<OrganizationEntityType>,
         description: Option<&str>,
         period_of_activity: Option<PeriodOfActivity>,
-        length: Option<RailwayLength>,
+        total_length: Option<RailwayLength>,
         gauge: Option<RailwayGauge>,
         country: CountryCode,
         headquarters: Option<&str>,
@@ -60,11 +74,11 @@ impl Railway {
             registered_company_name: String::from(registered_company_name),
             organization_entity_type,
             description: description.map(str::to_string),
-            period_of_activity,
-            length,
-            gauge,
             country,
+            period_of_activity,
+            gauge,
             headquarters: headquarters.map(str::to_string),
+            total_length,
             contact_info,
             socials,
             metadata,
@@ -108,8 +122,8 @@ impl Railway {
     }
 
     /// The total railway network length controlled by this railway company
-    pub fn length(&self) -> Option<&RailwayLength> {
-        self.length.as_ref()
+    pub fn total_length(&self) -> Option<&RailwayLength> {
+        self.total_length.as_ref()
     }
 
     /// The track gauge for this railway
@@ -211,7 +225,7 @@ mod test {
                 railway.organization_entity_type()
             );
             assert_eq!(Some("Rome"), railway.headquarters());
-            assert_eq!(Some(&length), railway.length());
+            assert_eq!(Some(&length), railway.total_length());
             assert_eq!(Some(&gauge), railway.gauge());
             assert_eq!(Some(&contact_info), railway.contact_info());
             assert_eq!(Some(&socials), railway.socials());

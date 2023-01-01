@@ -6,9 +6,12 @@ use strum_macros::{Display, EnumString};
 
 #[derive(Debug, Copy, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Coupling {
-    socket: Socket,
-    close_couplers: FeatureFlag,
-    digital_shunting: FeatureFlag,
+    /// the rolling stock coupling socket
+    pub socket: Socket,
+    /// the rolling stock has a close coupling mechanism
+    pub close_couplers: FeatureFlag,
+    /// the rolling stock has a digital shunting couplers mechanism
+    pub digital_shunting: FeatureFlag,
 }
 
 impl Coupling {
@@ -89,13 +92,20 @@ impl Default for Socket {
 /// The technical specification data for a rolling stock model
 #[derive(Debug, Eq, PartialEq, Clone, Default, Serialize, Deserialize)]
 pub struct TechnicalSpecifications {
-    minimum_radius: Option<Radius>,
-    coupling: Option<Coupling>,
-    flywheel_fitted: FeatureFlag,
-    metal_body: FeatureFlag,
-    interior_lights: FeatureFlag,
-    lights: FeatureFlag,
-    spring_buffers: FeatureFlag,
+    /// the minimum drivable radius
+    pub minimum_radius: Option<Radius>,
+    /// the coupling
+    pub coupling: Option<Coupling>,
+    /// has a flywheel fitted
+    pub flywheel_fitted: FeatureFlag,
+    /// has metal body
+    pub metal_body: FeatureFlag,
+    /// has interior lighting
+    pub interior_lights: FeatureFlag,
+    /// has lights
+    pub lights: FeatureFlag,
+    /// has spring buffers
+    pub spring_buffers: FeatureFlag,
 }
 
 impl TechnicalSpecifications {

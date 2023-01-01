@@ -4,7 +4,9 @@ use common::measure_units::MeasureUnit;
 /// The rail vehicle measurement method
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub struct LengthOverBuffer {
+    /// the overall length in inches
     pub inches: Option<Length>,
+    /// the overall length in millimeters
     pub millimeters: Option<Length>,
 }
 

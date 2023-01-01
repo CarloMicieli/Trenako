@@ -3,37 +3,41 @@ use common::measure_units::MeasureUnit;
 use rust_decimal::Decimal;
 use std::cmp::Ordering;
 
+/// It represents the track gauge information for a modelling scale
 #[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize)]
 pub struct Gauge {
-    track_gauge: TrackGauge,
-    millimeters: Decimal,
-    inches: Decimal,
+    /// the distance between the rails in millimeters
+    pub millimeters: Decimal,
+    /// the distance between the rails in inches
+    pub inches: Decimal,
+    /// the track gauge
+    pub track_gauge: TrackGauge,
 }
 
 impl Gauge {
     pub fn new(track_gauge: TrackGauge, millimeters: Decimal, inches: Decimal) -> Self {
         Gauge {
-            track_gauge,
             millimeters,
             inches,
+            track_gauge,
         }
     }
 
     pub fn from_inches(track_gauge: TrackGauge, inches: Decimal) -> Self {
         let millimeters = MeasureUnit::Inches.to(MeasureUnit::Millimeters).convert(inches);
         Gauge {
-            track_gauge,
             millimeters,
             inches,
+            track_gauge,
         }
     }
 
     pub fn from_millimeters(track_gauge: TrackGauge, millimeters: Decimal) -> Self {
         let inches = MeasureUnit::Millimeters.to(MeasureUnit::Inches).convert(millimeters);
         Gauge {
-            track_gauge,
             millimeters,
             inches,
+            track_gauge,
         }
     }
 

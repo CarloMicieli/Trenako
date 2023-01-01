@@ -6,14 +6,17 @@ use strum_macros::{Display, EnumString};
 /// It represents the period of activity for a railway company
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PeriodOfActivity {
-    operating_since: Date,
-    operating_until: Option<Date>,
-    status: RailwayStatus,
+    /// the date when the railway started its operation
+    pub operating_since: NaiveDate,
+    /// the date when the railway ended its operation, if not active anymore
+    pub operating_until: Option<NaiveDate>,
+    /// the railway status
+    pub status: RailwayStatus,
 }
 
 impl PeriodOfActivity {
     /// Creates a new railway period of activity
-    pub fn new(operating_since: Date, operating_until: Option<Date>, status: RailwayStatus) -> Self {
+    pub fn new(operating_since: NaiveDate, operating_until: Option<NaiveDate>, status: RailwayStatus) -> Self {
         PeriodOfActivity {
             operating_since,
             operating_until,
@@ -22,7 +25,7 @@ impl PeriodOfActivity {
     }
 
     /// Creates a new active railway
-    pub fn active_railway(operating_since: Date) -> Self {
+    pub fn active_railway(operating_since: NaiveDate) -> Self {
         PeriodOfActivity {
             operating_since,
             operating_until: None,
@@ -31,7 +34,7 @@ impl PeriodOfActivity {
     }
 
     /// Creates a new inactive railway
-    pub fn inactive_railway(operating_since: Date, operating_until: Date) -> Self {
+    pub fn inactive_railway(operating_since: NaiveDate, operating_until: NaiveDate) -> Self {
         PeriodOfActivity {
             operating_since,
             operating_until: Some(operating_until),
@@ -40,34 +43,18 @@ impl PeriodOfActivity {
     }
 
     /// The moment since this railway has been active
-    pub fn operating_since(&self) -> &Date {
+    pub fn operating_since(&self) -> &NaiveDate {
         &self.operating_since
     }
 
     /// The moment when the railway stopped to be active (if any)
-    pub fn operating_until(&self) -> Option<&Date> {
+    pub fn operating_until(&self) -> Option<&NaiveDate> {
         self.operating_until.as_ref()
     }
 
     /// The railway status
     pub fn status(&self) -> RailwayStatus {
         self.status
-    }
-}
-
-#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
-pub enum Date {
-    Year(u32),
-    ExactDay(NaiveDate),
-}
-
-impl Date {
-    pub fn with_year(year: u32) -> Self {
-        Date::Year(year)
-    }
-
-    pub fn with_exact_day(date: NaiveDate) -> Self {
-        Date::ExactDay(date)
     }
 }
 
@@ -91,19 +78,21 @@ mod test {
 
         #[test]
         fn it_should_create_new_active_periods_of_activity() {
-            let active = PeriodOfActivity::active_railway(Date::with_year(1900));
+            let start_date = NaiveDate::from_ymd_opt(1900, 12, 24).unwrap();
+            let active = PeriodOfActivity::active_railway(start_date);
             assert_eq!(RailwayStatus::Active, active.status());
-            assert_eq!(&Date::with_year(1900), active.operating_since());
+            assert_eq!(&start_date, active.operating_since());
             assert_eq!(None, active.operating_until());
         }
 
         #[test]
         fn it_should_create_new_inactive_periods_of_activity() {
+            let start_date = NaiveDate::from_ymd_opt(1900, 12, 24).unwrap();
             let end_date = NaiveDate::from_ymd_opt(2000, 12, 24).unwrap();
-            let active = PeriodOfActivity::inactive_railway(Date::with_year(1900), Date::ExactDay(end_date));
+            let active = PeriodOfActivity::inactive_railway(start_date, end_date);
             assert_eq!(RailwayStatus::Inactive, active.status());
-            assert_eq!(&Date::with_year(1900), active.operating_since());
-            assert_eq!(Some(&Date::ExactDay(end_date)), active.operating_until());
+            assert_eq!(&start_date, active.operating_since());
+            assert_eq!(Some(&end_date), active.operating_until());
         }
     }
 

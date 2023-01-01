@@ -51,7 +51,7 @@ mod test {
         #[test]
         fn it_should_create_new_catalog_item_ids() {
             let brand = CatalogItemBrand::new(BrandId::new("acme"), "ACME");
-            let item_number = ItemNumber::new("12345").unwrap();
+            let item_number = ItemNumber::new("12345");
 
             let id = CatalogItemId::new(brand, item_number);
 

@@ -9,7 +9,10 @@ use strum_macros::{Display, EnumString};
 #[sqlx(type_name = "brand_status", rename_all = "SCREAMING_SNAKE_CASE")]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum BrandStatus {
+    /// the brand is active
     Active,
+
+    /// the brand is out of business
     OutOfBusiness,
 }
 
