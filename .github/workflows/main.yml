@@ -36,6 +36,7 @@ jobs:
         continue-on-error: false
         with:
           path: |
+            ~/.cargo/bin/
             ~/.cargo/registry
             ~/.cargo/git
             target/
