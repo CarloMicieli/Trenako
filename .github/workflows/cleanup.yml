@@ -1,0 +1,36 @@
+name: Clean-up
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+env:
+  ORGANIZATION: CarloMicieli
+  TRENAKO_SERVER_IMAGE: trenako-server
+  TRENAKO_OPENAPI_IMAGE: trenako-openapi
+
+jobs:
+  clean-up:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Docker images Prune (server)
+        uses: vlaurin/action-ghcr-prune@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          organization: ${{ env.REGISTRY }}
+          container: ${{ env.TRENAKO_SERVER_IMAGE }}
+          dry-run: false
+          older-than: 7 # days
+          keep-last: 2
+          untagged: true
+
+      - name: Docker images Prune (openapi)
+        uses: vlaurin/action-ghcr-prune@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          organization: ${{ env.REGISTRY }}
+          container: ${{ env.TRENAKO_OPENAPI_IMAGE }}
+          dry-run: false
+          older-than: 7 # days
+          keep-last: 2
+          untagged: true
