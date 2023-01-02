@@ -1,8 +1,11 @@
 use common::length::Length;
 use rust_decimal::Decimal;
 use sqlx::Type;
+use std::fmt;
+use std::fmt::Formatter;
 use strum_macros;
 use strum_macros::{Display, EnumString};
+use thiserror::Error;
 
 #[derive(Debug, Copy, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Coupling {
@@ -239,13 +242,31 @@ impl Default for FeatureFlag {
 pub struct Radius(Length);
 
 impl Radius {
-    pub fn of_millimeters(value: Decimal) -> Result<Self, &'static str> {
+    /// Returns a drivable radius expressed in millimeters
+    pub fn from_millimeters(value: Decimal) -> Result<Self, RadiusError> {
         if value.is_sign_positive() {
             Ok(Radius(Length::Millimeters(value)))
         } else {
-            Err("negative radius")
+            Err(RadiusError::NegativeRadius)
         }
     }
+
+    /// Returns the value for this radius
+    pub fn value(&self) -> Length {
+        self.0
+    }
+}
+
+impl fmt::Display for Radius {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self.0)
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Error)]
+pub enum RadiusError {
+    #[error("radius cannot be negative")]
+    NegativeRadius,
 }
 
 #[cfg(test)]
@@ -315,6 +336,31 @@ mod test {
         }
     }
 
+    mod radius {
+        use super::*;
+        use common::measure_units::MeasureUnit;
+        use pretty_assertions::assert_eq;
+        use rust_decimal_macros::dec;
+
+        #[test]
+        fn it_should_create_a_new_radius_in_millimeters() {
+            let radius = Radius::from_millimeters(dec!(360.0)).expect("unable to create the radius");
+            assert_eq!(Length::new(dec!(360), MeasureUnit::Millimeters), radius.value());
+        }
+
+        #[test]
+        fn it_should_fail_to_create_negative_radius() {
+            let result = Radius::from_millimeters(dec!(-1.0));
+            assert_eq!(Err(RadiusError::NegativeRadius), result);
+        }
+
+        #[test]
+        fn it_should_display_a_radius() {
+            let radius = Radius::from_millimeters(dec!(360.0)).unwrap();
+            assert_eq!("360.0 mm", radius.to_string());
+        }
+    }
+
     mod technical_specifications {
         use super::*;
         use pretty_assertions::assert_eq;
@@ -324,7 +370,7 @@ mod test {
         fn it_should_create_tech_specs() {
             let coupling = Coupling::new(Socket::Nem362, FeatureFlag::Yes, FeatureFlag::No);
 
-            let radius = Radius::of_millimeters(dec!(360)).unwrap();
+            let radius = Radius::from_millimeters(dec!(360)).unwrap();
             let tech_specs = TechnicalSpecifications::builder()
                 .with_coupling(coupling)
                 .with_metal_body()

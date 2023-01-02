@@ -693,7 +693,7 @@ mod test {
         }
 
         fn technical_specification() -> TechnicalSpecifications {
-            let radius = Radius::of_millimeters(dec!(360.0)).unwrap();
+            let radius = Radius::from_millimeters(dec!(360.0)).unwrap();
             let coupling = Coupling::with_close_couplers(Socket::Nem362);
             TechnicalSpecifications::builder()
                 .with_coupling(coupling)
