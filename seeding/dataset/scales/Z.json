@@ -1,0 +1,11 @@
+{
+  "name" : "Z",
+  "description" : null,
+  "ratio" : 220.0,
+  "gauge" : {
+    "millimeters" : 6.5,
+    "inches" : 0.256,
+    "trackGauge" : "STANDARD"
+  },
+  "standards" : [ "NEM" ]
+}

@@ -1,0 +1,11 @@
+{
+  "name" : "0",
+  "description" : null,
+  "ratio" : 45.0,
+  "gauge" : {
+    "millimeters" : 32.0,
+    "inches" : 1.26,
+    "trackGauge" : "STANDARD"
+  },
+  "standards" : [ "NEM" ]
+}
