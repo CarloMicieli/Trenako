@@ -1,9 +1,8 @@
 [workspace]
-#default-members = ["crates/cli"]
+default-members = ["crates/web"]
 members = [
     "crates/catalog",
     "crates/common",
-    "crates/cli",
     "crates/web",
 ]
 
@@ -17,7 +16,6 @@ rust-version = "1.66"
 [workspace.dependencies]
 actix-web = "4"
 anyhow = "1.0"
-chrono = "0.4.23"
 chrono = { version = "0.4.23", features = ["serde"] }
 clap = "4.0.26"
 config = { version = "0.13.3", default-features = false, features = ["yaml"] }
