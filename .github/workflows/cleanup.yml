@@ -1,7 +1,10 @@
-name: Clean up
+name: clean-up
 
 on:
   push:
+    branches:
+      - dev
+      - main
     paths:
       - '.github/workflows/cleanup.yml'
   #schedule:
