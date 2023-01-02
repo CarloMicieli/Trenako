@@ -1,0 +1,34 @@
+{
+  "name" : "ÖBB",
+  "abbreviation" : "ÖBB",
+  "registeredCompanyName" : "Österreichische Bundesbahnen-Holding Aktiengesellschaft",
+  "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
+  "country" : "AUS",
+  "periodOfActivity" : {
+    "operatingSince" : "1923",
+    "operatingUntil" : null,
+    "status" : "ACTIVE"
+  },
+  "gauge" : {
+    "trackGauge" : "STANDARD",
+    "meters" : 1.435
+  },
+  "totalLength" : {
+    "kilometers" : 9740.0,
+    "miles" : null
+  },
+  "contactInfo" : {
+    "email" : null,
+    "websiteUrl" : "https://www.oebb.at",
+    "phone" : null
+  },
+  "social" : {
+    "facebook" : "unsereOEBB",
+    "instagram" : "unsereoebb",
+    "linkedin" : "obb",
+    "twitter" : "unsereOEBB",
+    "youtube" : "unsereOEBB"
+  },
+  "headquarters" : "Wien",
+  "version" : 1
+}

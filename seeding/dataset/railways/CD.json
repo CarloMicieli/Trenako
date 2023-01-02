@@ -1,0 +1,34 @@
+{
+  "name" : "ČD",
+  "abbreviation" : "ČD",
+  "registeredCompanyName" : "České dráhy",
+  "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
+  "country" : "CZE",
+  "periodOfActivity" : {
+    "operatingSince" : "1993",
+    "operatingUntil" : null,
+    "status" : "ACTIVE"
+  },
+  "gauge" : {
+    "trackGauge" : "STANDARD",
+    "meters" : 1.435
+  },
+  "totalLength" : {
+    "kilometers" : 9412.0,
+    "miles" : 5848.0
+  },
+  "contactInfo" : {
+    "email" : null,
+    "websiteUrl" : "https://www.cd.cz",
+    "phone" : null
+  },
+  "social" : {
+    "facebook" : "ceskedrahy",
+    "instagram" : "ceskedrahy",
+    "linkedin" : "ceskedrahy",
+    "twitter" : "ceskedrahy_",
+    "youtube" : "zeleznicarCD"
+  },
+  "headquarters" : "Prague",
+  "version" : 1
+}
