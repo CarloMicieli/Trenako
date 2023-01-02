@@ -553,9 +553,7 @@ components:
             passenger_car_type:
               $ref: "#/components/schemas/PassengerCarType"
             service_level:
-              type: string
-              description: |
-                the travel class for this passenger car. Passenger cars can have multiple service levels (ie, '1st/2nd')
+              $ref: "#/components/schemas/ServiceLevel"
       required:
         - type_name
 
@@ -576,10 +574,7 @@ components:
             passenger_car_type:
               $ref: "#/components/schemas/PassengerCarType"
             service_level:
-              type: string
-              maxLength: 15
-              description: | 
-                the travel class for this passenger car. Passenger cars can have multiple service levels (ie, '1st/2nd')
+              $ref: "#/components/schemas/ServiceLevel"
       required:
         - type_name
 
@@ -993,6 +988,16 @@ components:
         - name
         - ratio
         - gauge
+
+    ServiceLevel:
+      type: string
+      description: the travel class for this passenger car. Passenger cars can have multiple service levels (ie, '1st/2nd')
+      enum:
+        - FIRST_CLASS
+        - SECOND_CLASS
+        - FIRST_AND_SECOND_CLASS
+        - FIRST_SECOND_AND_THIRD_CLASS
+        - SECOND_AND_THIRD_CLASS
 
     Socket:
       type: string

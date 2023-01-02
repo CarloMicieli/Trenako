@@ -109,6 +109,13 @@ CREATE TYPE socket_type AS ENUM (
     'NEM_362',
     'NEM_365'
 );
+CREATE TYPE service_level AS ENUM (
+    'FIRST_CLASS',
+    'SECOND_CLASS',
+    'FIRST_AND_SECOND_CLASS',
+    'FIRST_SECOND_AND_THIRD_CLASS',
+    'SECOND_AND_THIRD_CLASS'
+);
 
 CREATE TABLE public.brands
 (
@@ -253,7 +260,7 @@ CREATE TABLE public.rolling_stocks
     locomotive_type             locomotive_type,
     passenger_car_type          passenger_car_type,
     railcar_type                railcar_type,
-    service_level               varchar(15),
+    service_level               service_level,
     is_dummy                    boolean,
     minimum_radius              numeric(19, 5),
     coupling_socket             socket_type,
