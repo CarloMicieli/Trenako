@@ -1,0 +1,9 @@
+micronaut:
+  application:
+    name: trenako-seeding
+
+dataset:
+  brands: /brands
+  catalog-items: /catalog-items
+  railways: /railways
+  scales: /scales
