@@ -1,0 +1,30 @@
+{
+  "name" : "Gützold",
+  "registeredCompanyName" : "fischer-modell GmbH",
+  "organizationEntityType" : "OTHER",
+  "groupName" : null,
+  "description" : null,
+  "address" : {
+    "streetAddress" : "Am Rott 5",
+    "extendedAddress" : null,
+    "postalCode" : "29439",
+    "city" : "Lüchow",
+    "region" : null,
+    "country" : "DEU"
+  },
+  "contactInfo" : {
+    "email" : "info@fischer-modell.de",
+    "websiteUrl" : "https://www.guetzold.de",
+    "phone" : null
+  },
+  "socials" : {
+    "facebook" : null,
+    "instagram" : null,
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE",
+  "version" : 1
+}

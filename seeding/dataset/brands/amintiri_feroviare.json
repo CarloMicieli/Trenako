@@ -1,0 +1,30 @@
+{
+  "name" : "Amintiri Feroviare",
+  "registeredCompanyName" : null,
+  "organizationEntityType" : "OTHER",
+  "groupName" : null,
+  "description" : null,
+  "address" : {
+    "streetAddress" : "Str. Erou Slt. Olaru Cristian, Nr.34",
+    "extendedAddress" : null,
+    "postalCode" : "731076",
+    "city" : "Barlad",
+    "region" : null,
+    "country" : "ROU"
+  },
+  "contactInfo" : {
+    "email" : "info@amintiriferoviare.com",
+    "websiteUrl" : "http://www.amintiriferoviare.com/",
+    "phone" : null
+  },
+  "socials" : {
+    "facebook" : null,
+    "instagram" : null,
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE",
+  "version" : 1
+}

@@ -1,0 +1,30 @@
+{
+  "name" : "Liliput",
+  "registeredCompanyName" : null,
+  "organizationEntityType" : "OTHER",
+  "groupName" : "bachmann",
+  "description" : null,
+  "address" : {
+    "streetAddress" : "Am Umspannwerk 5",
+    "extendedAddress" : null,
+    "postalCode" : "90518",
+    "city" : "Altdorf b. Nürnberg",
+    "region" : null,
+    "country" : "AUS"
+  },
+  "contactInfo" : {
+    "email" : "bachmann@liliput.de",
+    "websiteUrl" : "https://liliput.de",
+    "phone" : null
+  },
+  "socials" : {
+    "facebook" : null,
+    "instagram" : null,
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE",
+  "version" : 1
+}

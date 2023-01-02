@@ -1,0 +1,30 @@
+{
+  "name" : "Märklin",
+  "registeredCompanyName" : "Gebr. Märklin & Cie. GmbH",
+  "organizationEntityType" : "OTHER",
+  "groupName" : null,
+  "description" : null,
+  "address" : {
+    "streetAddress" : "Stuttgarter Straße 55-57",
+    "extendedAddress" : null,
+    "postalCode" : "D-73033",
+    "city" : "Göppingen",
+    "region" : null,
+    "country" : "DEU"
+  },
+  "contactInfo" : {
+    "email" : null,
+    "websiteUrl" : "https://www.maerklin.de",
+    "phone" : null
+  },
+  "socials" : {
+    "facebook" : "maerklin",
+    "instagram" : "maerklin",
+    "linkedin" : null,
+    "twitter" : "maerklin",
+    "youtube" : "UC_ulAkE0RxHUEhpvWf49pRQ"
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE",
+  "version" : 1
+}

@@ -1,0 +1,30 @@
+{
+  "name" : "Rivarossi",
+  "registeredCompanyName" : null,
+  "organizationEntityType" : "OTHER",
+  "groupName" : null,
+  "description" : null,
+  "address" : {
+    "streetAddress" : null,
+    "extendedAddress" : null,
+    "postalCode" : null,
+    "city" : null,
+    "region" : null,
+    "country" : null
+  },
+  "contactInfo" : {
+    "email" : null,
+    "websiteUrl" : null,
+    "phone" : null
+  },
+  "socials" : {
+    "facebook" : null,
+    "instagram" : null,
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "OUT_OF_BUSINESS",
+  "version" : 1
+}

@@ -1,0 +1,30 @@
+{
+  "name" : "Fleischmann",
+  "registeredCompanyName" : "Modelleisenbahn GmbH",
+  "organizationEntityType" : "OTHER",
+  "groupName" : "modelleisenbahn",
+  "description" : null,
+  "address" : {
+    "streetAddress" : "Plainbachstraße 4",
+    "extendedAddress" : null,
+    "postalCode" : "A-5101",
+    "city" : "Bergheim",
+    "region" : null,
+    "country" : "AUS"
+  },
+  "contactInfo" : {
+    "email" : null,
+    "websiteUrl" : "https://www.fleischmann.de",
+    "phone" : null
+  },
+  "socials" : {
+    "facebook" : "Fleischmann.de",
+    "instagram" : "fleischmannde",
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE",
+  "version" : 1
+}

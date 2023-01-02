@@ -1,0 +1,30 @@
+{
+  "name" : "Rivarossi/Hornby",
+  "registeredCompanyName" : null,
+  "organizationEntityType" : "OTHER",
+  "groupName" : "hornby",
+  "description" : null,
+  "address" : {
+    "streetAddress" : null,
+    "extendedAddress" : null,
+    "postalCode" : null,
+    "city" : null,
+    "region" : null,
+    "country" : null
+  },
+  "contactInfo" : {
+    "email" : "customerservices.it@hornby.com",
+    "websiteUrl" : "https://it.rivarossi.com",
+    "phone" : null
+  },
+  "socials" : {
+    "facebook" : "rivarossi.model",
+    "instagram" : "hornbyinternational",
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE",
+  "version" : 1
+}

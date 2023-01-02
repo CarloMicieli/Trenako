@@ -1,0 +1,30 @@
+{
+  "name" : "Brawa",
+  "registeredCompanyName" : "BRAWA Artur Braun Modellspielwarenfabrik GmbH & Co. KG",
+  "organizationEntityType" : "OTHER",
+  "groupName" : null,
+  "description" : null,
+  "address" : {
+    "streetAddress" : "Uferstraße 24-30",
+    "extendedAddress" : null,
+    "postalCode" : "D-73630",
+    "city" : "Remshalden",
+    "region" : null,
+    "country" : "DEU"
+  },
+  "contactInfo" : {
+    "email" : null,
+    "websiteUrl" : "https://www.brawa.de",
+    "phone" : null
+  },
+  "socials" : {
+    "facebook" : null,
+    "instagram" : null,
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE",
+  "version" : 1
+}
