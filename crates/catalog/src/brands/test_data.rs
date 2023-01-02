@@ -27,7 +27,7 @@ pub fn acme() -> Brand {
         None,
     );
 
-    let socials = Socials::builder().facebook("Acmetreni").build();
+    let socials = Socials::builder().facebook("Acmetreni").build().unwrap();
 
     Brand::new(
         BrandId::new("acme"),
@@ -65,7 +65,8 @@ pub fn roco() -> Brand {
         .facebook("roco.cc")
         .instagram("rococc")
         .youtube("UCmPH1NgeyzOCKxfH3uP-wsQ")
-        .build();
+        .build()
+        .unwrap();
 
     Brand::new(
         BrandId::new("roco"),

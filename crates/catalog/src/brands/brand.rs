@@ -174,7 +174,7 @@ mod tests {
                 None,
             );
 
-            let socials = Socials::builder().facebook("Acmetreni").build();
+            let socials = Socials::builder().facebook("Acmetreni").build().unwrap();
 
             let brand = Brand::new(
                 BrandId::new("ACME"),

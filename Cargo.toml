@@ -20,6 +20,7 @@ anyhow = "1.0"
 chrono = { version = "0.4.23", features = ["serde"] }
 clap = "4.0.26"
 config = { version = "0.13.3", default-features = false, features = ["yaml"] }
+http = "0.2.8"
 isocountry = "0.3.2"
 itertools = "0.10.5"
 log = "0.4"

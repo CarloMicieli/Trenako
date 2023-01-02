@@ -191,7 +191,8 @@ mod test {
                 .linkedin("ferrovie-dello-stato-s-p-a-")
                 .twitter("FSitaliane")
                 .youtube("fsitaliane")
-                .build();
+                .build()
+                .unwrap();
             let length = RailwayLength::of_kilometers(dec!(24564.0));
             let gauge = RailwayGauge::standard();
             let contact_info = ContactInformation::builder()
