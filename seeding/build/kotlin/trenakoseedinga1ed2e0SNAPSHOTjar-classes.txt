@@ -1,1 +1,0 @@
-/home/carlo/Projects/trenako/seeding/build/classes/kotlin/main/com/trenako/seeding/SeedingCommand$Companion.class:/home/carlo/Projects/trenako/seeding/build/classes/kotlin/main/com/trenako/seeding/SeedingCommand.class:/home/carlo/Projects/trenako/seeding/build/classes/kotlin/main/com/trenako/seeding/Validator.class

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.trenako.seeding.ValidatorTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-02T15:50:49" hostname="midori" time="0.239">
-  <properties/>
-  <testcase name="the schema definitions are valid()" classname="com.trenako.seeding.ValidatorTests" time="0.239"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
