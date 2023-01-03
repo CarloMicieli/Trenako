@@ -1,5 +1,4 @@
 [workspace]
-default-members = ["crates/web"]
 members = [
     "crates/catalog",
     "crates/common",
