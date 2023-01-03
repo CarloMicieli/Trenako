@@ -5,7 +5,7 @@
   "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
   "country" : "BEL",
   "periodOfActivity" : {
-    "operatingSince" : "1926",
+    "operatingSince" : "1926-01-01",
     "operatingUntil" : null,
     "status" : "ACTIVE"
   },
@@ -30,5 +30,5 @@
     "youtube" : "SNCBtv"
   },
   "headquarters" : "Bruxelles",
-  "version" : 1
+  "version" : "V1"
 }

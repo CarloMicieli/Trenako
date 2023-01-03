@@ -30,6 +30,9 @@
         "$ref": "#/definitions/Standard"
       },
       "uniqueItems": true
+    },
+    "version": {
+      "type": "string"
     }
   },
   "definitions": {

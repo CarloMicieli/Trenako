@@ -7,5 +7,6 @@
     "inches" : 0.354,
     "trackGauge" : "STANDARD"
   },
-  "standards" : [ "NEM" ]
+  "standards" : [ "NEM" ],
+  "version" : "V1"
 }

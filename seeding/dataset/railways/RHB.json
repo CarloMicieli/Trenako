@@ -5,7 +5,7 @@
   "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
   "country" : "CHE",
   "periodOfActivity" : {
-    "operatingSince" : "1885",
+    "operatingSince" : "1885-01-01",
     "operatingUntil" : null,
     "status" : "ACTIVE"
   },
@@ -30,5 +30,5 @@
     "youtube" : "rhaetischebahn"
   },
   "headquarters" : "Chur",
-  "version" : 1
+  "version" : "V1"
 }

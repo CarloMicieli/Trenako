@@ -7,5 +7,6 @@
     "inches" : 0.0,
     "trackGauge" : "NARROW"
   },
-  "standards" : [ "NEM" ]
+  "standards" : [ "NEM" ],
+  "version" : "V1"
 }

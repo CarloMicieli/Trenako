@@ -1,20 +1,20 @@
 {
-  "name" : "L.S. Models",
-  "registeredCompanyName" : "L.S. MODELS EXCLUSIVE SPRL",
+  "name" : "ACME",
+  "registeredCompanyName" : "Associazione Costruzioni Modellistiche Esatte",
   "organizationEntityType" : "OTHER",
   "groupName" : null,
   "description" : null,
   "address" : {
-    "streetAddress" : "rue bosfagnes 31",
+    "streetAddress" : "Viale Lombardia, 27",
     "extendedAddress" : null,
-    "postalCode" : "B-4950",
-    "city" : "Sourbrodt",
-    "region" : null,
-    "country" : "BEL"
+    "postalCode" : "20131",
+    "city" : "Milano",
+    "region" : "MI",
+    "country" : "ITA"
   },
   "contactInfo" : {
-    "email" : "info@lsmodels.com",
-    "websiteUrl" : "http://www.lsmodels.com",
+    "email" : "mail@acmetreni.com",
+    "websiteUrl" : "http://www.acmetreni.com",
     "phone" : null
   },
   "socials" : {

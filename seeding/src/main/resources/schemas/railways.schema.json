@@ -61,9 +61,7 @@
       "$ref": "#/definitions/Socials"
     },
     "version": {
-      "type": "integer",
-      "format": "uint8",
-      "minimum": 1
+      "type": "string"
     }
   },
   "definitions": {

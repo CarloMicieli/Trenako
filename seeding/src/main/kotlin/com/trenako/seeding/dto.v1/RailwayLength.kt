@@ -18,35 +18,9 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package com.trenako.seeding
+package com.trenako.seeding.dto.v1
 
-import io.micronaut.configuration.picocli.PicocliRunner
-import jakarta.inject.Inject
-import picocli.CommandLine.Command
-import picocli.CommandLine.Option
-
-@Command(
-    name = "trenako-seeding",
-    description = ["..."],
-    mixinStandardHelpOptions = true,
+data class RailwayLength(
+    val kilometers: Float?,
+    val miles: Float?,
 )
-class SeedingCommand : Runnable {
-
-    @Option(names = ["-v", "--verbose"], description = ["..."])
-    private var verbose: Boolean = false
-
-    @Inject private lateinit var parser: Parser
-
-    override fun run() {
-        // business logic here
-        if (verbose) {
-            println("Hi!")
-        }
-    }
-
-    companion object {
-        @JvmStatic fun main(args: Array<String>) {
-            PicocliRunner.run(SeedingCommand::class.java, *args)
-        }
-    }
-}
