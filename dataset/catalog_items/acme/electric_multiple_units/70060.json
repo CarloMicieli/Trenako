@@ -1,0 +1,133 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "70060",
+  "scale" : "H0",
+  "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "description" : "“Frecciarossa” Treno 58 con 4 livelli di servizio, confezione con 2 E404 (motorizzata + folle) + intermedia Executive (carrozza 1) + intermedia Standard (carrozza 9), logo FS Trenitalia verde/rosso",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2013",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ETR 500",
+    "roadNumber" : "93 83 7 404 640-8",
+    "series" : "POLITENSIONE",
+    "electricMultipleUnitType" : "POWER_CAR",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "“Frecciarossa” Alta Velocità",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 260.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  }, {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ETR 500",
+    "roadNumber" : "90 83 5 199 023-3",
+    "series" : "POLITENSIONE",
+    "electricMultipleUnitType" : "TRAILER_CAR",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "NO_DCC",
+    "livery" : "“Frecciarossa” Alta Velocità",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 303.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  }, {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ETR 500",
+    "roadNumber" : "90 83 5 299 105-7",
+    "series" : "POLITENSIONE",
+    "electricMultipleUnitType" : "TRAILER_CAR",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "NO_DCC",
+    "livery" : "“Frecciarossa” Alta Velocità",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 303.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  }, {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ETR 500",
+    "roadNumber" : "93 83 7 404 641-6",
+    "series" : "POLITENSIONE",
+    "electricMultipleUnitType" : "POWER_CAR",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "“Frecciarossa” Alta Velocità",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 260.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 4
+}

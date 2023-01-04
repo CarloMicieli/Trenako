@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "60088",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Blu/grigio, smorzatori, condizionatori, senza vomeri, striscianti piatti, dep. Messina, escl. AFS",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2011",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E656",
+    "roadNumber" : "E656 090",
+    "series" : "PRIMA SERIE",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Va",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

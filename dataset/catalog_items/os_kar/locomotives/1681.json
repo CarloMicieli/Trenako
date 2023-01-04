@@ -1,0 +1,43 @@
+{
+  "brand" : "Os.Kar",
+  "itemNumber" : "1681",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Vapore surriscaldato, fanali a petrolio, tender a carrelli, ruotino a vela piena, resp. a bovolo",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "681",
+    "roadNumber" : "681 065",
+    "series" : "",
+    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "III",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

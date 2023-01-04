@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco/Pi.r.a.t.a.",
+  "itemNumber" : "PI84012",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Serie 2000, vetri piani, griglia squadrata, fregio verde, dep. Fabriano, nuova PCB",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2016",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "D343",
+    "roadNumber" : "D343 2029",
+    "series" : "",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

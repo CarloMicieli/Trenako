@@ -1,0 +1,43 @@
+{
+  "brand" : "Rivarossi/Hornby",
+  "itemNumber" : "HR2272",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Locomotiva elettrica E428 006 nella livrea grigio pietra/castano, prese d'aria basse, compressore meccanico, fascio littorio",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2011",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E428",
+    "roadNumber" : "E428 006",
+    "series" : "prima serie con avancorpi",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "II",
+    "depot" : "",
+    "dccInterface" : "NEM_652",
+    "control" : "DCC_READY",
+    "livery" : "grigio pietra/castano",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 222.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "YES",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "YES"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

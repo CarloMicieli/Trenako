@@ -1,0 +1,11 @@
+{
+  "name" : "H0e",
+  "description" : null,
+  "ratio" : 87.0,
+  "gauge" : {
+    "millimeters" : 9.0,
+    "inches" : 0.0,
+    "trackGauge" : "NARROW"
+  },
+  "standards" : [ "NEM" ]
+}

@@ -1,0 +1,73 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "70203",
+  "scale" : "H0",
+  "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "description" : "Set Frecciarossa 1000 treno 03, carrozza 2 Business con pantografo + carrozza 5 Standard con pantografo",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2020",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ETR 400",
+    "roadNumber" : "93 83 0400 203-4 I-TI",
+    "series" : "Frecciarossa 1000",
+    "electricMultipleUnitType" : "TRAILER_CAR",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "NO_DCC",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  }, {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ETR 400",
+    "roadNumber" : "93 83 0400 503-7 I-TI",
+    "series" : "Frecciarossa 1000",
+    "electricMultipleUnitType" : "TRAILER_CAR",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "NO_DCC",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 2
+}

@@ -1,0 +1,43 @@
+{
+  "brand" : "LE Models",
+  "itemNumber" : "LE21272",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Fanali elettrici, carboniera rialzata, marcatura post. rialzata, retro cabina saldato",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2016",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "851",
+    "roadNumber" : "851 124",
+    "series" : "",
+    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IIIb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

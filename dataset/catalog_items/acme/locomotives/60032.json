@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "60032",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Livrea di origine rosso/grigio, pantografi 52 Sommerfeldt striscianti piatti, ed. speciale",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2009",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E402 A",
+    "roadNumber" : "E402 003",
+    "series" : "PROTOTIPO",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

@@ -1,0 +1,43 @@
+{
+  "brand" : "Rivarossi/Hornby",
+  "itemNumber" : "HR2872S",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Locomotiva elettrica E.645 di 2a serie nella livrea castano/isabella senza modanature, vetri di origine, fregio castano, 12 sabbiere",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2022",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E645",
+    "roadNumber" : "",
+    "series" : "SECONDA SERIE",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IVb",
+    "depot" : "Reggio Calabria",
+    "dccInterface" : "MTC_21",
+    "control" : "DCC_SOUND",
+    "livery" : "castano/isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 211.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "YES",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

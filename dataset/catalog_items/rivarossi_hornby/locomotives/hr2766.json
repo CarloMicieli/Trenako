@@ -1,0 +1,43 @@
+{
+  "brand" : "Rivarossi/Hornby",
+  "itemNumber" : "HR2766",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "XMPR FS Trenitalia logo verde/rosso, lateralizzazione, pant. 52/92, marc. EVN",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2020",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E402 A",
+    "roadNumber" : "E402 011",
+    "series" : "",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "XMPR",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

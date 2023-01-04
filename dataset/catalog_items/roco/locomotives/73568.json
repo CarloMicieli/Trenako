@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "73568",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "XMPR con fascia rossa frontale, marcatura EVN, loghi SCMT, iscrizioni bilingue",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2016",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E412",
+    "roadNumber" : "E412 015",
+    "series" : "",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

@@ -1,0 +1,73 @@
+{
+  "brand" : "ViTrains",
+  "itemNumber" : "1523",
+  "scale" : "H0",
+  "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "description" : "Complesso bicorrente continua/trifase, castano/isabella, motrice + rimorchiata, DCC",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2019",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ALe 840",
+    "roadNumber" : "ALe 840 059",
+    "series" : null,
+    "electricMultipleUnitType" : "POWER_CAR",
+    "railway" : "FS",
+    "epoch" : "IIIb",
+    "depot" : "",
+    "dccInterface" : "PLUX_22",
+    "control" : "DCC",
+    "livery" : "castano/isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 325.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  }, {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "Lebc 840",
+    "roadNumber" : "Lebc 840 217",
+    "series" : null,
+    "electricMultipleUnitType" : "TRAILER_CAR",
+    "railway" : "FS",
+    "epoch" : "IIIb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "NO_DCC",
+    "livery" : "castano/isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 325.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 2
+}

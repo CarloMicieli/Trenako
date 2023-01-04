@@ -1,0 +1,43 @@
+{
+  "brand" : "Rivarossi/Hornby",
+  "itemNumber" : "HR2874S",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Locomotiva elettrica E 424 nella livrea isabella, Breda, doppio coprigiunto, frontale con gocciolatoio, pantografo 42LR.",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E424",
+    "roadNumber" : "",
+    "series" : "",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : "",
+    "dccInterface" : "MTC_21",
+    "control" : "DCC_SOUND",
+    "livery" : "isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

@@ -1,0 +1,43 @@
+{
+  "brand" : "Os.Kar",
+  "itemNumber" : "1629-DS",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Tender a carrelli, fanali a petrolio, telaio rosso brillante, pompa freno a doppio stadio, DCC Sound",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2013",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "625",
+    "roadNumber" : "625 088",
+    "series" : "",
+    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "III/IV",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

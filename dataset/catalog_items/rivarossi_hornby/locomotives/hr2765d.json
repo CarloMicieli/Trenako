@@ -1,0 +1,43 @@
+{
+  "brand" : "Rivarossi/Hornby",
+  "itemNumber" : "HR2765D",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Livrea di origine bianco/rosso, pantografi 52 strisciante piano",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2020",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E402 A",
+    "roadNumber" : "E402 009",
+    "series" : "",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Va",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC",
+    "livery" : "bianco/rosso",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

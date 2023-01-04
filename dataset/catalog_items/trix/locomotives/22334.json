@@ -1,0 +1,43 @@
+{
+  "brand" : "Trix",
+  "itemNumber" : "22334",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Nera telaio rosso vagone, cerchioni bianchi, targhe rosse",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2005",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "675",
+    "roadNumber" : "675 019",
+    "series" : "(ex BR 38 DB / P8 KPEV)",
+    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "II/III",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

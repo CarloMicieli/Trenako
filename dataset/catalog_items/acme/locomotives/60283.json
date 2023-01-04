@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "60283",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "XMPR logo FS XMPR primo tipo, tetto alluminio, condizionatori, respingenti tondi, OML Firenze",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2018",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E656",
+    "roadNumber" : "E656 587",
+    "series" : "SESTA SERIE NAVETTA",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

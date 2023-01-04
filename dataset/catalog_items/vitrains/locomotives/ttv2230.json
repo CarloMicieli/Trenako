@@ -1,0 +1,43 @@
+{
+  "brand" : "ViTrains",
+  "itemNumber" : "TTV2230",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Trenitalia pubblicitaria 'Bill Viola' viola con frontale verde, escl. Trenietreni (2730 DCC Sound)",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2018",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E464",
+    "roadNumber" : "E464 667",
+    "series" : "",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

@@ -1,0 +1,43 @@
+{
+  "brand" : "Rivarossi/Hornby",
+  "itemNumber" : "HR2345",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Castano/isabella, porte frontali, separatore D'Arbela, scalette strette, dep. Bologna S. D.",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2013",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E424",
+    "roadNumber" : "E424 151",
+    "series" : "",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IIIb",
+    "depot" : "Bologna San Donato",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "castano/isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

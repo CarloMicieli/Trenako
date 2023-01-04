@@ -1,0 +1,43 @@
+{
+  "brand" : "Liliput",
+  "itemNumber" : "L112332",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "ABL VII700, livrea gialla imprese private, senza scritte, griglia frontale unica (anche con Sound)",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2009",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "215 / 218 Badoni",
+    "roadNumber" : "-",
+    "series" : "",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

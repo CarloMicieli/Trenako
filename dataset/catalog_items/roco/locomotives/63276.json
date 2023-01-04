@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "63276",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Cabina aperta, stato di origine, marcatura posteriore su pancone",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2008",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "875",
+    "roadNumber" : "87516",
+    "series" : "",
+    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "I",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

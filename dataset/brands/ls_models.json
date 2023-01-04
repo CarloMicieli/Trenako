@@ -1,0 +1,29 @@
+{
+  "name" : "L.S. Models",
+  "registeredCompanyName" : "L.S. MODELS EXCLUSIVE SPRL",
+  "organizationEntityType" : "OTHER",
+  "groupName" : null,
+  "description" : null,
+  "address" : {
+    "streetAddress" : "rue bosfagnes 31",
+    "extendedAddress" : null,
+    "postalCode" : "B-4950",
+    "city" : "Sourbrodt",
+    "region" : null,
+    "country" : "BEL"
+  },
+  "contactInfo" : {
+    "email" : "info@lsmodels.com",
+    "phone" : null,
+    "websiteUrl" : "http://www.lsmodels.com"
+  },
+  "socials" : {
+    "facebook" : null,
+    "instagram" : null,
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE"
+}

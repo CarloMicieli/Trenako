@@ -1,0 +1,43 @@
+{
+  "brand" : "Rivarossi/Hornby",
+  "itemNumber" : "HR2417",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Castano/isabella, separatore di Arbela, cerchioni bianchi, dep. Bologna C.",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2013",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E326",
+    "roadNumber" : "E326 003",
+    "series" : "",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IVa",
+    "depot" : "Bologna Centrale",
+    "dccInterface" : "NONE",
+    "control" : "DCC_SOUND",
+    "livery" : "castano/isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

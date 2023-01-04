@@ -1,0 +1,73 @@
+{
+  "brand" : "Os.Kar",
+  "itemNumber" : "2060",
+  "scale" : "H0",
+  "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "description" : "Elettromotrice Ale 540 012 FS, pantografi 42 strisciante curvo e rimorchiata Le 540 001 attrezzata con cucina e comparto ristoro, nella livrea isabella telaio castano con fascia rossa.Automotrice FS ALe 540.012 + rimorchiata pilota Le 540.001 con comparto cucina Ep. IVa Telaio in metallo, illuminazione interna di serie, carrelli entrambi motorizzati, arredo interno completo, fanali illuminati selezionabili. Presa per decoder PluX22 con predisposizione sound, con altoparlante montato di serie. ",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2020",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ALe 540",
+    "roadNumber" : "ALe 540 012",
+    "series" : "seconda serie",
+    "electricMultipleUnitType" : "POWER_CAR",
+    "railway" : "FS",
+    "epoch" : "IVa",
+    "depot" : "",
+    "dccInterface" : "PLUX_22",
+    "control" : "DCC_READY",
+    "livery" : "castano/isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  }, {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "Le 540",
+    "roadNumber" : "Le 540 001",
+    "series" : null,
+    "electricMultipleUnitType" : "TRAILER_CAR",
+    "railway" : "FS",
+    "epoch" : "IVa",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "NO_DCC",
+    "livery" : "castano/isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 2
+}

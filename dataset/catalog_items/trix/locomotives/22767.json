@@ -1,0 +1,43 @@
+{
+  "brand" : "Trix",
+  "itemNumber" : "22767",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "T3 Museo Ferroviario Piemontese",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2007",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "T3",
+    "roadNumber" : "N. 3",
+    "series" : "",
+    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Vm",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

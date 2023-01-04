@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "60500",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Livrea fotografica grigia, respingenti a bovolo, fanali a petrolio, carboniera bassa",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2011",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "685",
+    "roadNumber" : "685 107",
+    "series" : "TERZA SERIE",
+    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IIa",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

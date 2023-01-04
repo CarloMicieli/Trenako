@@ -1,0 +1,29 @@
+{
+  "name" : "Arnold/Hornby",
+  "registeredCompanyName" : "Arnold model",
+  "organizationEntityType" : "OTHER",
+  "groupName" : "hornby",
+  "description" : null,
+  "address" : {
+    "streetAddress" : null,
+    "extendedAddress" : null,
+    "postalCode" : null,
+    "city" : null,
+    "region" : null,
+    "country" : null
+  },
+  "contactInfo" : {
+    "email" : "customerservices.it@hornby.com",
+    "phone" : null,
+    "websiteUrl" : "https://it.arnoldmodel.com"
+  },
+  "socials" : {
+    "facebook" : "Arnold.Modelleisenbahnen",
+    "instagram" : "hornbyinternational",
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE"
+}

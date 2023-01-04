@@ -1,0 +1,43 @@
+{
+  "brand" : "Os.Kar",
+  "itemNumber" : "1108",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Verde/isabella, versione di origine, vetri curvi e modanature, costruzione FIAT, carrelli in bruno",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2009",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "D443",
+    "roadNumber" : "D443 1001",
+    "series" : "",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IIIb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

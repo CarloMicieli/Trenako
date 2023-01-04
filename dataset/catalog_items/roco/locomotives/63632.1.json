@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "63632.1",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "XMPR coprigiunto alto, boccole rulli pant. 52, griglia condizionatore su finestrino, OML Alessandria",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2004",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E636",
+    "roadNumber" : "E636 264",
+    "series" : "SECONDA SERIE",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Vb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "43764",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Grigio pietra/castano 2a serie, con compressore meccanico, Museo Trieste Campo Marzio",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2001",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E626",
+    "roadNumber" : "E626 059",
+    "series" : "SECONDA SERIE",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Vm",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

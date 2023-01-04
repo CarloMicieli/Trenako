@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "60061",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Locomotiva diesel D 461 1001 nella livrea castano/isabella/verde",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2005",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "D461",
+    "roadNumber" : "D461 1001",
+    "series" : "",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IVa",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "castano/isabella/verde",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 220.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

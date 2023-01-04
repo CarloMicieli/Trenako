@@ -1,0 +1,43 @@
+{
+  "brand" : "ViTrains",
+  "itemNumber" : "2156",
+  "scale" : "H0",
+  "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "description" : "Rimorchiata Lebc 840, pantografi trifase, livrea castano/isabella",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2014",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "Lebc 840",
+    "roadNumber" : "Lebc 840 205",
+    "series" : null,
+    "electricMultipleUnitType" : "TRAILER_CAR",
+    "railway" : "FS",
+    "epoch" : "IV",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "NO_DCC",
+    "livery" : "castano/isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 325.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

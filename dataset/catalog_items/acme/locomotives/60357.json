@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "60357",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Sovralimentata, castano/isabella/rosso, 3 fanali, senza porta frontale, modanature dipinte",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2016",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "D342",
+    "roadNumber" : "D342 4016",
+    "series" : "ANSALDO",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IV",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

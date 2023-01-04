@@ -1,0 +1,43 @@
+{
+  "brand" : "Lima Expert",
+  "itemNumber" : "HL2652",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "XMPR2 navetta 3a serie, logo Trenitalia verde/rosso, griglie grigie, vomere, OML Siena",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2021",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "D445",
+    "roadNumber" : "D445 1084",
+    "series" : "",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

@@ -1,0 +1,43 @@
+{
+  "brand" : "Rivarossi/Hornby",
+  "itemNumber" : "HR2901",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Locomotiva elettrica E428 nella livrea castano/isabella, compressore meccanico, tamponi in gomma (S DCC Sound)",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E428",
+    "roadNumber" : "",
+    "series" : "seconda serie con avancorpi",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "III",
+    "depot" : "",
+    "dccInterface" : "MTC_21",
+    "control" : "DCC_READY",
+    "livery" : "castano/isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "YES",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "YES"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

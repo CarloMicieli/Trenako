@@ -1,0 +1,43 @@
+{
+  "brand" : "ATM",
+  "itemNumber" : "08",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Livrea isabella/bianco/rosso, “mezzaluna” blu, fregio Ansaldo triangolare, carenature, dep. Bari",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "D442",
+    "roadNumber" : "D442 4001",
+    "series" : "",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IIIb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

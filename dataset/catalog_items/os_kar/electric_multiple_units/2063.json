@@ -1,0 +1,43 @@
+{
+  "brand" : "Os.Kar",
+  "itemNumber" : "2063",
+  "scale" : "H0",
+  "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "description" : "1a serie, 1a/2a cl., ripetizione segnali, livrea isabella telaio castano/rosso",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ALe 660",
+    "roadNumber" : "ALe 660 005",
+    "series" : "prima serie",
+    "electricMultipleUnitType" : "POWER_CAR",
+    "railway" : "FS",
+    "epoch" : "IVa",
+    "depot" : "",
+    "dccInterface" : "PLUX_22",
+    "control" : "DCC_READY",
+    "livery" : "castano/isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

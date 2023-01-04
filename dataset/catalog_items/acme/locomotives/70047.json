@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "70047",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Set D342 castano/isabella/rosso sovralimentata, stato di origine, 2 fanali, porta frontale, modanature + carro riscaldo Vrz livrea castano, DCC, disp. fumogeno, centralina Daisy II Uhlenbrock",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2016",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "D342",
+    "roadNumber" : "D342 4015 + Vrz 808 914",
+    "series" : "ANSALDO",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IIIb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

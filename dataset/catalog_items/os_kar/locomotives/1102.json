@@ -1,0 +1,43 @@
+{
+  "brand" : "Os.Kar",
+  "itemNumber" : "1102",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Set motorizzata + folle verde/isabella, vetri piani, costruzione FIAT dep. Cagliari (1027) + Reggiane dep. Taranto (2014)",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2008",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "D443",
+    "roadNumber" : "D443 1027 + D443 2014",
+    "series" : "",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IVb/V",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

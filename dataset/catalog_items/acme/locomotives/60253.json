@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "60253",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Locomotiva Diesel elettrica da manovra pesante D.143.3022 in livrea verde con fasce gialle, telaio nero.Respingenti rettangolari e mancorrenti estesi, cabina corazzata, battipiede, dep. Firenze.",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2019",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "D143",
+    "roadNumber" : "D143 3022",
+    "series" : "",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : "Firenze",
+    "dccInterface" : "PLUX_22",
+    "control" : "DCC_READY",
+    "livery" : "verde con fasce gialle",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 153.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

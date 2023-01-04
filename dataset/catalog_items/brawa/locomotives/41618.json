@@ -1,0 +1,43 @@
+{
+  "brand" : "Brawa",
+  "itemNumber" : "41618",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "FS livrea verde, fasce gialle, telaio nero, DCC Sound, ganci digitali",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2018",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "D236",
+    "roadNumber" : "236 003",
+    "series" : "ex V36 DB",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IIIb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

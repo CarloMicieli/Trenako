@@ -1,0 +1,43 @@
+{
+  "brand" : "Lima Expert",
+  "itemNumber" : "HL2634",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Verde/grigio perla, carrelli neri, fregio verde, vetri Triplex, RS continua, dep. Bologna C.le",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2014",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E645",
+    "roadNumber" : "E646 001",
+    "series" : "PROTOTIPO",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IV",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

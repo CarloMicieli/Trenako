@@ -1,0 +1,43 @@
+{
+  "brand" : "Rivarossi/Hornby",
+  "itemNumber" : "HR2772S",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Locomotiva E.646 090 \"NAVETTA\" in livrea XMPR, tetto verde, griglie bianche, logo Trenitalia, Triplex, smorzatori, dep. Firenze",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2020",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E646",
+    "roadNumber" : "E646 090",
+    "series" : "seconda serie trasformate Navetta",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Vb",
+    "depot" : "Firenze",
+    "dccInterface" : "MTC_21",
+    "control" : "DCC_SOUND",
+    "livery" : "XMPR",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 211.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

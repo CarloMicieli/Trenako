@@ -1,0 +1,43 @@
+{
+  "brand" : "Fleischmann",
+  "itemNumber" : "409404",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Gr. 897 “Pierina” nero telaio rosso",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2010",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "897",
+    "roadNumber" : "897 002",
+    "series" : "(ex BR 94 DB / T16.1 KPEV)",
+    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "III",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

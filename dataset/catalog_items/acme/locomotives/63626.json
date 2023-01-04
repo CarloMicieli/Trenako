@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "63626",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Camilla cabine ricostruite Rosso/grigio, logo XMPR, deposito Genova Rivarolo",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2000",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E636",
+    "roadNumber" : "E636 284",
+    "series" : "TERZA SERIE",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

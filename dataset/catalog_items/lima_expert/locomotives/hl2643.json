@@ -1,0 +1,43 @@
+{
+  "brand" : "Lima Expert",
+  "itemNumber" : "HL2643",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Castano/isabella senza modanature, vetri Triplex, fregio castano, 12 sabbiere, dep. Udine",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2015",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E645",
+    "roadNumber" : "E645 043",
+    "series" : "SECONDA SERIE",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IVb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

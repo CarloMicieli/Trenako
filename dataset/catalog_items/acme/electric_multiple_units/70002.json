@@ -1,0 +1,103 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "70002",
+  "scale" : "H0",
+  "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "description" : "Set di tre carrozze per completamento convoglio \"ETR500\" treno 48 livrea bianco/verde, logo FS Trenitalia, confezione con intermedia 1a classe (carrozza 2) + 2 intermedie 2a classe (carrozze 6 e 8)Articolo con illuminazione interna montata di serie.",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2008",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ETR 500",
+    "roadNumber" : "90 83 5 199 222-2",
+    "series" : "POLITENSIONE",
+    "electricMultipleUnitType" : "TRAILER_CAR",
+    "railway" : "FS",
+    "epoch" : "Vb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "NO_DCC",
+    "livery" : "livrea di origine bianco/verde",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 303.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  }, {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ETR 500",
+    "roadNumber" : "90 83 5 299 286-5",
+    "series" : "POLITENSIONE",
+    "electricMultipleUnitType" : "TRAILER_CAR",
+    "railway" : "FS",
+    "epoch" : "Vb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "NO_DCC",
+    "livery" : "livrea di origine bianco/verde",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 303.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  }, {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ETR 500",
+    "roadNumber" : "90 83 5 299 283-2",
+    "series" : "POLITENSIONE",
+    "electricMultipleUnitType" : "TRAILER_CAR",
+    "railway" : "FS",
+    "epoch" : "Vb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "NO_DCC",
+    "livery" : "livrea di origine bianco/verde",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 303.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 3
+}

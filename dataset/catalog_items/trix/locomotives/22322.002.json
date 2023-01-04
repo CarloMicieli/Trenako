@@ -1,0 +1,43 @@
+{
+  "brand" : "Trix",
+  "itemNumber" : "22322.002",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Versione invecchiata, marcatura a biacca, ex G8 5220 KPEV",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2007",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "460",
+    "roadNumber" : "460 025",
+    "series" : "(ex BR 55 DB / G8.1 KPEV)",
+    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "II",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

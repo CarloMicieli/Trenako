@@ -1,0 +1,43 @@
+{
+  "brand" : "Liliput",
+  "itemNumber" : "L240060",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Set “Heitkamp Rail”, loco da manovra livrea grigia + 3 carri, commemorativa Bachmann/Kader",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2008",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "215 / 218 Badoni",
+    "roadNumber" : "V16.01",
+    "series" : "",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

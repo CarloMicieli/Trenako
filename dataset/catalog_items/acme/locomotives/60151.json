@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "60151",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Locomotiva elettrica FS E.646 015 (1a serie) nella livrea verde e grigio di origine, fregio alato, pantografi 42 strisciante curvo, scalette piccole, dep. Napoli",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2012",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E646",
+    "roadNumber" : "E646 015",
+    "series" : "prima serie",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IIIb",
+    "depot" : "Napoli Smistamento",
+    "dccInterface" : "NEM_652",
+    "control" : "DCC_READY",
+    "livery" : "verde/grigio",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 210.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "YES",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

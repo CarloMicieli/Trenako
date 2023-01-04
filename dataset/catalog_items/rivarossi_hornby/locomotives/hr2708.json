@@ -1,0 +1,43 @@
+{
+  "brand" : "Rivarossi/Hornby",
+  "itemNumber" : "HR2708",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "MDVE grigio/rosso/arancio, finestrini di origine, pant. 52, vomere giallo/nero, dep. Ancona, DCC",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2017",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E424",
+    "roadNumber" : "E424 350",
+    "series" : "Navetta Ricostruite",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Va",
+    "depot" : "Ancona",
+    "dccInterface" : "NONE",
+    "control" : "DCC",
+    "livery" : "MDVE grigio/rosso/arancio",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

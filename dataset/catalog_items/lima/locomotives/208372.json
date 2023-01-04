@@ -1,0 +1,43 @@
+{
+  "brand" : "Lima",
+  "itemNumber" : "208372",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "MDVE grigio fasce rosso/arancio, pantografi 42, dep. Ancona",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "1994",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E424",
+    "roadNumber" : "E424 348",
+    "series" : "Navetta Ricostruite",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Va",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

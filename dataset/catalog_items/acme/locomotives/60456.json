@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "60456",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Locomotiva elettrica FS E.636 123 del deposito di Trieste nella livrea Isabella, vomere giallo/nero, pantografi 42LR + 42U, griglie lato corridoio, dep. Trieste",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2018",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E636",
+    "roadNumber" : "E636 123",
+    "series" : "seconda serie",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : "Trieste",
+    "dccInterface" : "MTC_21",
+    "control" : "DCC_READY",
+    "livery" : "isabella",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 210.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

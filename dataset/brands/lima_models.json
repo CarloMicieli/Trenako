@@ -1,0 +1,29 @@
+{
+  "name" : "Lima Models",
+  "registeredCompanyName" : null,
+  "organizationEntityType" : "OTHER",
+  "groupName" : "hornby",
+  "description" : null,
+  "address" : {
+    "streetAddress" : null,
+    "extendedAddress" : null,
+    "postalCode" : null,
+    "city" : null,
+    "region" : null,
+    "country" : null
+  },
+  "contactInfo" : {
+    "email" : "customerservices.it@hornby.com",
+    "phone" : null,
+    "websiteUrl" : "https://it.limamodel.it"
+  },
+  "socials" : {
+    "facebook" : "lima.models",
+    "instagram" : "hornbyinternational",
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE"
+}

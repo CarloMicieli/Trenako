@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "60473",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Locomotiva elettrica FS E.632 001 Tigre ep.IV nella livrea blu/grigio senza logotipo \"Tigre\", senza vomeri e pantografi monobraccio Faiveley.Nello stato di servizio a partire dal luglio 1981.",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2017",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E633",
+    "roadNumber" : "E632 001",
+    "series" : "prototipo",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IVb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "blu/grigio",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 206.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

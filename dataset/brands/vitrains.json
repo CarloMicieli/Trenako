@@ -1,0 +1,29 @@
+{
+  "name" : "ViTrains",
+  "registeredCompanyName" : null,
+  "organizationEntityType" : "OTHER",
+  "groupName" : null,
+  "description" : null,
+  "address" : {
+    "streetAddress" : "Via Cà Zusto, 99",
+    "extendedAddress" : null,
+    "postalCode" : "35010",
+    "city" : "Vigodarzere",
+    "region" : "PD",
+    "country" : "ITA"
+  },
+  "contactInfo" : {
+    "email" : null,
+    "phone" : null,
+    "websiteUrl" : "https://www.vitrains.it"
+  },
+  "socials" : {
+    "facebook" : null,
+    "instagram" : null,
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE"
+}

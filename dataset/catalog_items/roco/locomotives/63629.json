@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "63629",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Isabella, 1a serie ricostruita, coprigiunto alto, boccole a strisciamento, pantografi 42, dep. Trieste C.le",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2000",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E636",
+    "roadNumber" : "E636 059",
+    "series" : "SECONDA SERIE",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Va",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

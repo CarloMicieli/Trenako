@@ -1,0 +1,43 @@
+{
+  "brand" : "Brawa",
+  "itemNumber" : "0470.7",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "FS livrea verde vagone, panconi rossi, mancorrenti gialli",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "1989",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "213",
+    "roadNumber" : "213 917",
+    "series" : "Köf II ex DB",
+    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IV",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

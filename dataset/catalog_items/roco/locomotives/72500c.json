@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "72500C",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Prima serie, senza modanature, portelloni G.S., smorzatori, dep. Bologna C.le, striscianti piatti",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2012",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E444",
+    "roadNumber" : "E444 031",
+    "series" : "",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IVb/V",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

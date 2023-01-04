@@ -1,0 +1,43 @@
+{
+  "brand" : "Rivarossi",
+  "itemNumber" : "1417",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Verde magnolia/grigio nebbia, navetta, senza modanature, con griglie laterali, dep. Firenze",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "1993",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E646",
+    "roadNumber" : "E646 085",
+    "series" : "SECONDA SERIE Trasformate Navetta",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IVb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

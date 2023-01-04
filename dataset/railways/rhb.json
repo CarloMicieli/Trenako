@@ -1,0 +1,33 @@
+{
+  "name" : "RhB",
+  "abbreviation" : "RhB",
+  "registeredCompanyName" : "Rhätische Bahn AG",
+  "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
+  "country" : "CHE",
+  "periodOfActivity" : {
+    "operatingSince" : "1885-01-01",
+    "operatingUntil" : null,
+    "status" : "ACTIVE"
+  },
+  "gauge" : {
+    "trackGauge" : "NARROW",
+    "meters" : 1.0
+  },
+  "totalLength" : {
+    "kilometers" : 384.0,
+    "miles" : 238.6
+  },
+  "contactInfo" : {
+    "email" : null,
+    "websiteUrl" : "https://www.rhb.ch",
+    "phone" : null
+  },
+  "social" : {
+    "facebook" : "rhaetischebahn",
+    "instagram" : "rhaetischebahn",
+    "linkedin" : "rhätischebahnag",
+    "twitter" : "rhaetischebahn",
+    "youtube" : "rhaetischebahn"
+  },
+  "headquarters" : "Chur"
+}

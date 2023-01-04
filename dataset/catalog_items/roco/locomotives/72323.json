@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "72323",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Cast./isa., fregio alato isabella, vomeri giallo/nero, vetri di origine, dep. BO C.le, DCC Sound",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2014",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E645",
+    "roadNumber" : "E645 102",
+    "series" : "serie 100 (ex E646 prototipo)",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IVb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

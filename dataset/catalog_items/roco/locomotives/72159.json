@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "72159",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Nero/rosso, cerchioni bianchi, marcatura a biacca, 1 fanale alto, carbone, DCC Sound",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2017",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "736",
+    "roadNumber" : "736.211",
+    "series" : "(ex S160 USATC)",
+    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IIIa",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

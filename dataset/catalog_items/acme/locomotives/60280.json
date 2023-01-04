@@ -1,0 +1,43 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "60280",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Locomotiva elettrica FS E 656.569 \"Caimano\" (4a serie) nella livrea di origine. Smorzatori, respingenti rettangolari, striscianti curvi.Blu/grigio, smorzatori, respingenti rettangolari, striscianti curvi, deposito Ancona",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2012",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E656",
+    "roadNumber" : "E656 569",
+    "series" : "sesta serie navetta",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Va",
+    "depot" : "Ancona",
+    "dccInterface" : "NEM_652",
+    "control" : "DCC_READY",
+    "livery" : "blu/grigio",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 210.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "43825",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Stato d'origine, scritta 'Partners for your goods' su fiancate, esposizione Basilea ottobre 1999",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2002",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E412",
+    "roadNumber" : "E412 013",
+    "series" : "",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "43827",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Stato d'origine, scritte E412 e ADtranz sulla fiancata, livrea della presentazione ufficiale",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "1998",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E412",
+    "roadNumber" : "E412 001",
+    "series" : "",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Va",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

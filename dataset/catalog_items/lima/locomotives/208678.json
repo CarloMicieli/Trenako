@@ -1,0 +1,43 @@
+{
+  "brand" : "Lima",
+  "itemNumber" : "208678",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "MDVE grigio fasce rosso/arancio, logo XMPR, pantografi 52, vomere giallo/nero, dep. Ancona",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2000",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E424",
+    "roadNumber" : "E424 353",
+    "series" : "Navetta Ricostruite",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

@@ -1,0 +1,29 @@
+{
+  "name" : "Lenz",
+  "registeredCompanyName" : null,
+  "organizationEntityType" : "OTHER",
+  "groupName" : null,
+  "description" : null,
+  "address" : {
+    "streetAddress" : null,
+    "extendedAddress" : null,
+    "postalCode" : null,
+    "city" : null,
+    "region" : null,
+    "country" : null
+  },
+  "contactInfo" : {
+    "email" : null,
+    "phone" : null,
+    "websiteUrl" : null
+  },
+  "socials" : {
+    "facebook" : null,
+    "instagram" : null,
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE"
+}

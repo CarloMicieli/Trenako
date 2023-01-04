@@ -1,0 +1,29 @@
+{
+  "name" : "Sudexpress models",
+  "registeredCompanyName" : "AVALIARE Engenharia Lda.",
+  "organizationEntityType" : "OTHER",
+  "groupName" : null,
+  "description" : null,
+  "address" : {
+    "streetAddress" : "Praça Camilo Castelo Branco, 31",
+    "extendedAddress" : "2º Andar - Sala 48",
+    "postalCode" : "4700-209",
+    "city" : "Braga",
+    "region" : null,
+    "country" : "PRT"
+  },
+  "contactInfo" : {
+    "email" : null,
+    "phone" : null,
+    "websiteUrl" : "https://www.sudexpressmodels.eu"
+  },
+  "socials" : {
+    "facebook" : null,
+    "instagram" : null,
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE"
+}

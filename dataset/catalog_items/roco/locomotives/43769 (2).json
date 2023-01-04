@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "43769 (2)",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "CSD Ferrovie Cecoslovacche, verde telaio nero, ex E626 2a serie, compressore meccanico",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2001",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E626",
+    "roadNumber" : "E666 003",
+    "series" : "SECONDA SERIE",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "III",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

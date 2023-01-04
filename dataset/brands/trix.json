@@ -1,0 +1,29 @@
+{
+  "name" : "Trix",
+  "registeredCompanyName" : "Gebr. Märklin & Cie. GmbH",
+  "organizationEntityType" : "OTHER",
+  "groupName" : "märklin",
+  "description" : null,
+  "address" : {
+    "streetAddress" : "Stuttgarter Straße 55-57",
+    "extendedAddress" : null,
+    "postalCode" : "D-73033",
+    "city" : "Göppingen",
+    "region" : null,
+    "country" : "DEU"
+  },
+  "contactInfo" : {
+    "email" : "service@maerklin.de",
+    "phone" : null,
+    "websiteUrl" : "https://www.trix.de"
+  },
+  "socials" : {
+    "facebook" : "TRIX",
+    "instagram" : null,
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE"
+}

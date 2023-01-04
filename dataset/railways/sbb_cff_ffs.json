@@ -1,0 +1,33 @@
+{
+  "name" : "SBB CFF FFS",
+  "abbreviation" : "SBB CFF FFS",
+  "registeredCompanyName" : "Schweizerische BundesBahnen",
+  "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
+  "country" : "CHE",
+  "periodOfActivity" : {
+    "operatingSince" : "1902-01-01",
+    "operatingUntil" : null,
+    "status" : "ACTIVE"
+  },
+  "gauge" : {
+    "trackGauge" : "STANDARD",
+    "meters" : 1.435
+  },
+  "totalLength" : {
+    "kilometers" : 5200.0,
+    "miles" : null
+  },
+  "contactInfo" : {
+    "email" : null,
+    "websiteUrl" : "https://www.sbb.ch",
+    "phone" : null
+  },
+  "social" : {
+    "facebook" : "sbb.cff.ffs.ch",
+    "instagram" : "sbbcffffs",
+    "linkedin" : "sbb",
+    "twitter" : "RailService",
+    "youtube" : "sbbcffffs"
+  },
+  "headquarters" : "Bern"
+}

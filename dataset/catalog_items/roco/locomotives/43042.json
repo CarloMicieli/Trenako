@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "43042",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Set E626 livrea grigio pietra/castano 2a serie + 3 carrozze Tipo '21 castano/isabella",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "1990",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E626",
+    "roadNumber" : "E626 057",
+    "series" : "SECONDA SERIE",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "II",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

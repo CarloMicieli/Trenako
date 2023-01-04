@@ -1,0 +1,73 @@
+{
+  "brand" : "ACME",
+  "itemNumber" : "70016",
+  "scale" : "H0",
+  "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "description" : "Coppia di elettromotrici tipo ALe 880 070 + Le 880 071 in livrea grigio rosso esposizione New York 1939. Illuminazione interna di serie. Articolo in Edizione limitata.",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2011",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ALe 88",
+    "roadNumber" : "ALe 88 0070",
+    "series" : null,
+    "electricMultipleUnitType" : "POWER_CAR",
+    "railway" : "FS",
+    "epoch" : "IIb",
+    "depot" : "",
+    "dccInterface" : "NEM_652",
+    "control" : "DCC_READY",
+    "livery" : "grigio/rosso",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 313.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  }, {
+    "category" : "ELECTRIC_MULTIPLE_UNIT",
+    "typeName" : "ALe 88",
+    "roadNumber" : "ALe 88 0071",
+    "series" : null,
+    "electricMultipleUnitType" : "POWER_CAR",
+    "railway" : "FS",
+    "epoch" : "IIb",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "NO_DCC",
+    "livery" : "grigio/rosso",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : 313.0
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : true
+  } ],
+  "count" : 2
+}

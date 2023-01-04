@@ -1,0 +1,43 @@
+{
+  "brand" : "Klein Modellbahn",
+  "itemNumber" : "5231",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Nera telaio rosso, targhe nere",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2005",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "729",
+    "roadNumber" : "729 018",
+    "series" : "(ex BR 56 ÖBB / 170 K.k.St.B.)",
+    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "II",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

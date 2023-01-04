@@ -1,0 +1,29 @@
+{
+  "name" : "ACME",
+  "registeredCompanyName" : "Associazione Costruzioni Modellistiche Esatte",
+  "organizationEntityType" : "OTHER",
+  "groupName" : null,
+  "description" : null,
+  "address" : {
+    "streetAddress" : "Viale Lombardia, 27",
+    "extendedAddress" : null,
+    "postalCode" : "20131",
+    "city" : "Milano",
+    "region" : "MI",
+    "country" : "ITA"
+  },
+  "contactInfo" : {
+    "email" : "mail@acmetreni.com",
+    "phone" : null,
+    "websiteUrl" : "http://www.acmetreni.com"
+  },
+  "socials" : {
+    "facebook" : null,
+    "instagram" : null,
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE"
+}

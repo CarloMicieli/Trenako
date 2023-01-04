@@ -1,0 +1,33 @@
+{
+  "name" : "SNCF",
+  "abbreviation" : "SNCF",
+  "registeredCompanyName" : "Société Nationale des Chemins de fer Français",
+  "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
+  "country" : "FRA",
+  "periodOfActivity" : {
+    "operatingSince" : "1937-08-31",
+    "operatingUntil" : null,
+    "status" : "ACTIVE"
+  },
+  "gauge" : {
+    "trackGauge" : "STANDARD",
+    "meters" : 1.435
+  },
+  "totalLength" : {
+    "kilometers" : 35000.0,
+    "miles" : 22000.0
+  },
+  "contactInfo" : {
+    "email" : null,
+    "websiteUrl" : "https://www.sncf.com",
+    "phone" : null
+  },
+  "social" : {
+    "facebook" : "SNCFOFFICIEL",
+    "instagram" : "sncf",
+    "linkedin" : "sncf",
+    "twitter" : "sncf",
+    "youtube" : "SNCF"
+  },
+  "headquarters" : "Paris"
+}

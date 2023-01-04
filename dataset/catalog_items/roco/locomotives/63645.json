@@ -1,0 +1,43 @@
+{
+  "brand" : "Roco",
+  "itemNumber" : "63645",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : "Livrea storica verde/grigio, fregio frontale con lettere FS lunghe, dep. Milano Smistamento",
+  "details" : null,
+  "powerMethod" : "DC",
+  "deliveryDate" : "2004",
+  "availabilityStatus" : "AVAILABLE",
+  "rollingStocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "className" : "E645",
+    "roadNumber" : "E645 101",
+    "series" : "serie 100 (ex E646 prototipo)",
+    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Vm",
+    "depot" : "",
+    "dccInterface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "",
+    "lengthOverBuffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technicalSpecifications" : {
+      "minimumRadius" : 360.0,
+      "coupling" : {
+        "socket" : null,
+        "closeCouplers" : "NO",
+        "digitalShunting" : "NO"
+      },
+      "flywheelFitted" : "NO",
+      "metalBody" : "NO",
+      "interiorLights" : "NO",
+      "lights" : "YES",
+      "springBuffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}
