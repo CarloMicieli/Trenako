@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Rosso/bianco, pannello oblò laterale rigato, griglie traforate, pantografi 52/92",
+      "it" : "Locomotiva elettrica E402A 028 nella livrea di origine rosso/bianco, pannello oblò laterale rigato, griglie traforate, pantografi 52/92",
       "en" : null
     }
   },
@@ -29,7 +29,7 @@
     "depot" : "",
     "dcc_interface" : "NONE",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "rosso/bianco",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null

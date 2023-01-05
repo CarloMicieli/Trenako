@@ -21,24 +21,24 @@
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E405",
-    "road_number" : "E405 029 + E405 004",
+    "road_number" : "E405 029",
     "series" : "",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "Vb/VI",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "XMPR",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 223.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",
@@ -48,6 +48,36 @@
       "spring_buffers" : "NO"
     },
     "dummy" : false
+  }, {
+    "category" : "LOCOMOTIVE",
+    "class_name" : "E405",
+    "road_number" : "E405 004",
+    "series" : "",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Vb/VI",
+    "depot" : "",
+    "dcc_interface" : "NONE",
+    "control" : "DCC_READY",
+    "livery" : "XMPR",
+    "length_over_buffer" : {
+      "inches" : null,
+      "millimeters" : 223.0
+    },
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
+      "coupling" : {
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
+      },
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
+      "lights" : "YES",
+      "spring_buffers" : "NO"
+    },
+    "dummy" : true
   } ],
-  "count" : 1
+  "count" : 2
 }

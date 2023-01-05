@@ -26,7 +26,7 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "V",
-    "depot" : "Napoli",
+    "depot" : "Napoli Smistamento",
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
     "livery" : "grigio/blu",
@@ -37,8 +37,8 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

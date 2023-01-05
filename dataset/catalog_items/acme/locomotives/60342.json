@@ -11,7 +11,7 @@
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Locomotiva diesel-idraulica D 442.401 nello stato di servizio dei primi anni Sessanta, con carenatura dei carrelli integrale e livrea originale con tetto blu, delle FS. Edizione limita a 500 pz. Telaio in metallo pressofuso, motore Mashima con 2 volani e trasmissione cardanica su tutti gli assi con sospensione isostatica, presa di corrente su tutte le ruote e luci a microled bianche e rosse a seconda del senso di marcia, connettore NEM per il collegamento del decoder a 21 poli. Epoca III",
       "en" : null
     }
   },
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "III",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
     "livery" : "isabella/bianco/rosso",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 178.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Senza modanature, griglie su vetri frontali, logo tartaruga, dep. Roma S. L., anni 80",
+      "it" : "Locomotiva elettrica FS E.444 002 senza modanature, griglie su vetri frontali, logo tartaruga, dep. Roma S. L., anni 80",
       "en" : null
     }
   },
@@ -26,19 +26,19 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVb",
-    "depot" : "",
-    "dcc_interface" : "NONE",
+    "depot" : "Roma San Lorenzo",
+    "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "blu/grigio",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 195.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

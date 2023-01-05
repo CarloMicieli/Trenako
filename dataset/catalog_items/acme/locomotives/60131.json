@@ -37,7 +37,7 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
+        "socket" : "NEM_362",
         "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },

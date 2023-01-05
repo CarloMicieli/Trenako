@@ -1,0 +1,53 @@
+{
+  "brand" : "ACME",
+  "item_number" : "60195",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica FS E444R 061 nella livrea di origine rosso/grigio, numeri anteriori bianchi e pantografo 52 strisciante di origine",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
+  "power_method" : "DC",
+  "delivery_date" : "2022",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "class_name" : "E444R",
+    "road_number" : "E444R 061",
+    "series" : "",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : "Milano Centrale",
+    "dcc_interface" : "MTC_21",
+    "control" : "DCC_SOUND",
+    "livery" : "rosso/grigio",
+    "length_over_buffer" : {
+      "inches" : null,
+      "millimeters" : 195.0
+    },
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
+      "coupling" : {
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
+      },
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
+      "lights" : "YES",
+      "spring_buffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

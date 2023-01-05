@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Locomotiva elettrica FS E.645 011 (1a serie) nella livrea castano/isabella, portelli A.T. bassi, fregio frontale alato, con gocciolatoio, dep. Bussoleno.Nuovi pantografi ACME FS 52/92 con riproduzione del sistema di sollevamento.Edizione limitata e numerata a 600pz.",
+      "it" : "Locomotiva elettrica FS E.645 011 (1a serie) nella livrea castano/isabella, portelli A.T. bassi, fregio frontale alato, con gocciolatoio, dep. Bussoleno. Nuovi pantografi ACME FS 52/92 con riproduzione del sistema di sollevamento.Edizione limitata e numerata a 600pz.",
       "en" : null
     }
   },
@@ -22,7 +22,7 @@
     "category" : "LOCOMOTIVE",
     "class_name" : "E645",
     "road_number" : "E645 011",
-    "series" : "prima serie (ex E646)",
+    "series" : "PRIMA SERIE (ex E646)",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVa",
@@ -37,7 +37,7 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
+        "socket" : "NEM_362",
         "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },

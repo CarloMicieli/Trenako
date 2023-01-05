@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "PKP (Ferrovie Polacche), versione di origine",
+      "it" : "Locomotiva elettrica EU 11 007 livrea PKP, versione di origine",
       "en" : null
     }
   },
@@ -20,25 +20,25 @@
   "availability_status" : "AVAILABLE",
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "class_name" : "E405",
+    "class_name" : "EU11",
     "road_number" : "EU11-007",
     "series" : "",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
+    "railway" : "PKP",
     "epoch" : "V",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "PKP",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 223.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

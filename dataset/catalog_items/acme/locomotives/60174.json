@@ -17,11 +17,11 @@
   },
   "power_method" : "DC",
   "delivery_date" : "",
-  "availability_status" : "AVAILABLE",
+  "availability_status" : "ANNOUNCED",
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E405",
-    "road_number" : "",
+    "road_number" : "E405 ???",
     "series" : "",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
@@ -29,16 +29,16 @@
     "depot" : "",
     "dcc_interface" : "NONE",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "XMPR",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 223.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",
@@ -47,7 +47,7 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
+    "dummy" : true
   } ],
   "count" : 1
 }

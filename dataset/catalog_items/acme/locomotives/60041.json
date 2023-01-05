@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Trenitalia, gancio automatico, pantografi Sommerfeldt",
+      "it" : "Locomotiva elettrica FS E464 126 Trenitalia, gancio automatico, pantografi Sommerfeldt",
       "en" : null
     }
   },
@@ -29,7 +29,7 @@
     "depot" : "",
     "dcc_interface" : "NONE",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "XMPR",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null

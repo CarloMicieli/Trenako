@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Livrea di origine rosso/grigio, pantografi 52 Sommerfeldt striscianti piatti, ed. speciale",
+      "it" : "Locomotiva elettrica E402 003 prototipo nella livrea di origine rosso/grigio, pantografi 52 Sommerfeldt striscianti piatti, ed. speciale",
       "en" : null
     }
   },
@@ -29,7 +29,7 @@
     "depot" : "",
     "dcc_interface" : "NONE",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "rosso/grigio",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null

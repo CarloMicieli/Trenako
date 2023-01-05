@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "XMPR FS Trenitalia 1a vers., luci rosse, 3o faro alto, aria condiz., OMR La Spezia (69440 DCC Sound)",
+      "it" : "Locomotive elettrica FS E636 351 XMPR Trenitalia prima versione, luci rosse, terzo faro alto, aria condizata, OMR La Spezia",
       "en" : null
     }
   },
@@ -26,19 +26,19 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "Vb",
-    "depot" : "",
-    "dcc_interface" : "NONE",
+    "depot" : "La Spezia",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "XMPR",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 210.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

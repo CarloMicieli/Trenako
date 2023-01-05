@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Livrea Intercity Giorno bianco/grigio fascia rossa, 3 pantografi (69214 DCC Sound)",
+      "it" : "Locomotiva elettrica FS E403 014 nella livrea Intercity Giorno bianco/grigio fascia rossa, 3 pantografi",
       "en" : null
     }
   },
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "VI",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "Intercity Giorno",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 230.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

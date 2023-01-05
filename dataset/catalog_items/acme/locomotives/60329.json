@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "E434 cast./isa., porte frontali, separatore D'Arbela, scalette strette, sabbiere grandi, dep. Firenze",
+      "it" : "Locomotiva elettrica FS E 434 068 nella livrea castano/isabella, porte frontali, separatore D'Arbela, scalette strette, sabbiere grandi, deposito locomotive Firenze",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Modello in edizione limitata: 350 pezzi numerati con certificato.",
       "en" : null
     }
   },
@@ -20,25 +20,25 @@
   "availability_status" : "AVAILABLE",
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "class_name" : "E424",
+    "class_name" : "E434",
     "road_number" : "E434 068",
     "series" : "",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IIIb",
-    "depot" : "",
-    "dcc_interface" : "NONE",
+    "depot" : "Firenze",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "castano/isabella",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 178.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

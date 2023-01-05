@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Verde/grigio nebbia, baffo verde frontale, tetto sotto pantografi marrone, griglie",
+      "it" : "Locomotiva elettrica FS E646 178 nella livrea verde/grigio nebbia, baffo verde frontale, imperiale marrone nella parte dei pantografi, con griglie",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Motore a 5 poli con volano, doppia trasmissione cardanica; fari illuminati a LED bianchi e rossi, funzionanti a seconda del senso di marcia.",
       "en" : null
     }
   },
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "IVa",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "verde magnolia/grigio nebbia",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 210.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

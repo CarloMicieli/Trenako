@@ -1,0 +1,53 @@
+{
+  "brand" : "Piko",
+  "item_number" : "52446",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva Diesel da manovra D141 1019 del deposito locomotive di Padova, con corrimani neri e senza battipiede antinfortunistico, delle FS ep. IV.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
+  "power_method" : "DC",
+  "delivery_date" : "2021",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "class_name" : "D141",
+    "road_number" : "D141 1019",
+    "series" : "",
+    "locomotive_type" : "DIESEL_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IV",
+    "depot" : "Padova",
+    "dcc_interface" : "PLUX_22",
+    "control" : "DCC_SOUND",
+    "livery" : "verde/fasce gialle",
+    "length_over_buffer" : {
+      "inches" : null,
+      "millimeters" : 152.0
+    },
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
+      "coupling" : {
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
+      },
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
+      "lights" : "YES",
+      "spring_buffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

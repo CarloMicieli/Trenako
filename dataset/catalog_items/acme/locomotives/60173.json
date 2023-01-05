@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Livrea XMPR FS Trenitalia, logo verde/rosso",
+      "it" : "ocomotiva elettrica E 405 023 nella livrea XMPR FS Trenitalia, logo verde/rosso",
       "en" : null
     }
   },
@@ -17,7 +17,7 @@
   },
   "power_method" : "DC",
   "delivery_date" : "",
-  "availability_status" : "AVAILABLE",
+  "availability_status" : "ANNOUNCED",
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E405",
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "VI",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "XMPR",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 223.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

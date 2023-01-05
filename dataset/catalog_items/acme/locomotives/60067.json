@@ -2,7 +2,7 @@
   "brand" : "ACME",
   "item_number" : "60067",
   "scale" : "H0",
-  "category" : "LOCOMOTIVES",
+  "category" : "TRAIN_SET",
   "description" : {
     "values" : {
       "it" : "Set D342 castano/isabella/rosso, stato di origine, 2 fanali, porta frontale, modanature, dep. Padova + carro riscaldo Vrz livrea castano",
@@ -21,7 +21,7 @@
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D342",
-    "road_number" : "D342 4011 + Vrz 808 914",
+    "road_number" : "D342 4011",
     "series" : "ANSALDO",
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
@@ -45,6 +45,31 @@
       "metal_body" : "NO",
       "interior_lights" : "NO",
       "lights" : "YES",
+      "spring_buffers" : "NO"
+    },
+    "dummy" : false
+  }, {
+    "category" : "FREIGHT_CAR",
+    "type_name" : "Vrz",
+    "road_number" : "Vrz 808 914",
+    "railway" : "FS",
+    "epoch" : "IIIb",
+    "livery" : "castano",
+    "length_over_buffer" : {
+      "inches" : null,
+      "millimeters" : null
+    },
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
+      "coupling" : {
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
+      },
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
+      "lights" : "NO",
       "spring_buffers" : "NO"
     },
     "dummy" : false

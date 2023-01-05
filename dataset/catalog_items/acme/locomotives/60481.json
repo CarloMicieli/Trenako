@@ -11,7 +11,7 @@
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "- Pantografi in metallo pressofuso con \"effetto piatto\".\n- Respingenti molleggiati.\n- Perfetta riproduzione del pancone con portalampada riportati.\n- Arredamento interno delle cabine con doppio maniglione del reostato e tachigrafo, riportati e decorati.\n- Motore di alta qualità CANON a 5 poli e meccanica con scatola degli ingranaggi in metallo, per un funzionamento dolce ma potente anche a basse velocità.\n- Cinematismo di allontanamento del gancio modellistico.\n- Predisposizione per il decoder digitale a 21 poli MTC, anche sonoro, con alloggiamento per l'altoparlante.\n- Illuminazione a microled bianchi e rossi a seconda del senso di marcia.",
       "en" : null
     }
   },
@@ -37,8 +37,8 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

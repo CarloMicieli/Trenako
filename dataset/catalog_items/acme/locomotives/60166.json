@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Verde/grigio, modanature, carrelli castano, scalette piccole, cornici chiare (69166 DCC Sound)",
+      "it" : "Locomotiva elettrica E.646.185 delle Ferrovie dello Stato (FS). Stato d'origine con modanature, scalette piccole, tientibene corti, carrelli castano e prese ad orecchia su ambo i lati e cornici laterali dei finestrini in caucciù chiaro.",
       "en" : null
     }
   },
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "IIIb",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "verde/grigio",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 210.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

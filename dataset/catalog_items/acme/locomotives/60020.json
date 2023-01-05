@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "XMPR FS Trenitalia, dep. Milano C.le, pantografi 52/92 Sommerfeldt",
+      "it" : "Locomotiva elettrica E402A 036 nella livrea XMPR Trenitalia, dep. Milano C.le, pantografi 52/92 Sommerfeldt",
       "en" : null
     }
   },
@@ -26,10 +26,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "Vb",
-    "depot" : "",
+    "depot" : "Milano Centrale",
     "dcc_interface" : "NONE",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "XMPR",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null

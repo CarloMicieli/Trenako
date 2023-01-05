@@ -22,7 +22,7 @@
     "category" : "LOCOMOTIVE",
     "class_name" : "E645",
     "road_number" : "E645 054",
-    "series" : "seconda serie",
+    "series" : "SECONDA SERIE",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVb",
@@ -37,7 +37,7 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
+        "socket" : "NEM_362",
         "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },

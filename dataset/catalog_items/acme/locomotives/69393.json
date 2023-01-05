@@ -1,0 +1,53 @@
+{
+  "brand" : "ACME",
+  "item_number" : "69393",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica FS E656 510 \"Caimano\" (5a serie) nella livrea blu/grigio, smorzatori, condizionatori, striscianti piani, dep. Napoli Sm.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
+  "power_method" : "DC",
+  "delivery_date" : "2021",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "class_name" : "E656",
+    "road_number" : "E656 510",
+    "series" : "QUINTA SERIE",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "V",
+    "depot" : " Napoli Smistamento",
+    "dcc_interface" : "MTC_21",
+    "control" : "DCC_SOUND",
+    "livery" : "blu/grigio",
+    "length_over_buffer" : {
+      "inches" : null,
+      "millimeters" : 210.0
+    },
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
+      "coupling" : {
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
+      },
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
+      "lights" : "YES",
+      "spring_buffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

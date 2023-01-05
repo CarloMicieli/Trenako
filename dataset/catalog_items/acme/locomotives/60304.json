@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Locomotiva elettrica E 444 114 di II serie, con \"Baffo rosso\" e con modanature nella livrea d'origine.",
+      "it" : "Locomotiva elettrica E 444 114 \"Tartaruga\" (2a serie) nella livrea di origine blu/grigio con \"Baffo rosso\" e modanature",
       "en" : null
     }
   },
@@ -22,7 +22,7 @@
     "category" : "LOCOMOTIVE",
     "class_name" : "E444",
     "road_number" : "E444 114",
-    "series" : "seconda serie",
+    "series" : "SECONDA SERIE",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
@@ -37,8 +37,8 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

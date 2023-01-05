@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Versione di origine con modanature, carrelli in bruno, corsa prova 8 novembre 1967, ed. speciale",
+      "it" : "Locomotiva elettrica FS E444 001 prototipo nella versione di origine con modanature, carrelli in bruno, corsa prova 8 novembre 1967, ed. speciale",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Edizione limitata e certificata. La confezione contiene il Portachiavi Tartaruga",
       "en" : null
     }
   },
@@ -25,20 +25,20 @@
     "series" : "PROTOTIPO",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
-    "epoch" : "IIIb",
+    "epoch" : "IV",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "blu/grigio",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 195.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

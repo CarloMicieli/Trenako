@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Locomotiva elettrica E.646 006 di 1a serie nella livrea di origine verde-magnolia e grigio-medio con logo FS anteriore grande, pantografi 42LR, scalette piccole. ",
+      "it" : "Locomotiva elettrica FS E.646 006 di 1a serie nella livrea di origine verde magnolia/grigio medio con logo FS anteriore grande, pantografi 42LR, scalette piccole.",
       "en" : null
     }
   },
@@ -37,8 +37,8 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

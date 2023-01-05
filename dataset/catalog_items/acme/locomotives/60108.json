@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Prototipo 'Shunt Chopper', livrea blu/grigio, modanature",
+      "it" : "Locomotiva elettrica FS E444 056 prototipo 'Shunt Chopper', livrea blu/grigio, modanature",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Modello con motore 5 poli centrale e trasmissione a doppio cardano con volani per la distribuzione a tutti gli assi, luci a led bianche e rosse con inversione automatica più terzo faro, bellissimi pantografi ACME FS 52, predisposta per decoder DCC 8pin",
       "en" : null
     }
   },
@@ -27,17 +27,17 @@
     "railway" : "FS",
     "epoch" : "IVa",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "blu/grigio",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 195.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
+        "socket" : "NEM_362",
         "close_couplers" : "NO",
         "digital_shunting" : "NO"
       },

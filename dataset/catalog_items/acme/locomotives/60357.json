@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Sovralimentata, castano/isabella/rosso, 3 fanali, senza porta frontale, modanature dipinte",
+      "it" : "Locomotiva diesel FS D 342 4016 sovralimentata e con terzo faro, livrea rosso, castano e isabella, nello stato di servizio degli anni ottanta, 3 fanali, senza porta frontale, modanature dipinte",
       "en" : null
     }
   },
@@ -26,19 +26,19 @@
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
-    "depot" : "",
-    "dcc_interface" : "NONE",
+    "depot" : "Siena",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "rosso/castano/isabella",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 167.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

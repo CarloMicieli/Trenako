@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Set E633 prototipo livrea provvisoria grigia, pannelli blu, respingenti arancio, pantografi Faiveley + E444 1a serie grigio/blu con modanature, folle",
+      "it" : "Set formato dalla locomotiva elettrica E.633.003 in livrea provvisoria grigia con respingenti arancioni e la locomotiva elettrica E.444.051 (non motorizzata), come in servizio da Marzo a Giugno del 1980. Edizione Limitata 250 pezzi, con certificato numerato.",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Pantografi: E 633 Faiveley, E444 FS 52, Motore centrale con volani e trasmissione cardanica su entrambi i carrelli (E633), presa per decoder a 21 pin con predisposizione sound, fari illuminati bianco/rosso anche il terzo faro con micro led.",
       "en" : null
     }
   },
@@ -21,8 +21,38 @@
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E633",
-    "road_number" : "E633 003 + E444 051",
+    "road_number" : "E633 003",
     "series" : "PROTOTIPO",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "IV",
+    "depot" : "",
+    "dcc_interface" : "MTC_21",
+    "control" : "DCC_READY",
+    "livery" : "provvisoria grigia",
+    "length_over_buffer" : {
+      "inches" : null,
+      "millimeters" : 206.0
+    },
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
+      "coupling" : {
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
+      },
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
+      "lights" : "YES",
+      "spring_buffers" : "NO"
+    },
+    "dummy" : false
+  }, {
+    "category" : "LOCOMOTIVE",
+    "class_name" : "E444",
+    "road_number" : "E444 051",
+    "series" : "",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
@@ -37,8 +67,8 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",
@@ -47,7 +77,7 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
+    "dummy" : true
   } ],
-  "count" : 1
+  "count" : 2
 }

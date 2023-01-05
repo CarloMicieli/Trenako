@@ -1,0 +1,53 @@
+{
+  "brand" : "ACME",
+  "item_number" : "69193",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica FS E444R 106 nella livrea XMPR2 con il nuovo logo, 18 poli, corrimani, pantografi 52/92, marcatura UIC, con scalette sui respingenti, nello stato finale di servizio",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
+  "power_method" : "DC",
+  "delivery_date" : "2022",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "class_name" : "E444R",
+    "road_number" : "E444R 106",
+    "series" : "",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dcc_interface" : "MTC_21",
+    "control" : "DCC_SOUND",
+    "livery" : "XMPR2",
+    "length_over_buffer" : {
+      "inches" : null,
+      "millimeters" : 195.0
+    },
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
+      "coupling" : {
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
+      },
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
+      "lights" : "YES",
+      "spring_buffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

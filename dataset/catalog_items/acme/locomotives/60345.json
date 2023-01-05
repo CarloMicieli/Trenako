@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "IVa",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
     "livery" : "isabella con fasce rosse",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 180.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

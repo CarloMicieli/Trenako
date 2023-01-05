@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Prima serie, livrea blu/grigio con modanature, carrelli neri, baffo rosso invertito, dep. Bologna",
+      "it" : "Locomotiva elettrica FS E444 014 \"Tartaruga\" (1a serie) nella livrea di origine blu/grigio con modanature, carrelli neri, baffo rosso invertito, dep. Bologna",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Telaio in metallo pressofuso, motore Mashima a cinque poli con due volani e trasmissione cardanica su tutti gli assi con sospensione isostatica - presa di corrente su tutte le ruote. Luci a microled bianche/rosse con inversione a seconda della direzione di marcia.",
       "en" : null
     }
   },
@@ -22,23 +22,23 @@
     "category" : "LOCOMOTIVE",
     "class_name" : "E444",
     "road_number" : "E444 014",
-    "series" : "",
+    "series" : "PRIMA SERIE",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVa",
-    "depot" : "",
-    "dcc_interface" : "NONE",
+    "depot" : "Bologna",
+    "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
     "livery" : "",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 195.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Verde/grigio, modanature, scalette larghe, prese aria origine, vomere nero (69162 DCC Sound)",
+      "it" : "Locomotiva elettrica FS E646 062 nella livrea verde/grigio, modanature, scalette larghe, prese aria origine, vomere nero",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Locomotiva elettrica E 646 062 nella livrea verde magnolia grigio nebbia, con scalette larghe e tientibene lunghi; unica ad aver mantenuto la configurazione delle prese d'aria originali su entrambi i lati sino alla trasformazione in navetta dei primi anni 80'. Edizione limitata",
       "en" : null
     }
   },
@@ -27,17 +27,17 @@
     "railway" : "FS",
     "epoch" : "IVa",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "verde/grigio",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 210.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
+        "socket" : "NEM_362",
         "close_couplers" : "NO",
         "digital_shunting" : "NO"
       },

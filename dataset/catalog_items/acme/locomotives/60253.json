@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Locomotiva Diesel elettrica da manovra pesante D.143.3022 in livrea verde con fasce gialle, telaio nero.Respingenti rettangolari e mancorrenti estesi, cabina corazzata, battipiede, dep. Firenze.",
+      "it" : "Locomotiva Diesel elettrica da manovra pesante D143 3022 in livrea verde con fasce gialle, telaio nero.Respingenti rettangolari e mancorrenti estesi, cabina corazzata, battipiede, dep. Firenze.",
       "en" : null
     }
   },
@@ -37,8 +37,8 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

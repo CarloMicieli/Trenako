@@ -1,0 +1,53 @@
+{
+  "brand" : "ACME",
+  "item_number" : "69389",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica FS E 402B 148 nella livrea XMPR, logo FS Trenitalia verde/rosso, SCMT, marcatura UIC",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
+  "power_method" : "DC",
+  "delivery_date" : "2020",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "class_name" : "E402 B",
+    "road_number" : "E402 148",
+    "series" : "",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "VI",
+    "depot" : "",
+    "dcc_interface" : "MTC_21",
+    "control" : "DCC_SOUND",
+    "livery" : "XMPR",
+    "length_over_buffer" : {
+      "inches" : null,
+      "millimeters" : 223.0
+    },
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
+      "coupling" : {
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
+      },
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
+      "lights" : "YES",
+      "spring_buffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

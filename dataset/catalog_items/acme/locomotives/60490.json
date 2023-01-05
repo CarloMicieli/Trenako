@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Grigio perla/blu orientale, condotte basse, stato di origine",
+      "it" : "Locomotiva elettrica E.652 062 delle FS con logo \"tigre\" e pantografi FS 52, in livrea grigio perla e blu orientale, stato d'origine.",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Accensione luci B/R, terzo faro con micro led e luci cabine indipendenti sia in analogico che in digitale.\nMotore a 5 poli \"Canon\" predisposta per Lok-sound, decoder a 21 poli.",
       "en" : null
     }
   },
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "V",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "grigio/blu",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 206.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

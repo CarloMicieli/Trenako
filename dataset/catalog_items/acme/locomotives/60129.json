@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Cast./isa., modanature, scalette larghe, tientibene corti, prese aria origine (69129 DCC Sound)",
+      "it" : "Locomotiva elettrica FS E645 064 nella livrea castano/isabella, modanature, scalette larghe, tientibene corti, prese aria origine",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Locomotiva elettrica E 645.064 di seconda serie con modanature in EDIZIONE LIMITATA, modello mai realizzato in precedenza con scalette larghe e tientibene corti, verniciatura in castano esclusivamente al di sotto dei pantografi, vomeri monocolore e prese d'aria ad orecchio su entambi i lati, modello di pregiatissima fattura, luci in cabina in base al senso di marcia, predisposizione al sistema digitale tramite decoder a 21 poli, predisposizione al sound, luci bianco/rosse ad inversione automatica in base al senso di marcia, sistema Nem, Lunghezza <21,0> Cm. , Ep. IV, scala H0.",
       "en" : null
     }
   },
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "IVa",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "castano/isabella",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 210.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

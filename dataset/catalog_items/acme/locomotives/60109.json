@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Tartaruga \"elettronica\" nella versione di origine, blu/grigio con modanature.La confezione contiene il portachiavi con tartaruga ed un libretto di presentazione di Franco Dell'Amico.",
+      "it" : "Locomotiva elettrica FS E444 005 tartaruga \"elettronica\" nella versione di origine, blu/grigio con modanature. La confezione contiene il portachiavi con tartaruga ed un libretto di presentazione di Franco Dell'Amico.",
       "en" : null
     }
   },
@@ -37,7 +37,7 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
+        "socket" : "NEM_362",
         "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
