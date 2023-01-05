@@ -3,8 +3,18 @@
   "item_number" : "73346",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Prima serie, senza modanature, G.S., smorzatori, dep. Roma S. L., striscianti piatti",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Prima serie, senza modanature, G.S., smorzatori, dep. Roma S. L., striscianti piatti",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",

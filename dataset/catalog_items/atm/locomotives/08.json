@@ -3,8 +3,18 @@
   "item_number" : "08",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea isabella/bianco/rosso, “mezzaluna” blu, fregio Ansaldo triangolare, carenature, dep. Bari",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea isabella/bianco/rosso, “mezzaluna” blu, fregio Ansaldo triangolare, carenature, dep. Bari",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "51138",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Start set, 214 verde fasce gialle, dep. Treviso + 2 carri merci, trasformatore, binari",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Start set, 214 verde fasce gialle, dep. Treviso + 2 carri merci, trasformatore, binari",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

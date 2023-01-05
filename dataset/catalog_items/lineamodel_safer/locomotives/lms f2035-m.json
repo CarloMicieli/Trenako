@@ -3,8 +3,18 @@
   "item_number" : "LMS F2035-M",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Kit 245 verde mancorrenti con battipiede, vernici Lineamodel, motore Faulhaber",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Kit 245 verde mancorrenti con battipiede, vernici Lineamodel, motore Faulhaber",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2010",
   "availability_status" : "AVAILABLE",

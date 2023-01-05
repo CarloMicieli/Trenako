@@ -3,8 +3,18 @@
   "item_number" : "5431",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Nera telaio rosso, cerchioni bianchi, Museo ferroviario di Trieste",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Nera telaio rosso, cerchioni bianchi, Museo ferroviario di Trieste",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2007",
   "availability_status" : "AVAILABLE",

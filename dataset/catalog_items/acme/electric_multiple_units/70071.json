@@ -3,8 +3,18 @@
   "item_number" : "70071",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Set 3 carrozze intermedie per ETR500 Y1 RFI (carrozze 5+6+7), due in livrea blu/bianco + una in livrea AV grigia",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set 3 carrozze intermedie per ETR500 Y1 RFI (carrozze 5+6+7), due in livrea blu/bianco + una in livrea AV grigia",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2019",
   "availability_status" : "AVAILABLE",

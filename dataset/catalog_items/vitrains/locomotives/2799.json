@@ -3,8 +3,18 @@
   "item_number" : "2799",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea grigio pietra/castano, compressore meccanico, cassa di origine, DCC Sound",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea grigio pietra/castano, compressore meccanico, cassa di origine, DCC Sound",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "52854",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Arancio fasce gialle, logo TV, SSC, marc. EVN RFI, O.M.R. Messina (52855 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Arancio fasce gialle, logo TV, SSC, marc. EVN RFI, O.M.R. Messina (52855 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2022",
   "availability_status" : "AVAILABLE",

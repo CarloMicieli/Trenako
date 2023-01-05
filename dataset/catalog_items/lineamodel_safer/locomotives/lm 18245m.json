@@ -3,8 +3,18 @@
   "item_number" : "LM 18245M",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Kit 245 verde mancorrenti con battipiede, telaio e assi in metallo, motore Faulhaber",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Kit 245 verde mancorrenti con battipiede, telaio e assi in metallo, motore Faulhaber",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2010",
   "availability_status" : "AVAILABLE",

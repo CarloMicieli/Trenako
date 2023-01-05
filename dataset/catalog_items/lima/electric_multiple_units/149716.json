@@ -3,8 +3,18 @@
   "item_number" : "149716",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Set 4 elementi, livrea verde/grigio, 1a serie, finestrini frontali lunghi (art. 208421 + 309659 + 208356)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set 4 elementi, livrea verde/grigio, 1a serie, finestrini frontali lunghi (art. 208421 + 309659 + 208356)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

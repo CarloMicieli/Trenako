@@ -3,8 +3,18 @@
   "item_number" : "62872",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Serie 1000, vetri piani di sicurezza, griglia sul tetto tonda, fregio rosso, dep. Palermo",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Serie 1000, vetri piani di sicurezza, griglia sul tetto tonda, fregio rosso, dep. Palermo",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "HR2504",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea “Frecciabianca” bianco/grigio scuro fasce rosse, marcatura UIC",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea “Frecciabianca” bianco/grigio scuro fasce rosse, marcatura UIC",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "0470.7",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "FS livrea verde vagone, panconi rossi, mancorrenti gialli",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "FS livrea verde vagone, panconi rossi, mancorrenti gialli",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1989",
   "availability_status" : "AVAILABLE",

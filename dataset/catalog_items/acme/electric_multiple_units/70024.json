@@ -3,8 +3,18 @@
   "item_number" : "70024",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Confezione con intermedia 1a classe + 2 intermedie 2a classe",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Confezione con intermedia 1a classe + 2 intermedie 2a classe",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "63278",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Cabina aperta, stato di origine, marcatura posteriore su pancone",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Cabina aperta, stato di origine, marcatura posteriore su pancone",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2008",
   "availability_status" : "AVAILABLE",

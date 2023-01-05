@@ -3,8 +3,18 @@
   "item_number" : "30155-05",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Società Veneta livrea bordeaux, panconi rosso/nero, cabina aperta, DCC, escl. CFB",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Società Veneta livrea bordeaux, panconi rosso/nero, cabina aperta, DCC, escl. CFB",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "LP-L131520.1",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "BR 52 livrea nera, panconi rossi, scritte Deposito Firenze",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "BR 52 livrea nera, panconi rossi, scritte Deposito Firenze",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2019",
   "availability_status" : "AVAILABLE",

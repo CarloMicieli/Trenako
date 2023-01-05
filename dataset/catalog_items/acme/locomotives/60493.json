@@ -3,8 +3,18 @@
   "item_number" : "60493",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea XMPR2, logo FS Trenitalia, vomere rosso, condotte alte, deposito Cervignano",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea XMPR2, logo FS Trenitalia, vomere rosso, condotte alte, deposito Cervignano",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",

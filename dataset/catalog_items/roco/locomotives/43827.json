@@ -3,8 +3,18 @@
   "item_number" : "43827",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Stato d'origine, scritte E412 e ADtranz sulla fiancata, livrea della presentazione ufficiale",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Stato d'origine, scritte E412 e ADtranz sulla fiancata, livrea della presentazione ufficiale",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1998",
   "availability_status" : "AVAILABLE",

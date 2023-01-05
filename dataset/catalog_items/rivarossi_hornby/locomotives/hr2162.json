@@ -3,8 +3,18 @@
   "item_number" : "HR2162",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde/isabella 1a serie, corrimani riportati, vetri piani, vomere, 78 poli, dep. Taranto",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde/isabella 1a serie, corrimani riportati, vetri piani, vomere, 78 poli, dep. Taranto",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2010",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "HR2326",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, Breda, doppio coprigiunto, citofono 'Perego', vomere castano, dep. Alessandria",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, Breda, doppio coprigiunto, citofono 'Perego', vomere castano, dep. Alessandria",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

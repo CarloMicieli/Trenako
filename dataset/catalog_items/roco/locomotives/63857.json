@@ -3,8 +3,18 @@
   "item_number" : "63857",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/Isabella, nicchia scarico distributore, coprigiunto alto, boccole rulli, panto. 42 dep. Alessandria",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/Isabella, nicchia scarico distributore, coprigiunto alto, boccole rulli, panto. 42 dep. Alessandria",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2006",
   "availability_status" : "AVAILABLE",

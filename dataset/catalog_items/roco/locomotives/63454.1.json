@@ -3,8 +3,18 @@
   "item_number" : "63454.1",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde/isabella, vomere rosso, vetri piani, logo FS Trenitalia, marcatura tra i fanali, dep. Udine",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde/isabella, vomere rosso, vetri piani, logo FS Trenitalia, marcatura tra i fanali, dep. Udine",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2004",
   "availability_status" : "AVAILABLE",

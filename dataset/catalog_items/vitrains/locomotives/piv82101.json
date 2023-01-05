@@ -3,8 +3,18 @@
   "item_number" : "PIV82101",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "FS Trenitalia livrea XMPR, pubblicità 'Sparkasse', collaborazione Pi.r.a.t.a. (DS DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "FS Trenitalia livrea XMPR, pubblicità 'Sparkasse', collaborazione Pi.r.a.t.a. (DS DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2020",
   "availability_status" : "AVAILABLE",

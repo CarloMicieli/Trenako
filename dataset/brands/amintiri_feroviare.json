@@ -3,7 +3,12 @@
   "registered_company_name" : null,
   "organization_entity_type" : "OTHER",
   "group_name" : null,
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "address" : {
     "street_address" : "Str. Erou Slt. Olaru Cristian, Nr.34",
     "extended_address" : null,

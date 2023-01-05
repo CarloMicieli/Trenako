@@ -3,7 +3,12 @@
   "registered_company_name" : "AVALIARE Engenharia Lda.",
   "organization_entity_type" : "OTHER",
   "group_name" : null,
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "address" : {
     "street_address" : "Praça Camilo Castelo Branco, 31",
     "extended_address" : "2º Andar - Sala 48",

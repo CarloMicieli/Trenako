@@ -3,8 +3,18 @@
   "item_number" : "60494",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea XMPR2, logo FS Trenitalia verde/rosso, vomere rosso, condotte alte, dep. Udine",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea XMPR2, logo FS Trenitalia verde/rosso, vomere rosso, condotte alte, dep. Udine",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",

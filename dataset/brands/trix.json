@@ -3,7 +3,12 @@
   "registered_company_name" : "Gebr. Märklin & Cie. GmbH",
   "organization_entity_type" : "OTHER",
   "group_name" : "märklin",
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "address" : {
     "street_address" : "Stuttgarter Straße 55-57",
     "extended_address" : null,

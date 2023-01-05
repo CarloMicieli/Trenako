@@ -3,8 +3,18 @@
   "item_number" : "HRS2338",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Brass Edition, cassa in metallo, castano/isabella, compressore, cornici finestrini castano",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Brass Edition, cassa in metallo, castano/isabella, compressore, cornici finestrini castano",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2012",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "4",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea isabella/bianco/rosso, tetto blu con “mezzaluna”, fregio Ansaldo rettangolare, carenature",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea isabella/bianco/rosso, tetto blu con “mezzaluna”, fregio Ansaldo rettangolare, carenature",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

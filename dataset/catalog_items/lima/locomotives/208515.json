@@ -3,8 +3,18 @@
   "item_number" : "208515",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella/rosso, 3 fanali, vomere giallo/nero, dep. Siena, MFP (uscito?)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella/rosso, 3 fanali, vomere giallo/nero, dep. Siena, MFP (uscito?)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

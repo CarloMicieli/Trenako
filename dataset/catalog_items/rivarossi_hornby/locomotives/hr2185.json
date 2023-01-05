@@ -3,8 +3,18 @@
   "item_number" : "HR2185",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica E428 113 senza compressore, ruote con tamponi in gomma, dep. Mestre",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica E428 113 senza compressore, ruote con tamponi in gomma, dep. Mestre",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

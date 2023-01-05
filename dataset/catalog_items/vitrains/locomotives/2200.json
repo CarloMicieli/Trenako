@@ -3,8 +3,18 @@
   "item_number" : "2200",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, separatore D'Arbela, RS, scritte bianche, dep. Bologna C.le, museale (2500 DCC)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, separatore D'Arbela, RS, scritte bianche, dep. Bologna C.le, museale (2500 DCC)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

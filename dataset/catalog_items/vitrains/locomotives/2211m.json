@@ -3,8 +3,18 @@
   "item_number" : "2211M",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Trenord livrea verde/bianco/grigio fasce rosse, marcatura UIC (2711M DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Trenord livrea verde/bianco/grigio fasce rosse, marcatura UIC (2711M DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",

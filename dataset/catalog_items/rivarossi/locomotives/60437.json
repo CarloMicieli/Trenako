@@ -3,8 +3,18 @@
   "item_number" : "60437",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Reostatica, castano/isabella, carrelli neri, telaio di origine, pant. 42U, dep. Bussoleno (69435 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Reostatica, castano/isabella, carrelli neri, telaio di origine, pant. 42U, dep. Bussoleno (69435 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",

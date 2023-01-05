@@ -3,8 +3,18 @@
   "item_number" : "60150",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica FS E.646 014 (1a serie) nella livrea verde e grigio di origine senza fregio, pantografi 42LR, separatore di Arbela, portelli A.T. bassi, griglie sui vetri anteriori, scalette piccole.Edizione Limitata 600 PZ",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica FS E.646 014 (1a serie) nella livrea verde e grigio di origine senza fregio, pantografi 42LR, separatore di Arbela, portelli A.T. bassi, griglie sui vetri anteriori, scalette piccole.Edizione Limitata 600 PZ",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2010",
   "availability_status" : "AVAILABLE",

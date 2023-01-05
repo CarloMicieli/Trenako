@@ -3,8 +3,18 @@
   "item_number" : "1403",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Carrelli di origine, ruote con tamponi in gomma",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Carrelli di origine, ruote con tamponi in gomma",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1996",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "60342",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva diesel D442 401 nella livrea isabella/bianco/rosso, tetto blu con “mezzaluna”, fregio Ansaldo triangolare, carenature",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva diesel D442 401 nella livrea isabella/bianco/rosso, tetto blu con “mezzaluna”, fregio Ansaldo triangolare, carenature",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

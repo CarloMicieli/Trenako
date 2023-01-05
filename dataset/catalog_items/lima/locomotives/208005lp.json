@@ -3,8 +3,18 @@
   "item_number" : "208005LP",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Treno Azzurro blu/celeste tetto alluminio, con modanature",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Treno Azzurro blu/celeste tetto alluminio, con modanature",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1991",
   "availability_status" : "AVAILABLE",

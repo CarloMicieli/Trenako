@@ -3,8 +3,18 @@
   "item_number" : "70002",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Set di tre carrozze per completamento convoglio \"ETR500\" treno 48 livrea bianco/verde, logo FS Trenitalia, confezione con intermedia 1a classe (carrozza 2) + 2 intermedie 2a classe (carrozze 6 e 8)Articolo con illuminazione interna montata di serie.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set di tre carrozze per completamento convoglio \"ETR500\" treno 48 livrea bianco/verde, logo FS Trenitalia, confezione con intermedia 1a classe (carrozza 2) + 2 intermedie 2a classe (carrozze 6 e 8)Articolo con illuminazione interna montata di serie.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2008",
   "availability_status" : "AVAILABLE",

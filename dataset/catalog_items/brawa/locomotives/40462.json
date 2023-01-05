@@ -3,8 +3,18 @@
   "item_number" : "40462",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Marcatura a biacca, fanali a petrolio",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Marcatura a biacca, fanali a petrolio",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

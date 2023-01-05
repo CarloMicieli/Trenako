@@ -3,8 +3,18 @@
   "item_number" : "HR2014",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "XMPR2, loghi FS verdi, deposito Roma S. Lorenzo",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "XMPR2, loghi FS verdi, deposito Roma S. Lorenzo",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2005",
   "availability_status" : "AVAILABLE",

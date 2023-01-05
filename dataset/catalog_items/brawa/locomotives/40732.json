@@ -3,8 +3,18 @@
   "item_number" : "40732",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Nero/rosso vagone, marcatura a biacca, sabbiera davanti a duomo",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Nero/rosso vagone, marcatura a biacca, sabbiera davanti a duomo",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

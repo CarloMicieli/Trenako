@@ -3,8 +3,18 @@
   "item_number" : "52850",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Arancio fasce gialle, logo inclinato, corrimani con battipiede (52851 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Arancio fasce gialle, logo inclinato, corrimani con battipiede (52851 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2021",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "208678",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "MDVE grigio fasce rosso/arancio, logo XMPR, pantografi 52, vomere giallo/nero, dep. Ancona",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "MDVE grigio fasce rosso/arancio, logo XMPR, pantografi 52, vomere giallo/nero, dep. Ancona",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2000",
   "availability_status" : "AVAILABLE",

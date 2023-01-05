@@ -3,7 +3,12 @@
   "registered_company_name" : null,
   "organization_entity_type" : "OTHER",
   "group_name" : null,
-  "description" : "Bachmann Trains is now known for its extensive and award-winning line of model railroading products, \nbut the company started in 1833 as a producer of handcrafted ivory accessories, beginning a 180-year \ncommitment to quality that continues to this day. \n",
+  "description" : {
+    "values" : {
+      "it" : "Bachmann Trains is now known for its extensive and award-winning line of model railroading products, but the company started in 1833 as a producer of handcrafted ivory accessories, beginning a 180-year commitment to quality that continues to this day. ",
+      "en" : null
+    }
+  },
   "address" : {
     "street_address" : "1400 East Erie Avenue",
     "extended_address" : null,

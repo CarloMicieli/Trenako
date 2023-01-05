@@ -3,8 +3,18 @@
   "item_number" : "60140",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, fregio alato, scalette piccole, pant. 42 strisciante curvo, dep. Reggio Cal.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, fregio alato, scalette piccole, pant. 42 strisciante curvo, dep. Reggio Cal.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

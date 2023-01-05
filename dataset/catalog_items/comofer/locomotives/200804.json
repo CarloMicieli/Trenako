@@ -3,8 +3,18 @@
   "item_number" : "200804",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde mancorrenti senza battipiede, costruzione Ferrosud, dep. Cuneo",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde mancorrenti senza battipiede, costruzione Ferrosud, dep. Cuneo",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "60265",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "E655 Cargo blu/grigio, logo Trenitalia, fregio bianco su un frontale, condizionatori, striscianti piatti",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "E655 Cargo blu/grigio, logo Trenitalia, fregio bianco su un frontale, condizionatori, striscianti piatti",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2018",
   "availability_status" : "AVAILABLE",

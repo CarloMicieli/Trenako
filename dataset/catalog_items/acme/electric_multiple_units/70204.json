@@ -3,8 +3,18 @@
   "item_number" : "70204",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Set Frecciarossa 1000 treno 28, loghi “10 anni di FRECCIAROSSA” composto da otto elementi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set Frecciarossa 1000 treno 28, loghi “10 anni di FRECCIAROSSA” composto da otto elementi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2019",
   "availability_status" : "AVAILABLE",

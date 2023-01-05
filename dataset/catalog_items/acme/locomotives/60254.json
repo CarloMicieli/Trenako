@@ -3,8 +3,18 @@
   "item_number" : "60254",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Isabella, telaio castano, cabina corazzata, 2 marmitte, fanali su pancone (69254 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Isabella, telaio castano, cabina corazzata, 2 marmitte, fanali su pancone (69254 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2020",
   "availability_status" : "AVAILABLE",

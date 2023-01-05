@@ -3,8 +3,18 @@
   "item_number" : "63277",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Cabina aperta, stato di origine, livrea fotografica grigia, marcatura posteriore su parete cabina",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Cabina aperta, stato di origine, livrea fotografica grigia, marcatura posteriore su parete cabina",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

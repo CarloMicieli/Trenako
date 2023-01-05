@@ -3,8 +3,18 @@
   "item_number" : "HR2178",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica E428 225 nella livrea castano/isabella, ruote con tamponi in gomma, carrelli Ap 1110, dep. Bologna S. D., DCC Sound",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica E428 225 nella livrea castano/isabella, ruote con tamponi in gomma, carrelli Ap 1110, dep. Bologna S. D., DCC Sound",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

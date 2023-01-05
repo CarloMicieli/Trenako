@@ -3,8 +3,18 @@
   "item_number" : "60061",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva diesel D 461 1001 nella livrea castano/isabella/verde",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva diesel D 461 1001 nella livrea castano/isabella/verde",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2005",
   "availability_status" : "AVAILABLE",

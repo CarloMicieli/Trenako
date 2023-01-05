@@ -3,7 +3,12 @@
   "registered_company_name" : "BRAWA Artur Braun Modellspielwarenfabrik GmbH & Co. KG",
   "organization_entity_type" : "OTHER",
   "group_name" : null,
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "address" : {
     "street_address" : "Uferstraße 24-30",
     "extended_address" : null,

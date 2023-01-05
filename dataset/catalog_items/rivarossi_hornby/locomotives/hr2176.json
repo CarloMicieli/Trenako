@@ -3,8 +3,18 @@
   "item_number" : "HR2176",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica E428 102 con compressore meccanico, separatore D'Arbela, DCC Sound",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica E428 102 con compressore meccanico, separatore D'Arbela, DCC Sound",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

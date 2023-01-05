@@ -3,8 +3,18 @@
   "item_number" : "256",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Set “Un Trenino Lungo 50 Anni” E428 con compressore meccanico + 4 Corbellini a 2 assi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set “Un Trenino Lungo 50 Anni” E428 con compressore meccanico + 4 Corbellini a 2 assi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1995",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "HR2190",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "EuroStarCity, bigrigio con fasce rosse, griglie e finestrini modificati, pantografi 52/92",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "EuroStarCity, bigrigio con fasce rosse, griglie e finestrini modificati, pantografi 52/92",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

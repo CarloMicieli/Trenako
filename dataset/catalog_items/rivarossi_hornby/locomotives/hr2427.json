@@ -3,8 +3,18 @@
   "item_number" : "HR2427",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Set due E402B livrea d'origine grigio fascia verde e fascia rossa frontale, 138 con scritte “Treno Multiclient” OML MI S.to + 150 ex “Francia” OML MI C.le, entrambe motorizzate",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set due E402B livrea d'origine grigio fascia verde e fascia rossa frontale, 138 con scritte “Treno Multiclient” OML MI S.to + 150 ex “Francia” OML MI C.le, entrambe motorizzate",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

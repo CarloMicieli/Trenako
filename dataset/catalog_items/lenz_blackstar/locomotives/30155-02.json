@@ -3,8 +3,18 @@
   "item_number" : "30155-02",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "FS livrea castano/isabella, panconi rossi, cabina aperta, DCC, ganci digitali",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "FS livrea castano/isabella, panconi rossi, cabina aperta, DCC, ganci digitali",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2018",
   "availability_status" : "AVAILABLE",

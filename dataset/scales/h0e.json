@@ -1,6 +1,11 @@
 {
   "name" : "H0e",
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "ratio" : 87.0,
   "gauge" : {
     "millimeters" : 9.0,

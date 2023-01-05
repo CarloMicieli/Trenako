@@ -3,8 +3,18 @@
   "item_number" : "4187D/43502",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "JZ Ferrovie jugoslave, livrea verde oliva/marrone, ex E626 2a serie, compressore meccanico",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "JZ Ferrovie jugoslave, livrea verde oliva/marrone, ex E626 2a serie, compressore meccanico",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1982",
   "availability_status" : "AVAILABLE",

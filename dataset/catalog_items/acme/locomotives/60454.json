@@ -3,8 +3,18 @@
   "item_number" : "60454",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, moderabile, condotta 13 poli, pantografi 52, dep. La Spezia (69454 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, moderabile, condotta 13 poli, pantografi 52, dep. La Spezia (69454 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2018",
   "availability_status" : "AVAILABLE",

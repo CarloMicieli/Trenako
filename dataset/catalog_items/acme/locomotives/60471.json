@@ -3,8 +3,18 @@
   "item_number" : "60471",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Set E633 prototipo livrea provvisoria grigia, pannelli blu, respingenti arancio, pantografi Faiveley + E444 1a serie grigio/blu con modanature, folle",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set E633 prototipo livrea provvisoria grigia, pannelli blu, respingenti arancio, pantografi Faiveley + E444 1a serie grigio/blu con modanature, folle",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",

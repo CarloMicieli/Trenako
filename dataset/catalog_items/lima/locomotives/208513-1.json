@@ -3,8 +3,18 @@
   "item_number" : "208513-1",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, scalette e corrimani su bagagliaio, dep. Verona",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, scalette e corrimani su bagagliaio, dep. Verona",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1997",
   "availability_status" : "AVAILABLE",

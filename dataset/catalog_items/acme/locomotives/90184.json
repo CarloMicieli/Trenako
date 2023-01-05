@@ -3,8 +3,18 @@
   "item_number" : "90184",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, porte in legno, fanali moderni, dep. Milano Sm. (S DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, porte in legno, fanali moderni, dep. Milano Sm. (S DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

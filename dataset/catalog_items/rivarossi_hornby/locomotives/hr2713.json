@@ -3,8 +3,18 @@
   "item_number" : "HR2713",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea XMPR2, logo FS Trenitalia, OMR Udine",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea XMPR2, logo FS Trenitalia, OMR Udine",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2022",
   "availability_status" : "AVAILABLE",

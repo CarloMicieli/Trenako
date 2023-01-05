@@ -3,8 +3,18 @@
   "item_number" : "70202",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Set Frecciarossa 1000 treno 03, carrozza 4 Premium con pantografo + carrozza 6 Standard",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set Frecciarossa 1000 treno 03, carrozza 4 Premium con pantografo + carrozza 6 Standard",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2020",
   "availability_status" : "AVAILABLE",

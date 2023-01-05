@@ -3,8 +3,18 @@
   "item_number" : "HR2457",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Distribuzione Walschaerts, fanali a petrolio",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Distribuzione Walschaerts, fanali a petrolio",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2015",
   "availability_status" : "AVAILABLE",

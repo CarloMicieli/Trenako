@@ -3,8 +3,18 @@
   "item_number" : "0419",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Set Convoglio merci TRES, E.645 castano/isabella senza modanature + 3 carri Rgs",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set Convoglio merci TRES, E.645 castano/isabella senza modanature + 3 carri Rgs",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1999",
   "availability_status" : "AVAILABLE",

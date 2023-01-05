@@ -3,8 +3,18 @@
   "item_number" : "2195",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Trenitalia livrea XMPR, gancio automatico, logo biciclette, coprigancio rosso, logo SCMT",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Trenitalia livrea XMPR, gancio automatico, logo biciclette, coprigancio rosso, logo SCMT",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "62564",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "XMPR logo “caimano” E655 Cargo, OML La Spezia, climatizz., antenne, resp. tondi, vomeri rossi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "XMPR logo “caimano” E655 Cargo, OML La Spezia, climatizz., antenne, resp. tondi, vomeri rossi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2008",
   "availability_status" : "AVAILABLE",

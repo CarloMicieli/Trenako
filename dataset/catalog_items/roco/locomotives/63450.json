@@ -3,8 +3,18 @@
   "item_number" : "63450",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde/isabella, vetri piani, deposito Verona",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde/isabella, vetri piani, deposito Verona",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2002",
   "availability_status" : "AVAILABLE",

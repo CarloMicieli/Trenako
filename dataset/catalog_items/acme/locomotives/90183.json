@@ -3,8 +3,18 @@
   "item_number" : "90183",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Cast./isa., porte met., finestrini est., maglia sganciabile, dep. Salerno (S DCC Sound), escl. MC",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Cast./isa., porte met., finestrini est., maglia sganciabile, dep. Salerno (S DCC Sound), escl. MC",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2022",
   "availability_status" : "AVAILABLE",

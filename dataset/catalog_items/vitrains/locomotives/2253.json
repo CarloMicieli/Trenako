@@ -3,8 +3,18 @@
   "item_number" : "2253",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "FS livrea XMPR, versione di origine con respingenti e gancio a vite (2753 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "FS livrea XMPR, versione di origine con respingenti e gancio a vite (2753 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2021",
   "availability_status" : "AVAILABLE",

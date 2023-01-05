@@ -3,8 +3,18 @@
   "item_number" : "LLFS105200UD",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "BR 52 livrea grigio scuro deposito Udine, serie speciale DOC Models 25 pezzi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "BR 52 livrea grigio scuro deposito Udine, serie speciale DOC Models 25 pezzi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

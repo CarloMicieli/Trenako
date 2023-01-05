@@ -3,8 +3,18 @@
   "item_number" : "1426",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Isabella, un pantografo 42, dep. Milano Smistamento",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Isabella, un pantografo 42, dep. Milano Smistamento",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1996",
   "availability_status" : "AVAILABLE",

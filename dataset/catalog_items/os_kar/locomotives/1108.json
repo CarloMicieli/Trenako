@@ -3,8 +3,18 @@
   "item_number" : "1108",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde/isabella, versione di origine, vetri curvi e modanature, costruzione FIAT, carrelli in bruno",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde/isabella, versione di origine, vetri curvi e modanature, costruzione FIAT, carrelli in bruno",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

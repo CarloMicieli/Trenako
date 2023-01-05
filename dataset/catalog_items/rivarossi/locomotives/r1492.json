@@ -3,8 +3,18 @@
   "item_number" : "R1492",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "XMPR tetto alluminio, respingenti rettangolari, antenne sul tetto, OML Ancona",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "XMPR tetto alluminio, respingenti rettangolari, antenne sul tetto, OML Ancona",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2002",
   "availability_status" : "AVAILABLE",

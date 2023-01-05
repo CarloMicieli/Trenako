@@ -3,8 +3,18 @@
   "item_number" : "72159",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Nero/rosso, cerchioni bianchi, marcatura a biacca, 1 fanale alto, carbone, DCC Sound",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Nero/rosso, cerchioni bianchi, marcatura a biacca, 1 fanale alto, carbone, DCC Sound",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",

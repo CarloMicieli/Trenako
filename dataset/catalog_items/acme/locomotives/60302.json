@@ -3,8 +3,18 @@
   "item_number" : "60302",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Prima serie, livrea blu/grigio con modanature, carrelli neri, baffo rosso invertito, dep. Bologna",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Prima serie, livrea blu/grigio con modanature, carrelli neri, baffo rosso invertito, dep. Bologna",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",

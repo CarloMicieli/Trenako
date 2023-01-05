@@ -3,8 +3,18 @@
   "item_number" : "62224",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Nero telaio rosso vagone, nuova edizione, interfaccia DCC",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Nero telaio rosso vagone, nuova edizione, interfaccia DCC",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2007",
   "availability_status" : "AVAILABLE",

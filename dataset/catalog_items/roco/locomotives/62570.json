@@ -3,8 +3,18 @@
   "item_number" : "62570",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella senza modanature, gocciolatoio, portelloni alti, fregio castano, dep. Verona",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella senza modanature, gocciolatoio, portelloni alti, fregio castano, dep. Verona",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

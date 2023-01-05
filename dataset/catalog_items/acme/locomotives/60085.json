@@ -3,8 +3,18 @@
   "item_number" : "60085",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea sperimentale giallo/rosso tetto nero, scritte E656 1A / 1B su respingenti, serie speciale",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea sperimentale giallo/rosso tetto nero, scritte E656 1A / 1B su respingenti, serie speciale",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2007",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "208519",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Blu/grigio pantografi Faiveley, dep. Torino Orbassano",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Blu/grigio pantografi Faiveley, dep. Torino Orbassano",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1996",
   "availability_status" : "AVAILABLE",

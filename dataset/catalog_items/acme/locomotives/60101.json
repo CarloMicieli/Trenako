@@ -3,8 +3,18 @@
   "item_number" : "60101",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica FS E.444 003 nella livrea blu/grigio senza modanature, fine anni 80, pantografi Sommerfeldt. Articolo in edizione limitata e certificata.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica FS E.444 003 nella livrea blu/grigio senza modanature, fine anni 80, pantografi Sommerfeldt. Articolo in edizione limitata e certificata.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2008",
   "availability_status" : "AVAILABLE",

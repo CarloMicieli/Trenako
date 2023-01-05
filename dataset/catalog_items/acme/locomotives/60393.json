@@ -3,8 +3,18 @@
   "item_number" : "60393",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Blu/grigio, smorzatori, condizionatori, striscianti piani, dep. Napoli Sm. (69393 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Blu/grigio, smorzatori, condizionatori, striscianti piani, dep. Napoli Sm. (69393 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2021",
   "availability_status" : "AVAILABLE",

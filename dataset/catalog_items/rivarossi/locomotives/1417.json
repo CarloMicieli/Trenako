@@ -3,8 +3,18 @@
   "item_number" : "1417",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde magnolia/grigio nebbia, navetta, senza modanature, con griglie laterali, dep. Firenze",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde magnolia/grigio nebbia, navetta, senza modanature, con griglie laterali, dep. Firenze",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1993",
   "availability_status" : "AVAILABLE",

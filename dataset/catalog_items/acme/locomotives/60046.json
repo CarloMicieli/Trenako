@@ -3,8 +3,18 @@
   "item_number" : "60046",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "FS Trenitalia nuova livrea “Leonardo Express” rosso/verde/bianco",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "FS Trenitalia nuova livrea “Leonardo Express” rosso/verde/bianco",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "1408",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Con compressore meccanico, cornici finestrini castano, REC",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Con compressore meccanico, cornici finestrini castano, REC",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1994",
   "availability_status" : "AVAILABLE",

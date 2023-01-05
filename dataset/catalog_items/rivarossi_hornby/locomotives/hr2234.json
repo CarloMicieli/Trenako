@@ -3,8 +3,18 @@
   "item_number" : "HR2234",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica E428 140 con carrelli di origine, ruote con tamponi in gomma, dep. Foggia, DCC Sound",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica E428 140 con carrelli di origine, ruote con tamponi in gomma, dep. Foggia, DCC Sound",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

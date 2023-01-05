@@ -3,8 +3,18 @@
   "item_number" : "60129",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Cast./isa., modanature, scalette larghe, tientibene corti, prese aria origine (69129 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Cast./isa., modanature, scalette larghe, tientibene corti, prese aria origine (69129 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2018",
   "availability_status" : "AVAILABLE",

@@ -1,6 +1,11 @@
 {
   "name" : "Ne",
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "ratio" : 160.0,
   "gauge" : {
     "millimeters" : 4.5,

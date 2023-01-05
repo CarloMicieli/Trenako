@@ -3,8 +3,18 @@
   "item_number" : "63627 (1)",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella fregio a scudo castano senza baffi, dep. Udine",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella fregio a scudo castano senza baffi, dep. Udine",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2006",
   "availability_status" : "AVAILABLE",

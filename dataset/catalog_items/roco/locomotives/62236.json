@@ -3,8 +3,18 @@
   "item_number" : "62236",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Cabina chiusa, fanali a petrolio, ruotino a vela piena, telaio rosso vagone",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Cabina chiusa, fanali a petrolio, ruotino a vela piena, telaio rosso vagone",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

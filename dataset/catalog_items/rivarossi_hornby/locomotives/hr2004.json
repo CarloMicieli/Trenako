@@ -3,8 +3,18 @@
   "item_number" : "HR2004",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Isabella/verde, 3 fanali, corrimani sul tetto, dep. Reggio Calabria",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Isabella/verde, 3 fanali, corrimani sul tetto, dep. Reggio Calabria",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2006",
   "availability_status" : "AVAILABLE",

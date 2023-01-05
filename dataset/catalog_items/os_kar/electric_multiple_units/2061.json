@@ -3,8 +3,18 @@
   "item_number" : "2061",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Elettromotrice Ale.540 013 e rimorchiata Le.760 003, FSElettromotrice Ale.540 013 con rimorchiata Le.760 003 delle Ferrovie dello Stato. Epoca IV.Nella livrea castano isabella, il modello è dotato di illuminazione interna di serie, decoder Plux22 con predisposizione sonoro.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Elettromotrice Ale.540 013 e rimorchiata Le.760 003, FSElettromotrice Ale.540 013 con rimorchiata Le.760 003 delle Ferrovie dello Stato. Epoca IV.Nella livrea castano isabella, il modello è dotato di illuminazione interna di serie, decoder Plux22 con predisposizione sonoro.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2021",
   "availability_status" : "AVAILABLE",

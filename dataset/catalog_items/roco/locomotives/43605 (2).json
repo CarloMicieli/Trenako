@@ -3,8 +3,18 @@
   "item_number" : "43605 (2)",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/Isabella, coprigiunto basso, boccole a strisciamento, pantografi 42, dep. Roma Sm.to",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/Isabella, coprigiunto basso, boccole a strisciamento, pantografi 42, dep. Roma Sm.to",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1992",
   "availability_status" : "AVAILABLE",

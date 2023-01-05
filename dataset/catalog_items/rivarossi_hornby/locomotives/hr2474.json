@@ -3,8 +3,18 @@
   "item_number" : "HR2474",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea nera, telaio rosso vagone, panconi rossi, marcature bianche, DCC Sound",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea nera, telaio rosso vagone, panconi rossi, marcature bianche, DCC Sound",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "FL-001",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Gr. 675 nero telaio rosso, epoca",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Gr. 675 nero telaio rosso, epoca",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2010",
   "availability_status" : "AVAILABLE",

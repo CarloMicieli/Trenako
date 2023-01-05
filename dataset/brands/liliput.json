@@ -3,7 +3,12 @@
   "registered_company_name" : null,
   "organization_entity_type" : "OTHER",
   "group_name" : "bachmann",
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "address" : {
     "street_address" : "Am Umspannwerk 5",
     "extended_address" : null,

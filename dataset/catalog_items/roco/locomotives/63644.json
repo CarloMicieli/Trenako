@@ -3,8 +3,18 @@
   "item_number" : "63644",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea storica verde/grigio, fregio frontale a scudo con baffi verniciati, dep. Milano Sm.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea storica verde/grigio, fregio frontale a scudo con baffi verniciati, dep. Milano Sm.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2004",
   "availability_status" : "AVAILABLE",

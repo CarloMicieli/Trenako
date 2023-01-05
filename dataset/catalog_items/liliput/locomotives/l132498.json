@@ -3,8 +3,18 @@
   "item_number" : "L132498",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea verde, tetto alluminio, luci, nuova motorizzazione, presa DCC",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea verde, tetto alluminio, luci, nuova motorizzazione, presa DCC",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2005",
   "availability_status" : "AVAILABLE",

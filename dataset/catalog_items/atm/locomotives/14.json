@@ -3,8 +3,18 @@
   "item_number" : "14",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, telaio rosso, porta frontale, 2 fanali, modanature, corrimani sul tetto (1963)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, telaio rosso, porta frontale, 2 fanali, modanature, corrimani sul tetto (1963)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

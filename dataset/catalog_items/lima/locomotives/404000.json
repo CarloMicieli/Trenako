@@ -3,8 +3,18 @@
   "item_number" : "404000",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella con pezzature, dep. Pistoia, serie speciale Norisberghen",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella con pezzature, dep. Pistoia, serie speciale Norisberghen",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1995",
   "availability_status" : "AVAILABLE",

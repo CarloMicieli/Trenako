@@ -3,8 +3,18 @@
   "item_number" : "LE21273",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Fanali a petrolio, fumaiolo di origine, visiere ridotte, retro chiodato, cerchioni bianchi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Fanali a petrolio, fumaiolo di origine, visiere ridotte, retro chiodato, cerchioni bianchi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",

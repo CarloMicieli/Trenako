@@ -3,8 +3,18 @@
   "item_number" : "HR2903",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica E428, TIBB con chiodature frontali, ruote motrici con smorzatori a tamponi in gomma, carrelli Ap1110, ep.IVb",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica E428, TIBB con chiodature frontali, ruote motrici con smorzatori a tamponi in gomma, carrelli Ap1110, ep.IVb",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

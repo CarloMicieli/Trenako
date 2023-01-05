@@ -3,8 +3,18 @@
   "item_number" : "HL2663",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Set due E464 FS Trenitalia livrea “Frecciabianca”, display alto, entrambe motorizzate",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set due E464 FS Trenitalia livrea “Frecciabianca”, display alto, entrambe motorizzate",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

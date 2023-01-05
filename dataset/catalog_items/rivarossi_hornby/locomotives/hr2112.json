@@ -3,8 +3,18 @@
   "item_number" : "HR2112",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde magnolia/grigio nebbia con modanature, carrelli castano, scalette piccole",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde magnolia/grigio nebbia con modanature, carrelli castano, scalette piccole",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2008",
   "availability_status" : "AVAILABLE",

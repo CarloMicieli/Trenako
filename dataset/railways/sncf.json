@@ -4,6 +4,12 @@
   "registered_company_name" : "Société Nationale des Chemins de fer Français",
   "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "FRA",
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "period_of_activity" : {
     "operating_since" : "1937-08-31",
     "operating_until" : null,

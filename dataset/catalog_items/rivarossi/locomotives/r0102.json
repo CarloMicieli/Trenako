@@ -3,8 +3,18 @@
   "item_number" : "R0102",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Start set E428 + 3 carri merci + trasformatore + binari",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Start set E428 + 3 carri merci + trasformatore + binari",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2002",
   "availability_status" : "AVAILABLE",

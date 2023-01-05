@@ -3,8 +3,18 @@
   "item_number" : "R0006",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea 'Trenitalia Treno Multicliente', confezione speciale per clienti con bottiglia di vino",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea 'Trenitalia Treno Multicliente', confezione speciale per clienti con bottiglia di vino",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2002",
   "availability_status" : "AVAILABLE",

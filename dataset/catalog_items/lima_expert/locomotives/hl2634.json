@@ -3,8 +3,18 @@
   "item_number" : "HL2634",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde/grigio perla, carrelli neri, fregio verde, vetri Triplex, RS continua, dep. Bologna C.le",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde/grigio perla, carrelli neri, fregio verde, vetri Triplex, RS continua, dep. Bologna C.le",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",

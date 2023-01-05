@@ -3,8 +3,18 @@
   "item_number" : "HR2708",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "MDVE grigio/rosso/arancio, finestrini di origine, pant. 52, vomere giallo/nero, dep. Ancona, DCC",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "MDVE grigio/rosso/arancio, finestrini di origine, pant. 52, vomere giallo/nero, dep. Ancona, DCC",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",

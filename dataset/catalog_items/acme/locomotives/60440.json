@@ -3,8 +3,18 @@
   "item_number" : "60440",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "XMPR FS Trenitalia 1a vers., luci rosse, 3o faro alto, aria condiz., OMR La Spezia (69440 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "XMPR FS Trenitalia 1a vers., luci rosse, 3o faro alto, aria condiz., OMR La Spezia (69440 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "HR2269",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Rosso/grigio, marcatura frontale bianca, striscianti piatti, dep. Milano C.le",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Rosso/grigio, marcatura frontale bianca, striscianti piatti, dep. Milano C.le",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

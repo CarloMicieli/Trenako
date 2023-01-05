@@ -3,8 +3,18 @@
   "item_number" : "1125",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde/isabella 1a serie, vetri curvi, deposito Bari",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde/isabella 1a serie, vetri curvi, deposito Bari",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",

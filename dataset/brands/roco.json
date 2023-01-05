@@ -3,7 +3,12 @@
   "registered_company_name" : "Modelleisenbahn GmbH",
   "organization_entity_type" : "OTHER",
   "group_name" : "modelleisenbahn",
-  "description" : "ROCO offre a principianti ed esperti un hobby stimolante e mette in contatto le generazioni. I modelli prototipali \nstabiliscono nuovi standard per il valore ludico creativo di tutti gli appassionati di modellismo ferroviario. \nQuesta grande attenzione ai dettagli è ulteriormente sottolineata dalla massima affidabilità e funzionalità. \nROCO garantisce il puro divertimento del modellismo ferroviario e si caratterizza soprattutto per le costanti \ninnovazioni tecniche nella digitalizzazione dei modelli ferroviari.\n",
+  "description" : {
+    "values" : {
+      "it" : "ROCO offre a principianti ed esperti un hobby stimolante e mette in contatto le generazioni. I modelli prototipali stabiliscono nuovi standard per il valore ludico creativo di tutti gli appassionati di modellismo ferroviario. Questa grande attenzione ai dettagli è ulteriormente sottolineata dalla massima affidabilità e funzionalità. ROCO garantisce il puro divertimento del modellismo ferroviario e si caratterizza soprattutto per le costanti innovazioni tecniche nella digitalizzazione dei modelli ferroviari.",
+      "en" : null
+    }
+  },
   "address" : {
     "street_address" : "Plainbachstraße 4",
     "extended_address" : null,

@@ -3,8 +3,18 @@
   "item_number" : "43324",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Ruotino a vela piena, fanali elettrici, carboniera bassa",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Ruotino a vela piena, fanali elettrici, carboniera bassa",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2001",
   "availability_status" : "AVAILABLE",

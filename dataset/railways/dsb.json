@@ -4,6 +4,12 @@
   "registered_company_name" : "Danske Statsbaner",
   "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "DNK",
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "period_of_activity" : {
     "operating_since" : "1885-10-01",
     "operating_until" : null,

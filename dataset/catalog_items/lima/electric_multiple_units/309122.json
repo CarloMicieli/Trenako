@@ -3,8 +3,18 @@
   "item_number" : "309122",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Rimorchiata, verde/grigio con riga rossa, finestrini frontali piccoli",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Rimorchiata, verde/grigio con riga rossa, finestrini frontali piccoli",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1988",
   "availability_status" : "AVAILABLE",

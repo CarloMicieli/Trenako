@@ -3,8 +3,18 @@
   "item_number" : "0418",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Set Rapido R51, E428 + 1959 2a cl. grigio ardesia + 1959 2a cl. Treno Azzurro + ristorante CIWL blu",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set Rapido R51, E428 + 1959 2a cl. grigio ardesia + 1959 2a cl. Treno Azzurro + ristorante CIWL blu",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1999",
   "availability_status" : "AVAILABLE",

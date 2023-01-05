@@ -3,8 +3,18 @@
   "item_number" : "1695",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea fotografica grigia, fanali a petrolio, tender 29 mc, pompa Knorr monocilindrica",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea fotografica grigia, fanali a petrolio, tender 29 mc, pompa Knorr monocilindrica",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",

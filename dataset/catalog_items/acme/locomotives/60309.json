@@ -3,8 +3,18 @@
   "item_number" : "60309",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica FS E 447 074 in livrea di origine blu orientale/grigio perla senza modanature, strisciante curvo, dopo la modifica del rapporto di trasmissione avvenuta nel 1986.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica FS E 447 074 in livrea di origine blu orientale/grigio perla senza modanature, strisciante curvo, dopo la modifica del rapporto di trasmissione avvenuta nel 1986.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2020",
   "availability_status" : "AVAILABLE",

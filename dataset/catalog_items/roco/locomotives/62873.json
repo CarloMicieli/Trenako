@@ -3,8 +3,18 @@
   "item_number" : "62873",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Serie 2000, vetri piani di sicurezza, griglia sul tetto squadrata, fregio verde, dep. Fabriano",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Serie 2000, vetri piani di sicurezza, griglia sul tetto squadrata, fregio verde, dep. Fabriano",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

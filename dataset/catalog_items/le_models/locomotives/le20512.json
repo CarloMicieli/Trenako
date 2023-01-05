@@ -3,8 +3,18 @@
   "item_number" : "LE20512",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Avancorpi IV s., porta metallica, pant. 42LR, vomeri, cerchioni bianchi, dep. GE Riv. (S DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Avancorpi IV s., porta metallica, pant. 42LR, vomeri, cerchioni bianchi, dep. GE Riv. (S DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",

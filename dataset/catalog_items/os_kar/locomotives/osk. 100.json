@@ -3,8 +3,18 @@
   "item_number" : "Osk. 100",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Set due D342 OM livrea castano/isabella con telaio rosso, fascia rossa su fanali, porta frontale",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set due D342 OM livrea castano/isabella con telaio rosso, fascia rossa su fanali, porta frontale",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

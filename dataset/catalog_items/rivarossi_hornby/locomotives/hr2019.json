@@ -3,8 +3,18 @@
   "item_number" : "HR2019",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica E 428 226 nella livrea castano/isabella ex Pirata, carrelli Ap 1110, versione storica, dep. Bologna S. D.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica E 428 226 nella livrea castano/isabella ex Pirata, carrelli Ap 1110, versione storica, dep. Bologna S. D.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2007",
   "availability_status" : "AVAILABLE",

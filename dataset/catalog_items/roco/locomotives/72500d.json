@@ -3,8 +3,18 @@
   "item_number" : "72500D",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Prima serie, senza modanature, portelloni G.S., smorzatori, dep. Milano C.le, striscianti piatti",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Prima serie, senza modanature, portelloni G.S., smorzatori, dep. Milano C.le, striscianti piatti",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2012",
   "availability_status" : "AVAILABLE",

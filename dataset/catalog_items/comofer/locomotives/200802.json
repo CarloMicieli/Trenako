@@ -3,8 +3,18 @@
   "item_number" : "200802",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde mancorrenti con battipiede, costruzione Badoni, OML Milano Smistamento",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde mancorrenti con battipiede, costruzione Badoni, OML Milano Smistamento",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

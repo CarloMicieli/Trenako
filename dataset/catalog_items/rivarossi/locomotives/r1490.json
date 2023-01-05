@@ -3,8 +3,18 @@
   "item_number" : "R1490",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "XMPR tetto verde, fascia blu alta, pantografi 52, deposito Ancona",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "XMPR tetto verde, fascia blu alta, pantografi 52, deposito Ancona",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2002",
   "availability_status" : "AVAILABLE",

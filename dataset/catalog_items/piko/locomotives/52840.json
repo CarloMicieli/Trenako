@@ -3,8 +3,18 @@
   "item_number" : "52840",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea arancio fasce gialle, logo TV, D.L. Milano Sm.to (52842 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea arancio fasce gialle, logo TV, D.L. Milano Sm.to (52842 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2019",
   "availability_status" : "AVAILABLE",

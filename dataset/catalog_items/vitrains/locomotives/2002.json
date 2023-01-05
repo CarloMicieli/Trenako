@@ -3,8 +3,18 @@
   "item_number" : "2002",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Trenitalia livrea XMPR, gancio automatico con logo biciclette e coprigancio rosso",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Trenitalia livrea XMPR, gancio automatico con logo biciclette e coprigancio rosso",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2006",
   "availability_status" : "AVAILABLE",

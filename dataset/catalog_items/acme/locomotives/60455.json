@@ -3,8 +3,18 @@
   "item_number" : "60455",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, moderabile, pant. 42LR, senza gocciolatoio, dep. Genova Br. (69455 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, moderabile, pant. 42LR, senza gocciolatoio, dep. Genova Br. (69455 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2022",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "HR2461",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, fanali alti, ripetizione segnali, separatore, dep. Bologna C. (HR2462 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, fanali alti, ripetizione segnali, separatore, dep. Bologna C. (HR2462 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",

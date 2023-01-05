@@ -3,8 +3,18 @@
   "item_number" : "60456",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica FS E.636 123 del deposito di Trieste nella livrea Isabella, vomere giallo/nero, pantografi 42LR + 42U, griglie lato corridoio, dep. Trieste",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica FS E.636 123 del deposito di Trieste nella livrea Isabella, vomere giallo/nero, pantografi 42LR + 42U, griglie lato corridoio, dep. Trieste",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2018",
   "availability_status" : "AVAILABLE",

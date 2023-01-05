@@ -3,8 +3,18 @@
   "item_number" : "1412",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea originale blu/grigio, logo XMPR, dep. Udine",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea originale blu/grigio, logo XMPR, dep. Udine",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1999",
   "availability_status" : "AVAILABLE",

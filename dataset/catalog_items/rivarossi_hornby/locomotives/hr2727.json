@@ -3,8 +3,18 @@
   "item_number" : "HR2727",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, Breda, doppio coprigiunto, senza RS, dep. Alessandria",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, Breda, doppio coprigiunto, senza RS, dep. Alessandria",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",

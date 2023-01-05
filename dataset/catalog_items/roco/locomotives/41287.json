@@ -3,8 +3,18 @@
   "item_number" : "41287",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Start set DCC, E444R rosso/grigio (varie num.)+4 Eurofima C1 (1a cl.+3 2a cl.), multiMaus,binari",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Start set DCC, E444R rosso/grigio (varie num.)+4 Eurofima C1 (1a cl.+3 2a cl.), multiMaus,binari",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

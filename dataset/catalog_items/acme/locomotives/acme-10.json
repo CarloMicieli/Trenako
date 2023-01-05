@@ -3,8 +3,18 @@
   "item_number" : "ACME-10",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Complesso E444 grigio/blu senza baffo rosso, con modanature + simulacro E666 livrea panna/rosso, serie speciale",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Complesso E444 grigio/blu senza baffo rosso, con modanature + simulacro E666 livrea panna/rosso, serie speciale",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

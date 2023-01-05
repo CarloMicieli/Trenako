@@ -3,8 +3,18 @@
   "item_number" : "60490",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Grigio perla/blu orientale, condotte basse, stato di origine",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Grigio perla/blu orientale, condotte basse, stato di origine",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",

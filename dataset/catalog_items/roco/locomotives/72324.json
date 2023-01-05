@@ -3,8 +3,18 @@
   "item_number" : "72324",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, boccole strisciamento, telaio di origine, dep. Udine, pant. 42LR (72325 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, boccole strisciamento, telaio di origine, dep. Udine, pant. 42LR (72325 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",

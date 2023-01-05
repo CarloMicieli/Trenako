@@ -3,8 +3,18 @@
   "item_number" : "2232",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "FER livrea bianco/rosso/verde",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "FER livrea bianco/rosso/verde",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

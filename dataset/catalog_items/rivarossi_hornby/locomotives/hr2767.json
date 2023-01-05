@@ -3,8 +3,18 @@
   "item_number" : "HR2767",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Grigio/verde, fascia rossa frontale, FS Trenitalia, antenne e captatori",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Grigio/verde, fascia rossa frontale, FS Trenitalia, antenne e captatori",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2019",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "LE21277",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Fanali a petrolio anteriori, carboniera rialzata, vomere a scudo, carboniera metallica",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Fanali a petrolio anteriori, carboniera rialzata, vomere a scudo, carboniera metallica",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2018",
   "availability_status" : "AVAILABLE",

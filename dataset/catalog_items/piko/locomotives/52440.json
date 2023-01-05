@@ -3,8 +3,18 @@
   "item_number" : "52440",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde fasce gialle, telaio e corrimani bruno, dep. Padova (52446 DCC, 52442 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde fasce gialle, telaio e corrimani bruno, dep. Padova (52446 DCC, 52442 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2021",
   "availability_status" : "AVAILABLE",

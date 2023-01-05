@@ -3,8 +3,18 @@
   "item_number" : "62560",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Blu/grigio, dep. Mestre, senza climatizzatore, antenne sul tetto, smorzatori, respingenti tondi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Blu/grigio, dep. Mestre, senza climatizzatore, antenne sul tetto, smorzatori, respingenti tondi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2007",
   "availability_status" : "AVAILABLE",

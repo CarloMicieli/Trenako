@@ -3,8 +3,18 @@
   "item_number" : "L132499",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea verde, tetto alluminio, luci, nuova motorizzazione, dep. Udine, presa DCC",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea verde, tetto alluminio, luci, nuova motorizzazione, dep. Udine, presa DCC",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2004",
   "availability_status" : "AVAILABLE",

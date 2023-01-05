@@ -3,8 +3,18 @@
   "item_number" : "62576",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Set due E645 castano/isabella senza modanature, gocciolatoio, 066 motorizzata tetto e fregio castano portelloni bassi + 035 folle tetto isabella fregio rosso portelloni alti, dep. MI Sm.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set due E645 castano/isabella senza modanature, gocciolatoio, 066 motorizzata tetto e fregio castano portelloni bassi + 035 folle tetto isabella fregio rosso portelloni alti, dep. MI Sm.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

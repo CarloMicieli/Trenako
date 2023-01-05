@@ -3,8 +3,18 @@
   "item_number" : "73567",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "XMPR con fascia rossa frontale, marcatura EVN, loghi SCMT, 'Partners for your goods'",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "XMPR con fascia rossa frontale, marcatura EVN, loghi SCMT, 'Partners for your goods'",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",

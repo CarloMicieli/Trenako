@@ -3,8 +3,18 @@
   "item_number" : "1428",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "MDVC beige fasce arancio/viola, rettangolo frontale arancione, tetto grigio, dep. Livorno",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "MDVC beige fasce arancio/viola, rettangolo frontale arancione, tetto grigio, dep. Livorno",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1996",
   "availability_status" : "AVAILABLE",

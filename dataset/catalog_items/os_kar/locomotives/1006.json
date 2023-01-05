@@ -3,8 +3,18 @@
   "item_number" : "1006",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Isabella/verde, 3 fanali, corrimani sul tetto, costr. Reggiane/Breda, dep. Roma S. L.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Isabella/verde, 3 fanali, corrimani sul tetto, costr. Reggiane/Breda, dep. Roma S. L.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

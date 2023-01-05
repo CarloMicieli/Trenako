@@ -3,8 +3,18 @@
   "item_number" : "72893",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Serie 2000 Breda, vetri curvi, modanature, griglia squadrata, 2 scarichi centrali, dep. Lecco",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Serie 2000 Breda, vetri curvi, modanature, griglia squadrata, 2 scarichi centrali, dep. Lecco",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

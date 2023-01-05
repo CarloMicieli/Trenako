@@ -3,8 +3,18 @@
   "item_number" : "62569",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde/grigio nebbia, finestrini laterali, fregio verde, fascia verde sottile, carrelli castano, dep. FI",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde/grigio nebbia, finestrini laterali, fregio verde, fascia verde sottile, carrelli castano, dep. FI",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

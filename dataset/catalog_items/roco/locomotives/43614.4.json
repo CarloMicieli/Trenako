@@ -3,8 +3,18 @@
   "item_number" : "43614.4",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde/isabella, vetri tondi, deposito Torino",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde/isabella, vetri tondi, deposito Torino",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

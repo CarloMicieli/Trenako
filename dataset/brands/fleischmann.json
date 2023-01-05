@@ -3,7 +3,12 @@
   "registered_company_name" : "Modelleisenbahn GmbH",
   "organization_entity_type" : "OTHER",
   "group_name" : "modelleisenbahn",
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "address" : {
     "street_address" : "Plainbachstraße 4",
     "extended_address" : null,

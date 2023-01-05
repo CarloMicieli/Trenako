@@ -3,8 +3,18 @@
   "item_number" : "L230103",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Set treno cantiere “WIEBE”, loco da manovra livrea gialla telaio grigio + 3 carri",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set treno cantiere “WIEBE”, loco da manovra livrea gialla telaio grigio + 3 carri",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

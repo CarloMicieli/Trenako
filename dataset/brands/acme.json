@@ -3,7 +3,12 @@
   "registered_company_name" : "Associazione Costruzioni Modellistiche Esatte",
   "organization_entity_type" : "OTHER",
   "group_name" : null,
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "address" : {
     "street_address" : "Viale Lombardia, 27",
     "extended_address" : null,

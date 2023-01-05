@@ -3,8 +3,18 @@
   "item_number" : "60260",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica FS E 656.544 \"Caimano\" (5a serie) nella livrea di origine. Senza smorzatori, senza condizionatori, striscianti curvi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica FS E 656.544 \"Caimano\" (5a serie) nella livrea di origine. Senza smorzatori, senza condizionatori, striscianti curvi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2010",
   "availability_status" : "AVAILABLE",

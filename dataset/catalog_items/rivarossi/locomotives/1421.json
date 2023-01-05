@@ -3,8 +3,18 @@
   "item_number" : "1421",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde magnolia/grigio nebbia, navetta, senza modanature, con griglie laterali, dep. Milano C.le",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde magnolia/grigio nebbia, navetta, senza modanature, con griglie laterali, dep. Milano C.le",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1994",
   "availability_status" : "AVAILABLE",

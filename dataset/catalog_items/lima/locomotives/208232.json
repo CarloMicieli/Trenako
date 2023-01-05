@@ -3,8 +3,18 @@
   "item_number" : "208232",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "FSF Suzzara-Ferrara livrea bordeaux fasce gialle, corrimani gialli, telaio nero, panconi rossi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "FSF Suzzara-Ferrara livrea bordeaux fasce gialle, corrimani gialli, telaio nero, panconi rossi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

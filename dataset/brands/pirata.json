@@ -3,7 +3,12 @@
   "registered_company_name" : "Piccole Riproduzioni Artigianali Treni e Affini",
   "organization_entity_type" : "OTHER",
   "group_name" : null,
-  "description" : "Pirata Models è sinonimo di modellismo ferroviario italiano in scala N 1/160. Pi.r.a.t.a. (Piccole Riproduzioni Artigianali Treni e Affini). \nIl nostro laboratorio progetta e costruisce modelli ferroviari italiani 160 volte più piccoli del vero ma dettagliati come quelli reali. \nPirata Models vuol dire locomotive, automotrici, carrozze, carri e accessori per plastici in scala N in stile italiano.\n",
+  "description" : {
+    "values" : {
+      "it" : "Pirata Models è sinonimo di modellismo ferroviario italiano in scala N 1/160. Pi.r.a.t.a. (Piccole Riproduzioni Artigianali Treni e Affini). Il nostro laboratorio progetta e costruisce modelli ferroviari italiani 160 volte più piccoli del vero ma dettagliati come quelli reali. Pirata Models vuol dire locomotive, automotrici, carrozze, carri e accessori per plastici in scala N in stile italiano.",
+      "en" : null
+    }
+  },
   "address" : {
     "street_address" : "Via Montonale Basso 5/G",
     "extended_address" : null,

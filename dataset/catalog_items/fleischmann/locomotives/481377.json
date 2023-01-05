@@ -3,8 +3,18 @@
   "item_number" : "481377",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Nera telaio rosso vagone, targhe, DCC Sound, base smartRail Z21",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Nera telaio rosso vagone, targhe, DCC Sound, base smartRail Z21",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

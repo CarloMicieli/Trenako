@@ -3,8 +3,18 @@
   "item_number" : "11",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Livrea isabella/bianco/rosso, “mezzaluna” blu, fregio Ansaldo rettangolare, carenature, dep. Torino",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Livrea isabella/bianco/rosso, “mezzaluna” blu, fregio Ansaldo rettangolare, carenature, dep. Torino",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

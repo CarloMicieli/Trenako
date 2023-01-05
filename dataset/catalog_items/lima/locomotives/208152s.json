@@ -3,8 +3,18 @@
   "item_number" : "208152S",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "MDVC navetta 4 fanali, motore G",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "MDVC navetta 4 fanali, motore G",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

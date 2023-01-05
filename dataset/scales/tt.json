@@ -1,6 +1,11 @@
 {
   "name" : "TT",
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "ratio" : 120.0,
   "gauge" : {
     "millimeters" : 12.0,

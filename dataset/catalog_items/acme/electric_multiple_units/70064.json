@@ -3,8 +3,18 @@
   "item_number" : "70064",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "“Frecciarossa” con 4 livelli di servizio, intermedia Standard (carrozza 10)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "“Frecciarossa” con 4 livelli di servizio, intermedia Standard (carrozza 10)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

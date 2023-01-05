@@ -3,8 +3,18 @@
   "item_number" : "HR2325",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Verde fasce gialle, mancorrenti senza battipiede, costruzione Reggiane",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde fasce gialle, mancorrenti senza battipiede, costruzione Reggiane",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

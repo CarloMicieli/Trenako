@@ -3,8 +3,18 @@
   "item_number" : "208002-1",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Rosso/grigio, marcatura frontale rossa, deposito Roma S. Lorenzo",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Rosso/grigio, marcatura frontale rossa, deposito Roma S. Lorenzo",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1997",
   "availability_status" : "AVAILABLE",

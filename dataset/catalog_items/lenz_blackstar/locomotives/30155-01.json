@@ -3,8 +3,18 @@
   "item_number" : "30155-01",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "FS livrea grigio Delta, telaio nero, panconi rossi, cabina aperta, DCC, ganci digitali",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "FS livrea grigio Delta, telaio nero, panconi rossi, cabina aperta, DCC, ganci digitali",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",

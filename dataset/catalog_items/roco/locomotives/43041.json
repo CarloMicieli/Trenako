@@ -3,8 +3,18 @@
   "item_number" : "43041",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Set E626 livrea nero/rosso 2a serie + 3 carrozze Tipo '21 verdi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set E626 livrea nero/rosso 2a serie + 3 carrozze Tipo '21 verdi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1990",
   "availability_status" : "AVAILABLE",

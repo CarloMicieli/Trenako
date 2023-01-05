@@ -3,8 +3,18 @@
   "item_number" : "1644-DS",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Fanali a petrolio, cerchioni bianchi, museale, DCC Sound",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Fanali a petrolio, cerchioni bianchi, museale, DCC Sound",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

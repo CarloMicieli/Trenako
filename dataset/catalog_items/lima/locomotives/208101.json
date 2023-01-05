@@ -3,8 +3,18 @@
   "item_number" : "208101",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, Breda, cabina con doppio coprigiunto",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, Breda, cabina con doppio coprigiunto",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1999",
   "availability_status" : "AVAILABLE",

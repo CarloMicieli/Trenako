@@ -3,8 +3,18 @@
   "item_number" : "1623",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Fanali a petrolio, vomere ripiegabile, ruotino a razze",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Fanali a petrolio, vomere ripiegabile, ruotino a razze",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

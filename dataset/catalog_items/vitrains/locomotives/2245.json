@@ -3,8 +3,18 @@
   "item_number" : "2245",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Trenitalia Intercity Giorno bianco fasce grigio/rosso, respingenti e gancio a vite (2745 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Trenitalia Intercity Giorno bianco fasce grigio/rosso, respingenti e gancio a vite (2745 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2020",
   "availability_status" : "AVAILABLE",

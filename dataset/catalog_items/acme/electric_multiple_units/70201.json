@@ -3,8 +3,18 @@
   "item_number" : "70201",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Set Frecciarossa 1000 treno 03, carrozza 1 Executive di testa + carrozza 3 Business/Bistro (motorizzata) + carrozza 7 Standard con pantografo + carrozza 8 Standard di coda (70201D DCC, 79201 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set Frecciarossa 1000 treno 03, carrozza 1 Executive di testa + carrozza 3 Business/Bistro (motorizzata) + carrozza 7 Standard con pantografo + carrozza 8 Standard di coda (70201D DCC, 79201 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2020",
   "availability_status" : "AVAILABLE",

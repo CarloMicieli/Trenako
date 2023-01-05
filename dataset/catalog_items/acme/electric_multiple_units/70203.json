@@ -3,8 +3,18 @@
   "item_number" : "70203",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Set Frecciarossa 1000 treno 03, carrozza 2 Business con pantografo + carrozza 5 Standard con pantografo",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set Frecciarossa 1000 treno 03, carrozza 2 Business con pantografo + carrozza 5 Standard con pantografo",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2020",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "LE20621",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella, separatore di Arbela, boccole Athermos, scalette strette, pantografi 42LR",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella, separatore di Arbela, boccole Athermos, scalette strette, pantografi 42LR",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",

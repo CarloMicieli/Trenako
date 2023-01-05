@@ -1,6 +1,11 @@
 {
   "name" : "0",
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "ratio" : 45.0,
   "gauge" : {
     "millimeters" : 32.0,

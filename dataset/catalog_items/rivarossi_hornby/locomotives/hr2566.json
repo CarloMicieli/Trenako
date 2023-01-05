@@ -3,8 +3,18 @@
   "item_number" : "HR2566",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica E428 109 nella livrea castano/isabella, prese d'aria basse e su avancorpo posteriore, tamponi in gomma, dep. Foggia",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica E428 109 nella livrea castano/isabella, prese d'aria basse e su avancorpo posteriore, tamponi in gomma, dep. Foggia",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "HR2710",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica E 428 014 nella livrea castano/isabella, con prese d'aria laterali di tipo alto e tiranteria freni esterna, tamponi in gomma, deposito di Bologna San Donato.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica E 428 014 nella livrea castano/isabella, con prese d'aria laterali di tipo alto e tiranteria freni esterna, tamponi in gomma, deposito di Bologna San Donato.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2018",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "60640",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Set 2 E402B livrea “Frecciabianca 2” bianco/grigio scuro fasce rosse, senza scritte, motorizzata + folle (69640 DCC Sound)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set 2 E402B livrea “Frecciabianca 2” bianco/grigio scuro fasce rosse, senza scritte, motorizzata + folle (69640 DCC Sound)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : " \t ",
   "availability_status" : "AVAILABLE",

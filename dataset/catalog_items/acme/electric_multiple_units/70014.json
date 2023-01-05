@@ -3,8 +3,18 @@
   "item_number" : "70014",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Set 3 carrozze intermedie di 2a classe livrea bianco/verde, logo FS Trenitalia (carrozze 10, 11 e 12)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set 3 carrozze intermedie di 2a classe livrea bianco/verde, logo FS Trenitalia (carrozze 10, 11 e 12)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "HRS2597",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Blu/grigio, smorzatori, condizionatori, antenne sul tetto, striscianti piatti, dep. Torino Sm.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Blu/grigio, smorzatori, condizionatori, antenne sul tetto, striscianti piatti, dep. Torino Sm.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",

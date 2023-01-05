@@ -3,7 +3,12 @@
   "registered_company_name" : "Arnold model",
   "organization_entity_type" : "OTHER",
   "group_name" : "hornby",
-  "description" : null,
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "address" : {
     "street_address" : null,
     "extended_address" : null,

@@ -3,8 +3,18 @@
   "item_number" : "1003",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Isabella/verde, 2 fanali, costruzione FIAT, dep. Taranto",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Isabella/verde, 2 fanali, costruzione FIAT, dep. Taranto",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2010",
   "availability_status" : "AVAILABLE",

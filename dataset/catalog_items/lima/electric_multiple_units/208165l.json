@@ -3,8 +3,18 @@
   "item_number" : "208165L",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Verde/grigio, finestrini frontali grandi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Verde/grigio, finestrini frontali grandi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "1987",
   "availability_status" : "AVAILABLE",

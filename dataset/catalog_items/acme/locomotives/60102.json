@@ -3,8 +3,18 @@
   "item_number" : "60102",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Senza modanature, griglie su vetri frontali, logo tartaruga, dep. Roma S. L., anni 80",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Senza modanature, griglie su vetri frontali, logo tartaruga, dep. Roma S. L., anni 80",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",

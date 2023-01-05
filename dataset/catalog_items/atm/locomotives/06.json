@@ -3,8 +3,18 @@
   "item_number" : "6",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella di origine, telaio e fasce castano, panconi rossi, porta frontale",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella di origine, telaio e fasce castano, panconi rossi, porta frontale",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

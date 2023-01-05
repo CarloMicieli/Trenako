@@ -3,8 +3,18 @@
   "item_number" : "72810",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "FS livrea verde fasce gialle, telaio castano, panconi rossi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "FS livrea verde fasce gialle, telaio castano, panconi rossi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2018",
   "availability_status" : "AVAILABLE",

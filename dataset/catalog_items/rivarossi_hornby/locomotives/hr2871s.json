@@ -3,8 +3,18 @@
   "item_number" : "HR2871S",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Locomotiva elettrica E 646 \"Navetta\" nella livrea MDVC con tetto scuro, vetri di origine",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica E 646 \"Navetta\" nella livrea MDVC con tetto scuro, vetri di origine",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

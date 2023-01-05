@@ -3,8 +3,18 @@
   "item_number" : "HR2071",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Blu/grigio condiz. resp. tondi dep. GE Br. (+art. HR4003/HR4009, RT700059, RT700061, RT700062)",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Blu/grigio condiz. resp. tondi dep. GE Br. (+art. HR4003/HR4009, RT700059, RT700061, RT700062)",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2007",
   "availability_status" : "AVAILABLE",

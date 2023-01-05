@@ -3,8 +3,18 @@
   "item_number" : "HR2382",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Fanali a petrolio, tender a 3 assi",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Fanali a petrolio, tender a 3 assi",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2015",
   "availability_status" : "AVAILABLE",

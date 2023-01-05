@@ -4,6 +4,12 @@
   "registered_company_name" : "Ferrovie dello Stato Italiane S.p.A.",
   "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "ITA",
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "period_of_activity" : {
     "operating_since" : "1905-07-01",
     "operating_until" : null,

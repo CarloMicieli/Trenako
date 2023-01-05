@@ -3,8 +3,18 @@
   "item_number" : "60164",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Castano/isabella con modanature, griglie sperimentali, dep. Verona",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Castano/isabella con modanature, griglie sperimentali, dep. Verona",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",

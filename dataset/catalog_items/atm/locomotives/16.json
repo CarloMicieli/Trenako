@@ -3,8 +3,18 @@
   "item_number" : "16",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Sovralimentata, castano/isabella/rosso, 3 fanali, modanature dipinte",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Sovralimentata, castano/isabella/rosso, 3 fanali, modanature dipinte",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

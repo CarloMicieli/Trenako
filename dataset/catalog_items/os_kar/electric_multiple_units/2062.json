@@ -3,8 +3,18 @@
   "item_number" : "2062",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "description" : "Set ALe540 2a serie 1a cl. + rimorchiata pilota Le 640, livrea isabella telaio castano fascia rossa",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Set ALe540 2a serie 1a cl. + rimorchiata pilota Le 640, livrea isabella telaio castano fascia rossa",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",

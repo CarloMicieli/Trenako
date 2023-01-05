@@ -3,8 +3,18 @@
   "item_number" : "1017",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Impresa ARMAFER livrea gialla, telaio nero, tetto marrone, 3 fanali",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Impresa ARMAFER livrea gialla, telaio nero, tetto marrone, 3 fanali",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",

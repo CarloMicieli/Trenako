@@ -3,8 +3,18 @@
   "item_number" : "62561",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Blu/grigio, dep. Roma S. Lorenzo, climatizzatore, antenne, respingenti rettangolari, senza vomeri",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Blu/grigio, dep. Roma S. Lorenzo, climatizzatore, antenne, respingenti rettangolari, senza vomeri",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2007",
   "availability_status" : "AVAILABLE",

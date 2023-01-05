@@ -3,8 +3,18 @@
   "item_number" : "62235C",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Cabina chiusa, fanali a petrolio, ruotino a razze, telaio rosso chiaro, finestrone aperto, targhe",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Cabina chiusa, fanali a petrolio, ruotino a razze, telaio rosso chiaro, finestrone aperto, targhe",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",

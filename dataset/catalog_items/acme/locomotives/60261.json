@@ -3,8 +3,18 @@
   "item_number" : "60261",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Blu/grigio, senza smorzatori, senza condizionatori, striscianti curvi, dep. Torino",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Blu/grigio, senza smorzatori, senza condizionatori, striscianti curvi, dep. Torino",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",

@@ -3,8 +3,18 @@
   "item_number" : "LE20622",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "Cast./isa., carrelli castano, scalette larghe, trombe, prese aria origine, 28/65, pant. 42LR, dep. GE Br.",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "Cast./isa., carrelli castano, scalette larghe, trombe, prese aria origine, 28/65, pant. 42LR, dep. GE Br.",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",

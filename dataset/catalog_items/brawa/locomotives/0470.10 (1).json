@@ -3,8 +3,18 @@
   "item_number" : "0470.10 (1)",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
-  "description" : "FS livrea castano/isabella, panconi rossi, marcatura laterale",
-  "details" : null,
+  "description" : {
+    "values" : {
+      "it" : "FS livrea castano/isabella, panconi rossi, marcatura laterale",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
   "power_method" : "DC",
   "delivery_date" : "2007",
   "availability_status" : "AVAILABLE",
