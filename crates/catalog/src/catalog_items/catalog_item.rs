@@ -9,6 +9,7 @@ use crate::catalog_items::power_method::PowerMethod;
 use crate::catalog_items::rolling_stock::RollingStock;
 use crate::scales::scale::Scale;
 use crate::scales::scale_id::ScaleId;
+use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use std::fmt::Formatter;
 use std::{cmp, convert, fmt};
@@ -31,9 +32,9 @@ pub struct CatalogItem {
     /// the power method
     pub power_method: PowerMethod,
     /// the catalog item description
-    pub description: Option<String>,
+    pub description: LocalizedText,
     /// the catalog item details
-    pub details: Option<String>,
+    pub details: LocalizedText,
     /// the delivery date
     pub delivery_date: Option<DeliveryDate>,
     /// the availability status
@@ -93,8 +94,8 @@ impl CatalogItem {
             brand,
             item_number,
             category,
-            description: description.map(str::to_string),
-            details: details.map(str::to_string),
+            description: description.map(LocalizedText::with_italian).unwrap_or_default(),
+            details: details.map(LocalizedText::with_italian).unwrap_or_default(),
             scale,
             power_method,
             rolling_stocks,
@@ -136,13 +137,13 @@ impl CatalogItem {
     }
 
     /// the description for this catalog item
-    pub fn description(&self) -> Option<&str> {
-        self.description.as_deref()
+    pub fn description(&self) -> Option<&String> {
+        self.description.italian()
     }
 
     /// the details for this catalog item
-    pub fn details(&self) -> Option<&str> {
-        self.details.as_deref()
+    pub fn details(&self) -> Option<&String> {
+        self.details.italian()
     }
 
     /// the scale for this catalog item
@@ -349,8 +350,8 @@ mod tests {
             assert_eq!(&acme, catalog_item.brand());
             assert_eq!(&item_number, catalog_item.item_number());
             assert_eq!(Category::Locomotives, catalog_item.category());
-            assert_eq!(Some("test description"), catalog_item.description());
-            assert_eq!(Some("test details"), catalog_item.details());
+            assert_eq!(Some(&String::from("test description")), catalog_item.description());
+            assert_eq!(Some(&String::from("test details")), catalog_item.details());
             assert_eq!(PowerMethod::DC, catalog_item.power_method());
             assert_eq!(&half_zero, catalog_item.scale());
             assert_eq!(Some(&DeliveryDate::ByYear(2000)), catalog_item.delivery_date());

@@ -3,6 +3,7 @@ use crate::railways::railway_gauge::RailwayGauge;
 use crate::railways::railway_id::RailwayId;
 use crate::railways::railway_length::RailwayLength;
 use common::contacts::ContactInformation;
+use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
@@ -30,7 +31,7 @@ pub struct Railway {
     /// the organization entity type
     pub organization_entity_type: Option<OrganizationEntityType>,
     /// the railway description
-    pub description: Option<String>,
+    pub description: LocalizedText,
     /// the registration country
     pub country: CountryCode,
     /// the period of activity
@@ -73,7 +74,7 @@ impl Railway {
             abbreviation: abbreviation.map(str::to_string),
             registered_company_name: String::from(registered_company_name),
             organization_entity_type,
-            description: description.map(str::to_string),
+            description: description.map(LocalizedText::with_italian).unwrap_or_default(),
             country,
             period_of_activity,
             gauge,
@@ -112,8 +113,8 @@ impl Railway {
     }
 
     /// The description for this railway company
-    pub fn description(&self) -> Option<&str> {
-        self.description.as_deref()
+    pub fn description(&self) -> Option<&String> {
+        self.description.italian()
     }
 
     /// The period of activity (active/inactive) for this railway company
@@ -206,7 +207,7 @@ mod test {
                 Some("FS"),
                 "Ferrovie dello stato italiane",
                 Some(OrganizationEntityType::StateOwnedEnterprise),
-                None,
+                Some("Description text"),
                 None,
                 Some(length),
                 Some(gauge.clone()),
@@ -227,6 +228,7 @@ mod test {
             );
             assert_eq!(Some("Rome"), railway.headquarters());
             assert_eq!(Some(&length), railway.total_length());
+            assert_eq!(Some(&String::from("Description text")), railway.description());
             assert_eq!(Some(&gauge), railway.gauge());
             assert_eq!(Some(&contact_info), railway.contact_info());
             assert_eq!(Some(&socials), railway.socials());

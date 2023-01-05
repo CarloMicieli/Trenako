@@ -57,6 +57,24 @@ components:
           maxLength: 100
           description: the website url
 
+    LocalizedText:
+      description: a map with localized text in different languages
+      type: object
+      additionalProperties:
+        type: string
+        properties:
+          code:
+            type: string
+            description: a valid ISO 639-1 language code
+            minLength: 2
+            maxLength: 2
+          text:
+            type: string
+            maxLength: 2500
+      example:
+        en: Hello!
+        fr: Bonjour!
+
     Metadata:
       description: the resource metadata
       type: object

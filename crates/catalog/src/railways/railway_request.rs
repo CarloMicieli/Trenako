@@ -2,6 +2,7 @@ use crate::railways::period_of_activity::PeriodOfActivity;
 use crate::railways::railway_gauge::RailwayGauge;
 use crate::railways::railway_length::RailwayLength;
 use common::contacts::ContactInformation;
+use common::localized_text::LocalizedText;
 use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
 use isocountry::CountryCode;
@@ -18,7 +19,7 @@ pub struct RailwayRequest {
     /// the organization entity type
     pub organization_entity_type: Option<OrganizationEntityType>,
     /// the railway description
-    pub description: Option<String>,
+    pub description: LocalizedText,
     /// the registration country
     pub country: CountryCode,
     /// the period of activity

@@ -3,6 +3,7 @@ use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_status::BrandStatus;
 use common::address::Address;
 use common::contacts::ContactInformation;
+use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
@@ -22,7 +23,7 @@ pub struct Brand {
     /// the group name in case the brand is part of a group
     pub group_name: Option<String>,
     /// the description
-    pub description: Option<String>,
+    pub description: LocalizedText,
     /// the brand main address
     pub address: Option<Address>,
     /// the contact information
@@ -59,7 +60,7 @@ impl Brand {
             registered_company_name: registered_company_name.map(String::from),
             organization_entity_type,
             group_name: group_name.map(String::from),
-            description: description.map(String::from),
+            description: description.map(LocalizedText::with_italian).unwrap_or_default(),
             address,
             contact_info,
             kind,
@@ -81,7 +82,7 @@ impl Brand {
 
     /// this brand description
     pub fn description(&self) -> Option<&String> {
-        self.description.as_ref()
+        self.description.italian()
     }
 
     /// this brand registered company name

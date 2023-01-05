@@ -28,7 +28,7 @@ components:
           type: string
           description: the group name in case the brand is part of a group
         description:
-          type: string
+          $ref: "./common.yaml#/components/schemas/LocalizedText"
         address:
           $ref: "./common.yaml#/components/schemas/Address"
         contact_info:
@@ -71,8 +71,7 @@ components:
           type: string
           maxLength: 100
         description:
-          type: string
-          maxLength: 1000
+          $ref: "./common.yaml#/components/schemas/LocalizedText"
         contact_info:
           $ref: "./common.yaml#/components/schemas/ContactInfo"
         address:
@@ -112,11 +111,11 @@ components:
         category:
           $ref: "#/components/schemas/CatalogItemCategory"
         description:
-          type: string
           description: the catalog item description
+          $ref: "./common.yaml#/components/schemas/LocalizedText"
         details:
-          type: string
           description: the catalog item details
+          $ref: "./common.yaml#/components/schemas/LocalizedText"
         power_method:
           $ref: "#/components/schemas/PowerMethod"
         delivery_date:
@@ -200,13 +199,11 @@ components:
         category:
           $ref: "#/components/schemas/CatalogItemCategory"
         description:
-          type: string
-          maxLength: 2500
           description: the description
+          $ref: "./common.yaml#/components/schemas/LocalizedText"
         details:
-          type: string
-          maxLength: 2500
-          description: the catalog item details
+          description: the details
+          $ref: "./common.yaml#/components/schemas/LocalizedText"
         power_method:
           $ref: "#/components/schemas/PowerMethod"
         delivery_date:
@@ -698,8 +695,8 @@ components:
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
         description:
-          type: string
           description: the railway description
+          $ref: "./common.yaml#/components/schemas/LocalizedText"
         country:
           type: string
           description: the registration country
@@ -761,9 +758,8 @@ components:
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
         description:
-          type: string
-          maxLength: 1000
           description: the railway description
+          $ref: "./common.yaml#/components/schemas/LocalizedText"
         country:
           type: string
           minLength: 3
@@ -918,8 +914,8 @@ components:
         gauge:
           $ref: "#/components/schemas/ScaleGauge"
         description:
-          type: string
           description: the modelling scale description
+          $ref: "./common.yaml#/components/schemas/LocalizedText"
         standards:
           type: array
           items:
@@ -971,9 +967,8 @@ components:
         gauge:
           $ref: "#/components/schemas/ScaleGauge"
         description:
-          type: string
-          maxLength: 2500
           description: the modelling scale description
+          $ref: "./common.yaml#/components/schemas/LocalizedText"
         standards:
           type: array
           description: the list of standards

@@ -1,6 +1,7 @@
 use crate::scales::ratio::Ratio;
 use crate::scales::scale_gauge::Gauge;
 use crate::scales::standard::Standard;
+use common::localized_text::LocalizedText;
 
 /// A request to create/update rail transport modelling scales
 #[derive(Clone, Debug, PartialEq, Deserialize)]
@@ -12,7 +13,7 @@ pub struct ScaleRequest {
     /// the track gauge
     pub gauge: Option<Gauge>,
     /// the modelling scale description
-    pub description: Option<String>,
+    pub description: LocalizedText,
     /// the list of standards
     pub standards: Vec<Standard>,
 }

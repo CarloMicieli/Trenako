@@ -2,6 +2,7 @@ use crate::catalog_items::availability_status::AvailabilityStatus;
 use crate::catalog_items::category::Category;
 use crate::catalog_items::power_method::PowerMethod;
 use crate::catalog_items::rolling_stock_request::RollingStockRequest;
+use common::localized_text::LocalizedText;
 
 /// A request to create/update catalog items
 #[derive(Clone, Debug, PartialEq, Deserialize)]
@@ -17,9 +18,9 @@ pub struct CatalogItemRequest {
     /// the power method
     pub power_method: PowerMethod,
     /// the catalog item description
-    pub description: Option<String>,
+    pub description: LocalizedText,
     /// the catalog item details
-    pub details: Option<String>,
+    pub details: LocalizedText,
     /// the delivery date
     pub delivery_date: Option<String>,
     /// the availability status

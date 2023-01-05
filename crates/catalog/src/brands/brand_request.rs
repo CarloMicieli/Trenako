@@ -2,6 +2,7 @@ use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_status::BrandStatus;
 use common::address::Address;
 use common::contacts::ContactInformation;
+use common::localized_text::LocalizedText;
 use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
 
@@ -17,7 +18,7 @@ pub struct BrandRequest {
     /// the group name in case the brand is part of a group
     pub group_name: Option<String>,
     /// the description
-    pub description: Option<String>,
+    pub description: LocalizedText,
     /// the brand main address
     pub address: Option<Address>,
     /// the contact information

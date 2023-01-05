@@ -2,6 +2,7 @@ use super::ratio::Ratio;
 use super::scale_gauge::Gauge;
 use super::scale_id::ScaleId;
 use super::standard::Standard;
+use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use std::cmp::Ordering;
 use std::collections::HashSet;
@@ -28,7 +29,7 @@ pub struct Scale {
     /// the scale gauge
     pub gauge: Gauge,
     /// the modelling scale description
-    pub description: Option<String>,
+    pub description: LocalizedText,
     /// the list of standards   
     pub standards: HashSet<Standard>,
     /// the metadata
@@ -51,7 +52,7 @@ impl Scale {
             name: String::from(name),
             ratio,
             gauge,
-            description: description.map(String::from),
+            description: description.map(LocalizedText::with_italian).unwrap_or_default(),
             standards,
             metadata,
         }
@@ -70,7 +71,7 @@ impl Scale {
 
     /// The (optional) Scale description
     pub fn description(&self) -> Option<&String> {
-        self.description.as_ref()
+        self.description.italian()
     }
 
     /// This scale ratio between the real world and the model
