@@ -1,41 +1,41 @@
 {
   "brand" : "Rivarossi/Hornby",
-  "itemNumber" : "HR2729",
+  "item_number" : "HR2729",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Locomotiva elettrica E 428 167, doppio coprigiunto orrizzontale su cabine, carrelli saldati tipo AP1110, tamponi in gomma, dep. Milano Smistamento",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2018",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2018",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "E428",
-    "roadNumber" : "E428 202",
+    "class_name" : "E428",
+    "road_number" : "E428 202",
     "series" : "terza serie semiaerodinamica",
-    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
     "depot" : "Milano Smistamento",
-    "dccInterface" : "MTC_21",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
     "livery" : "castano/isabella",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 222.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "YES",
-        "digitalShunting" : "NO"
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "YES"
+      "spring_buffers" : "YES"
     },
     "dummy" : false
   } ],

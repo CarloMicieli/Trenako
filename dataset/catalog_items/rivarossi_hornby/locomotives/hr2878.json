@@ -1,41 +1,41 @@
 {
   "brand" : "Rivarossi/Hornby",
-  "itemNumber" : "HR2878",
+  "item_number" : "HR2878",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "206 livrea verde, respingenti, corrimani verdi (D DCC)",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2021",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2021",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "206 / 207 / 208 Sogliola",
-    "roadNumber" : "206 009",
+    "class_name" : "206 / 207 / 208 Sogliola",
+    "road_number" : "206 009",
     "series" : "",
-    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

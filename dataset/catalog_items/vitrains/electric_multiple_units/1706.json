@@ -1,71 +1,71 @@
 {
   "brand" : "ViTrains",
-  "itemNumber" : "1106",
+  "item_number" : "1106",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
   "description" : "ALe 840 + Le 840 castano/isabella, finestrini Klein",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2019",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2019",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "typeName" : "ALe 840",
-    "roadNumber" : "ALe 840 041",
+    "type_name" : "ALe 840",
+    "road_number" : "ALe 840 041",
     "series" : null,
-    "electricMultipleUnitType" : "POWER_CAR",
+    "electric_multiple_unit_type" : "POWER_CAR",
     "railway" : "FS",
     "epoch" : "IV",
     "depot" : "",
-    "dccInterface" : "PLUX_22",
+    "dcc_interface" : "PLUX_22",
     "control" : "DCC_SOUND",
     "livery" : "castano/isabella",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 325.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   }, {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "typeName" : "Le 840",
-    "roadNumber" : "Le 840 039",
+    "type_name" : "Le 840",
+    "road_number" : "Le 840 039",
     "series" : null,
-    "electricMultipleUnitType" : "TRAILER_CAR",
+    "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "IV",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "NO_DCC",
     "livery" : "castano/isabella",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 325.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

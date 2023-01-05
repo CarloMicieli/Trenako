@@ -1,41 +1,41 @@
 {
   "brand" : "Lima",
-  "itemNumber" : "309122",
+  "item_number" : "309122",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
   "description" : "Rimorchiata, verde/grigio con riga rossa, finestrini frontali piccoli",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "1988",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "1988",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "typeName" : "Le 601",
-    "roadNumber" : "Le 601 024",
+    "type_name" : "Le 601",
+    "road_number" : "Le 601 024",
     "series" : null,
-    "electricMultipleUnitType" : "TRAILER_CAR",
+    "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "IV",
     "depot" : "",
-    "dccInterface" : null,
+    "dcc_interface" : null,
     "control" : null,
     "livery" : "verde/grigio",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

@@ -1,21 +1,21 @@
 {
   "name" : "BEMO",
-  "registeredCompanyName" : "BEMO Modelleisenbahnen GmbH u. Co KG",
-  "organizationEntityType" : "OTHER",
-  "groupName" : null,
+  "registered_company_name" : "BEMO Modelleisenbahnen GmbH u. Co KG",
+  "organization_entity_type" : "OTHER",
+  "group_name" : null,
   "description" : null,
   "address" : {
-    "streetAddress" : "Stuttgarter Strasse 59",
-    "extendedAddress" : null,
-    "postalCode" : "D-73066",
+    "street_address" : "Stuttgarter Strasse 59",
+    "extended_address" : null,
+    "postal_code" : "D-73066",
     "city" : "Uhingen",
     "region" : null,
     "country" : "DEU"
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : "mail@bemo-modellbahn.de",
     "phone" : null,
-    "websiteUrl" : "https://www.bemo-modellbahn.de"
+    "website_url" : "https://www.bemo-modellbahn.de"
   },
   "socials" : {
     "facebook" : "bemomodellbahn",

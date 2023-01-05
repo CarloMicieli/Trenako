@@ -1,71 +1,71 @@
 {
   "brand" : "ViTrains",
-  "itemNumber" : "1023",
+  "item_number" : "1023",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
   "description" : "Elettromotrice ALe 840.059 - Lebc 840.217 delle Ferrovie dello Stato.Il treno è composto da due elementi: la motrice Ale 840 059 II serie e la Lebc 840 217 rimorchiata convertitrice trifase nella livrea castano e isabella.Il modello è caratterizzato da respingenti molleggiati, illuminazione interna a Led, fari illuminati con led bianchi o rossi a seconda del senso di marcia, presa corrente su tutte le ruote, predisposizione per decoder, motore a 5 poli, trasmissione cardanica sui due carrelli, assali d'ottone torniti e nichelato, telaio in metallo, carrelli particolareggiato e perfettamente in scala, estrema finezza nella verniciatura e tampografia, particolari aggiuntivi molto realistici  montati in fabbrica.",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2011",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2011",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "typeName" : "ALe 840",
-    "roadNumber" : "ALe 840 059",
+    "type_name" : "ALe 840",
+    "road_number" : "ALe 840 059",
     "series" : null,
-    "electricMultipleUnitType" : "POWER_CAR",
+    "electric_multiple_unit_type" : "POWER_CAR",
     "railway" : "FS",
     "epoch" : "IIIb",
     "depot" : "",
-    "dccInterface" : "PLUX_22",
+    "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
     "livery" : "castano/isabella",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 325.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   }, {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "typeName" : "Lebc 840",
-    "roadNumber" : "Lebc 840 217",
+    "type_name" : "Lebc 840",
+    "road_number" : "Lebc 840 217",
     "series" : null,
-    "electricMultipleUnitType" : "TRAILER_CAR",
+    "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "IIIb",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "NO_DCC",
     "livery" : "castano/isabella",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 325.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

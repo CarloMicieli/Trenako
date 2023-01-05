@@ -1,41 +1,41 @@
 {
   "brand" : "ACME",
-  "itemNumber" : "60456",
+  "item_number" : "60456",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Locomotiva elettrica FS E.636 123 del deposito di Trieste nella livrea Isabella, vomere giallo/nero, pantografi 42LR + 42U, griglie lato corridoio, dep. Trieste",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2018",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2018",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "E636",
-    "roadNumber" : "E636 123",
+    "class_name" : "E636",
+    "road_number" : "E636 123",
     "series" : "seconda serie",
-    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "V",
     "depot" : "Trieste",
-    "dccInterface" : "MTC_21",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
     "livery" : "isabella",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

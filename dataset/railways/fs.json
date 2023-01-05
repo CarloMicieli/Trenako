@@ -1,25 +1,25 @@
 {
   "name" : "FS",
   "abbreviation" : "FS",
-  "registeredCompanyName" : "Ferrovie dello Stato Italiane S.p.A.",
-  "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
+  "registered_company_name" : "Ferrovie dello Stato Italiane S.p.A.",
+  "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "ITA",
-  "periodOfActivity" : {
-    "operatingSince" : "1905-07-01",
-    "operatingUntil" : null,
+  "period_of_activity" : {
+    "operating_since" : "1905-07-01",
+    "operating_until" : null,
     "status" : "ACTIVE"
   },
   "gauge" : {
-    "trackGauge" : "STANDARD",
+    "track_gauge" : "STANDARD",
     "meters" : 1.435
   },
-  "totalLength" : {
+  "total_length" : {
     "kilometers" : 24564.0,
     "miles" : null
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : null,
-    "websiteUrl" : "https://www.fsitaliane.it",
+    "website_url" : "https://www.fsitaliane.it",
     "phone" : null
   },
   "social" : {

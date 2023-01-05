@@ -1,41 +1,41 @@
 {
   "brand" : "ACME",
-  "itemNumber" : "60153",
+  "item_number" : "60153",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Locomotiva elettrica E.646 006 di 1a serie nella livrea di origine verde-magnolia e grigio-medio con logo FS anteriore grande, pantografi 42LR, scalette piccole. ",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2020",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2020",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "E646",
-    "roadNumber" : "E646 006",
+    "class_name" : "E646",
+    "road_number" : "E646 006",
     "series" : "PRIMA SERIE",
-    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IIIb",
     "depot" : null,
-    "dccInterface" : "MTC_21",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
     "livery" : "verde/grigio",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

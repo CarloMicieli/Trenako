@@ -1,41 +1,41 @@
 {
   "brand" : "ACME",
-  "itemNumber" : "60257",
+  "item_number" : "60257",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "USATC immatricolata FS, stato anni Quaranta, livrea beige, un fanale centrale",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2019",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2019",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "Ne 120",
-    "roadNumber" : "U.S.A. 1256",
+    "class_name" : "Ne 120",
+    "road_number" : "U.S.A. 1256",
     "series" : "",
-    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IIb/IIIa",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

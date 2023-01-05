@@ -1,41 +1,41 @@
 {
   "brand" : "Rivarossi/Hornby",
-  "itemNumber" : "HR2902",
+  "item_number" : "HR2902",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Locomotiva elettrica E428 con carrelli di origine, trasmissione a foglie bloccate, corrimano orizzontale frontale (S DCC Sound)",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "E428",
-    "roadNumber" : "",
+    "class_name" : "E428",
+    "road_number" : "",
     "series" : "terza serie semiaerodinamica",
-    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVa",
     "depot" : "",
-    "dccInterface" : "MTC_21",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
     "livery" : "castano/isabella",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 222.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "YES",
-        "digitalShunting" : "NO"
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "YES"
+      "spring_buffers" : "YES"
     },
     "dummy" : false
   } ],

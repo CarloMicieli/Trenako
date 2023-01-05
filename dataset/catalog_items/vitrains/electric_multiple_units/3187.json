@@ -1,41 +1,41 @@
 {
   "brand" : "ViTrains",
-  "itemNumber" : "3187",
+  "item_number" : "3187",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
   "description" : "Rimorchiata Le 840 per elettromotrici ALe 840 nella livrea castano/isabella, finestrini Klein con ghiere dei fari in alluminio.Respingenti molleggiati, illuminazione interna a Led, fari illuminati con led bianchi o rossi secondo il senso di marcia con decoder funzioni DCC integrato, presa corrente su tutte le ruote, assali d'ottone torniti e nichelato, telaio in metallo, carrelli particolareggiati e perfettamente in scala. ",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2019",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2019",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "typeName" : "Le 840",
-    "roadNumber" : "Le 840 045",
+    "type_name" : "Le 840",
+    "road_number" : "Le 840 045",
     "series" : null,
-    "electricMultipleUnitType" : "TRAILER_CAR",
+    "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "IV",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "NO_DCC",
     "livery" : "castano/isabella",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 322.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

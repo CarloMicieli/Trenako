@@ -1,21 +1,21 @@
 {
   "name" : "Heris",
-  "registeredCompanyName" : "Heris-Modelleisenbahn",
-  "organizationEntityType" : "OTHER",
-  "groupName" : null,
+  "registered_company_name" : "Heris-Modelleisenbahn",
+  "organization_entity_type" : "OTHER",
+  "group_name" : null,
   "description" : null,
   "address" : {
-    "streetAddress" : "Kaesbachstr. 17",
-    "extendedAddress" : null,
-    "postalCode" : "D-41063",
+    "street_address" : "Kaesbachstr. 17",
+    "extended_address" : null,
+    "postal_code" : "D-41063",
     "city" : "Mönchengladbach",
     "region" : null,
     "country" : "DEU"
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : "info@heris-modelleisenbahn.de",
     "phone" : null,
-    "websiteUrl" : "https://www.heris-modelleisenbahn.de"
+    "website_url" : "https://www.heris-modelleisenbahn.de"
   },
   "socials" : {
     "facebook" : null,

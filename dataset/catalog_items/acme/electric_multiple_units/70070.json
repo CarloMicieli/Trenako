@@ -1,161 +1,161 @@
 {
   "brand" : "ACME",
-  "itemNumber" : "70070",
+  "item_number" : "70070",
   "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
   "description" : "ETR500 Y1 RFI livrea blu/bianco, set 2 motrici E404 politensione (motorizzata + folle) + 3 carrozze intermedie (2+3+4)",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2019",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2019",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "typeName" : "ETR 500",
-    "roadNumber" : "93 83 7 404 649-9",
+    "type_name" : "ETR 500",
+    "road_number" : "93 83 7 404 649-9",
     "series" : "Diagnostici",
-    "electricMultipleUnitType" : "POWER_CAR",
+    "electric_multiple_unit_type" : "POWER_CAR",
     "railway" : "FS",
     "epoch" : "VI",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   }, {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "typeName" : "ETR 500",
-    "roadNumber" : "70 83 2 998 503-2",
+    "type_name" : "ETR 500",
+    "road_number" : "70 83 2 998 503-2",
     "series" : "Diagnostici",
-    "electricMultipleUnitType" : "TRAILER_CAR",
+    "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "VI",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "NO_DCC",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 303.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   }, {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "typeName" : "ETR 500",
-    "roadNumber" : "70 83 2 998 502-0",
+    "type_name" : "ETR 500",
+    "road_number" : "70 83 2 998 502-0",
     "series" : "Diagnostici",
-    "electricMultipleUnitType" : "TRAILER_CAR",
+    "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "VI",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "NO_DCC",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 303.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   }, {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "typeName" : "ETR 500",
-    "roadNumber" : "70 83 2 998 508-7",
+    "type_name" : "ETR 500",
+    "road_number" : "70 83 2 998 508-7",
     "series" : "Diagnostici",
-    "electricMultipleUnitType" : "TRAILER_CAR",
+    "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "VI",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "NO_DCC",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 303.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   }, {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "typeName" : "ETR 500",
-    "roadNumber" : "93 83 7 404 652-3",
+    "type_name" : "ETR 500",
+    "road_number" : "93 83 7 404 652-3",
     "series" : "Diagnostici",
-    "electricMultipleUnitType" : "POWER_CAR",
+    "electric_multiple_unit_type" : "POWER_CAR",
     "railway" : "FS",
     "epoch" : "VI",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 260.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

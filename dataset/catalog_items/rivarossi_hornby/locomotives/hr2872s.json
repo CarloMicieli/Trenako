@@ -1,41 +1,41 @@
 {
   "brand" : "Rivarossi/Hornby",
-  "itemNumber" : "HR2872S",
+  "item_number" : "HR2872S",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Locomotiva elettrica E.645 di 2a serie nella livrea castano/isabella senza modanature, vetri di origine, fregio castano, 12 sabbiere",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2022",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2022",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "E645",
-    "roadNumber" : "",
+    "class_name" : "E645",
+    "road_number" : "",
     "series" : "SECONDA SERIE",
-    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVb",
     "depot" : "Reggio Calabria",
-    "dccInterface" : "MTC_21",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_SOUND",
     "livery" : "castano/isabella",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 211.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "YES",
-        "digitalShunting" : "NO"
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

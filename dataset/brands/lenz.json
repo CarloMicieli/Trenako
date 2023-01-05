@@ -1,21 +1,21 @@
 {
   "name" : "Lenz",
-  "registeredCompanyName" : null,
-  "organizationEntityType" : "OTHER",
-  "groupName" : null,
+  "registered_company_name" : null,
+  "organization_entity_type" : "OTHER",
+  "group_name" : null,
   "description" : null,
   "address" : {
-    "streetAddress" : null,
-    "extendedAddress" : null,
-    "postalCode" : null,
+    "street_address" : null,
+    "extended_address" : null,
+    "postal_code" : null,
     "city" : null,
     "region" : null,
     "country" : null
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : null,
     "phone" : null,
-    "websiteUrl" : null
+    "website_url" : null
   },
   "socials" : {
     "facebook" : null,

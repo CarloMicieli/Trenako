@@ -1,41 +1,41 @@
 {
   "brand" : "Fleischmann",
-  "itemNumber" : "409403",
+  "item_number" : "409403",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Gr. 897 “Pierina” nero telaio rosso, marcatura a biacca",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2010",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2010",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "897",
-    "roadNumber" : "897 001",
+    "class_name" : "897",
+    "road_number" : "897 001",
     "series" : "(ex BR 94 DB / T16.1 KPEV)",
-    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "locomotive_type" : "STEAM_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "II",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

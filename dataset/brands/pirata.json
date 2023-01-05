@@ -1,21 +1,21 @@
 {
   "name" : "Pi.R.A.T.A.",
-  "registeredCompanyName" : "Piccole Riproduzioni Artigianali Treni e Affini",
-  "organizationEntityType" : "OTHER",
-  "groupName" : null,
+  "registered_company_name" : "Piccole Riproduzioni Artigianali Treni e Affini",
+  "organization_entity_type" : "OTHER",
+  "group_name" : null,
   "description" : "Pirata Models è sinonimo di modellismo ferroviario italiano in scala N 1/160. Pi.r.a.t.a. (Piccole Riproduzioni Artigianali Treni e Affini). \nIl nostro laboratorio progetta e costruisce modelli ferroviari italiani 160 volte più piccoli del vero ma dettagliati come quelli reali. \nPirata Models vuol dire locomotive, automotrici, carrozze, carri e accessori per plastici in scala N in stile italiano.\n",
   "address" : {
-    "streetAddress" : "Via Montonale Basso 5/G",
-    "extendedAddress" : null,
-    "postalCode" : "25015",
+    "street_address" : "Via Montonale Basso 5/G",
+    "extended_address" : null,
+    "postal_code" : "25015",
     "city" : "Desenzano del Garda",
     "region" : null,
     "country" : "ITA"
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : "info@piratamodels.it",
     "phone" : null,
-    "websiteUrl" : "https://www.piratamodels.it"
+    "website_url" : "https://www.piratamodels.it"
   },
   "socials" : {
     "facebook" : "PiRATAModels",

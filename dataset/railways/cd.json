@@ -1,25 +1,25 @@
 {
   "name" : "ČD",
   "abbreviation" : "ČD",
-  "registeredCompanyName" : "České dráhy",
-  "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
+  "registered_company_name" : "České dráhy",
+  "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "CZE",
-  "periodOfActivity" : {
-    "operatingSince" : "1993-01-01",
-    "operatingUntil" : null,
+  "period_of_activity" : {
+    "operating_since" : "1993-01-01",
+    "operating_until" : null,
     "status" : "ACTIVE"
   },
   "gauge" : {
-    "trackGauge" : "STANDARD",
+    "track_gauge" : "STANDARD",
     "meters" : 1.435
   },
-  "totalLength" : {
+  "total_length" : {
     "kilometers" : 9412.0,
     "miles" : 5848.0
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : null,
-    "websiteUrl" : "https://www.cd.cz",
+    "website_url" : "https://www.cd.cz",
     "phone" : null
   },
   "social" : {

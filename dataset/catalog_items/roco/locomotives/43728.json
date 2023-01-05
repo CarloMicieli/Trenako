@@ -1,41 +1,41 @@
 {
   "brand" : "Roco",
-  "itemNumber" : "43728",
+  "item_number" : "43728",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Livrea verde fasce gialle, costruzione Greco, dep. Verona",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "1996",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "1996",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "214",
-    "roadNumber" : "214 4101",
+    "class_name" : "214",
+    "road_number" : "214 4101",
     "series" : "",
-    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV/V",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

@@ -1,41 +1,41 @@
 {
   "brand" : "Rivarossi/Hornby",
-  "itemNumber" : "HR2805",
+  "item_number" : "HR2805",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Locomotiva elettrica E 402B 165 nella livrea ex “Frecciabianca” bianco/grigio scuro fasce rosse, senza scritte",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2019",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2019",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "E402 B",
-    "roadNumber" : "E402 165",
+    "class_name" : "E402 B",
+    "road_number" : "E402 165",
     "series" : "",
-    "locomotiveType" : "ELECTRIC_LOCOMOTIVE",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "VI",
     "depot" : "",
-    "dccInterface" : "MTC_21",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
     "livery" : "bianco/grigio scuro fasce rosse",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 223.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "YES",
-        "digitalShunting" : "NO"
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

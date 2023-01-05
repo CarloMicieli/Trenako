@@ -5,7 +5,7 @@
   "gauge" : {
     "millimeters" : 32.0,
     "inches" : 1.26,
-    "trackGauge" : "STANDARD"
+    "track_gauge" : "STANDARD"
   },
   "standards" : [ "NEM" ]
 }

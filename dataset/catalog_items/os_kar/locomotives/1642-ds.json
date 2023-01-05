@@ -1,41 +1,41 @@
 {
   "brand" : "Os.Kar",
-  "itemNumber" : "1642-DS",
+  "item_number" : "1642-DS",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Fanali elettrici, pompa freno a semplice stadio, DCC Sound",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2012",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2012",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "640",
-    "roadNumber" : "640 088",
+    "class_name" : "640",
+    "road_number" : "640 088",
     "series" : "",
-    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "locomotive_type" : "STEAM_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "III/IV",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

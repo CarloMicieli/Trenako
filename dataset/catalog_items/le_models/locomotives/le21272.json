@@ -1,41 +1,41 @@
 {
   "brand" : "LE Models",
-  "itemNumber" : "LE21272",
+  "item_number" : "LE21272",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Fanali elettrici, carboniera rialzata, marcatura post. rialzata, retro cabina saldato",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2016",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2016",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "851",
-    "roadNumber" : "851 124",
+    "class_name" : "851",
+    "road_number" : "851 124",
     "series" : "",
-    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "locomotive_type" : "STEAM_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IIIb",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

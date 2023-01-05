@@ -1,25 +1,25 @@
 {
   "name" : "DSB",
   "abbreviation" : "DSB",
-  "registeredCompanyName" : "Danske Statsbaner",
-  "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
+  "registered_company_name" : "Danske Statsbaner",
+  "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "DNK",
-  "periodOfActivity" : {
-    "operatingSince" : "1885-10-01",
-    "operatingUntil" : null,
+  "period_of_activity" : {
+    "operating_since" : "1885-10-01",
+    "operating_until" : null,
     "status" : "ACTIVE"
   },
   "gauge" : {
-    "trackGauge" : "STANDARD",
+    "track_gauge" : "STANDARD",
     "meters" : 1.435
   },
-  "totalLength" : {
+  "total_length" : {
     "kilometers" : null,
     "miles" : null
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : null,
-    "websiteUrl" : "https://www.dsb.dk",
+    "website_url" : "https://www.dsb.dk",
     "phone" : null
   },
   "social" : {

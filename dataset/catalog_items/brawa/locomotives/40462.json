@@ -1,41 +1,41 @@
 {
   "brand" : "Brawa",
-  "itemNumber" : "40462",
+  "item_number" : "40462",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Marcatura a biacca, fanali a petrolio",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2011",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2011",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "603",
-    "roadNumber" : "603 017",
+    "class_name" : "603",
+    "road_number" : "603 017",
     "series" : "(ex G5.4 KPEV)",
-    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "locomotive_type" : "STEAM_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "II",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

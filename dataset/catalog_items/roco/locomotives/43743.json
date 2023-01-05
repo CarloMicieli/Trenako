@@ -1,41 +1,41 @@
 {
   "brand" : "Roco",
-  "itemNumber" : "43743",
+  "item_number" : "43743",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Livrea verde fasce gialle, logo FS XMPR",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2006",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2006",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "214",
-    "roadNumber" : "214 4282",
+    "class_name" : "214",
+    "road_number" : "214 4282",
     "series" : "",
-    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "V",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

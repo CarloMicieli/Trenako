@@ -5,7 +5,7 @@
   "gauge" : {
     "millimeters" : 9.0,
     "inches" : 0.0,
-    "trackGauge" : "NARROW"
+    "track_gauge" : "NARROW"
   },
   "standards" : [ "NEM" ]
 }

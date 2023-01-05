@@ -1,41 +1,41 @@
 {
   "brand" : "ACME",
-  "itemNumber" : "60345",
+  "item_number" : "60345",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Locomotiva diesel D442 4001 nella livrea isabella con fasce rosse, telaio tagliato rosso/castano con modanature",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2013",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2013",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "D442",
-    "roadNumber" : "D442 4001",
+    "class_name" : "D442",
+    "road_number" : "D442 4001",
     "series" : "",
-    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVa",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "isabella con fasce rosse",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

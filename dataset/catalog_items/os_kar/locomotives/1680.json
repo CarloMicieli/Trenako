@@ -1,41 +1,41 @@
 {
   "brand" : "Os.Kar",
-  "itemNumber" : "1680",
+  "item_number" : "1680",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Fanali a petrolio, tender a carrelli, ruotino a vela piena, resp. a bovolo",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "680",
-    "roadNumber" : "680 037",
+    "class_name" : "680",
+    "road_number" : "680 037",
     "series" : "",
-    "locomotiveType" : "STEAM_LOCOMOTIVE",
+    "locomotive_type" : "STEAM_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "III",
     "depot" : "",
-    "dccInterface" : "NONE",
+    "dcc_interface" : "NONE",
     "control" : "DCC_READY",
     "livery" : "",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "NO",
-        "digitalShunting" : "NO"
+        "close_couplers" : "NO",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

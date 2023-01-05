@@ -1,25 +1,25 @@
 {
   "name" : "SNCB",
   "abbreviation" : "SNCB",
-  "registeredCompanyName" : "Société nationale des chemins de fer belges",
-  "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
+  "registered_company_name" : "Société nationale des chemins de fer belges",
+  "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "BEL",
-  "periodOfActivity" : {
-    "operatingSince" : "1926-01-01",
-    "operatingUntil" : null,
+  "period_of_activity" : {
+    "operating_since" : "1926-01-01",
+    "operating_until" : null,
     "status" : "ACTIVE"
   },
   "gauge" : {
-    "trackGauge" : "STANDARD",
+    "track_gauge" : "STANDARD",
     "meters" : 1.435
   },
-  "totalLength" : {
+  "total_length" : {
     "kilometers" : 3536.0,
     "miles" : null
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : null,
-    "websiteUrl" : "https://www.belgiantrain.be",
+    "website_url" : "https://www.belgiantrain.be",
     "phone" : null
   },
   "social" : {

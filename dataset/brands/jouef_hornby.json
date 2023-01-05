@@ -1,21 +1,21 @@
 {
   "name" : "Jouef/Hornby",
-  "registeredCompanyName" : null,
-  "organizationEntityType" : "OTHER",
-  "groupName" : "hornby",
+  "registered_company_name" : null,
+  "organization_entity_type" : "OTHER",
+  "group_name" : "hornby",
   "description" : "Jouef is the iconic French brand of model trains and road circuits. They have been creating model trains, wagons, \nlocomotives and H0 scale cars for more than 70 years.\nFounded in 1944 by Georges Huard, Jouef has become a leading brand in the field of model trains in France and, \nto this day, the brand is exclusively distributed by the Hornby group.\nHornby France has been awarded several times by the French magazine \"Le Train\" for its miniature Jouef models. \n",
   "address" : {
-    "streetAddress" : null,
-    "extendedAddress" : null,
-    "postalCode" : null,
+    "street_address" : null,
+    "extended_address" : null,
+    "postal_code" : null,
     "city" : null,
     "region" : null,
     "country" : null
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : "customerservices.it@hornby.com",
     "phone" : null,
-    "websiteUrl" : "https://uk.jouef.com"
+    "website_url" : "https://uk.jouef.com"
   },
   "socials" : {
     "facebook" : "JOUEF",

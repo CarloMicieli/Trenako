@@ -1,21 +1,21 @@
 {
   "name" : "Bachmann",
-  "registeredCompanyName" : null,
-  "organizationEntityType" : "OTHER",
-  "groupName" : null,
+  "registered_company_name" : null,
+  "organization_entity_type" : "OTHER",
+  "group_name" : null,
   "description" : "Bachmann Trains is now known for its extensive and award-winning line of model railroading products, \nbut the company started in 1833 as a producer of handcrafted ivory accessories, beginning a 180-year \ncommitment to quality that continues to this day. \n",
   "address" : {
-    "streetAddress" : "1400 East Erie Avenue",
-    "extendedAddress" : null,
-    "postalCode" : "19124",
+    "street_address" : "1400 East Erie Avenue",
+    "extended_address" : null,
+    "postal_code" : "19124",
     "city" : "Philadelphia",
     "region" : "Pennsylvania",
     "country" : "USA"
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : "service@bachmanntrains.com",
     "phone" : null,
-    "websiteUrl" : "https://www.bachmanntrains.com"
+    "website_url" : "https://www.bachmanntrains.com"
   },
   "socials" : {
     "facebook" : "Bachmanntrains",

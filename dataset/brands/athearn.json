@@ -1,21 +1,21 @@
 {
   "name" : "Athearn",
-  "registeredCompanyName" : "Horizon Hobby, LLC",
-  "organizationEntityType" : "OTHER",
-  "groupName" : null,
+  "registered_company_name" : "Horizon Hobby, LLC",
+  "organization_entity_type" : "OTHER",
+  "group_name" : null,
   "description" : "Model railroading is a timeless hobby. It's a favorite pastime that has been shared by fathers and sons, grandparents and \ngrandchildren, and friends young and old. Everyone remembers their first train set. \nThat's why for more than 60 years, we've delivered a wide range of top-quality models in a variety of scales. \nAthearn® trains share the detail, high-quality and value that appeal to all modelers. Wherever you go in the hobby-from buying your \nfirst set to building your dream layout-we're here to help you every step of the way.\n",
   "address" : {
-    "streetAddress" : "2904 Research Road",
-    "extendedAddress" : null,
-    "postalCode" : "61822",
+    "street_address" : "2904 Research Road",
+    "extended_address" : null,
+    "postal_code" : "61822",
     "city" : "Champaign",
     "region" : "IL",
     "country" : "USA"
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : "athearnhelp@horizonhobby.com",
     "phone" : null,
-    "websiteUrl" : "https://www.athearn.com/"
+    "website_url" : "https://www.athearn.com/"
   },
   "socials" : {
     "facebook" : "AthearnModelTrains",

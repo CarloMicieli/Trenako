@@ -1,41 +1,41 @@
 {
   "brand" : "ACME",
-  "itemNumber" : "60250",
+  "item_number" : "60250",
   "scale" : "H0",
   "category" : "LOCOMOTIVES",
   "description" : "Locomotiva diesel FS D 143 3019 \"Truman\" nella livrea verde con fasce gialle e telaio nero.Cabina corazzata, panconi rinforzati, dep. Roma Trastevere",
   "details" : null,
-  "powerMethod" : "DC",
-  "deliveryDate" : "2010",
-  "availabilityStatus" : "AVAILABLE",
-  "rollingStocks" : [ {
+  "power_method" : "DC",
+  "delivery_date" : "2010",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
-    "className" : "D143",
-    "roadNumber" : "D143 3019",
+    "class_name" : "D143",
+    "road_number" : "D143 3019",
     "series" : "",
-    "locomotiveType" : "DIESEL_LOCOMOTIVE",
+    "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVb",
     "depot" : "Roma Trastevere",
-    "dccInterface" : "NEM_651",
+    "dcc_interface" : "NEM_651",
     "control" : "DCC_READY",
     "livery" : "verde con fasce gialle",
-    "lengthOverBuffer" : {
+    "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 149.0
     },
-    "technicalSpecifications" : {
-      "minimumRadius" : 360.0,
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
       "coupling" : {
         "socket" : null,
-        "closeCouplers" : "YES",
-        "digitalShunting" : "NO"
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
       },
-      "flywheelFitted" : "NO",
-      "metalBody" : "NO",
-      "interiorLights" : "NO",
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
       "lights" : "YES",
-      "springBuffers" : "NO"
+      "spring_buffers" : "NO"
     },
     "dummy" : false
   } ],

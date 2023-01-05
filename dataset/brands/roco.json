@@ -1,21 +1,21 @@
 {
   "name" : "Roco",
-  "registeredCompanyName" : "Modelleisenbahn GmbH",
-  "organizationEntityType" : "OTHER",
-  "groupName" : "modelleisenbahn",
+  "registered_company_name" : "Modelleisenbahn GmbH",
+  "organization_entity_type" : "OTHER",
+  "group_name" : "modelleisenbahn",
   "description" : "ROCO offre a principianti ed esperti un hobby stimolante e mette in contatto le generazioni. I modelli prototipali \nstabiliscono nuovi standard per il valore ludico creativo di tutti gli appassionati di modellismo ferroviario. \nQuesta grande attenzione ai dettagli è ulteriormente sottolineata dalla massima affidabilità e funzionalità. \nROCO garantisce il puro divertimento del modellismo ferroviario e si caratterizza soprattutto per le costanti \ninnovazioni tecniche nella digitalizzazione dei modelli ferroviari.\n",
   "address" : {
-    "streetAddress" : "Plainbachstraße 4",
-    "extendedAddress" : null,
-    "postalCode" : "A-5101",
+    "street_address" : "Plainbachstraße 4",
+    "extended_address" : null,
+    "postal_code" : "A-5101",
     "city" : "Bergheim",
     "region" : null,
     "country" : "AUS"
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : "webshop@roco.cc",
     "phone" : null,
-    "websiteUrl" : "https://www.roco.cc"
+    "website_url" : "https://www.roco.cc"
   },
   "socials" : {
     "facebook" : "roco.cc",

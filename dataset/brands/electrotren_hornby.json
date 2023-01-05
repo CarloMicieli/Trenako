@@ -1,21 +1,21 @@
 {
   "name" : "Electrotren/Hornby",
-  "registeredCompanyName" : null,
-  "organizationEntityType" : "OTHER",
-  "groupName" : "hornby",
+  "registered_company_name" : null,
+  "organization_entity_type" : "OTHER",
+  "group_name" : "hornby",
   "description" : null,
   "address" : {
-    "streetAddress" : null,
-    "extendedAddress" : null,
-    "postalCode" : null,
+    "street_address" : null,
+    "extended_address" : null,
+    "postal_code" : null,
     "city" : null,
     "region" : null,
     "country" : null
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : "customerservices.it@hornby.com",
     "phone" : null,
-    "websiteUrl" : "https://it.electrotren.com/"
+    "website_url" : "https://it.electrotren.com/"
   },
   "socials" : {
     "facebook" : "Electrotren",

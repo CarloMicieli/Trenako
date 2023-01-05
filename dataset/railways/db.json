@@ -1,25 +1,25 @@
 {
   "name" : "DB",
   "abbreviation" : "DB",
-  "registeredCompanyName" : "Deutsche Bahn AG",
-  "organizationEntityType" : "STATE_OWNED_ENTERPRISE",
+  "registered_company_name" : "Deutsche Bahn AG",
+  "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "DEU",
-  "periodOfActivity" : {
-    "operatingSince" : "1994-01-01",
-    "operatingUntil" : null,
+  "period_of_activity" : {
+    "operating_since" : "1994-01-01",
+    "operating_until" : null,
     "status" : "ACTIVE"
   },
   "gauge" : {
-    "trackGauge" : "STANDARD",
+    "track_gauge" : "STANDARD",
     "meters" : 1.435
   },
-  "totalLength" : {
+  "total_length" : {
     "kilometers" : null,
     "miles" : null
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : null,
-    "websiteUrl" : "https://www.deutschebahn.com",
+    "website_url" : "https://www.deutschebahn.com",
     "phone" : null
   },
   "social" : {

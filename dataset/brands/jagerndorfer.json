@@ -1,21 +1,21 @@
 {
   "name" : "Jägerndorfer Collection",
-  "registeredCompanyName" : "Jägerndorfer Ges.m.b.H.",
-  "organizationEntityType" : "OTHER",
-  "groupName" : null,
+  "registered_company_name" : "Jägerndorfer Ges.m.b.H.",
+  "organization_entity_type" : "OTHER",
+  "group_name" : null,
   "description" : null,
   "address" : {
-    "streetAddress" : "Bundesstraße 20",
-    "extendedAddress" : null,
-    "postalCode" : "A-2563",
+    "street_address" : "Bundesstraße 20",
+    "extended_address" : null,
+    "postal_code" : "A-2563",
     "city" : "Pottenstein",
     "region" : null,
     "country" : "AUS"
   },
-  "contactInfo" : {
+  "contact_info" : {
     "email" : null,
     "phone" : null,
-    "websiteUrl" : "https://www.jaegerndorfer.at"
+    "website_url" : "https://www.jaegerndorfer.at"
   },
   "socials" : {
     "facebook" : null,
