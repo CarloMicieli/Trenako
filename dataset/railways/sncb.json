@@ -35,5 +35,5 @@
     "twitter" : "sncb",
     "youtube" : "SNCBtv"
   },
-  "headquarters" : "Bruxelles"
+  "headquarters" : [ "Bruxelles" ]
 }

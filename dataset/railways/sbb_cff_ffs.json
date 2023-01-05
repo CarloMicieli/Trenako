@@ -35,5 +35,5 @@
     "twitter" : "RailService",
     "youtube" : "sbbcffffs"
   },
-  "headquarters" : "Bern"
+  "headquarters" : [ "Bern" ]
 }

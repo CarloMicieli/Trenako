@@ -35,5 +35,5 @@
     "twitter" : "omdsb",
     "youtube" : null
   },
-  "headquarters" : "Copenaghen"
+  "headquarters" : [ "Copenaghen" ]
 }

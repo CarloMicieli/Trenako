@@ -35,5 +35,5 @@
     "twitter" : "unsereOEBB",
     "youtube" : "unsereOEBB"
   },
-  "headquarters" : "Wien"
+  "headquarters" : [ "Wien" ]
 }

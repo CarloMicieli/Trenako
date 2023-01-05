@@ -35,5 +35,5 @@
     "twitter" : "db_presse",
     "youtube" : "deutschebahnkonzern"
   },
-  "headquarters" : "Berlin"
+  "headquarters" : [ "Berlin" ]
 }

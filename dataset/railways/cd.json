@@ -35,5 +35,5 @@
     "twitter" : "ceskedrahy_",
     "youtube" : "zeleznicarCD"
   },
-  "headquarters" : "Prague"
+  "headquarters" : [ "Prague" ]
 }

@@ -35,5 +35,5 @@
     "twitter" : "rhaetischebahn",
     "youtube" : "rhaetischebahn"
   },
-  "headquarters" : "Chur"
+  "headquarters" : [ "Chur" ]
 }

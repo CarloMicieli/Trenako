@@ -35,5 +35,5 @@
     "twitter" : "sncf",
     "youtube" : "SNCF"
   },
-  "headquarters" : "Paris"
+  "headquarters" : [ "Paris" ]
 }
