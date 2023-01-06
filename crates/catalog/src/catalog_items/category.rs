@@ -142,6 +142,10 @@ pub enum ElectricMultipleUnitType {
     /// An EMU will usually have two driving cars at its outer ends.
     DrivingCar,
 
+    /// High-speed rail is a type of rail system that runs significantly faster than traditional
+    /// rail, using an integrated system of specialised rolling stock and dedicated tracks.
+    HighSpeedTrain,
+
     /// Motor cars carry the traction motors to move the train, and are often combined with the
     /// power car to avoid high-voltage inter-car connections.
     MotorCar,
@@ -155,6 +159,9 @@ pub enum ElectricMultipleUnitType {
     /// traction or power related equipment, and are similar to passenger cars in a
     /// locomotive-hauled train.
     TrailerCar,
+
+    /// A trainset is working as whole unit
+    TrainSet,
 }
 
 /// The types for railcar rolling stocks
@@ -213,9 +220,11 @@ mod tests {
 
         #[rstest]
         #[case("DRIVING_CAR", Ok(ElectricMultipleUnitType::DrivingCar))]
+        #[case("HIGH_SPEED_TRAIN", Ok(ElectricMultipleUnitType::HighSpeedTrain))]
         #[case("MOTOR_CAR", Ok(ElectricMultipleUnitType::MotorCar))]
         #[case("POWER_CAR", Ok(ElectricMultipleUnitType::PowerCar))]
         #[case("TRAILER_CAR", Ok(ElectricMultipleUnitType::TrailerCar))]
+        #[case("TRAIN_SET", Ok(ElectricMultipleUnitType::TrainSet))]
         #[case("invalid", Err(ParseError::VariantNotFound))]
         fn it_should_parse_electric_multiple_unit_types(
             #[case] input: &str,
@@ -227,9 +236,11 @@ mod tests {
 
         #[rstest]
         #[case(ElectricMultipleUnitType::DrivingCar, "DRIVING_CAR")]
+        #[case(ElectricMultipleUnitType::HighSpeedTrain, "HIGH_SPEED_TRAIN")]
         #[case(ElectricMultipleUnitType::MotorCar, "MOTOR_CAR")]
         #[case(ElectricMultipleUnitType::PowerCar, "POWER_CAR")]
         #[case(ElectricMultipleUnitType::TrailerCar, "TRAILER_CAR")]
+        #[case(ElectricMultipleUnitType::TrainSet, "TRAIN_SET")]
         fn it_should_display_electric_multiple_unit_types(
             #[case] input: ElectricMultipleUnitType,
             #[case] expected: &str,

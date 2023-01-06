@@ -70,9 +70,11 @@ CREATE TYPE passenger_car_type AS ENUM (
 );
 CREATE TYPE electric_multiple_unit_type AS ENUM (
     'DRIVING_CAR',
+    'HIGH_SPEED_TRAIN',
     'MOTOR_CAR',
     'POWER_CAR',
-    'TRAILER_CAR'
+    'TRAILER_CAR',
+    'TRAIN_SET'
 );
 CREATE TYPE railcar_type AS ENUM (
     'POWER_CAR',

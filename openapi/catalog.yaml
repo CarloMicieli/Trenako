@@ -364,9 +364,11 @@ components:
       description: the electric multiple unit type
       enum:
         - DRIVING_CAR
+        - HIGH_SPEED_TRAIN
         - MOTOR_CAR
         - POWER_CAR
         - TRAILER_CAR
+        - TRAIN_SET
 
     FeatureFlag:
       type: string
