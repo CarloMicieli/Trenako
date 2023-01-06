@@ -20,6 +20,7 @@ pub enum Epoch {
     III,
     IIIa,
     IIIb,
+    IIIc,
     IV,
     IVa,
     IVb,
@@ -75,6 +76,7 @@ impl Epoch {
             "III" => Ok(Epoch::III),
             "IIIa" => Ok(Epoch::IIIa),
             "IIIb" => Ok(Epoch::IIIb),
+            "IIIc" => Ok(Epoch::IIIc),
             "IV" => Ok(Epoch::IV),
             "IVa" => Ok(Epoch::IVa),
             "IVb" => Ok(Epoch::IVb),
@@ -186,6 +188,7 @@ mod tests {
         #[case(Epoch::III, r#""III""#)]
         #[case(Epoch::IIIa, r#""IIIa""#)]
         #[case(Epoch::IIIb, r#""IIIb""#)]
+        #[case(Epoch::IIIc, r#""IIIc""#)]
         #[case(Epoch::IV, r#""IV""#)]
         #[case(Epoch::IVa, r#""IVa""#)]
         #[case(Epoch::IVb, r#""IVb""#)]
@@ -208,6 +211,7 @@ mod tests {
         #[case(Epoch::III)]
         #[case(Epoch::IIIa)]
         #[case(Epoch::IIIb)]
+        #[case(Epoch::IIIc)]
         #[case(Epoch::IV)]
         #[case(Epoch::IVa)]
         #[case(Epoch::IVb)]
