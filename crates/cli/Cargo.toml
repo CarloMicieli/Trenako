@@ -1,0 +1,29 @@
+[package]
+name = "cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+path = "src/main.rs"
+name = "trenako-cli"
+
+[dependencies]
+catalog = { path = "../catalog" }
+common = { path = "../common" }
+
+anyhow = { workspace = true }
+chrono = { workspace = true }
+clap = { workspace = true }
+rust_decimal = { workspace = true }
+serde = { workspace = true }
+serde_derive = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }
