@@ -17,7 +17,7 @@ rust-version = "1.66"
 actix-web = "4"
 anyhow = "1.0"
 chrono = { version = "0.4.23", features = ["serde"] }
-clap = "4.0.26"
+clap = { version = "4.0.26", features = ["derive"] }
 config = { version = "0.13.3", default-features = false, features = ["yaml"] }
 http = "0.2.8"
 isocountry = "0.3.2"
