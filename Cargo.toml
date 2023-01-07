@@ -22,6 +22,7 @@ config = { version = "0.13.3", default-features = false, features = ["yaml"] }
 http = "0.2.8"
 isocountry = "0.3.2"
 itertools = "0.10.5"
+jsonschema = "0.16.1"
 log = "0.4"
 pretty_assertions = "1.3.0"
 rstest = "0.16.0"

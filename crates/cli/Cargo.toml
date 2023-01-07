@@ -20,9 +20,11 @@ common = { path = "../common" }
 anyhow = { workspace = true }
 chrono = { workspace = true }
 clap = { workspace = true }
+jsonschema = { workspace = true }
 rust_decimal = { workspace = true }
 serde = { workspace = true }
 serde_derive = { workspace = true }
+serde_json = { workspace = true }
 thiserror = { workspace = true }
 
 [dev-dependencies]

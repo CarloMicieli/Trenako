@@ -4,18 +4,17 @@
   "type": "object",
   "required": [
     "brand",
-    "itemNumber",
+    "item_number",
     "scale",
     "category",
     "description",
-    "count",
-    "version"
+    "count"
   ],
   "properties": {
     "brand": {
       "type": "string"
     },
-    "itemNumber": {
+    "item_number": {
       "type": "string"
     },
     "scale": {
@@ -34,15 +33,18 @@
       ]
     },
     "description": {
-      "type": "string"
+      "type": "object",
+      "additionalProperties": {
+        "type": [ "string", "null" ]
+      }
     },
     "details": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "object",
+      "additionalProperties": {
+        "type": [ "string", "null" ]
+      }
     },
-    "powerMethod": {
+    "power_method": {
       "type": "string",
       "enum": [
         "AC",
@@ -50,13 +52,13 @@
         "TRIX_EXPRESS"
       ]
     },
-    "deliveryDate": {
+    "delivery_date": {
       "type": [
         "string",
         "null"
       ]
     },
-    "availabilityStatus": {
+    "availability_status": {
       "type": "string",
       "enum": [
         "ANNOUNCED",
@@ -64,7 +66,7 @@
         "DISCONTINUED"
       ]
     },
-    "rollingStocks": {
+    "rolling_stocks": {
       "type": "array",
       "items": {
         "$ref": "#/definitions/RollingStock"
@@ -74,9 +76,6 @@
       "type": "integer",
       "format": "uint8",
       "minimum": 0.0
-    },
-    "version": {
-      "type": "string"
     }
   },
   "definitions": {
@@ -85,24 +84,47 @@
       "required": [
         "epoch",
         "railway",
-        "techSpecs",
-        "typeName"
+        "technical_specifications"
       ],
       "properties": {
         "category": {
-          "default": "",
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "ELECTRIC_MULTIPLE_UNIT",
+            "FREIGHT_CAR",
+            "LOCOMOTIVE",
+            "PASSENGER_CAR",
+            "RAILCAR"
+          ]
         },
         "control": {
           "type": [
             "string",
             "null"
+          ],
+          "enum": [
+            "DCC",
+            "DCC_READY",
+            "DCC_SOUND",
+            "NO_DCC"
           ]
         },
-        "dccInterface": {
+        "dcc_interface": {
           "type": [
             "string",
             "null"
+          ],
+          "enum": [
+            "MTC_21",
+            "NEM_651",
+            "NEM_652",
+            "NEM_654",
+            "NEXT_18",
+            "NEXT_18_S",
+            "PLUX_12",
+            "PLUX_16",
+            "PLUX_22",
+            "PLUX_8"
           ]
         },
         "depot": {
@@ -113,7 +135,7 @@
         },
         "dummy": {
           "type": [
-            "string",
+            "boolean",
             "null"
           ]
         },
@@ -137,7 +159,7 @@
         "railway": {
           "type": "string"
         },
-        "roadNumber": {
+        "road_number": {
           "type": [
             "string",
             "null"
@@ -149,22 +171,29 @@
             "null"
           ]
         },
-        "serviceLevel": {
+        "service_level": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "FIRST_CLASS",
+            "SECOND_CLASS",
+            "FIRST_AND_SECOND_CLASS",
+            "FIRST_SECOND_AND_THIRD_CLASS",
+            "SECOND_AND_THIRD_CLASS"
+          ]
+        },
+        "sub_category": {
           "type": [
             "string",
             "null"
           ]
         },
-        "subCategory": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "techSpecs": {
+        "technical_specifications": {
           "$ref": "#/definitions/TechSpecs"
         },
-        "typeName": {
+        "type_name": {
           "type": "string"
         }
       }
@@ -172,37 +201,69 @@
     "TechSpecs": {
       "type": "object",
       "required": [
-        "closeCouplers",
-        "flywheelFitted",
-        "interiorLights",
+        "coupling",
+        "flywheel_fitted",
+        "interior_lights",
         "lights",
-        "metalBody",
-        "minimumRadius",
-        "springBuffers"
+        "metal_body",
+        "minimum_radius",
+        "spring_buffers"
       ],
       "properties": {
-        "closeCouplers": {
-          "type": "string"
+        "coupling": {
+          "$ref": "#/definitions/Coupling"
         },
-        "flywheelFitted": {
-          "type": "string"
+        "flywheel_fitted": {
+          "$ref": "#/definitions/FeatureFlag"
         },
-        "interiorLights": {
-          "type": "string"
+        "interior_lights": {
+          "$ref": "#/definitions/FeatureFlag"
         },
         "lights": {
-          "type": "string"
+          "$ref": "#/definitions/FeatureFlag"
         },
-        "metalBody": {
-          "type": "string"
+        "metal_body": {
+          "$ref": "#/definitions/FeatureFlag"
         },
-        "minimumRadius": {
+        "minimum_radius": {
           "type": "number"
         },
-        "springBuffers": {
-          "type": "string"
+        "spring_buffers": {
+          "$ref": "#/definitions/FeatureFlag"
         }
       }
+    },
+    "Coupling": {
+      "type": "object",
+      "properties": {
+        "socket": {
+          "type": ["string", "null"],
+          "enum": [
+            "NONE",
+            "NEM_355",
+            "NEM_356",
+            "NEM_357",
+            "NEM_359",
+            "NEM_360",
+            "NEM_362",
+            "NEM_365"
+          ]
+        },
+        "close_couplers": {
+          "$ref": "#/definitions/FeatureFlag"
+        },
+        "digital_shunting": {
+          "$ref": "#/definitions/FeatureFlag"
+        }
+      }
+    },
+    "FeatureFlag": {
+      "type": "string",
+      "enum": [
+        "YES",
+        "NO",
+        "NOT_AVAILABLE"
+      ]
     }
   }
 }

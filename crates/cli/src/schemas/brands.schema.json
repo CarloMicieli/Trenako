@@ -4,19 +4,17 @@
   "type": "object",
   "required": [
     "name",
-    "registeredCompanyName",
     "kind",
-    "status",
-    "version"
+    "status"
   ],
   "properties": {
     "name": {
       "type": "string"
     },
-    "registeredCompanyName": {
+    "registered_company_name": {
       "type": "string"
     },
-    "organizationEntityType": {
+    "organization_entity_type": {
       "anyOf": [
         {
           "$ref": "#/definitions/OrganizationEntityType"
@@ -32,19 +30,19 @@
     "status": {
       "$ref": "#/definitions/Status"
     },
-    "groupName": {
+    "group_name": {
       "type": [
         "string",
         "null"
       ]
     },
     "description": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "object",
+      "additionalProperties": {
+        "type": [ "string", "null" ]
+      }
     },
-    "contactInfo": {
+    "contact_info": {
       "anyOf": [
         {
           "$ref": "#/definitions/Contacts"
@@ -73,9 +71,6 @@
           "type": "null"
         }
       ]
-    },
-    "version": {
-      "type": "string"
     }
   },
   "definitions": {
@@ -84,8 +79,8 @@
       "required": [
         "city",
         "country",
-        "postalCode",
-        "streetAddress"
+        "postal_code",
+        "street_address"
       ],
       "properties": {
         "city": {
@@ -100,7 +95,7 @@
             "null"
           ]
         },
-        "postalCode": {
+        "postal_code": {
           "type": "string"
         },
         "region": {
@@ -109,7 +104,7 @@
             "null"
           ]
         },
-        "streetAddress": {
+        "street_address": {
           "type": "string"
         }
       }
@@ -129,7 +124,7 @@
             "null"
           ]
         },
-        "websiteUrl": {
+        "website_url": {
           "type": [
             "string",
             "null"

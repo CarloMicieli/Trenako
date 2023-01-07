@@ -4,8 +4,7 @@
   "type": "object",
   "required": [
     "name",
-    "country",
-    "version"
+    "country"
   ],
   "properties": {
     "name": {
@@ -17,10 +16,10 @@
         "null"
       ]
     },
-    "registeredCompanyName": {
+    "registered_company_name": {
       "type": "string"
     },
-    "organizationEntityType": {
+    "organization_entity_type": {
       "anyOf": [
         {
           "$ref": "#/definitions/OrganizationEntityType"
@@ -31,37 +30,34 @@
       ]
     },
     "description": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "object",
+      "additionalProperties": {
+        "type": [ "string", "null" ]
+      }
     },
     "country": {
       "type": "string"
     },
-    "periodOfActivity": {
+    "period_of_activity": {
       "$ref": "#/definitions/PeriodOfActivity"
     },
     "gauge": {
       "$ref": "#/definitions/Gauge"
     },
     "headquarters": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
     },
-    "totalLength": {
+    "total_length": {
       "$ref": "#/definitions/Length"
     },
-    "contactInfo": {
+    "contact_info": {
       "$ref": "#/definitions/Contacts"
     },
     "socials": {
       "$ref": "#/definitions/Socials"
-    },
-    "version": {
-      "type": "string"
     }
   },
   "definitions": {
@@ -80,7 +76,7 @@
             "null"
           ]
         },
-        "websiteUrl": {
+        "website_url": {
           "type": [
             "string",
             "null"
@@ -92,13 +88,13 @@
       "type": "object",
       "required": [
         "meters",
-        "trackGauge"
+        "track_gauge"
       ],
       "properties": {
         "meters": {
           "type": "number"
         },
-        "trackGauge": {
+        "track_gauge": {
           "type": "string",
           "enum": [
             "BROAD",
@@ -147,14 +143,14 @@
     "PeriodOfActivity": {
       "type": "object",
       "required": [
-        "operatingSince",
+        "operating_since",
         "status"
       ],
       "properties": {
-        "operatingSince": {
+        "operating_since": {
           "type": "string"
         },
-        "operatingUntil": {
+        "operating_until": {
           "type": [
             "string",
             "null"

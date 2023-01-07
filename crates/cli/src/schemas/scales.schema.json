@@ -5,8 +5,7 @@
   "required": [
     "name",
     "gauge",
-    "ratio",
-    "version"
+    "ratio"
   ],
   "properties": {
     "name": {
@@ -19,10 +18,10 @@
       "$ref": "#/definitions/Gauge"
     },
     "description": {
-      "type": [
-        "string",
-        "null"
-      ]
+      "type": "object",
+      "additionalProperties": {
+        "type": [ "string", "null" ]
+      }
     },
     "standards": {
       "type": "array",
@@ -30,9 +29,6 @@
         "$ref": "#/definitions/Standard"
       },
       "uniqueItems": true
-    },
-    "version": {
-      "type": "string"
     }
   },
   "definitions": {
@@ -41,7 +37,7 @@
       "required": [
         "inches",
         "millimeters",
-        "trackGauge"
+        "track_gauge"
       ],
       "properties": {
         "inches": {
@@ -50,7 +46,7 @@
         "millimeters": {
           "type": "number"
         },
-        "trackGauge": {
+        "track_gauge": {
           "type": "string",
           "enum": [
             "BROAD",
