@@ -16,6 +16,16 @@ servers:
     description: local
 
 paths:
+  /health-check:
+    get:
+      summary: health check endpoint
+      tags:
+        - monitoring
+      operationId: health-check
+      responses:
+        "200":
+          description: the application is healthy
+
   /api/brands:
     get:
       summary: get the list of brands

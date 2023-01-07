@@ -15,7 +15,7 @@ pub fn run(listener: TcpListener, db_pool: PgPool, workers: usize) -> Result<Ser
         App::new()
             .wrap(TracingLogger::default())
             .wrap(Compress::default())
-            .route("/health_check", web::get().to(health_check))
+            .route("/health-check", web::get().to(health_check))
             .configure(catalog::routes::config_services)
             .app_data(web::JsonConfig::default().limit(4096))
             .app_data(db_pool.clone())

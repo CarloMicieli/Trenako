@@ -9,7 +9,7 @@ async fn health_check_works() {
 
     let client = reqwest::Client::new();
 
-    let endpoint = sut.endpoint("/health_check");
+    let endpoint = sut.endpoint("/health-check");
     let response = client.get(endpoint).send().await.expect("Failed to execute request.");
 
     assert!(response.status().is_success());
