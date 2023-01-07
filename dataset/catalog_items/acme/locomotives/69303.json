@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Locomotiva elettrica FS E 444 093 di 2a serie, con \"Baffo Blu\" e con modanature nella livrea di origine",
+      "it" : "Locomotiva elettrica FS E 444 093 \"Tartaruga\" (2a serie) nella livrea di origine blu/grigio con \"Baffo Blu\" e modanature",
       "en" : null
     }
   },
@@ -22,7 +22,7 @@
     "category" : "LOCOMOTIVE",
     "class_name" : "E444",
     "road_number" : "E444 093",
-    "series" : "seconda serie",
+    "series" : "SECONDA SERIE",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVa",
@@ -37,8 +37,8 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

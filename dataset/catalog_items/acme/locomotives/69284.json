@@ -1,0 +1,53 @@
+{
+  "brand" : "ACME",
+  "item_number" : "60284",
+  "scale" : "H0",
+  "category" : "LOCOMOTIVES",
+  "description" : {
+    "values" : {
+      "it" : "Locomotiva elettrica FS E 656 551 \"Caimano\" (6a serie) \"Navetta\" nella livrea blu/grigio con dispositivo per telecomando e comando multiplo, respingenti rettangolari, smorzatori, striscianti curvi, deposito di Firenze",
+      "en" : null
+    }
+  },
+  "details" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
+  "power_method" : "DC",
+  "delivery_date" : "2021",
+  "availability_status" : "AVAILABLE",
+  "rolling_stocks" : [ {
+    "category" : "LOCOMOTIVE",
+    "class_name" : "E656",
+    "road_number" : "E656 551",
+    "series" : "SESTA SERIE navetta",
+    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
+    "railway" : "FS",
+    "epoch" : "Va",
+    "depot" : "Firenze",
+    "dcc_interface" : "MTC_21",
+    "control" : "DCC_SOUND",
+    "livery" : "blu/grigio",
+    "length_over_buffer" : {
+      "inches" : null,
+      "millimeters" : 210.0
+    },
+    "technical_specifications" : {
+      "minimum_radius" : 360.0,
+      "coupling" : {
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
+        "digital_shunting" : "NO"
+      },
+      "flywheel_fitted" : "NO",
+      "metal_body" : "NO",
+      "interior_lights" : "NO",
+      "lights" : "YES",
+      "spring_buffers" : "NO"
+    },
+    "dummy" : false
+  } ],
+  "count" : 1
+}

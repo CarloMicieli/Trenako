@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "FER bianco/rosso/verde, pantografi Sommerfeldt",
+      "it" : "Locomotiva elettrica FS E464 902 FER bianco/rosso/verde, pantografi Sommerfeldt",
       "en" : null
     }
   },
@@ -24,12 +24,12 @@
     "road_number" : "E464 902 ER",
     "series" : "",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
+    "railway" : "FER",
     "epoch" : "Vb",
     "depot" : "",
     "dcc_interface" : "NONE",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "bianco/rosso/verde",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null

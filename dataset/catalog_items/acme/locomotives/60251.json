@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Verde fasce gialle, telaio nero, corrimani con battipiede, dep. Ancona",
+      "it" : "Locomotiva diesel FS D 143 3002 \"Truman\" nella livrea verde fasce gialle, telaio nero, corrimani con battipiede, dep. Ancona",
       "en" : null
     }
   },
@@ -37,8 +37,8 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

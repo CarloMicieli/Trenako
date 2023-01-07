@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Isabella, telaio castano, cabina corazzata, 2 marmitte, fanali su pancone (69254 DCC Sound)",
+      "it" : "Locomotiva Diesel da manovra Ne 120 con cabina corazzata e quattro marmitte, ex USATC, nella livrea castano/isabella, fanali sul pancone",
       "en" : null
     }
   },
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "IIIa",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
     "livery" : "isabella",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 153.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

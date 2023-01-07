@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Castano/isabella, rapporto 21/68, scalette strette, pantografi 42LR",
+      "it" : "Locomotiva elettrica FS E646 022 nella livrea castano/isabella, rapporto 21/68, scalette strette, pantografi 42LR",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Locomotiva elettrica E.646.022, con rapporto di trasmissione 21/68 e livrea originale castano/isabella. Questa locomotiva come le altre unità del gruppo 021-037 erano utilizzate sulla linea Tirrenica al traino dei pesanti Direttissimi \"Freccia del Sud\" e \"Treno del Sole\" tra il Nord Italia e la Sicilia. EDIZIONE LIMITATA. EP. III. Due fari illuminati di testa e due luci di coda, seguono la direzione di marcia. Modello predisposto per l'inserimento di sistema sonoro.",
       "en" : null
     }
   },
@@ -27,17 +27,17 @@
     "railway" : "FS",
     "epoch" : "IIIb",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "castano/isabella",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 210.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
+        "socket" : "NEM_362",
         "close_couplers" : "NO",
         "digital_shunting" : "NO"
       },

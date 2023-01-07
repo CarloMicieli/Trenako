@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "E655 Cargo blu/grigio, logo Trenitalia, fregio bianco su un frontale, condizionatori, striscianti piatti",
+      "it" : "Locomotiva elettrica FS E 655 528 \"Caimano\" nella livrea di origine blu/grigio con logo Trenitalia Cargo, fregio bianco su un solo frontale, condizionatori, striscianti piatti",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Tre fari illuminati in testa e due luci in coda, seguono la direzione di marcia. Modello predisposto per l'inserimento di sistema sonoro.",
       "en" : null
     }
   },
@@ -25,20 +25,20 @@
     "series" : "QUINTA SERIE",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
-    "epoch" : "Vb",
+    "epoch" : "V/VI",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "blu/grigio",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 210.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

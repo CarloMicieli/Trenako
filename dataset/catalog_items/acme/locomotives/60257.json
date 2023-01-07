@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "USATC immatricolata FS, stato anni Quaranta, livrea beige, un fanale centrale",
+      "it" : "Locomotiva diesel elettrica da manovra pesante \"Truman\" USATC 1256, immatricolata dalle FS nello stato degli anni quaranta dopo lo sbarco alleato in Sicilia, livrea beige, un fanale centrale",
       "en" : null
     }
   },
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "IIb/IIIa",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "beige",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 153.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

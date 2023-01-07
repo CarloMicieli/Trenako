@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Livrea XMPR2, logo FS XMPR, vomere rosso, condotte alte, deposito Verona",
+      "it" : "Locomotiva elettrica FS E652 088 nella livrea XMPR2, logo FS XMPR, vomere rosso, condotte alte, deposito Verona",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Accensione luci B/R, terzo faro e luci cabine indipendenti sia in analogico che in digitale. Motore a 5 poli \"Canon\" predisposta per Lok-sound, decoder a 21 poli.",
       "en" : null
     }
   },
@@ -26,19 +26,19 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "Vb",
-    "depot" : "",
-    "dcc_interface" : "NONE",
+    "depot" : "Verona",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "XMPR2",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 206.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

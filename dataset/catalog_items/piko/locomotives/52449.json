@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Verde fasce gialle, corrimani gialli senza battipiede (52450 DCC Sound)",
+      "it" : "Locomotiva diesel D141 1003 Dep. Loc Trieste C.le nella livrea verde fasce gialle, corrimani gialli senza battipiede",
       "en" : null
     }
   },
@@ -26,19 +26,19 @@
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
-    "depot" : "",
-    "dcc_interface" : "NONE",
+    "depot" : "Trieste",
+    "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "verde/fasce gialle",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 152.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Locomotiva elettrica FS E 656.306 \"Caimano\" (3a serie) nella livrea di origine con respingenti tondi.Senza smorzatori, senza condizionatori, striscianti curvi.",
+      "it" : "Locomotiva elettrica FS E 656 306 \"Caimano\" (3a serie) nella livrea di origine con respingenti tondi. Senza smorzatori, senza condizionatori, striscianti curvi.",
       "en" : null
     }
   },
@@ -26,7 +26,7 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVb",
-    "depot" : "Milano C.le.",
+    "depot" : "Milano Centrale.",
     "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
     "livery" : "blu/grigio",
@@ -37,8 +37,8 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

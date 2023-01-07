@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "E655 XMPR Trenitalia Cargo, nuovo logo FS, condiz., tubi blu, resp. tondi, marc. UIC, IMC MI Sm.",
+      "it" : "Locomotiva elettrica FS E655 089 nella livrea XMPR Trenitalia Cargo, nuovo logo FS, condiz., tubi blu, resp. tondi, marc. UIC, IMC MI Sm.",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Modello con motore 5 poli centrale e trasmissione a doppio cardano con volani per la distribuzione a tutti gli assi, luci a led bianche e rosse con inversione automatica più terzo faro, bellissimi pantografi ACME FS 52, predisposta per decoder DCC 8pin",
       "en" : null
     }
   },
@@ -26,19 +26,19 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "VI",
-    "depot" : "",
+    "depot" : "Milano Smistamento",
     "dcc_interface" : "NONE",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "livrea",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 210.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Blu/grigio, smorzatori, striscianti piani, deposito Milano Sm. (69392 DCC Sound)",
+      "it" : "Locomotiva elettrica FS E656 291 \"Caimano\" (3a serie) nella livrea blu/grigio, smorzatori antiserpeggio, striscianti piani, deposito Milano Sm.",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Locomotiva elettrica E 656 291 di 3^ serie \"Caimano\" Dep. Milano SM in livrea di origine con smorzatori antiserpeggio, modelli di nuova costruzione con meccanica rinnovata, luci indipendenti bianco/rosso in testa e coda anche nella versione analogica e in base al senso di marcia, terzo faro attivo, illuminazione cabine, illuminazione corridoio AT, numerosi i dettagli riportati, tra cui portafanali, tuberie, ammortizzatori e riproduzione dei motori sui carrelli, predisposizione al sistema digitale tramite decoder a 21 poli, predisposizione al sonoro",
       "en" : null
     }
   },
@@ -26,19 +26,19 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "V",
-    "depot" : "",
-    "dcc_interface" : "NONE",
+    "depot" : "Milano Smistamento",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "blu/grigio",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 210.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

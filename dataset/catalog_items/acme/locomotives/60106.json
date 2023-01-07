@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Frontale ricostruito, vetri Triplex, senza modanature (69106 DCC Sound)",
+      "it" : "Locomotiva elettrica FS E.444 004 con frontale dopo la ricostruizione del 1986, vetri Triplex, senza modanature",
       "en" : null
     }
   },
@@ -25,20 +25,20 @@
     "series" : "PROTOTIPO",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
-    "epoch" : "IVb/V",
-    "depot" : "",
-    "dcc_interface" : "NONE",
+    "epoch" : "IV/V",
+    "depot" : "Roma San Lorenzo",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "blu/grigio",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 195.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

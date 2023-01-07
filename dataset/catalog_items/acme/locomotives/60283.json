@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "XMPR logo FS XMPR primo tipo, tetto alluminio, condizionatori, respingenti tondi, OML Firenze",
+      "it" : "Locomotiva elettrica FS E 656 587 \"Caimano\" (6a serie) \"Navetta\" nella livrea XMPR con logo FS XMPR di primo tipo, tetto alluminio, condizionatori, respingenti tondi, OML Firenze",
       "en" : null
     }
   },
@@ -22,23 +22,23 @@
     "category" : "LOCOMOTIVE",
     "class_name" : "E656",
     "road_number" : "E656 587",
-    "series" : "SESTA SERIE NAVETTA",
+    "series" : "SESTA SERIE navetta",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "V",
-    "depot" : "",
-    "dcc_interface" : "NONE",
+    "depot" : "Firenze",
+    "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "XMPR",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 210.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

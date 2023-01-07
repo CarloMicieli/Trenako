@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "XMPR, logo Trenitalia verde/rosso, fascia verde grande, condiz., resp. tondi, SCMT, dep. GE Br.",
+      "it" : "Locomotiva elettrica FS E 656 598 \"Caimano\" (6a serie) \"Navetta\" nella livrea XMPR con logo Trenitalia verde/rosso, pantografi tipo FS 52, tetto bianco con respingenti tondi, del deposito locomotive di Genova Brignole, condizionatore, respingenti tondi, SCMT",
       "en" : null
     }
   },
@@ -22,23 +22,23 @@
     "category" : "LOCOMOTIVE",
     "class_name" : "E656",
     "road_number" : "E656 598",
-    "series" : "SESTA SERIE NAVETTA",
+    "series" : "SESTA SERIE navetta",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "VI",
-    "depot" : "",
-    "dcc_interface" : "NONE",
+    "depot" : "Genova Brignole",
+    "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "XMPR",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 210.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

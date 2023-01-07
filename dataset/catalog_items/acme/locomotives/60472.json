@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Livrea blu/grigio, senza vomeri, pantografi 52, reostato ridotto, stato 1982",
+      "it" : "Locomotiva elettrica FS E633 001 nella livrea blu/grigio senza logo \"Tigre\", senza vomeri, pantografi 52, reostato ridotto, nello stato di servizio del 1982",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Accensione luci B/R, terzo faro e luci cabine indipendenti sia in analogico che in digitale. Motore a 5 poli \"Canon\" predisposta per Lok-sound, decoder a 21 poli. Edizione Limitata.",
       "en" : null
     }
   },
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "IVb",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "blu/grigio",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 206.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

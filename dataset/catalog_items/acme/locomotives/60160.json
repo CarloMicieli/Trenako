@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Locomotiva elettrica FS E 645.057 (2a serie) nella livrea castano/isabella con modanature, vomere nero. ",
+      "it" : "Locomotiva elettrica FS E 645.057 (2a serie) nella livrea castano/isabella con modanature, vomere nero.",
       "en" : null
     }
   },
@@ -37,8 +37,8 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

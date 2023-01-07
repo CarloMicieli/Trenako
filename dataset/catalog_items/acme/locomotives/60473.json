@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Locomotiva elettrica FS E.632 001 Tigre ep.IV nella livrea blu/grigio senza logotipo \"Tigre\", senza vomeri e pantografi monobraccio Faiveley.Nello stato di servizio a partire dal luglio 1981.",
+      "it" : "Locomotiva elettrica delle Ferrovie dello Stato E632 001 \"Tigre\" ep.IV nella livrea blu/grigio senza logotipo \"Tigre\", senza vomeri e pantografi monobraccio Faiveley.Nello stato di servizio a partire dal luglio 1981.",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Pantografi monobraccio Faiveley, nello stato 1981. Pantografi FS 52, motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione sound, fari illuminati bianco/rosso anche il terzo faro con micro led.",
       "en" : null
     }
   },
@@ -27,7 +27,7 @@
     "railway" : "FS",
     "epoch" : "IVb",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
     "livery" : "blu/grigio",
     "length_over_buffer" : {
@@ -37,8 +37,8 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

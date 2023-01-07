@@ -27,12 +27,12 @@
     "railway" : "FS",
     "epoch" : "IV/V",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "arancio/fasce gialle",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 152.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,

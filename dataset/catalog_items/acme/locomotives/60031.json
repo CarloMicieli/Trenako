@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "XMPR1, fanali e tergicristalli modificati, pantografi 52/92 Sommerfeldt",
+      "it" : "Locomotiva elettrica E402 002 prototipo nella livrea XMPR1, fanali e tergicristalli modificati, pantografi 52/92 Sommerfeldt",
       "en" : null
     }
   },
@@ -29,7 +29,7 @@
     "depot" : "",
     "dcc_interface" : "NONE",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "XMPR1",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null

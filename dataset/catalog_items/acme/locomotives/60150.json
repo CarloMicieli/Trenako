@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Locomotiva elettrica FS E.646 014 (1a serie) nella livrea verde e grigio di origine senza fregio, pantografi 42LR, separatore di Arbela, portelli A.T. bassi, griglie sui vetri anteriori, scalette piccole.Edizione Limitata 600 PZ",
+      "it" : "Locomotiva elettrica FS E.646 014 (1a serie) nella livrea verde e grigio di origine senza fregio, pantografi 42LR, separatore di Arbela, portelli A.T. bassi, griglie sui vetri anteriori, scalette piccole. Edizione Limitata 600 PZ",
       "en" : null
     }
   },
@@ -22,7 +22,7 @@
     "category" : "LOCOMOTIVE",
     "class_name" : "E646",
     "road_number" : "E646 014",
-    "series" : "prima serie",
+    "series" : "PRIMA SERIE",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IIIb",
@@ -37,7 +37,7 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
+        "socket" : "NEM_362",
         "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },

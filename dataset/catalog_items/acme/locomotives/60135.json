@@ -22,14 +22,14 @@
     "category" : "LOCOMOTIVE",
     "class_name" : "E646",
     "road_number" : "E646 129",
-    "series" : "seconda serie navetta",
+    "series" : "SECONDA SERIE Trasformate Navetta",
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVb",
     "depot" : "Firenze",
     "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "MDVC beige/arancio/viola",
+    "livery" : "MDVC",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
@@ -37,7 +37,7 @@
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
+        "socket" : "NEM_362",
         "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },

@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Sovralimentata, castano/isabella/rosso, 2 fanali, stato di origine, porta frontale, modanature, dep. PD",
+      "it" : "Locomotiva Diesel D.342. 015 sovralimentata nella livrea castano/isabella/rosso, 2 fanali, stato di origine, porta frontale, modanature, deposito locomotive di Torino",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Predisposto per il sound. Motore a 5 poli con volano; trasmissione con doppio cardano",
       "en" : null
     }
   },
@@ -21,24 +21,24 @@
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D342",
-    "road_number" : "D342 4017",
+    "road_number" : "D342 4015",
     "series" : "ANSALDO",
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "III",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_READY",
-    "livery" : "",
+    "depot" : "Torino",
+    "dcc_interface" : "MTC_21",
+    "control" : "DCC_SOUND",
+    "livery" : "castano/isabella/rosso",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 175.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

@@ -5,13 +5,13 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Livrea “Frecciabianca” bianco/grigio scuro fasce rosse, senza loghi, marcatura UIC",
+      "it" : "Locomotiva elettrica FS E 402B 114 nella livrea \"Frecciabianca\" bianco/grigio scuro fasce rosse, senza loghi, marcatura UIC",
       "en" : null
     }
   },
   "details" : {
     "values" : {
-      "it" : null,
+      "it" : "Modello superdettagliato, motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione sound, fari illuminati anche il terzo faro con attivazione sia in analogico che in digitale con le funzioni F1 cabina A F2 cabina B.",
       "en" : null
     }
   },
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "VI",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "Frecciabianca",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 223.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",

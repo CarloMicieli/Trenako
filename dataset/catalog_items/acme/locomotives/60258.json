@@ -5,7 +5,7 @@
   "category" : "LOCOMOTIVES",
   "description" : {
     "values" : {
-      "it" : "Livrea castano, cabina corazzata, 4 marmitte, fanali su pancone",
+      "it" : "Locomotiva Diesel elettrica da manovra pesante \"Truman\" Ne 120 036 delle Ferrovie dello Stato con cabina corazzata e quattro marmitte, ex USATC, nella livrea castano adottata negli anni Cinquanta, 4 marmitte, fanali su pancone",
       "en" : null
     }
   },
@@ -27,18 +27,18 @@
     "railway" : "FS",
     "epoch" : "IIIa",
     "depot" : "",
-    "dcc_interface" : "NONE",
+    "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
-    "livery" : "",
+    "livery" : "castano",
     "length_over_buffer" : {
       "inches" : null,
-      "millimeters" : null
+      "millimeters" : 153.0
     },
     "technical_specifications" : {
       "minimum_radius" : 360.0,
       "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
+        "socket" : "NEM_362",
+        "close_couplers" : "YES",
         "digital_shunting" : "NO"
       },
       "flywheel_fitted" : "NO",
