@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "70020",
-  "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "ETR300 7 elementi, stato primi anni 60, verde magnolia/grigio nebbia, senza terzo pantografo, porta macchinista, illuminazione interna, decoder DCC ESU Lokpilot 4",
-      "en" : null
-    }
+    "it" : "ETR300 7 elementi, stato primi anni 60, verde magnolia/grigio nebbia, senza terzo pantografo, porta macchinista, illuminazione interna, decoder DCC ESU Lokpilot 4",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "ETR 300",
     "road_number" : "ETR 302",
-    "series" : "",
+    "series" : null,
     "electric_multiple_unit_type" : "POWER_CAR",
     "railway" : "FS",
     "epoch" : "III",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "DCC",
     "livery" : "",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "DCC",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

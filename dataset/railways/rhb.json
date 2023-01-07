@@ -5,10 +5,8 @@
   "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "CHE",
   "description" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
   "period_of_activity" : {
     "operating_since" : "1885-01-01",
@@ -25,8 +23,8 @@
   },
   "contact_info" : {
     "email" : null,
-    "website_url" : "https://www.rhb.ch",
-    "phone" : null
+    "phone" : null,
+    "website_url" : "https://www.rhb.ch"
   },
   "social" : {
     "facebook" : "rhaetischebahn",

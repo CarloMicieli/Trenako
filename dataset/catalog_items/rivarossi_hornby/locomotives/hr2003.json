@@ -1,23 +1,20 @@
 {
   "brand" : "Rivarossi/Hornby",
   "item_number" : "HR2003",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Castano/isabella/rosso, 3 fanali, corrimani sul tetto, dep. Taranto",
-      "en" : null
-    }
+    "it" : "Castano/isabella/rosso, 3 fanali, corrimani sul tetto, dep. Taranto",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2006",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D341",
@@ -26,10 +23,10 @@
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_READY",
     "livery" : "",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "DCC_READY",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

@@ -1,10 +1,8 @@
 {
   "name" : "0",
   "description" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
   "ratio" : 45.0,
   "gauge" : {

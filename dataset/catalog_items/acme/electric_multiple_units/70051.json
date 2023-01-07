@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "70051",
-  "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Set ALe 801/940 (motorizzata + folle) + 2 rimorchiate Le 108, porte frontali di origine, respingenti, vano frontale aperto, livrea XMPR1",
-      "en" : null
-    }
+    "it" : "Set ALe 801/940 (motorizzata + folle) + 2 rimorchiate Le 108, porte frontali di origine, respingenti, vano frontale aperto, livrea XMPR1",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2012",
   "availability_status" : "AVAILABLE",
+  "count" : 4,
   "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "ALe 801",
     "road_number" : "ALe 801 005",
-    "series" : "",
+    "series" : null,
     "electric_multiple_unit_type" : "POWER_CAR",
     "railway" : "FS",
     "epoch" : "V",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_READY",
     "livery" : "XMPR1",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "DCC_READY",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -47,19 +44,19 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
+    "is_dummy" : false
   }, {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "Le 108",
     "road_number" : "Le 108 014",
-    "series" : "",
+    "series" : null,
     "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "V",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "NO_DCC",
     "livery" : "XMPR1",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "NO_DCC",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -77,19 +74,19 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
+    "is_dummy" : false
   }, {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "Le 108",
     "road_number" : "Le 108 005",
-    "series" : "",
+    "series" : null,
     "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "V",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "NO_DCC",
     "livery" : "XMPR1",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "NO_DCC",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -107,19 +104,19 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
+    "is_dummy" : false
   }, {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "ALe 940",
     "road_number" : "ALe 940 017",
-    "series" : "",
+    "series" : null,
     "electric_multiple_unit_type" : "POWER_CAR",
     "railway" : "FS",
     "epoch" : "V",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_READY",
     "livery" : "XMPR1",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "DCC_READY",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -137,7 +134,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 4
+    "is_dummy" : false
+  } ]
 }

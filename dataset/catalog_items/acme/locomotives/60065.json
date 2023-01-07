@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "60065",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva FS D.342 4013 ANSALDO nello stato di origine con porta anteriore, livrea rosso, castano e Isabella.2 fanali, versione di origine, porta frontale, modanature, dep. Cagliari.Edizione limitata",
-      "en" : null
-    }
+    "it" : "Locomotiva FS D.342 4013 ANSALDO nello stato di origine con porta anteriore, livrea rosso, castano e Isabella.2 fanali, versione di origine, porta frontale, modanature, dep. Cagliari.Edizione limitata",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2012",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D342",
@@ -26,10 +23,10 @@
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "III",
+    "livery" : "rosso/castano/isabella",
     "depot" : "Cagliari",
     "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "rosso/castano/isabella",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 175.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

@@ -1,35 +1,32 @@
 {
   "brand" : "Roco",
   "item_number" : "73349",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "XMPR2 logo Trenitalia verde/rosso, griglie e finestrini mod., OML Milano, SCMT, DCC Sound",
-      "en" : null
-    }
+    "it" : "XMPR2 logo Trenitalia verde/rosso, griglie e finestrini mod., OML Milano, SCMT, DCC Sound",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E444R",
     "road_number" : "E444R 035",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "VI",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_READY",
     "livery" : "",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "DCC_READY",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

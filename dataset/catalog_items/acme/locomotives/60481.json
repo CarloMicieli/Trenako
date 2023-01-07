@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "60481",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica FS E.645 018 con griglie laterali supplementari nella livrea isabella, fregio rosso, griglie sperimentali, pantografi 52 strisciante piano, deposito di Milano Smistamento.",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica FS E.645 018 con griglie laterali supplementari nella livrea isabella, fregio rosso, griglie sperimentali, pantografi 52 strisciante piano, deposito di Milano Smistamento.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : "- Pantografi in metallo pressofuso con \"effetto piatto\".\n- Respingenti molleggiati.\n- Perfetta riproduzione del pancone con portalampada riportati.\n- Arredamento interno delle cabine con doppio maniglione del reostato e tachigrafo, riportati e decorati.\n- Motore di alta qualità CANON a 5 poli e meccanica con scatola degli ingranaggi in metallo, per un funzionamento dolce ma potente anche a basse velocità.\n- Cinematismo di allontanamento del gancio modellistico.\n- Predisposizione per il decoder digitale a 21 poli MTC, anche sonoro, con alloggiamento per l'altoparlante.\n- Illuminazione a microled bianchi e rossi a seconda del senso di marcia.",
-      "en" : null
-    }
+    "it" : "- Pantografi in metallo pressofuso con \"effetto piatto\".\n- Respingenti molleggiati.\n- Perfetta riproduzione del pancone con portalampada riportati.\n- Arredamento interno delle cabine con doppio maniglione del reostato e tachigrafo, riportati e decorati.\n- Motore di alta qualità CANON a 5 poli e meccanica con scatola degli ingranaggi in metallo, per un funzionamento dolce ma potente anche a basse velocità.\n- Cinematismo di allontanamento del gancio modellistico.\n- Predisposizione per il decoder digitale a 21 poli MTC, anche sonoro, con alloggiamento per l'altoparlante.\n- Illuminazione a microled bianchi e rossi a seconda del senso di marcia.",
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E645",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "V",
+    "livery" : "isabella",
     "depot" : "Milano Smistamento",
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "isabella",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

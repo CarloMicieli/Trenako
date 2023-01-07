@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60258",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva Diesel elettrica da manovra pesante \"Truman\" Ne 120 036 delle Ferrovie dello Stato con cabina corazzata e quattro marmitte, ex USATC, nella livrea castano adottata negli anni Cinquanta, 4 marmitte, fanali su pancone",
-      "en" : null
-    }
+    "it" : "Locomotiva Diesel elettrica da manovra pesante \"Truman\" Ne 120 036 delle Ferrovie dello Stato con cabina corazzata e quattro marmitte, ex USATC, nella livrea castano adottata negli anni Cinquanta, 4 marmitte, fanali su pancone",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2019",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "Ne 120",
     "road_number" : "Ne 120 036",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IIIa",
-    "depot" : "",
+    "livery" : "castano",
+    "depot" : null,
     "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
-    "livery" : "castano",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 153.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

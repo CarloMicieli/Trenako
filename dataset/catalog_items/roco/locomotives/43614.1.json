@@ -1,35 +1,32 @@
 {
   "brand" : "Roco",
   "item_number" : "43614.1",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Verde/isabella, vetri tondi, costruzione Sofer, deposito Udine",
-      "en" : null
-    }
+    "it" : "Verde/isabella, vetri tondi, costruzione Sofer, deposito Udine",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "1991",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D345",
     "road_number" : "D345 1065",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_READY",
     "livery" : "",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "DCC_READY",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

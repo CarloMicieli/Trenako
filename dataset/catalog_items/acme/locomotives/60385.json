@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60385",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica FS E 402B 114 nella livrea \"Frecciabianca\" bianco/grigio scuro fasce rosse, senza loghi, marcatura UIC",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica FS E 402B 114 nella livrea \"Frecciabianca\" bianco/grigio scuro fasce rosse, senza loghi, marcatura UIC",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : "Modello superdettagliato, motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione sound, fari illuminati anche il terzo faro con attivazione sia in analogico che in digitale con le funzioni F1 cabina A F2 cabina B.",
-      "en" : null
-    }
+    "it" : "Modello superdettagliato, motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione sound, fari illuminati anche il terzo faro con attivazione sia in analogico che in digitale con le funzioni F1 cabina A F2 cabina B.",
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E402 B",
     "road_number" : "E402 114",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "VI",
-    "depot" : "",
+    "livery" : "Frecciabianca",
+    "depot" : null,
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "Frecciabianca",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 223.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

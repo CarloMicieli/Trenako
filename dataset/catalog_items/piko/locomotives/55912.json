@@ -1,35 +1,32 @@
 {
   "brand" : "Piko",
   "item_number" : "55912",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva Diesel da manovra D 141 1023 nella livrea verde fasce gialle, corrimani gialli senza battipiede, senza griglie, DCC Sound, ganci digit.",
-      "en" : null
-    }
+    "it" : "Locomotiva Diesel da manovra D 141 1023 nella livrea verde fasce gialle, corrimani gialli senza battipiede, senza griglie, DCC Sound, ganci digit.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2021",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D141",
     "road_number" : "D141 1023",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVb",
+    "livery" : "arancio/fasce gialle",
     "depot" : "Savona",
     "dcc_interface" : "PLUX_22",
     "control" : "DCC_SOUND",
-    "livery" : "arancio/fasce gialle",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 152.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

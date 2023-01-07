@@ -1,35 +1,32 @@
 {
   "brand" : "Rivarossi/Hornby",
   "item_number" : "HR2768",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica E 402B 135 nella livrea \"Intercity Sun\" bianco fasce grigio/rosso, carenature grigio scuro",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica E 402B 135 nella livrea \"Intercity Sun\" bianco fasce grigio/rosso, carenature grigio scuro",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2019",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E402 B",
     "road_number" : "E402 173",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "VI",
-    "depot" : "",
+    "livery" : "bianco fasce grigio/rosso",
+    "depot" : null,
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "bianco fasce grigio/rosso",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 223.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

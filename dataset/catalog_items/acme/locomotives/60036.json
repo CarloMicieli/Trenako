@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "60036",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica E402 001 prototipo nella versione di origine rosso/grigio, striscianti curvi, marcatura sul vomere",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica E402 001 prototipo nella versione di origine rosso/grigio, striscianti curvi, marcatura sul vomere",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2010",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E402 A",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVb",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_READY",
     "livery" : "rosso/grigio",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "DCC_READY",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

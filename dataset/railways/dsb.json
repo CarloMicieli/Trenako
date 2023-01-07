@@ -5,10 +5,8 @@
   "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "DNK",
   "description" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
   "period_of_activity" : {
     "operating_since" : "1885-10-01",
@@ -25,8 +23,8 @@
   },
   "contact_info" : {
     "email" : null,
-    "website_url" : "https://www.dsb.dk",
-    "phone" : null
+    "phone" : null,
+    "website_url" : "https://www.dsb.dk"
   },
   "social" : {
     "facebook" : null,

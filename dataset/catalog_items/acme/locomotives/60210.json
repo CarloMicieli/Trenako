@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60210",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica FS E403 005 nella livrea XMPR, senza carenature, loghi FS laterali, 3 pantografi",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica FS E403 005 nella livrea XMPR, senza carenature, loghi FS laterali, 3 pantografi",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2010",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E403",
     "road_number" : "E403 005",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "Vb",
-    "depot" : "",
+    "livery" : "XMPR",
+    "depot" : null,
     "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "XMPR",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 230.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

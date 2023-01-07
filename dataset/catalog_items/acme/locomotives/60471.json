@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "60471",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Set formato dalla locomotiva elettrica E.633.003 in livrea provvisoria grigia con respingenti arancioni e la locomotiva elettrica E.444.051 (non motorizzata), come in servizio da Marzo a Giugno del 1980. Edizione Limitata 250 pezzi, con certificato numerato.",
-      "en" : null
-    }
+    "it" : "Set formato dalla locomotiva elettrica E.633.003 in livrea provvisoria grigia con respingenti arancioni e la locomotiva elettrica E.444.051 (non motorizzata), come in servizio da Marzo a Giugno del 1980. Edizione Limitata 250 pezzi, con certificato numerato.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : "Pantografi: E 633 Faiveley, E444 FS 52, Motore centrale con volani e trasmissione cardanica su entrambi i carrelli (E633), presa per decoder a 21 pin con predisposizione sound, fari illuminati bianco/rosso anche il terzo faro con micro led.",
-      "en" : null
-    }
+    "it" : "Pantografi: E 633 Faiveley, E444 FS 52, Motore centrale con volani e trasmissione cardanica su entrambi i carrelli (E633), presa per decoder a 21 pin con predisposizione sound, fari illuminati bianco/rosso anche il terzo faro con micro led.",
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",
+  "count" : 2,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E633",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
-    "depot" : "",
+    "livery" : "provvisoria grigia",
+    "depot" : null,
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "provvisoria grigia",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 206.0
@@ -47,19 +44,19 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
+    "is_dummy" : false
   }, {
     "category" : "LOCOMOTIVE",
     "class_name" : "E444",
     "road_number" : "E444 051",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_READY",
     "livery" : "",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "DCC_READY",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -77,7 +74,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : true
-  } ],
-  "count" : 2
+    "is_dummy" : true
+  } ]
 }

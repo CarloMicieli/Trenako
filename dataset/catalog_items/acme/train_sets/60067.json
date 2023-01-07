@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "60067",
+  "category" : "TRAIN_SETS",
   "scale" : "H0",
-  "category" : "TRAIN_SET",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Set D342 castano/isabella/rosso, stato di origine, 2 fanali, porta frontale, modanature, dep. Padova + carro riscaldo Vrz livrea castano",
-      "en" : null
-    }
+    "it" : "Set D342 castano/isabella/rosso, stato di origine, 2 fanali, porta frontale, modanature, dep. Padova + carro riscaldo Vrz livrea castano",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2012",
   "availability_status" : "AVAILABLE",
+  "count" : 2,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D342",
@@ -26,10 +23,10 @@
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IIIb",
+    "livery" : "castano/isabella/rosso",
     "depot" : "Padova",
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "castano/isabella/rosso",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 175.0
@@ -47,11 +44,12 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
+    "is_dummy" : false
   }, {
     "category" : "FREIGHT_CAR",
     "type_name" : "Vrz",
     "road_number" : "Vrz 808 914",
+    "freight_car_type" : null,
     "railway" : "FS",
     "epoch" : "IIIb",
     "livery" : "castano",
@@ -71,8 +69,6 @@
       "interior_lights" : "NO",
       "lights" : "NO",
       "spring_buffers" : "NO"
-    },
-    "dummy" : false
-  } ],
-  "count" : 2
+    }
+  } ]
 }

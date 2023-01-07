@@ -5,10 +5,8 @@
   "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "CZE",
   "description" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
   "period_of_activity" : {
     "operating_since" : "1993-01-01",
@@ -25,8 +23,8 @@
   },
   "contact_info" : {
     "email" : null,
-    "website_url" : "https://www.cd.cz",
-    "phone" : null
+    "phone" : null,
+    "website_url" : "https://www.cd.cz"
   },
   "social" : {
     "facebook" : "ceskedrahy",

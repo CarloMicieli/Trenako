@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "70011",
-  "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Carrozza ristorante per ETR500 livrea bianco/verde, logo FS Trenitalia (carrozza 5). Illuminazione interna montata di serie.",
-      "en" : null
-    }
+    "it" : "Carrozza ristorante per ETR500 livrea bianco/verde, logo FS Trenitalia (carrozza 5). Illuminazione interna montata di serie.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "ETR 500",
@@ -26,10 +23,10 @@
     "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "Vb",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "NO_DCC",
     "livery" : "livrea di origine bianco/verde",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "NO_DCC",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 303.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

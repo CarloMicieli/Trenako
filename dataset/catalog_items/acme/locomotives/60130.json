@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "60130",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica FS E646 118 nella livrea verde/grigio senza modanature, finestrini, gocciolatoio, portelloni bassi, fregio verde, dep. NA Sm.",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica FS E646 118 nella livrea verde/grigio senza modanature, finestrini, gocciolatoio, portelloni bassi, fregio verde, dep. NA Sm.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2008",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E646",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
+    "livery" : "verde/grigio",
     "depot" : "Napoli Smistamento",
     "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "verde/grigio",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

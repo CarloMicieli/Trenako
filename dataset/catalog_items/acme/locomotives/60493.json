@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60493",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica FS E652 123 nella livrea XMPR2, logo FS Trenitalia, vomere rosso, condotte alte, deposito Cervignano",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica FS E652 123 nella livrea XMPR2, logo FS Trenitalia, vomere rosso, condotte alte, deposito Cervignano",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : "Pantografi FS 52, Motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione sound Loudspeaker da 23mm, fari illuminati bianco/rosso anche il terzo faro con micro led.",
-      "en" : null
-    }
+    "it" : "Pantografi FS 52, Motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione sound Loudspeaker da 23mm, fari illuminati bianco/rosso anche il terzo faro con micro led.",
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2016",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E652",
     "road_number" : "E652 123",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "Vb/VI",
+    "livery" : "XMPR2",
     "depot" : "Cervignano",
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "XMPR2",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 206.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

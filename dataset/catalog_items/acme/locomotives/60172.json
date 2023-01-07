@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60172",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica EU 11 007 livrea PKP, versione di origine",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica EU 11 007 livrea PKP, versione di origine",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "EU11",
     "road_number" : "EU11-007",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "PKP",
     "epoch" : "V",
-    "depot" : "",
+    "livery" : "PKP",
+    "depot" : null,
     "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "PKP",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 223.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

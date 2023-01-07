@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "70064",
-  "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "“Frecciarossa” con 4 livelli di servizio, intermedia Standard (carrozza 10)",
-      "en" : null
-    }
+    "it" : "“Frecciarossa” con 4 livelli di servizio, intermedia Standard (carrozza 10)",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "ETR 500",
@@ -26,10 +23,10 @@
     "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "VI",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "NO_DCC",
     "livery" : "“Frecciarossa” Alta Velocità",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "NO_DCC",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 303.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

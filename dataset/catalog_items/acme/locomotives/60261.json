@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "60261",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica FS E 656 185 \"Caimano\" nella livrea blu/grigio con respingenti tondi, senza smorzatori, senza condizionatori, striscianti curvi, deposito locomotive Torino",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica FS E 656 185 \"Caimano\" nella livrea blu/grigio con respingenti tondi, senza smorzatori, senza condizionatori, striscianti curvi, deposito locomotive Torino",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E656",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV/V",
+    "livery" : "blu/grigio",
     "depot" : "Torino",
     "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "blu/grigio",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

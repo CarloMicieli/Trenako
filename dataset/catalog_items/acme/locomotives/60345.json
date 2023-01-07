@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60345",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva diesel D442 4001 nella livrea isabella con fasce rosse, telaio tagliato rosso/castano con modanature",
-      "en" : null
-    }
+    "it" : "Locomotiva diesel D442 4001 nella livrea isabella con fasce rosse, telaio tagliato rosso/castano con modanature",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D442",
     "road_number" : "D442 4001",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVa",
-    "depot" : "",
+    "livery" : "isabella con fasce rosse",
+    "depot" : null,
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "isabella con fasce rosse",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 180.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

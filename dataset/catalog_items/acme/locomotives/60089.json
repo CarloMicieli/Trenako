@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "60089",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica FS E655 089 nella livrea XMPR Trenitalia Cargo, nuovo logo FS, condiz., tubi blu, resp. tondi, marc. UIC, IMC MI Sm.",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica FS E655 089 nella livrea XMPR Trenitalia Cargo, nuovo logo FS, condiz., tubi blu, resp. tondi, marc. UIC, IMC MI Sm.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : "Modello con motore 5 poli centrale e trasmissione a doppio cardano con volani per la distribuzione a tutti gli assi, luci a led bianche e rosse con inversione automatica più terzo faro, bellissimi pantografi ACME FS 52, predisposta per decoder DCC 8pin",
-      "en" : null
-    }
+    "it" : "Modello con motore 5 poli centrale e trasmissione a doppio cardano con volani per la distribuzione a tutti gli assi, luci a led bianche e rosse con inversione automatica più terzo faro, bellissimi pantografi ACME FS 52, predisposta per decoder DCC 8pin",
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E656",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "VI",
-    "depot" : "Milano Smistamento",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_READY",
     "livery" : "livrea",
+    "depot" : "Milano Smistamento",
+    "dcc_interface" : null,
+    "control" : "DCC_READY",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

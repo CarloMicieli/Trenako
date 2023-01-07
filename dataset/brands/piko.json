@@ -4,10 +4,8 @@
   "organization_entity_type" : "OTHER",
   "group_name" : null,
   "description" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
   "address" : {
     "street_address" : "Lutherstraße 30",

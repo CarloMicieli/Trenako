@@ -1,23 +1,20 @@
 {
   "brand" : "Rivarossi/Hornby",
   "item_number" : "HR2773",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva E646 170 \"NAVETTA\" in livrea verde magnolia/grigio perla, vetri di origine, griglie laterali, senza gocciolatoio, deposito Milano Centrale",
-      "en" : null
-    }
+    "it" : "Locomotiva E646 170 \"NAVETTA\" in livrea verde magnolia/grigio perla, vetri di origine, griglie laterali, senza gocciolatoio, deposito Milano Centrale",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2020",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E646",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVb",
+    "livery" : "verde magnolia/grigio perla",
     "depot" : "Milano Centrale",
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "verde magnolia/grigio perla",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 211.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

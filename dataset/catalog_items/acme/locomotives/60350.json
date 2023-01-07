@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "60350",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva diesel FS D342 2001 \"Fantasma\" di costruzione Breda nella livrea castano/isabella, telaio rosso, porta frontale, 2 fanali, modanature. Edizione Limitata e certificata.",
-      "en" : null
-    }
+    "it" : "Locomotiva diesel FS D342 2001 \"Fantasma\" di costruzione Breda nella livrea castano/isabella, telaio rosso, porta frontale, 2 fanali, modanature. Edizione Limitata e certificata.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2012",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D342",
@@ -26,10 +23,10 @@
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "III",
-    "depot" : "",
+    "livery" : "castano/isabella",
+    "depot" : null,
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "castano/isabella",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 170.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

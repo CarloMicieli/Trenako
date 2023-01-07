@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60170",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica E 405 022 livrea temporanea ex PKP, frontali rossi",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica E 405 022 livrea temporanea ex PKP, frontali rossi",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2009",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E405",
     "road_number" : "E405 022",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "Vb",
-    "depot" : "",
+    "livery" : "ex PKP",
+    "depot" : null,
     "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "ex PKP",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 223.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

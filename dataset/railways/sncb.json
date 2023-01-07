@@ -5,10 +5,8 @@
   "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "BEL",
   "description" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
   "period_of_activity" : {
     "operating_since" : "1926-01-01",
@@ -25,8 +23,8 @@
   },
   "contact_info" : {
     "email" : null,
-    "website_url" : "https://www.belgiantrain.be",
-    "phone" : null
+    "phone" : null,
+    "website_url" : "https://www.belgiantrain.be"
   },
   "social" : {
     "facebook" : "SNCB",

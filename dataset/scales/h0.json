@@ -1,10 +1,8 @@
 {
   "name" : "H0",
   "description" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
   "ratio" : 87.0,
   "gauge" : {

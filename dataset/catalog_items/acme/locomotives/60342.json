@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60342",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva diesel D442 401 nella livrea isabella/bianco/rosso, tetto blu con “mezzaluna”, fregio Ansaldo triangolare, carenature",
-      "en" : null
-    }
+    "it" : "Locomotiva diesel D442 401 nella livrea isabella/bianco/rosso, tetto blu con “mezzaluna”, fregio Ansaldo triangolare, carenature",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : "Locomotiva diesel-idraulica D 442.401 nello stato di servizio dei primi anni Sessanta, con carenatura dei carrelli integrale e livrea originale con tetto blu, delle FS. Edizione limita a 500 pz. Telaio in metallo pressofuso, motore Mashima con 2 volani e trasmissione cardanica su tutti gli assi con sospensione isostatica, presa di corrente su tutte le ruote e luci a microled bianche e rosse a seconda del senso di marcia, connettore NEM per il collegamento del decoder a 21 poli. Epoca III",
-      "en" : null
-    }
+    "it" : "Locomotiva diesel-idraulica D 442.401 nello stato di servizio dei primi anni Sessanta, con carenatura dei carrelli integrale e livrea originale con tetto blu, delle FS. Edizione limita a 500 pz. Telaio in metallo pressofuso, motore Mashima con 2 volani e trasmissione cardanica su tutti gli assi con sospensione isostatica, presa di corrente su tutte le ruote e luci a microled bianche e rosse a seconda del senso di marcia, connettore NEM per il collegamento del decoder a 21 poli. Epoca III",
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2013",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D442",
     "road_number" : "D442 401",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "III",
-    "depot" : "",
+    "livery" : "isabella/bianco/rosso",
+    "depot" : null,
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "isabella/bianco/rosso",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 178.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

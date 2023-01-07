@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "70069",
-  "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Verde/grigio, set 4 elementi, fanali di origine, pantografi 52",
-      "en" : null
-    }
+    "it" : "Verde/grigio, set 4 elementi, fanali di origine, pantografi 52",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "ETR 250",
     "road_number" : "ETR 251",
-    "series" : "",
+    "series" : null,
     "electric_multiple_unit_type" : "POWER_CAR",
     "railway" : "FS",
     "epoch" : "IIIb",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_READY",
     "livery" : "",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "DCC_READY",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

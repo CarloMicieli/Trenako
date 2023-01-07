@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60496",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica E 652 158 nella livrea XMPR con logo tricolore, della Divisione Cargo FS, 78 poli esterno, vomere rosso",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica E 652 158 nella livrea XMPR con logo tricolore, della Divisione Cargo FS, 78 poli esterno, vomere rosso",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2020",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E652",
     "road_number" : "E652 158",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "VI",
-    "depot" : "",
+    "livery" : "XMPR2",
+    "depot" : null,
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "XMPR2",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 206.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

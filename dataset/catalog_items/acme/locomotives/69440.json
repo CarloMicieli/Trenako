@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "69440",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotive elettrica FS E636 351 XMPR Trenitalia prima versione, luci rosse, terzo faro alto, aria condizata, OMR La Spezia",
-      "en" : null
-    }
+    "it" : "Locomotive elettrica FS E636 351 XMPR Trenitalia prima versione, luci rosse, terzo faro alto, aria condizata, OMR La Spezia",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E636",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "Vb",
+    "livery" : "XMPR",
     "depot" : "La Spezia",
     "dcc_interface" : "MTC_21",
     "control" : "DCC_SOUND",
-    "livery" : "XMPR",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

@@ -1,35 +1,32 @@
 {
   "brand" : "Rivarossi/Hornby",
   "item_number" : "HR2905S",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica E402B 142 nella livrea RFI giallo/blu, loghi grandi su fiancate",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica E402B 142 nella livrea RFI giallo/blu, loghi grandi su fiancate",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E402 B",
     "road_number" : "E402 142",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "VI",
-    "depot" : "",
+    "livery" : "giallo/blu",
+    "depot" : null,
     "dcc_interface" : "MTC_21",
     "control" : "DCC_SOUND",
-    "livery" : "giallo/blu",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 223.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

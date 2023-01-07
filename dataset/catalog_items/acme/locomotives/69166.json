@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "69166",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica E.646.185 delle Ferrovie dello Stato (FS). Stato d'origine con modanature, scalette piccole, tientibene corti, carrelli castano e prese ad orecchia su ambo i lati e cornici laterali dei finestrini in caucciù chiaro.",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica E.646.185 delle Ferrovie dello Stato (FS). Stato d'origine con modanature, scalette piccole, tientibene corti, carrelli castano e prese ad orecchia su ambo i lati e cornici laterali dei finestrini in caucciù chiaro.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E646",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IIIb",
-    "depot" : "",
+    "livery" : "verde/grigio",
+    "depot" : null,
     "dcc_interface" : "MTC_21",
     "control" : "DCC_SOUND",
-    "livery" : "verde/grigio",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60491",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica FS E 652.109 (Tigre) nella livrea grigio perla e blu orientale con pantografi FS 52.Condotte alte, numeri grandi, deposito Napoli Sm.",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica FS E 652.109 (Tigre) nella livrea grigio perla e blu orientale con pantografi FS 52.Condotte alte, numeri grandi, deposito Napoli Sm.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E652",
     "road_number" : "E652 109",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "V",
+    "livery" : "grigio/blu",
     "depot" : "Napoli Smistamento",
     "dcc_interface" : "MTC_21",
     "control" : "DCC_READY",
-    "livery" : "grigio/blu",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 206.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

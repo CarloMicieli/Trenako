@@ -1,23 +1,20 @@
 {
   "brand" : "Piko",
   "item_number" : "52850",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Arancio fasce gialle, logo inclinato, corrimani con battipiede (52851 DCC Sound)",
-      "en" : null
-    }
+    "it" : "Arancio fasce gialle, logo inclinato, corrimani con battipiede (52851 DCC Sound)",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2021",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D145",
@@ -26,10 +23,10 @@
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV/V",
-    "depot" : "",
+    "livery" : "arancio/fasce gialle",
+    "depot" : null,
     "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
-    "livery" : "arancio/fasce gialle",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 152.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

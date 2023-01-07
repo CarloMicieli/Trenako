@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "60120",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica delle FS E.645 054 (seconda serie) in livrea castano e Isabella, senza modanature, con gocciolatoio e fregio rosso. Deposito Milano Smistamento, epoca IV",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica delle FS E.645 054 (seconda serie) in livrea castano e Isabella, senza modanature, con gocciolatoio e fregio rosso. Deposito Milano Smistamento, epoca IV",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2008",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E645",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVb",
+    "livery" : "castano/isabella",
     "depot" : "Milano Smistamento",
     "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "castano/isabella",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

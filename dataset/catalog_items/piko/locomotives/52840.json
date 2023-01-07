@@ -1,23 +1,20 @@
 {
   "brand" : "Piko",
   "item_number" : "52840",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Livrea arancio fasce gialle, logo TV, D.L. Milano Sm.to (52842 DCC Sound)",
-      "en" : null
-    }
+    "it" : "Livrea arancio fasce gialle, logo TV, D.L. Milano Sm.to (52842 DCC Sound)",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2019",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D145",
@@ -26,10 +23,10 @@
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV/V",
+    "livery" : "arancio/fasce gialle",
     "depot" : "Milano Smistamento",
     "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
-    "livery" : "arancio/fasce gialle",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 152.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

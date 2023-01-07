@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "69430",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica FS E636 080 nella livrea blu/grigio, coprigiunto basso, moderabile, pantografi 42LR, dep. Verona. Edizione limitata e certificata con portachiavi in acciaio.",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica FS E636 080 nella livrea blu/grigio, coprigiunto basso, moderabile, pantografi 42LR, dep. Verona. Edizione limitata e certificata con portachiavi in acciaio.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2014",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E636",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IVb",
+    "livery" : "blu/grigio",
     "depot" : "Verona",
     "dcc_interface" : "MTC_21",
     "control" : "DCC_SOUND",
-    "livery" : "blu/grigio",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

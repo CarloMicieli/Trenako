@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60251",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva diesel FS D 143 3002 \"Truman\" nella livrea verde fasce gialle, telaio nero, corrimani con battipiede, dep. Ancona",
-      "en" : null
-    }
+    "it" : "Locomotiva diesel FS D 143 3002 \"Truman\" nella livrea verde fasce gialle, telaio nero, corrimani con battipiede, dep. Ancona",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2011",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "D143",
     "road_number" : "D143 3002",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV/V",
+    "livery" : "verde con fasce gialle",
     "depot" : "Ancona",
     "dcc_interface" : "NEM_651",
     "control" : "DCC_READY",
-    "livery" : "verde con fasce gialle",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 153.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

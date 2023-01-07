@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60257",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva diesel elettrica da manovra pesante \"Truman\" USATC 1256, immatricolata dalle FS nello stato degli anni quaranta dopo lo sbarco alleato in Sicilia, livrea beige, un fanale centrale",
-      "en" : null
-    }
+    "it" : "Locomotiva diesel elettrica da manovra pesante \"Truman\" USATC 1256, immatricolata dalle FS nello stato degli anni quaranta dopo lo sbarco alleato in Sicilia, livrea beige, un fanale centrale",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2019",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "Ne 120",
     "road_number" : "U.S.A. 1256",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IIb/IIIa",
-    "depot" : "",
+    "livery" : "beige",
+    "depot" : null,
     "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
-    "livery" : "beige",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 153.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

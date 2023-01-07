@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60173",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "ocomotiva elettrica E 405 023 nella livrea XMPR FS Trenitalia, logo verde/rosso",
-      "en" : null
-    }
+    "it" : "ocomotiva elettrica E 405 023 nella livrea XMPR FS Trenitalia, logo verde/rosso",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "",
-  "availability_status" : "ANNOUNCED",
+  "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E405",
     "road_number" : "E405 023",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "VI",
-    "depot" : "",
+    "livery" : "XMPR",
+    "depot" : null,
     "dcc_interface" : "NEM_652",
     "control" : "DCC_READY",
-    "livery" : "XMPR",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 223.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

@@ -1,35 +1,32 @@
 {
   "brand" : "ViTrains",
   "item_number" : "2703",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica e. 326 006 in livrea castano/isabella delle FS ep. III. Nuova numerazione, nuovi vetri e asse gommato di serie",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica e. 326 006 in livrea castano/isabella delle FS ep. III. Nuova numerazione, nuovi vetri e asse gommato di serie",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2022",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E326",
     "road_number" : "E326 006",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "III",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_SOUND",
     "livery" : "castano/isabella",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "DCC_SOUND",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 188.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

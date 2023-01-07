@@ -1,23 +1,20 @@
 {
   "brand" : "Os.Kar",
   "item_number" : "2061",
-  "scale" : "H0",
   "category" : "ELECTRIC_MULTIPLE_UNITS",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Elettromotrice Ale.540 013 e rimorchiata Le.760 003, FSElettromotrice Ale.540 013 con rimorchiata Le.760 003 delle Ferrovie dello Stato. Epoca IV.Nella livrea castano isabella, il modello è dotato di illuminazione interna di serie, decoder Plux22 con predisposizione sonoro.",
-      "en" : null
-    }
+    "it" : "Elettromotrice Ale.540 013 e rimorchiata Le.760 003, FSElettromotrice Ale.540 013 con rimorchiata Le.760 003 delle Ferrovie dello Stato. Epoca IV.Nella livrea castano isabella, il modello è dotato di illuminazione interna di serie, decoder Plux22 con predisposizione sonoro.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2021",
   "availability_status" : "AVAILABLE",
+  "count" : 2,
   "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "ALe 540",
@@ -26,10 +23,10 @@
     "electric_multiple_unit_type" : "POWER_CAR",
     "railway" : "FS",
     "epoch" : "IVa",
-    "depot" : "",
+    "livery" : "castano/isabella",
+    "depot" : null,
     "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
-    "livery" : "castano/isabella",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -47,7 +44,7 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
+    "is_dummy" : false
   }, {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "Le 760",
@@ -56,10 +53,10 @@
     "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
     "epoch" : "IVa",
-    "depot" : "",
-    "dcc_interface" : "NONE",
-    "control" : "NO_DCC",
     "livery" : "castano/isabella",
+    "depot" : null,
+    "dcc_interface" : null,
+    "control" : "NO_DCC",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : null
@@ -77,7 +74,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 2
+    "is_dummy" : false
+  } ]
 }

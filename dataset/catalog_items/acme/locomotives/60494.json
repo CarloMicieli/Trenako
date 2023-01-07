@@ -1,35 +1,32 @@
 {
   "brand" : "ACME",
   "item_number" : "60494",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica E.652.056 delle Ferrovie dello Stato nella livrea XMPR2, vomere rosso, pantografi FS52, nello stato di origine 2015.",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica E.652.056 delle Ferrovie dello Stato nella livrea XMPR2, vomere rosso, pantografi FS52, nello stato di origine 2015.",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : "Pantografi FS 52, motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione per il sonoro. Loudspeaker da 23mm, fari illuminati bianco/rosso anche il terzo faro con micro led.",
-      "en" : null
-    }
+    "it" : "Pantografi FS 52, motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione per il sonoro. Loudspeaker da 23mm, fari illuminati bianco/rosso anche il terzo faro con micro led.",
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2017",
   "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E652",
     "road_number" : "E652 056",
-    "series" : "",
+    "series" : null,
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "VI",
-    "depot" : "Udine",
-    "dcc_interface" : "NONE",
-    "control" : "DCC_READY",
     "livery" : "XMPR2",
+    "depot" : "Udine",
+    "dcc_interface" : null,
+    "control" : "DCC_READY",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 206.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }

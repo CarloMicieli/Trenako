@@ -1,23 +1,20 @@
 {
   "brand" : "ACME",
   "item_number" : "69128",
-  "scale" : "H0",
   "category" : "LOCOMOTIVES",
+  "scale" : "H0",
+  "power_method" : "DC",
   "description" : {
-    "values" : {
-      "it" : "Locomotiva elettrica 646 ??? in livrea verde/grigio con modanature, prese di aria modificate, scalette grandi (69128 DCC Sound)",
-      "en" : null
-    }
+    "it" : "Locomotiva elettrica 646 ??? in livrea verde/grigio con modanature, prese di aria modificate, scalette grandi (69128 DCC Sound)",
+    "en" : null
   },
   "details" : {
-    "values" : {
-      "it" : null,
-      "en" : null
-    }
+    "it" : null,
+    "en" : null
   },
-  "power_method" : "DC",
   "delivery_date" : "2023",
-  "availability_status" : "ANNOUNCED",
+  "availability_status" : "AVAILABLE",
+  "count" : 1,
   "rolling_stocks" : [ {
     "category" : "LOCOMOTIVE",
     "class_name" : "E646",
@@ -26,10 +23,10 @@
     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
     "railway" : "FS",
     "epoch" : "IV",
-    "depot" : "",
+    "livery" : "grigio perla/verde magnolia",
+    "depot" : null,
     "dcc_interface" : "MTC_21",
     "control" : "DCC_SOUND",
-    "livery" : "grigio perla/verde magnolia",
     "length_over_buffer" : {
       "inches" : null,
       "millimeters" : 210.0
@@ -47,7 +44,6 @@
       "lights" : "YES",
       "spring_buffers" : "NO"
     },
-    "dummy" : false
-  } ],
-  "count" : 1
+    "is_dummy" : false
+  } ]
 }
