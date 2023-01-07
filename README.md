@@ -2,8 +2,7 @@
 
 ![license](https://img.shields.io/github/license/CarloMicieli/trenako)
 ![GitHub last commit](https://img.shields.io/github/last-commit/CarloMicieli/trenako)
-[![main](https://github.com/CarloMicieli/trenako/actions/workflows/main.yml/badge.svg)](https://github.com/CarloMicieli/trenako/actions/workflows/main.yml)
-[![dev](https://github.com/CarloMicieli/trenako/actions/workflows/dev.yml/badge.svg)](https://github.com/CarloMicieli/trenako/actions/workflows/dev.yml)
+[![CI (Rust)](https://github.com/CarloMicieli/trenako/actions/workflows/rust-ci.yml/badge.svg)](https://github.com/CarloMicieli/trenako/actions/workflows/rust-ci.yml)
 [![codecov](https://codecov.io/gh/CarloMicieli/trenako/branch/dev/graph/badge.svg?token=i8xoC46ZYN)](https://codecov.io/gh/CarloMicieli/trenako)
 
 A website for model railway collectors.
