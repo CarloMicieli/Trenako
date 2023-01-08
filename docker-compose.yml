@@ -80,6 +80,21 @@ services:
       timeout: 10s
       retries: 5
 
+  seeding:
+    image: ghr.io/carlomicieli/trenako-cli:latest
+    build:
+      context: .
+      dockerfile: docker/cli.dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+      server:
+        condition: service_healthy
+    volumes:
+      - ./dataset:/dataset
+    networks:
+      - backend
+
   openapi:
     image: ghr.io/carlomicieli/trenako-openapi:latest
     build:

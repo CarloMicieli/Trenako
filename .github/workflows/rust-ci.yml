@@ -106,11 +106,20 @@ jobs:
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
             type=sha          
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image (server)
         uses: docker/build-push-action@v3
         with:
           context: .
           file: docker/server.dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push Docker image (cli)
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: docker/cli.dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
