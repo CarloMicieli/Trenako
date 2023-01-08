@@ -4,7 +4,7 @@ COPY ./migrations ./migrations
 
 RUN cargo install sqlx-cli --no-default-features --features native-tls,postgres
 
-FROM debian:bullseye as runtime
+FROM debian:bullseye-slim as runtime
 
 LABEL maintainer="Carlo Micieli <mail@trenako.com>"
 LABEL description="The trenako database migrations"

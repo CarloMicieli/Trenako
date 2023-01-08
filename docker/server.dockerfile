@@ -39,7 +39,7 @@ LABEL description="The trenako backend component"
 ARG APP=/usr/src/app
 
 HEALTHCHECK --interval=5m --timeout=3s \
-  CMD curl -f http://localhost/health_check || exit 1
+  CMD curl -f http://localhost/health-check || exit 1
 
 RUN apt-get update \
     && apt-get install -y ca-certificates tzdata curl \
