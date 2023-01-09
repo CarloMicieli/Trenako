@@ -22,7 +22,7 @@ impl PeriodOfActivity {
         operating_until: Option<NaiveDate>,
         status: RailwayStatus,
     ) -> Result<Self, PeriodOfActivityError> {
-        validate_dates(operating_since, operating_until)?;
+        validate_inputs(operating_since, operating_until, status)?;
 
         Ok(PeriodOfActivity {
             operating_since,
@@ -59,26 +59,30 @@ impl PeriodOfActivity {
     }
 }
 
-fn validate_dates(
+fn validate_inputs(
     operating_since: Option<NaiveDate>,
     operating_until: Option<NaiveDate>,
+    status: RailwayStatus,
 ) -> Result<(), PeriodOfActivityError> {
-    match (operating_until, operating_since) {
+    match (operating_since, operating_until) {
         (Some(since), Some(until)) => {
-            if since > until {
+            if since < until {
                 Ok(())
             } else {
-                Err(PeriodOfActivityError::SinceDateAfterUntil)
+                Err(PeriodOfActivityError::UntilDateBeforeSinceDate)
             }
         }
+        (_, Some(_)) if status == RailwayStatus::Active => Err(PeriodOfActivityError::UntilDateForActiveRailway),
         _ => Ok(()),
     }
 }
 
 #[derive(Debug, Eq, PartialEq, Error)]
 pub enum PeriodOfActivityError {
-    #[error("the operating since date must happen before of any until date")]
-    SinceDateAfterUntil,
+    #[error("the operating since date must happen before the until date")]
+    UntilDateBeforeSinceDate,
+    #[error("active railways cannot have an operating until date")]
+    UntilDateForActiveRailway,
 }
 
 #[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display, Type)]
@@ -128,10 +132,28 @@ mod test {
         #[rstest]
         #[case(None, None, RailwayStatus::Active, Ok(PeriodOfActivity::default()))]
         #[case(
-            d1900_12_25(),
-            d1900_12_24(),
+            Some(d1900_12_25()),
+            None,
+            RailwayStatus::Active,
+            Ok(PeriodOfActivity::active_railway(d1900_12_25()))
+        )]
+        #[case(
+            Some(d1900_12_24()),
+            Some(d1900_12_25()),
             RailwayStatus::Inactive,
-            Err(PeriodOfActivityError::SinceDateAfterUntil)
+            Ok(PeriodOfActivity::inactive_railway(d1900_12_24(), d1900_12_25()))
+        )]
+        #[case(
+            None,
+            Some(d1900_12_25()),
+            RailwayStatus::Active,
+            Err(PeriodOfActivityError::UntilDateForActiveRailway)
+        )]
+        #[case(
+            Some(d1900_12_25()),
+            Some(d1900_12_24()),
+            RailwayStatus::Inactive,
+            Err(PeriodOfActivityError::UntilDateBeforeSinceDate)
         )]
         fn it_should_validate_the_inputs(
             #[case] since: Option<NaiveDate>,
@@ -143,12 +165,12 @@ mod test {
             assert_eq!(expected, result);
         }
 
-        fn d1900_12_24() -> Option<NaiveDate> {
-            Some(NaiveDate::from_ymd_opt(1900, 12, 24).unwrap())
+        fn d1900_12_24() -> NaiveDate {
+            NaiveDate::from_ymd_opt(1900, 12, 24).unwrap()
         }
 
-        fn d1900_12_25() -> Option<NaiveDate> {
-            Some(NaiveDate::from_ymd_opt(1900, 12, 25).unwrap())
+        fn d1900_12_25() -> NaiveDate {
+            NaiveDate::from_ymd_opt(1900, 12, 25).unwrap()
         }
     }
 
