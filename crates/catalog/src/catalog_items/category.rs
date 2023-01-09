@@ -31,6 +31,28 @@ pub enum Category {
     Railcars,
 }
 
+/// The enumeration of the rolling stock categories.
+#[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Type)]
+#[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
+#[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "catalog_item_category", rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum RollingStockCategory {
+    /// The steam locomotives category
+    Locomotive,
+
+    /// The freight cars category
+    FreightCar,
+
+    /// The passenger cars category
+    PassengerCar,
+
+    /// The electric multiple units category
+    ElectricMultipleUnit,
+
+    /// The railcars category
+    Railcar,
+}
+
 /// The different kind of freight cars
 #[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]

@@ -1,5 +1,5 @@
 use crate::catalog_items::category::{
-    Category, ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType,
+    ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType, RollingStockCategory,
 };
 use crate::catalog_items::control::{Control, DccInterface};
 use crate::catalog_items::epoch::Epoch;
@@ -314,13 +314,13 @@ impl RollingStock {
     }
 
     /// The category for this rolling stock
-    pub fn category(&self) -> Category {
+    pub fn category(&self) -> RollingStockCategory {
         match self {
-            RollingStock::ElectricMultipleUnit { .. } => Category::ElectricMultipleUnits,
-            RollingStock::Locomotive { .. } => Category::Locomotives,
-            RollingStock::FreightCar { .. } => Category::FreightCars,
-            RollingStock::PassengerCar { .. } => Category::PassengerCars,
-            RollingStock::Railcar { .. } => Category::Railcars,
+            RollingStock::ElectricMultipleUnit { .. } => RollingStockCategory::ElectricMultipleUnit,
+            RollingStock::Locomotive { .. } => RollingStockCategory::Locomotive,
+            RollingStock::FreightCar { .. } => RollingStockCategory::FreightCar,
+            RollingStock::PassengerCar { .. } => RollingStockCategory::PassengerCar,
+            RollingStock::Railcar { .. } => RollingStockCategory::Railcar,
         }
     }
 
@@ -540,7 +540,7 @@ mod test {
             );
 
             assert_eq!(id, locomotive.id());
-            assert_eq!(Category::Locomotives, locomotive.category());
+            assert_eq!(RollingStockCategory::Locomotive, locomotive.category());
             assert_eq!(&Epoch::IV, locomotive.epoch());
             assert_eq!(Some("blu/grigio"), locomotive.livery());
             assert_eq!(Some(&length), locomotive.length_over_buffer());
@@ -577,7 +577,7 @@ mod test {
             );
 
             assert_eq!(id, power_car.id());
-            assert_eq!(Category::ElectricMultipleUnits, power_car.category());
+            assert_eq!(RollingStockCategory::ElectricMultipleUnit, power_car.category());
             assert_eq!(&Epoch::IV, power_car.epoch());
             assert_eq!(Some("livrea originale giallo/arancio"), power_car.livery());
             assert_eq!(Some(&length), power_car.length_over_buffer());
@@ -610,7 +610,7 @@ mod test {
             );
 
             assert_eq!(id, passenger_car.id());
-            assert_eq!(Category::PassengerCars, passenger_car.category());
+            assert_eq!(RollingStockCategory::PassengerCar, passenger_car.category());
             assert_eq!(&Epoch::V, passenger_car.epoch());
             assert_eq!(Some("XMPR"), passenger_car.livery());
             assert_eq!(Some(&length), passenger_car.length_over_buffer());
@@ -647,7 +647,7 @@ mod test {
             );
 
             assert_eq!(id, power_car.id());
-            assert_eq!(Category::Railcars, power_car.category());
+            assert_eq!(RollingStockCategory::Railcar, power_car.category());
             assert_eq!(&Epoch::IIIb, power_car.epoch());
             assert_eq!(Some("verde lichene/giallo coloniale"), power_car.livery());
             assert_eq!(Some(&length), power_car.length_over_buffer());
@@ -681,7 +681,7 @@ mod test {
             );
 
             assert_eq!(id, freight_car.id());
-            assert_eq!(Category::FreightCars, freight_car.category());
+            assert_eq!(RollingStockCategory::FreightCar, freight_car.category());
             assert_eq!(&epoch, freight_car.epoch());
             assert_eq!(Some("castano"), freight_car.livery());
             assert_eq!(Some(&length), freight_car.length_over_buffer());

@@ -1,5 +1,5 @@
 use crate::catalog_items::category::{
-    ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType,
+    ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType, RollingStockCategory,
 };
 use crate::catalog_items::control::{Control, DccInterface};
 use crate::catalog_items::length_over_buffer::LengthOverBuffer;
@@ -138,4 +138,17 @@ pub enum RollingStockRequest {
         /// indicate whether the rolling stock has a motor or not
         is_dummy: bool,
     },
+}
+
+impl RollingStockRequest {
+    /// Returns the rolling stock category
+    pub fn category(&self) -> RollingStockCategory {
+        match self {
+            RollingStockRequest::ElectricMultipleUnitRequest { .. } => RollingStockCategory::ElectricMultipleUnit,
+            RollingStockRequest::FreightCarRequest { .. } => RollingStockCategory::FreightCar,
+            RollingStockRequest::LocomotiveRequest { .. } => RollingStockCategory::Locomotive,
+            RollingStockRequest::PassengerCarRequest { .. } => RollingStockCategory::PassengerCar,
+            RollingStockRequest::RailcarRequest { .. } => RollingStockCategory::Railcar,
+        }
+    }
 }

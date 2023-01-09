@@ -15,8 +15,15 @@ CREATE TYPE organization_entity_type AS ENUM (
     'REGISTERED_SOLE_TRADER',
     'SOLE_TRADER',
     'STATE_OWNED_ENTERPRISE'
-);
+    );
 CREATE TYPE railway_status AS ENUM ('ACTIVE', 'INACTIVE');
+CREATE TYPE rolling_stock_category AS ENUM (
+    'LOCOMOTIVE',
+    'FREIGHT_CAR',
+    'PASSENGER_CAR',
+    'ELECTRIC_MULTIPLE_UNIT',
+    'RAILCAR'
+    );
 CREATE TYPE catalog_item_category AS ENUM (
     'LOCOMOTIVES',
     'TRAIN_SETS',
@@ -25,20 +32,20 @@ CREATE TYPE catalog_item_category AS ENUM (
     'PASSENGER_CARS',
     'ELECTRIC_MULTIPLE_UNITS',
     'RAILCARS'
-);
+    );
 CREATE TYPE feature_flag AS ENUM ('YES', 'NO', 'NOT_AVAILABLE');
 CREATE TYPE power_method AS ENUM ('AC', 'DC', 'TRIX_EXPRESS');
 CREATE TYPE availability_status AS ENUM (
     'ANNOUNCED',
     'AVAILABLE',
     'DISCONTINUED'
-);
+    );
 CREATE TYPE control AS ENUM (
     'DCC',
     'DCC_READY',
     'DCC_SOUND',
     'NO_DCC'
-);
+    );
 CREATE TYPE dcc_interface AS ENUM (
     'MTC_21',
     'NEM_651',
@@ -49,12 +56,12 @@ CREATE TYPE dcc_interface AS ENUM (
     'PLUX_16',
     'PLUX_22',
     'PLUX_8'
-);
+    );
 CREATE TYPE locomotive_type AS ENUM (
     'DIESEL_LOCOMOTIVE',
     'ELECTRIC_LOCOMOTIVE',
     'STEAM_LOCOMOTIVE'
-);
+    );
 CREATE TYPE passenger_car_type AS ENUM (
     'BAGGAGE_CAR',
     'COMBINE_CAR',
@@ -67,7 +74,7 @@ CREATE TYPE passenger_car_type AS ENUM (
     'OPEN_COACH',
     'RAILWAY_POST_OFFICE',
     'SLEEPING_CAR'
-);
+    );
 CREATE TYPE electric_multiple_unit_type AS ENUM (
     'DRIVING_CAR',
     'HIGH_SPEED_TRAIN',
@@ -75,11 +82,11 @@ CREATE TYPE electric_multiple_unit_type AS ENUM (
     'POWER_CAR',
     'TRAILER_CAR',
     'TRAIN_SET'
-);
+    );
 CREATE TYPE railcar_type AS ENUM (
     'POWER_CAR',
     'TRAILER_CAR'
-);
+    );
 CREATE TYPE freight_car_type AS ENUM (
     'AUTO_TRANSPORT_CARS',
     'BRAKE_WAGON',
@@ -100,7 +107,7 @@ CREATE TYPE freight_car_type AS ENUM (
     'SWING_ROOF_WAGON',
     'TANK_CARS',
     'TELESCOPE_HOOD_WAGONS'
-);
+    );
 CREATE TYPE socket_type AS ENUM (
     'NONE',
     'NEM_355',
@@ -110,14 +117,14 @@ CREATE TYPE socket_type AS ENUM (
     'NEM_360',
     'NEM_362',
     'NEM_365'
-);
+    );
 CREATE TYPE service_level AS ENUM (
     'FIRST_CLASS',
     'SECOND_CLASS',
     'FIRST_AND_SECOND_CLASS',
     'FIRST_SECOND_AND_THIRD_CLASS',
     'SECOND_AND_THIRD_CLASS'
-);
+    );
 
 CREATE TABLE public.brands
 (
@@ -151,7 +158,7 @@ CREATE TABLE public.brands
 
 CREATE UNIQUE INDEX "Idx_brands_name"
     ON brands USING btree
-    (name ASC NULLS LAST);
+        (name ASC NULLS LAST);
 
 CREATE TABLE public.railways
 (
@@ -187,7 +194,7 @@ CREATE TABLE public.railways
 
 CREATE UNIQUE INDEX "Idx_railways_name"
     ON public.railways USING btree
-    (name ASC NULLS LAST);
+        (name ASC NULLS LAST);
 
 CREATE TABLE public.scales
 (
@@ -207,7 +214,7 @@ CREATE TABLE public.scales
 
 CREATE UNIQUE INDEX "Idx_scales_name"
     ON scales USING btree
-    (name ASC NULLS LAST);
+        (name ASC NULLS LAST);
 
 CREATE TABLE public.catalog_items
 (
@@ -238,15 +245,15 @@ CREATE TABLE public.catalog_items
 
 CREATE UNIQUE INDEX "Idx_catalog_items_brand_id_item_number"
     ON public.catalog_items USING btree
-    (item_number ASC NULLS LAST, brand_id ASC NULLS LAST);
+        (item_number ASC NULLS LAST, brand_id ASC NULLS LAST);
 
 CREATE TABLE public.rolling_stocks
 (
-    rolling_stock_id            uuid        NOT NULL,
-    catalog_item_id             varchar(65) NOT NULL,
-    railway_id                  varchar(25) NOT NULL,
-    category                    varchar(25) NOT NULL,
-    epoch                       varchar(10) NOT NULL,
+    rolling_stock_id            uuid                   NOT NULL,
+    catalog_item_id             varchar(65)            NOT NULL,
+    railway_id                  varchar(25)            NOT NULL,
+    category                    rolling_stock_category NOT NULL,
+    epoch                       varchar(10)            NOT NULL,
     livery                      varchar(50),
     length_over_buffer_mm       numeric(19, 5),
     length_over_buffer_in       numeric(19, 5),
