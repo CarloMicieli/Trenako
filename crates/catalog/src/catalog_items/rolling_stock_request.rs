@@ -155,4 +155,169 @@ impl RollingStockRequest {
             RollingStockRequest::RailcarRequest { .. } => RollingStockCategory::Railcar,
         }
     }
+
+    /// Returns the railway for this rolling stock request
+    pub fn railway(&self) -> &str {
+        match self {
+            RollingStockRequest::ElectricMultipleUnitRequest { railway, .. } => railway,
+            RollingStockRequest::FreightCarRequest { railway, .. } => railway,
+            RollingStockRequest::LocomotiveRequest { railway, .. } => railway,
+            RollingStockRequest::PassengerCarRequest { railway, .. } => railway,
+            RollingStockRequest::RailcarRequest { railway, .. } => railway,
+        }
+    }
+
+    /// Returns the technical specifications for this rolling stock request
+    pub fn technical_specifications(&self) -> Option<&TechnicalSpecifications> {
+        match self {
+            RollingStockRequest::ElectricMultipleUnitRequest {
+                technical_specifications,
+                ..
+            } => technical_specifications.as_ref(),
+            RollingStockRequest::FreightCarRequest {
+                technical_specifications,
+                ..
+            } => technical_specifications.as_ref(),
+            RollingStockRequest::LocomotiveRequest {
+                technical_specifications,
+                ..
+            } => technical_specifications.as_ref(),
+            RollingStockRequest::PassengerCarRequest {
+                technical_specifications,
+                ..
+            } => technical_specifications.as_ref(),
+            RollingStockRequest::RailcarRequest {
+                technical_specifications,
+                ..
+            } => technical_specifications.as_ref(),
+        }
+    }
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    mod rolling_stock_requests {
+        use super::*;
+        use pretty_assertions::assert_eq;
+        use rstest::rstest;
+
+        #[rstest]
+        #[case(electric_multiple_unit_request(), RollingStockCategory::ElectricMultipleUnit)]
+        #[case(freight_car_request(), RollingStockCategory::FreightCar)]
+        #[case(locomotive_request(), RollingStockCategory::Locomotive)]
+        #[case(passenger_car_request(), RollingStockCategory::PassengerCar)]
+        #[case(railcar_request(), RollingStockCategory::Railcar)]
+        fn it_should_return_the_category(#[case] request: RollingStockRequest, #[case] expected: RollingStockCategory) {
+            assert_eq!(expected, request.category());
+        }
+
+        #[rstest]
+        #[case(electric_multiple_unit_request(), "FS")]
+        #[case(freight_car_request(), "FS")]
+        #[case(locomotive_request(), "FS")]
+        #[case(passenger_car_request(), "FS")]
+        #[case(railcar_request(), "FS")]
+        fn it_should_return_the_railway(#[case] request: RollingStockRequest, #[case] expected: &str) {
+            assert_eq!(expected, request.railway());
+        }
+
+        #[rstest]
+        #[case(electric_multiple_unit_request())]
+        #[case(freight_car_request())]
+        #[case(locomotive_request())]
+        #[case(passenger_car_request())]
+        #[case(railcar_request())]
+        fn it_should_return_the_technical_specifications(#[case] request: RollingStockRequest) {
+            let expected = technical_specifications();
+            assert_eq!(expected.as_ref(), request.technical_specifications());
+        }
+
+        fn electric_multiple_unit_request() -> RollingStockRequest {
+            RollingStockRequest::ElectricMultipleUnitRequest {
+                railway: "FS".to_string(),
+                epoch: Epoch::IV,
+                livery: None,
+                length_over_buffer: None,
+                technical_specifications: technical_specifications(),
+                type_name: "111".to_string(),
+                road_number: None,
+                series: None,
+                depot: None,
+                electric_multiple_unit_type: ElectricMultipleUnitType::PowerCar,
+                dcc_interface: None,
+                control: None,
+                is_dummy: false,
+            }
+        }
+
+        fn freight_car_request() -> RollingStockRequest {
+            RollingStockRequest::FreightCarRequest {
+                railway: "FS".to_string(),
+                epoch: Epoch::IV,
+                livery: None,
+                length_over_buffer: None,
+                technical_specifications: technical_specifications(),
+                type_name: "111".to_string(),
+                road_number: None,
+                freight_car_type: None,
+            }
+        }
+
+        fn locomotive_request() -> RollingStockRequest {
+            RollingStockRequest::LocomotiveRequest {
+                railway: "FS".to_string(),
+                epoch: Epoch::IV,
+                livery: None,
+                length_over_buffer: None,
+                technical_specifications: technical_specifications(),
+                class_name: "111".to_string(),
+                road_number: "999".to_string(),
+                series: None,
+                depot: None,
+                locomotive_type: LocomotiveType::ElectricLocomotive,
+                dcc_interface: None,
+                control: None,
+                is_dummy: false,
+            }
+        }
+
+        fn passenger_car_request() -> RollingStockRequest {
+            RollingStockRequest::PassengerCarRequest {
+                railway: "FS".to_string(),
+                epoch: Epoch::IV,
+                livery: None,
+                length_over_buffer: None,
+                technical_specifications: technical_specifications(),
+                type_name: "111".to_string(),
+                road_number: None,
+                series: None,
+                passenger_car_type: None,
+                service_level: None,
+            }
+        }
+
+        fn railcar_request() -> RollingStockRequest {
+            RollingStockRequest::RailcarRequest {
+                railway: "FS".to_string(),
+                epoch: Epoch::IV,
+                livery: None,
+                length_over_buffer: None,
+                technical_specifications: technical_specifications(),
+                type_name: "111".to_string(),
+                road_number: None,
+                series: None,
+                depot: None,
+                railcar_type: RailcarType::PowerCar,
+                dcc_interface: None,
+                control: None,
+                is_dummy: false,
+            }
+        }
+
+        fn technical_specifications() -> Option<TechnicalSpecifications> {
+            Some(TechnicalSpecifications::builder().build())
+        }
+    }
 }
