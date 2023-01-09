@@ -99,7 +99,7 @@ Run all tests with the following command:
 The rust code is following the rust formatting standard (via `rustfmt`), to check if the formatting is correct:
 
 ```bash
-  cargo make format
+  cargo make fmt-check
 ```
 
 To run the rust linter (`clippy`):

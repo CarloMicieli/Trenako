@@ -67,6 +67,7 @@ If the required subsection does not exist yet under **Unreleased**, create it!
 | `cargo tarpaulin --ignore-tests` | compute code coverage              |
 | `cargo audit`                    | check for security warnings        |
 | `cargo sqlx prepare --merged`    | prepare the query for offline mode |
+| `sqlx migrate add <name>`        | creates a new `<name>` migration   |
 | `sqlx migrate run`               | run the database migrations        |
 
 ### Conventional commits

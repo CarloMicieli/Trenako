@@ -54,7 +54,7 @@ jobs:
         run: cargo make check
 
       - name: Check formatting with rustfmt
-        run: cargo make format
+        run: cargo make fmt-check
 
       - name: Linting with Clippy
         run: cargo make clippy
@@ -64,6 +64,7 @@ jobs:
 
       - name: Run cargo-tarpaulin
         run: cargo make code-coverage
+        if: github.ref == 'refs/heads/dev'
 
       - name: Upload coverage to Codecov.io
         uses: codecov/codecov-action@v3

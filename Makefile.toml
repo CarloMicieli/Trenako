@@ -32,7 +32,7 @@ description = "docs: generate the rustdoc"
 command = "cargo"
 args = ["doc", "--no-deps"]
 
-[tasks.format]
+[tasks.fmt-check]
 description = "format: check the sources formatting"
 category = "Check"
 install_crate = "rustfmt"
@@ -57,7 +57,7 @@ description = "check: run all the checks (format, clippy and tests)"
 category = "Check"
 dependencies = [
     "clean",
-    "format",
+    "fmt-check",
     "clippy",
     "test"
 ]
