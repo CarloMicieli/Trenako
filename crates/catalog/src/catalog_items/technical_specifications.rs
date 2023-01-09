@@ -7,10 +7,11 @@ use strum_macros;
 use strum_macros::{Display, EnumString};
 use thiserror::Error;
 
+/// It represents the coupling configuration for a rolling stock.
 #[derive(Debug, Copy, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Coupling {
     /// the rolling stock coupling socket
-    pub socket: Socket,
+    pub socket: CouplingSocket,
     /// the rolling stock has a close coupling mechanism
     pub close_couplers: FeatureFlag,
     /// the rolling stock has a digital shunting couplers mechanism
@@ -18,7 +19,8 @@ pub struct Coupling {
 }
 
 impl Coupling {
-    pub fn new(socket: Socket, close_couplers: FeatureFlag, digital_shunting: FeatureFlag) -> Self {
+    /// Creates a new rolling stock coupling configuration
+    pub fn new(socket: CouplingSocket, close_couplers: FeatureFlag, digital_shunting: FeatureFlag) -> Self {
         Coupling {
             socket,
             close_couplers,
@@ -26,7 +28,8 @@ impl Coupling {
         }
     }
 
-    pub fn with_close_couplers(socket: Socket) -> Self {
+    /// Creates a new rolling stock close coupling configuration with a given coupling socket
+    pub fn with_close_couplers(socket: CouplingSocket) -> Self {
         Coupling {
             socket,
             close_couplers: FeatureFlag::Yes,
@@ -34,14 +37,19 @@ impl Coupling {
         }
     }
 
-    pub fn socket(&self) -> Socket {
+    /// the coupling socket if present
+    pub fn socket(&self) -> CouplingSocket {
         self.socket
     }
 
+    /// true if the coupling configuration include a mechanism to reduce the gaps between two
+    /// rolling stocks; false otherwise
     pub fn close_couplers(&self) -> FeatureFlag {
         self.close_couplers
     }
 
+    /// true if the coupling configuration implements digital control functionalities,
+    /// false otherwise  
     pub fn digital_shunting(&self) -> FeatureFlag {
         self.digital_shunting
     }
@@ -53,7 +61,7 @@ impl Coupling {
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "socket_type", rename_all = "SCREAMING_SNAKE_CASE")]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
-pub enum Socket {
+pub enum CouplingSocket {
     #[strum(serialize = "NONE")]
     None,
 
@@ -86,9 +94,9 @@ pub enum Socket {
     Nem365,
 }
 
-impl Default for Socket {
+impl Default for CouplingSocket {
     fn default() -> Self {
-        Socket::None
+        CouplingSocket::None
     }
 }
 
@@ -146,13 +154,9 @@ impl TechnicalSpecifications {
     pub fn spring_buffers(&self) -> FeatureFlag {
         self.spring_buffers
     }
-
-    pub fn builder() -> TechnicalSpecificationsBuilder {
-        TechnicalSpecificationsBuilder::default()
-    }
 }
 
-#[derive(Default, Serialize, Deserialize)]
+#[derive(Debug, Default, Serialize, Deserialize)]
 pub struct TechnicalSpecificationsBuilder {
     minimum_radius: Option<Radius>,
     coupling: Option<Coupling>,
@@ -227,12 +231,12 @@ impl TechnicalSpecificationsBuilder {
 pub enum FeatureFlag {
     Yes,
     No,
-    NotAvailable,
+    NotApplicable,
 }
 
 impl Default for FeatureFlag {
     fn default() -> Self {
-        FeatureFlag::No
+        FeatureFlag::NotApplicable
     }
 }
 
@@ -280,30 +284,33 @@ mod test {
         use strum::ParseError;
 
         #[rstest]
-        #[case("NONE", Ok(Socket::None))]
-        #[case("NEM_355", Ok(Socket::Nem355))]
-        #[case("NEM_356", Ok(Socket::Nem356))]
-        #[case("NEM_357", Ok(Socket::Nem357))]
-        #[case("NEM_359", Ok(Socket::Nem359))]
-        #[case("NEM_360", Ok(Socket::Nem360))]
-        #[case("NEM_362", Ok(Socket::Nem362))]
-        #[case("NEM_365", Ok(Socket::Nem365))]
+        #[case("NONE", Ok(CouplingSocket::None))]
+        #[case("NEM_355", Ok(CouplingSocket::Nem355))]
+        #[case("NEM_356", Ok(CouplingSocket::Nem356))]
+        #[case("NEM_357", Ok(CouplingSocket::Nem357))]
+        #[case("NEM_359", Ok(CouplingSocket::Nem359))]
+        #[case("NEM_360", Ok(CouplingSocket::Nem360))]
+        #[case("NEM_362", Ok(CouplingSocket::Nem362))]
+        #[case("NEM_365", Ok(CouplingSocket::Nem365))]
         #[case("invalid", Err(ParseError::VariantNotFound))]
-        fn it_should_parse_strings_as_couplings(#[case] input: &str, #[case] expected: Result<Socket, ParseError>) {
-            let coupling = input.parse::<Socket>();
+        fn it_should_parse_strings_as_couplings(
+            #[case] input: &str,
+            #[case] expected: Result<CouplingSocket, ParseError>,
+        ) {
+            let coupling = input.parse::<CouplingSocket>();
             assert_eq!(expected, coupling);
         }
 
         #[rstest]
-        #[case(Socket::None, "NONE")]
-        #[case(Socket::Nem355, "NEM_355")]
-        #[case(Socket::Nem356, "NEM_356")]
-        #[case(Socket::Nem357, "NEM_357")]
-        #[case(Socket::Nem359, "NEM_359")]
-        #[case(Socket::Nem360, "NEM_360")]
-        #[case(Socket::Nem362, "NEM_362")]
-        #[case(Socket::Nem365, "NEM_365")]
-        fn it_should_display_couplings(#[case] input: Socket, #[case] expected: &str) {
+        #[case(CouplingSocket::None, "NONE")]
+        #[case(CouplingSocket::Nem355, "NEM_355")]
+        #[case(CouplingSocket::Nem356, "NEM_356")]
+        #[case(CouplingSocket::Nem357, "NEM_357")]
+        #[case(CouplingSocket::Nem359, "NEM_359")]
+        #[case(CouplingSocket::Nem360, "NEM_360")]
+        #[case(CouplingSocket::Nem362, "NEM_362")]
+        #[case(CouplingSocket::Nem365, "NEM_365")]
+        fn it_should_display_couplings(#[case] input: CouplingSocket, #[case] expected: &str) {
             assert_eq!(expected, input.to_string());
         }
     }
@@ -317,7 +324,7 @@ mod test {
         #[rstest]
         #[case("YES", Ok(FeatureFlag::Yes))]
         #[case("NO", Ok(FeatureFlag::No))]
-        #[case("NOT_AVAILABLE", Ok(FeatureFlag::NotAvailable))]
+        #[case("NOT_APPLICABLE", Ok(FeatureFlag::NotApplicable))]
         #[case("invalid", Err(ParseError::VariantNotFound))]
         fn it_should_parse_strings_as_feature_flags(
             #[case] input: &str,
@@ -330,7 +337,7 @@ mod test {
         #[rstest]
         #[case(FeatureFlag::Yes, "YES")]
         #[case(FeatureFlag::No, "NO")]
-        #[case(FeatureFlag::NotAvailable, "NOT_AVAILABLE")]
+        #[case(FeatureFlag::NotApplicable, "NOT_APPLICABLE")]
         fn it_should_display_feature_flags(#[case] input: FeatureFlag, #[case] expected: &str) {
             assert_eq!(expected, input.to_string());
         }
@@ -368,10 +375,10 @@ mod test {
 
         #[test]
         fn it_should_create_tech_specs() {
-            let coupling = Coupling::new(Socket::Nem362, FeatureFlag::Yes, FeatureFlag::No);
+            let coupling = Coupling::new(CouplingSocket::Nem362, FeatureFlag::Yes, FeatureFlag::No);
 
             let radius = Radius::from_millimeters(dec!(360)).unwrap();
-            let tech_specs = TechnicalSpecifications::builder()
+            let tech_specs = TechnicalSpecificationsBuilder::default()
                 .with_coupling(coupling)
                 .with_metal_body()
                 .with_minimum_radius(radius)

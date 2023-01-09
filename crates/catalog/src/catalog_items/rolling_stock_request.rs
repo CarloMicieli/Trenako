@@ -317,7 +317,7 @@ mod test {
         }
 
         fn technical_specifications() -> Option<TechnicalSpecifications> {
-            Some(TechnicalSpecifications::builder().build())
+            Some(TechnicalSpecifications::default())
         }
     }
 }

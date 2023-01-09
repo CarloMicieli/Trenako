@@ -509,7 +509,9 @@ mod test {
     mod locomotives {
         use super::*;
         use crate::catalog_items::rolling_stock_id::RollingStockId;
-        use crate::catalog_items::technical_specifications::{Coupling, Radius, Socket};
+        use crate::catalog_items::technical_specifications::{
+            Coupling, CouplingSocket, Radius, TechnicalSpecificationsBuilder,
+        };
         use common::length::Length;
         use pretty_assertions::assert_eq;
         use rust_decimal_macros::dec;
@@ -694,8 +696,8 @@ mod test {
 
         fn technical_specification() -> TechnicalSpecifications {
             let radius = Radius::from_millimeters(dec!(360.0)).unwrap();
-            let coupling = Coupling::with_close_couplers(Socket::Nem362);
-            TechnicalSpecifications::builder()
+            let coupling = Coupling::with_close_couplers(CouplingSocket::Nem362);
+            TechnicalSpecificationsBuilder::default()
                 .with_coupling(coupling)
                 .with_minimum_radius(radius)
                 .build()

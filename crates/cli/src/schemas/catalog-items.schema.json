@@ -262,7 +262,7 @@
       "enum": [
         "YES",
         "NO",
-        "NOT_AVAILABLE"
+        "NOT_APPLICABLE"
       ]
     }
   }
