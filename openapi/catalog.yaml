@@ -539,7 +539,6 @@ components:
 
     PassengerCar:
       description: a passenger car rolling stock
-      description: a passenger car rolling stock
       allOf:
         - $ref: "#/components/schemas/RollingStock"
         - type: object
