@@ -549,6 +549,9 @@ components:
             road_number:
               type: string
               description: the identification marking for this passenger car
+            series:
+              type: string
+              description: the passenger car series
             passenger_car_type:
               $ref: "#/components/schemas/PassengerCarType"
             service_level:
@@ -570,6 +573,10 @@ components:
               type: string
               maxLength: 25
               description: the identification marking for this passenger car
+            series:
+              type: string
+              maxLength: 50
+              description: the passenger car series
             passenger_car_type:
               $ref: "#/components/schemas/PassengerCarType"
             service_level:

@@ -2,7 +2,9 @@ use crate::catalog_items::category::{
     ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType, RollingStockCategory,
 };
 use crate::catalog_items::control::{Control, DccInterface};
+use crate::catalog_items::epoch::Epoch;
 use crate::catalog_items::length_over_buffer::LengthOverBuffer;
+use crate::catalog_items::service_level::ServiceLevel;
 use crate::catalog_items::technical_specifications::TechnicalSpecifications;
 
 /// It represents a request to create / modify a rolling stock
@@ -14,7 +16,7 @@ pub enum RollingStockRequest {
         /// the railway name for this rolling stock
         railway: String,
         /// the epoch for this rolling stock
-        epoch: String,
+        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -43,7 +45,7 @@ pub enum RollingStockRequest {
         /// the railway name for this rolling stock
         railway: String,
         /// the epoch for this rolling stock
-        epoch: String,
+        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -62,7 +64,7 @@ pub enum RollingStockRequest {
         /// the railway name for this rolling stock
         railway: String,
         /// the epoch for this rolling stock
-        epoch: String,
+        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -92,7 +94,7 @@ pub enum RollingStockRequest {
         /// the railway name for this rolling stock
         railway: String,
         /// the epoch for this rolling stock
-        epoch: String,
+        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -103,18 +105,20 @@ pub enum RollingStockRequest {
         type_name: String,
         /// the identification marking for this passenger car
         road_number: Option<String>,
+        /// the prototype series information
+        series: Option<String>,
         /// the passenger car type
         passenger_car_type: Option<PassengerCarType>,
         /// the travel class for this passenger car. Passenger cars can have multiple service
         /// levels (ie, '1st/2nd')
-        service_level: Option<String>,
+        service_level: Option<ServiceLevel>,
     },
     /// a railcar rolling stock
     RailcarRequest {
         /// the railway name for this rolling stock
         railway: String,
         /// the epoch for this rolling stock
-        epoch: String,
+        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
