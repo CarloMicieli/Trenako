@@ -24,7 +24,11 @@ struct Cli {
 #[derive(Subcommand)]
 enum Commands {
     /// validate the dataset
-    Validate {},
+    Validate {
+        /// Name of the person to greet
+        #[arg(short, long)]
+        source: String,
+    },
 
     /// seed the application database
     Seed {},
@@ -34,7 +38,7 @@ pub fn parse() -> Option<Command> {
     let cli = Cli::parse();
 
     match &cli.command {
-        Some(Commands::Validate {}) => Some(Command::Validate),
+        Some(Commands::Validate { source }) => Some(Command::Validate(source.clone())),
         Some(Commands::Seed {}) => Some(Command::Seed),
         None => None,
     }

@@ -1,0 +1,39 @@
+{
+  "name" : "DB",
+  "abbreviation" : "DB",
+  "registered_company_name" : "Deutsche Bahn AG",
+  "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
+  "country" : "DEU",
+  "description" : {
+    "values" : {
+      "it" : null,
+      "en" : null
+    }
+  },
+  "period_of_activity" : {
+    "operating_since" : "1994-01-01",
+    "operating_until" : null,
+    "status" : "ACTIVE"
+  },
+  "gauge" : {
+    "track_gauge" : "STANDARD",
+    "meters" : 1.435
+  },
+  "total_length" : {
+    "kilometers" : null,
+    "miles" : null
+  },
+  "contact_info" : {
+    "email" : null,
+    "website_url" : "https://www.deutschebahn.com",
+    "phone" : null
+  },
+  "social" : {
+    "facebook" : null,
+    "instagram" : "deutschebahn",
+    "linkedin" : "deutschebahn",
+    "twitter" : "db_presse",
+    "youtube" : "deutschebahnkonzern"
+  },
+  "headquarters" : [ "Berlin" ]
+}
