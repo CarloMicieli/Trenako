@@ -1012,6 +1012,7 @@ components:
       enum:
         - FIRST_CLASS
         - SECOND_CLASS
+        - THIRD_CLASS
         - FIRST_AND_SECOND_CLASS
         - FIRST_SECOND_AND_THIRD_CLASS
         - SECOND_AND_THIRD_CLASS
