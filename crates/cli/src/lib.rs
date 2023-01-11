@@ -21,6 +21,8 @@ pub enum CliError {
     PathNotFound(String),
     #[error("invalid resource type {0}")]
     InvalidResourceType(#[from] ResourceTypeError),
+    #[error("filename is not a valid UTF-8")]
+    InvalidFileName,
 }
 
 impl CliError {

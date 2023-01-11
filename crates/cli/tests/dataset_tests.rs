@@ -11,14 +11,14 @@ fn it_should_load_a_dataset() {
     assert_eq!(dataset.catalog_items.len(), 2);
     assert_eq!(dataset.railways.len(), 2);
     assert_eq!(dataset.scales.len(), 2);
-    assert_eq!(dataset.brands[0].file_name, Some(String::from("piko.json")));
-    assert_eq!(dataset.brands[1].file_name, Some(String::from("acme.json")));
-    assert_eq!(dataset.catalog_items[0].file_name, Some(String::from("43277.3.json")));
-    assert_eq!(dataset.catalog_items[1].file_name, Some(String::from("60030.json")));
-    assert_eq!(dataset.railways[0].file_name, Some(String::from("fs.json")));
-    assert_eq!(dataset.railways[1].file_name, Some(String::from("db.json")));
-    assert_eq!(dataset.scales[0].file_name, Some(String::from("n.json")));
-    assert_eq!(dataset.scales[1].file_name, Some(String::from("h0.json")));
+    assert_eq!(dataset.brands[0].file_name, String::from("acme.json"));
+    assert_eq!(dataset.brands[1].file_name, String::from("piko.json"));
+    assert_eq!(dataset.catalog_items[0].file_name, String::from("43277.3.json"));
+    assert_eq!(dataset.catalog_items[1].file_name, String::from("60030.json"));
+    assert_eq!(dataset.railways[0].file_name, String::from("db.json"));
+    assert_eq!(dataset.railways[1].file_name, String::from("fs.json"));
+    assert_eq!(dataset.scales[0].file_name, String::from("h0.json"));
+    assert_eq!(dataset.scales[1].file_name, String::from("n.json"));
 }
 
 #[test]

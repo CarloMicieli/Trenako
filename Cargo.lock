@@ -551,6 +551,7 @@ dependencies = [
  "itertools",
  "jsonschema",
  "pretty_assertions",
+ "rstest",
  "rust_decimal",
  "serde",
  "serde_derive",
