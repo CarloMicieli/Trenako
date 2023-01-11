@@ -148,7 +148,7 @@ mod test {
                     "en" : null
                   },
                   "power_method" : "DC",
-                  "delivery_date" : "",
+                  "delivery_date" : "2022",
                   "availability_status" : "AVAILABLE",
                   "rolling_stocks" : [ {
                     "category" : "LOCOMOTIVE",
@@ -179,7 +179,7 @@ mod test {
                       "lights" : "YES",
                       "spring_buffers" : "NO"
                     },
-                    "dummy" : false
+                    "is_dummy" : false
                   } ],
                   "count" : 1
                 }

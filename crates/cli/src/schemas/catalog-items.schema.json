@@ -12,13 +12,19 @@
   ],
   "properties": {
     "brand": {
-      "type": "string"
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 50
     },
     "item_number": {
-      "type": "string"
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 10
     },
     "scale": {
-      "type": "string"
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50
     },
     "category": {
       "type": "string",
@@ -56,7 +62,9 @@
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "minLength": 4,
+      "maxLength": 7
     },
     "availability_status": {
       "type": "string",
@@ -75,10 +83,109 @@
     "count": {
       "type": "integer",
       "format": "uint8",
-      "minimum": 0.0
+      "minimum": 1,
+      "maximum": 99
     }
   },
   "definitions": {
+    "Coupling": {
+      "type": "object",
+      "properties": {
+        "socket": {
+          "type": ["string", "null"],
+          "enum": [
+            "NONE",
+            "NEM_355",
+            "NEM_356",
+            "NEM_357",
+            "NEM_359",
+            "NEM_360",
+            "NEM_362",
+            "NEM_365"
+          ]
+        },
+        "close_couplers": {
+          "$ref": "#/definitions/FeatureFlag"
+        },
+        "digital_shunting": {
+          "$ref": "#/definitions/FeatureFlag"
+        }
+      }
+    },
+    "ElectricMultipleUnitType": {
+      "type": ["string", "null"],
+      "enum": [
+        "DRIVING_CAR",
+        "HIGH_SPEED_TRAIN",
+        "MOTOR_CAR",
+        "POWER_CAR",
+        "TRAILER_CAR",
+        "TRAIN_SET"
+      ]
+    },
+    "FreightCarType": {
+      "type": ["string", "null"],
+      "enum": [
+        "AUTO_TRANSPORT_CARS",
+        "BRAKE_WAGON",
+        "CONTAINER_CARS",
+        "COVERED_FREIGHT_CARS",
+        "DEEP_WELL_FLAT_CARS",
+        "DUMP_CARS",
+        "GONDOLA",
+        "HEAVY_GOODS_WAGONS",
+        "HINGED_COVER_WAGONS",
+        "HOPPER_WAGON",
+        "REFRIGERATOR_CARS",
+        "SILO_CONTAINER_CARS",
+        "SLIDE_TARPAULIN_WAGON",
+        "SLIDING_WALL_BOXCARS",
+        "SPECIAL_TRANSPORT",
+        "STAKE_WAGONS",
+        "SWING_ROOF_WAGON",
+        "TANK_CARS",
+        "TELESCOPE_HOOD_WAGONS"
+      ]
+    },
+    "LocomotiveType": {
+      "type": ["string", "null"],
+      "enum": [
+        "DIESEL_LOCOMOTIVE",
+        "ELECTRIC_LOCOMOTIVE",
+        "STEAM_LOCOMOTIVE"
+      ]
+    },
+    "PassengerCarType": {
+      "type": ["string", "null"],
+      "enum": [
+        "BAGGAGE_CAR",
+        "COMBINE_CAR",
+        "COMPARTMENT_COACH",
+        "DINING_CAR",
+        "DOUBLE_DECKER",
+        "DRIVING_TRAILER",
+        "LOUNGE",
+        "OBSERVATION",
+        "OPEN_COACH",
+        "RAILWAY_POST_OFFICE",
+        "SLEEPING_CAR"
+      ]
+    },
+    "FeatureFlag": {
+      "type": "string",
+      "enum": [
+        "YES",
+        "NO",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "RailcarType": {
+      "type": ["string", "null"],
+      "enum": [
+        "POWER_CAR",
+        "TRAILER_CAR"
+      ]
+    },
     "RollingStock": {
       "type": "object",
       "required": [
@@ -131,16 +238,19 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "maxLength": 100
         },
-        "dummy": {
+        "is_dummy": {
           "type": [
             "boolean",
             "null"
           ]
         },
         "epoch": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10
         },
         "length": {
           "type": [
@@ -154,22 +264,30 @@
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "maxLength": 50
         },
         "railway": {
           "type": "string"
+        },
+        "type_name": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 25
         },
         "road_number": {
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "maxLength": 25
         },
         "series": {
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "maxLength": 100
         },
         "service_level": {
           "type": [
@@ -179,6 +297,7 @@
           "enum": [
             "FIRST_CLASS",
             "SECOND_CLASS",
+            "THIRD_CLASS",
             "FIRST_AND_SECOND_CLASS",
             "FIRST_SECOND_AND_THIRD_CLASS",
             "SECOND_AND_THIRD_CLASS"
@@ -191,14 +310,11 @@
           ]
         },
         "technical_specifications": {
-          "$ref": "#/definitions/TechSpecs"
-        },
-        "type_name": {
-          "type": "string"
+          "$ref": "#/definitions/TechnicalSpecifications"
         }
       }
     },
-    "TechSpecs": {
+    "TechnicalSpecifications": {
       "type": "object",
       "required": [
         "coupling",
@@ -210,10 +326,17 @@
         "spring_buffers"
       ],
       "properties": {
+        "minimum_radius": {
+          "type": ["number", "null"],
+          "minimum": 0.1
+        },
         "coupling": {
           "$ref": "#/definitions/Coupling"
         },
         "flywheel_fitted": {
+          "$ref": "#/definitions/FeatureFlag"
+        },
+        "metal_body": {
           "$ref": "#/definitions/FeatureFlag"
         },
         "interior_lights": {
@@ -222,48 +345,10 @@
         "lights": {
           "$ref": "#/definitions/FeatureFlag"
         },
-        "metal_body": {
-          "$ref": "#/definitions/FeatureFlag"
-        },
-        "minimum_radius": {
-          "type": "number"
-        },
         "spring_buffers": {
           "$ref": "#/definitions/FeatureFlag"
         }
       }
-    },
-    "Coupling": {
-      "type": "object",
-      "properties": {
-        "socket": {
-          "type": ["string", "null"],
-          "enum": [
-            "NONE",
-            "NEM_355",
-            "NEM_356",
-            "NEM_357",
-            "NEM_359",
-            "NEM_360",
-            "NEM_362",
-            "NEM_365"
-          ]
-        },
-        "close_couplers": {
-          "$ref": "#/definitions/FeatureFlag"
-        },
-        "digital_shunting": {
-          "$ref": "#/definitions/FeatureFlag"
-        }
-      }
-    },
-    "FeatureFlag": {
-      "type": "string",
-      "enum": [
-        "YES",
-        "NO",
-        "NOT_APPLICABLE"
-      ]
     }
   }
 }
