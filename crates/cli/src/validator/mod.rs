@@ -1,30 +1,25 @@
-use crate::dataset::{Dataset, Resource};
+use crate::dataset::{Dataset, Resource, ResourceType};
 use crate::schemas;
 use jsonschema::{Draft, JSONSchema};
+use serde_derive::Serialize;
 use serde_json::Value;
 use std::str::FromStr;
 use thiserror::Error;
 
-pub fn validate_dataset(dataset: Dataset) -> Result<bool, ValidatorError> {
+/// Validate a resources dataset
+pub fn validate_dataset(dataset: Dataset) -> Result<Vec<Validated>, ValidatorError> {
     let validators = Validators::new()?;
 
-    for brand in dataset.brands {
-        validators.validate_brand(&brand);
-    }
+    let it: Vec<Validated> = dataset
+        .brands
+        .iter()
+        .map(|it| validators.validate(it))
+        .chain(dataset.catalog_items.iter().map(|it| validators.validate(it)))
+        .chain(dataset.railways.iter().map(|it| validators.validate(it)))
+        .chain(dataset.scales.iter().map(|it| validators.validate(it)))
+        .collect();
 
-    for catalog_item in dataset.catalog_items {
-        validators.validate_catalog_item(&catalog_item);
-    }
-
-    for railway in dataset.railways {
-        validators.validate_railway(&railway);
-    }
-
-    for scale in dataset.scales {
-        validators.validate_scale(&scale);
-    }
-
-    Ok(true)
+    Ok(it)
 }
 
 /// It represents a resource validator, against a JSON schema.
@@ -38,25 +33,80 @@ impl Validator {
     }
 
     /// Validate the resource with the current validator schema
-    pub fn validate(&self, input: &Resource) -> Result<bool, ValidatorError> {
+    pub fn validate(&self, input: &Resource) -> Result<Validated, ValidatorError> {
         let input_json = Value::from_str(&input.content)?;
         let result = self.0.validate(&input_json);
-        let result = if let Err(errors) = result {
-            for error in errors {
-                println!("Validation error: {}", error);
-                println!("Instance path: {}", error.instance_path);
+        let result = if let Err(validation_errors) = result {
+            let mut errors = Vec::new();
+            for validation_error in validation_errors {
+                let error = Error::new(
+                    &validation_error.instance_path.to_string(),
+                    &validation_error.to_string(),
+                );
+                errors.push(error);
             }
-            false
+
+            let Resource {
+                file_name,
+                resource_type,
+                content: _,
+            } = input;
+
+            Validated::Invalid {
+                file_name: file_name.to_string(),
+                resource_type: *resource_type,
+                errors,
+            }
         } else {
-            true
+            Validated::Valid
         };
         Ok(result)
     }
 }
 
+#[derive(Debug, Eq, PartialEq, Serialize)]
+pub enum Validated {
+    Valid,
+    Invalid {
+        file_name: String,
+        resource_type: ResourceType,
+        errors: Vec<Error>,
+    },
+}
+
+impl Validated {
+    pub fn is_valid(&self) -> bool {
+        matches!(self, Validated::Valid)
+    }
+}
+
+#[derive(Debug, Eq, PartialEq, Serialize)]
+pub struct Error {
+    pub path: String,
+    pub error_message: String,
+}
+
+impl Error {
+    pub fn new(path: &str, error_message: &str) -> Self {
+        Error {
+            path: path.to_string(),
+            error_message: error_message.to_string(),
+        }
+    }
+}
+
+fn json_schema_from_str(input: &str) -> Result<JSONSchema, ValidatorError> {
+    let schema = serde_json::from_str(input)?;
+    let compiled = JSONSchema::options()
+        .with_draft(Draft::Draft7)
+        .compile(&schema)
+        .map_err(|_| ValidatorError::InvalidSchema);
+    compiled
+}
+
 #[derive(Debug, Error)]
 pub enum ValidatorError {
-    #[error("invalid json")]
+    #[error("invalid json value")]
     InvalidJson(#[from] serde_json::Error),
 
     #[error("invalid json schema")]
@@ -86,30 +136,15 @@ impl Validators {
         })
     }
 
-    pub fn validate_brand(&self, input: &Resource) -> bool {
-        self.brands.validate(input).unwrap()
+    pub fn validate(&self, input: &Resource) -> Validated {
+        let result = match input.resource_type {
+            ResourceType::Brands => self.brands.validate(input),
+            ResourceType::CatalogItems => self.catalog_items.validate(input),
+            ResourceType::Railways => self.railways.validate(input),
+            ResourceType::Scales => self.scales.validate(input),
+        };
+        result.unwrap()
     }
-
-    pub fn validate_catalog_item(&self, input: &Resource) -> bool {
-        self.catalog_items.validate(input).unwrap()
-    }
-
-    pub fn validate_railway(&self, input: &Resource) -> bool {
-        self.railways.validate(input).unwrap()
-    }
-
-    pub fn validate_scale(&self, input: &Resource) -> bool {
-        self.scales.validate(input).unwrap()
-    }
-}
-
-fn json_schema_from_str(input: &str) -> Result<JSONSchema, ValidatorError> {
-    let schema = serde_json::from_str(input)?;
-    let compiled = JSONSchema::options()
-        .with_draft(Draft::Draft7)
-        .compile(&schema)
-        .map_err(|_| ValidatorError::InvalidSchema);
-    compiled
 }
 
 #[cfg(test)]
@@ -119,6 +154,7 @@ mod test {
     mod validator {
         use super::*;
         use crate::dataset::ResourceType;
+        use pretty_assertions::assert_eq;
 
         #[test]
         fn it_should_parse_the_json_schemas() {
@@ -128,10 +164,10 @@ mod test {
             assert!(json_schema_from_str(schemas::SCALES_SCHEMA).is_ok());
         }
 
-        fn resource_from_json(value: &str) -> Resource {
+        fn resource_from_json(value: &str, resource_type: ResourceType) -> Resource {
             Resource {
                 file_name: "test_resource".to_string(),
-                resource_type: ResourceType::Brands,
+                resource_type,
                 content: value.to_string(),
             }
         }
@@ -172,11 +208,12 @@ mod test {
                   "kind" : "INDUSTRIAL",
                   "status" : "ACTIVE"
                 }"#,
+                ResourceType::Brands,
             );
 
             let validator = Validators::new().unwrap();
-            let result = validator.validate_brand(&brand_value);
-            assert!(result, "a valid brand is failing the validation");
+            let result = validator.validate(&brand_value);
+            assert_eq!(Validated::Valid, result);
         }
 
         #[test]
@@ -232,11 +269,12 @@ mod test {
                   } ],
                   "count" : 1
                 }"#,
+                ResourceType::CatalogItems,
             );
 
             let validator = Validators::new().unwrap();
-            let result = validator.validate_catalog_item(&catalog_item_value);
-            assert!(result, "a valid catalog item is failing the validation");
+            let result = validator.validate(&catalog_item_value);
+            assert_eq!(Validated::Valid, result);
         }
 
         #[test]
@@ -280,11 +318,12 @@ mod test {
                   },
                   "headquarters" : [ "Roma" ]
                 }"#,
+                ResourceType::Railways,
             );
 
             let validator = Validators::new().unwrap();
-            let result = validator.validate_railway(&railway_value);
-            assert!(result, "a valid railway is failing the validation");
+            let result = validator.validate(&railway_value);
+            assert_eq!(Validated::Valid, result);
         }
 
         #[test]
@@ -306,11 +345,12 @@ mod test {
                   "standards" : [ "NEM" ]
                 }
             "#,
+                ResourceType::Scales,
             );
 
             let validator = Validators::new().unwrap();
-            let result = validator.validate_scale(&scale_value);
-            assert!(result, "a valid scale is failing the validation");
+            let result = validator.validate(&scale_value);
+            assert_eq!(Validated::Valid, result);
         }
     }
 }

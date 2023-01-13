@@ -18,7 +18,7 @@
   "rolling_stocks" : [ {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "ETR 500",
-    "road_number" : "90 83 5 899 211-7 + 90 83 5 199 236-1",
+    "road_number" : "90 83 5 899 211-7",
     "series" : "POLITENSIONE",
     "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",
@@ -48,7 +48,7 @@
   }, {
     "category" : "ELECTRIC_MULTIPLE_UNIT",
     "type_name" : "ETR 500",
-    "road_number" : "90 83 5 899 211-7 + 90 83 5 199 236-1",
+    "road_number" : "90 83 5 199 236-1",
     "series" : "POLITENSIONE",
     "electric_multiple_unit_type" : "TRAILER_CAR",
     "railway" : "FS",

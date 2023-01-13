@@ -18,8 +18,8 @@
     },
     "item_number": {
       "type": "string",
-      "minLength": 3,
-      "maxLength": 10
+      "minLength": 1,
+      "maxLength": 25
     },
     "scale": {
       "type": "string",
@@ -94,6 +94,7 @@
         "socket": {
           "type": ["string", "null"],
           "enum": [
+            null,
             "NONE",
             "NEM_355",
             "NEM_356",
@@ -113,7 +114,7 @@
       }
     },
     "ElectricMultipleUnitType": {
-      "type": ["string", "null"],
+      "type": "string",
       "enum": [
         "DRIVING_CAR",
         "HIGH_SPEED_TRAIN",
@@ -126,6 +127,7 @@
     "FreightCarType": {
       "type": ["string", "null"],
       "enum": [
+        null,
         "AUTO_TRANSPORT_CARS",
         "BRAKE_WAGON",
         "CONTAINER_CARS",
@@ -148,7 +150,7 @@
       ]
     },
     "LocomotiveType": {
-      "type": ["string", "null"],
+      "type": "string",
       "enum": [
         "DIESEL_LOCOMOTIVE",
         "ELECTRIC_LOCOMOTIVE",
@@ -158,6 +160,7 @@
     "PassengerCarType": {
       "type": ["string", "null"],
       "enum": [
+        null,
         "BAGGAGE_CAR",
         "COMBINE_CAR",
         "COMPARTMENT_COACH",
@@ -180,8 +183,9 @@
       ]
     },
     "RailcarType": {
-      "type": ["string", "null"],
+      "type": "string",
       "enum": [
+        "null",
         "POWER_CAR",
         "TRAILER_CAR"
       ]
@@ -205,11 +209,9 @@
           ]
         },
         "control": {
-          "type": [
-            "string",
-            "null"
-          ],
+          "type": ["string", "null"],
           "enum": [
+            null,
             "DCC",
             "DCC_READY",
             "DCC_SOUND",
@@ -217,11 +219,9 @@
           ]
         },
         "dcc_interface": {
-          "type": [
-            "string",
-            "null"
-          ],
+          "type": ["string", "null"],
           "enum": [
+            null,
             "MTC_21",
             "NEM_651",
             "NEM_652",
@@ -290,11 +290,9 @@
           "maxLength": 100
         },
         "service_level": {
-          "type": [
-            "string",
-            "null"
-          ],
+          "type": ["string", "null"],
           "enum": [
+            null,
             "FIRST_CLASS",
             "SECOND_CLASS",
             "THIRD_CLASS",

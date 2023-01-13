@@ -22,10 +22,10 @@
     "series" : null,
     "locomotive_type" : "DIESEL_LOCOMOTIVE",
     "railway" : "FS",
-    "epoch" : "",
+    "epoch" : "IV",
     "livery" : "",
-    "depot" : null,
-    "dcc_interface" : null,
+    "depot" : "Fabriano",
+    "dcc_interface" : "PLUX_22",
     "control" : "DCC_READY",
     "length_over_buffer" : {
       "inches" : null,

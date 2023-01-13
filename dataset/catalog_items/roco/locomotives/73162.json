@@ -12,7 +12,7 @@
     "it" : null,
     "en" : null
   },
-  "delivery_date" : "",
+  "delivery_date" : null,
   "availability_status" : "AVAILABLE",
   "count" : 1,
   "rolling_stocks" : [ {
@@ -24,7 +24,7 @@
     "railway" : "FS",
     "epoch" : "IVb",
     "livery" : "",
-    "depot" : null,
+    "depot" : "Torino",
     "dcc_interface" : null,
     "control" : "DCC_READY",
     "length_over_buffer" : {

@@ -1,6 +1,7 @@
 use cli::dataset::Dataset;
 use cli::validator::validate_dataset;
 use cli::{cli_parser, Command};
+use serde_json::json;
 
 fn main() {
     let command = cli_parser::parse();
@@ -10,7 +11,11 @@ fn main() {
             match result {
                 Ok(dataset) => {
                     println!("{}", dataset);
-                    validate_dataset(dataset).unwrap();
+                    let result = validate_dataset(dataset).unwrap();
+
+                    for v in result.iter().filter(|x| !x.is_valid()) {
+                        println!("{:#?}", json!(v));
+                    }
                 }
                 Err(why) => why.display(),
             }

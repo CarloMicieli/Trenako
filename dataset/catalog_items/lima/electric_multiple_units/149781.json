@@ -12,7 +12,7 @@
     "it" : null,
     "en" : null
   },
-  "delivery_date" : "",
+  "delivery_date" : null,
   "availability_status" : "AVAILABLE",
   "count" : 5,
   "rolling_stocks" : [ {

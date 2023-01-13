@@ -1,4 +1,5 @@
 use crate::{CliError, Result};
+use serde_derive::Serialize;
 use std::cmp::Ordering;
 use std::ffi::OsStr;
 use std::fmt::{Display, Formatter};
@@ -135,7 +136,7 @@ impl Ord for Resource {
     }
 }
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, PartialEq, Eq, Copy, Clone, Serialize)]
 pub enum ResourceType {
     Brands,
     CatalogItems,

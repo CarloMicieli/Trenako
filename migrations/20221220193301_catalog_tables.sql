@@ -219,9 +219,9 @@ CREATE UNIQUE INDEX "Idx_scales_name"
 
 CREATE TABLE public.catalog_items
 (
-    catalog_item_id     varchar(65)           NOT NULL,
+    catalog_item_id     varchar(75)           NOT NULL,
     brand_id            varchar(50)           NOT NULL,
-    item_number         varchar(10)           NOT NULL,
+    item_number         varchar(25)           NOT NULL,
     scale_id            varchar(25)           NOT NULL,
     category            catalog_item_category NOT NULL,
     description         varchar(2500),

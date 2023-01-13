@@ -12,7 +12,7 @@
       "type": "string"
     },
     "registered_company_name": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "organization_entity_type": {
       "anyOf": [
@@ -76,36 +76,52 @@
   "definitions": {
     "Address": {
       "type": "object",
-      "required": [
-        "city",
-        "country",
-        "postal_code",
-        "street_address"
-      ],
       "properties": {
-        "city": {
-          "type": "string"
-        },
-        "country": {
-          "type": "string"
+        "street_address": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 5,
+          "maxLength": 255
         },
         "extendedAddress": {
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "maxLength": 255
         },
-        "postal_code": {
-          "type": "string"
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 3,
+          "maxLength": 50
         },
         "region": {
           "type": [
             "string",
             "null"
-          ]
+          ],
+          "maxLength": 50
         },
-        "street_address": {
-          "type": "string"
+        "postal_code": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 3,
+          "maxLength": 10
+        },
+        "country": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 3,
+          "maxLength": 3
         }
       }
     },
