@@ -16,7 +16,7 @@ impl ServiceUnderTest {
 
 pub async fn spawn_app() -> ServiceUnderTest {
     let docker = clients::Cli::default();
-    let image = RunnableImage::from(postgres::Postgres::default()).with_tag("14.5-alpine");
+    let image = RunnableImage::from(postgres::Postgres::default()).with_tag("15.1-alpine");
     let node = docker.run(image);
 
     let connection_string = &format!(

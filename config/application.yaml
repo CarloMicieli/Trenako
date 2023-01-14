@@ -8,3 +8,4 @@ database:
   name: trenakodb
   username: postgres
   password: mysecretpassword
+  require_ssl: false
