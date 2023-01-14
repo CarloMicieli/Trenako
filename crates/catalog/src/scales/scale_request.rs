@@ -11,7 +11,7 @@ pub struct ScaleRequest {
     /// the ratio between the real world and the model (e.g. 1/87 or 1:87)
     pub ratio: Ratio,
     /// the track gauge
-    pub gauge: Option<Gauge>,
+    pub gauge: Gauge,
     /// the modelling scale description
     pub description: LocalizedText,
     /// the list of standards

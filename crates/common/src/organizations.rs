@@ -5,10 +5,10 @@ use strum_macros::{Display, EnumString};
 
 /// The many types of business entities defined in the legal systems of various countries
 #[derive(Clone, Copy, Debug, Eq, PartialEq, Serialize, Deserialize, EnumString, Display, Type)]
-#[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
-#[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "organization_entity_type", rename_all = "SCREAMING_SNAKE_CASE")]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+#[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
+#[strum(ascii_case_insensitive)]
 pub enum OrganizationEntityType {
     CivilLawPartnership,
     EntrepreneurialCompany,

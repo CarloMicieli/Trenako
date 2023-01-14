@@ -116,6 +116,8 @@ pub enum RollingStock {
         type_name: String,
         /// the identification marking for this passenger car
         road_number: Option<String>,
+        /// the prototype series information
+        series: Option<String>,
         /// the passenger car type
         passenger_car_type: Option<PassengerCarType>,
         /// the travel class for this passenger car. Passenger cars can have multiple service
@@ -256,6 +258,7 @@ impl RollingStock {
         id: RollingStockId,
         type_name: &str,
         road_number: Option<&str>,
+        series: Option<&str>,
         railway: RollingStockRailway,
         epoch: Epoch,
         passenger_car_type: Option<PassengerCarType>,
@@ -273,6 +276,7 @@ impl RollingStock {
             technical_specifications,
             type_name: String::from(type_name),
             road_number: road_number.map(str::to_string),
+            series: series.map(str::to_string),
             passenger_car_type,
             service_level,
         }
@@ -602,6 +606,7 @@ mod test {
                 id,
                 "UIC-Z1",
                 Some("61 83 19-90 105-3 A"),
+                None,
                 fs.clone(),
                 Epoch::V,
                 Some(PassengerCarType::CompartmentCoach),

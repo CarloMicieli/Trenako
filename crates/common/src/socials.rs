@@ -6,7 +6,7 @@ use std::str;
 use thiserror::Error;
 
 /// the social profiles for an organization
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct Socials {
     /// the facebook handler
     pub facebook: Option<Handler>,

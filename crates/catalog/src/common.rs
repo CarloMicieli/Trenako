@@ -41,6 +41,12 @@ pub enum TrackGauge {
     Standard,
 }
 
+impl Default for TrackGauge {
+    fn default() -> Self {
+        TrackGauge::Standard
+    }
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
@@ -73,6 +79,12 @@ mod test {
         #[case(TrackGauge::Standard, "STANDARD")]
         fn it_should_display_track_gauges(#[case] input: TrackGauge, #[case] expected: &str) {
             assert_eq!(expected, input.to_string());
+        }
+
+        #[test]
+        fn it_should_implement_default() {
+            let default = TrackGauge::default();
+            assert_eq!(TrackGauge::Standard, default);
         }
     }
 }

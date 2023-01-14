@@ -23,6 +23,12 @@ impl TryFrom<Decimal> for Ratio {
     }
 }
 
+impl AsRef<Decimal> for Ratio {
+    fn as_ref(&self) -> &Decimal {
+        &self.0
+    }
+}
+
 impl Display for Ratio {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
         write!(f, "1:{}", self.0)
@@ -47,6 +53,14 @@ mod tests {
         fn it_should_create_new_ratios() {
             let value = Decimal::from(87);
             assert_eq!(Ok(Ratio(value)), Ratio::try_from(value));
+        }
+
+        #[test]
+        fn it_should_dereference_ratios() {
+            let value = Decimal::from(87);
+            let ratio = Ratio(value);
+
+            assert_eq!(&value, ratio.as_ref());
         }
 
         #[test]
