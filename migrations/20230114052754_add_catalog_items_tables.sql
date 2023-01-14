@@ -1,22 +1,4 @@
 -- noinspection SqlNoDataSourceInspectionForFile
-CREATE TYPE brand_kind AS ENUM ('INDUSTRIAL', 'BRASS_MODELS');
-CREATE TYPE brand_status AS ENUM ('ACTIVE', 'OUT_OF_BUSINESS');
-CREATE TYPE gauge AS ENUM ('BROAD', 'MEDIUM', 'MINIMUM', 'NARROW', 'STANDARD');
-CREATE TYPE organization_entity_type AS ENUM (
-    'CIVIL_LAW_PARTNERSHIP',
-    'ENTREPRENEURIAL_COMPANY',
-    'GLOBAL_PARTNERSHIP',
-    'LIMITED_COMPANY',
-    'LIMITED_PARTNERSHIP',
-    'LIMITED_PARTNERSHIP_LIMITED_COMPANY',
-    'OTHER',
-    'PUBLIC_INSTITUTION',
-    'PUBLIC_LIMITED_COMPANY',
-    'REGISTERED_SOLE_TRADER',
-    'SOLE_TRADER',
-    'STATE_OWNED_ENTERPRISE'
-    );
-CREATE TYPE railway_status AS ENUM ('ACTIVE', 'INACTIVE');
 CREATE TYPE rolling_stock_category AS ENUM (
     'LOCOMOTIVE',
     'FREIGHT_CAR',
@@ -127,109 +109,20 @@ CREATE TYPE service_level AS ENUM (
     'SECOND_AND_THIRD_CLASS'
     );
 
-CREATE TABLE public.brands
-(
-    brand_id                 varchar(50) NOT NULL,
-    name                     varchar(50) NOT NULL,
-    registered_company_name  varchar(100),
-    organization_entity_type organization_entity_type,
-    group_name               varchar(100),
-    description              varchar(2500),
-    contact_email            varchar(250),
-    contact_website_url      varchar(100),
-    contact_phone            varchar(20),
-    kind                     brand_kind  NOT NULL,
-    status                   brand_status,
-    address_street_address   varchar(255),
-    address_extended_address varchar(255),
-    address_city             varchar(50),
-    address_region           varchar(50),
-    address_postal_code      varchar(10),
-    address_country          varchar(2),
-    socials_facebook         varchar(100),
-    socials_instagram        varchar(100),
-    socials_linkedin         varchar(100),
-    socials_twitter          varchar(100),
-    socials_youtube          varchar(100),
-    created_at               timestamptz NOT NULL,
-    last_modified_at         timestamptz,
-    version                  integer     NOT NULL DEFAULT 1,
-    CONSTRAINT "PK_brands" PRIMARY KEY (brand_id)
-);
-
-CREATE UNIQUE INDEX "Idx_brands_name"
-    ON brands USING btree
-        (name ASC NULLS LAST);
-
-CREATE TABLE public.railways
-(
-    railway_id               varchar(50) NOT NULL,
-    name                     varchar(50) NOT NULL,
-    abbreviation             varchar(10),
-    registered_company_name  varchar(250),
-    organization_entity_type organization_entity_type,
-    description              varchar(2500),
-    country                  varchar(2)  NOT NULL,
-    operating_since          timestamptz,
-    operating_until          timestamptz,
-    status                   railway_status,
-    gauge_m                  numeric(19, 5),
-    gauge_in                 numeric(19, 5),
-    track_gauge              gauge,
-    headquarters             varchar(250),
-    total_length_mi          numeric(19, 5),
-    total_length_km          numeric(19, 5),
-    contact_email            varchar(255),
-    contact_website_url      varchar(100),
-    contact_phone            varchar(20),
-    socials_facebook         varchar(100),
-    socials_instagram        varchar(100),
-    socials_linkedin         varchar(100),
-    socials_twitter          varchar(100),
-    socials_youtube          varchar(100),
-    created_at               timestamptz NOT NULL,
-    last_modified_at         timestamptz,
-    version                  integer     NOT NULL DEFAULT 1,
-    CONSTRAINT "PK_railways" PRIMARY KEY (railway_id)
-);
-
-CREATE UNIQUE INDEX "Idx_railways_name"
-    ON public.railways USING btree
-        (name ASC NULLS LAST);
-
-CREATE TABLE public.scales
-(
-    scale_id          varchar(50)    NOT NULL,
-    name              varchar(50)    NOT NULL,
-    ratio             numeric(19, 5) NOT NULL,
-    gauge_millimeters numeric(19, 5),
-    gauge_inches      numeric(19, 5),
-    track_gauge       gauge          NOT NULL,
-    description       varchar(2500),
-    standards         varchar(100),
-    created_at        timestamptz    NOT NULL,
-    last_modified_at  timestamptz,
-    version           integer        NOT NULL DEFAULT 1,
-    CONSTRAINT "PK_scales" PRIMARY KEY (scale_id)
-);
-
-CREATE UNIQUE INDEX "Idx_scales_name"
-    ON scales USING btree
-        (name ASC NULLS LAST);
 
 CREATE TABLE public.catalog_items
 (
-    catalog_item_id     varchar(75)           NOT NULL,
+    catalog_item_id     varchar(76)           NOT NULL,
     brand_id            varchar(50)           NOT NULL,
     item_number         varchar(25)           NOT NULL,
     scale_id            varchar(25)           NOT NULL,
     category            catalog_item_category NOT NULL,
-    description         varchar(2500),
-    details             varchar(2500),
+    description_it      varchar(2500),
+    details_it          varchar(2500),
     power_method        power_method          NOT NULL,
     delivery_date       varchar(10),
     availability_status availability_status,
-    count               integer,
+    count               integer               NOT NULL DEFAULT 1,
     created_at          timestamptz           NOT NULL,
     last_modified_at    timestamptz,
     version             integer               NOT NULL DEFAULT 1,
@@ -244,10 +137,6 @@ CREATE TABLE public.catalog_items
         ON DELETE NO ACTION
 );
 
-CREATE UNIQUE INDEX "Idx_catalog_items_brand_id_item_number"
-    ON public.catalog_items USING btree
-        (item_number ASC NULLS LAST, brand_id ASC NULLS LAST);
-
 CREATE TABLE public.rolling_stocks
 (
     rolling_stock_id            uuid                   NOT NULL,
@@ -259,7 +148,6 @@ CREATE TABLE public.rolling_stocks
     length_over_buffer_mm       numeric(19, 5),
     length_over_buffer_in       numeric(19, 5),
     type_name                   varchar(25),
-    class_name                  varchar(15),
     road_number                 varchar(25),
     series                      varchar(50),
     depot                       varchar(100),
