@@ -1,4 +1,4 @@
-use crate::api::trn::Trn;
+use crate::web::trn::Trn;
 use actix_web::{http, HttpResponse};
 use serde::Serialize;
 use url::Url;
