@@ -19,6 +19,7 @@ anyhow = "1.0"
 chrono = { version = "0.4.23", features = ["serde"] }
 clap = { version = "4.0.26", features = ["derive"] }
 config = { version = "0.13.3", default-features = false, features = ["yaml"] }
+dockertest = { git = "https://github.com/orcalabs/dockertest-rs", rev = "7e0a718", features = ["tls"] }
 http = "0.2.8"
 isocountry = "0.3.2"
 itertools = "0.10.5"

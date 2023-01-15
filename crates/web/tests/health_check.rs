@@ -1,17 +1,23 @@
 mod common;
 
-use crate::common::spawn_app;
-use pretty_assertions::assert_eq;
+use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
 
 #[tokio::test]
 async fn health_check_works() {
-    let sut = spawn_app().await;
+    let test = create_docker_test();
 
-    let client = reqwest::Client::new();
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
 
-    let endpoint = sut.endpoint("/health-check");
-    let response = client.get(endpoint).send().await.expect("Failed to execute request.");
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
 
-    assert!(response.status().is_success());
-    assert_eq!(Some(0), response.content_length());
+        let endpoint = sut.endpoint("/health-check");
+        let response = client.get(endpoint).send().await.expect("Failed to execute request.");
+
+        assert!(response.status().is_success());
+        assert_eq!(Some(0), response.content_length());
+    })
+    .await;
 }

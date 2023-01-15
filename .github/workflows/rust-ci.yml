@@ -27,6 +27,11 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
 
+      - name: Get current MSRV from Cargo.toml
+        run: |
+          echo "msrv=$(cat ./Cargo.toml | grep rust-version | sed 's/.* = "//; s/"//')"
+          echo "rustc=$(rustc --version | cut -c 7-)"
+
       - name: Install rust toolchain
         run: |
           rustup set profile minimal

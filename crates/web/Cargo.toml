@@ -33,5 +33,6 @@ uuid = { workspace = true }
 url = { workspace = true }
 
 [dev-dependencies]
+dockertest = { workspace = true }
 pretty_assertions = { workspace = true }
 reqwest = { workspace = true }
