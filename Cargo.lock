@@ -2521,6 +2521,31 @@ dependencies = [
 ]
 
 [[package]]
+name = "server"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "catalog",
+ "chrono",
+ "config",
+ "dockertest",
+ "log",
+ "pretty_assertions",
+ "reqwest",
+ "secrecy",
+ "serde",
+ "sqlx",
+ "tokio",
+ "tracing",
+ "tracing-actix-web",
+ "tracing-bunyan-formatter",
+ "tracing-log",
+ "tracing-subscriber",
+ "url",
+ "uuid",
+]
+
+[[package]]
 name = "sha1"
 version = "0.10.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3245,31 +3270,6 @@ name = "wasm-bindgen-shared"
 version = "0.2.83"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1c38c045535d93ec4f0b4defec448e4291638ee608530863b1e2ba115d4fff7f"
-
-[[package]]
-name = "web"
-version = "0.1.0"
-dependencies = [
- "actix-web",
- "catalog",
- "chrono",
- "config",
- "dockertest",
- "log",
- "pretty_assertions",
- "reqwest",
- "secrecy",
- "serde",
- "sqlx",
- "tokio",
- "tracing",
- "tracing-actix-web",
- "tracing-bunyan-formatter",
- "tracing-log",
- "tracing-subscriber",
- "url",
- "uuid",
-]
 
 [[package]]
 name = "web-sys"

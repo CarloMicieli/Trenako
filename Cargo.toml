@@ -3,7 +3,7 @@ members = [
     "crates/catalog",
     "crates/cli",
     "crates/common",
-    "crates/web",
+    "crates/server",
 ]
 
 [workspace.package]

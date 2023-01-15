@@ -1,9 +1,9 @@
+use server::app;
+use server::configuration::Settings;
+use server::telemetry::{get_subscriber, init_subscriber};
 use sqlx::postgres::PgPoolOptions;
 use sqlx::PgPool;
 use std::net::TcpListener;
-use web::configuration::Settings;
-use web::server;
-use web::telemetry::{get_subscriber, init_subscriber};
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -16,7 +16,7 @@ async fn main() -> std::io::Result<()> {
 
     println!("{}", &BANNER_TEXT);
     println!("Starting the server ({})...", settings.address());
-    server::run(listener, db_pool, settings.workers())?.await
+    app::run(listener, db_pool, settings.workers())?.await
 }
 
 fn get_connection_pool(configuration: &Settings) -> PgPool {

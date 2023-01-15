@@ -1,9 +1,9 @@
 use dockertest::waitfor::{MessageSource, MessageWait};
 use dockertest::{DockerTest, Image, Source, TestBodySpecification};
+use server::app;
 use sqlx::postgres::{PgConnectOptions, PgPoolOptions, PgSslMode};
 use sqlx::PgPool;
 use std::net::TcpListener;
-use web::server;
 
 const POSTGRES_USER: &str = "postgres";
 const POSTGRES_PASSWORD: &str = "postgres";
@@ -46,7 +46,7 @@ pub async fn spawn_app(port: u32) -> ServiceUnderTest {
 
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
     let port = listener.local_addr().unwrap().port();
-    let server = server::run(listener, pg_pool, 2).expect("Failed to bind address");
+    let server = app::run(listener, pg_pool, 2).expect("Failed to bind address");
     let _ = tokio::spawn(server);
 
     ServiceUnderTest {
