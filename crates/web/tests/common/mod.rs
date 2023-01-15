@@ -1,6 +1,5 @@
 use sqlx::PgPool;
 use std::net::TcpListener;
-use testcontainers::{clients, images::postgres, RunnableImage};
 use web::server;
 
 #[derive(Debug)]
@@ -15,14 +14,7 @@ impl ServiceUnderTest {
 }
 
 pub async fn spawn_app() -> ServiceUnderTest {
-    let docker = clients::Cli::default();
-    let image = RunnableImage::from(postgres::Postgres::default()).with_tag("15.1-alpine");
-    let node = docker.run(image);
-
-    let connection_string = &format!(
-        "postgres://postgres:postgres@127.0.0.1:{}/postgres",
-        node.get_host_port_ipv4(5432)
-    );
+    let connection_string = &format!("postgres://postgres:postgres@127.0.0.1:{}/postgres", 5432);
 
     let pg_pool = configure_database(connection_string).await;
 
