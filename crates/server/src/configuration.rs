@@ -1,7 +1,8 @@
 use config::{Config, Environment, File};
 use secrecy::{ExposeSecret, Secret};
 use serde::Deserialize;
-use sqlx::postgres::{PgConnectOptions, PgSslMode};
+use sqlx::postgres::{PgConnectOptions, PgPoolOptions, PgSslMode};
+use sqlx::PgPool;
 
 /// Application settings
 #[derive(Deserialize, Debug)]
@@ -23,21 +24,7 @@ impl Settings {
 
     /// Returns the postgres connection options
     pub fn pg_connection_options(&self) -> PgConnectOptions {
-        let db_settings = &self.database;
-        let ssl_mode = if db_settings.require_ssl {
-            PgSslMode::Require
-        } else {
-            PgSslMode::Prefer
-        };
-
-        PgConnectOptions::new()
-            .application_name("trenako")
-            .host(&db_settings.host)
-            .database(&db_settings.name)
-            .username(&db_settings.username)
-            .password(db_settings.password.expose_secret())
-            .port(db_settings.port)
-            .ssl_mode(ssl_mode)
+        self.database.pg_connection_options()
     }
 
     /// Load the settings from the configuration file (config/application.yaml)
@@ -89,6 +76,31 @@ impl DatabaseSettings {
             name: name.to_owned(),
             require_ssl: false,
         }
+    }
+
+    /// Creates a new postgres connection pool using the database connection settings.
+    pub fn get_connection_pool(&self) -> PgPool {
+        PgPoolOptions::new()
+            .acquire_timeout(std::time::Duration::from_secs(2))
+            .connect_lazy_with(self.pg_connection_options())
+    }
+
+    /// Returns the postgres connection options
+    pub fn pg_connection_options(&self) -> PgConnectOptions {
+        let ssl_mode = if self.require_ssl {
+            PgSslMode::Require
+        } else {
+            PgSslMode::Prefer
+        };
+
+        PgConnectOptions::new()
+            .application_name("trenako")
+            .host(&self.host)
+            .database(&self.name)
+            .username(&self.username)
+            .password(self.password.expose_secret())
+            .port(self.port)
+            .ssl_mode(ssl_mode)
     }
 }
 

@@ -1,8 +1,7 @@
 use dockertest::waitfor::{MessageSource, MessageWait};
 use dockertest::{DockerTest, Image, Source, TestBodySpecification};
 use server::app;
-use sqlx::postgres::{PgConnectOptions, PgPoolOptions, PgSslMode};
-use sqlx::PgPool;
+use server::configuration::{DatabaseSettings, ServerSettings, Settings};
 use std::net::TcpListener;
 
 const POSTGRES_USER: &str = "postgres";
@@ -14,7 +13,7 @@ pub const IMAGE_NAME: &str = "postgres";
 #[derive(Debug)]
 pub struct ServiceUnderTest {
     base_endpoint_url: String,
-    pg_connect_options: PgConnectOptions,
+    database_setting: DatabaseSettings,
 }
 
 impl ServiceUnderTest {
@@ -24,7 +23,7 @@ impl ServiceUnderTest {
 
     pub async fn run_database_migrations(&self) {
         // Migrate database
-        let connection_pool = get_connection_pool(self.pg_connect_options.clone());
+        let connection_pool = self.database_setting.get_connection_pool();
         sqlx::migrate!("../../migrations")
             .run(&connection_pool)
             .await
@@ -33,32 +32,24 @@ impl ServiceUnderTest {
 }
 
 pub async fn spawn_app(port: u32) -> ServiceUnderTest {
-    let pg_connect_options = PgConnectOptions::new()
-        .application_name("trenako-test")
-        .host("127.0.0.1")
-        .database(POSTGRES_DB)
-        .username(POSTGRES_USER)
-        .password(POSTGRES_PASSWORD)
-        .port(port as u16)
-        .ssl_mode(PgSslMode::Prefer);
-
-    let pg_pool = get_connection_pool(pg_connect_options.clone());
+    let settings = Settings {
+        server: ServerSettings {
+            host: String::from("127.0.0.1"),
+            port: 0,
+            workers: 2,
+        },
+        database: DatabaseSettings::new(POSTGRES_USER, POSTGRES_PASSWORD, "127.0.0.1", port as u16, POSTGRES_DB),
+    };
 
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
     let port = listener.local_addr().unwrap().port();
-    let server = app::run(listener, pg_pool, 2).expect("Failed to bind address");
+    let server = app::run(listener, &settings).expect("Failed to bind address");
     let _ = tokio::spawn(server);
 
     ServiceUnderTest {
         base_endpoint_url: format!("http://127.0.0.1:{}", port),
-        pg_connect_options,
+        database_setting: settings.database,
     }
-}
-
-fn get_connection_pool(options: PgConnectOptions) -> PgPool {
-    PgPoolOptions::new()
-        .acquire_timeout(std::time::Duration::from_secs(2))
-        .connect_lazy_with(options)
 }
 
 pub fn create_docker_test() -> DockerTest {

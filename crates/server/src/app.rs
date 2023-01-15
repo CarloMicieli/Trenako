@@ -1,14 +1,14 @@
 use crate::catalog;
+use crate::configuration::Settings;
 use actix_web::dev::Server;
 use actix_web::middleware::Compress;
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
-use sqlx::PgPool;
 use std::net::TcpListener;
 use tracing_actix_web::TracingLogger;
 
 /// Run the web server
-pub fn run(listener: TcpListener, db_pool: PgPool, workers: usize) -> Result<Server, std::io::Error> {
-    let db_pool = web::Data::new(db_pool);
+pub fn run(listener: TcpListener, settings: &Settings) -> Result<Server, std::io::Error> {
+    let db_pool = web::Data::new(settings.database.get_connection_pool());
 
     #[rustfmt::skip]
     let server = HttpServer::new(move || {
@@ -20,7 +20,7 @@ pub fn run(listener: TcpListener, db_pool: PgPool, workers: usize) -> Result<Ser
             .app_data(web::JsonConfig::default().limit(4096))
             .app_data(db_pool.clone())
         })
-        .workers(workers)
+        .workers(settings.workers())
         .listen(listener)?
         .run();
     Ok(server)
