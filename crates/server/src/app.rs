@@ -16,7 +16,7 @@ pub fn run(listener: TcpListener, settings: &Settings) -> Result<Server, std::io
             .wrap(TracingLogger::default())
             .wrap(Compress::default())
             .route("/health-check", web::get().to(health_check))
-            .configure(catalog::routes::config_services)
+            .configure(catalog::config_services)
             .app_data(web::JsonConfig::default().limit(4096))
             .app_data(db_pool.clone())
         })
