@@ -19,6 +19,12 @@ pub enum BrandKind {
     Industrial,
 }
 
+impl Default for BrandKind {
+    fn default() -> Self {
+        BrandKind::Industrial
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -43,6 +49,12 @@ mod tests {
         #[case(BrandKind::Industrial, "INDUSTRIAL")]
         fn it_should_display_brand_kinds(#[case] input: BrandKind, #[case] expected: &str) {
             assert_eq!(expected, input.to_string());
+        }
+
+        #[test]
+        fn it_should_define_a_default_brand_kind() {
+            let kind = BrandKind::default();
+            assert_eq!(BrandKind::Industrial, kind);
         }
     }
 }

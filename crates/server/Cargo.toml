@@ -15,15 +15,18 @@ name = "trenako-server"
 
 [dependencies]
 catalog = { path = "../catalog" }
+common = { path = "../common" }
 
 actix-web = { workspace = true }
+async-trait = { workspace = true }
 chrono = { workspace = true }
 config = { workspace = true }
 log = { workspace = true }
 secrecy = { workspace = true }
 serde = { workspace = true }
 sqlx = { workspace = true }
-tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+thiserror = { workspace = true }
+tokio = { workspace = true }
 tracing = { workspace = true }
 tracing-actix-web = { workspace = true }
 tracing-bunyan-formatter = { workspace = true }
