@@ -37,5 +37,6 @@ url = { workspace = true }
 
 [dev-dependencies]
 dockertest = { workspace = true }
+isocountry = { workspace = true }
 pretty_assertions = { workspace = true }
 reqwest = { workspace = true }

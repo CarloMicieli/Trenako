@@ -2,6 +2,7 @@ use dockertest::waitfor::{MessageSource, MessageWait};
 use dockertest::{DockerTest, Image, Source, TestBodySpecification};
 use server::app;
 use server::configuration::{DatabaseSettings, ServerSettings, Settings};
+use sqlx::PgPool;
 use std::net::TcpListener;
 
 const POSTGRES_USER: &str = "postgres";
@@ -23,11 +24,15 @@ impl ServiceUnderTest {
 
     pub async fn run_database_migrations(&self) {
         // Migrate database
-        let connection_pool = self.database_setting.get_connection_pool();
+        let pg_pool = self.pg_pool();
         sqlx::migrate!("../../migrations")
-            .run(&connection_pool)
+            .run(&pg_pool)
             .await
             .expect("Failed to migrate the database");
+    }
+
+    pub fn pg_pool(&self) -> PgPool {
+        self.database_setting.get_connection_pool()
     }
 }
 

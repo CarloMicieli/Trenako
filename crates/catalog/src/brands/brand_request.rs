@@ -7,7 +7,7 @@ use common::organizations::OrganizationEntityType;
 use common::socials::Socials;
 
 /// A request to create/update model railways brands
-#[derive(Clone, Debug, PartialEq, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Default, Serialize, Deserialize)]
 pub struct BrandRequest {
     /// the name
     pub name: String,
