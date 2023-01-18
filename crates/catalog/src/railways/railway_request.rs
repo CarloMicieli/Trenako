@@ -8,7 +8,7 @@ use common::socials::Socials;
 use isocountry::CountryCode;
 
 /// A request to create/update railways
-#[derive(Clone, Debug, PartialEq, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Deserialize)]
 pub struct RailwayRequest {
     /// the railway name
     pub name: String,

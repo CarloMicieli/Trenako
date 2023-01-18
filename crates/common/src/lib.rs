@@ -1,5 +1,6 @@
 pub mod address;
 pub mod contacts;
+pub mod in_memory;
 pub mod length;
 pub mod localized_text;
 pub mod measure_units;

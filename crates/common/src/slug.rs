@@ -7,7 +7,7 @@ use std::{convert, fmt};
 use thiserror::Error;
 
 /// A SEO friendly string
-#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
+#[derive(Debug, Ord, PartialOrd, Eq, PartialEq, Clone, Serialize, Deserialize, Type, Hash)]
 #[sqlx(transparent)]
 pub struct Slug(String);
 

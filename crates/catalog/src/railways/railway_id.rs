@@ -5,7 +5,7 @@ use std::str::FromStr;
 use std::{fmt, ops};
 
 /// It represents a unique railway id
-#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone, Serialize, Deserialize, Type)]
+#[derive(Debug, PartialEq, Eq, Ord, PartialOrd, Clone, Serialize, Deserialize, Type, Hash)]
 #[sqlx(transparent)]
 pub struct RailwayId(Slug);
 
