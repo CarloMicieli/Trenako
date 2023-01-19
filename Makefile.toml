@@ -76,7 +76,7 @@ category = "Database"
 install_crate = "sqlx-cli"
 install_crate_args = ["--no-default-features", "--features", "native-tls,postgres"]
 command = "sqlx"
-args = ["prepare", "--merged"]
+args = ["prepare", "--merged", "--", "--tests"]
 
 [tasks.db-migrate]
 description = "database: run the database migrations"

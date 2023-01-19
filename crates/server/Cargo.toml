@@ -22,6 +22,7 @@ async-trait = { workspace = true }
 chrono = { workspace = true }
 config = { workspace = true }
 log = { workspace = true }
+rust_decimal = { workspace = true }
 secrecy = { workspace = true }
 serde = { workspace = true }
 sqlx = { workspace = true }

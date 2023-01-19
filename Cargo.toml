@@ -54,6 +54,7 @@ version = "0.6.2"
 default-features = false
 features = [
     "chrono",
+    "decimal",
     "macros",
     "migrate",
     "offline",
