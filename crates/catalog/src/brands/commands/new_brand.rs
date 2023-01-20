@@ -15,13 +15,32 @@ use thiserror::Error;
 
 pub type Result<R> = result::Result<R, BrandCreationError>;
 
+pub async fn create_new_brand<R: NewBrandRepository>(request: BrandRequest, repo: R) -> Result<BrandCreated> {
+    let brand_id = BrandId::new(&request.name);
+
+    if repo.exists_already(&brand_id).await? {
+        return Err(BrandCreationError::BrandAlreadyExists(brand_id));
+    }
+
+    let command = NewBrandCommand::try_from(request)?;
+    repo.insert(&command).await?;
+
+    Ok(BrandCreated {
+        brand_id,
+        created_at: *command.metadata.created(),
+    })
+}
+
 #[derive(Debug, Error)]
 pub enum BrandCreationError {
     #[error("Error while interacting with the database: {0}")]
     Database(#[from] sqlx::error::Error),
 
-    #[error("Brand already exists")]
-    BrandAlreadyExists,
+    #[error("the brand request is not valid")]
+    InvalidRequest,
+
+    #[error("Brand already exists (id: {0})")]
+    BrandAlreadyExists(BrandId),
 }
 
 /// It represents the command to create a new model railway brand
@@ -32,28 +51,8 @@ pub struct NewBrandCommand {
     pub metadata: Metadata,
 }
 
-impl NewBrandCommand {
-    pub async fn handle<R: NewBrandRepository>(self, repo: R) -> Result<BrandCreated> {
-        if repo.exists_already(&self.brand_id).await? {
-            return Err(BrandCreationError::BrandAlreadyExists);
-        }
-
-        repo.insert(&self).await?;
-        Ok(BrandCreated {
-            brand_id: self.brand_id,
-            created_at: *self.metadata.created(),
-        })
-    }
-}
-
-#[derive(Debug, Error)]
-pub enum InvalidBrandRequest {
-    #[error("the brand request is not valid")]
-    InvalidRequest,
-}
-
 impl TryFrom<BrandRequest> for NewBrandCommand {
-    type Error = InvalidBrandRequest;
+    type Error = BrandCreationError;
 
     fn try_from(request: BrandRequest) -> result::Result<Self, Self::Error> {
         Ok(NewBrandCommand {
@@ -90,7 +89,7 @@ pub struct BrandCommandPayload {
 }
 
 impl TryFrom<BrandRequest> for BrandCommandPayload {
-    type Error = InvalidBrandRequest;
+    type Error = BrandCreationError;
 
     fn try_from(request: BrandRequest) -> result::Result<Self, Self::Error> {
         let contacts = request.contact_info.unwrap_or_default();
@@ -182,35 +181,73 @@ mod test {
     mod new_brand_command {
         use super::*;
         use chrono::TimeZone;
+        use common::in_memory::InMemoryRepository;
+        use common::localized_text::LocalizedText;
+        use isocountry::CountryCode;
         use pretty_assertions::assert_eq;
-        use std::cell::RefCell;
-        use std::sync::Mutex;
 
         #[tokio::test]
         async fn it_should_create_a_new_brand() {
             let repo = InMemoryNewBrandRepository::new();
-            let new_brand_cmd = new_brand_cmd_with_name("ACME");
 
-            let result = new_brand_cmd.handle(repo).await;
+            let request = new_brand("ACME");
+            let result = create_new_brand(request, repo).await;
 
-            let expected = BrandCreated {
-                brand_id: BrandId::new("ACME"),
-                created_at: Utc.with_ymd_and_hms(1988, 11, 25, 0, 0, 0).unwrap(),
-            };
-            assert_eq!(expected, result.unwrap());
+            let created = result.expect("result is an error");
+
+            assert_eq!(BrandId::new("ACME"), created.brand_id);
         }
 
         #[tokio::test]
         async fn it_should_return_an_error_when_the_brand_already_exists() {
-            let repo = InMemoryNewBrandRepository::with_brand("ACME");
             let new_brand_cmd = new_brand_cmd_with_name("ACME");
+            let repo = InMemoryNewBrandRepository::of(new_brand_cmd);
 
-            let result = new_brand_cmd.handle(repo).await;
+            let request = new_brand("ACME");
+            let result = create_new_brand(request, repo).await;
 
             match result {
-                Err(BrandCreationError::BrandAlreadyExists) => {}
-                Err(why) => panic!("Unexpected error {:?}", why),
-                Ok(_) => panic!("The result should be an error"),
+                Err(BrandCreationError::BrandAlreadyExists(id)) => assert_eq!(BrandId::new("ACME"), id),
+                _ => panic!("BrandAlreadyExists is expected (found: {:?})", result),
+            }
+        }
+
+        fn new_brand(name: &str) -> BrandRequest {
+            let address = Address::builder()
+                .street_address("Rue Morgue 22")
+                .city("London")
+                .postal_code("1H2 4BB")
+                .country(CountryCode::GBR)
+                .build()
+                .unwrap();
+
+            let contact_info = ContactInformation::builder()
+                .email("mail@mail.com")
+                .phone("555 1234")
+                .website_url("https://www.site.com")
+                .build()
+                .unwrap();
+
+            let socials = Socials::builder()
+                .instagram("instagram_handler")
+                .linkedin("linkedin_handler")
+                .facebook("facebook_handler")
+                .twitter("twitter_handler")
+                .youtube("youtube_handler")
+                .build()
+                .unwrap();
+
+            BrandRequest {
+                name: String::from(name),
+                registered_company_name: Some(String::from("A cool brand ltd.")),
+                organization_entity_type: Some(OrganizationEntityType::LimitedCompany),
+                group_name: Some(String::from("Group Corp.")),
+                description: LocalizedText::with_italian("La descrizione va qui"),
+                address: Some(address),
+                contact_info: Some(contact_info),
+                kind: BrandKind::Industrial,
+                status: Some(BrandStatus::Active),
+                socials: Some(socials),
             }
         }
 
@@ -229,36 +266,28 @@ mod test {
             }
         }
 
-        struct InMemoryNewBrandRepository {
-            items: Mutex<RefCell<Vec<NewBrandCommand>>>,
-        }
+        struct InMemoryNewBrandRepository(InMemoryRepository<BrandId, NewBrandCommand>);
 
         impl InMemoryNewBrandRepository {
             fn new() -> Self {
-                InMemoryNewBrandRepository {
-                    items: Mutex::new(RefCell::new(Vec::new())),
-                }
+                InMemoryNewBrandRepository(InMemoryRepository::empty())
             }
 
-            fn with_brand(name: &str) -> Self {
-                let item = new_brand_cmd_with_name(name);
-                InMemoryNewBrandRepository {
-                    items: Mutex::new(RefCell::new(vec![item])),
-                }
+            fn of(command: NewBrandCommand) -> Self {
+                let id = BrandId::new(&command.brand_id);
+                InMemoryNewBrandRepository(InMemoryRepository::of(id, command))
             }
         }
 
         #[async_trait]
         impl NewBrandRepository for InMemoryNewBrandRepository {
             async fn exists_already(&self, brand_id: &BrandId) -> Result<bool> {
-                let items = self.items.lock().expect("Unable to acquire the lock");
-                let result = items.borrow().iter().any(|it| it.brand_id == *brand_id);
-                Ok(result)
+                Ok(self.0.contains(brand_id))
             }
 
             async fn insert(&self, new_brand: &NewBrandCommand) -> Result<()> {
-                let items = self.items.lock().expect("Unable to acquire the lock");
-                items.borrow_mut().push(new_brand.clone());
+                let id = BrandId::new(&new_brand.brand_id);
+                self.0.add(id, new_brand.clone());
                 Ok(())
             }
         }

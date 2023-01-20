@@ -1,49 +1,21 @@
-use crate::catalog::brands::routes;
-use crate::commands::{handle_web_request, Command, IntoHttpResponse};
-use actix_web::{web, HttpResponse, Responder};
 use async_trait::async_trait;
 use catalog::brands::brand_id::BrandId;
 use catalog::brands::brand_kind::BrandKind;
-use catalog::brands::brand_request::BrandRequest;
-use catalog::brands::brand_response::BrandCreated;
 use catalog::brands::brand_status::BrandStatus;
-use catalog::brands::commands::new_brand::{BrandCreationError, NewBrandCommand, NewBrandRepository, Result};
+use catalog::brands::commands::new_brand::{NewBrandCommand, NewBrandRepository, Result};
 use common::contacts::{MailAddress, PhoneNumber};
 use common::organizations::OrganizationEntityType;
 use common::socials::Handler;
 use sqlx::PgPool;
-use tracing_actix_web::RequestId;
 
-pub async fn handler(
-    request_id: RequestId,
-    request: web::Json<BrandRequest>,
-    pg_pool: web::Data<PgPool>,
-) -> impl Responder {
-    let command = NewBrandCommand::try_from(request.0).expect("The new brand request is invalid");
-    handle_web_request(command, request_id, &pg_pool).await
-}
-
-#[async_trait]
-impl Command for NewBrandCommand {
-    type Output = BrandCreated;
-    type Error = BrandCreationError;
-
-    async fn execute(self, pg_pool: &PgPool) -> std::result::Result<Self::Output, Self::Error> {
-        let repository = PgNewBrandRepository { pg_pool };
-        self.handle(repository).await
-    }
-}
-
-impl IntoHttpResponse for BrandCreated {
-    fn into_http_response(self) -> HttpResponse {
-        let location = format!("{}/{}", routes::BRAND_ROOT_API, self.brand_id);
-        HttpResponse::Created().insert_header(("Location", location)).finish()
-    }
-}
-
-#[allow(dead_code)]
-struct PgNewBrandRepository<'repo> {
+pub struct PgNewBrandRepository<'repo> {
     pg_pool: &'repo PgPool,
+}
+
+impl<'repo> PgNewBrandRepository<'repo> {
+    pub fn new(pg_pool: &PgPool) -> PgNewBrandRepository {
+        PgNewBrandRepository { pg_pool }
+    }
 }
 
 #[async_trait]

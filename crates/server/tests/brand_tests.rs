@@ -10,8 +10,6 @@ use catalog::brands::brand_kind::BrandKind;
 use catalog::brands::brand_request::BrandRequest;
 use catalog::brands::brand_status::BrandStatus;
 use isocountry::CountryCode;
-use sqlx::postgres::PgRow;
-use sqlx::Row;
 use uuid::Uuid;
 
 const API_BRANDS: &str = "/api/brands";
@@ -80,41 +78,19 @@ async fn post_new_brands() {
         assert_eq!(expected_location, response.headers()["Location"]);
 
         let pg_pool = sut.pg_pool();
-        let saved = sqlx::query(r#"SELECT 
-                    brand_id, name, registered_company_name, organization_entity_type, group_name, 
-                    description_it, kind, status,
+        let saved = sqlx::query_as!(Saved,
+                r#"SELECT
+                    brand_id, name, registered_company_name, 
+                    organization_entity_type as "organization_entity_type: OrganizationEntityType", group_name, 
+                    description_it, kind as "kind: BrandKind", status as "status: BrandStatus",
                     contact_email, contact_website_url, contact_phone,
                     address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,
                     socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube
-                FROM brands WHERE name = $1"#)
-            .bind(brand_name)
-            .map(|r: PgRow| Saved {
-                brand_id: r.get("brand_id"),
-                name: r.get("name"),
-                registered_company_name: r.get("registered_company_name"),
-                organization_entity_type: r.get("organization_entity_type"),
-                group_name: r.get("group_name"),
-                description_it: r.get("description_it"),
-                kind: r.get("kind"),
-                status: r.get("status"),
-                contact_email: r.get("contact_email"),
-                contact_website_url: r.get("contact_website_url"),
-                contact_phone: r.get("contact_phone"),
-                address_street_address: r.get("address_street_address"),
-                address_extended_address: r.get("address_extended_address"),
-                address_city: r.get("address_city"),
-                address_region: r.get("address_region"),
-                address_postal_code: r.get("address_postal_code"),
-                address_country: r.get("address_country"),
-                socials_facebook: r.get("socials_facebook"),
-                socials_instagram: r.get("socials_instagram"),
-                socials_linkedin: r.get("socials_linkedin"),
-                socials_twitter: r.get("socials_twitter"),
-                socials_youtube: r.get("socials_youtube"),
-            })
+                FROM brands WHERE name = $1"#, &brand_name)
             .fetch_one(&pg_pool)
             .await
             .expect("Failed to fetch saved brand.");
+
         assert_eq!(request.name, saved.brand_id);
         assert_eq!(request.name, saved.name);
         assert_eq!(request.kind, saved.kind);
