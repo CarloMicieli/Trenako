@@ -87,35 +87,36 @@ async fn post_new_railways() {
         let saved = sqlx::query_as!(
             Saved,
             r#"SELECT
-                        railway_id,
-                        name,
-                        abbreviation,
-                        registered_company_name,
-                        organization_entity_type as "organization_entity_type?: OrganizationEntityType",
-                        description_it,
-                        country,
-                        operating_since,
-                        operating_until,
-                        status as "status?: RailwayStatus",
-                        gauge_m,
-                        track_gauge as "track_gauge?: TrackGauge",
-                        headquarters,
-                        total_length_mi,
-                        total_length_km,
-                        contact_email,
-                        contact_website_url,
-                        contact_phone,
-                        socials_facebook,
-                        socials_instagram,
-                        socials_linkedin,
-                        socials_twitter,
-                        socials_youtube
-                    FROM railways WHERE name = $1"#,
+                railway_id,
+                name,
+                abbreviation,
+                registered_company_name,
+                organization_entity_type as "organization_entity_type?: OrganizationEntityType",
+                description_it,
+                country,
+                operating_since,
+                operating_until,
+                status as "status?: RailwayStatus",
+                gauge_m,
+                track_gauge as "track_gauge?: TrackGauge",
+                headquarters,
+                total_length_mi,
+                total_length_km,
+                contact_email,
+                contact_website_url,
+                contact_phone,
+                socials_facebook,
+                socials_instagram,
+                socials_linkedin,
+                socials_twitter,
+                socials_youtube
+            FROM railways WHERE name = $1"#,
             &railway_name
         )
         .fetch_one(&pg_pool)
         .await
         .expect("Failed to fetch saved railway.");
+
         assert_eq!(request.name, saved.railway_id);
         assert_eq!(request.name, saved.name);
         assert_eq!(request.abbreviation, saved.abbreviation);

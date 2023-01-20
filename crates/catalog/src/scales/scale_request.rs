@@ -4,7 +4,7 @@ use crate::scales::standard::Standard;
 use common::localized_text::LocalizedText;
 
 /// A request to create/update rail transport modelling scales
-#[derive(Clone, Debug, PartialEq, Deserialize)]
+#[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ScaleRequest {
     /// the scale name
     pub name: String,
