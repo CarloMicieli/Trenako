@@ -1,3 +1,4 @@
+pub mod commands;
 pub mod ratio;
 pub mod scale;
 pub mod scale_gauge;
