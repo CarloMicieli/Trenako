@@ -34,11 +34,11 @@ async fn post_new_railways() {
         let operating_since = NaiveDate::from_ymd_opt(1900, 1, 1).unwrap();
         let period_of_activity = PeriodOfActivity::active_railway(operating_since);
 
-        let gauge_mt = Decimal::from_f32_retain(1.435f32).unwrap();
+        let gauge_mt = Decimal::from_str("1.435").unwrap();
         let gauge = RailwayGauge::new(gauge_mt, TrackGauge::Standard);
 
-        let total_length_km = Decimal::from_f32_retain(10000.0).unwrap();
-        let total_length_mi = Decimal::from_f32_retain(621.371).unwrap();
+        let total_length_km = Decimal::from_str("10000").unwrap();
+        let total_length_mi = Decimal::from_str("621.371").unwrap();
         let length = RailwayLength::new(total_length_km, total_length_mi);
         let contact_info = ContactInformation::builder()
             .email("mail@mail.com")
@@ -87,35 +87,35 @@ async fn post_new_railways() {
         let saved = sqlx::query_as!(
             Saved,
             r#"SELECT
-                    railway_id,
-                    name,
-                    abbreviation,
-                    registered_company_name,
-                    organization_entity_type as "organization_entity_type?: OrganizationEntityType",
-                    description_it,
-                    country,
-                    operating_since,
-                    operating_until,
-                    status as "status?: RailwayStatus",
-                    gauge_m,
-                    track_gauge as "track_gauge?: TrackGauge",
-                    headquarters,
-                    total_length_mi,
-                    total_length_km,
-                    contact_email,
-                    contact_website_url,
-                    contact_phone,
-                    socials_facebook,
-                    socials_instagram,
-                    socials_linkedin,
-                    socials_twitter,
-                    socials_youtube
-                FROM railways WHERE name = $1"#,
+                        railway_id,
+                        name,
+                        abbreviation,
+                        registered_company_name,
+                        organization_entity_type as "organization_entity_type?: OrganizationEntityType",
+                        description_it,
+                        country,
+                        operating_since,
+                        operating_until,
+                        status as "status?: RailwayStatus",
+                        gauge_m,
+                        track_gauge as "track_gauge?: TrackGauge",
+                        headquarters,
+                        total_length_mi,
+                        total_length_km,
+                        contact_email,
+                        contact_website_url,
+                        contact_phone,
+                        socials_facebook,
+                        socials_instagram,
+                        socials_linkedin,
+                        socials_twitter,
+                        socials_youtube
+                    FROM railways WHERE name = $1"#,
             &railway_name
         )
         .fetch_one(&pg_pool)
         .await
-        .expect("Failed to fetch saved brand.");
+        .expect("Failed to fetch saved railway.");
         assert_eq!(request.name, saved.railway_id);
         assert_eq!(request.name, saved.name);
         assert_eq!(request.abbreviation, saved.abbreviation);
