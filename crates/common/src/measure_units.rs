@@ -50,6 +50,7 @@ pub enum MeasureUnit {
 }
 
 impl MeasureUnit {
+    /// the measure unit symbol
     pub fn symbol(&self) -> &str {
         match self {
             MeasureUnit::Miles => "mi",
@@ -58,6 +59,12 @@ impl MeasureUnit {
             MeasureUnit::Millimeters => "mm",
             MeasureUnit::Kilometers => "km",
         }
+    }
+
+    pub fn same_as(&self, value: Decimal, other_mu: MeasureUnit, other_value: Decimal) -> bool {
+        let value_converted = self.to(other_mu).convert(value);
+        let diff = other_value - value_converted;
+        Decimal::abs(&diff) < dec!(0.001)
     }
 
     pub fn to(&self, other: MeasureUnit) -> MeasureUnitConverter {
@@ -127,6 +134,20 @@ mod tests {
         use super::*;
         use pretty_assertions::assert_eq;
         use rstest::rstest;
+        use rust_decimal_macros::dec;
+
+        #[rstest]
+        #[case(dec!(16.5), MeasureUnit::Inches, dec!(0.65), true)]
+        #[case(dec!(16.5), MeasureUnit::Inches, dec!(0.64), false)]
+        fn it_should_check_if_the_value_in_another_measure_unit_is_the_same(
+            #[case] input: Decimal,
+            #[case] other_mu: MeasureUnit,
+            #[case] other_value: Decimal,
+            #[case] expected: bool,
+        ) {
+            let result = MeasureUnit::Millimeters.same_as(input, other_mu, other_value);
+            assert_eq!(expected, result);
+        }
 
         #[test]
         fn measure_unit_symbol_should_return_the_symbol() {

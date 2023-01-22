@@ -2,7 +2,7 @@ use common::slug::Slug;
 use sqlx::Type;
 use std::fmt::Formatter;
 use std::str::FromStr;
-use std::{convert, fmt};
+use std::{convert, fmt, ops, str};
 use thiserror::Error;
 
 /// It represent a catalog item number.
@@ -23,12 +23,26 @@ impl ItemNumber {
     }
 }
 
-impl FromStr for ItemNumber {
-    type Err = ItemNumberParserError;
+impl ops::Deref for ItemNumber {
+    type Target = str;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl convert::AsRef<str> for ItemNumber {
+    fn as_ref(&self) -> &str {
+        &self.0
+    }
+}
+
+impl str::FromStr for ItemNumber {
+    type Err = ItemNumberError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         if s.is_empty() {
-            Err(ItemNumberParserError::EmptyItemNumber)
+            Err(ItemNumberError::EmptyItemNumber)
         } else {
             Ok(ItemNumber(s.to_owned()))
         }
@@ -36,14 +50,14 @@ impl FromStr for ItemNumber {
 }
 
 #[derive(Debug, Eq, PartialEq, Error)]
-pub enum ItemNumberParserError {
+pub enum ItemNumberError {
     #[error("Item number cannot be blank")]
     EmptyItemNumber,
 }
 
 impl fmt::Display for ItemNumber {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", self.0)
+        self.0.fmt(f)
     }
 }
 
@@ -70,6 +84,13 @@ mod tests {
         }
 
         #[test]
+        fn it_should_deref_item_numbers() {
+            let item_number = ItemNumber::new("123456");
+            assert_eq!("123456", &*item_number);
+            assert_eq!("123456", item_number.as_ref());
+        }
+
+        #[test]
         fn it_should_convert_item_numbers_to_slugs() {
             let item_number = ItemNumber::new("1234");
             let slug: Slug = item_number.into();
@@ -83,11 +104,11 @@ mod tests {
         }
 
         #[rstest]
-        #[case("", Err(ItemNumberParserError::EmptyItemNumber))]
+        #[case("", Err(ItemNumberError::EmptyItemNumber))]
         #[case("1234", Ok(ItemNumber::new("1234")))]
         fn it_should_parse_string_as_item_numbers(
             #[case] input: &str,
-            #[case] expected: Result<ItemNumber, ItemNumberParserError>,
+            #[case] expected: Result<ItemNumber, ItemNumberError>,
         ) {
             let result = ItemNumber::from_str(input);
             assert_eq!(expected, result);

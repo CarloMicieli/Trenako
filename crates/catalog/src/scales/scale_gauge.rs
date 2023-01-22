@@ -1,5 +1,6 @@
 use crate::common::TrackGauge;
 use common::measure_units::MeasureUnit;
+use common::measure_units::MeasureUnit::Millimeters;
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;
 use std::cmp;
@@ -27,7 +28,7 @@ impl Gauge {
             (_, inches) if inches.is_sign_negative() || inches.is_zero() => {
                 Err(GaugeError::NegativeRailsDistance(inches, MeasureUnit::Inches))
             }
-            (mm, inches) if different_value_after_conversion(mm, inches) => Err(GaugeError::DifferentValues),
+            (mm, inches) if !Millimeters.same_as(mm, MeasureUnit::Inches, inches) => Err(GaugeError::DifferentValues),
             (_, _) => Ok(Gauge {
                 millimeters,
                 inches,
@@ -76,12 +77,6 @@ impl Gauge {
         millimeters: dec!(9.0),
         inches: dec!(0.354),
     };
-}
-
-fn different_value_after_conversion(millimeters: Decimal, inches: Decimal) -> bool {
-    let millimeters_converted = MeasureUnit::Inches.to(MeasureUnit::Millimeters).convert(inches);
-    let diff = millimeters_converted - millimeters;
-    Decimal::abs(&diff) > dec!(0.1)
 }
 
 impl cmp::PartialOrd for Gauge {

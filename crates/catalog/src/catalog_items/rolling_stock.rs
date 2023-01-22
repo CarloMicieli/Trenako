@@ -3,7 +3,7 @@ use crate::catalog_items::category::{
 };
 use crate::catalog_items::control::{Control, DccInterface};
 use crate::catalog_items::epoch::Epoch;
-use crate::catalog_items::length_over_buffer::LengthOverBuffer;
+use crate::catalog_items::length_over_buffers::LengthOverBuffers;
 use crate::catalog_items::rolling_stock_id::RollingStockId;
 use crate::catalog_items::service_level::ServiceLevel;
 use crate::catalog_items::technical_specifications::TechnicalSpecifications;
@@ -25,7 +25,7 @@ pub enum RollingStock {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the electric multiple unit type name
@@ -56,7 +56,7 @@ pub enum RollingStock {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the freight car type name
@@ -77,7 +77,7 @@ pub enum RollingStock {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         /// the technical specification
         technical_specifications: Option<TechnicalSpecifications>,
         /// the class of locomotives. The class is a group of locomotives built to a common design,
@@ -109,7 +109,7 @@ pub enum RollingStock {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the passenger car type name
@@ -135,7 +135,7 @@ pub enum RollingStock {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the railcar type name
@@ -170,7 +170,7 @@ impl RollingStock {
         depot: Option<&str>,
         livery: Option<&str>,
         is_dummy: bool,
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
         technical_specifications: Option<TechnicalSpecifications>,
@@ -202,7 +202,7 @@ impl RollingStock {
         epoch: Epoch,
         freight_car_type: Option<FreightCarType>,
         livery: Option<&str>,
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         technical_specifications: Option<TechnicalSpecifications>,
     ) -> Self {
         RollingStock::FreightCar {
@@ -230,7 +230,7 @@ impl RollingStock {
         depot: Option<&str>,
         livery: Option<&str>,
         is_dummy: bool,
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
         technical_specifications: Option<TechnicalSpecifications>,
@@ -264,7 +264,7 @@ impl RollingStock {
         passenger_car_type: Option<PassengerCarType>,
         service_level: Option<ServiceLevel>,
         livery: Option<&str>,
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         technical_specifications: Option<TechnicalSpecifications>,
     ) -> Self {
         RollingStock::PassengerCar {
@@ -294,7 +294,7 @@ impl RollingStock {
         depot: Option<&str>,
         livery: Option<&str>,
         is_dummy: bool,
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         control: Option<Control>,
         dcc_interface: Option<DccInterface>,
         technical_specifications: Option<TechnicalSpecifications>,
@@ -362,7 +362,7 @@ impl RollingStock {
     }
 
     /// The overall length for this rolling stock
-    pub fn length_over_buffer(&self) -> Option<&LengthOverBuffer> {
+    pub fn length_over_buffer(&self) -> Option<&LengthOverBuffers> {
         match self {
             RollingStock::ElectricMultipleUnit { length_over_buffer, .. } => length_over_buffer.as_ref(),
             RollingStock::Locomotive { length_over_buffer, .. } => length_over_buffer.as_ref(),
@@ -523,7 +523,7 @@ mod test {
         #[test]
         fn it_should_create_new_locomotives() {
             let id = RollingStockId::new();
-            let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(210)));
+            let length = LengthOverBuffers::from_millimeters(Length::Millimeters(dec!(210)));
             let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
 
             let tech_specs = technical_specification();
@@ -560,7 +560,7 @@ mod test {
         #[test]
         fn it_should_create_new_electric_multiple_units() {
             let id = RollingStockId::new();
-            let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
+            let length = LengthOverBuffers::from_millimeters(Length::Millimeters(dec!(303)));
             let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
 
             let tech_specs = technical_specification();
@@ -597,7 +597,7 @@ mod test {
         #[test]
         fn it_should_create_new_passenger_cars() {
             let id = RollingStockId::new();
-            let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
+            let length = LengthOverBuffers::from_millimeters(Length::Millimeters(dec!(303)));
             let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
 
             let tech_specs = technical_specification();
@@ -631,7 +631,7 @@ mod test {
         #[test]
         fn it_should_create_new_railcars() {
             let id = RollingStockId::new();
-            let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
+            let length = LengthOverBuffers::from_millimeters(Length::Millimeters(dec!(303)));
             let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
 
             let tech_specs = technical_specification();
@@ -668,7 +668,7 @@ mod test {
         #[test]
         fn it_should_create_new_freight_cars() {
             let id = RollingStockId::new();
-            let length = LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(303)));
+            let length = LengthOverBuffers::from_millimeters(Length::Millimeters(dec!(303)));
             let fs = RollingStockRailway::new(RailwayId::new("fs"), "FS");
 
             let tech_specs = technical_specification();

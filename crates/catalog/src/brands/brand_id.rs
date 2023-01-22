@@ -20,7 +20,7 @@ impl BrandId {
 
 impl fmt::Display for BrandId {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", self.0)
+        self.0.fmt(f)
     }
 }
 

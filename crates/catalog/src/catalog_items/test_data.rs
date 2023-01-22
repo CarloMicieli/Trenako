@@ -7,7 +7,7 @@ use crate::catalog_items::control::{Control, DccInterface};
 use crate::catalog_items::delivery_date::DeliveryDate;
 use crate::catalog_items::epoch::Epoch;
 use crate::catalog_items::item_number::ItemNumber;
-use crate::catalog_items::length_over_buffer::LengthOverBuffer;
+use crate::catalog_items::length_over_buffers::LengthOverBuffers;
 use crate::catalog_items::power_method::PowerMethod;
 use crate::catalog_items::rolling_stock::{RollingStock, RollingStockRailway};
 use crate::catalog_items::rolling_stock_id::RollingStockId;
@@ -57,7 +57,7 @@ pub fn ACME_60142() -> CatalogItem {
         Some("Ancona"),
         Some("castano/isabella"),
         false,
-        Some(LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(210)))),
+        Some(LengthOverBuffers::from_millimeters(Length::Millimeters(dec!(210)))),
         Some(Control::DccReady),
         Some(DccInterface::Nem652),
         None,
@@ -98,7 +98,7 @@ pub fn Piko_52848() -> CatalogItem {
         Some("Genova Rivarolo"),
         Some("arancio, fasce gialle"),
         false,
-        Some(LengthOverBuffer::from_millimeters(Length::Millimeters(dec!(175)))),
+        Some(LengthOverBuffers::from_millimeters(Length::Millimeters(dec!(175)))),
         Some(Control::DccSound),
         Some(DccInterface::Mtc21),
         None,

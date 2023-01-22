@@ -3,7 +3,7 @@ use crate::catalog_items::category::{
 };
 use crate::catalog_items::control::{Control, DccInterface};
 use crate::catalog_items::epoch::Epoch;
-use crate::catalog_items::length_over_buffer::LengthOverBuffer;
+use crate::catalog_items::length_over_buffers::LengthOverBuffers;
 use crate::catalog_items::service_level::ServiceLevel;
 use crate::catalog_items::technical_specifications::TechnicalSpecifications;
 
@@ -20,7 +20,7 @@ pub enum RollingStockRequest {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the electric multiple unit type name
@@ -49,7 +49,7 @@ pub enum RollingStockRequest {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the freight car type name
@@ -68,7 +68,7 @@ pub enum RollingStockRequest {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the class of locomotives. The class is a group of locomotives built to a common design,
@@ -98,7 +98,7 @@ pub enum RollingStockRequest {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the passenger car type name
@@ -122,7 +122,7 @@ pub enum RollingStockRequest {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffer>,
+        length_over_buffer: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the railcar type name
