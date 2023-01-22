@@ -169,7 +169,7 @@ mod test {
             ScaleRequest {
                 name: String::from(name),
                 ratio: Ratio::try_from(ratio).unwrap(),
-                gauge: Gauge::new(TrackGauge::Standard, gauge_mm, gauge_in),
+                gauge: Gauge::new(TrackGauge::Standard, gauge_mm, gauge_in).unwrap(),
                 description: LocalizedText::with_italian("Descrizione"),
                 standards: vec![Standard::NEM],
             }

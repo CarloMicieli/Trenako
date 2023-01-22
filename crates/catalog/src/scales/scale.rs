@@ -140,7 +140,7 @@ mod tests {
             let now: DateTime<Utc> = Utc::now();
             let id = ScaleId::new("H0");
             let ratio = Ratio::try_from(Decimal::from(87)).unwrap();
-            let gauge = Gauge::from_millimeters(TrackGauge::Standard, dec!(16.5));
+            let gauge = Gauge::from_millimeters(TrackGauge::Standard, dec!(16.5)).unwrap();
 
             let standard = HashSet::from([Standard::NMRA]);
 

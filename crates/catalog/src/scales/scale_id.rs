@@ -27,7 +27,7 @@ impl str::FromStr for ScaleId {
 
 impl fmt::Display for ScaleId {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", self.0)
+        self.0.fmt(f)
     }
 }
 

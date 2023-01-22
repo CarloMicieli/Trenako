@@ -113,6 +113,12 @@ impl MeasureUnit {
     const MILLIMETERS_TO_METERS: Decimal = dec!(0.001);
 }
 
+impl fmt::Display for MeasureUnit {
+    fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", self.symbol())
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -42,6 +42,7 @@ args = ["fmt", "--all", "--check"]
 [tasks.clippy]
 description = "clippy: run the rust linter"
 category = "Check"
+env = { "SQLX_OFFLINE" = "true" }
 install_crate = { crate_name = "clippy", rustup_component_name = "clippy", binary = "cargo-clippy", test_arg = "--help" }
 args = ["clippy", "--all-targets", "--all-features", "--", "-D", "warnings"]
 

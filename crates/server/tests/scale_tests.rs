@@ -31,7 +31,7 @@ async fn post_new_scales() {
 
         let gauge_mm = Decimal::from_str_exact("16.5").unwrap();
         let gauge_in = Decimal::from_str_exact("0.65").unwrap();
-        let gauge = Gauge::new(TrackGauge::Standard, gauge_mm, gauge_in);
+        let gauge = Gauge::new(TrackGauge::Standard, gauge_mm, gauge_in).unwrap();
 
         let request = ScaleRequest {
             name: scale_name.clone(),
