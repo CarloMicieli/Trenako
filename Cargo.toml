@@ -14,12 +14,12 @@ license = "Apache-2.0"
 rust-version = "1.66.1"
 
 [workspace.dependencies]
-actix-web = "4"
+actix-web = "4.3.0"
 anyhow = "1.0"
 async-trait = "0.1.61"
-chrono = { version = "0.4.23", features = ["serde"] }
-clap = { version = "4.0.26", features = ["derive"] }
-config = { version = "0.13.3", default-features = false, features = ["yaml"] }
+chrono = { version = "0.4", features = ["serde"] }
+clap = { version = "4.1", features = ["derive"] }
+config = { version = "0.13", default-features = false, features = ["yaml"] }
 dockertest = { git = "https://github.com/orcalabs/dockertest-rs", rev = "7e0a718", features = ["tls"] }
 http = "0.2.8"
 isocountry = "0.3.2"
