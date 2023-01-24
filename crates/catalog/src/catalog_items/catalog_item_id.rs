@@ -1,3 +1,4 @@
+use crate::brands::brand_id::BrandId;
 use crate::catalog_items::catalog_item::CatalogItemBrand;
 use crate::catalog_items::item_number::ItemNumber;
 use common::slug::{Slug, SlugParserError};
@@ -8,7 +9,7 @@ use std::ops::Deref;
 use std::str::FromStr;
 
 /// A unique identifier for a catalog item
-#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize, Type)]
+#[derive(Debug, PartialEq, Eq, Clone, Serialize, Deserialize, Hash, Type)]
 #[sqlx(transparent)]
 pub struct CatalogItemId(Slug);
 
@@ -16,6 +17,12 @@ impl CatalogItemId {
     /// Creates a new catalog item id from its brand and item number
     pub fn new(brand: CatalogItemBrand, item_number: ItemNumber) -> Self {
         let slug = brand.brand_id().combine(item_number);
+        CatalogItemId(slug)
+    }
+
+    /// Creates a new catalog item id from its brand and item number
+    pub fn of(brand_id: &BrandId, item_number: &ItemNumber) -> Self {
+        let slug = Slug::new(&format!("{}-{}", brand_id, item_number));
         CatalogItemId(slug)
     }
 
@@ -47,6 +54,16 @@ mod test {
         use super::*;
         use crate::brands::brand_id::BrandId;
         use pretty_assertions::assert_eq;
+
+        #[test]
+        fn it_should_create_new_catalog_items() {
+            let brand_id = BrandId::new("ACME");
+            let item_number = ItemNumber::new("12345");
+
+            let id = CatalogItemId::of(&brand_id, &item_number);
+
+            assert_eq!("acme-12345", id.value());
+        }
 
         #[test]
         fn it_should_create_new_catalog_item_ids() {

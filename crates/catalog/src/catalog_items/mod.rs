@@ -4,6 +4,7 @@ pub mod catalog_item_id;
 pub mod catalog_item_request;
 pub mod catalog_item_response;
 pub mod category;
+pub mod commands;
 pub mod control;
 pub mod delivery_date;
 pub mod epoch;
