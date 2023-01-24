@@ -10,20 +10,29 @@ use common::contacts::{ContactInformation, MailAddress, PhoneNumber, WebsiteUrl}
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::{Handler, Socials};
+use common::unit_of_work::{Database, DatabaseError, UnitOfWork};
 use std::result;
 use thiserror::Error;
 
 pub type Result<R> = result::Result<R, BrandCreationError>;
 
-pub async fn create_new_brand<R: NewBrandRepository>(request: BrandRequest, repo: R) -> Result<BrandCreated> {
+pub async fn create_new_brand<'db, U: UnitOfWork<'db>, R: NewBrandRepository<'db, U>, DB: Database<'db, U>>(
+    request: BrandRequest,
+    repo: R,
+    db: DB,
+) -> Result<BrandCreated> {
     let brand_id = BrandId::new(&request.name);
 
-    if repo.exists_already(&brand_id).await? {
+    let mut unit_of_work = db.begin().await?;
+
+    if repo.exists_already(&brand_id, &mut unit_of_work).await? {
         return Err(BrandCreationError::BrandAlreadyExists(brand_id));
     }
 
     let command = NewBrandCommand::try_from(request)?;
-    repo.insert(&command).await?;
+    repo.insert(&command, &mut unit_of_work).await?;
+
+    unit_of_work.commit().await?;
 
     Ok(BrandCreated {
         brand_id,
@@ -41,6 +50,9 @@ pub enum BrandCreationError {
 
     #[error("Brand already exists (id: {0})")]
     BrandAlreadyExists(BrandId),
+
+    #[error("{0}")]
+    DatabaseError(#[from] DatabaseError),
 }
 
 /// It represents the command to create a new model railway brand
@@ -166,12 +178,12 @@ impl TryFrom<BrandRequest> for BrandCommandPayload {
 
 /// The persistence related functionality for the new brands creation
 #[async_trait]
-pub trait NewBrandRepository {
+pub trait NewBrandRepository<'db, U: UnitOfWork<'db>> {
     /// Checks if a brand with the input id already exists
-    async fn exists_already(&self, brand_id: &BrandId) -> Result<bool>;
+    async fn exists_already(&self, brand_id: &BrandId, unit_of_work: &mut U) -> Result<bool>;
 
     /// Inserts a new brand
-    async fn insert(&self, new_brand: &NewBrandCommand) -> Result<()>;
+    async fn insert(&self, new_brand: &NewBrandCommand, unit_of_work: &mut U) -> Result<()>;
 }
 
 #[cfg(test)]
@@ -183,6 +195,7 @@ mod test {
         use chrono::TimeZone;
         use common::in_memory::InMemoryRepository;
         use common::localized_text::LocalizedText;
+        use common::unit_of_work::noop::{NoOpDatabase, NoOpUnitOfWork};
         use isocountry::CountryCode;
         use pretty_assertions::assert_eq;
 
@@ -191,7 +204,8 @@ mod test {
             let repo = InMemoryNewBrandRepository::new();
 
             let request = new_brand("ACME");
-            let result = create_new_brand(request, repo).await;
+            let db = NoOpDatabase;
+            let result = create_new_brand(request, repo, db).await;
 
             let created = result.expect("result is an error");
 
@@ -204,7 +218,8 @@ mod test {
             let repo = InMemoryNewBrandRepository::of(new_brand_cmd);
 
             let request = new_brand("ACME");
-            let result = create_new_brand(request, repo).await;
+            let db = NoOpDatabase;
+            let result = create_new_brand(request, repo, db).await;
 
             match result {
                 Err(BrandCreationError::BrandAlreadyExists(id)) => assert_eq!(BrandId::new("ACME"), id),
@@ -280,12 +295,12 @@ mod test {
         }
 
         #[async_trait]
-        impl NewBrandRepository for InMemoryNewBrandRepository {
-            async fn exists_already(&self, brand_id: &BrandId) -> Result<bool> {
+        impl NewBrandRepository<'static, NoOpUnitOfWork> for InMemoryNewBrandRepository {
+            async fn exists_already(&self, brand_id: &BrandId, _unit_of_work: &mut NoOpUnitOfWork) -> Result<bool> {
                 Ok(self.0.contains(brand_id))
             }
 
-            async fn insert(&self, new_brand: &NewBrandCommand) -> Result<()> {
+            async fn insert(&self, new_brand: &NewBrandCommand, _unit_of_work: &mut NoOpUnitOfWork) -> Result<()> {
                 let id = BrandId::new(&new_brand.brand_id);
                 self.0.add(id, new_brand.clone());
                 Ok(())

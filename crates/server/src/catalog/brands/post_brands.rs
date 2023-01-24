@@ -6,26 +6,17 @@ use catalog::brands::commands::new_brand::{NewBrandCommand, NewBrandRepository, 
 use common::contacts::{MailAddress, PhoneNumber};
 use common::organizations::OrganizationEntityType;
 use common::socials::Handler;
-use sqlx::PgPool;
+use common::unit_of_work::postgres::PgUnitOfWork;
 
-pub struct PgNewBrandRepository<'repo> {
-    pg_pool: &'repo PgPool,
-}
-
-impl<'repo> PgNewBrandRepository<'repo> {
-    pub fn new(pg_pool: &PgPool) -> PgNewBrandRepository {
-        PgNewBrandRepository { pg_pool }
-    }
-}
+pub struct PgNewBrandRepository;
 
 #[async_trait]
-impl<'repo> NewBrandRepository for PgNewBrandRepository<'repo> {
-    async fn exists_already(&self, _brand_id: &BrandId) -> Result<bool> {
+impl<'db> NewBrandRepository<'db, PgUnitOfWork<'db>> for PgNewBrandRepository {
+    async fn exists_already(&self, _brand_id: &BrandId, _unit_of_work: &mut PgUnitOfWork) -> Result<bool> {
         Ok(false)
     }
 
-    async fn insert(&self, new_brand: &NewBrandCommand) -> Result<()> {
-        let mut transaction = self.pg_pool.begin().await?;
+    async fn insert(&self, new_brand: &NewBrandCommand, unit_of_work: &mut PgUnitOfWork) -> Result<()> {
         let brand_id = &new_brand.brand_id;
         let request = &new_brand.payload;
         let metadata = &new_brand.metadata;
@@ -77,10 +68,9 @@ impl<'repo> NewBrandRepository for PgNewBrandRepository<'repo> {
                 metadata.created(),
                 metadata.version() as i32
             )
-            .execute(&mut *transaction)
+            .execute(&mut unit_of_work.transaction)
             .await?;
 
-        transaction.commit().await?;
         Ok(())
     }
 }

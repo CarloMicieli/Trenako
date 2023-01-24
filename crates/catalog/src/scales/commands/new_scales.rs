@@ -5,6 +5,7 @@ use crate::scales::scale_response::ScaleCreated;
 use async_trait::async_trait;
 use chrono::Utc;
 use common::metadata::Metadata;
+use common::unit_of_work::{Database, DatabaseError, UnitOfWork};
 use itertools::Itertools;
 use rust_decimal::Decimal;
 use std::result;
@@ -12,15 +13,23 @@ use thiserror::Error;
 
 pub type Result<R> = result::Result<R, ScaleCreationError>;
 
-pub async fn create_new_scale<R: NewScaleRepository>(request: ScaleRequest, repo: R) -> Result<ScaleCreated> {
+pub async fn create_new_scale<'db, U: UnitOfWork<'db>, R: NewScaleRepository<'db, U>, DB: Database<'db, U>>(
+    request: ScaleRequest,
+    repo: R,
+    db: DB,
+) -> Result<ScaleCreated> {
     let scale_id = ScaleId::new(&request.name);
 
-    if repo.exists_already(&scale_id).await? {
+    let mut unit_of_work = db.begin().await?;
+
+    if repo.exists_already(&scale_id, &mut unit_of_work).await? {
         return Err(ScaleCreationError::ScaleAlreadyExists(scale_id));
     }
 
     let command = NewScaleCommand::try_from(request)?;
-    repo.insert(&command).await?;
+    repo.insert(&command, &mut unit_of_work).await?;
+
+    unit_of_work.commit().await?;
 
     Ok(ScaleCreated {
         scale_id,
@@ -38,6 +47,9 @@ pub enum ScaleCreationError {
 
     #[error("The scale already exists (id: {0})")]
     ScaleAlreadyExists(ScaleId),
+
+    #[error("{0}")]
+    DatabaseError(#[from] DatabaseError),
 }
 
 /// It represents the command to create a new model railway scale
@@ -112,12 +124,12 @@ impl TryFrom<ScaleRequest> for ScaleCommandPayload {
 
 /// The persistence related functionality for the new scales creation
 #[async_trait]
-pub trait NewScaleRepository {
+pub trait NewScaleRepository<'db, U: UnitOfWork<'db>> {
     /// Checks if a scale with the input id already exists
-    async fn exists_already(&self, scale_id: &ScaleId) -> Result<bool>;
+    async fn exists_already(&self, scale_id: &ScaleId, unit_of_work: &mut U) -> Result<bool>;
 
     /// Inserts a new scale
-    async fn insert(&self, new_scale: &NewScaleCommand) -> Result<()>;
+    async fn insert(&self, new_scale: &NewScaleCommand, unit_of_work: &mut U) -> Result<()>;
 }
 
 #[cfg(test)]
@@ -132,6 +144,7 @@ mod test {
         use chrono::TimeZone;
         use common::in_memory::InMemoryRepository;
         use common::localized_text::LocalizedText;
+        use common::unit_of_work::noop::{NoOpDatabase, NoOpUnitOfWork};
         use pretty_assertions::assert_eq;
 
         #[tokio::test]
@@ -140,7 +153,9 @@ mod test {
 
             let ratio = Decimal::from_str_exact("87").unwrap();
             let request = new_scale("H0", ratio);
-            let result = create_new_scale(request, repo).await;
+
+            let db = NoOpDatabase;
+            let result = create_new_scale(request, repo, db).await;
 
             let created = result.expect("result is an error");
 
@@ -154,7 +169,8 @@ mod test {
             let ratio = Decimal::from_str_exact("87").unwrap();
             let request = new_scale("H0", ratio);
 
-            let result = create_new_scale(request, repo).await;
+            let db = NoOpDatabase;
+            let result = create_new_scale(request, repo, db).await;
 
             match result {
                 Err(ScaleCreationError::ScaleAlreadyExists(id)) => assert_eq!(ScaleId::new("H0"), id),
@@ -203,12 +219,12 @@ mod test {
         }
 
         #[async_trait]
-        impl NewScaleRepository for InMemoryNewScaleRepository {
-            async fn exists_already(&self, scale_id: &ScaleId) -> Result<bool> {
+        impl NewScaleRepository<'static, NoOpUnitOfWork> for InMemoryNewScaleRepository {
+            async fn exists_already(&self, scale_id: &ScaleId, _unit_of_work: &mut NoOpUnitOfWork) -> Result<bool> {
                 Ok(self.0.contains(scale_id))
             }
 
-            async fn insert(&self, new_scale: &NewScaleCommand) -> Result<()> {
+            async fn insert(&self, new_scale: &NewScaleCommand, _unit_of_work: &mut NoOpUnitOfWork) -> Result<()> {
                 let id = ScaleId::new(&new_scale.scale_id);
                 self.0.add(id, new_scale.clone());
                 Ok(())

@@ -6,27 +6,25 @@ use catalog::railways::railway_id::RailwayId;
 use common::contacts::{MailAddress, PhoneNumber};
 use common::organizations::OrganizationEntityType;
 use common::socials::Handler;
-use sqlx::PgPool;
+use common::unit_of_work::postgres::PgUnitOfWork;
 
-pub struct PgNewRailwayRepository<'repo> {
-    pg_pool: &'repo PgPool,
-}
-
-impl<'repo> PgNewRailwayRepository<'repo> {
-    pub fn new(pg_pool: &PgPool) -> PgNewRailwayRepository {
-        PgNewRailwayRepository { pg_pool }
-    }
-}
+pub struct PgNewRailwayRepository;
 
 #[async_trait]
-impl<'repo> NewRailwayRepository for PgNewRailwayRepository<'repo> {
-    async fn exists_already(&self, _railway_id: &RailwayId) -> catalog::railways::commands::new_railways::Result<bool> {
+impl<'db> NewRailwayRepository<'db, PgUnitOfWork<'db>> for PgNewRailwayRepository {
+    async fn exists_already(
+        &self,
+        _railway_id: &RailwayId,
+        _unit_of_work: &mut PgUnitOfWork,
+    ) -> catalog::railways::commands::new_railways::Result<bool> {
         Ok(false)
     }
 
-    async fn insert(&self, new_railway: &NewRailwayCommand) -> catalog::railways::commands::new_railways::Result<()> {
-        let mut transaction = self.pg_pool.begin().await?;
-
+    async fn insert(
+        &self,
+        new_railway: &NewRailwayCommand,
+        unit_of_work: &mut PgUnitOfWork,
+    ) -> catalog::railways::commands::new_railways::Result<()> {
         let railway_id = &new_railway.railway_id;
         let request = &new_railway.payload;
         let metadata = &new_railway.metadata;
@@ -91,10 +89,8 @@ impl<'repo> NewRailwayRepository for PgNewRailwayRepository<'repo> {
             metadata.created(),
             metadata.version() as i32
         )
-        .execute(&mut *transaction)
+        .execute(&mut unit_of_work.transaction)
         .await?;
-
-        transaction.commit().await?;
 
         Ok(())
     }

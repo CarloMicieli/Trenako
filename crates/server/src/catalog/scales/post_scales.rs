@@ -3,27 +3,17 @@ use catalog::common::TrackGauge;
 use catalog::scales::commands::new_scales::Result;
 use catalog::scales::commands::new_scales::{NewScaleCommand, NewScaleRepository};
 use catalog::scales::scale_id::ScaleId;
-use sqlx::PgPool;
+use common::unit_of_work::postgres::PgUnitOfWork;
 
-pub struct PgNewScaleRepository<'repo> {
-    pg_pool: &'repo PgPool,
-}
-
-impl<'repo> PgNewScaleRepository<'repo> {
-    pub fn new(pg_pool: &PgPool) -> PgNewScaleRepository {
-        PgNewScaleRepository { pg_pool }
-    }
-}
+pub struct PgNewScaleRepository;
 
 #[async_trait]
-impl<'repo> NewScaleRepository for PgNewScaleRepository<'repo> {
-    async fn exists_already(&self, _scale_id: &ScaleId) -> Result<bool> {
+impl<'db> NewScaleRepository<'db, PgUnitOfWork<'db>> for PgNewScaleRepository {
+    async fn exists_already(&self, _scale_id: &ScaleId, _unit_of_work: &mut PgUnitOfWork) -> Result<bool> {
         Ok(false)
     }
 
-    async fn insert(&self, new_scale: &NewScaleCommand) -> Result<()> {
-        let mut transaction = self.pg_pool.begin().await?;
-
+    async fn insert(&self, new_scale: &NewScaleCommand, unit_of_work: &mut PgUnitOfWork) -> Result<()> {
         let scale_id = &new_scale.scale_id;
         let request = &new_scale.payload;
         let metadata = &new_scale.metadata;
@@ -56,10 +46,8 @@ impl<'repo> NewScaleRepository for PgNewScaleRepository<'repo> {
             metadata.created(),
             metadata.version() as i32
         )
-        .execute(&mut *transaction)
+        .execute(&mut unit_of_work.transaction)
         .await?;
-
-        transaction.commit().await?;
 
         Ok(())
     }

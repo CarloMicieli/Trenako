@@ -1,9 +1,11 @@
 use crate::catalog::scales::post_scales::PgNewScaleRepository;
 use crate::web::problem_detail::ProblemDetail;
+use actix_web::http::header::LOCATION;
 use actix_web::{web, HttpResponse, Responder};
 use catalog::scales::commands::new_scales::create_new_scale;
 use catalog::scales::scale_id::ScaleId;
 use catalog::scales::scale_request::ScaleRequest;
+use common::unit_of_work::postgres::PgDatabase;
 use sqlx::PgPool;
 use tracing_actix_web::RequestId;
 
@@ -56,12 +58,14 @@ async fn post_scale(
     request: web::Json<ScaleRequest>,
     db_pool: web::Data<PgPool>,
 ) -> impl Responder {
-    let repo = PgNewScaleRepository::new(&db_pool);
-    let result = create_new_scale(request.0, repo).await;
+    let repo = PgNewScaleRepository;
+    let database = PgDatabase::new(&db_pool);
+
+    let result = create_new_scale(request.0, repo, database).await;
     match result {
         Ok(created) => {
             let location = format!("{}/{}", SCALE_ROOT_API, created.scale_id);
-            HttpResponse::Created().insert_header(("Location", location)).finish()
+            HttpResponse::Created().insert_header((LOCATION, location)).finish()
         }
         Err(why) => {
             tracing::error!("{:?}", why);
