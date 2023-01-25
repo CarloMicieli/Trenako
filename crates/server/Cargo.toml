@@ -41,3 +41,5 @@ dockertest = { workspace = true }
 isocountry = { workspace = true }
 pretty_assertions = { workspace = true }
 reqwest = { workspace = true }
+serde_derive = { workspace = true }
+serde_json = { workspace = true }

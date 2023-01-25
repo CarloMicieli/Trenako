@@ -4,17 +4,20 @@ use strum_macros::{Display, EnumString};
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Hash, Serialize, Deserialize, EnumString, Display)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
-#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Standard {
+    #[serde(rename = "BRITISH")]
     British,
 
+    #[serde(rename = "JAPANESE")]
     Japanese,
 
     /// NEM-standards are used by model railway industry and hobbyists in Europe.
+    #[serde(rename = "NEM")]
     NEM,
 
     /// NMRA standards are used widely in North America and by certain special
     /// interest groups all over the world.
+    #[serde(rename = "NMRA")]
     NMRA,
 }
 

@@ -8,6 +8,7 @@ use std::net::TcpListener;
 pub const IMAGE_NAME: &str = "postgres";
 
 pub mod database;
+pub mod seeding;
 
 #[derive(Debug)]
 pub struct ServiceUnderTest {

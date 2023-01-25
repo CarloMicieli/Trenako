@@ -2540,6 +2540,8 @@ dependencies = [
  "rust_decimal",
  "secrecy",
  "serde",
+ "serde_derive",
+ "serde_json",
  "sqlx",
  "thiserror",
  "tokio",
