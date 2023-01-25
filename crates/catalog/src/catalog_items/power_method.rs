@@ -7,17 +7,19 @@ use strum_macros::{Display, EnumString};
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "power_method", rename_all = "SCREAMING_SNAKE_CASE")]
-#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum PowerMethod {
     /// Alternating current (Maerklin).
+    #[serde(rename = "AC")]
     AC,
 
     /// Direct current.
+    #[serde(rename = "DC")]
     DC,
 
     /// Trix Express was the main model train product range of the Trix of Nuremberg.
     /// The original system used 14V AC power, hanged to 14V DC in 1953 and used the third rail
     /// system until 2003 when the last models were produced.
+    #[serde(rename = "TRIX_EXPRESS")]
     TrixExpress,
 }
 

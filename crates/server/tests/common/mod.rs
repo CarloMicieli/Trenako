@@ -1,7 +1,9 @@
 use crate::common::database::Database;
 use dockertest::{DockerTest, Source};
+use once_cell::sync::Lazy;
 use server::app;
 use server::configuration::{ServerSettings, Settings};
+use server::telemetry::{get_subscriber, init_subscriber};
 use sqlx::PgPool;
 use std::net::TcpListener;
 
@@ -30,7 +32,22 @@ impl ServiceUnderTest {
     }
 }
 
+// Ensure that the `tracing` stack is only initialised once using `once_cell`
+static TRACING: Lazy<()> = Lazy::new(|| {
+    let default_filter_level = "info".to_string();
+    let subscriber_name = "test".to_string();
+    if std::env::var("TEST_LOG").is_ok() {
+        let subscriber = get_subscriber(subscriber_name, default_filter_level, std::io::stdout);
+        init_subscriber(subscriber);
+    } else {
+        let subscriber = get_subscriber(subscriber_name, default_filter_level, std::io::sink);
+        init_subscriber(subscriber);
+    };
+});
+
 pub async fn spawn_app(postgres_port: u32) -> ServiceUnderTest {
+    Lazy::force(&TRACING);
+
     let database = Database::new(postgres_port as u16);
     let database_settings = database.test_settings();
     let settings = Settings {
