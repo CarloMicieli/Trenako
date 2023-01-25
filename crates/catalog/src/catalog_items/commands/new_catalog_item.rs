@@ -22,6 +22,7 @@ use crate::scales::scale_id::ScaleId;
 use async_trait::async_trait;
 use chrono::Utc;
 use common::length::Length;
+use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use common::unit_of_work::{Database, DatabaseError, UnitOfWork};
 use std::result;
@@ -105,8 +106,8 @@ pub struct CatalogItemCommandPayload {
     pub item_number: ItemNumber,
     pub scale_id: ScaleId,
     pub category: Category,
-    pub description: Option<String>,
-    pub details: Option<String>,
+    pub description: LocalizedText,
+    pub details: LocalizedText,
     pub power_method: PowerMethod,
     pub delivery_date: Option<DeliveryDate>,
     pub availability_status: Option<AvailabilityStatus>,
@@ -125,8 +126,8 @@ impl TryFrom<CatalogItemRequest> for CatalogItemCommandPayload {
             item_number: request.item_number,
             scale_id,
             category: request.category,
-            description: request.description.italian().map(String::to_string),
-            details: request.details.italian().map(String::to_string),
+            description: request.description,
+            details: request.details,
             power_method: request.power_method,
             delivery_date: request.delivery_date,
             availability_status: request.availability_status,
@@ -580,8 +581,8 @@ mod test {
                 item_number,
                 scale_id: ScaleId::new("H0"),
                 category: Category::Locomotives,
-                description: Some("Description".to_string()),
-                details: Some("Dettagli".to_string()),
+                description: LocalizedText::with_italian("Descrizione"),
+                details: LocalizedText::with_italian("Dettagli"),
                 power_method: PowerMethod::DC,
                 delivery_date: Some(DeliveryDate::ByYear(2022)),
                 availability_status: Some(AvailabilityStatus::Available),

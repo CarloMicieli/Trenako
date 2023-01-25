@@ -51,7 +51,7 @@ description = "tarpaulin: compute the code coverage"
 category = "Check"
 install_crate = "cargo-tarpaulin"
 command = "cargo"
-args = ["tarpaulin", "--ignore-tests", "--out", "Xml", "--", "--test-threads", "1"]
+args = ["tarpaulin", "--ignore-tests", "--out", "Xml", "--", "--test-threads", "4"]
 
 [tasks.all-checks] 
 description = "check: run all the checks (format, clippy and tests)"

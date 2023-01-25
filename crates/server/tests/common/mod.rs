@@ -1,20 +1,18 @@
-use dockertest::waitfor::{MessageSource, MessageWait};
-use dockertest::{DockerTest, Image, Source, TestBodySpecification};
+use crate::common::database::Database;
+use dockertest::{DockerTest, Source};
 use server::app;
-use server::configuration::{DatabaseSettings, ServerSettings, Settings};
+use server::configuration::{ServerSettings, Settings};
 use sqlx::PgPool;
 use std::net::TcpListener;
 
-const POSTGRES_USER: &str = "postgres";
-const POSTGRES_PASSWORD: &str = "postgres";
-const POSTGRES_DB: &str = "postgres";
-
 pub const IMAGE_NAME: &str = "postgres";
+
+pub mod database;
 
 #[derive(Debug)]
 pub struct ServiceUnderTest {
-    base_endpoint_url: String,
-    database_setting: DatabaseSettings,
+    pub base_endpoint_url: String,
+    pub database: Database,
 }
 
 impl ServiceUnderTest {
@@ -23,27 +21,24 @@ impl ServiceUnderTest {
     }
 
     pub async fn run_database_migrations(&self) {
-        // Migrate database
-        let pg_pool = self.pg_pool();
-        sqlx::migrate!("../../migrations")
-            .run(&pg_pool)
-            .await
-            .expect("Failed to migrate the database");
+        self.database.run_database_migrations().await
     }
 
     pub fn pg_pool(&self) -> PgPool {
-        self.database_setting.get_connection_pool()
+        self.database.pg_pool()
     }
 }
 
-pub async fn spawn_app(port: u32) -> ServiceUnderTest {
+pub async fn spawn_app(postgres_port: u32) -> ServiceUnderTest {
+    let database = Database::new(postgres_port as u16);
+    let database_settings = database.test_settings();
     let settings = Settings {
         server: ServerSettings {
             host: String::from("127.0.0.1"),
             port: 0,
             workers: 2,
         },
-        database: DatabaseSettings::new(POSTGRES_USER, POSTGRES_PASSWORD, "127.0.0.1", port as u16, POSTGRES_DB),
+        database: database_settings,
     };
 
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
@@ -53,28 +48,12 @@ pub async fn spawn_app(port: u32) -> ServiceUnderTest {
 
     ServiceUnderTest {
         base_endpoint_url: format!("http://127.0.0.1:{}", port),
-        database_setting: settings.database,
+        database,
     }
 }
 
 pub fn create_docker_test() -> DockerTest {
     let mut test = DockerTest::new().with_default_source(Source::DockerHub);
-    test.provide_container(create_composition(IMAGE_NAME));
+    test.provide_container(database::create_postgres_container());
     test
-}
-
-fn create_composition(repo: &str) -> TestBodySpecification {
-    let image = Image::with_repository(repo).tag("15.1-alpine");
-    let message = r#"listening on IPv4 address "0.0.0.0", port 5432"#;
-    let mut composition = TestBodySpecification::with_image(image).set_wait_for(Box::new(MessageWait {
-        message: String::from(message),
-        source: MessageSource::Stderr,
-        timeout: 5,
-    }));
-
-    composition.modify_port_map(5432, 0);
-    composition.modify_env("POSTGRES_DB", POSTGRES_DB);
-    composition.modify_env("POSTGRES_USER", POSTGRES_USER);
-    composition.modify_env("POSTGRES_PASSWORD", POSTGRES_PASSWORD);
-    composition
 }

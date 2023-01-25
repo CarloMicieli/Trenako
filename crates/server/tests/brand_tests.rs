@@ -1,4 +1,4 @@
-mod common;
+pub mod common;
 
 use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
 use ::common::address::Address;

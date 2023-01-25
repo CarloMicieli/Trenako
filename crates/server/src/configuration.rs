@@ -39,7 +39,7 @@ impl Settings {
 }
 
 /// It contains the server configuration
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Clone, Debug)]
 pub struct ServerSettings {
     /// the server host name
     pub host: String,
@@ -50,7 +50,7 @@ pub struct ServerSettings {
 }
 
 /// It contains the database connection settings
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Clone, Debug)]
 pub struct DatabaseSettings {
     /// the username
     pub username: String,
