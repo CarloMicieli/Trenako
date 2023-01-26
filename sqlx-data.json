@@ -186,6 +186,117 @@
     },
     "query": "SELECT\n                    brand_id, name, registered_company_name, \n                    organization_entity_type as \"organization_entity_type: OrganizationEntityType\", group_name, \n                    description_it, kind as \"kind: BrandKind\", status as \"status: BrandStatus\",\n                    contact_email, contact_website_url, contact_phone,\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube\n                FROM brands WHERE name = $1"
   },
+  "168223d06a564a6c861cb66692bee2f423800e52dfbb87110850aac91bf696cf": {
+    "describe": {
+      "columns": [
+        {
+          "name": "item_number",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "brand_id: BrandId",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "scale_id: ScaleId",
+          "ordinal": 2,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "category: Category",
+          "ordinal": 3,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "LOCOMOTIVES",
+                  "TRAIN_SETS",
+                  "STARTER_SETS",
+                  "FREIGHT_CARS",
+                  "PASSENGER_CARS",
+                  "ELECTRIC_MULTIPLE_UNITS",
+                  "RAILCARS"
+                ]
+              },
+              "name": "catalog_item_category"
+            }
+          }
+        },
+        {
+          "name": "power_method: PowerMethod",
+          "ordinal": 4,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "AC",
+                  "DC",
+                  "TRIX_EXPRESS"
+                ]
+              },
+              "name": "power_method"
+            }
+          }
+        },
+        {
+          "name": "description_it",
+          "ordinal": 5,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "details_it",
+          "ordinal": 6,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "delivery_date",
+          "ordinal": 7,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "availability_status: AvailabilityStatus",
+          "ordinal": 8,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "ANNOUNCED",
+                  "AVAILABLE",
+                  "DISCONTINUED"
+                ]
+              },
+              "name": "availability_status"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "ordinal": 9,
+          "type_info": "Int4"
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT\n                    item_number,\n                    brand_id as \"brand_id: BrandId\",  scale_id as \"scale_id: ScaleId\", \n                    category as \"category: Category\",\n                    power_method as \"power_method: PowerMethod\",\n                    description_it, details_it,\n                    delivery_date, \n                    availability_status as \"availability_status: AvailabilityStatus\", \n                    count\n                FROM catalog_items WHERE catalog_item_id = $1"
+  },
   "21a8caa511fef423dfdc0dadb07a708cafcd132b46b8178fa59d9310f132cb2a": {
     "describe": {
       "columns": [
