@@ -223,7 +223,7 @@ mod test {
 
             match result {
                 Err(BrandCreationError::BrandAlreadyExists(id)) => assert_eq!(BrandId::new("ACME"), id),
-                _ => panic!("BrandAlreadyExists is expected (found: {:?})", result),
+                _ => panic!("BrandAlreadyExists is expected (found: {result:?})"),
             }
         }
 

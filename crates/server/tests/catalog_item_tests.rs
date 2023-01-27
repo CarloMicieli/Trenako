@@ -29,7 +29,7 @@ async fn post_new_catalog_items() {
         seed_scales(&pg_pool).await;
 
         let catalog_item_id = CatalogItemId::from_str("acme-123456").unwrap();
-        let expected_location = format!("{}/{}", API_CATALOG_ITEMS, catalog_item_id);
+        let expected_location = format!("{API_CATALOG_ITEMS}/{catalog_item_id}");
 
         let request = json!({
             "brand" : "ACME",

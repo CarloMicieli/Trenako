@@ -29,7 +29,7 @@ async fn post_new_railways() {
         sut.run_database_migrations().await;
 
         let railway_name = Uuid::new_v4().to_string();
-        let expected_location = format!("{}/{}", API_RAILWAYS, railway_name);
+        let expected_location = format!("{API_RAILWAYS}/{railway_name}");
 
         let operating_since = NaiveDate::from_ymd_opt(1900, 1, 1).unwrap();
         let period_of_activity = PeriodOfActivity::active_railway(operating_since);

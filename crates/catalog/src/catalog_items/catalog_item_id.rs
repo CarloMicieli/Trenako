@@ -22,7 +22,7 @@ impl CatalogItemId {
 
     /// Creates a new catalog item id from its brand and item number
     pub fn of(brand_id: &BrandId, item_number: &ItemNumber) -> Self {
-        let slug = Slug::new(&format!("{}-{}", brand_id, item_number));
+        let slug = Slug::new(&format!("{brand_id}-{item_number}"));
         CatalogItemId(slug)
     }
 

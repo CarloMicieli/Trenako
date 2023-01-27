@@ -74,7 +74,7 @@ pub mod postgres {
                 .pg_pool
                 .begin()
                 .await
-                .map_err(|err| DatabaseError::BeginTransactionError(format!("{}", err)))?;
+                .map_err(|err| DatabaseError::BeginTransactionError(err.to_string()))?;
             Ok(PgUnitOfWork { transaction })
         }
     }
@@ -90,7 +90,7 @@ pub mod postgres {
             self.transaction
                 .commit()
                 .await
-                .map_err(|err| DatabaseError::CommitTransactionError(format!("{}", err)))?;
+                .map_err(|err| DatabaseError::CommitTransactionError(err.to_string()))?;
             Ok(())
         }
     }

@@ -79,12 +79,12 @@ impl fmt::Display for Trn {
         let q_comp = self
             .q_component
             .as_deref()
-            .map(|s| format!(":{}", s))
+            .map(|s| format!(":{s}"))
             .unwrap_or_else(|| String::from(""));
         let r_comp = self
             .r_component
             .as_deref()
-            .map(|s| format!(":{}", s))
+            .map(|s| format!(":{s}"))
             .unwrap_or_else(|| String::from(""));
 
         write!(
@@ -131,6 +131,6 @@ mod tests {
     fn should_produce_trn_values_from_uuid() {
         let id = uuid::Uuid::new_v4();
         let urn = Trn::from_uuid("entity.name", &id);
-        assert_eq!(format!("trn:trenako:entity.name:{}", id), urn.to_string());
+        assert_eq!(format!("trn:trenako:entity.name:{id}"), urn.to_string());
     }
 }

@@ -62,10 +62,10 @@ pub async fn spawn_app(postgres_port: u32) -> ServiceUnderTest {
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
     let port = listener.local_addr().unwrap().port();
     let server = app::run(listener, &settings).expect("Failed to bind address");
-    let _ = tokio::spawn(server);
+    let _handle = tokio::spawn(server);
 
     ServiceUnderTest {
-        base_endpoint_url: format!("http://127.0.0.1:{}", port),
+        base_endpoint_url: format!("http://127.0.0.1:{port}"),
         database,
     }
 }

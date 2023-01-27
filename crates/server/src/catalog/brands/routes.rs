@@ -29,8 +29,7 @@ pub fn configure_brand_routes(cfg: &mut web::ServiceConfig) {
     );
 }
 
-async fn get_brand_by_id(brand_id: web::Path<BrandId>, _db_pool: web::Data<PgPool>) -> impl Responder {
-    println!("{}", brand_id);
+async fn get_brand_by_id(_brand_id: web::Path<BrandId>, _db_pool: web::Data<PgPool>) -> impl Responder {
     HttpResponse::Ok()
 }
 
@@ -38,18 +37,15 @@ async fn get_all_brands(_db_pool: web::Data<PgPool>) -> impl Responder {
     HttpResponse::Ok()
 }
 
-async fn delete_brand(brand_id: web::Path<BrandId>, _db_pool: web::Data<PgPool>) -> impl Responder {
-    println!("{}", brand_id);
+async fn delete_brand(_brand_id: web::Path<BrandId>, _db_pool: web::Data<PgPool>) -> impl Responder {
     HttpResponse::Ok()
 }
 
 async fn put_brand(
-    brand_id: web::Path<BrandId>,
-    request: web::Json<BrandRequest>,
+    _brand_id: web::Path<BrandId>,
+    _request: web::Json<BrandRequest>,
     _db_pool: web::Data<PgPool>,
 ) -> impl Responder {
-    println!("{}", brand_id);
-    println!("{:?}", request);
     HttpResponse::Ok()
 }
 

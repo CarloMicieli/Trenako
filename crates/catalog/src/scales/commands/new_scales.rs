@@ -174,7 +174,7 @@ mod test {
 
             match result {
                 Err(ScaleCreationError::ScaleAlreadyExists(id)) => assert_eq!(ScaleId::new("H0"), id),
-                _ => panic!("ScaleAlreadyExists is expected (found: {:?})", result),
+                _ => panic!("ScaleAlreadyExists is expected (found: {result:?})"),
             }
         }
 

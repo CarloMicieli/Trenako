@@ -10,7 +10,7 @@ fn main() {
             let result = Dataset::from_path(&s);
             match result {
                 Ok(dataset) => {
-                    println!("{}", dataset);
+                    println!("{dataset}");
                     let result = validate_dataset(dataset).unwrap();
 
                     for v in result.iter().filter(|x| !x.is_valid()) {

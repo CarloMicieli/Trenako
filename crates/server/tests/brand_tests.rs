@@ -26,7 +26,7 @@ async fn post_new_brands() {
         sut.run_database_migrations().await;
 
         let brand_name = Uuid::new_v4().to_string();
-        let expected_location = format!("{}/{}", API_BRANDS, brand_name);
+        let expected_location = format!("{API_BRANDS}/{brand_name}");
 
         let address = Address::builder()
             .street_address("Rue Morgue 22")

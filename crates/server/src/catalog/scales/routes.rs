@@ -29,8 +29,7 @@ pub fn configure_scale_routes(cfg: &mut web::ServiceConfig) {
     );
 }
 
-async fn get_scale_by_id(scale_id: web::Path<ScaleId>, _db_pool: web::Data<PgPool>) -> impl Responder {
-    println!("{}", scale_id);
+async fn get_scale_by_id(_scale_id: web::Path<ScaleId>, _db_pool: web::Data<PgPool>) -> impl Responder {
     HttpResponse::Ok()
 }
 
@@ -38,18 +37,15 @@ async fn get_all_scales(_db_pool: web::Data<PgPool>) -> impl Responder {
     HttpResponse::Ok()
 }
 
-async fn delete_scale(scale_id: web::Path<ScaleId>, _db_pool: web::Data<PgPool>) -> impl Responder {
-    println!("{}", scale_id);
+async fn delete_scale(_scale_id: web::Path<ScaleId>, _db_pool: web::Data<PgPool>) -> impl Responder {
     HttpResponse::Ok()
 }
 
 async fn put_scale(
-    scale_id: web::Path<ScaleId>,
-    request: web::Json<ScaleRequest>,
+    _scale_id: web::Path<ScaleId>,
+    _request: web::Json<ScaleRequest>,
     _db_pool: web::Data<PgPool>,
 ) -> impl Responder {
-    println!("{}", scale_id);
-    println!("{:?}", request);
     HttpResponse::Ok()
 }
 

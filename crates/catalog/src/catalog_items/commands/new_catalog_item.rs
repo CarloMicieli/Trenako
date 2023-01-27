@@ -488,10 +488,7 @@ mod test {
 
             match result {
                 Err(CatalogItemCreationError::BrandNotFound(brand_name)) => assert_eq!("ACME", brand_name),
-                _ => panic!(
-                    "CatalogItemCreationError::BrandNotFound is expected (found: {:?})",
-                    result
-                ),
+                _ => panic!("CatalogItemCreationError::BrandNotFound is expected (found: {result:?})"),
             }
         }
 
@@ -508,10 +505,7 @@ mod test {
 
             match result {
                 Err(CatalogItemCreationError::ScaleNotFound(scale_name)) => assert_eq!("H0", scale_name),
-                _ => panic!(
-                    "CatalogItemCreationError::ScaleNotFound is expected (found: {:?})",
-                    result
-                ),
+                _ => panic!("CatalogItemCreationError::ScaleNotFound is expected (found: {result:?})"),
             }
         }
 
@@ -531,10 +525,7 @@ mod test {
                 Err(CatalogItemCreationError::CatalogItemAlreadyExists(catalog_item_id)) => {
                     assert_eq!("acme-123456", catalog_item_id.to_string())
                 }
-                _ => panic!(
-                    "CatalogItemCreationError::CatalogItemAlreadyExists is expected (found: {:?})",
-                    result
-                ),
+                _ => panic!("CatalogItemCreationError::CatalogItemAlreadyExists is expected (found: {result:?})"),
             }
         }
 

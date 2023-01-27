@@ -95,8 +95,8 @@ impl str::FromStr for DeliveryDate {
 impl fmt::Display for DeliveryDate {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
         match self {
-            DeliveryDate::ByQuarter(y, q) => write!(f, "{}/Q{}", y, q),
-            DeliveryDate::ByYear(y) => write!(f, "{}", y),
+            DeliveryDate::ByQuarter(y, q) => write!(f, "{y}/Q{q}"),
+            DeliveryDate::ByYear(y) => y.fmt(f),
         }
     }
 }

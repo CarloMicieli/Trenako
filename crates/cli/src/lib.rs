@@ -27,7 +27,7 @@ pub enum CliError {
 
 impl CliError {
     pub fn display(self) {
-        eprintln!("**ERROR** {}", self);
+        eprintln!("**ERROR** {self}");
     }
 }
 

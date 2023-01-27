@@ -29,8 +29,7 @@ pub fn configure_railway_routes(cfg: &mut web::ServiceConfig) {
     );
 }
 
-async fn get_railway_by_id(railway_id: web::Path<RailwayId>, _db_pool: web::Data<PgPool>) -> impl Responder {
-    println!("{}", railway_id);
+async fn get_railway_by_id(_railway_id: web::Path<RailwayId>, _db_pool: web::Data<PgPool>) -> impl Responder {
     HttpResponse::Ok()
 }
 
@@ -38,18 +37,15 @@ async fn get_all_railways(_db_pool: web::Data<PgPool>) -> impl Responder {
     HttpResponse::Ok()
 }
 
-async fn delete_railway(railway_id: web::Path<RailwayId>, _db_pool: web::Data<PgPool>) -> impl Responder {
-    println!("{}", railway_id);
+async fn delete_railway(_railway_id: web::Path<RailwayId>, _db_pool: web::Data<PgPool>) -> impl Responder {
     HttpResponse::Ok()
 }
 
 async fn put_railway(
-    railway_id: web::Path<RailwayId>,
-    request: web::Json<RailwayRequest>,
+    _railway_id: web::Path<RailwayId>,
+    _request: web::Json<RailwayRequest>,
     _db_pool: web::Data<PgPool>,
 ) -> impl Responder {
-    println!("{}", railway_id);
-    println!("{:?}", request);
     HttpResponse::Ok()
 }
 

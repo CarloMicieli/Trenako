@@ -48,23 +48,19 @@ pub fn configure_catalog_items_routes(cfg: &mut web::ServiceConfig) {
     );
 }
 
-async fn get_catalog_item_by_id(catalog_item_id: web::Path<CatalogItemId>, _db_pool: Data<PgPool>) -> impl Responder {
-    println!("{}", catalog_item_id);
+async fn get_catalog_item_by_id(_catalog_item_id: web::Path<CatalogItemId>, _db_pool: Data<PgPool>) -> impl Responder {
     HttpResponse::Ok()
 }
 
-async fn delete_catalog_item(catalog_item_id: web::Path<CatalogItemId>, _db_pool: Data<PgPool>) -> impl Responder {
-    println!("{}", catalog_item_id);
+async fn delete_catalog_item(_catalog_item_id: web::Path<CatalogItemId>, _db_pool: Data<PgPool>) -> impl Responder {
     HttpResponse::Ok()
 }
 
 async fn put_catalog_item(
-    catalog_item_id: web::Path<CatalogItemId>,
-    request: web::Json<CatalogItemRequest>,
+    _catalog_item_id: web::Path<CatalogItemId>,
+    _request: web::Json<CatalogItemRequest>,
     _db_pool: Data<PgPool>,
 ) -> impl Responder {
-    println!("{}", catalog_item_id);
-    println!("{:?}", request);
     HttpResponse::Ok()
 }
 
@@ -91,43 +87,34 @@ async fn post_catalog_item(
 }
 
 async fn post_rolling_stock(
-    catalog_item_id: web::Path<CatalogItemId>,
-    request: web::Json<RollingStockRequest>,
+    _catalog_item_id: web::Path<CatalogItemId>,
+    _request: web::Json<RollingStockRequest>,
     _db_pool: Data<PgPool>,
 ) -> impl Responder {
-    println!("{}", catalog_item_id);
-    println!("{:?}", request);
     HttpResponse::Ok()
 }
 
 async fn get_rolling_stock_by_id(
-    catalog_item_id: web::Path<CatalogItemId>,
-    rolling_stock_id: web::Path<RollingStockId>,
+    _catalog_item_id: web::Path<CatalogItemId>,
+    _rolling_stock_id: web::Path<RollingStockId>,
     _db_pool: Data<PgPool>,
 ) -> impl Responder {
-    println!("{}", catalog_item_id);
-    println!("{}", rolling_stock_id);
     HttpResponse::Ok()
 }
 
 async fn delete_rolling_stock(
-    catalog_item_id: web::Path<CatalogItemId>,
-    rolling_stock_id: web::Path<RollingStockId>,
+    _catalog_item_id: web::Path<CatalogItemId>,
+    _rolling_stock_id: web::Path<RollingStockId>,
     _db_pool: Data<PgPool>,
 ) -> impl Responder {
-    println!("{}", catalog_item_id);
-    println!("{}", rolling_stock_id);
     HttpResponse::Ok()
 }
 
 async fn put_rolling_stock(
-    catalog_item_id: web::Path<CatalogItemId>,
-    rolling_stock_id: web::Path<RollingStockId>,
-    request: web::Json<RollingStockRequest>,
+    _catalog_item_id: web::Path<CatalogItemId>,
+    _rolling_stock_id: web::Path<RollingStockId>,
+    _request: web::Json<RollingStockRequest>,
     _db_pool: Data<PgPool>,
 ) -> impl Responder {
-    println!("{}", catalog_item_id);
-    println!("{}", rolling_stock_id);
-    println!("{:?}", request);
     HttpResponse::Ok()
 }

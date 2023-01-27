@@ -24,7 +24,7 @@ async fn post_new_scales() {
         sut.run_database_migrations().await;
 
         let scale_name = Uuid::new_v4().to_string();
-        let expected_location = format!("{}/{}", API_SCALES, scale_name);
+        let expected_location = format!("{API_SCALES}/{scale_name}");
 
         let ratio_value = Decimal::from_str_exact("87").unwrap();
         let ratio = Ratio::try_from(ratio_value).unwrap();
