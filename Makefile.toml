@@ -97,6 +97,15 @@ dependencies = [
     "docker-postgres-stop"
 ]
 
+[tasks.db-dev]
+description = "database: run the local database for development"
+category = "Database"
+dependencies = [
+    "docker-postgres-run",
+    "db-migrate",
+    "db-prepare"
+]
+
 [tasks.docker-postgres-run] 
 command = "docker"
 args = ["run", "-it", "--rm", 
