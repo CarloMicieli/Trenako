@@ -18,6 +18,7 @@ args = ["check"]
 [tasks.build]
 description = "build: compile the workspace"
 category = "Build"
+env = { "SQLX_OFFLINE" = "true" }
 command = "cargo"
 args = ["build"]
 

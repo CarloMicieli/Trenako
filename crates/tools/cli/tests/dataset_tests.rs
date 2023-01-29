@@ -2,7 +2,7 @@ use cli::dataset::Dataset;
 use cli::CliError;
 use pretty_assertions::assert_eq;
 
-const DATASET_ROOT: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/resources");
+const DATASET_ROOT: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/resources/dataset");
 
 #[test]
 fn it_should_load_a_dataset() {

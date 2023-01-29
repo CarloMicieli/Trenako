@@ -20,6 +20,7 @@ common = { path = "../../libs/common" }
 anyhow = { workspace = true }
 chrono = { workspace = true }
 clap = { workspace = true }
+csv = { workspace = true }
 itertools = { workspace = true }
 jsonschema = { workspace = true }
 rust_decimal = { workspace = true }
@@ -32,3 +33,4 @@ walkdir = { workspace = true }
 [dev-dependencies]
 pretty_assertions = { workspace = true }
 rstest = { workspace = true }
+rust_decimal_macros = { workspace = true }

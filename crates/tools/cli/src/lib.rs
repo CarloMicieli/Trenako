@@ -1,18 +1,37 @@
 extern crate core;
 
 use crate::dataset::ResourceTypeError;
+use clap::ValueEnum;
 use std::result;
 use thiserror::Error;
 
 pub mod cli_parser;
+pub mod csv_record;
+pub mod cvs_files;
 pub mod dataset;
 pub mod schemas;
 pub mod validator;
 
 #[derive(Debug, PartialEq, Eq)]
 pub enum Command {
-    Validate(String),
+    CsvExport {
+        source: String,
+        output: String,
+        dry_run: bool,
+    },
+    CsvImport {
+        file: String,
+        mode: Mode,
+        output: String,
+        dry_run: bool,
+    },
     Seed,
+    Validate(String),
+}
+
+#[derive(Debug, Copy, Clone, PartialEq, Eq, ValueEnum)]
+pub enum Mode {
+    Json,
 }
 
 #[derive(Debug, PartialEq, Eq, Error)]
