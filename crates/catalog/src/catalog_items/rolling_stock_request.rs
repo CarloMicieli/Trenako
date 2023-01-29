@@ -12,6 +12,7 @@ use crate::catalog_items::technical_specifications::TechnicalSpecifications;
 #[serde(tag = "category")]
 pub enum RollingStockRequest {
     /// an electric multiple unit rolling stock
+    #[serde(rename = "ELECTRIC_MULTIPLE_UNIT")]
     ElectricMultipleUnitRequest {
         /// the railway name for this rolling stock
         railway: String,
@@ -20,7 +21,7 @@ pub enum RollingStockRequest {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffers>,
+        length_over_buffers: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the electric multiple unit type name
@@ -41,6 +42,7 @@ pub enum RollingStockRequest {
         is_dummy: bool,
     },
     /// a freight car rolling stock
+    #[serde(rename = "FREIGHT_CAR")]
     FreightCarRequest {
         /// the railway name for this rolling stock
         railway: String,
@@ -49,7 +51,7 @@ pub enum RollingStockRequest {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffers>,
+        length_over_buffers: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the freight car type name
@@ -60,6 +62,7 @@ pub enum RollingStockRequest {
         freight_car_type: Option<FreightCarType>,
     },
     /// a locomotive rolling stock
+    #[serde(rename = "LOCOMOTIVE")]
     LocomotiveRequest {
         /// the railway name for this rolling stock
         railway: String,
@@ -68,7 +71,7 @@ pub enum RollingStockRequest {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffers>,
+        length_over_buffers: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the class of locomotives. The class is a group of locomotives built to a common design,
@@ -90,6 +93,7 @@ pub enum RollingStockRequest {
         is_dummy: bool,
     },
     /// a passenger car rolling stock
+    #[serde(rename = "PASSENGER_CAR")]
     PassengerCarRequest {
         /// the railway name for this rolling stock
         railway: String,
@@ -98,7 +102,7 @@ pub enum RollingStockRequest {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffers>,
+        length_over_buffers: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the passenger car type name
@@ -114,6 +118,7 @@ pub enum RollingStockRequest {
         service_level: Option<ServiceLevel>,
     },
     /// a railcar rolling stock
+    #[serde(rename = "RAILCAR")]
     RailcarRequest {
         /// the railway name for this rolling stock
         railway: String,
@@ -122,7 +127,7 @@ pub enum RollingStockRequest {
         /// the livery description
         livery: Option<String>,
         /// the overall length
-        length_over_buffer: Option<LengthOverBuffers>,
+        length_over_buffers: Option<LengthOverBuffers>,
         /// the technical specifications
         technical_specifications: Option<TechnicalSpecifications>,
         /// the railcar type name
@@ -164,6 +169,27 @@ impl RollingStockRequest {
             RollingStockRequest::LocomotiveRequest { railway, .. } => railway,
             RollingStockRequest::PassengerCarRequest { railway, .. } => railway,
             RollingStockRequest::RailcarRequest { railway, .. } => railway,
+        }
+    }
+
+    /// Returns the rolling stock length over buffers
+    pub fn length_over_buffers(&self) -> Option<&LengthOverBuffers> {
+        match self {
+            RollingStockRequest::ElectricMultipleUnitRequest {
+                length_over_buffers, ..
+            } => length_over_buffers.as_ref(),
+            RollingStockRequest::FreightCarRequest {
+                length_over_buffers, ..
+            } => length_over_buffers.as_ref(),
+            RollingStockRequest::LocomotiveRequest {
+                length_over_buffers, ..
+            } => length_over_buffers.as_ref(),
+            RollingStockRequest::PassengerCarRequest {
+                length_over_buffers, ..
+            } => length_over_buffers.as_ref(),
+            RollingStockRequest::RailcarRequest {
+                length_over_buffers, ..
+            } => length_over_buffers.as_ref(),
         }
     }
 
@@ -239,7 +265,7 @@ mod test {
                 railway: "FS".to_string(),
                 epoch: Epoch::IV,
                 livery: None,
-                length_over_buffer: None,
+                length_over_buffers: None,
                 technical_specifications: technical_specifications(),
                 type_name: "111".to_string(),
                 road_number: None,
@@ -257,7 +283,7 @@ mod test {
                 railway: "FS".to_string(),
                 epoch: Epoch::IV,
                 livery: None,
-                length_over_buffer: None,
+                length_over_buffers: None,
                 technical_specifications: technical_specifications(),
                 type_name: "111".to_string(),
                 road_number: None,
@@ -270,7 +296,7 @@ mod test {
                 railway: "FS".to_string(),
                 epoch: Epoch::IV,
                 livery: None,
-                length_over_buffer: None,
+                length_over_buffers: None,
                 technical_specifications: technical_specifications(),
                 class_name: "111".to_string(),
                 road_number: "999".to_string(),
@@ -288,7 +314,7 @@ mod test {
                 railway: "FS".to_string(),
                 epoch: Epoch::IV,
                 livery: None,
-                length_over_buffer: None,
+                length_over_buffers: None,
                 technical_specifications: technical_specifications(),
                 type_name: "111".to_string(),
                 road_number: None,
@@ -303,7 +329,7 @@ mod test {
                 railway: "FS".to_string(),
                 epoch: Epoch::IV,
                 livery: None,
-                length_over_buffer: None,
+                length_over_buffers: None,
                 technical_specifications: technical_specifications(),
                 type_name: "111".to_string(),
                 road_number: None,

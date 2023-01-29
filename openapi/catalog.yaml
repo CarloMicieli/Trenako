@@ -452,7 +452,7 @@ components:
         - TANK_CARS
         - TELESCOPE_HOOD_WAGONS
 
-    LengthOverBuffer:
+    LengthOverBuffers:
       type: object
       description: the length over buffer of a rolling stock
       properties:
@@ -857,8 +857,8 @@ components:
         livery:
           type: string
           description: the rolling stock livery description
-        length_over_buffer:
-          $ref: "#/components/schemas/LengthOverBuffer"
+        length_over_buffers:
+          $ref: "#/components/schemas/LengthOverBuffers"
         technical_specifications:
           $ref: "#/components/schemas/TechnicalSpecifications"
       required:
@@ -909,8 +909,8 @@ components:
           type: string
           maxLength: 50
           description: the rolling stock livery description
-        length_over_buffer:
-          $ref: "#/components/schemas/LengthOverBuffer"
+        length_over_buffers:
+          $ref: "#/components/schemas/LengthOverBuffers"
         technical_specifications:
           $ref: "#/components/schemas/TechnicalSpecifications"
       required:

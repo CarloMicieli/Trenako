@@ -11,7 +11,6 @@ use crate::catalog_items::control::{Control, DccInterface};
 use crate::catalog_items::delivery_date::DeliveryDate;
 use crate::catalog_items::epoch::Epoch;
 use crate::catalog_items::item_number::ItemNumber;
-use crate::catalog_items::length_over_buffers::LengthOverBuffers;
 use crate::catalog_items::power_method::PowerMethod;
 use crate::catalog_items::rolling_stock_id::RollingStockId;
 use crate::catalog_items::rolling_stock_request::RollingStockRequest;
@@ -210,12 +209,18 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
             digital_shunting,
         } = coupling.unwrap_or_default();
 
+        let (millimeters, inches) = if let Some(length_over_buffers) = request.length_over_buffers() {
+            (length_over_buffers.millimeters, length_over_buffers.inches)
+        } else {
+            (None, None)
+        };
+
         match request {
             RollingStockRequest::ElectricMultipleUnitRequest {
                 railway: _,
                 epoch,
                 livery,
-                length_over_buffer,
+                length_over_buffers: _,
                 technical_specifications: _,
                 type_name,
                 road_number,
@@ -225,39 +230,36 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 dcc_interface,
                 control,
                 is_dummy,
-            } => {
-                let LengthOverBuffers { inches, millimeters } = length_over_buffer.unwrap_or_default();
-                Ok(RollingStockPayload {
-                    category: Some(category),
-                    epoch: Some(epoch),
-                    livery,
-                    length_over_buffer_mm: millimeters,
-                    length_over_buffer_in: inches,
-                    type_name: Some(type_name),
-                    road_number,
-                    series,
-                    depot,
-                    dcc_interface,
-                    control,
-                    electric_multiple_unit_type: Some(electric_multiple_unit_type),
-                    is_dummy,
-                    minimum_radius,
-                    coupling_socket: Some(socket),
-                    close_couplers: Some(close_couplers),
-                    digital_shunting_coupling: Some(digital_shunting),
-                    flywheel_fitted: Some(flywheel_fitted),
-                    metal_body: Some(metal_body),
-                    interior_lights: Some(interior_lights),
-                    lights: Some(lights),
-                    spring_buffers: Some(spring_buffers),
-                    ..RollingStockPayload::default()
-                })
-            }
+            } => Ok(RollingStockPayload {
+                category: Some(category),
+                epoch: Some(epoch),
+                livery,
+                length_over_buffer_mm: millimeters,
+                length_over_buffer_in: inches,
+                type_name: Some(type_name),
+                road_number,
+                series,
+                depot,
+                dcc_interface,
+                control,
+                electric_multiple_unit_type: Some(electric_multiple_unit_type),
+                is_dummy,
+                minimum_radius,
+                coupling_socket: Some(socket),
+                close_couplers: Some(close_couplers),
+                digital_shunting_coupling: Some(digital_shunting),
+                flywheel_fitted: Some(flywheel_fitted),
+                metal_body: Some(metal_body),
+                interior_lights: Some(interior_lights),
+                lights: Some(lights),
+                spring_buffers: Some(spring_buffers),
+                ..RollingStockPayload::default()
+            }),
             RollingStockRequest::RailcarRequest {
                 railway: _,
                 epoch,
                 livery,
-                length_over_buffer,
+                length_over_buffers: _,
                 technical_specifications: _,
                 type_name,
                 road_number,
@@ -267,39 +269,36 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 dcc_interface,
                 control,
                 is_dummy,
-            } => {
-                let LengthOverBuffers { inches, millimeters } = length_over_buffer.unwrap_or_default();
-                Ok(RollingStockPayload {
-                    category: Some(category),
-                    epoch: Some(epoch),
-                    livery,
-                    length_over_buffer_mm: millimeters,
-                    length_over_buffer_in: inches,
-                    type_name: Some(type_name),
-                    road_number,
-                    series,
-                    depot,
-                    dcc_interface,
-                    control,
-                    railcar_type: Some(railcar_type),
-                    is_dummy,
-                    minimum_radius,
-                    coupling_socket: Some(socket),
-                    close_couplers: Some(close_couplers),
-                    digital_shunting_coupling: Some(digital_shunting),
-                    flywheel_fitted: Some(flywheel_fitted),
-                    metal_body: Some(metal_body),
-                    interior_lights: Some(interior_lights),
-                    lights: Some(lights),
-                    spring_buffers: Some(spring_buffers),
-                    ..RollingStockPayload::default()
-                })
-            }
+            } => Ok(RollingStockPayload {
+                category: Some(category),
+                epoch: Some(epoch),
+                livery,
+                length_over_buffer_mm: millimeters,
+                length_over_buffer_in: inches,
+                type_name: Some(type_name),
+                road_number,
+                series,
+                depot,
+                dcc_interface,
+                control,
+                railcar_type: Some(railcar_type),
+                is_dummy,
+                minimum_radius,
+                coupling_socket: Some(socket),
+                close_couplers: Some(close_couplers),
+                digital_shunting_coupling: Some(digital_shunting),
+                flywheel_fitted: Some(flywheel_fitted),
+                metal_body: Some(metal_body),
+                interior_lights: Some(interior_lights),
+                lights: Some(lights),
+                spring_buffers: Some(spring_buffers),
+                ..RollingStockPayload::default()
+            }),
             RollingStockRequest::LocomotiveRequest {
                 railway: _,
                 epoch,
                 livery,
-                length_over_buffer,
+                length_over_buffers: _,
                 technical_specifications: _,
                 class_name,
                 road_number,
@@ -309,102 +308,93 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 dcc_interface,
                 control,
                 is_dummy,
-            } => {
-                let LengthOverBuffers { inches, millimeters } = length_over_buffer.unwrap_or_default();
-                Ok(RollingStockPayload {
-                    category: Some(category),
-                    epoch: Some(epoch),
-                    livery,
-                    length_over_buffer_mm: millimeters,
-                    length_over_buffer_in: inches,
-                    type_name: Some(class_name),
-                    road_number: Some(road_number),
-                    series,
-                    depot,
-                    dcc_interface,
-                    control,
-                    locomotive_type: Some(locomotive_type),
-                    is_dummy,
-                    minimum_radius,
-                    coupling_socket: Some(socket),
-                    close_couplers: Some(close_couplers),
-                    digital_shunting_coupling: Some(digital_shunting),
-                    flywheel_fitted: Some(flywheel_fitted),
-                    metal_body: Some(metal_body),
-                    interior_lights: Some(interior_lights),
-                    lights: Some(lights),
-                    spring_buffers: Some(spring_buffers),
-                    ..RollingStockPayload::default()
-                })
-            }
+            } => Ok(RollingStockPayload {
+                category: Some(category),
+                epoch: Some(epoch),
+                livery,
+                length_over_buffer_mm: millimeters,
+                length_over_buffer_in: inches,
+                type_name: Some(class_name),
+                road_number: Some(road_number),
+                series,
+                depot,
+                dcc_interface,
+                control,
+                locomotive_type: Some(locomotive_type),
+                is_dummy,
+                minimum_radius,
+                coupling_socket: Some(socket),
+                close_couplers: Some(close_couplers),
+                digital_shunting_coupling: Some(digital_shunting),
+                flywheel_fitted: Some(flywheel_fitted),
+                metal_body: Some(metal_body),
+                interior_lights: Some(interior_lights),
+                lights: Some(lights),
+                spring_buffers: Some(spring_buffers),
+                ..RollingStockPayload::default()
+            }),
             RollingStockRequest::PassengerCarRequest {
                 railway: _,
                 epoch,
                 livery,
-                length_over_buffer,
+                length_over_buffers: _,
                 technical_specifications: _,
                 type_name,
                 road_number,
                 series,
                 passenger_car_type,
                 service_level,
-            } => {
-                let LengthOverBuffers { inches, millimeters } = length_over_buffer.unwrap_or_default();
-                Ok(RollingStockPayload {
-                    category: Some(category),
-                    epoch: Some(epoch),
-                    livery,
-                    length_over_buffer_mm: millimeters,
-                    length_over_buffer_in: inches,
-                    type_name: Some(type_name),
-                    road_number,
-                    series,
-                    passenger_car_type,
-                    service_level,
-                    minimum_radius,
-                    coupling_socket: Some(socket),
-                    close_couplers: Some(close_couplers),
-                    digital_shunting_coupling: Some(digital_shunting),
-                    flywheel_fitted: Some(flywheel_fitted),
-                    metal_body: Some(metal_body),
-                    interior_lights: Some(interior_lights),
-                    lights: Some(lights),
-                    spring_buffers: Some(spring_buffers),
-                    ..RollingStockPayload::default()
-                })
-            }
+            } => Ok(RollingStockPayload {
+                category: Some(category),
+                epoch: Some(epoch),
+                livery,
+                length_over_buffer_mm: millimeters,
+                length_over_buffer_in: inches,
+                type_name: Some(type_name),
+                road_number,
+                series,
+                passenger_car_type,
+                service_level,
+                minimum_radius,
+                coupling_socket: Some(socket),
+                close_couplers: Some(close_couplers),
+                digital_shunting_coupling: Some(digital_shunting),
+                flywheel_fitted: Some(flywheel_fitted),
+                metal_body: Some(metal_body),
+                interior_lights: Some(interior_lights),
+                lights: Some(lights),
+                spring_buffers: Some(spring_buffers),
+                ..RollingStockPayload::default()
+            }),
             RollingStockRequest::FreightCarRequest {
                 railway: _,
                 epoch,
                 livery,
-                length_over_buffer,
+                length_over_buffers: _,
                 technical_specifications: _,
                 type_name,
                 road_number,
                 freight_car_type,
-            } => {
-                let LengthOverBuffers { inches, millimeters } = length_over_buffer.unwrap_or_default();
-                Ok(RollingStockPayload {
-                    category: Some(category),
-                    epoch: Some(epoch),
-                    livery,
-                    length_over_buffer_mm: millimeters,
-                    length_over_buffer_in: inches,
-                    type_name: Some(type_name),
-                    road_number,
-                    freight_car_type,
-                    minimum_radius,
-                    coupling_socket: Some(socket),
-                    close_couplers: Some(close_couplers),
-                    digital_shunting_coupling: Some(digital_shunting),
-                    flywheel_fitted: Some(flywheel_fitted),
-                    metal_body: Some(metal_body),
-                    interior_lights: Some(interior_lights),
-                    lights: Some(lights),
-                    spring_buffers: Some(spring_buffers),
-                    ..RollingStockPayload::default()
-                })
-            }
+            } => Ok(RollingStockPayload {
+                category: Some(category),
+                epoch: Some(epoch),
+                livery,
+                length_over_buffer_mm: millimeters,
+                length_over_buffer_in: inches,
+                type_name: Some(type_name),
+                road_number,
+                freight_car_type,
+                minimum_radius,
+                coupling_socket: Some(socket),
+                close_couplers: Some(close_couplers),
+                digital_shunting_coupling: Some(digital_shunting),
+                flywheel_fitted: Some(flywheel_fitted),
+                metal_body: Some(metal_body),
+                interior_lights: Some(interior_lights),
+                lights: Some(lights),
+                spring_buffers: Some(spring_buffers),
+                ..RollingStockPayload::default()
+            }),
         }
     }
 }
