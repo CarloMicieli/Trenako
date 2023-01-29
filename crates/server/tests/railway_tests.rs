@@ -1,18 +1,14 @@
 pub mod common;
 
 use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
-use ::common::contacts::ContactInformation;
-use ::common::localized_text::LocalizedText;
 use ::common::organizations::OrganizationEntityType;
-use ::common::socials::Socials;
 use catalog::common::TrackGauge;
-use catalog::railways::period_of_activity::{PeriodOfActivity, RailwayStatus};
-use catalog::railways::railway_gauge::RailwayGauge;
-use catalog::railways::railway_length::RailwayLength;
-use catalog::railways::railway_request::RailwayRequest;
+use catalog::railways::period_of_activity::RailwayStatus;
+use catalog::railways::railway_id::RailwayId;
 use chrono::NaiveDate;
 use isocountry::CountryCode;
 use rust_decimal::prelude::*;
+use serde_json::json;
 use uuid::Uuid;
 
 const API_RAILWAYS: &str = "/api/railways";
@@ -29,47 +25,44 @@ async fn post_new_railways() {
         sut.run_database_migrations().await;
 
         let railway_name = Uuid::new_v4().to_string();
-        let expected_location = format!("{API_RAILWAYS}/{railway_name}");
+        let railway_id = RailwayId::new(&railway_name);
+        let expected_location = format!("{API_RAILWAYS}/{railway_id}");
 
-        let operating_since = NaiveDate::from_ymd_opt(1900, 1, 1).unwrap();
-        let period_of_activity = PeriodOfActivity::active_railway(operating_since);
-
-        let gauge_mt = Decimal::from_str("1.435").unwrap();
-        let gauge = RailwayGauge::new(gauge_mt, TrackGauge::Standard);
-
-        let total_length_km = Decimal::from_str("10000").unwrap();
-        let total_length_mi = Decimal::from_str("621.371").unwrap();
-        let length = RailwayLength::new(total_length_km, total_length_mi);
-        let contact_info = ContactInformation::builder()
-            .email("mail@mail.com")
-            .phone("555 1234")
-            .website_url("https://www.site.com")
-            .build()
-            .unwrap();
-
-        let socials = Socials::builder()
-            .instagram("instagram_handler")
-            .linkedin("linkedin_handler")
-            .facebook("facebook_handler")
-            .twitter("twitter_handler")
-            .youtube("youtube_handler")
-            .build()
-            .unwrap();
-
-        let request = RailwayRequest {
-            name: railway_name.clone(),
-            abbreviation: Some(String::from("FS")),
-            registered_company_name: Some(String::from("FS")),
-            organization_entity_type: Some(OrganizationEntityType::StateOwnedEnterprise),
-            description: LocalizedText::with_italian("Descrizione"),
-            country: CountryCode::DEU,
-            period_of_activity: Some(period_of_activity),
-            gauge: Some(gauge),
-            headquarters: Some(String::from("Some City")),
-            total_length: Some(length),
-            contact_info: Some(contact_info),
-            socials: Some(socials),
-        };
+        let request = json!({
+            "name" : railway_name,
+            "abbreviation" : "rr",
+            "registered_company_name" : "Rust Raiload & Co",
+            "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
+            "description" : {
+                "it" : "descrizione"
+            },
+            "country" : "US",
+            "period_of_activity" : {
+                "status" : "ACTIVE",
+                "operating_since" : "1900-01-01"
+            },
+            "gauge" : {
+                "meters": 1.435,
+                "track_gauge": "STANDARD"
+            },
+            "headquarters" : "Some City",
+            "total_length" : {
+                "miles": 621.371,
+                "kilometers": 10000
+            },
+            "contact_info" : {
+                "email" : "mail@mail.com",
+                "phone" : "555 1234",
+                "website_url" : "https://www.site.com"
+            },
+            "socials" : {
+                "facebook" : "facebook_handler",
+                "instagram" : "instagram_handler",
+                "linkedin" : "linkedin_handler",
+                "twitter" : "twitter_handler",
+                "youtube" : "youtube_handler"
+            }
+        });
 
         let endpoint = sut.endpoint(API_RAILWAYS);
         let response = client
@@ -87,7 +80,7 @@ async fn post_new_railways() {
         let saved = sqlx::query_as!(
             Saved,
             r#"SELECT
-                railway_id,
+                railway_id as "railway_id: RailwayId",
                 name,
                 abbreviation,
                 registered_company_name,
@@ -117,13 +110,21 @@ async fn post_new_railways() {
         .await
         .expect("Failed to fetch saved railway.");
 
-        assert_eq!(request.name, saved.railway_id);
-        assert_eq!(request.name, saved.name);
-        assert_eq!(request.abbreviation, saved.abbreviation);
-        assert_eq!(request.registered_company_name, saved.registered_company_name);
-        assert_eq!(request.organization_entity_type, saved.organization_entity_type);
-        assert_eq!(request.description.italian(), saved.description_it.as_ref());
-        assert_eq!(request.country.alpha3(), saved.country);
+        let operating_since = NaiveDate::from_ymd_opt(1900, 1, 1).unwrap();
+        let gauge_mt = Decimal::from_str("1.435").unwrap();
+        let total_length_km = Decimal::from_str("10000").unwrap();
+        let total_length_mi = Decimal::from_str("621.371").unwrap();
+
+        assert_eq!(railway_id, saved.railway_id);
+        assert_eq!(railway_name, saved.name);
+        assert_eq!(Some(String::from("rr")), saved.abbreviation);
+        assert_eq!(Some(String::from("Rust Raiload & Co")), saved.registered_company_name);
+        assert_eq!(
+            Some(OrganizationEntityType::StateOwnedEnterprise),
+            saved.organization_entity_type
+        );
+        assert_eq!(Some(String::from("descrizione")), saved.description_it);
+        assert_eq!(CountryCode::USA.alpha2(), saved.country);
         assert_eq!(Some(operating_since), saved.operating_since);
         assert_eq!(None, saved.operating_until);
         assert_eq!(Some(RailwayStatus::Active), saved.status);
@@ -145,7 +146,7 @@ async fn post_new_railways() {
 }
 
 struct Saved {
-    railway_id: String,
+    railway_id: RailwayId,
     name: String,
     abbreviation: Option<String>,
     registered_company_name: Option<String>,

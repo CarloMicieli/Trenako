@@ -1,13 +1,10 @@
 pub mod common;
 
 use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
-use ::common::localized_text::LocalizedText;
 use catalog::common::TrackGauge;
-use catalog::scales::ratio::Ratio;
-use catalog::scales::scale_gauge::Gauge;
-use catalog::scales::scale_request::ScaleRequest;
-use catalog::scales::standard::Standard;
+use catalog::scales::scale_id::ScaleId;
 use rust_decimal::Decimal;
+use serde_json::json;
 use uuid::Uuid;
 
 const API_SCALES: &str = "/api/scales";
@@ -24,22 +21,27 @@ async fn post_new_scales() {
         sut.run_database_migrations().await;
 
         let scale_name = Uuid::new_v4().to_string();
-        let expected_location = format!("{API_SCALES}/{scale_name}");
+        let scale_id = ScaleId::new(&scale_name);
+        let expected_location = format!("{API_SCALES}/{scale_id}");
 
         let ratio_value = Decimal::from_str_exact("87").unwrap();
-        let ratio = Ratio::try_from(ratio_value).unwrap();
 
         let gauge_mm = Decimal::from_str_exact("16.5").unwrap();
         let gauge_in = Decimal::from_str_exact("0.65").unwrap();
-        let gauge = Gauge::new(TrackGauge::Standard, gauge_mm, gauge_in).unwrap();
 
-        let request = ScaleRequest {
-            name: scale_name.clone(),
-            ratio,
-            gauge,
-            description: LocalizedText::with_italian("Descrizione"),
-            standards: vec![Standard::NEM, Standard::NMRA],
-        };
+        let request = json!({
+            "name" : scale_name,
+            "ratio" : 87.0,
+            "gauge" : {
+                "millimeters" : 16.5,
+                "inches" : 0.65,
+                "track_gauge" : "STANDARD"
+            },
+            "description" : {
+                "it": "descrizione"
+            },
+            "standards" : ["NEM", "NMRA"]
+        });
 
         let endpoint = sut.endpoint(API_SCALES);
         let response = client
@@ -57,7 +59,7 @@ async fn post_new_scales() {
         let saved = sqlx::query_as!(
             Saved,
             r#"SELECT
-                scale_id,
+                scale_id as "scale_id: ScaleId",
                 name,
                 ratio,
                 gauge_millimeters,
@@ -73,9 +75,9 @@ async fn post_new_scales() {
         .await
         .expect("Failed to fetch saved scale.");
 
-        assert_eq!(request.name, saved.scale_id);
-        assert_eq!(request.name, saved.name);
-        assert_eq!(request.description.italian(), saved.description_it.as_ref());
+        assert_eq!(scale_id, saved.scale_id);
+        assert_eq!(scale_name, saved.name);
+        assert_eq!(Some(String::from("descrizione")), saved.description_it);
         assert_eq!(ratio_value, saved.ratio);
         assert_eq!(Some(gauge_mm), saved.gauge_millimeters);
         assert_eq!(Some(gauge_in), saved.gauge_inches);
@@ -86,7 +88,7 @@ async fn post_new_scales() {
 }
 
 struct Saved {
-    scale_id: String,
+    scale_id: ScaleId,
     name: String,
     ratio: Decimal,
     gauge_millimeters: Option<Decimal>,

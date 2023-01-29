@@ -1,15 +1,10 @@
 pub mod common;
 
 use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
-use ::common::address::Address;
-use ::common::contacts::ContactInformation;
-use ::common::localized_text::LocalizedText;
 use ::common::organizations::OrganizationEntityType;
-use ::common::socials::Socials;
 use catalog::brands::brand_kind::BrandKind;
-use catalog::brands::brand_request::BrandRequest;
 use catalog::brands::brand_status::BrandStatus;
-use isocountry::CountryCode;
+use serde_json::json;
 use uuid::Uuid;
 
 const API_BRANDS: &str = "/api/brands";
@@ -28,42 +23,38 @@ async fn post_new_brands() {
         let brand_name = Uuid::new_v4().to_string();
         let expected_location = format!("{API_BRANDS}/{brand_name}");
 
-        let address = Address::builder()
-            .street_address("Rue Morgue 22")
-            .city("London")
-            .postal_code("1H2 4BB")
-            .country(CountryCode::GBR)
-            .build()
-            .unwrap();
-
-        let contact_info = ContactInformation::builder()
-            .email("mail@mail.com")
-            .phone("555 1234")
-            .website_url("https://www.site.com")
-            .build()
-            .unwrap();
-
-        let socials = Socials::builder()
-            .instagram("instagram_handler")
-            .linkedin("linkedin_handler")
-            .facebook("facebook_handler")
-            .twitter("twitter_handler")
-            .youtube("youtube_handler")
-            .build()
-            .unwrap();
-
-        let request = BrandRequest {
-            name: brand_name.clone(),
-            registered_company_name: Some(String::from("A cool brand ltd.")),
-            organization_entity_type: Some(OrganizationEntityType::LimitedCompany),
-            group_name: Some(String::from("Group Corp.")),
-            description: LocalizedText::with_italian("La descrizione va qui"),
-            address: Some(address),
-            contact_info: Some(contact_info),
-            kind: BrandKind::Industrial,
-            status: Some(BrandStatus::Active),
-            socials: Some(socials)
-        };
+        let request = json!({
+            "name" : brand_name,
+            "registered_company_name" : "Registered Company Ltd",
+            "organization_entity_type" : "LIMITED_COMPANY",
+            "group_name": "UNKNOWN",
+            "description" : {
+                "it" : "descrizione",
+                "en" : "description"
+            },
+            "address" : {
+                "street_address" : "Rue Morgue 22",
+                "extended_address" : null,
+                "postal_code" : "1H2 4BB",
+                "city" : "London",
+                "region" : null,
+                "country" : "GB"
+            },
+            "contact_info" : {
+                "email" : "mail@mail.com",
+                "phone" : "555 1234",
+                "website_url" : "https://www.site.com"
+            },
+            "socials" : {
+                "facebook" : "facebook_handler",
+                "instagram" : "instagram_handler",
+                "linkedin" : "linkedin_handler",
+                "twitter" : "twitter_handler",
+                "youtube" : "youtube_handler"
+            },
+            "kind" : "INDUSTRIAL",
+            "status" : "ACTIVE"
+        });
 
         let endpoint = sut.endpoint(API_BRANDS);
         let response = client
@@ -91,14 +82,14 @@ async fn post_new_brands() {
             .await
             .expect("Failed to fetch saved brand.");
 
-        assert_eq!(request.name, saved.brand_id);
-        assert_eq!(request.name, saved.name);
-        assert_eq!(request.kind, saved.kind);
-        assert_eq!(request.description.italian(), saved.description_it.as_ref());
-        assert_eq!(request.group_name, saved.group_name);
-        assert_eq!(request.registered_company_name, saved.registered_company_name);
-        assert_eq!(request.organization_entity_type, saved.organization_entity_type);
-        assert_eq!(request.status, saved.status);
+        assert_eq!(brand_name, saved.brand_id);
+        assert_eq!(brand_name, saved.name);
+        assert_eq!(BrandKind::Industrial, saved.kind);
+        assert_eq!(Some(String::from("descrizione")), saved.description_it);
+        assert_eq!(Some(String::from("UNKNOWN")), saved.group_name);
+        assert_eq!(Some(String::from("Registered Company Ltd")), saved.registered_company_name);
+        assert_eq!(Some(OrganizationEntityType::LimitedCompany), saved.organization_entity_type);
+        assert_eq!(Some(BrandStatus::Active), saved.status);
         assert_eq!(Some(String::from("mail@mail.com")), saved.contact_email);
         assert_eq!(Some(String::from("555 1234")), saved.contact_phone);
         assert_eq!(Some(String::from("https://www.site.com/")), saved.contact_website_url);

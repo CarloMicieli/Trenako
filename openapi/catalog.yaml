@@ -784,9 +784,9 @@ components:
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         country:
           type: string
-          minLength: 3
-          maxLength: 3
-          description: the ISO country code (ISO 3166-1 alpha-3)
+          minLength: 2
+          maxLength: 2
+          description: the ISO country code (ISO 3166-1 alpha-2)
         period_of_activity:
           $ref: "#/components/schemas/RailwayPeriodOfActivity"
         gauge:

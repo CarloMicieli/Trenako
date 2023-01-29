@@ -106,8 +106,8 @@ impl TryFrom<ScaleRequest> for ScaleCommandPayload {
 
         let (track_gauge, gauge_inches, gauge_millimeters) = (
             request.gauge.track_gauge,
-            Some(request.gauge.inches),
-            Some(request.gauge.millimeters),
+            Some(request.gauge.inches.quantity()),
+            Some(request.gauge.millimeters.quantity()),
         );
 
         Ok(ScaleCommandPayload {

@@ -23,7 +23,7 @@ args = ["build"]
 [tasks.test]
 description = "test: run the tests"
 category = "Check"
-env = { "SQLX_OFFLINE" = "true" }
+env = { "SQLX_OFFLINE" = "true", "TEST_LOG" = "true" }
 command = "cargo"
 args = ["test", "--no-fail-fast"]
 
