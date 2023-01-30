@@ -3,11 +3,18 @@ use catalog::brands::brand_id::BrandId;
 use catalog::catalog_items::availability_status::AvailabilityStatus;
 use catalog::catalog_items::catalog_item_id::CatalogItemId;
 use catalog::catalog_items::category::Category;
+use catalog::catalog_items::category::{
+    ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType, RollingStockCategory,
+};
 use catalog::catalog_items::commands::new_catalog_item::Result;
 use catalog::catalog_items::commands::new_catalog_item::{
     NewCatalogItemCommand, NewCatalogItemRepository, NewRollingStockCommand, NewRollingStockRepository,
 };
+use catalog::catalog_items::control::{Control, DccInterface};
 use catalog::catalog_items::power_method::PowerMethod;
+use catalog::catalog_items::rolling_stock_id::RollingStockId;
+use catalog::catalog_items::service_level::ServiceLevel;
+use catalog::catalog_items::technical_specifications::{CouplingSocket, FeatureFlag};
 use catalog::railways::railway_id::RailwayId;
 use catalog::scales::scale_id::ScaleId;
 use common::unit_of_work::postgres::PgUnitOfWork;
@@ -62,7 +69,7 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemR
             request.details.italian(),
             request.power_method as PowerMethod,
             request.delivery_date.as_ref().map(|x| x.to_string()),
-            request.availability_status.as_ref() as Option<&AvailabilityStatus>,
+            request.availability_status as Option<AvailabilityStatus>,
             request.count,
             metadata.created(),
             metadata.version() as i32
@@ -84,8 +91,91 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemR
 
 #[async_trait]
 impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for PgNewRollingStockRepository {
-    async fn insert(&self, _new_item: &NewRollingStockCommand, _unit_of_work: &mut PgUnitOfWork<'db>) -> Result<()> {
-        todo!()
+    async fn insert(&self, new_item: &NewRollingStockCommand, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<()> {
+        let request = &new_item.payload;
+        let catalog_item_id = &new_item.catalog_item_id;
+        let rolling_stock_id = &new_item.rolling_stock_id;
+        let railway_id = &new_item.railway_id;
+
+        sqlx::query!(
+            r#"INSERT INTO rolling_stocks (
+                        rolling_stock_id,
+                        catalog_item_id,
+                        railway_id,
+                        rolling_stock_category,
+                        epoch,
+                        livery,
+                        length_over_buffers_mm,
+                        length_over_buffers_in,
+                        type_name,
+                        road_number,
+                        series,
+                        depot,
+                        dcc_interface,
+                        control,
+                        electric_multiple_unit_type,
+                        freight_car_type,
+                        locomotive_type,
+                        passenger_car_type,
+                        railcar_type,
+                        service_level,
+                        is_dummy,
+                        minimum_radius,
+                        coupling_socket,
+                        close_couplers,
+                        digital_shunting_coupling,
+                        flywheel_fitted,
+                        metal_body,
+                        interior_lights,
+                        lights,
+                        spring_buffers
+                    )
+                    VALUES (
+                        $1, $2, $3, $4, $5, $6,
+                        $7, $8, $9, $10, $11, $12, 
+                        $13, $14, $15, $16, $17, $18,
+                        $19, $20, $21, $22, $23, $24, 
+                        $25, $26, $27, $28, $29, $30
+                    )"#,
+            rolling_stock_id as &RollingStockId,
+            catalog_item_id as &CatalogItemId,
+            railway_id as &RailwayId,
+            request.category.expect("rolling stock category is mandatory") as RollingStockCategory,
+            request
+                .epoch
+                .as_ref()
+                .expect("rolling stock epoch is mandatory")
+                .to_string(),
+            request.livery,
+            request.length_over_buffers_mm.map(|x| x.quantity()),
+            request.length_over_buffers_in.map(|x| x.quantity()),
+            request.type_name,
+            request.road_number,
+            request.series,
+            request.depot,
+            request.dcc_interface as Option<DccInterface>,
+            request.control as Option<Control>,
+            request.electric_multiple_unit_type as Option<ElectricMultipleUnitType>,
+            request.freight_car_type as Option<FreightCarType>,
+            request.locomotive_type as Option<LocomotiveType>,
+            request.passenger_car_type as Option<PassengerCarType>,
+            request.railcar_type as Option<RailcarType>,
+            request.service_level as Option<ServiceLevel>,
+            request.is_dummy,
+            request.minimum_radius.map(|x| x.value().quantity()),
+            request.coupling_socket as Option<CouplingSocket>,
+            request.close_couplers as Option<FeatureFlag>,
+            request.digital_shunting_coupling as Option<FeatureFlag>,
+            request.flywheel_fitted as Option<FeatureFlag>,
+            request.metal_body as Option<FeatureFlag>,
+            request.interior_lights as Option<FeatureFlag>,
+            request.lights as Option<FeatureFlag>,
+            request.spring_buffers as Option<FeatureFlag>
+        )
+        .execute(&mut unit_of_work.transaction)
+        .await?;
+
+        Ok(())
     }
 
     async fn railway_exists(&self, _railway_id: &RailwayId, _unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {

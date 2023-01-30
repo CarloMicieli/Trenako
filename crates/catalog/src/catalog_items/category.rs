@@ -35,7 +35,7 @@ pub enum Category {
 #[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
-#[sqlx(type_name = "catalog_item_category", rename_all = "SCREAMING_SNAKE_CASE")]
+#[sqlx(type_name = "rolling_stock_category", rename_all = "SCREAMING_SNAKE_CASE")]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum RollingStockCategory {
     /// The steam locomotives category

@@ -1,11 +1,14 @@
 use catalog::brands::brand_request::BrandRequest;
 use catalog::brands::commands::new_brand::{NewBrandCommand, NewBrandRepository};
+use catalog::railways::commands::new_railways::{NewRailwayCommand, NewRailwayRepository};
+use catalog::railways::railway_request::RailwayRequest;
 use catalog::scales::commands::new_scales::{NewScaleCommand, NewScaleRepository};
 use catalog::scales::scale_request::ScaleRequest;
 use common::unit_of_work::postgres::PgDatabase;
 use common::unit_of_work::{Database, UnitOfWork};
 use serde_derive::Deserialize;
 use server::catalog::brands::post_brands::PgNewBrandRepository;
+use server::catalog::railways::post_railways::PgNewRailwayRepository;
 use server::catalog::scales::post_scales::PgNewScaleRepository;
 use sqlx::PgPool;
 
@@ -24,6 +27,25 @@ pub async fn seed_brands(pg_pool: &PgPool) {
 
     for b in brands {
         repo.insert(&b, &mut unit_of_work).await.unwrap();
+    }
+
+    unit_of_work.commit().await.unwrap();
+}
+
+pub async fn seed_railways(pg_pool: &PgPool) {
+    let db = PgDatabase::new(pg_pool);
+    let mut unit_of_work = db.begin().await.unwrap();
+
+    let repo = PgNewRailwayRepository;
+
+    let railways: Vec<NewRailwayCommand> = railways()
+        .items
+        .into_iter()
+        .map(|it| NewRailwayCommand::try_from(it).expect("invalid railway request"))
+        .collect();
+
+    for s in railways {
+        repo.insert(&s, &mut unit_of_work).await.unwrap();
     }
 
     unit_of_work.commit().await.unwrap();
@@ -52,6 +74,10 @@ fn brands() -> Brands {
     serde_json::from_str::<Brands>(data::BRANDS).expect("Invalid BRANDS data for seeding")
 }
 
+fn railways() -> Railways {
+    serde_json::from_str::<Railways>(data::RAILWAYS).expect("Invalid RAILWAYS data for seeding")
+}
+
 fn scales() -> Scales {
     serde_json::from_str::<Scales>(data::SCALES).expect("Invalid SCALES data for seeding")
 }
@@ -59,18 +85,25 @@ fn scales() -> Scales {
 #[cfg(not(windows))]
 mod data {
     pub const BRANDS: &str = include_str!("../resources/brands.json");
+    pub const RAILWAYS: &str = include_str!("../resources/railways.json");
     pub const SCALES: &str = include_str!("../resources/scales.json");
 }
 
 #[cfg(windows)]
 mod data {
     pub const BRANDS: &str = include_str!("..\\resources\\brands.json");
+    pub const RAILWAYS: &str = include_str!("..\\resources\\railways.json");
     pub const SCALES: &str = include_str!("..\\resources\\scales.json");
 }
 
 #[derive(Deserialize)]
 struct Brands {
     items: Vec<BrandRequest>,
+}
+
+#[derive(Deserialize)]
+struct Railways {
+    items: Vec<RailwayRequest>,
 }
 
 #[derive(Deserialize)]

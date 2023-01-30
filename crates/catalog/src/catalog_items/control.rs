@@ -33,55 +33,65 @@ pub enum Control {
 /// replacement DCC control board (if available) for that specific model.
 #[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize, Type)]
 #[strum(ascii_case_insensitive)]
-#[sqlx(type_name = "dcc_interface", rename_all = "SCREAMING_SNAKE_CASE")]
+#[sqlx(type_name = "dcc_interface")]
 pub enum DccInterface {
     /// 6 Pin standard mechanical and electrical interfaces (NMRA Small)
     #[serde(rename = "NEM_651")]
     #[strum(serialize = "NEM_651")]
+    #[sqlx(rename = "NEM_651")]
     Nem651,
 
     /// 8 Pin standard mechanical and electrical interfaces (NMRA Medium)
     #[serde(rename = "NEM_652")]
     #[strum(serialize = "NEM_652")]
+    #[sqlx(rename = "NEM_652")]
     Nem652,
 
     /// 4 Pin standard mechanical and electrical interfaces (NMRA Large)
     #[serde(rename = "NEM_654")]
     #[strum(serialize = "NEM_654")]
+    #[sqlx(rename = "NEM_654")]
     Nem654,
 
     /// The PluX8 connector consists of two rows of 4 pins.
     #[serde(rename = "PLUX_8")]
     #[strum(serialize = "PLUX_8")]
+    #[sqlx(rename = "PLUX_8")]
     Plux8,
 
     #[serde(rename = "PLUX_12")]
     #[strum(serialize = "PLUX_12")]
+    #[sqlx(rename = "PLUX_12")]
     Plux12,
 
     /// The PluX16 connector consists of two rows of 8 pins.
     #[serde(rename = "PLUX_16")]
     #[strum(serialize = "PLUX_16")]
+    #[sqlx(rename = "PLUX_16")]
     Plux16,
 
     /// The PluX22 connector consists of two rows of 11 pins.
     #[serde(rename = "PLUX_22")]
     #[strum(serialize = "PLUX_22")]
+    #[sqlx(rename = "PLUX_22")]
     Plux22,
 
     /// standard connector for extremely tight applications, such as TT and N scale locomotives (NEM 662)
     #[serde(rename = "NEXT_18")]
     #[strum(serialize = "NEXT_18")]
+    #[sqlx(rename = "NEXT_18")]
     Next18,
 
     #[serde(rename = "NEXT_18_S")]
     #[strum(serialize = "NEXT_18_S")]
+    #[sqlx(rename = "NEXT_18_S")]
     Next18S,
 
     /// 21MTC Connector interface is a standard adopted by both the NMRA and NEM (NEM 660).
     /// Its name comes from 21 pin Marklin/Trix Connector, developed by Marklin and ESU.
     #[serde(rename = "MTC_21")]
     #[strum(serialize = "MTC_21")]
+    #[sqlx(rename = "MTC_21")]
     Mtc21,
 }
 

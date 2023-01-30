@@ -59,45 +59,53 @@ impl Coupling {
 #[derive(Debug, Copy, Clone, PartialEq, Eq, Serialize, Deserialize, EnumString, Display, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
-#[sqlx(type_name = "socket_type", rename_all = "SCREAMING_SNAKE_CASE")]
+#[sqlx(type_name = "socket_type")]
 pub enum CouplingSocket {
     #[serde(rename = "NONE")]
     #[strum(serialize = "NONE")]
+    #[sqlx(rename = "NONE")]
     None,
 
     /// Receptacle for Replaceable Coupling Heads in Scales TT and N
     #[serde(rename = "NEM_355")]
     #[strum(serialize = "NEM_355")]
+    #[sqlx(rename = "NEM_355")]
     Nem355,
 
     /// Coupler Head for Scale N
     #[serde(rename = "NEM_356")]
     #[strum(serialize = "NEM_356")]
+    #[sqlx(rename = "NEM_356")]
     Nem356,
 
     /// Coupler Head for Scale N
     #[serde(rename = "NEM_357")]
     #[strum(serialize = "NEM_357")]
+    #[sqlx(rename = "NEM_357")]
     Nem357,
 
     /// Coupler Head for Scale TT
     #[serde(rename = "NEM_359")]
     #[strum(serialize = "NEM_359")]
+    #[sqlx(rename = "NEM_359")]
     Nem359,
 
     /// Standard Coupling for Scale H0
     #[serde(rename = "NEM_360")]
     #[strum(serialize = "NEM_360")]
+    #[sqlx(rename = "NEM_360")]
     Nem360,
 
     /// NEM shaft 362 with close coupling mechanism
     #[serde(rename = "NEM_362")]
     #[strum(serialize = "NEM_362")]
+    #[sqlx(rename = "NEM_362")]
     Nem362,
 
     /// Coupler Head for Scale 0
     #[serde(rename = "NEM_365")]
     #[strum(serialize = "NEM_365")]
+    #[sqlx(rename = "NEM_365")]
     Nem365,
 }
 

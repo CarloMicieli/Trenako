@@ -2539,6 +2539,7 @@ dependencies = [
  "pretty_assertions",
  "reqwest",
  "rust_decimal",
+ "rust_decimal_macros",
  "secrecy",
  "serde",
  "serde_derive",

@@ -38,7 +38,7 @@ pub async fn create_new_catalog_item<
 >(
     request: CatalogItemRequest,
     repo: R,
-    _rs_repo: RR,
+    rs_repo: RR,
     db: DB,
 ) -> Result<CatalogItemCreated> {
     let brand_id = BrandId::new(&request.brand);
@@ -63,6 +63,10 @@ pub async fn create_new_catalog_item<
 
     repo.insert(&command, &mut unit_of_work).await?;
 
+    for rs in command.rolling_stocks {
+        rs_repo.insert(&rs, &mut unit_of_work).await?;
+    }
+
     unit_of_work.commit().await?;
 
     Ok(CatalogItemCreated {
@@ -75,7 +79,7 @@ pub async fn create_new_catalog_item<
 pub struct NewCatalogItemCommand {
     pub catalog_item_id: CatalogItemId,
     pub payload: CatalogItemCommandPayload,
-    pub rolling_stocks: Vec<RollingStockRequest>,
+    pub rolling_stocks: Vec<NewRollingStockCommand>,
     pub metadata: Metadata,
 }
 
@@ -86,7 +90,12 @@ impl TryFrom<CatalogItemRequest> for NewCatalogItemCommand {
         let brand_id = BrandId::new(&request.brand);
         let catalog_item_id = CatalogItemId::of(&brand_id, &request.item_number);
 
-        let rolling_stocks = request.rolling_stocks.clone();
+        let rolling_stocks: Vec<NewRollingStockCommand> = request
+            .rolling_stocks
+            .clone()
+            .into_iter()
+            .map(|rs| NewRollingStockCommand::new(&catalog_item_id, rs).unwrap())
+            .collect();
         let payload = CatalogItemCommandPayload::try_from(request)?;
         let metadata = Metadata::created_at(Utc::now());
 
@@ -144,13 +153,24 @@ pub struct NewRollingStockCommand {
     pub payload: RollingStockPayload,
 }
 
+impl NewRollingStockCommand {
+    pub fn new(catalog_item_id: &CatalogItemId, request: RollingStockRequest) -> Result<NewRollingStockCommand> {
+        Ok(NewRollingStockCommand {
+            catalog_item_id: catalog_item_id.clone(),
+            rolling_stock_id: RollingStockId::new(),
+            railway_id: RailwayId::new(request.railway()),
+            payload: RollingStockPayload::try_from(request)?,
+        })
+    }
+}
+
 #[derive(Debug, Clone, Default)]
 pub struct RollingStockPayload {
     pub category: Option<RollingStockCategory>,
     pub epoch: Option<Epoch>,
     pub livery: Option<String>,
-    pub length_over_buffer_mm: Option<Length>,
-    pub length_over_buffer_in: Option<Length>,
+    pub length_over_buffers_mm: Option<Length>,
+    pub length_over_buffers_in: Option<Length>,
     pub type_name: Option<String>,
     pub road_number: Option<String>,
     pub series: Option<String>,
@@ -234,8 +254,8 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 category: Some(category),
                 epoch: Some(epoch),
                 livery,
-                length_over_buffer_mm: millimeters,
-                length_over_buffer_in: inches,
+                length_over_buffers_mm: millimeters,
+                length_over_buffers_in: inches,
                 type_name: Some(type_name),
                 road_number,
                 series,
@@ -273,8 +293,8 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 category: Some(category),
                 epoch: Some(epoch),
                 livery,
-                length_over_buffer_mm: millimeters,
-                length_over_buffer_in: inches,
+                length_over_buffers_mm: millimeters,
+                length_over_buffers_in: inches,
                 type_name: Some(type_name),
                 road_number,
                 series,
@@ -312,8 +332,8 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 category: Some(category),
                 epoch: Some(epoch),
                 livery,
-                length_over_buffer_mm: millimeters,
-                length_over_buffer_in: inches,
+                length_over_buffers_mm: millimeters,
+                length_over_buffers_in: inches,
                 type_name: Some(class_name),
                 road_number: Some(road_number),
                 series,
@@ -348,8 +368,8 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 category: Some(category),
                 epoch: Some(epoch),
                 livery,
-                length_over_buffer_mm: millimeters,
-                length_over_buffer_in: inches,
+                length_over_buffers_mm: millimeters,
+                length_over_buffers_in: inches,
                 type_name: Some(type_name),
                 road_number,
                 series,
@@ -379,8 +399,8 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 category: Some(category),
                 epoch: Some(epoch),
                 livery,
-                length_over_buffer_mm: millimeters,
-                length_over_buffer_in: inches,
+                length_over_buffers_mm: millimeters,
+                length_over_buffers_in: inches,
                 type_name: Some(type_name),
                 road_number,
                 freight_car_type,
