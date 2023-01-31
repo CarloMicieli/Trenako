@@ -16,6 +16,7 @@ use catalog::catalog_items::technical_specifications::{CouplingSocket, FeatureFl
 use catalog::railways::railway_id::RailwayId;
 use catalog::scales::scale_id::ScaleId;
 use rust_decimal::Decimal;
+use rust_decimal_macros::dec;
 use serde_json::json;
 use std::str::FromStr;
 
@@ -24,7 +25,7 @@ pub mod common;
 const API_CATALOG_ITEMS: &str = "/api/catalog-items";
 
 #[tokio::test]
-async fn post_new_catalog_items() {
+async fn it_should_create_a_new_locomotive() {
     let test = create_docker_test();
 
     test.run_async(|ops| async move {
@@ -68,8 +69,9 @@ async fn post_new_catalog_items() {
                 "depot" : "Milano Smistamento",
                 "dcc_interface" : "MTC_21",
                 "control" : "DCC_READY",
-                "length_over_buffer" : {
-                  "millimeters" : 220.0
+                "length_over_buffers" : {
+                  "millimeters" : 220.0,
+                  "inches": 8.66142
                 },
                 "technical_specifications" : {
                   "coupling" : {
@@ -79,6 +81,7 @@ async fn post_new_catalog_items() {
                   },
                   "flywheel_fitted" : "NO",
                   "metal_body" : "NO",
+                  "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "YES",
                   "spring_buffers" : "NO"
@@ -181,10 +184,8 @@ async fn post_new_catalog_items() {
         assert_eq!(RollingStockCategory::Locomotive, saved_rs.rolling_stock_category);
         assert_eq!("Vb", saved_rs.epoch);
         assert_eq!(Some("rosso/bianco".to_string()), saved_rs.livery);
-        //assert_eq!(Some(dec!(220)), saved_rs.length_over_buffers_mm);
-        //assert_eq!(Some(dec!(8.66142)), saved_rs.length_over_buffers_in);
-        assert_eq!(None, saved_rs.length_over_buffers_mm);
-        assert_eq!(None, saved_rs.length_over_buffers_in);
+        assert_eq!(Some(dec!(220)), saved_rs.length_over_buffers_mm);
+        assert_eq!(Some(dec!(8.66142)), saved_rs.length_over_buffers_in);
         assert_eq!(Some("E402 A".to_string()), saved_rs.type_name);
         assert_eq!(Some("E402 026".to_string()), saved_rs.road_number);
         assert_eq!(Some("PRIMA SERIE".to_string()), saved_rs.series);
@@ -198,7 +199,7 @@ async fn post_new_catalog_items() {
         assert_eq!(None, saved_rs.railcar_type);
         assert_eq!(None, saved_rs.service_level);
         assert_eq!(Some(false), saved_rs.is_dummy);
-        assert_eq!(None, saved_rs.minimum_radius);
+        assert_eq!(Some(dec!(360.0)), saved_rs.minimum_radius);
         assert_eq!(Some(CouplingSocket::Nem362), saved_rs.coupling_socket);
         assert_eq!(Some(FeatureFlag::Yes), saved_rs.close_couplers);
         assert_eq!(Some(FeatureFlag::No), saved_rs.digital_shunting_coupling);

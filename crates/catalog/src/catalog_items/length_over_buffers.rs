@@ -6,6 +6,7 @@ use thiserror::Error;
 
 /// The rail vehicle measurement method expressed as the length over buffers
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Default, Serialize, Deserialize)]
+#[serde(default)]
 pub struct LengthOverBuffers {
     /// the overall length in inches
     #[serde(with = "common::length::serde::inches_option")]
@@ -143,6 +144,36 @@ mod tests {
                 Some(inches),
                 test_struct.length_over_buffers.inches.map(|l| l.quantity())
             );
+            assert_eq!(
+                Some(millimeters),
+                test_struct.length_over_buffers.millimeters.map(|l| l.quantity())
+            );
+        }
+
+        #[test]
+        fn it_should_deserialize_from_json_length_over_buffers_with_only_the_inches_value() {
+            let inches = dec!(0.65);
+
+            let json = r#"{"length_over_buffers":{"inches":0.65}}"#;
+
+            let test_struct: TestStruct = serde_json::from_str(json).expect("Invalid test struct");
+
+            assert_eq!(
+                Some(inches),
+                test_struct.length_over_buffers.inches.map(|l| l.quantity())
+            );
+            assert_eq!(None, test_struct.length_over_buffers.millimeters);
+        }
+
+        #[test]
+        fn it_should_deserialize_from_json_length_over_buffers_with_only_the_millimeters_value() {
+            let millimeters = dec!(16.5);
+
+            let json = r#"{"length_over_buffers":{"millimeters":16.5}}"#;
+
+            let test_struct: TestStruct = serde_json::from_str(json).expect("Invalid test struct");
+
+            assert_eq!(None, test_struct.length_over_buffers.inches);
             assert_eq!(
                 Some(millimeters),
                 test_struct.length_over_buffers.millimeters.map(|l| l.quantity())
