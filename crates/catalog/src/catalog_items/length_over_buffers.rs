@@ -1,18 +1,17 @@
 use common::length::Length;
 use common::measure_units::MeasureUnit;
 use rust_decimal::Decimal;
-use serde::de::{MapAccess, SeqAccess, Visitor};
-use serde::ser::SerializeStruct;
-use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
-use std::fmt;
+use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
 /// The rail vehicle measurement method expressed as the length over buffers
-#[derive(Copy, Clone, Debug, PartialEq, Eq, Default)]
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Default, Serialize, Deserialize)]
 pub struct LengthOverBuffers {
     /// the overall length in inches
+    #[serde(with = "common::length::serde::inches_option")]
     pub inches: Option<Length>,
     /// the overall length in millimeters
+    #[serde(with = "common::length::serde::millimeters_option")]
     pub millimeters: Option<Length>,
 }
 
@@ -76,109 +75,6 @@ pub enum LengthOverBuffersError {
     NonPositiveValue,
 }
 
-impl Serialize for LengthOverBuffers {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: Serializer,
-    {
-        let mut state = serializer.serialize_struct("LengthOverBuffers", 2)?;
-        state.serialize_field("inches", &self.inches.map(|inches| inches.quantity()))?;
-        state.serialize_field("millimeters", &self.millimeters.map(|mm| mm.quantity()))?;
-        state.end()
-    }
-}
-
-impl<'de> Deserialize<'de> for LengthOverBuffers {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-        D: Deserializer<'de>,
-    {
-        enum Field {
-            Inches,
-            Millimeters,
-        }
-
-        impl<'de> Deserialize<'de> for Field {
-            fn deserialize<D>(deserializer: D) -> Result<Field, D::Error>
-            where
-                D: Deserializer<'de>,
-            {
-                struct FieldVisitor;
-
-                impl<'de> Visitor<'de> for FieldVisitor {
-                    type Value = Field;
-
-                    fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-                        formatter.write_str("`inches` or `millimeters`")
-                    }
-
-                    fn visit_str<E>(self, value: &str) -> Result<Field, E>
-                    where
-                        E: de::Error,
-                    {
-                        match value {
-                            "inches" => Ok(Field::Inches),
-                            "millimeters" => Ok(Field::Millimeters),
-                            _ => Err(de::Error::unknown_field(value, FIELDS)),
-                        }
-                    }
-                }
-
-                deserializer.deserialize_identifier(FieldVisitor)
-            }
-        }
-
-        struct LengthOverBuffersVisitor;
-
-        impl<'de> Visitor<'de> for LengthOverBuffersVisitor {
-            type Value = LengthOverBuffers;
-
-            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-                formatter.write_str("struct LengthOverBuffers")
-            }
-
-            fn visit_seq<V>(self, mut seq: V) -> Result<LengthOverBuffers, V::Error>
-            where
-                V: SeqAccess<'de>,
-            {
-                let inches = seq.next_element()?.ok_or_else(|| de::Error::invalid_length(0, &self))?;
-                let millimeters = seq.next_element()?.ok_or_else(|| de::Error::invalid_length(1, &self))?;
-                Ok(LengthOverBuffers::new(inches, millimeters).unwrap())
-            }
-
-            fn visit_map<V>(self, mut map: V) -> Result<LengthOverBuffers, V::Error>
-            where
-                V: MapAccess<'de>,
-            {
-                let mut inches = None;
-                let mut millimeters = None;
-                while let Some(key) = map.next_key()? {
-                    match key {
-                        Field::Inches => {
-                            if inches.is_some() {
-                                return Err(de::Error::duplicate_field("inches"));
-                            }
-                            inches = Some(map.next_value()?);
-                        }
-                        Field::Millimeters => {
-                            if millimeters.is_some() {
-                                return Err(de::Error::duplicate_field("millimeters"));
-                            }
-                            millimeters = Some(map.next_value()?);
-                        }
-                    }
-                }
-                let inches = inches.ok_or_else(|| de::Error::missing_field("inches"))?;
-                let millimeters = millimeters.ok_or_else(|| de::Error::missing_field("millimeters"))?;
-                Ok(LengthOverBuffers::new(inches, millimeters).unwrap())
-            }
-        }
-
-        const FIELDS: &[&str] = &["inches", "millimeters"];
-        deserializer.deserialize_struct("LengthOverBuffers", FIELDS, LengthOverBuffersVisitor)
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -230,7 +126,7 @@ mod tests {
 
             let json = serde_json::to_string(&value).expect("invalid JSON value");
 
-            let expected = r#"{"length_over_buffers":{"inches":"0.65","millimeters":"16.5"}}"#;
+            let expected = r#"{"length_over_buffers":{"inches":0.65,"millimeters":16.5}}"#;
             assert_eq!(expected, json);
         }
 
@@ -239,7 +135,7 @@ mod tests {
             let inches = dec!(0.65);
             let millimeters = dec!(16.5);
 
-            let json = r#"{"length_over_buffers":{"inches":"0.65","millimeters":"16.5"}}"#;
+            let json = r#"{"length_over_buffers":{"inches":0.65,"millimeters":16.5}}"#;
 
             let test_struct: TestStruct = serde_json::from_str(json).expect("Invalid test struct");
 

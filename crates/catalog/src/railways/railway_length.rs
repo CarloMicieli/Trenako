@@ -1,19 +1,18 @@
 use common::length::Length;
 use common::measure_units::MeasureUnit;
 use rust_decimal::Decimal;
-use serde::de::{MapAccess, SeqAccess, Visitor};
-use serde::ser::SerializeStruct;
-use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
-use std::fmt;
+use serde::{Deserialize, Serialize};
 use std::fmt::{Display, Formatter};
 use thiserror::Error;
 
 /// The overall length of tracks (in km and miles) operated by a railway company
-#[derive(Debug, Eq, PartialEq, Clone, Copy)]
+#[derive(Debug, Eq, PartialEq, Clone, Copy, Serialize, Deserialize)]
 pub struct RailwayLength {
     /// the total railway network in kilometers
+    #[serde(with = "common::length::serde::kilometers")]
     pub kilometers: Length,
     /// the total railway network in miles
+    #[serde(with = "common::length::serde::miles")]
     pub miles: Length,
 }
 
@@ -60,109 +59,6 @@ pub enum RailwayLengthError {
 impl Display for RailwayLength {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
         write!(f, "kilometers: {}, miles: {}", self.kilometers, self.miles)
-    }
-}
-
-impl Serialize for RailwayLength {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: Serializer,
-    {
-        let mut state = serializer.serialize_struct("RailwayLength", 2)?;
-        state.serialize_field("kilometers", &self.kilometers.quantity())?;
-        state.serialize_field("miles", &self.miles.quantity())?;
-        state.end()
-    }
-}
-
-impl<'de> Deserialize<'de> for RailwayLength {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-        D: Deserializer<'de>,
-    {
-        enum Field {
-            Kilometers,
-            Miles,
-        }
-
-        impl<'de> Deserialize<'de> for Field {
-            fn deserialize<D>(deserializer: D) -> Result<Field, D::Error>
-            where
-                D: Deserializer<'de>,
-            {
-                struct FieldVisitor;
-
-                impl<'de> Visitor<'de> for FieldVisitor {
-                    type Value = Field;
-
-                    fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-                        formatter.write_str("`kilometers` or `miles`")
-                    }
-
-                    fn visit_str<E>(self, value: &str) -> Result<Field, E>
-                    where
-                        E: de::Error,
-                    {
-                        match value {
-                            "kilometers" => Ok(Field::Kilometers),
-                            "miles" => Ok(Field::Miles),
-                            _ => Err(de::Error::unknown_field(value, FIELDS)),
-                        }
-                    }
-                }
-
-                deserializer.deserialize_identifier(FieldVisitor)
-            }
-        }
-
-        struct RailwayLengthVisitor;
-
-        impl<'de> Visitor<'de> for RailwayLengthVisitor {
-            type Value = RailwayLength;
-
-            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-                formatter.write_str("struct RailwayLength")
-            }
-
-            fn visit_seq<V>(self, mut seq: V) -> Result<RailwayLength, V::Error>
-            where
-                V: SeqAccess<'de>,
-            {
-                let inches = seq.next_element()?.ok_or_else(|| de::Error::invalid_length(0, &self))?;
-                let millimeters = seq.next_element()?.ok_or_else(|| de::Error::invalid_length(1, &self))?;
-                Ok(RailwayLength::new(inches, millimeters))
-            }
-
-            fn visit_map<V>(self, mut map: V) -> Result<RailwayLength, V::Error>
-            where
-                V: MapAccess<'de>,
-            {
-                let mut kilometers = None;
-                let mut miles = None;
-                while let Some(key) = map.next_key()? {
-                    match key {
-                        Field::Kilometers => {
-                            if kilometers.is_some() {
-                                return Err(de::Error::duplicate_field("kilometers"));
-                            }
-                            kilometers = Some(map.next_value()?);
-                        }
-                        Field::Miles => {
-                            if miles.is_some() {
-                                return Err(de::Error::duplicate_field("miles"));
-                            }
-                            miles = Some(map.next_value()?);
-                        }
-                    }
-                }
-                let kilometers = kilometers.ok_or_else(|| de::Error::missing_field("kilometers"))?;
-                let miles = miles.ok_or_else(|| de::Error::missing_field("miles"))?;
-                Ok(RailwayLength::new(kilometers, miles))
-            }
-        }
-
-        const FIELDS: &[&str] = &["kilometers", "miles"];
-        deserializer.deserialize_struct("RailwayLength", FIELDS, RailwayLengthVisitor)
     }
 }
 
@@ -218,7 +114,7 @@ mod test {
 
             let json = serde_json::to_string(&value).expect("invalid JSON value");
 
-            assert_eq!(r#"{"railway_length":{"kilometers":"100","miles":"62.1"}}"#, json);
+            assert_eq!(r#"{"railway_length":{"kilometers":100.0,"miles":62.1}}"#, json);
         }
 
         #[test]

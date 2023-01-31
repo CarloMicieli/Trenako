@@ -258,7 +258,7 @@ impl Default for FeatureFlag {
 /// The minimum drivable radius
 #[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, Type)]
 #[sqlx(transparent)]
-pub struct Radius(Length);
+pub struct Radius(#[serde(with = "common::length::serde::millimeters")] Length);
 
 impl Radius {
     /// Returns a drivable radius expressed in millimeters
@@ -380,6 +380,34 @@ mod test {
         fn it_should_display_a_radius() {
             let radius = Radius::from_millimeters(dec!(360.0)).unwrap();
             assert_eq!("360.0 mm", radius.to_string());
+        }
+
+        #[test]
+        fn it_should_serialize_radius_as_json() {
+            let value = TestStruct {
+                radius: Radius::from_millimeters(dec!(360.0)).unwrap(),
+            };
+
+            let json = serde_json::to_string(&value).expect("Invalid JSON value");
+
+            assert_eq!(r#"{"radius":360.0}"#, json);
+        }
+
+        #[test]
+        fn it_should_deserialize_radius_from_json() {
+            let json = r#"{"radius":360.0}"#;
+            let value = TestStruct {
+                radius: Radius::from_millimeters(dec!(360.0)).unwrap(),
+            };
+
+            let deserialize_value: TestStruct = serde_json::from_str(json).expect("Invalid JSON value");
+
+            assert_eq!(value, deserialize_value);
+        }
+
+        #[derive(Debug, PartialEq, Eq, Serialize, Deserialize)]
+        struct TestStruct {
+            radius: Radius,
         }
     }
 

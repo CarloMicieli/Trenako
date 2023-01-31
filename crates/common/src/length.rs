@@ -76,6 +76,7 @@ impl Length {
         }
     }
 
+    /// Returns this `Length` expressed in the `measure_unit` converting the value if needed
     pub fn get_value_as(&self, measure_unit: MeasureUnit) -> Decimal {
         if self.measure_unit() == measure_unit {
             self.quantity()
@@ -125,6 +126,240 @@ impl cmp::PartialOrd for Length {
         let value1 = self.quantity();
         let value2 = other.get_value_as(self.measure_unit());
         value1.partial_cmp(&value2)
+    }
+}
+
+pub mod serde {
+    use crate::length::Length;
+    use crate::measure_units::MeasureUnit;
+
+    fn serialize_length_option<S>(value: &Option<Length>, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        let quantity = value.map(|len| len.quantity());
+        rust_decimal::serde::float_option::serialize(&quantity, serializer)
+    }
+
+    fn deserialize_length_option<'de, D>(measure_unit: MeasureUnit, deserializer: D) -> Result<Option<Length>, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        let quantity = rust_decimal::serde::float_option::deserialize(deserializer)?;
+        match quantity {
+            None => Ok(None),
+            Some(qty) => {
+                let length =
+                    Length::try_new(qty, measure_unit).map_err(|why| serde::de::Error::custom(why.to_string()))?;
+                Ok(Some(length))
+            }
+        }
+    }
+
+    fn serialize_length<S>(value: &Length, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        let quantity = value.quantity();
+        rust_decimal::serde::float::serialize(&quantity, serializer)
+    }
+
+    fn deserialize_length<'de, D>(measure_unit: MeasureUnit, deserializer: D) -> Result<Length, D::Error>
+    where
+        D: serde::de::Deserializer<'de>,
+    {
+        let quantity = rust_decimal::serde::float::deserialize(deserializer)?;
+        Length::try_new(quantity, measure_unit).map_err(|why| serde::de::Error::custom(why.to_string()))
+    }
+
+    pub mod kilometers {
+        use super::*;
+        use crate::length::Length;
+
+        pub fn deserialize<'de, D>(deserializer: D) -> Result<Length, D::Error>
+        where
+            D: serde::de::Deserializer<'de>,
+        {
+            deserialize_length(MeasureUnit::Kilometers, deserializer)
+        }
+
+        pub fn serialize<S>(value: &Length, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: serde::Serializer,
+        {
+            serialize_length(value, serializer)
+        }
+    }
+
+    pub mod kilometers_option {
+        use super::*;
+        use crate::length::Length;
+
+        pub fn deserialize<'de, D>(deserializer: D) -> Result<Option<Length>, D::Error>
+        where
+            D: serde::de::Deserializer<'de>,
+        {
+            deserialize_length_option(MeasureUnit::Kilometers, deserializer)
+        }
+
+        pub fn serialize<S>(value: &Option<Length>, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: serde::Serializer,
+        {
+            serialize_length_option(value, serializer)
+        }
+    }
+
+    pub mod inches {
+        use super::*;
+        use crate::length::Length;
+
+        pub fn deserialize<'de, D>(deserializer: D) -> Result<Length, D::Error>
+        where
+            D: serde::de::Deserializer<'de>,
+        {
+            deserialize_length(MeasureUnit::Inches, deserializer)
+        }
+
+        pub fn serialize<S>(value: &Length, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: serde::Serializer,
+        {
+            serialize_length(value, serializer)
+        }
+    }
+
+    pub mod inches_option {
+        use super::*;
+        use crate::length::Length;
+
+        pub fn deserialize<'de, D>(deserializer: D) -> Result<Option<Length>, D::Error>
+        where
+            D: serde::de::Deserializer<'de>,
+        {
+            deserialize_length_option(MeasureUnit::Inches, deserializer)
+        }
+
+        pub fn serialize<S>(value: &Option<Length>, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: serde::Serializer,
+        {
+            serialize_length_option(value, serializer)
+        }
+    }
+
+    pub mod meters {
+        use super::*;
+        use crate::length::Length;
+
+        pub fn deserialize<'de, D>(deserializer: D) -> Result<Length, D::Error>
+        where
+            D: serde::de::Deserializer<'de>,
+        {
+            deserialize_length(MeasureUnit::Meters, deserializer)
+        }
+
+        pub fn serialize<S>(value: &Length, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: serde::Serializer,
+        {
+            serialize_length(value, serializer)
+        }
+    }
+
+    pub mod meters_option {
+        use super::*;
+        use crate::length::Length;
+
+        pub fn deserialize<'de, D>(deserializer: D) -> Result<Option<Length>, D::Error>
+        where
+            D: serde::de::Deserializer<'de>,
+        {
+            deserialize_length_option(MeasureUnit::Meters, deserializer)
+        }
+
+        pub fn serialize<S>(value: &Option<Length>, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: serde::Serializer,
+        {
+            serialize_length_option(value, serializer)
+        }
+    }
+
+    pub mod miles {
+        use super::*;
+        use crate::length::Length;
+
+        pub fn deserialize<'de, D>(deserializer: D) -> Result<Length, D::Error>
+        where
+            D: serde::de::Deserializer<'de>,
+        {
+            deserialize_length(MeasureUnit::Miles, deserializer)
+        }
+
+        pub fn serialize<S>(value: &Length, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: serde::Serializer,
+        {
+            serialize_length(value, serializer)
+        }
+    }
+
+    pub mod miles_option {
+        use super::*;
+        use crate::length::Length;
+
+        pub fn deserialize<'de, D>(deserializer: D) -> Result<Option<Length>, D::Error>
+        where
+            D: serde::de::Deserializer<'de>,
+        {
+            deserialize_length_option(MeasureUnit::Miles, deserializer)
+        }
+
+        pub fn serialize<S>(value: &Option<Length>, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: serde::Serializer,
+        {
+            serialize_length_option(value, serializer)
+        }
+    }
+
+    pub mod millimeters {
+        use super::*;
+        use crate::length::Length;
+
+        pub fn deserialize<'de, D>(deserializer: D) -> Result<Length, D::Error>
+        where
+            D: serde::de::Deserializer<'de>,
+        {
+            deserialize_length(MeasureUnit::Millimeters, deserializer)
+        }
+
+        pub fn serialize<S>(value: &Length, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: serde::Serializer,
+        {
+            serialize_length(value, serializer)
+        }
+    }
+
+    pub mod millimeters_option {
+        use super::*;
+        use crate::length::Length;
+
+        pub fn deserialize<'de, D>(deserializer: D) -> Result<Option<Length>, D::Error>
+        where
+            D: serde::de::Deserializer<'de>,
+        {
+            deserialize_length_option(MeasureUnit::Millimeters, deserializer)
+        }
+
+        pub fn serialize<S>(value: &Option<Length>, serializer: S) -> Result<S::Ok, S::Error>
+        where
+            S: serde::Serializer,
+        {
+            serialize_length_option(value, serializer)
+        }
     }
 }
 
@@ -208,6 +443,145 @@ mod test {
             assert!(l1 < l2);
             assert!(l2 > l1);
             assert!(l3 > l1);
+        }
+    }
+
+    mod serde {
+        use crate::length::Length;
+        use pretty_assertions::assert_eq;
+        use rust_decimal_macros::dec;
+        use serde_derive::Deserialize;
+        use serde_derive::Serialize;
+
+        #[test]
+        fn it_should_serialize_lengths() {
+            let value = TestStruct::new();
+
+            let json = serde_json::to_string(&value).expect("invalid JSON value");
+
+            assert_eq!(
+                r#"{"inches":1234.56,"kilometers":1234.56,"meters":1234.56,"miles":1234.56,"millimeters":1234.56}"#,
+                json
+            )
+        }
+
+        #[test]
+        fn it_should_deserialize_lengths() {
+            let json =
+                r#"{"inches":1234.56,"kilometers":1234.56,"meters":1234.56,"miles":1234.56,"millimeters":1234.56}"#;
+
+            let value_from_json: TestStruct = serde_json::from_str(json).expect("Invalid test struct");
+
+            assert_eq!(value_from_json, TestStruct::new());
+        }
+
+        #[test]
+        fn it_should_fail_to_deserialize_invalid_lengths() {
+            let json = r#"{"inches":-1234.56,"kilometers":-1234.56,"meters":-1234.56,"miles":-1234.56,"millimeters":-1234.56}"#;
+
+            let result = serde_json::from_str::<TestStruct>(json);
+
+            assert!(result.is_err());
+            assert_eq!(
+                "length values cannot be negative at line 1 column 18",
+                result.err().unwrap().to_string()
+            );
+        }
+
+        #[test]
+        fn it_should_serialize_optional_lengths() {
+            let value = TestStructOptional::new();
+
+            let json = serde_json::to_string(&value).expect("invalid JSON value");
+
+            assert_eq!(
+                r#"{"inches":1234.56,"kilometers":1234.56,"meters":1234.56,"miles":1234.56,"millimeters":1234.56}"#,
+                json
+            )
+        }
+
+        #[test]
+        fn it_should_deserialize_optional_lengths() {
+            let json =
+                r#"{"inches":1234.56,"kilometers":1234.56,"meters":1234.56,"miles":1234.56,"millimeters":1234.56}"#;
+
+            let value_from_json: TestStructOptional = serde_json::from_str(json).expect("Invalid test struct");
+
+            assert_eq!(value_from_json, TestStructOptional::new());
+        }
+
+        #[test]
+        fn it_should_deserialize_empty_values_as_optional_lengths() {
+            let json = r#"{"inches":null,"kilometers":null,"meters":null,"miles":null,"millimeters":null}"#;
+
+            let value_from_json: TestStructOptional = serde_json::from_str(json).expect("Invalid test struct");
+
+            assert_eq!(value_from_json, TestStructOptional::default());
+        }
+
+        #[test]
+        fn it_should_fail_to_deserialize_invalid_optional_lengths() {
+            let json = r#"{"inches":-1234.56,"kilometers":-1234.56,"meters":-1234.56,"miles":-1234.56,"millimeters":-1234.56}"#;
+
+            let result = serde_json::from_str::<TestStructOptional>(json);
+
+            assert!(result.is_err());
+            assert_eq!(
+                "length values cannot be negative at line 1 column 18",
+                result.err().unwrap().to_string()
+            );
+        }
+
+        #[derive(Debug, Serialize, Deserialize, PartialEq, Eq)]
+        struct TestStruct {
+            #[serde(with = "crate::length::serde::inches")]
+            inches: Length,
+            #[serde(with = "crate::length::serde::kilometers")]
+            kilometers: Length,
+            #[serde(with = "crate::length::serde::meters")]
+            meters: Length,
+            #[serde(with = "crate::length::serde::miles")]
+            miles: Length,
+            #[serde(with = "crate::length::serde::millimeters")]
+            millimeters: Length,
+        }
+
+        impl TestStruct {
+            fn new() -> Self {
+                TestStruct {
+                    inches: Length::Inches(dec!(1234.56)),
+                    kilometers: Length::Kilometers(dec!(1234.56)),
+                    meters: Length::Meters(dec!(1234.56)),
+                    miles: Length::Miles(dec!(1234.56)),
+                    millimeters: Length::Millimeters(dec!(1234.56)),
+                }
+            }
+        }
+
+        #[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Default)]
+        struct TestStructOptional {
+            #[serde(with = "crate::length::serde::inches_option")]
+            inches: Option<Length>,
+            #[serde(with = "crate::length::serde::kilometers_option")]
+            kilometers: Option<Length>,
+            #[serde(with = "crate::length::serde::meters_option")]
+            meters: Option<Length>,
+            #[serde(with = "crate::length::serde::miles_option")]
+            miles: Option<Length>,
+            #[serde(with = "crate::length::serde::millimeters_option")]
+            millimeters: Option<Length>,
+        }
+
+        impl TestStructOptional {
+            fn new() -> Self {
+                TestStructOptional {
+                    inches: Some(Length::Inches(dec!(1234.56))),
+                    kilometers: Some(Length::Kilometers(dec!(1234.56))),
+                    meters: Some(Length::Meters(dec!(1234.56))),
+                    miles: Some(Length::Miles(dec!(1234.56))),
+                    millimeters: Some(Length::Millimeters(dec!(1234.56))),
+                }
+            }
         }
     }
 }

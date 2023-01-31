@@ -2,14 +2,12 @@ use crate::common::TrackGauge;
 use common::length::Length;
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;
-use serde::de::{MapAccess, SeqAccess, Visitor};
-use serde::ser::SerializeStruct;
-use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
-use std::fmt;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RailwayGauge {
     /// the distance between the rails in meters
+    #[serde(with = "common::length::serde::meters")]
     pub meters: Length,
     /// the track gauge
     pub track_gauge: TrackGauge,
@@ -68,109 +66,6 @@ impl RailwayGauge {
     }
 }
 
-impl Serialize for RailwayGauge {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: Serializer,
-    {
-        let mut state = serializer.serialize_struct("RailwayGauge", 2)?;
-        state.serialize_field("meters", &self.meters.quantity())?;
-        state.serialize_field("track_gauge", &self.track_gauge)?;
-        state.end()
-    }
-}
-
-impl<'de> Deserialize<'de> for RailwayGauge {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-        D: Deserializer<'de>,
-    {
-        enum Field {
-            Meters,
-            TrackGauge,
-        }
-
-        impl<'de> Deserialize<'de> for Field {
-            fn deserialize<D>(deserializer: D) -> Result<Field, D::Error>
-            where
-                D: Deserializer<'de>,
-            {
-                struct FieldVisitor;
-
-                impl<'de> Visitor<'de> for FieldVisitor {
-                    type Value = Field;
-
-                    fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-                        formatter.write_str("`meters` or `track_gauge`")
-                    }
-
-                    fn visit_str<E>(self, value: &str) -> Result<Field, E>
-                    where
-                        E: de::Error,
-                    {
-                        match value {
-                            "meters" => Ok(Field::Meters),
-                            "track_gauge" => Ok(Field::TrackGauge),
-                            _ => Err(de::Error::unknown_field(value, FIELDS)),
-                        }
-                    }
-                }
-
-                deserializer.deserialize_identifier(FieldVisitor)
-            }
-        }
-
-        struct RailwayGaugeVisitor;
-
-        impl<'de> Visitor<'de> for RailwayGaugeVisitor {
-            type Value = RailwayGauge;
-
-            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-                formatter.write_str("struct RailwayGauge")
-            }
-
-            fn visit_seq<V>(self, mut seq: V) -> Result<RailwayGauge, V::Error>
-            where
-                V: SeqAccess<'de>,
-            {
-                let meters = seq.next_element()?.ok_or_else(|| de::Error::invalid_length(0, &self))?;
-                let track_gauge = seq.next_element()?.ok_or_else(|| de::Error::invalid_length(1, &self))?;
-                Ok(RailwayGauge::new(meters, track_gauge))
-            }
-
-            fn visit_map<V>(self, mut map: V) -> Result<RailwayGauge, V::Error>
-            where
-                V: MapAccess<'de>,
-            {
-                let mut meters = None;
-                let mut track_gauge = None;
-                while let Some(key) = map.next_key()? {
-                    match key {
-                        Field::Meters => {
-                            if meters.is_some() {
-                                return Err(de::Error::duplicate_field("meters"));
-                            }
-                            meters = Some(map.next_value()?);
-                        }
-                        Field::TrackGauge => {
-                            if track_gauge.is_some() {
-                                return Err(de::Error::duplicate_field("track_gauge"));
-                            }
-                            track_gauge = Some(map.next_value()?);
-                        }
-                    }
-                }
-                let meters = meters.ok_or_else(|| de::Error::missing_field("meters"))?;
-                let track_gauge = track_gauge.ok_or_else(|| de::Error::missing_field("track_gauge"))?;
-                Ok(RailwayGauge::new(meters, track_gauge))
-            }
-        }
-
-        const FIELDS: &[&str] = &["meters", "track_gauge"];
-        deserializer.deserialize_struct("RailwayGauge", FIELDS, RailwayGaugeVisitor)
-    }
-}
-
 #[cfg(test)]
 mod test {
     use super::*;
@@ -214,7 +109,7 @@ mod test {
 
             let json = serde_json::to_string(&value).expect("invalid JSON value");
 
-            assert_eq!(r#"{"railway_gauge":{"meters":"1.435","track_gauge":"STANDARD"}}"#, json);
+            assert_eq!(r#"{"railway_gauge":{"meters":1.435,"track_gauge":"STANDARD"}}"#, json);
         }
 
         #[test]

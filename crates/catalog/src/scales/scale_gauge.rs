@@ -4,19 +4,19 @@ use common::measure_units::MeasureUnit;
 use common::measure_units::MeasureUnit::Millimeters;
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;
-use serde::de::{MapAccess, SeqAccess, Visitor};
-use serde::ser::SerializeStruct;
-use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
+use serde::{Deserialize, Serialize};
+use std::cmp;
 use std::cmp::Ordering;
-use std::{cmp, fmt};
 use thiserror::Error;
 
 /// It represents the track gauge information for a modelling scale
-#[derive(Debug, Eq, PartialEq, Clone)]
+#[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Gauge {
     /// the distance between the rails in millimeters
+    #[serde(with = "common::length::serde::millimeters")]
     pub millimeters: Length,
     /// the distance between the rails in inches
+    #[serde(with = "common::length::serde::inches")]
     pub inches: Length,
     /// the track gauge
     pub track_gauge: TrackGauge,
@@ -95,121 +95,6 @@ pub enum GaugeError {
     NegativeRailsDistance(Decimal, MeasureUnit),
     #[error("the value in millimeters is not matching the one in inches")]
     DifferentValues,
-}
-
-impl Serialize for Gauge {
-    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-        S: Serializer,
-    {
-        let mut state = serializer.serialize_struct("Gauge", 2)?;
-        state.serialize_field("track_gauge", &self.track_gauge)?;
-        state.serialize_field("millimeters", &self.millimeters.quantity())?;
-        state.serialize_field("inches", &self.inches.quantity())?;
-        state.end()
-    }
-}
-
-impl<'de> Deserialize<'de> for Gauge {
-    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-        D: Deserializer<'de>,
-    {
-        enum Field {
-            Inches,
-            Millimeters,
-            TrackGauge,
-        }
-
-        impl<'de> Deserialize<'de> for Field {
-            fn deserialize<D>(deserializer: D) -> Result<Field, D::Error>
-            where
-                D: Deserializer<'de>,
-            {
-                struct FieldVisitor;
-
-                impl<'de> Visitor<'de> for FieldVisitor {
-                    type Value = Field;
-
-                    fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-                        formatter.write_str("`inches` or `millimeters` or `track_gauge`")
-                    }
-
-                    fn visit_str<E>(self, value: &str) -> Result<Field, E>
-                    where
-                        E: de::Error,
-                    {
-                        match value {
-                            "inches" => Ok(Field::Inches),
-                            "millimeters" => Ok(Field::Millimeters),
-                            "track_gauge" => Ok(Field::TrackGauge),
-                            _ => Err(de::Error::unknown_field(value, FIELDS)),
-                        }
-                    }
-                }
-
-                deserializer.deserialize_identifier(FieldVisitor)
-            }
-        }
-
-        struct GaugeVisitor;
-
-        impl<'de> Visitor<'de> for GaugeVisitor {
-            type Value = Gauge;
-
-            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-                formatter.write_str("struct Gauge")
-            }
-
-            fn visit_seq<V>(self, mut seq: V) -> Result<Gauge, V::Error>
-            where
-                V: SeqAccess<'de>,
-            {
-                let track_gauge = seq.next_element()?.ok_or_else(|| de::Error::invalid_length(0, &self))?;
-                let inches = seq.next_element()?.ok_or_else(|| de::Error::invalid_length(1, &self))?;
-                let millimeters = seq.next_element()?.ok_or_else(|| de::Error::invalid_length(2, &self))?;
-                Ok(Gauge::new(track_gauge, millimeters, inches).unwrap())
-            }
-
-            fn visit_map<V>(self, mut map: V) -> Result<Gauge, V::Error>
-            where
-                V: MapAccess<'de>,
-            {
-                let mut inches = None;
-                let mut millimeters = None;
-                let mut track_gauge = None;
-                while let Some(key) = map.next_key()? {
-                    match key {
-                        Field::Inches => {
-                            if inches.is_some() {
-                                return Err(de::Error::duplicate_field("inches"));
-                            }
-                            inches = Some(map.next_value()?);
-                        }
-                        Field::Millimeters => {
-                            if millimeters.is_some() {
-                                return Err(de::Error::duplicate_field("millimeters"));
-                            }
-                            millimeters = Some(map.next_value()?);
-                        }
-                        Field::TrackGauge => {
-                            if track_gauge.is_some() {
-                                return Err(de::Error::duplicate_field("track_gauge"));
-                            }
-                            track_gauge = Some(map.next_value()?);
-                        }
-                    }
-                }
-                let inches = inches.ok_or_else(|| de::Error::missing_field("inches"))?;
-                let millimeters = millimeters.ok_or_else(|| de::Error::missing_field("millimeters"))?;
-                let track_gauge = track_gauge.ok_or_else(|| de::Error::missing_field("track_gauge"))?;
-                Ok(Gauge::new(track_gauge, millimeters, inches).unwrap())
-            }
-        }
-
-        const FIELDS: &[&str] = &["inches", "millimeters", "track_gauge"];
-        deserializer.deserialize_struct("Gauge", FIELDS, GaugeVisitor)
-    }
 }
 
 #[cfg(test)]
@@ -291,7 +176,7 @@ mod tests {
             let json = serde_json::to_string(&value).expect("invalid JSON value");
 
             assert_eq!(
-                r#"{"gauge":{"track_gauge":"STANDARD","millimeters":"16.5","inches":"0.65"}}"#,
+                r#"{"gauge":{"millimeters":16.5,"inches":0.65,"track_gauge":"STANDARD"}}"#,
                 json
             );
         }
