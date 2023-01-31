@@ -316,7 +316,7 @@ components:
               description: the electric multiple unit type name
             road_number:
               type: string
-              maxLength: 25
+              maxLength: 50
               description: the identification marking for this electric multiple unit
             series:
               type: string
@@ -421,7 +421,7 @@ components:
               description: the freight car type name
             road_number:
               type: string
-              maxLength: 25
+              maxLength: 50
               description: the identification marking for this freight car
             freight_car_type:
               $ref: "#/components/schemas/FreightCarType"
@@ -517,7 +517,7 @@ components:
             road_number:
               type: string
               minLength: 3
-              maxLength: 25
+              maxLength: 50
               description: the identification marking for this locomotive
             series:
               type: string
@@ -584,7 +584,7 @@ components:
               description: the passenger car type name
             road_number:
               type: string
-              maxLength: 25
+              maxLength: 50
               description: the identification marking for this passenger car
             series:
               type: string
@@ -666,7 +666,7 @@ components:
               description: the railcar type name
             road_number:
               type: string
-              maxLength: 25
+              maxLength: 50
               description: the identification marking for this railcar
             series:
               type: string

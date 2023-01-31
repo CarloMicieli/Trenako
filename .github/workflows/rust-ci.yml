@@ -27,10 +27,18 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v3
 
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install bunyan
+        run: npm install -g bunyan
+
       - name: Get current MSRV from Cargo.toml
         run: |
           echo "msrv=$(cat ./Cargo.toml | grep rust-version | sed 's/.* = "//; s/"//')"
-          echo "rustc=$(rustc --version | cut -c 7-)"
+          echo "rustc=$(rustc --version | cut -c 7-10)"
 
       - name: Install rust toolchain
         run: |
@@ -65,7 +73,7 @@ jobs:
         run: cargo make clippy
 
       - name: Run tests
-        run: cargo make test
+        run: cargo make test | bunyan
 
       - name: Run cargo-tarpaulin
         run: cargo make code-coverage

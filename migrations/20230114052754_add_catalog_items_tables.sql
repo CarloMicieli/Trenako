@@ -148,7 +148,7 @@ CREATE TABLE public.rolling_stocks
     length_over_buffers_mm      numeric(19, 5),
     length_over_buffers_in      numeric(19, 5),
     type_name                   varchar(25),
-    road_number                 varchar(25),
+    road_number                 varchar(50),
     series                      varchar(50),
     depot                       varchar(100),
     dcc_interface               dcc_interface,
