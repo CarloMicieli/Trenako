@@ -2,7 +2,7 @@ use crate::catalog::scales::post_scales::PgNewScaleRepository;
 use crate::web::problem_detail::ProblemDetail;
 use actix_web::http::header::LOCATION;
 use actix_web::{web, HttpResponse, Responder};
-use catalog::scales::commands::new_scales::create_new_scale;
+use catalog::scales::commands::new_scales::{create_new_scale, ScaleCreationError};
 use catalog::scales::scale_id::ScaleId;
 use catalog::scales::scale_request::ScaleRequest;
 use common::unit_of_work::postgres::PgDatabase;
@@ -63,9 +63,12 @@ async fn post_scale(
             let location = format!("{}/{}", SCALE_ROOT_API, created.scale_id);
             HttpResponse::Created().insert_header((LOCATION, location)).finish()
         }
-        Err(why) => {
-            tracing::error!("{:?}", why);
-            ProblemDetail::from_error(*request_id, &why.to_string()).to_response()
-        }
+        Err(why) => match why {
+            ScaleCreationError::ScaleAlreadyExists(_) => HttpResponse::Conflict().finish(),
+            _ => {
+                tracing::error!("{:?}", why);
+                ProblemDetail::from_error(*request_id, &why.to_string()).to_response()
+            }
+        },
     }
 }

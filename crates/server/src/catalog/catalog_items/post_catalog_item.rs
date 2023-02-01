@@ -26,10 +26,17 @@ pub struct PgNewRollingStockRepository;
 impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemRepository {
     async fn exists_already(
         &self,
-        _catalog_item_id: &CatalogItemId,
-        _unit_of_work: &mut PgUnitOfWork<'db>,
+        catalog_item_id: &CatalogItemId,
+        unit_of_work: &mut PgUnitOfWork<'db>,
     ) -> Result<bool> {
-        Ok(false)
+        let result = sqlx::query!(
+            "SELECT catalog_item_id FROM catalog_items WHERE catalog_item_id = $1 LIMIT 1",
+            catalog_item_id as &CatalogItemId
+        )
+        .fetch_optional(&mut unit_of_work.transaction)
+        .await?;
+
+        Ok(result.is_some())
     }
 
     async fn insert(&self, new_item: &NewCatalogItemCommand, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<()> {
@@ -80,12 +87,20 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemR
         Ok(())
     }
 
-    async fn brand_exists(&self, _brand_id: &BrandId, _unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {
-        Ok(true)
+    async fn brand_exists(&self, brand_id: &BrandId, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {
+        let result = sqlx::query!("SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1", brand_id)
+            .fetch_optional(&mut unit_of_work.transaction)
+            .await?;
+
+        Ok(result.is_some())
     }
 
-    async fn scale_exists(&self, _scale_id: &ScaleId, _unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {
-        Ok(true)
+    async fn scale_exists(&self, scale_id: &ScaleId, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {
+        let result = sqlx::query!("SELECT scale_id FROM scales WHERE scale_id = $1 LIMIT 1", scale_id)
+            .fetch_optional(&mut unit_of_work.transaction)
+            .await?;
+
+        Ok(result.is_some())
     }
 }
 
@@ -178,7 +193,14 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for PgNewRollingStoc
         Ok(())
     }
 
-    async fn railway_exists(&self, _railway_id: &RailwayId, _unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {
-        todo!()
+    async fn railway_exists(&self, railway_id: &RailwayId, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {
+        let result = sqlx::query!(
+            "SELECT railway_id FROM railways WHERE railway_id = $1 LIMIT 1",
+            railway_id
+        )
+        .fetch_optional(&mut unit_of_work.transaction)
+        .await?;
+
+        Ok(result.is_some())
     }
 }

@@ -1,5 +1,6 @@
 pub mod common;
 
+use crate::common::seeding::seed_railways;
 use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
 use ::common::organizations::OrganizationEntityType;
 use catalog::common::TrackGauge;
@@ -7,6 +8,7 @@ use catalog::railways::period_of_activity::RailwayStatus;
 use catalog::railways::railway_id::RailwayId;
 use chrono::NaiveDate;
 use isocountry::CountryCode;
+use reqwest::StatusCode;
 use rust_decimal::prelude::*;
 use serde_json::json;
 use uuid::Uuid;
@@ -14,7 +16,72 @@ use uuid::Uuid;
 const API_RAILWAYS: &str = "/api/railways";
 
 #[tokio::test]
-async fn post_new_railways() {
+async fn it_should_return_409_when_the_railway_already_exists() {
+    let test = create_docker_test();
+
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
+
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
+
+        let pg_pool = sut.pg_pool();
+        seed_railways(&pg_pool).await;
+
+        let railway_name = "FS";
+
+        let request = json!({
+            "name" : railway_name,
+            "abbreviation" : "rr",
+            "registered_company_name" : "Rust Raiload & Co",
+            "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
+            "description" : {
+                "it" : "descrizione"
+            },
+            "country" : "US",
+            "period_of_activity" : {
+                "status" : "ACTIVE",
+                "operating_since" : "1900-01-01"
+            },
+            "gauge" : {
+                "meters": 1.435,
+                "track_gauge": "STANDARD"
+            },
+            "headquarters" : "Some City",
+            "total_length" : {
+                "miles": 621.371,
+                "kilometers": 10000
+            },
+            "contact_info" : {
+                "email" : "mail@mail.com",
+                "phone" : "555 1234",
+                "website_url" : "https://www.site.com"
+            },
+            "socials" : {
+                "facebook" : "facebook_handler",
+                "instagram" : "instagram_handler",
+                "linkedin" : "linkedin_handler",
+                "twitter" : "twitter_handler",
+                "youtube" : "youtube_handler"
+            }
+        });
+
+        let endpoint = sut.endpoint(API_RAILWAYS);
+        let response = client
+            .post(endpoint)
+            .json(&request)
+            .send()
+            .await
+            .expect("Failed to execute request.");
+
+        assert_eq!(StatusCode::from_u16(409).unwrap(), response.status());
+    })
+    .await;
+}
+
+#[tokio::test]
+async fn it_should_create_new_railways() {
     let test = create_docker_test();
 
     test.run_async(|ops| async move {

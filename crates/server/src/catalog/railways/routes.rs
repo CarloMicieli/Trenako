@@ -2,7 +2,7 @@ use crate::catalog::railways::post_railways::PgNewRailwayRepository;
 use crate::web::problem_detail::ProblemDetail;
 use actix_web::http::header::LOCATION;
 use actix_web::{web, HttpResponse, Responder};
-use catalog::railways::commands::new_railways::create_new_railway;
+use catalog::railways::commands::new_railways::{create_new_railway, RailwayCreationError};
 use catalog::railways::railway_id::RailwayId;
 use catalog::railways::railway_request::RailwayRequest;
 use common::unit_of_work::postgres::PgDatabase;
@@ -63,9 +63,12 @@ async fn post_railway(
             let location = format!("{}/{}", RAILWAY_ROOT_API, created.railway_id);
             HttpResponse::Created().insert_header((LOCATION, location)).finish()
         }
-        Err(why) => {
-            tracing::error!("{:?}", why);
-            ProblemDetail::from_error(*request_id, &why.to_string()).to_response()
-        }
+        Err(why) => match why {
+            RailwayCreationError::RailwayAlreadyExists(_) => HttpResponse::Conflict().finish(),
+            _ => {
+                tracing::error!("{:?}", why);
+                ProblemDetail::from_error(*request_id, &why.to_string()).to_response()
+            }
+        },
     }
 }

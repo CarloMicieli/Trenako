@@ -14,10 +14,17 @@ pub struct PgNewRailwayRepository;
 impl<'db> NewRailwayRepository<'db, PgUnitOfWork<'db>> for PgNewRailwayRepository {
     async fn exists_already(
         &self,
-        _railway_id: &RailwayId,
-        _unit_of_work: &mut PgUnitOfWork,
+        railway_id: &RailwayId,
+        unit_of_work: &mut PgUnitOfWork,
     ) -> catalog::railways::commands::new_railways::Result<bool> {
-        Ok(false)
+        let result = sqlx::query!(
+            "SELECT railway_id FROM railways WHERE railway_id = $1 LIMIT 1",
+            railway_id
+        )
+        .fetch_optional(&mut unit_of_work.transaction)
+        .await?;
+
+        Ok(result.is_some())
     }
 
     async fn insert(

@@ -9,8 +9,12 @@ pub struct PgNewScaleRepository;
 
 #[async_trait]
 impl<'db> NewScaleRepository<'db, PgUnitOfWork<'db>> for PgNewScaleRepository {
-    async fn exists_already(&self, _scale_id: &ScaleId, _unit_of_work: &mut PgUnitOfWork) -> Result<bool> {
-        Ok(false)
+    async fn exists_already(&self, scale_id: &ScaleId, unit_of_work: &mut PgUnitOfWork) -> Result<bool> {
+        let result = sqlx::query!("SELECT scale_id FROM scales WHERE scale_id = $1 LIMIT 1", scale_id)
+            .fetch_optional(&mut unit_of_work.transaction)
+            .await?;
+
+        Ok(result.is_some())
     }
 
     async fn insert(&self, new_scale: &NewScaleCommand, unit_of_work: &mut PgUnitOfWork) -> Result<()> {

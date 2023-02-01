@@ -12,8 +12,12 @@ pub struct PgNewBrandRepository;
 
 #[async_trait]
 impl<'db> NewBrandRepository<'db, PgUnitOfWork<'db>> for PgNewBrandRepository {
-    async fn exists_already(&self, _brand_id: &BrandId, _unit_of_work: &mut PgUnitOfWork) -> Result<bool> {
-        Ok(false)
+    async fn exists_already(&self, brand_id: &BrandId, unit_of_work: &mut PgUnitOfWork) -> Result<bool> {
+        let result = sqlx::query!("SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1", brand_id)
+            .fetch_optional(&mut unit_of_work.transaction)
+            .await?;
+
+        Ok(result.is_some())
     }
 
     async fn insert(&self, new_brand: &NewBrandCommand, unit_of_work: &mut PgUnitOfWork) -> Result<()> {

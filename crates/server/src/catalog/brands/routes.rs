@@ -4,7 +4,7 @@ use actix_web::http::header::LOCATION;
 use actix_web::{web, HttpResponse, Responder};
 use catalog::brands::brand_id::BrandId;
 use catalog::brands::brand_request::BrandRequest;
-use catalog::brands::commands::new_brand::create_new_brand;
+use catalog::brands::commands::new_brand::{create_new_brand, BrandCreationError};
 use common::unit_of_work::postgres::PgDatabase;
 use sqlx::PgPool;
 use tracing_actix_web::RequestId;
@@ -63,9 +63,12 @@ async fn post_brand(
             let location = format!("{}/{}", BRAND_ROOT_API, created.brand_id);
             HttpResponse::Created().insert_header((LOCATION, location)).finish()
         }
-        Err(why) => {
-            tracing::error!("{:?}", why);
-            ProblemDetail::from_error(*request_id, &why.to_string()).to_response()
-        }
+        Err(why) => match why {
+            BrandCreationError::BrandAlreadyExists(_) => HttpResponse::Conflict().finish(),
+            _ => {
+                tracing::error!("{:?}", why);
+                ProblemDetail::from_error(*request_id, &why.to_string()).to_response()
+            }
+        },
     }
 }

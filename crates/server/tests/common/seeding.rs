@@ -1,5 +1,7 @@
 use catalog::brands::brand_request::BrandRequest;
 use catalog::brands::commands::new_brand::{NewBrandCommand, NewBrandRepository};
+use catalog::catalog_items::catalog_item_request::CatalogItemRequest;
+use catalog::catalog_items::commands::new_catalog_item::{NewCatalogItemCommand, NewCatalogItemRepository};
 use catalog::railways::commands::new_railways::{NewRailwayCommand, NewRailwayRepository};
 use catalog::railways::railway_request::RailwayRequest;
 use catalog::scales::commands::new_scales::{NewScaleCommand, NewScaleRepository};
@@ -8,6 +10,7 @@ use common::unit_of_work::postgres::PgDatabase;
 use common::unit_of_work::{Database, UnitOfWork};
 use serde_derive::Deserialize;
 use server::catalog::brands::post_brands::PgNewBrandRepository;
+use server::catalog::catalog_items::post_catalog_item::PgNewCatalogItemRepository;
 use server::catalog::railways::post_railways::PgNewRailwayRepository;
 use server::catalog::scales::post_scales::PgNewScaleRepository;
 use sqlx::PgPool;
@@ -27,6 +30,25 @@ pub async fn seed_brands(pg_pool: &PgPool) {
 
     for b in brands {
         repo.insert(&b, &mut unit_of_work).await.unwrap();
+    }
+
+    unit_of_work.commit().await.unwrap();
+}
+
+pub async fn seed_catalog_items(pg_pool: &PgPool) {
+    let db = PgDatabase::new(pg_pool);
+    let mut unit_of_work = db.begin().await.unwrap();
+
+    let repo = PgNewCatalogItemRepository;
+
+    let scales: Vec<NewCatalogItemCommand> = catalog_items()
+        .items
+        .into_iter()
+        .map(|it| NewCatalogItemCommand::try_from(it).expect("invalid catalog item request"))
+        .collect();
+
+    for s in scales {
+        repo.insert(&s, &mut unit_of_work).await.unwrap();
     }
 
     unit_of_work.commit().await.unwrap();
@@ -74,6 +96,10 @@ fn brands() -> Brands {
     serde_json::from_str::<Brands>(data::BRANDS).expect("Invalid BRANDS data for seeding")
 }
 
+fn catalog_items() -> CatalogItems {
+    serde_json::from_str::<CatalogItems>(data::CATALOG_ITEMS).expect("Invalid CATALOG_ITEMS data for seeding")
+}
+
 fn railways() -> Railways {
     serde_json::from_str::<Railways>(data::RAILWAYS).expect("Invalid RAILWAYS data for seeding")
 }
@@ -85,6 +111,7 @@ fn scales() -> Scales {
 #[cfg(not(windows))]
 mod data {
     pub const BRANDS: &str = include_str!("../resources/brands.json");
+    pub const CATALOG_ITEMS: &str = include_str!("../resources/catalog_items.json");
     pub const RAILWAYS: &str = include_str!("../resources/railways.json");
     pub const SCALES: &str = include_str!("../resources/scales.json");
 }
@@ -92,6 +119,7 @@ mod data {
 #[cfg(windows)]
 mod data {
     pub const BRANDS: &str = include_str!("..\\resources\\brands.json");
+    pub const CATALOG_ITEMS: &str = include_str!("..\\resources\\catalog_items.json");
     pub const RAILWAYS: &str = include_str!("..\\resources\\railways.json");
     pub const SCALES: &str = include_str!("..\\resources\\scales.json");
 }
@@ -99,6 +127,11 @@ mod data {
 #[derive(Deserialize)]
 struct Brands {
     items: Vec<BrandRequest>,
+}
+
+#[derive(Deserialize)]
+struct CatalogItems {
+    items: Vec<CatalogItemRequest>,
 }
 
 #[derive(Deserialize)]

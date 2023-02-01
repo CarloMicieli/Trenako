@@ -1,16 +1,79 @@
 pub mod common;
 
+use crate::common::seeding::seed_brands;
 use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
 use ::common::organizations::OrganizationEntityType;
 use catalog::brands::brand_kind::BrandKind;
 use catalog::brands::brand_status::BrandStatus;
+use reqwest::StatusCode;
 use serde_json::json;
 use uuid::Uuid;
 
 const API_BRANDS: &str = "/api/brands";
 
 #[tokio::test]
-async fn post_new_brands() {
+async fn it_should_return_409_when_the_brand_already_exists() {
+    let test = create_docker_test();
+
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
+
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
+
+        let pg_pool = sut.pg_pool();
+        seed_brands(&pg_pool).await;
+
+        let brand_name = "ACME";
+
+        let request = json!({
+            "name" : brand_name,
+            "registered_company_name" : "Registered Company Ltd",
+            "organization_entity_type" : "LIMITED_COMPANY",
+            "group_name": "UNKNOWN",
+            "description" : {
+                "it" : "descrizione",
+                "en" : "description"
+            },
+            "address" : {
+                "street_address" : "Rue Morgue 22",
+                "extended_address" : null,
+                "postal_code" : "1H2 4BB",
+                "city" : "London",
+                "region" : null,
+                "country" : "GB"
+            },
+            "contact_info" : {
+                "email" : "mail@mail.com",
+                "phone" : "555 1234",
+                "website_url" : "https://www.site.com"
+            },
+            "socials" : {
+                "facebook" : "facebook_handler",
+                "instagram" : "instagram_handler",
+                "linkedin" : "linkedin_handler",
+                "twitter" : "twitter_handler",
+                "youtube" : "youtube_handler"
+            },
+            "kind" : "INDUSTRIAL",
+            "status" : "ACTIVE"
+        });
+        let endpoint = sut.endpoint(API_BRANDS);
+        let response = client
+            .post(endpoint)
+            .json(&request)
+            .send()
+            .await
+            .expect("Failed to execute request.");
+
+        assert_eq!(StatusCode::from_u16(409).unwrap(), response.status());
+    })
+    .await;
+}
+
+#[tokio::test]
+async fn it_should_create_new_brands() {
     let test = create_docker_test();
 
     test.run_async(|ops| async move {

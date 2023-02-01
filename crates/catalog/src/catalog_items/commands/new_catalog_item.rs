@@ -64,6 +64,9 @@ pub async fn create_new_catalog_item<
     repo.insert(&command, &mut unit_of_work).await?;
 
     for rs in command.rolling_stocks {
+        if !rs_repo.railway_exists(&rs.railway_id, &mut unit_of_work).await? {
+            return Err(CatalogItemCreationError::RailwayNotFound(rs.railway_id.to_string()));
+        }
         rs_repo.insert(&rs, &mut unit_of_work).await?;
     }
 
@@ -435,6 +438,9 @@ pub enum CatalogItemCreationError {
 
     #[error("Brand not found (name: {0})")]
     BrandNotFound(String),
+
+    #[error("Railway not found (name: {0})")]
+    RailwayNotFound(String),
 
     #[error("Scale not found (name: {0})")]
     ScaleNotFound(String),

@@ -1,0 +1,50 @@
+{
+  "items": [
+    {
+      "brand" : "ACME",
+      "item_number" : "60011",
+      "category" : "LOCOMOTIVES",
+      "scale" : "H0",
+      "power_method" : "DC",
+      "description" : {
+        "it" : "Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco versione di origine, pantografi 52 Sommerfeldt"
+      },
+      "details" : {
+        "it" : ""
+      },
+      "delivery_date" : "2005",
+      "availability_status" : "AVAILABLE",
+      "count" : 1,
+      "rolling_stocks" : [ {
+        "category" : "LOCOMOTIVE",
+        "class_name" : "E402 A",
+        "road_number" : "E402 015",
+        "series" : null,
+        "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
+        "railway" : "FS",
+        "epoch" : "Va",
+        "livery" : "rosso/bianco",
+        "depot" : null,
+        "dcc_interface" : "MTC_21",
+        "control" : "DCC_READY",
+        "length_over_buffer" : {
+          "inches" : 210.0
+        },
+        "technical_specifications" : {
+          "minimum_radius" : 360.0,
+          "coupling" : {
+            "socket" : "NEM_362",
+            "close_couplers" : "NO",
+            "digital_shunting" : "NO"
+          },
+          "flywheel_fitted" : "NO",
+          "metal_body" : "NO",
+          "interior_lights" : "NO",
+          "lights" : "YES",
+          "spring_buffers" : "NO"
+        },
+        "is_dummy" : false
+      } ]
+    }
+  ]
+}

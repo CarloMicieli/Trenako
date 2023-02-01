@@ -186,6 +186,86 @@
     },
     "query": "SELECT\n                    brand_id, name, registered_company_name, \n                    organization_entity_type as \"organization_entity_type: OrganizationEntityType\", group_name, \n                    description_it, kind as \"kind: BrandKind\", status as \"status: BrandStatus\",\n                    contact_email, contact_website_url, contact_phone,\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube\n                FROM brands WHERE name = $1"
   },
+  "120054a16b26f95b407b4fd9b629ec086446262d4a09705978f88815958ecbce": {
+    "describe": {
+      "columns": [
+        {
+          "name": "scale_id",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT scale_id FROM scales WHERE scale_id = $1 LIMIT 1"
+  },
+  "169fd084bce45b76210d73f0a9c84bcb8791e1ca20bb67ff59f0638ad9a80b51": {
+    "describe": {
+      "columns": [
+        {
+          "name": "catalog_item_id",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT catalog_item_id FROM catalog_items WHERE catalog_item_id = $1 LIMIT 1"
+  },
+  "285c88aff0732e798a24d8241d3533e65843e14e390bdd57aee0175ebd26baef": {
+    "describe": {
+      "columns": [
+        {
+          "name": "brand_id",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1"
+  },
+  "3ae6773ac7189142e8a8a1f4ff071b6e6d641ce3cc010565c45b62038a89ca7e": {
+    "describe": {
+      "columns": [
+        {
+          "name": "railway_id",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT railway_id FROM railways WHERE railway_id = $1 LIMIT 1"
+  },
   "5111319877a0e2b184a5fbf9e5dad63d89713c4ef90cdd1fa9b5d6bf05ebe37e": {
     "describe": {
       "columns": [],

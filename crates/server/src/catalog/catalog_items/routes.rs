@@ -4,7 +4,7 @@ use actix_web::http::header::LOCATION;
 use actix_web::{web, HttpResponse, Responder};
 use catalog::catalog_items::catalog_item_id::CatalogItemId;
 use catalog::catalog_items::catalog_item_request::CatalogItemRequest;
-use catalog::catalog_items::commands::new_catalog_item::create_new_catalog_item;
+use catalog::catalog_items::commands::new_catalog_item::{create_new_catalog_item, CatalogItemCreationError};
 use catalog::catalog_items::rolling_stock_id::RollingStockId;
 use catalog::catalog_items::rolling_stock_request::RollingStockRequest;
 use common::unit_of_work::postgres::PgDatabase;
@@ -79,10 +79,16 @@ async fn post_catalog_item(
             let location = format!("{}/{}", CATALOG_ITEM_ROOT_API, created.catalog_item_id);
             HttpResponse::Created().insert_header((LOCATION, location)).finish()
         }
-        Err(why) => {
-            tracing::error!("{:?}", why);
-            ProblemDetail::from_error(*request_id, &why.to_string()).to_response()
-        }
+        Err(why) => match why {
+            CatalogItemCreationError::CatalogItemAlreadyExists(_) => HttpResponse::Conflict().finish(),
+            CatalogItemCreationError::BrandNotFound(_) => HttpResponse::UnprocessableEntity().finish(),
+            CatalogItemCreationError::RailwayNotFound(_) => HttpResponse::UnprocessableEntity().finish(),
+            CatalogItemCreationError::ScaleNotFound(_) => HttpResponse::UnprocessableEntity().finish(),
+            _ => {
+                tracing::error!("{:?}", why);
+                ProblemDetail::from_error(*request_id, &why.to_string()).to_response()
+            }
+        },
     }
 }
 

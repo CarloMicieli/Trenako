@@ -1,8 +1,10 @@
 pub mod common;
 
+use crate::common::seeding::seed_scales;
 use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
 use catalog::common::TrackGauge;
 use catalog::scales::scale_id::ScaleId;
+use reqwest::StatusCode;
 use rust_decimal::Decimal;
 use serde_json::json;
 use uuid::Uuid;
@@ -10,7 +12,49 @@ use uuid::Uuid;
 const API_SCALES: &str = "/api/scales";
 
 #[tokio::test]
-async fn post_new_scales() {
+async fn it_should_return_409_when_the_scale_already_exists() {
+    let test = create_docker_test();
+
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
+
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
+
+        let pg_pool = sut.pg_pool();
+        seed_scales(&pg_pool).await;
+
+        let scale_name = "H0";
+        let request = json!({
+            "name" : scale_name,
+            "ratio" : 87.0,
+            "gauge" : {
+                "millimeters" : 16.5,
+                "inches" : 0.65,
+                "track_gauge" : "STANDARD"
+            },
+            "description" : {
+                "it": "descrizione"
+            },
+            "standards" : ["NEM", "NMRA"]
+        });
+
+        let endpoint = sut.endpoint(API_SCALES);
+        let response = client
+            .post(endpoint)
+            .json(&request)
+            .send()
+            .await
+            .expect("Failed to execute request.");
+
+        assert_eq!(StatusCode::from_u16(409).unwrap(), response.status());
+    })
+    .await;
+}
+
+#[tokio::test]
+async fn it_should_create_new_scales() {
     let test = create_docker_test();
 
     test.run_async(|ops| async move {
