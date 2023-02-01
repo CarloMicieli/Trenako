@@ -1,2 +1,2 @@
-pub mod post_scales;
+pub mod repositories;
 pub mod routes;

@@ -1,4 +1,4 @@
-use crate::catalog::catalog_items::post_catalog_item::{PgNewCatalogItemRepository, PgNewRollingStockRepository};
+use crate::catalog::catalog_items::repositories::{PgNewCatalogItemRepository, PgNewRollingStockRepository};
 use crate::web::problem_detail::ProblemDetail;
 use actix_web::http::header::LOCATION;
 use actix_web::{web, HttpResponse, Responder};

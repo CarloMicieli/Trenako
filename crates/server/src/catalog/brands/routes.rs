@@ -1,4 +1,4 @@
-use crate::catalog::brands::post_brands::PgNewBrandRepository;
+use crate::catalog::brands::repositories::PgNewBrandRepository;
 use crate::web::problem_detail::ProblemDetail;
 use actix_web::http::header::LOCATION;
 use actix_web::{web, HttpResponse, Responder};

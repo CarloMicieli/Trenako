@@ -1,4 +1,4 @@
-use crate::catalog::railways::post_railways::PgNewRailwayRepository;
+use crate::catalog::railways::repositories::PgNewRailwayRepository;
 use crate::web::problem_detail::ProblemDetail;
 use actix_web::http::header::LOCATION;
 use actix_web::{web, HttpResponse, Responder};

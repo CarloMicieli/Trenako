@@ -1,2 +1,2 @@
-pub mod post_catalog_item;
+pub mod repositories;
 pub mod routes;

@@ -1,4 +1,4 @@
-use crate::catalog::scales::post_scales::PgNewScaleRepository;
+use crate::catalog::scales::repositories::PgNewScaleRepository;
 use crate::web::problem_detail::ProblemDetail;
 use actix_web::http::header::LOCATION;
 use actix_web::{web, HttpResponse, Responder};

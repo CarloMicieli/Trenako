@@ -9,10 +9,10 @@ use catalog::scales::scale_request::ScaleRequest;
 use common::unit_of_work::postgres::PgDatabase;
 use common::unit_of_work::{Database, UnitOfWork};
 use serde_derive::Deserialize;
-use server::catalog::brands::post_brands::PgNewBrandRepository;
-use server::catalog::catalog_items::post_catalog_item::PgNewCatalogItemRepository;
-use server::catalog::railways::post_railways::PgNewRailwayRepository;
-use server::catalog::scales::post_scales::PgNewScaleRepository;
+use server::catalog::brands::repositories::PgNewBrandRepository;
+use server::catalog::catalog_items::repositories::PgNewCatalogItemRepository;
+use server::catalog::railways::repositories::PgNewRailwayRepository;
+use server::catalog::scales::repositories::PgNewScaleRepository;
 use sqlx::PgPool;
 
 pub async fn seed_brands(pg_pool: &PgPool) {
