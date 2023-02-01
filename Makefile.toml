@@ -25,7 +25,7 @@ description = "test: run the tests"
 category = "Check"
 env = { "SQLX_OFFLINE" = "true", "TEST_LOG" = "true" }
 command = "cargo"
-args = ["test", "--no-fail-fast"]
+args = ["test", "--no-fail-fast", "--", "--test-threads", "2"]
 
 [tasks.docs]
 description = "docs: generate the rustdoc"
@@ -51,7 +51,7 @@ description = "tarpaulin: compute the code coverage"
 category = "Check"
 install_crate = "cargo-tarpaulin"
 command = "cargo"
-args = ["tarpaulin", "--ignore-tests", "--out", "Xml"]
+args = ["tarpaulin", "--ignore-tests", "--out", "Xml", "--", "--test-threads", "2"]
 
 [tasks.all-checks] 
 description = "check: run all the checks (format, clippy and tests)"
