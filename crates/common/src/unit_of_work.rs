@@ -1,11 +1,10 @@
 use async_trait::async_trait;
-use thiserror::Error;
 
 /// It represents a database unit of work, typically to wrap a transaction
 #[async_trait]
 pub trait UnitOfWork<'transaction> {
     /// Commit the unit of work
-    async fn commit(self) -> Result<(), DatabaseError>;
+    async fn commit(self) -> Result<(), anyhow::Error>;
 }
 
 /// It represents a database context, usually its main purpose is to
@@ -13,23 +12,11 @@ pub trait UnitOfWork<'transaction> {
 #[async_trait]
 pub trait Database<'db, U: UnitOfWork<'db>> {
     /// Creates a new unit of work, starting a new database transaction
-    async fn begin(self) -> Result<U, DatabaseError>;
-}
-
-#[derive(Debug, Error)]
-pub enum DatabaseError {
-    #[error("{0}")]
-    GenericError(#[from] sqlx::Error),
-
-    #[error("Could not start a transaction (inner: {0})")]
-    BeginTransactionError(String),
-
-    #[error("Could not commit the transaction (inner: {0})")]
-    CommitTransactionError(String),
+    async fn begin(self) -> Result<U, anyhow::Error>;
 }
 
 pub mod noop {
-    use crate::unit_of_work::{Database, DatabaseError, UnitOfWork};
+    use crate::unit_of_work::{Database, UnitOfWork};
     use async_trait::async_trait;
 
     pub struct NoOpDatabase;
@@ -37,21 +24,22 @@ pub mod noop {
 
     #[async_trait]
     impl UnitOfWork<'static> for NoOpUnitOfWork {
-        async fn commit(self) -> Result<(), DatabaseError> {
+        async fn commit(self) -> Result<(), anyhow::Error> {
             Ok(())
         }
     }
 
     #[async_trait]
     impl Database<'static, NoOpUnitOfWork> for NoOpDatabase {
-        async fn begin(self) -> Result<NoOpUnitOfWork, DatabaseError> {
+        async fn begin(self) -> Result<NoOpUnitOfWork, anyhow::Error> {
             Ok(NoOpUnitOfWork)
         }
     }
 }
 
 pub mod postgres {
-    use crate::unit_of_work::{Database, DatabaseError, UnitOfWork};
+    use crate::unit_of_work::{Database, UnitOfWork};
+    use anyhow::Context;
     use async_trait::async_trait;
     use sqlx::{PgPool, Postgres, Transaction};
 
@@ -69,12 +57,8 @@ pub mod postgres {
 
     #[async_trait]
     impl<'db> Database<'db, PgUnitOfWork<'db>> for PgDatabase<'db> {
-        async fn begin(self) -> Result<PgUnitOfWork<'db>, DatabaseError> {
-            let transaction = self
-                .pg_pool
-                .begin()
-                .await
-                .map_err(|err| DatabaseError::BeginTransactionError(err.to_string()))?;
+        async fn begin(self) -> Result<PgUnitOfWork<'db>, anyhow::Error> {
+            let transaction = self.pg_pool.begin().await.context("Could not begin the transaction")?;
             Ok(PgUnitOfWork { transaction })
         }
     }
@@ -86,11 +70,11 @@ pub mod postgres {
 
     #[async_trait]
     impl<'transaction> UnitOfWork<'transaction> for PgUnitOfWork<'transaction> {
-        async fn commit(self) -> Result<(), DatabaseError> {
+        async fn commit(self) -> Result<(), anyhow::Error> {
             self.transaction
                 .commit()
                 .await
-                .map_err(|err| DatabaseError::CommitTransactionError(err.to_string()))?;
+                .context("Could not commit the transaction")?;
             Ok(())
         }
     }

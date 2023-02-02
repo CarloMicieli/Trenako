@@ -18,6 +18,7 @@ catalog = { path = "../catalog" }
 common = { path = "../common" }
 
 actix-web = { workspace = true }
+anyhow = { workspace = true }
 async-trait = { workspace = true }
 chrono = { workspace = true }
 config = { workspace = true }

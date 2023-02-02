@@ -10,7 +10,7 @@ use common::contacts::{ContactInformation, MailAddress, PhoneNumber, WebsiteUrl}
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::{Handler, Socials};
-use common::unit_of_work::{Database, DatabaseError, UnitOfWork};
+use common::unit_of_work::{Database, UnitOfWork};
 use std::result;
 use thiserror::Error;
 
@@ -42,17 +42,14 @@ pub async fn create_new_brand<'db, U: UnitOfWork<'db>, R: NewBrandRepository<'db
 
 #[derive(Debug, Error)]
 pub enum BrandCreationError {
-    #[error("Error while interacting with the database: {0}")]
-    Database(#[from] sqlx::error::Error),
-
     #[error("the brand request is not valid")]
     InvalidRequest,
 
     #[error("Brand already exists (id: {0})")]
     BrandAlreadyExists(BrandId),
 
-    #[error("{0}")]
-    DatabaseError(#[from] DatabaseError),
+    #[error(transparent)]
+    UnexpectedError(#[from] anyhow::Error),
 }
 
 /// It represents the command to create a new model railway brand

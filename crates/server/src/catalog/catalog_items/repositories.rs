@@ -1,3 +1,4 @@
+use anyhow::Context;
 use async_trait::async_trait;
 use catalog::brands::brand_id::BrandId;
 use catalog::catalog_items::availability_status::AvailabilityStatus;
@@ -34,7 +35,8 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemR
             catalog_item_id as &CatalogItemId
         )
         .fetch_optional(&mut unit_of_work.transaction)
-        .await?;
+        .await
+        .context("A database failure was encountered while trying to check for the catalog item existence.")?;
 
         Ok(result.is_some())
     }
@@ -82,7 +84,8 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemR
             metadata.version() as i32
         )
         .execute(&mut unit_of_work.transaction)
-        .await?;
+        .await
+        .context("A database failure was encountered while trying to store a catalog item.")?;
 
         Ok(())
     }
@@ -90,7 +93,8 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemR
     async fn brand_exists(&self, brand_id: &BrandId, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {
         let result = sqlx::query!("SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1", brand_id)
             .fetch_optional(&mut unit_of_work.transaction)
-            .await?;
+            .await
+            .context("A database failure was encountered while trying to check for brand existence.")?;
 
         Ok(result.is_some())
     }
@@ -98,7 +102,8 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemR
     async fn scale_exists(&self, scale_id: &ScaleId, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {
         let result = sqlx::query!("SELECT scale_id FROM scales WHERE scale_id = $1 LIMIT 1", scale_id)
             .fetch_optional(&mut unit_of_work.transaction)
-            .await?;
+            .await
+            .context("A database failure was encountered while trying to check for scale existence.")?;
 
         Ok(result.is_some())
     }
@@ -188,7 +193,8 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for PgNewRollingStoc
             request.spring_buffers as Option<FeatureFlag>
         )
         .execute(&mut unit_of_work.transaction)
-        .await?;
+        .await
+        .context("A database failure was encountered while trying to store a rolling stock.")?;
 
         Ok(())
     }
@@ -199,7 +205,8 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for PgNewRollingStoc
             railway_id
         )
         .fetch_optional(&mut unit_of_work.transaction)
-        .await?;
+        .await
+        .context("A database failure was encountered while trying to check for a railway existence.")?;
 
         Ok(result.is_some())
     }

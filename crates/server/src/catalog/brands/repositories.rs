@@ -1,3 +1,4 @@
+use anyhow::Context;
 use async_trait::async_trait;
 use catalog::brands::brand_id::BrandId;
 use catalog::brands::brand_kind::BrandKind;
@@ -15,7 +16,8 @@ impl<'db> NewBrandRepository<'db, PgUnitOfWork<'db>> for PgNewBrandRepository {
     async fn exists_already(&self, brand_id: &BrandId, unit_of_work: &mut PgUnitOfWork) -> Result<bool> {
         let result = sqlx::query!("SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1", brand_id)
             .fetch_optional(&mut unit_of_work.transaction)
-            .await?;
+            .await
+            .context("A database failure was encountered while trying to check for a brand existence.")?;
 
         Ok(result.is_some())
     }
@@ -73,7 +75,8 @@ impl<'db> NewBrandRepository<'db, PgUnitOfWork<'db>> for PgNewBrandRepository {
                 metadata.version() as i32
             )
             .execute(&mut unit_of_work.transaction)
-            .await?;
+            .await
+            .context("A database failure was encountered while trying to store a brand.")?;
 
         Ok(())
     }

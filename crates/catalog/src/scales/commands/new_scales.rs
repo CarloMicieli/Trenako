@@ -5,7 +5,7 @@ use crate::scales::scale_response::ScaleCreated;
 use async_trait::async_trait;
 use chrono::Utc;
 use common::metadata::Metadata;
-use common::unit_of_work::{Database, DatabaseError, UnitOfWork};
+use common::unit_of_work::{Database, UnitOfWork};
 use itertools::Itertools;
 use rust_decimal::Decimal;
 use std::result;
@@ -39,17 +39,14 @@ pub async fn create_new_scale<'db, U: UnitOfWork<'db>, R: NewScaleRepository<'db
 
 #[derive(Debug, Error)]
 pub enum ScaleCreationError {
-    #[error("Error while interacting with the database: {0}")]
-    Database(#[from] sqlx::error::Error),
+    #[error(transparent)]
+    UnexpectedError(#[from] anyhow::Error),
 
     #[error("the scale request is not valid")]
     InvalidRequest,
 
     #[error("The scale already exists (id: {0})")]
     ScaleAlreadyExists(ScaleId),
-
-    #[error("{0}")]
-    DatabaseError(#[from] DatabaseError),
 }
 
 /// It represents the command to create a new model railway scale

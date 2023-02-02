@@ -23,7 +23,7 @@ use chrono::Utc;
 use common::length::Length;
 use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
-use common::unit_of_work::{Database, DatabaseError, UnitOfWork};
+use common::unit_of_work::{Database, UnitOfWork};
 use std::result;
 use thiserror::Error;
 
@@ -424,17 +424,14 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
 
 #[derive(Debug, Error)]
 pub enum CatalogItemCreationError {
-    #[error("Error while interacting with the database: {0}")]
-    Database(#[from] sqlx::error::Error),
+    #[error(transparent)]
+    UnexpectedError(#[from] anyhow::Error),
 
     #[error("the catalog item request is not valid")]
     InvalidRequest,
 
     #[error("This catalog item already exists (id: {0})")]
     CatalogItemAlreadyExists(CatalogItemId),
-
-    #[error("{0}")]
-    DatabaseError(#[from] DatabaseError),
 
     #[error("Brand not found (name: {0})")]
     BrandNotFound(String),

@@ -1,3 +1,4 @@
+use anyhow::Context;
 use async_trait::async_trait;
 use catalog::common::TrackGauge;
 use catalog::railways::commands::new_railways::{NewRailwayCommand, NewRailwayRepository};
@@ -22,7 +23,8 @@ impl<'db> NewRailwayRepository<'db, PgUnitOfWork<'db>> for PgNewRailwayRepositor
             railway_id
         )
         .fetch_optional(&mut unit_of_work.transaction)
-        .await?;
+        .await
+        .context("A database failure was encountered while trying to check for railway existence.")?;
 
         Ok(result.is_some())
     }
@@ -97,7 +99,8 @@ impl<'db> NewRailwayRepository<'db, PgUnitOfWork<'db>> for PgNewRailwayRepositor
             metadata.version() as i32
         )
         .execute(&mut unit_of_work.transaction)
-        .await?;
+        .await
+        .context("A database failure was encountered while trying to store a railway.")?;
 
         Ok(())
     }

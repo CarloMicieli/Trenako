@@ -1,3 +1,4 @@
+use anyhow::Context;
 use async_trait::async_trait;
 use catalog::common::TrackGauge;
 use catalog::scales::commands::new_scales::Result;
@@ -12,7 +13,8 @@ impl<'db> NewScaleRepository<'db, PgUnitOfWork<'db>> for PgNewScaleRepository {
     async fn exists_already(&self, scale_id: &ScaleId, unit_of_work: &mut PgUnitOfWork) -> Result<bool> {
         let result = sqlx::query!("SELECT scale_id FROM scales WHERE scale_id = $1 LIMIT 1", scale_id)
             .fetch_optional(&mut unit_of_work.transaction)
-            .await?;
+            .await
+            .context("A database failure was encountered while trying to check for scale existence.")?;
 
         Ok(result.is_some())
     }
@@ -51,7 +53,8 @@ impl<'db> NewScaleRepository<'db, PgUnitOfWork<'db>> for PgNewScaleRepository {
             metadata.version() as i32
         )
         .execute(&mut unit_of_work.transaction)
-        .await?;
+        .await
+        .context("A database failure was encountered while trying to store a scale.")?;
 
         Ok(())
     }
