@@ -1,9 +1,10 @@
 use crate::catalog::brands::repositories::PgNewBrandRepository;
 use crate::catalog::brands::routes::BRAND_ROOT_API;
 use crate::web::problem_detail::ProblemDetail;
-use actix_web::http::header::LOCATION;
+use crate::web::responders::ToCreated;
 use actix_web::{web, HttpResponse, Responder};
 use catalog::brands::brand_request::BrandRequest;
+use catalog::brands::brand_response::BrandCreated;
 use catalog::brands::commands::new_brand::{create_new_brand, BrandCreationError};
 use common::unit_of_work::postgres::PgDatabase;
 use sqlx::PgPool;
@@ -19,10 +20,7 @@ pub async fn handle(
 
     let result = create_new_brand(request.0, repo, database).await;
     match result {
-        Ok(created) => {
-            let location = format!("{}/{}", BRAND_ROOT_API, created.brand_id);
-            HttpResponse::Created().insert_header((LOCATION, location)).finish()
-        }
+        Ok(created) => created.to_created(),
         Err(why) => match why {
             BrandCreationError::BrandAlreadyExists(_) => HttpResponse::Conflict().finish(),
             _ => {
@@ -30,5 +28,11 @@ pub async fn handle(
                 ProblemDetail::error(*request_id, &why.to_string()).to_response()
             }
         },
+    }
+}
+
+impl ToCreated for BrandCreated {
+    fn location(&self) -> String {
+        format!("{}/{}", BRAND_ROOT_API, self.brand_id)
     }
 }

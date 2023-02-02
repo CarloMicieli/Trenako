@@ -1,10 +1,11 @@
 use crate::catalog::catalog_items::repositories::{PgNewCatalogItemRepository, PgNewRollingStockRepository};
 use crate::catalog::catalog_items::routes::CATALOG_ITEM_ROOT_API;
 use crate::web::problem_detail::ProblemDetail;
-use actix_web::http::header::LOCATION;
+use crate::web::responders::ToCreated;
 use actix_web::web::Data;
 use actix_web::{web, HttpResponse, Responder};
 use catalog::catalog_items::catalog_item_request::CatalogItemRequest;
+use catalog::catalog_items::catalog_item_response::CatalogItemCreated;
 use catalog::catalog_items::commands::new_catalog_item::{create_new_catalog_item, CatalogItemCreationError};
 use common::unit_of_work::postgres::PgDatabase;
 use sqlx::PgPool;
@@ -21,10 +22,7 @@ pub async fn handle(
 
     let result = create_new_catalog_item(request.0, repo, rr_repo, database).await;
     match result {
-        Ok(created) => {
-            let location = format!("{}/{}", CATALOG_ITEM_ROOT_API, created.catalog_item_id);
-            HttpResponse::Created().insert_header((LOCATION, location)).finish()
-        }
+        Ok(created) => created.to_created(),
         Err(why) => match why {
             CatalogItemCreationError::CatalogItemAlreadyExists(_) => HttpResponse::Conflict().finish(),
             CatalogItemCreationError::BrandNotFound(_) => HttpResponse::UnprocessableEntity().finish(),
@@ -35,5 +33,11 @@ pub async fn handle(
                 ProblemDetail::error(*request_id, &why.to_string()).to_response()
             }
         },
+    }
+}
+
+impl ToCreated for CatalogItemCreated {
+    fn location(&self) -> String {
+        format!("{}/{}", CATALOG_ITEM_ROOT_API, self.catalog_item_id)
     }
 }
