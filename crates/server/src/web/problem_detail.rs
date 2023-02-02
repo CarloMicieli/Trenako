@@ -1,5 +1,6 @@
 use crate::web::trn::Trn;
-use actix_web::{http, HttpResponse};
+use actix_web::http::StatusCode;
+use actix_web::{HttpResponse, HttpResponseBuilder};
 use serde::Serialize;
 use url::Url;
 use uuid::Uuid;
@@ -37,19 +38,56 @@ static PROBLEM_DETAIL_CONTENT_TYPE: &str = "application/problem+json";
 
 impl ProblemDetail {
     /// Creates a new problem detail from an error
-    pub fn from_error(id: Uuid, error: &str) -> ProblemDetail {
+    pub fn error(id: Uuid, error: &str) -> ProblemDetail {
         let type_url = Url::parse("https://httpstatuses.com/500").unwrap();
         ProblemDetail {
             problem_type: type_url,
             title: String::from("Error: Internal Server Error"),
             detail: error.to_owned(),
-            status: http::StatusCode::INTERNAL_SERVER_ERROR.as_u16(),
+            status: StatusCode::INTERNAL_SERVER_ERROR.as_u16(),
             instance: Trn::instance(&id),
         }
     }
 
-    pub fn to_response(&self) -> HttpResponse {
-        HttpResponse::InternalServerError()
+    /// Creates a new problem detail for unprocessable entity
+    pub fn unprocessable_entity(id: Uuid, detail: &str) -> ProblemDetail {
+        let type_url = Url::parse("https://httpstatuses.com/422").unwrap();
+        ProblemDetail {
+            problem_type: type_url,
+            title: String::from("Unprocessable entity"),
+            detail: detail.to_owned(),
+            status: StatusCode::UNPROCESSABLE_ENTITY.as_u16(),
+            instance: Trn::instance(&id),
+        }
+    }
+
+    /// Creates a new problem detail for bad requests
+    pub fn bad_request(id: Uuid, detail: &str) -> ProblemDetail {
+        let type_url = Url::parse("https://httpstatuses.com/400").unwrap();
+        ProblemDetail {
+            problem_type: type_url,
+            title: String::from("Bad request"),
+            detail: detail.to_owned(),
+            status: StatusCode::BAD_REQUEST.as_u16(),
+            instance: Trn::instance(&id),
+        }
+    }
+
+    /// Creates a new problem detail for a resource which exists already
+    pub fn resource_already_exists(id: Uuid, detail: &str) -> ProblemDetail {
+        let type_url = Url::parse("https://httpstatuses.com/409").unwrap();
+        ProblemDetail {
+            problem_type: type_url,
+            title: String::from("The resource already exists"),
+            detail: detail.to_owned(),
+            status: StatusCode::CONFLICT.as_u16(),
+            instance: Trn::instance(&id),
+        }
+    }
+
+    pub fn to_response(self) -> HttpResponse {
+        let status_code = StatusCode::from_u16(self.status).expect("invalid http status code");
+        HttpResponseBuilder::new(status_code)
             .content_type(PROBLEM_DETAIL_CONTENT_TYPE)
             .json(self)
     }
@@ -70,12 +108,60 @@ mod tests {
             let error = "my first error";
             let type_url = Url::parse("https://httpstatuses.com/500").unwrap();
 
-            let problem_detail = ProblemDetail::from_error(id, error);
+            let problem_detail = ProblemDetail::error(id, error);
 
             assert_eq!(type_url, problem_detail.problem_type);
             assert_eq!("Error: Internal Server Error", problem_detail.title);
             assert_eq!(error, problem_detail.detail);
             assert_eq!(500, problem_detail.status);
+            assert_eq!(instance_id, problem_detail.instance);
+        }
+
+        #[test]
+        fn it_should_create_a_new_problem_detail_resource_already_exists() {
+            let id = Uuid::new_v4();
+            let instance_id = Trn::instance(&id);
+            let detail = "my first conflict";
+            let type_url = Url::parse("https://httpstatuses.com/409").unwrap();
+
+            let problem_detail = ProblemDetail::resource_already_exists(id, detail);
+
+            assert_eq!(type_url, problem_detail.problem_type);
+            assert_eq!("The resource already exists", problem_detail.title);
+            assert_eq!(detail, problem_detail.detail);
+            assert_eq!(409, problem_detail.status);
+            assert_eq!(instance_id, problem_detail.instance);
+        }
+
+        #[test]
+        fn it_should_create_a_new_problem_detail_for_unprocessable_entities() {
+            let id = Uuid::new_v4();
+            let instance_id = Trn::instance(&id);
+            let detail = "my first conflict";
+            let type_url = Url::parse("https://httpstatuses.com/422").unwrap();
+
+            let problem_detail = ProblemDetail::unprocessable_entity(id, detail);
+
+            assert_eq!(type_url, problem_detail.problem_type);
+            assert_eq!("Unprocessable entity", problem_detail.title);
+            assert_eq!(detail, problem_detail.detail);
+            assert_eq!(422, problem_detail.status);
+            assert_eq!(instance_id, problem_detail.instance);
+        }
+
+        #[test]
+        fn it_should_create_a_new_problem_detail_for_bad_requests() {
+            let id = Uuid::new_v4();
+            let instance_id = Trn::instance(&id);
+            let detail = "my first conflict";
+            let type_url = Url::parse("https://httpstatuses.com/400").unwrap();
+
+            let problem_detail = ProblemDetail::bad_request(id, detail);
+
+            assert_eq!(type_url, problem_detail.problem_type);
+            assert_eq!("Bad request", problem_detail.title);
+            assert_eq!(detail, problem_detail.detail);
+            assert_eq!(400, problem_detail.status);
             assert_eq!(instance_id, problem_detail.instance);
         }
     }

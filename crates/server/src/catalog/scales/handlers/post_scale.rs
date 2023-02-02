@@ -27,7 +27,7 @@ pub async fn handle(
             ScaleCreationError::ScaleAlreadyExists(_) => HttpResponse::Conflict().finish(),
             _ => {
                 tracing::error!("{:?}", why);
-                ProblemDetail::from_error(*request_id, &why.to_string()).to_response()
+                ProblemDetail::error(*request_id, &why.to_string()).to_response()
             }
         },
     }

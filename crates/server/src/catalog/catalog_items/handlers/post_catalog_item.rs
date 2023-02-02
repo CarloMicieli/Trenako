@@ -32,7 +32,7 @@ pub async fn handle(
             CatalogItemCreationError::ScaleNotFound(_) => HttpResponse::UnprocessableEntity().finish(),
             _ => {
                 tracing::error!("{:?}", why);
-                ProblemDetail::from_error(*request_id, &why.to_string()).to_response()
+                ProblemDetail::error(*request_id, &why.to_string()).to_response()
             }
         },
     }

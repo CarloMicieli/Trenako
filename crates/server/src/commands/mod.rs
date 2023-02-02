@@ -22,7 +22,7 @@ pub async fn handle_web_request<C: Command>(command: C, request_id: RequestId, p
         Ok(output) => output.into_http_response(),
         Err(why) => {
             tracing::error!("{:?}", why);
-            ProblemDetail::from_error(*request_id, &why.to_string()).to_response()
+            ProblemDetail::error(*request_id, &why.to_string()).to_response()
         }
     }
 }
