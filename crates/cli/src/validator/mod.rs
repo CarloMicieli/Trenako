@@ -191,7 +191,7 @@ mod test {
                     "postal_code" : "20131",
                     "city" : "Milano",
                     "region" : "MI",
-                    "country" : "ITA"
+                    "country" : "IT"
                   },
                   "contact_info" : {
                     "email" : "mail@acmetreni.com",
@@ -286,7 +286,7 @@ mod test {
                   "abbreviation" : "FS",
                   "registered_company_name" : "Ferrovie dello Stato Italiane S.p.A.",
                   "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
-                  "country" : "ITA",
+                  "country" : "IT",
                   "description" : {
                     "it" : null,
                     "en" : null
