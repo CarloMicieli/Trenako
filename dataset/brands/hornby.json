@@ -1,6 +1,6 @@
 {
   "name" : "Hornby",
-  "registered_company_name" : null,
+  "registered_company_name" : "Hornby Hobbies Ltd",
   "organization_entity_type" : "OTHER",
   "group_name" : null,
   "description" : {
@@ -16,16 +16,16 @@
     "country" : null
   },
   "contact_info" : {
-    "email" : null,
+    "email" : "customerservices.uk@hornby.com",
     "phone" : null,
-    "website_url" : null
+    "website_url" : "https://uk.hornby.com/"
   },
   "socials" : {
-    "facebook" : null,
-    "instagram" : null,
+    "facebook" : "officialhornby",
+    "instagram" : "officialhornby",
     "linkedin" : null,
-    "twitter" : null,
-    "youtube" : null
+    "twitter" : "hornby",
+    "youtube" : "hornbyhobbiesltd"
   },
   "kind" : "INDUSTRIAL",
   "status" : "ACTIVE"

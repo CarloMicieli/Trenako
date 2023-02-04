@@ -1,28 +1,28 @@
 {
   "name" : "Tillig",
-  "registered_company_name" : null,
-  "organization_entity_type" : "OTHER",
+  "registered_company_name" : "TILLIG Modellbahnen GmbH",
+  "organization_entity_type" : "LIMITED_LIABILITY_COMPANY",
   "group_name" : null,
   "description" : {
     "it" : null,
     "en" : null
   },
   "address" : {
-    "street_address" : null,
+    "street_address" : "Promenade 1",
     "extended_address" : null,
-    "postal_code" : null,
-    "city" : null,
+    "postal_code" : "01855",
+    "city" : "Sebnitz",
     "region" : null,
-    "country" : null
+    "country" : "DE"
   },
   "contact_info" : {
-    "email" : null,
-    "phone" : null,
-    "website_url" : null
+    "email" : "info@tillig.com",
+    "phone" : "+49 (0)35971 903-0",
+    "website_url" : "https://www.tillig.com/"
   },
   "socials" : {
-    "facebook" : null,
-    "instagram" : null,
+    "facebook" : "tilligbahn",
+    "instagram" : "tillig.modellbahnen.gmbh",
     "linkedin" : null,
     "twitter" : null,
     "youtube" : null

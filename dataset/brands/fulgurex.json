@@ -1,6 +1,6 @@
 {
   "name" : "Fulgurex",
-  "registered_company_name" : null,
+  "registered_company_name" : "FULGUREX (N.G.) Sàrl",
   "organization_entity_type" : "OTHER",
   "group_name" : null,
   "description" : {
@@ -8,17 +8,17 @@
     "en" : null
   },
   "address" : {
-    "street_address" : null,
+    "street_address" : "Chemin du Reposoir 16",
     "extended_address" : null,
-    "postal_code" : null,
-    "city" : null,
+    "postal_code" : "1007",
+    "city" : "Lausanne",
     "region" : null,
-    "country" : null
+    "country" : "CH"
   },
   "contact_info" : {
-    "email" : null,
-    "phone" : null,
-    "website_url" : null
+    "email" : "fulgurex.sa@bluewin.ch",
+    "phone" : "+41 21 601 45 92/93",
+    "website_url" : "http://www.fulgurex.ch/"
   },
   "socials" : {
     "facebook" : null,

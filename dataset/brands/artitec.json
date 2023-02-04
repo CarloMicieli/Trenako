@@ -1,24 +1,24 @@
 {
-  "name" : "Gützold",
-  "registered_company_name" : "fischer-modell GmbH",
-  "organization_entity_type" : "OTHER",
+  "name" : "Artitec",
+  "registered_company_name" : "ARTITEC b.v.",
+  "organization_entity_type" : "PRIVATE_LIMITED_COMPANY",
   "group_name" : null,
   "description" : {
     "it" : null,
     "en" : null
   },
   "address" : {
-    "street_address" : "Am Rott 5",
+    "street_address" : "Papaverweg 29 b",
     "extended_address" : null,
-    "postal_code" : "29439",
-    "city" : "Lüchow",
+    "postal_code" : "1032 KE",
+    "city" : "Amsterdam",
     "region" : null,
-    "country" : "DE"
+    "country" : "NL"
   },
   "contact_info" : {
-    "email" : "info@fischer-modell.de",
-    "phone" : null,
-    "website_url" : "https://www.guetzold.de"
+    "email" : "info@artitec.nl",
+    "phone" : "+31 (0)20 4350050",
+    "website_url" : "https://artitec.nl"
   },
   "socials" : {
     "facebook" : null,

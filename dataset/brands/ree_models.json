@@ -1,6 +1,6 @@
 {
   "name" : "REE modeles",
-  "registered_company_name" : null,
+  "registered_company_name" : "RAILS EUROP EXPRESS",
   "organization_entity_type" : "OTHER",
   "group_name" : null,
   "description" : {
@@ -8,24 +8,24 @@
     "en" : null
   },
   "address" : {
-    "street_address" : null,
+    "street_address" : "46, Route de Paris",
     "extended_address" : null,
-    "postal_code" : null,
-    "city" : null,
+    "postal_code" : "77370",
+    "city" : "Nangis",
     "region" : null,
-    "country" : null
+    "country" : "FR"
   },
   "contact_info" : {
     "email" : null,
     "phone" : null,
-    "website_url" : null
+    "website_url" : "https://www.ree-modeles.com/"
   },
   "socials" : {
-    "facebook" : null,
-    "instagram" : null,
+    "facebook" : "reemodeles",
+    "instagram" : "reemodeles",
     "linkedin" : null,
-    "twitter" : null,
-    "youtube" : null
+    "twitter" : "REEModeles",
+    "youtube" : "REEModeles"
   },
   "kind" : "INDUSTRIAL",
   "status" : "ACTIVE"

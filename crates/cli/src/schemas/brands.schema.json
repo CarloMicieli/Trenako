@@ -120,8 +120,8 @@
             "string",
             "null"
           ],
-          "minLength": 3,
-          "maxLength": 3
+          "minLength": 2,
+          "maxLength": 2
         }
       }
     },

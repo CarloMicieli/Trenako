@@ -1,27 +1,27 @@
 {
-  "name" : "Gützold",
-  "registered_company_name" : "fischer-modell GmbH",
-  "organization_entity_type" : "OTHER",
+  "name" : "NMJ",
+  "registered_company_name" : "NMJ Europa Ug",
+  "organization_entity_type" : "ENTREPRENEURIAL_COMPANY",
   "group_name" : null,
   "description" : {
     "it" : null,
     "en" : null
   },
   "address" : {
-    "street_address" : "Am Rott 5",
+    "street_address" : "Hahnenstrasse 44",
     "extended_address" : null,
-    "postal_code" : "29439",
-    "city" : "Lüchow",
+    "postal_code" : "50997",
+    "city" : "Köln",
     "region" : null,
     "country" : "DE"
   },
   "contact_info" : {
-    "email" : "info@fischer-modell.de",
-    "phone" : null,
-    "website_url" : "https://www.guetzold.de"
+    "email" : "germany@nmj.eu",
+    "phone" : "+49 (0)170 34 38 191",
+    "website_url" : "http://www.nmj.eu"
   },
   "socials" : {
-    "facebook" : null,
+    "facebook" : "NMJAS",
     "instagram" : null,
     "linkedin" : null,
     "twitter" : null,

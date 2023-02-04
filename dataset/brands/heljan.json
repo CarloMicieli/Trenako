@@ -1,6 +1,6 @@
 {
   "name" : "Heljan",
-  "registered_company_name" : null,
+  "registered_company_name" : "HELJAN A/S",
   "organization_entity_type" : "OTHER",
   "group_name" : null,
   "description" : {
@@ -8,24 +8,24 @@
     "en" : null
   },
   "address" : {
-    "street_address" : null,
+    "street_address" : "Rebslagervej 6",
     "extended_address" : null,
-    "postal_code" : null,
-    "city" : null,
+    "postal_code" : "5471",
+    "city" : "Søndersø",
     "region" : null,
-    "country" : null
+    "country" : "DK"
   },
   "contact_info" : {
-    "email" : null,
-    "phone" : null,
-    "website_url" : null
+    "email" : "heljan@heljan.dk",
+    "phone" : "64 89 11 88",
+    "website_url" : "https://heljan.dk"
   },
   "socials" : {
-    "facebook" : null,
+    "facebook" : "heljanas",
     "instagram" : null,
     "linkedin" : null,
     "twitter" : null,
-    "youtube" : null
+    "youtube" : "UC5NkUgaywJGZ_ff5hqEhMHg"
   },
   "kind" : "INDUSTRIAL",
   "status" : "ACTIVE"

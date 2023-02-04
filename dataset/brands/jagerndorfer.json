@@ -1,5 +1,5 @@
 {
-  "name" : "Jägerndorfer Collection",
+  "name" : "Jägerndorfer",
   "registered_company_name" : "Jägerndorfer Ges.m.b.H.",
   "organization_entity_type" : "OTHER",
   "group_name" : null,
@@ -13,16 +13,16 @@
     "postal_code" : "A-2563",
     "city" : "Pottenstein",
     "region" : null,
-    "country" : "AUS"
+    "country" : "AT"
   },
   "contact_info" : {
-    "email" : null,
-    "phone" : null,
+    "email" : "jc@jaegerndorfer.at",
+    "phone" : " +43 2672 87 078",
     "website_url" : "https://www.jaegerndorfer.at"
   },
   "socials" : {
-    "facebook" : null,
-    "instagram" : null,
+    "facebook" : "JC-Jaegerndorfer-Collection",
+    "instagram" : "jaegerndorfer_collection",
     "linkedin" : null,
     "twitter" : null,
     "youtube" : null

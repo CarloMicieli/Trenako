@@ -1,0 +1,32 @@
+{
+  "name" : "Lemke",
+  "registered_company_name" : "Wolfgang Lemke GmbH / Lemke Collection GmbH",
+  "organization_entity_type" : "OTHER",
+  "group_name" : null,
+  "description" : {
+    "it" : null,
+    "en" : null
+  },
+  "address" : {
+    "street_address" : "Schallbruch 34a",
+    "extended_address" : null,
+    "postal_code" : "D-42781",
+    "city" : "Haan",
+    "region" : "Rheinl.",
+    "country" : "DE"
+  },
+  "contact_info" : {
+    "email" : "info@lemkecollection.de",
+    "phone" : "+49 (02129) 9369-0",
+    "website_url" : "https://lemkecollection.de/e"
+  },
+  "socials" : {
+    "facebook" : "lemke.gmbh",
+    "instagram" : "lemkecollection",
+    "linkedin" : null,
+    "twitter" : null,
+    "youtube" : null
+  },
+  "kind" : "INDUSTRIAL",
+  "status" : "ACTIVE"
+}

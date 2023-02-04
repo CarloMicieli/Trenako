@@ -13,10 +13,10 @@
     "postal_code" : "D-73630",
     "city" : "Remshalden",
     "region" : null,
-    "country" : "DEU"
+    "country" : "DE"
   },
   "contact_info" : {
-    "email" : null,
+    "email" : "+49 (0) 7151 / 97935-68",
     "phone" : null,
     "website_url" : "https://www.brawa.de"
   },
@@ -25,7 +25,7 @@
     "instagram" : null,
     "linkedin" : null,
     "twitter" : null,
-    "youtube" : null
+    "youtube" : "UC-ZMBxfY76nnuOF8mh6xVAg"
   },
   "kind" : "INDUSTRIAL",
   "status" : "ACTIVE"

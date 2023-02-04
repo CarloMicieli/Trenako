@@ -1,24 +1,24 @@
 {
-  "name" : "Gützold",
-  "registered_company_name" : "fischer-modell GmbH",
-  "organization_entity_type" : "OTHER",
+  "name" : "NPE",
+  "registered_company_name" : "NPE Modellbau GbR",
+  "organization_entity_type" : "CIVIL_LAW_PARTNERSHIP",
   "group_name" : null,
   "description" : {
     "it" : null,
     "en" : null
   },
   "address" : {
-    "street_address" : "Am Rott 5",
+    "street_address" : "Geschwister-Scholl-Straße 29",
     "extended_address" : null,
-    "postal_code" : "29439",
-    "city" : "Lüchow",
+    "postal_code" : "91452",
+    "city" : "Wilhermsdorf",
     "region" : null,
     "country" : "DE"
   },
   "contact_info" : {
-    "email" : "info@fischer-modell.de",
-    "phone" : null,
-    "website_url" : "https://www.guetzold.de"
+    "email" : "NPEisenbahn@gmx.net",
+    "phone" : "+49 9102 999 3808",
+    "website_url" : "http://www.npe-modellbau.de/"
   },
   "socials" : {
     "facebook" : null,

@@ -1,6 +1,6 @@
 {
-  "name" : "ACME",
-  "registered_company_name" : "Associazione Costruzioni Modellistiche Esatte",
+  "name" : "B-models",
+  "registered_company_name" : null,
   "organization_entity_type" : "OTHER",
   "group_name" : null,
   "description" : {
@@ -8,17 +8,17 @@
     "en" : null
   },
   "address" : {
-    "street_address" : "Viale Lombardia, 27",
+    "street_address" : null,
     "extended_address" : null,
-    "postal_code" : "20131",
-    "city" : "Milano",
-    "region" : "MI",
-    "country" : "IT"
+    "postal_code" : null,
+    "city" : null,
+    "region" : null,
+    "country" : null
   },
   "contact_info" : {
-    "email" : "mail@acmetreni.com",
+    "email" : "contact@b-models.be",
     "phone" : null,
-    "website_url" : "http://www.acmetreni.com"
+    "website_url" : "http://www.b-models.be/"
   },
   "socials" : {
     "facebook" : null,

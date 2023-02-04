@@ -1,5 +1,5 @@
 {
-  "name" : "Amintiri Feroviare",
+  "name" : "Exact-train",
   "registered_company_name" : null,
   "organization_entity_type" : "OTHER",
   "group_name" : null,
@@ -8,23 +8,23 @@
     "en" : null
   },
   "address" : {
-    "street_address" : "Str. Erou Slt. Olaru Cristian, Nr.34",
+    "street_address" : "Ijsvogellaan 15",
     "extended_address" : null,
-    "postal_code" : "731076",
-    "city" : "Barlad",
+    "postal_code" : "NL4143AT",
+    "city" : "Leerdam",
     "region" : null,
-    "country" : "RO"
+    "country" : "NL"
   },
   "contact_info" : {
-    "email" : "info@amintiriferoviare.com",
+    "email" : "info@Exacttrain.eu",
     "phone" : null,
-    "website_url" : "http://www.amintiriferoviare.com/"
+    "website_url" : "https://exacttrain.eu/"
   },
   "socials" : {
-    "facebook" : null,
-    "instagram" : null,
+    "facebook" : "exacttrain",
+    "instagram" : "exacttrain",
     "linkedin" : null,
-    "twitter" : null,
+    "twitter" : "exacttrain",
     "youtube" : null
   },
   "kind" : "INDUSTRIAL",
