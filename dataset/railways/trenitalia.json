@@ -1,7 +1,7 @@
 {
-  "name" : "FS",
-  "abbreviation" : "FS",
-  "registered_company_name" : "Ferrovie dello Stato Italiane",
+  "name" : "Trenitalia",
+  "abbreviation" : null,
+  "registered_company_name" : "Trenitalia S.p.A.",
   "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
   "country" : "IT",
   "description" : {
@@ -9,9 +9,9 @@
     "en" : null
   },
   "period_of_activity" : {
-    "operating_since" : "1905-07-01",
-    "operating_until" : "2000-06-07",
-    "status" : "INACTIVE"
+    "operating_since" : "2000-05-01",
+    "operating_until" : null,
+    "status" : "ACTIVE"
   },
   "gauge" : {
     "track_gauge" : "STANDARD",
@@ -24,14 +24,14 @@
   "contact_info" : {
     "email" : null,
     "phone" : null,
-    "website_url" : null
+    "website_url" : "https://www.fsitaliane.it"
   },
   "social" : {
     "facebook" : null,
-    "instagram" : null,
-    "linkedin" : null,
-    "twitter" : null,
-    "youtube" : null
+    "instagram" : "fsitaliane",
+    "linkedin" : "ferrovie-dello-stato-s-p-a-",
+    "twitter" : "FSitaliane",
+    "youtube" : "fsitaliane"
   },
   "headquarters" : [ "Roma" ]
 }

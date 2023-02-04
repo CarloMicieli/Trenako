@@ -1,16 +1,16 @@
 {
-  "name" : "FS",
-  "abbreviation" : "FS",
-  "registered_company_name" : "Ferrovie dello Stato Italiane",
+  "name" : "NSB",
+  "abbreviation" : "NSB",
+  "registered_company_name" : "Norges Statsbaner",
   "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
-  "country" : "IT",
+  "country" : "NO",
   "description" : {
     "it" : null,
     "en" : null
   },
   "period_of_activity" : {
-    "operating_since" : "1905-07-01",
-    "operating_until" : "2000-06-07",
+    "operating_since" : "1883-01-01",
+    "operating_until" : "1996-12-01",
     "status" : "INACTIVE"
   },
   "gauge" : {
@@ -18,7 +18,7 @@
     "meters" : 1.435
   },
   "total_length" : {
-    "kilometers" : 24564.0,
+    "kilometers" :4109.0,
     "miles" : null
   },
   "contact_info" : {
@@ -33,5 +33,5 @@
     "twitter" : null,
     "youtube" : null
   },
-  "headquarters" : [ "Roma" ]
+  "headquarters" : [ "Oslo" ]
 }

@@ -1,0 +1,37 @@
+{
+    "name" : "VR",
+    "abbreviation" : "VR",
+    "registered_company_name" : "VR-Yhtymä Oy",
+    "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
+    "country" : "FI",
+    "description" : {
+      "it" : null,
+      "en" : null
+    },
+    "period_of_activity" : {
+      "operating_since" : "1862-01-01",
+      "operating_until" : null,
+      "status" : "ACTIVE"
+    },
+    "gauge" : {
+      "track_gauge" : "STANDARD",
+      "meters" : 1.435
+    },
+    "total_length" : {
+      "kilometers" : 5944.0,
+      "miles" : 3693.3
+    },
+    "contact_info" : {
+      "email" : null,
+      "phone" : null,
+      "website_url" : "https://www.vr.fi"
+    },
+    "social" : {
+      "facebook" : "VRmatkalla",
+      "instagram" : null,
+      "linkedin" : "ceskedrahy",
+      "twitter" : "VRmatkalla",
+      "youtube" : "TheVRChannel"
+    },
+    "headquarters" : [ "Helsinki" ]
+  }

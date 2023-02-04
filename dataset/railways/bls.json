@@ -1,0 +1,37 @@
+{
+  "name" : "BLS",
+  "abbreviation" : "BLS",
+  "registered_company_name" : "BLS SA",
+  "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
+  "country" : "CH",
+  "description" : {
+    "it" : null,
+    "en" : null
+  },
+  "period_of_activity" : {
+    "operating_since" : "2006-04-24",
+    "operating_until" : null,
+    "status" : "ACTIVE"
+  },
+  "gauge" : {
+    "track_gauge" : "STANDARD",
+    "meters" : 1.435
+  },
+  "total_length" : {
+    "kilometers" : 449.0,
+    "miles" : null
+  },
+  "contact_info" : {
+    "email" : null,
+    "phone" : null,
+    "website_url" : "https://www.bls.ch"
+  },
+  "social" : {
+    "facebook" : "BLS",
+    "instagram" : "bls.ch",
+    "linkedin" : "bls-ag",
+    "twitter" : "blsag",
+    "youtube" : "BLSBahn"
+  },
+  "headquarters" : [ "Bern" ]
+}

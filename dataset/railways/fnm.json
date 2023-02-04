@@ -1,0 +1,37 @@
+{
+  "name" : "FNM",
+  "abbreviation" : "FNM",
+  "registered_company_name" : "Ferrovie Nord Milano S.p.A.",
+  "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
+  "country" : "IT",
+  "description" : {
+    "it" : null,
+    "en" : null
+  },
+  "period_of_activity" : {
+    "operating_since" : "1877-01-01",
+    "operating_until" : null,
+    "status" : "ACTIVE"
+  },
+  "gauge" : {
+    "track_gauge" : "STANDARD",
+    "meters" : 1.435
+  },
+  "total_length" : {
+    "kilometers" : null,
+    "miles" : null
+  },
+  "contact_info" : {
+    "email" : null,
+    "phone" : null,
+    "website_url" : "https://www.fnmgroup.it/"
+  },
+  "social" : {
+    "facebook" : "fnm_group",
+    "instagram" : null,
+    "linkedin" : "fnm-s.p.a.",
+    "twitter" : "FNM_Group",
+    "youtube" : "UC9gf8ogkQEAegPuEn22DJSA"
+  },
+  "headquarters" : [ "Milano" ]
+}

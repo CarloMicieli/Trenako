@@ -1,0 +1,37 @@
+{
+  "name" : "Trenord",
+  "abbreviation" : "Trenord",
+  "registered_company_name" : "Trenord",
+  "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
+  "country" : "IT",
+  "description" : {
+    "it" : null,
+    "en" : null
+  },
+  "period_of_activity" : {
+    "operating_since" : "2009-01-01",
+    "operating_until" : null,
+    "status" : "ACTIVE"
+  },
+  "gauge" : {
+    "track_gauge" : "STANDARD",
+    "meters" : 1.435
+  },
+  "total_length" : {
+    "kilometers" : null,
+    "miles" : null
+  },
+  "contact_info" : {
+    "email" : null,
+    "phone" : null,
+    "website_url" : "https://www.trenord.it"
+  },
+  "social" : {
+    "facebook" : null,
+    "instagram" : "trenord_discoverytrain",
+    "linkedin" : "trenord",
+    "twitter" : "Trenord_Press",
+    "youtube" : "UCgETpBVs-2-lgqIypYT9pgQ"
+  },
+  "headquarters" : [ "Milano" ]
+}
