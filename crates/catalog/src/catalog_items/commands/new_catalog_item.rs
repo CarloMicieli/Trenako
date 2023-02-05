@@ -7,6 +7,7 @@ use crate::catalog_items::category::{
     Category, ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType,
     RollingStockCategory,
 };
+use crate::catalog_items::commands::repositories::{CatalogItemRepository, RollingStockRepository};
 use crate::catalog_items::control::{Control, DccInterface};
 use crate::catalog_items::delivery_date::DeliveryDate;
 use crate::catalog_items::epoch::Epoch;
@@ -18,7 +19,6 @@ use crate::catalog_items::service_level::ServiceLevel;
 use crate::catalog_items::technical_specifications::{Coupling, CouplingSocket, FeatureFlag, Radius};
 use crate::railways::railway_id::RailwayId;
 use crate::scales::scale_id::ScaleId;
-use async_trait::async_trait;
 use chrono::Utc;
 use common::length::Length;
 use common::localized_text::LocalizedText;
@@ -32,8 +32,8 @@ pub type Result<R> = result::Result<R, CatalogItemCreationError>;
 pub async fn create_new_catalog_item<
     'db,
     U: UnitOfWork<'db>,
-    R: NewCatalogItemRepository<'db, U>,
-    RR: NewRollingStockRepository<'db, U>,
+    R: CatalogItemRepository<'db, U>,
+    RR: RollingStockRepository<'db, U>,
     DB: Database<'db, U>,
 >(
     request: CatalogItemRequest,
@@ -47,7 +47,7 @@ pub async fn create_new_catalog_item<
 
     let mut unit_of_work = db.begin().await?;
 
-    if repo.exists_already(&catalog_item_id, &mut unit_of_work).await? {
+    if repo.exists(&catalog_item_id, &mut unit_of_work).await? {
         return Err(CatalogItemCreationError::CatalogItemAlreadyExists(catalog_item_id));
     }
 
@@ -443,47 +443,19 @@ pub enum CatalogItemCreationError {
     ScaleNotFound(ScaleId),
 }
 
-/// The persistence related functionality for the new catalog item creation
-#[async_trait]
-pub trait NewCatalogItemRepository<'db, U: UnitOfWork<'db>> {
-    /// Checks if a catalog with the input id already exists
-    async fn exists_already(&self, catalog_item_id: &CatalogItemId, unit_of_work: &mut U) -> Result<bool>;
-
-    /// Inserts a new catalog item
-    async fn insert(&self, new_item: &NewCatalogItemCommand, unit_of_work: &mut U) -> Result<()>;
-
-    /// Checks if the brand exists
-    async fn brand_exists(&self, brand_id: &BrandId, unit_of_work: &mut U) -> Result<bool>;
-
-    /// Checks if the scale exists
-    async fn scale_exists(&self, scale_id: &ScaleId, unit_of_work: &mut U) -> Result<bool>;
-}
-
-/// The persistence related functionality for the new rolling stock creation
-#[async_trait]
-pub trait NewRollingStockRepository<'db, U: UnitOfWork<'db>> {
-    /// Inserts a new catalog item
-    async fn insert(&self, new_item: &NewRollingStockCommand, unit_of_work: &mut U) -> Result<()>;
-
-    /// Checks if the railway exists
-    async fn railway_exists(&self, railway_id: &RailwayId, unit_of_work: &mut U) -> Result<bool>;
-}
-
 #[cfg(test)]
 mod test {
     use super::*;
-    use common::in_memory::InMemoryRepository;
     use common::localized_text::LocalizedText;
-    use common::unit_of_work::noop::NoOpUnitOfWork;
-    use std::str::FromStr;
 
     mod new_catalog_item_command {
         use crate::brands::brand_id::BrandId;
         use crate::catalog_items::catalog_item_id::CatalogItemId;
-        use crate::catalog_items::commands::new_catalog_item::test::{
-            catalog_item, new_catalog_item, InMemoryNewCatalogItemRepository, InMemoryNewRollingStockRepository,
-        };
+        use crate::catalog_items::commands::new_catalog_item::test::{catalog_item, new_catalog_item};
         use crate::catalog_items::commands::new_catalog_item::{create_new_catalog_item, CatalogItemCreationError};
+        use crate::catalog_items::commands::repositories::in_memory::{
+            InMemoryCatalogItemRepository, InMemoryRollingStockRepository,
+        };
         use crate::catalog_items::item_number::ItemNumber;
         use crate::railways::railway_id::RailwayId;
         use crate::scales::scale_id::ScaleId;
@@ -491,8 +463,8 @@ mod test {
 
         #[tokio::test]
         async fn it_should_return_an_error_when_the_brand_is_not_found() {
-            let repo = InMemoryNewCatalogItemRepository::new();
-            let rr_repo = InMemoryNewRollingStockRepository::new();
+            let repo = InMemoryCatalogItemRepository::empty();
+            let rr_repo = InMemoryRollingStockRepository::empty();
             let db = NoOpDatabase;
 
             let request = new_catalog_item();
@@ -508,8 +480,8 @@ mod test {
 
         #[tokio::test]
         async fn it_should_return_an_error_when_the_scale_is_not_found() {
-            let repo = InMemoryNewCatalogItemRepository::new().with_brand(BrandId::new("ACME"));
-            let rr_repo = InMemoryNewRollingStockRepository::new();
+            let repo = InMemoryCatalogItemRepository::empty().with_brand(BrandId::new("ACME"));
+            let rr_repo = InMemoryRollingStockRepository::empty();
             let db = NoOpDatabase;
 
             let request = new_catalog_item();
@@ -526,8 +498,8 @@ mod test {
         #[tokio::test]
         async fn it_should_return_an_error_when_the_catalog_item_already_exists() {
             let repo =
-                InMemoryNewCatalogItemRepository::of(catalog_item(BrandId::new("ACME"), ItemNumber::new("123456")));
-            let rr_repo = InMemoryNewRollingStockRepository::new();
+                InMemoryCatalogItemRepository::with(catalog_item(BrandId::new("ACME"), ItemNumber::new("123456")));
+            let rr_repo = InMemoryRollingStockRepository::empty();
             let db = NoOpDatabase;
 
             let request = new_catalog_item();
@@ -545,10 +517,10 @@ mod test {
 
         #[tokio::test]
         async fn it_should_return_an_error_when_the_railway_is_not_found() {
-            let repo = InMemoryNewCatalogItemRepository::new()
+            let repo = InMemoryCatalogItemRepository::empty()
                 .with_brand(BrandId::new("ACME"))
                 .with_scale(ScaleId::new("H0"));
-            let rr_repo = InMemoryNewRollingStockRepository::new();
+            let rr_repo = InMemoryRollingStockRepository::empty();
             let db = NoOpDatabase;
 
             let request = new_catalog_item();
@@ -565,10 +537,10 @@ mod test {
 
         #[tokio::test]
         async fn it_should_create_a_new_catalog_item() {
-            let repo = InMemoryNewCatalogItemRepository::new()
+            let repo = InMemoryCatalogItemRepository::empty()
                 .with_brand(BrandId::new("ACME"))
                 .with_scale(ScaleId::new("H0"));
-            let rr_repo = InMemoryNewRollingStockRepository::new().with_railway(RailwayId::new("FS"));
+            let rr_repo = InMemoryRollingStockRepository::empty().with_railway(RailwayId::new("FS"));
             let db = NoOpDatabase;
 
             let request = new_catalog_item();
@@ -633,101 +605,6 @@ mod test {
             },
             rolling_stocks: Vec::new(),
             metadata: Metadata::created_at(Utc::now()),
-        }
-    }
-
-    struct InMemoryNewCatalogItemRepository {
-        catalog_items: InMemoryRepository<CatalogItemId, NewCatalogItemCommand>,
-        brands: Vec<BrandId>,
-        scales: Vec<ScaleId>,
-    }
-
-    impl InMemoryNewCatalogItemRepository {
-        pub fn new() -> Self {
-            InMemoryNewCatalogItemRepository {
-                catalog_items: InMemoryRepository::empty(),
-                brands: Vec::new(),
-                scales: Vec::new(),
-            }
-        }
-
-        pub fn of(command: NewCatalogItemCommand) -> Self {
-            let id = CatalogItemId::from_str(&command.catalog_item_id.to_string()).unwrap();
-            InMemoryNewCatalogItemRepository {
-                catalog_items: InMemoryRepository::of(id, command),
-                brands: Vec::new(),
-                scales: Vec::new(),
-            }
-        }
-
-        pub fn with_brand(mut self, brand_id: BrandId) -> Self {
-            self.brands.push(brand_id);
-            self
-        }
-
-        pub fn with_scale(mut self, scale_id: ScaleId) -> Self {
-            self.scales.push(scale_id);
-            self
-        }
-    }
-
-    #[async_trait]
-    impl NewCatalogItemRepository<'static, NoOpUnitOfWork> for InMemoryNewCatalogItemRepository {
-        async fn exists_already(
-            &self,
-            catalog_item_id: &CatalogItemId,
-            _unit_of_work: &mut NoOpUnitOfWork,
-        ) -> Result<bool> {
-            Ok(self.catalog_items.contains(catalog_item_id))
-        }
-
-        async fn insert(&self, new_item: &NewCatalogItemCommand, _unit_of_work: &mut NoOpUnitOfWork) -> Result<()> {
-            let id = CatalogItemId::from_str(&new_item.catalog_item_id.to_string()).unwrap();
-            self.catalog_items.add(id, new_item.clone());
-            Ok(())
-        }
-
-        async fn brand_exists(&self, brand_id: &BrandId, _unit_of_work: &mut NoOpUnitOfWork) -> Result<bool> {
-            let result = self.brands.contains(brand_id);
-            Ok(result)
-        }
-
-        async fn scale_exists(&self, scale_id: &ScaleId, _unit_of_work: &mut NoOpUnitOfWork) -> Result<bool> {
-            let result = self.scales.contains(scale_id);
-            Ok(result)
-        }
-    }
-
-    struct InMemoryNewRollingStockRepository {
-        rolling_stocks: InMemoryRepository<RollingStockId, NewRollingStockCommand>,
-        railways: Vec<RailwayId>,
-    }
-
-    impl InMemoryNewRollingStockRepository {
-        fn new() -> Self {
-            InMemoryNewRollingStockRepository {
-                rolling_stocks: InMemoryRepository::empty(),
-                railways: Vec::new(),
-            }
-        }
-
-        pub fn with_railway(mut self, railway_id: RailwayId) -> Self {
-            self.railways.push(railway_id);
-            self
-        }
-    }
-
-    #[async_trait]
-    impl NewRollingStockRepository<'static, NoOpUnitOfWork> for InMemoryNewRollingStockRepository {
-        async fn insert(&self, new_item: &NewRollingStockCommand, _unit_of_work: &mut NoOpUnitOfWork) -> Result<()> {
-            let rolling_stock_id = new_item.rolling_stock_id;
-            self.rolling_stocks.add(rolling_stock_id, new_item.clone());
-            Ok(())
-        }
-
-        async fn railway_exists(&self, railway_id: &RailwayId, _unit_of_work: &mut NoOpUnitOfWork) -> Result<bool> {
-            let result = self.railways.contains(railway_id);
-            Ok(result)
         }
     }
 }

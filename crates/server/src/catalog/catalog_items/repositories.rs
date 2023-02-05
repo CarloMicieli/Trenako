@@ -7,10 +7,8 @@ use catalog::catalog_items::category::Category;
 use catalog::catalog_items::category::{
     ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType, RollingStockCategory,
 };
-use catalog::catalog_items::commands::new_catalog_item::Result;
-use catalog::catalog_items::commands::new_catalog_item::{
-    NewCatalogItemCommand, NewCatalogItemRepository, NewRollingStockCommand, NewRollingStockRepository,
-};
+use catalog::catalog_items::commands::new_catalog_item::{NewCatalogItemCommand, NewRollingStockCommand};
+use catalog::catalog_items::commands::repositories::{CatalogItemRepository, RollingStockRepository};
 use catalog::catalog_items::control::{Control, DccInterface};
 use catalog::catalog_items::power_method::PowerMethod;
 use catalog::catalog_items::rolling_stock_id::RollingStockId;
@@ -20,16 +18,16 @@ use catalog::railways::railway_id::RailwayId;
 use catalog::scales::scale_id::ScaleId;
 use common::unit_of_work::postgres::PgUnitOfWork;
 
-pub struct PgNewCatalogItemRepository;
-pub struct PgNewRollingStockRepository;
+pub struct PgCatalogItemRepository;
+pub struct PgRollingStockRepository;
 
 #[async_trait]
-impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemRepository {
-    async fn exists_already(
+impl<'db> CatalogItemRepository<'db, PgUnitOfWork<'db>> for PgCatalogItemRepository {
+    async fn exists(
         &self,
         catalog_item_id: &CatalogItemId,
         unit_of_work: &mut PgUnitOfWork<'db>,
-    ) -> Result<bool> {
+    ) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!(
             "SELECT catalog_item_id FROM catalog_items WHERE catalog_item_id = $1 LIMIT 1",
             catalog_item_id as &CatalogItemId
@@ -41,7 +39,11 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemR
         Ok(result.is_some())
     }
 
-    async fn insert(&self, new_item: &NewCatalogItemCommand, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<()> {
+    async fn insert(
+        &self,
+        new_item: &NewCatalogItemCommand,
+        unit_of_work: &mut PgUnitOfWork<'db>,
+    ) -> Result<(), anyhow::Error> {
         let catalog_item_id = &new_item.catalog_item_id;
         let request = &new_item.payload;
         let metadata = &new_item.metadata;
@@ -90,7 +92,11 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemR
         Ok(())
     }
 
-    async fn brand_exists(&self, brand_id: &BrandId, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {
+    async fn brand_exists(
+        &self,
+        brand_id: &BrandId,
+        unit_of_work: &mut PgUnitOfWork<'db>,
+    ) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!("SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1", brand_id)
             .fetch_optional(&mut unit_of_work.transaction)
             .await
@@ -99,7 +105,11 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemR
         Ok(result.is_some())
     }
 
-    async fn scale_exists(&self, scale_id: &ScaleId, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {
+    async fn scale_exists(
+        &self,
+        scale_id: &ScaleId,
+        unit_of_work: &mut PgUnitOfWork<'db>,
+    ) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!("SELECT scale_id FROM scales WHERE scale_id = $1 LIMIT 1", scale_id)
             .fetch_optional(&mut unit_of_work.transaction)
             .await
@@ -110,8 +120,12 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for PgNewCatalogItemR
 }
 
 #[async_trait]
-impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for PgNewRollingStockRepository {
-    async fn insert(&self, new_item: &NewRollingStockCommand, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<()> {
+impl<'db> RollingStockRepository<'db, PgUnitOfWork<'db>> for PgRollingStockRepository {
+    async fn insert(
+        &self,
+        new_item: &NewRollingStockCommand,
+        unit_of_work: &mut PgUnitOfWork<'db>,
+    ) -> Result<(), anyhow::Error> {
         let request = &new_item.payload;
         let catalog_item_id = &new_item.catalog_item_id;
         let rolling_stock_id = &new_item.rolling_stock_id;
@@ -199,7 +213,11 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for PgNewRollingStoc
         Ok(())
     }
 
-    async fn railway_exists(&self, railway_id: &RailwayId, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<bool> {
+    async fn railway_exists(
+        &self,
+        railway_id: &RailwayId,
+        unit_of_work: &mut PgUnitOfWork<'db>,
+    ) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!(
             "SELECT railway_id FROM railways WHERE railway_id = $1 LIMIT 1",
             railway_id

@@ -1,7 +1,8 @@
 use anyhow::Context;
 use async_trait::async_trait;
 use catalog::common::TrackGauge;
-use catalog::railways::commands::new_railways::{NewRailwayCommand, NewRailwayRepository};
+use catalog::railways::commands::new_railways::NewRailwayCommand;
+use catalog::railways::commands::repositories::RailwayRepository;
 use catalog::railways::period_of_activity::RailwayStatus;
 use catalog::railways::railway_id::RailwayId;
 use common::contacts::{MailAddress, PhoneNumber};
@@ -9,15 +10,11 @@ use common::organizations::OrganizationEntityType;
 use common::socials::Handler;
 use common::unit_of_work::postgres::PgUnitOfWork;
 
-pub struct PgNewRailwayRepository;
+pub struct PgRailwayRepository;
 
 #[async_trait]
-impl<'db> NewRailwayRepository<'db, PgUnitOfWork<'db>> for PgNewRailwayRepository {
-    async fn exists_already(
-        &self,
-        railway_id: &RailwayId,
-        unit_of_work: &mut PgUnitOfWork,
-    ) -> catalog::railways::commands::new_railways::Result<bool> {
+impl<'db> RailwayRepository<'db, PgUnitOfWork<'db>> for PgRailwayRepository {
+    async fn exists(&self, railway_id: &RailwayId, unit_of_work: &mut PgUnitOfWork) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!(
             "SELECT railway_id FROM railways WHERE railway_id = $1 LIMIT 1",
             railway_id
@@ -33,7 +30,7 @@ impl<'db> NewRailwayRepository<'db, PgUnitOfWork<'db>> for PgNewRailwayRepositor
         &self,
         new_railway: &NewRailwayCommand,
         unit_of_work: &mut PgUnitOfWork,
-    ) -> catalog::railways::commands::new_railways::Result<()> {
+    ) -> Result<(), anyhow::Error> {
         let railway_id = &new_railway.railway_id;
         let request = &new_railway.payload;
         let metadata = &new_railway.metadata;

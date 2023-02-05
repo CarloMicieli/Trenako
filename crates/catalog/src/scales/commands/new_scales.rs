@@ -1,4 +1,5 @@
 use crate::common::TrackGauge;
+use crate::scales::commands::repositories::ScaleRepository;
 use crate::scales::scale_id::ScaleId;
 use crate::scales::scale_request::ScaleRequest;
 use crate::scales::scale_response::ScaleCreated;
@@ -13,7 +14,7 @@ use thiserror::Error;
 
 pub type Result<R> = result::Result<R, ScaleCreationError>;
 
-pub async fn create_new_scale<'db, U: UnitOfWork<'db>, R: NewScaleRepository<'db, U>, DB: Database<'db, U>>(
+pub async fn create_new_scale<'db, U: UnitOfWork<'db>, R: ScaleRepository<'db, U>, DB: Database<'db, U>>(
     request: ScaleRequest,
     repo: R,
     db: DB,
@@ -22,7 +23,7 @@ pub async fn create_new_scale<'db, U: UnitOfWork<'db>, R: NewScaleRepository<'db
 
     let mut unit_of_work = db.begin().await?;
 
-    if repo.exists_already(&scale_id, &mut unit_of_work).await? {
+    if repo.exists(&scale_id, &mut unit_of_work).await? {
         return Err(ScaleCreationError::ScaleAlreadyExists(scale_id));
     }
 
@@ -135,18 +136,18 @@ mod test {
 
     mod new_scale_command {
         use super::*;
+        use crate::scales::commands::repositories::in_memory::InMemoryScaleRepository;
         use crate::scales::ratio::Ratio;
         use crate::scales::scale_gauge::Gauge;
         use crate::scales::standard::Standard;
         use chrono::TimeZone;
-        use common::in_memory::InMemoryRepository;
         use common::localized_text::LocalizedText;
-        use common::unit_of_work::noop::{NoOpDatabase, NoOpUnitOfWork};
+        use common::unit_of_work::noop::NoOpDatabase;
         use pretty_assertions::assert_eq;
 
         #[tokio::test]
         async fn it_should_create_a_new_scale() {
-            let repo = InMemoryNewScaleRepository::new();
+            let repo = InMemoryScaleRepository::empty();
 
             let ratio = Decimal::from_str_exact("87").unwrap();
             let request = new_scale("H0", ratio);
@@ -161,7 +162,7 @@ mod test {
 
         #[tokio::test]
         async fn it_should_return_an_error_when_the_scale_already_exists() {
-            let repo = InMemoryNewScaleRepository::of(new_scale_cmd_with_name("H0"));
+            let repo = InMemoryScaleRepository::with(new_scale_cmd_with_name("H0"));
 
             let ratio = Decimal::from_str_exact("87").unwrap();
             let request = new_scale("H0", ratio);
@@ -199,32 +200,6 @@ mod test {
                 scale_id,
                 payload,
                 metadata,
-            }
-        }
-
-        struct InMemoryNewScaleRepository(InMemoryRepository<ScaleId, NewScaleCommand>);
-
-        impl InMemoryNewScaleRepository {
-            fn new() -> Self {
-                InMemoryNewScaleRepository(InMemoryRepository::empty())
-            }
-
-            fn of(command: NewScaleCommand) -> Self {
-                let id = ScaleId::new(&command.scale_id);
-                InMemoryNewScaleRepository(InMemoryRepository::of(id, command))
-            }
-        }
-
-        #[async_trait]
-        impl NewScaleRepository<'static, NoOpUnitOfWork> for InMemoryNewScaleRepository {
-            async fn exists_already(&self, scale_id: &ScaleId, _unit_of_work: &mut NoOpUnitOfWork) -> Result<bool> {
-                Ok(self.0.contains(scale_id))
-            }
-
-            async fn insert(&self, new_scale: &NewScaleCommand, _unit_of_work: &mut NoOpUnitOfWork) -> Result<()> {
-                let id = ScaleId::new(&new_scale.scale_id);
-                self.0.add(id, new_scale.clone());
-                Ok(())
             }
         }
     }

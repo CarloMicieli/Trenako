@@ -1,4 +1,4 @@
-use crate::catalog::brands::repositories::PgNewBrandRepository;
+use crate::catalog::brands::repositories::PgBrandRepository;
 use crate::catalog::brands::routes::BRAND_ROOT_API;
 use crate::web::problem_detail::ProblemDetail;
 use crate::web::responders::ToCreated;
@@ -18,7 +18,7 @@ pub async fn handle(
     request: web::Json<BrandRequest>,
     db_pool: web::Data<PgPool>,
 ) -> Result<HttpResponse, BrandCreationResponseError> {
-    let repo = PgNewBrandRepository;
+    let repo = PgBrandRepository;
     let database = PgDatabase::new(&db_pool);
 
     let result = create_new_brand(request.0, repo, database).await;

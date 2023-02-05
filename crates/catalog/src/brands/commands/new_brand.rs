@@ -3,7 +3,7 @@ use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_request::BrandRequest;
 use crate::brands::brand_response::BrandCreated;
 use crate::brands::brand_status::BrandStatus;
-use async_trait::async_trait;
+use crate::brands::commands::repositories::BrandRepository;
 use chrono::Utc;
 use common::address::Address;
 use common::contacts::{ContactInformation, MailAddress, PhoneNumber, WebsiteUrl};
@@ -16,7 +16,7 @@ use thiserror::Error;
 
 pub type Result<R> = result::Result<R, BrandCreationError>;
 
-pub async fn create_new_brand<'db, U: UnitOfWork<'db>, R: NewBrandRepository<'db, U>, DB: Database<'db, U>>(
+pub async fn create_new_brand<'db, U: UnitOfWork<'db>, R: BrandRepository<'db, U>, DB: Database<'db, U>>(
     request: BrandRequest,
     repo: R,
     db: DB,
@@ -25,7 +25,7 @@ pub async fn create_new_brand<'db, U: UnitOfWork<'db>, R: NewBrandRepository<'db
 
     let mut unit_of_work = db.begin().await?;
 
-    if repo.exists_already(&brand_id, &mut unit_of_work).await? {
+    if repo.exists(&brand_id, &mut unit_of_work).await? {
         return Err(BrandCreationError::BrandAlreadyExists(brand_id));
     }
 
@@ -173,32 +173,22 @@ impl TryFrom<BrandRequest> for BrandCommandPayload {
     }
 }
 
-/// The persistence related functionality for the new brands creation
-#[async_trait]
-pub trait NewBrandRepository<'db, U: UnitOfWork<'db>> {
-    /// Checks if a brand with the input id already exists
-    async fn exists_already(&self, brand_id: &BrandId, unit_of_work: &mut U) -> Result<bool>;
-
-    /// Inserts a new brand
-    async fn insert(&self, new_brand: &NewBrandCommand, unit_of_work: &mut U) -> Result<()>;
-}
-
 #[cfg(test)]
 mod test {
     use super::*;
 
     mod new_brand_command {
         use super::*;
+        use crate::brands::commands::repositories::in_memory::InMemoryBrandRepository;
         use chrono::TimeZone;
-        use common::in_memory::InMemoryRepository;
         use common::localized_text::LocalizedText;
-        use common::unit_of_work::noop::{NoOpDatabase, NoOpUnitOfWork};
+        use common::unit_of_work::noop::NoOpDatabase;
         use isocountry::CountryCode;
         use pretty_assertions::assert_eq;
 
         #[tokio::test]
         async fn it_should_create_a_new_brand() {
-            let repo = InMemoryNewBrandRepository::new();
+            let repo = InMemoryBrandRepository::empty();
 
             let request = new_brand("ACME");
             let db = NoOpDatabase;
@@ -212,7 +202,7 @@ mod test {
         #[tokio::test]
         async fn it_should_return_an_error_when_the_brand_already_exists() {
             let new_brand_cmd = new_brand_cmd_with_name("ACME");
-            let repo = InMemoryNewBrandRepository::of(new_brand_cmd);
+            let repo = InMemoryBrandRepository::with(new_brand_cmd);
 
             let request = new_brand("ACME");
             let db = NoOpDatabase;
@@ -275,32 +265,6 @@ mod test {
                 brand_id,
                 payload,
                 metadata,
-            }
-        }
-
-        struct InMemoryNewBrandRepository(InMemoryRepository<BrandId, NewBrandCommand>);
-
-        impl InMemoryNewBrandRepository {
-            fn new() -> Self {
-                InMemoryNewBrandRepository(InMemoryRepository::empty())
-            }
-
-            fn of(command: NewBrandCommand) -> Self {
-                let id = BrandId::new(&command.brand_id);
-                InMemoryNewBrandRepository(InMemoryRepository::of(id, command))
-            }
-        }
-
-        #[async_trait]
-        impl NewBrandRepository<'static, NoOpUnitOfWork> for InMemoryNewBrandRepository {
-            async fn exists_already(&self, brand_id: &BrandId, _unit_of_work: &mut NoOpUnitOfWork) -> Result<bool> {
-                Ok(self.0.contains(brand_id))
-            }
-
-            async fn insert(&self, new_brand: &NewBrandCommand, _unit_of_work: &mut NoOpUnitOfWork) -> Result<()> {
-                let id = BrandId::new(&new_brand.brand_id);
-                self.0.add(id, new_brand.clone());
-                Ok(())
             }
         }
     }

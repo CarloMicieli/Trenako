@@ -3,17 +3,18 @@ use async_trait::async_trait;
 use catalog::brands::brand_id::BrandId;
 use catalog::brands::brand_kind::BrandKind;
 use catalog::brands::brand_status::BrandStatus;
-use catalog::brands::commands::new_brand::{NewBrandCommand, NewBrandRepository, Result};
+use catalog::brands::commands::new_brand::NewBrandCommand;
+use catalog::brands::commands::repositories::BrandRepository;
 use common::contacts::{MailAddress, PhoneNumber};
 use common::organizations::OrganizationEntityType;
 use common::socials::Handler;
 use common::unit_of_work::postgres::PgUnitOfWork;
 
-pub struct PgNewBrandRepository;
+pub struct PgBrandRepository;
 
 #[async_trait]
-impl<'db> NewBrandRepository<'db, PgUnitOfWork<'db>> for PgNewBrandRepository {
-    async fn exists_already(&self, brand_id: &BrandId, unit_of_work: &mut PgUnitOfWork) -> Result<bool> {
+impl<'db> BrandRepository<'db, PgUnitOfWork<'db>> for PgBrandRepository {
+    async fn exists(&self, brand_id: &BrandId, unit_of_work: &mut PgUnitOfWork) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!("SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1", brand_id)
             .fetch_optional(&mut unit_of_work.transaction)
             .await
@@ -22,7 +23,7 @@ impl<'db> NewBrandRepository<'db, PgUnitOfWork<'db>> for PgNewBrandRepository {
         Ok(result.is_some())
     }
 
-    async fn insert(&self, new_brand: &NewBrandCommand, unit_of_work: &mut PgUnitOfWork) -> Result<()> {
+    async fn insert(&self, new_brand: &NewBrandCommand, unit_of_work: &mut PgUnitOfWork) -> Result<(), anyhow::Error> {
         let brand_id = &new_brand.brand_id;
         let request = &new_brand.payload;
         let metadata = &new_brand.metadata;

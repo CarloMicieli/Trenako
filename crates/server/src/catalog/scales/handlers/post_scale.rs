@@ -1,4 +1,4 @@
-use crate::catalog::scales::repositories::PgNewScaleRepository;
+use crate::catalog::scales::repositories::PgScaleRepository;
 use crate::catalog::scales::routes::SCALE_ROOT_API;
 use crate::web::problem_detail::ProblemDetail;
 use crate::web::responders::ToCreated;
@@ -18,7 +18,7 @@ pub async fn handle(
     request: web::Json<ScaleRequest>,
     db_pool: web::Data<PgPool>,
 ) -> Result<HttpResponse, ScaleCreationResponseError> {
-    let repo = PgNewScaleRepository;
+    let repo = PgScaleRepository;
     let database = PgDatabase::new(&db_pool);
 
     let result = create_new_scale(request.0, repo, database).await;

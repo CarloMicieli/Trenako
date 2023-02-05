@@ -1,16 +1,16 @@
 use anyhow::Context;
 use async_trait::async_trait;
 use catalog::common::TrackGauge;
-use catalog::scales::commands::new_scales::Result;
-use catalog::scales::commands::new_scales::{NewScaleCommand, NewScaleRepository};
+use catalog::scales::commands::new_scales::NewScaleCommand;
+use catalog::scales::commands::repositories::ScaleRepository;
 use catalog::scales::scale_id::ScaleId;
 use common::unit_of_work::postgres::PgUnitOfWork;
 
-pub struct PgNewScaleRepository;
+pub struct PgScaleRepository;
 
 #[async_trait]
-impl<'db> NewScaleRepository<'db, PgUnitOfWork<'db>> for PgNewScaleRepository {
-    async fn exists_already(&self, scale_id: &ScaleId, unit_of_work: &mut PgUnitOfWork) -> Result<bool> {
+impl<'db> ScaleRepository<'db, PgUnitOfWork<'db>> for PgScaleRepository {
+    async fn exists(&self, scale_id: &ScaleId, unit_of_work: &mut PgUnitOfWork) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!("SELECT scale_id FROM scales WHERE scale_id = $1 LIMIT 1", scale_id)
             .fetch_optional(&mut unit_of_work.transaction)
             .await
@@ -19,7 +19,7 @@ impl<'db> NewScaleRepository<'db, PgUnitOfWork<'db>> for PgNewScaleRepository {
         Ok(result.is_some())
     }
 
-    async fn insert(&self, new_scale: &NewScaleCommand, unit_of_work: &mut PgUnitOfWork) -> Result<()> {
+    async fn insert(&self, new_scale: &NewScaleCommand, unit_of_work: &mut PgUnitOfWork) -> Result<(), anyhow::Error> {
         let scale_id = &new_scale.scale_id;
         let request = &new_scale.payload;
         let metadata = &new_scale.metadata;

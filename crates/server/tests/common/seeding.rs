@@ -1,25 +1,29 @@
 use catalog::brands::brand_request::BrandRequest;
-use catalog::brands::commands::new_brand::{NewBrandCommand, NewBrandRepository};
+use catalog::brands::commands::new_brand::NewBrandCommand;
+use catalog::brands::commands::repositories::BrandRepository;
 use catalog::catalog_items::catalog_item_request::CatalogItemRequest;
-use catalog::catalog_items::commands::new_catalog_item::{NewCatalogItemCommand, NewCatalogItemRepository};
-use catalog::railways::commands::new_railways::{NewRailwayCommand, NewRailwayRepository};
+use catalog::catalog_items::commands::new_catalog_item::NewCatalogItemCommand;
+use catalog::catalog_items::commands::repositories::CatalogItemRepository;
+use catalog::railways::commands::new_railways::NewRailwayCommand;
+use catalog::railways::commands::repositories::RailwayRepository;
 use catalog::railways::railway_request::RailwayRequest;
-use catalog::scales::commands::new_scales::{NewScaleCommand, NewScaleRepository};
+use catalog::scales::commands::new_scales::NewScaleCommand;
+use catalog::scales::commands::repositories::ScaleRepository;
 use catalog::scales::scale_request::ScaleRequest;
 use common::unit_of_work::postgres::PgDatabase;
 use common::unit_of_work::{Database, UnitOfWork};
 use serde_derive::Deserialize;
-use server::catalog::brands::repositories::PgNewBrandRepository;
-use server::catalog::catalog_items::repositories::PgNewCatalogItemRepository;
-use server::catalog::railways::repositories::PgNewRailwayRepository;
-use server::catalog::scales::repositories::PgNewScaleRepository;
+use server::catalog::brands::repositories::PgBrandRepository;
+use server::catalog::catalog_items::repositories::PgCatalogItemRepository;
+use server::catalog::railways::repositories::PgRailwayRepository;
+use server::catalog::scales::repositories::PgScaleRepository;
 use sqlx::PgPool;
 
 pub async fn seed_brands(pg_pool: &PgPool) {
     let db = PgDatabase::new(pg_pool);
     let mut unit_of_work = db.begin().await.unwrap();
 
-    let repo = PgNewBrandRepository;
+    let repo = PgBrandRepository;
 
     let brands = brands();
     let brands: Vec<NewBrandCommand> = brands
@@ -39,7 +43,7 @@ pub async fn seed_catalog_items(pg_pool: &PgPool) {
     let db = PgDatabase::new(pg_pool);
     let mut unit_of_work = db.begin().await.unwrap();
 
-    let repo = PgNewCatalogItemRepository;
+    let repo = PgCatalogItemRepository;
 
     let scales: Vec<NewCatalogItemCommand> = catalog_items()
         .items
@@ -58,7 +62,7 @@ pub async fn seed_railways(pg_pool: &PgPool) {
     let db = PgDatabase::new(pg_pool);
     let mut unit_of_work = db.begin().await.unwrap();
 
-    let repo = PgNewRailwayRepository;
+    let repo = PgRailwayRepository;
 
     let railways: Vec<NewRailwayCommand> = railways()
         .items
@@ -77,7 +81,7 @@ pub async fn seed_scales(pg_pool: &PgPool) {
     let db = PgDatabase::new(pg_pool);
     let mut unit_of_work = db.begin().await.unwrap();
 
-    let repo = PgNewScaleRepository;
+    let repo = PgScaleRepository;
 
     let scales: Vec<NewScaleCommand> = scales()
         .items

@@ -1,4 +1,4 @@
-use crate::catalog::railways::repositories::PgNewRailwayRepository;
+use crate::catalog::railways::repositories::PgRailwayRepository;
 use crate::catalog::railways::routes::RAILWAY_ROOT_API;
 use crate::web::problem_detail::ProblemDetail;
 use crate::web::responders::ToCreated;
@@ -18,7 +18,7 @@ pub async fn handle(
     request: web::Json<RailwayRequest>,
     db_pool: web::Data<PgPool>,
 ) -> Result<HttpResponse, RailwayCreationResponseError> {
-    let repo = PgNewRailwayRepository;
+    let repo = PgRailwayRepository;
     let database = PgDatabase::new(&db_pool);
 
     let result = create_new_railway(request.0, repo, database).await;

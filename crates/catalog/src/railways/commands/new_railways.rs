@@ -1,9 +1,9 @@
 use crate::common::TrackGauge;
+use crate::railways::commands::repositories::RailwayRepository;
 use crate::railways::period_of_activity::{PeriodOfActivity, RailwayStatus};
 use crate::railways::railway_id::RailwayId;
 use crate::railways::railway_request::RailwayRequest;
 use crate::railways::railway_response::RailwayCreated;
-use async_trait::async_trait;
 use chrono::{NaiveDate, Utc};
 use common::contacts::{ContactInformation, MailAddress, PhoneNumber, WebsiteUrl};
 use common::metadata::Metadata;
@@ -16,7 +16,7 @@ use thiserror::Error;
 
 pub type Result<R> = result::Result<R, RailwayCreationError>;
 
-pub async fn create_new_railway<'db, U: UnitOfWork<'db>, R: NewRailwayRepository<'db, U>, DB: Database<'db, U>>(
+pub async fn create_new_railway<'db, U: UnitOfWork<'db>, R: RailwayRepository<'db, U>, DB: Database<'db, U>>(
     request: RailwayRequest,
     repo: R,
     db: DB,
@@ -25,7 +25,7 @@ pub async fn create_new_railway<'db, U: UnitOfWork<'db>, R: NewRailwayRepository
 
     let mut unit_of_work = db.begin().await?;
 
-    if repo.exists_already(&railway_id, &mut unit_of_work).await? {
+    if repo.exists(&railway_id, &mut unit_of_work).await? {
         return Err(RailwayCreationError::RailwayAlreadyExists(railway_id));
     }
 
@@ -161,32 +161,22 @@ impl TryFrom<RailwayRequest> for RailwayCommandPayload {
     }
 }
 
-/// The persistence related functionality for the new railways creation
-#[async_trait]
-pub trait NewRailwayRepository<'db, U: UnitOfWork<'db>> {
-    /// Checks if a railway with the input id already exists
-    async fn exists_already(&self, railway_id: &RailwayId, unit_of_work: &mut U) -> Result<bool>;
-
-    /// Inserts a new railway
-    async fn insert(&self, new_railway: &NewRailwayCommand, unit_of_work: &mut U) -> Result<()>;
-}
-
 #[cfg(test)]
 mod test {
     use super::*;
 
     mod new_railway_command {
         use super::*;
+        use crate::railways::commands::repositories::in_memory::InMemoryRailwayRepository;
         use chrono::TimeZone;
-        use common::in_memory::InMemoryRepository;
         use common::localized_text::LocalizedText;
-        use common::unit_of_work::noop::{NoOpDatabase, NoOpUnitOfWork};
+        use common::unit_of_work::noop::NoOpDatabase;
         use isocountry::CountryCode;
         use pretty_assertions::assert_eq;
 
         #[tokio::test]
         async fn it_should_create_a_new_railway() {
-            let repo = InMemoryNewRailwayRepository::new();
+            let repo = InMemoryRailwayRepository::empty();
 
             let request = new_railway("FS");
             let db = NoOpDatabase;
@@ -199,7 +189,7 @@ mod test {
 
         #[tokio::test]
         async fn it_should_return_an_error_when_the_railway_already_exists() {
-            let repo = InMemoryNewRailwayRepository::of(new_railway_cmd_with_name("FS"));
+            let repo = InMemoryRailwayRepository::with(new_railway_cmd_with_name("FS"));
 
             let request = new_railway("FS");
             let db = NoOpDatabase;
@@ -240,32 +230,6 @@ mod test {
                 railway_id,
                 payload,
                 metadata,
-            }
-        }
-
-        struct InMemoryNewRailwayRepository(InMemoryRepository<RailwayId, NewRailwayCommand>);
-
-        impl InMemoryNewRailwayRepository {
-            fn new() -> Self {
-                InMemoryNewRailwayRepository(InMemoryRepository::empty())
-            }
-
-            fn of(new_railway_command: NewRailwayCommand) -> Self {
-                let id = RailwayId::new(&new_railway_command.railway_id);
-                InMemoryNewRailwayRepository(InMemoryRepository::of(id, new_railway_command))
-            }
-        }
-
-        #[async_trait]
-        impl NewRailwayRepository<'static, NoOpUnitOfWork> for InMemoryNewRailwayRepository {
-            async fn exists_already(&self, railway_id: &RailwayId, _unit_of_work: &mut NoOpUnitOfWork) -> Result<bool> {
-                Ok(self.0.contains(railway_id))
-            }
-
-            async fn insert(&self, new_railway: &NewRailwayCommand, _unit_of_work: &mut NoOpUnitOfWork) -> Result<()> {
-                let id = RailwayId::new(&new_railway.railway_id);
-                self.0.add(id, new_railway.clone());
-                Ok(())
             }
         }
     }
