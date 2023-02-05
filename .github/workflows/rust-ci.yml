@@ -80,8 +80,11 @@ jobs:
       - name: Linting with Clippy
         run: cargo make clippy
 
-      - name: Run tests
-        run: cargo make test | bunyan
+      - name: Run the unit tests
+        run: cargo make unit-test
+
+      - name: Run the integration tests
+        run: cargo make integration-test | bunyan
 
       - name: Run cargo-tarpaulin
         run: cargo make code-coverage

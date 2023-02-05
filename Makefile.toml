@@ -27,6 +27,20 @@ env = { "SQLX_OFFLINE" = "true", "TEST_LOG" = "true" }
 command = "cargo"
 args = ["test", "--no-fail-fast", "--", "--test-threads", "2"]
 
+[tasks.unit-test]
+description = "test: run the unit tests"
+category = "Check"
+env = { "SQLX_OFFLINE" = "true" }
+command = "cargo"
+args = ["test", "--lib", "--no-fail-fast", "--", "--test-threads", "4"]
+
+[tasks.integration-test]
+description = "test: run the integration tests"
+category = "Check"
+env = { "SQLX_OFFLINE" = "true", "TEST_LOG" = "true" }
+command = "cargo"
+args = ["test", "--test", '*', "--no-fail-fast", "--", "--test-threads", "2"]
+
 [tasks.docs]
 description = "docs: generate the rustdoc"
 command = "cargo"
