@@ -37,15 +37,18 @@ jobs:
         run: npm install -g bunyan
 
       - name: Get current MSRV from Cargo.toml
-        run: |
-          echo "msrv=$(cat ./Cargo.toml | grep rust-version | sed 's/.* = "//; s/"//')"
-          echo "rustc=$(rustc --version | cut -c 7-10)"
+        id: get-msrv
+        run: echo "MSRV=$(cat ./Cargo.toml | grep rust-version | sed 's/.* = "//; s/"//')" >> $GITHUB_OUTPUT
+
+      - name: Get current rustc version
+        id: get-rustc-version
+        run: echo "RUSTC_VERSION=$(rustc --version | cut -c 7-10)" >> $GITHUB_OUTPUT
 
       - name: Install rust toolchain
         run: |
           rustup set profile minimal
           rustup toolchain install stable
-          cargo install --force cargo-make
+        if: ${{ steps.get-rustc-version.outputs.RUSTC_VERSION != steps.get-msrv.outputs.MSRV }}
 
       - name: Set up cargo cache
         uses: actions/cache@v3
@@ -59,10 +62,14 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
 
+      - name: Install cargo make
+        run: cargo install cargo-make@0.36.4
+
       - name: Toolchain info
         run: |
           rustc --version
           cargo --version --verbose
+          cargo make --version
 
       - name: Run cargo check
         run: cargo make check
