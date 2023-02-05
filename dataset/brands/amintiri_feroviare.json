@@ -1,7 +1,7 @@
 {
   "name" : "Amintiri Feroviare",
-  "registered_company_name" : null,
-  "organization_entity_type" : "OTHER",
+  "registered_company_name" : "Amintiri Feroviare S.r.l.",
+  "organization_entity_type" : "LIMITED_COMPANY",
   "group_name" : null,
   "description" : {
     "it" : null,
@@ -17,7 +17,7 @@
   },
   "contact_info" : {
     "email" : "info@amintiriferoviare.com",
-    "phone" : null,
+    "phone" : "+40 235415838",
     "website_url" : "http://www.amintiriferoviare.com/"
   },
   "socials" : {

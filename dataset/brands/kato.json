@@ -1,6 +1,6 @@
 {
   "name" : "Kato",
-  "registered_company_name" : null,
+  "registered_company_name" : "Kato Model Trains",
   "organization_entity_type" : "OTHER",
   "group_name" : null,
   "description" : {
@@ -16,9 +16,9 @@
     "country" : null
   },
   "contact_info" : {
-    "email" : null,
+    "email" : "katomodeltrains@gmail.com",
     "phone" : null,
-    "website_url" : null
+    "website_url" : "https://www.katomodeltrains.com"
   },
   "socials" : {
     "facebook" : null,

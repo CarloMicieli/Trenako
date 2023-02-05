@@ -1,7 +1,7 @@
 {
   "name" : "ACME",
   "registered_company_name" : "Associazione Costruzioni Modellistiche Esatte",
-  "organization_entity_type" : "OTHER",
+  "organization_entity_type" : "LIMITED_COMPANY",
   "group_name" : null,
   "description" : {
     "it" : null,
