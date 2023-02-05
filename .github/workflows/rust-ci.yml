@@ -50,6 +50,9 @@ jobs:
           rustup toolchain install stable
         if: ${{ steps.get-rustc-version.outputs.RUSTC_VERSION != steps.get-msrv.outputs.MSRV }}
 
+      - name: Install cargo make
+        run: cargo install cargo-make@0.36.4
+
       - name: Set up cargo cache
         uses: actions/cache@v3
         continue-on-error: false
@@ -61,9 +64,6 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
-
-      - name: Install cargo make
-        run: cargo install cargo-make@0.36.4
 
       - name: Toolchain info
         run: |
