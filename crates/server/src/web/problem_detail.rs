@@ -94,6 +94,59 @@ impl ProblemDetail {
 }
 
 #[cfg(test)]
+pub mod helpers {
+    use actix_web::body::to_bytes;
+    use actix_web::http::StatusCode;
+    use actix_web::HttpResponse;
+    use anyhow::anyhow;
+    use serde_derive::Deserialize;
+    use url::Url;
+
+    pub async fn from_http_response(response: HttpResponse) -> Result<HttpResponseValues, anyhow::Error> {
+        let body = to_bytes(response.into_body())
+            .await
+            .map_err(|why| anyhow!("unable to extract the body {why:?}"))?;
+
+        let body_str = std::str::from_utf8(&body).unwrap();
+
+        let values: HttpResponseValues = serde_json::from_str(body_str).unwrap();
+        Ok(values)
+    }
+
+    #[derive(Debug, Deserialize)]
+    pub struct HttpResponseValues {
+        #[serde(rename(deserialize = "type"))]
+        problem_type: Url,
+        title: String,
+        detail: String,
+        status: u16,
+    }
+
+    impl HttpResponseValues {
+        pub fn assert_status_is(self, status_code: StatusCode) -> Self {
+            assert_eq!(status_code, StatusCode::from_u16(self.status).unwrap());
+            self
+        }
+
+        pub fn assert_type_is(self, expected_type: &str) -> Self {
+            let expected_url = Url::parse(expected_type).expect("invalid URL");
+            assert_eq!(expected_url, self.problem_type);
+            self
+        }
+
+        pub fn assert_title_is(self, expected_title: &str) -> Self {
+            assert_eq!(expected_title, self.title);
+            self
+        }
+
+        pub fn assert_detail_is(self, expected_detail: &str) -> Self {
+            assert_eq!(expected_detail, self.detail);
+            self
+        }
+    }
+}
+
+#[cfg(test)]
 mod tests {
     use super::*;
 

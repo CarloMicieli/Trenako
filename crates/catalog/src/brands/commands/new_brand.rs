@@ -42,10 +42,10 @@ pub async fn create_new_brand<'db, U: UnitOfWork<'db>, R: NewBrandRepository<'db
 
 #[derive(Debug, Error)]
 pub enum BrandCreationError {
-    #[error("the brand request is not valid")]
+    #[error("The brand request is not valid")]
     InvalidRequest,
 
-    #[error("Brand already exists (id: {0})")]
+    #[error("The brand already exists (id: {0})")]
     BrandAlreadyExists(BrandId),
 
     #[error(transparent)]

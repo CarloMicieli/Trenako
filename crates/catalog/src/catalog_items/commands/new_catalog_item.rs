@@ -52,11 +52,11 @@ pub async fn create_new_catalog_item<
     }
 
     if !repo.brand_exists(&brand_id, &mut unit_of_work).await? {
-        return Err(CatalogItemCreationError::BrandNotFound(request.brand.to_string()));
+        return Err(CatalogItemCreationError::BrandNotFound(brand_id));
     }
 
     if !repo.scale_exists(&scale_id, &mut unit_of_work).await? {
-        return Err(CatalogItemCreationError::ScaleNotFound(request.scale.to_string()));
+        return Err(CatalogItemCreationError::ScaleNotFound(scale_id));
     }
 
     let command = NewCatalogItemCommand::try_from(request)?;
@@ -65,7 +65,7 @@ pub async fn create_new_catalog_item<
 
     for rs in command.rolling_stocks {
         if !rs_repo.railway_exists(&rs.railway_id, &mut unit_of_work).await? {
-            return Err(CatalogItemCreationError::RailwayNotFound(rs.railway_id.to_string()));
+            return Err(CatalogItemCreationError::RailwayNotFound(rs.railway_id));
         }
         rs_repo.insert(&rs, &mut unit_of_work).await?;
     }
@@ -427,20 +427,20 @@ pub enum CatalogItemCreationError {
     #[error(transparent)]
     UnexpectedError(#[from] anyhow::Error),
 
-    #[error("the catalog item request is not valid")]
+    #[error("The catalog item request is not valid")]
     InvalidRequest,
 
-    #[error("This catalog item already exists (id: {0})")]
+    #[error("The catalog item already exists (id: {0})")]
     CatalogItemAlreadyExists(CatalogItemId),
 
-    #[error("Brand not found (name: {0})")]
-    BrandNotFound(String),
+    #[error("Unable to create the catalog item due to brand not found (id: {0})")]
+    BrandNotFound(BrandId),
 
-    #[error("Railway not found (name: {0})")]
-    RailwayNotFound(String),
+    #[error("Unable to create the catalog item due to railway not found (id: {0})")]
+    RailwayNotFound(RailwayId),
 
-    #[error("Scale not found (name: {0})")]
-    ScaleNotFound(String),
+    #[error("Unable to create the catalog item due to scale not found (id: {0})")]
+    ScaleNotFound(ScaleId),
 }
 
 /// The persistence related functionality for the new catalog item creation
@@ -485,6 +485,7 @@ mod test {
         };
         use crate::catalog_items::commands::new_catalog_item::{create_new_catalog_item, CatalogItemCreationError};
         use crate::catalog_items::item_number::ItemNumber;
+        use crate::railways::railway_id::RailwayId;
         use crate::scales::scale_id::ScaleId;
         use common::unit_of_work::noop::NoOpDatabase;
 
@@ -500,7 +501,7 @@ mod test {
             assert!(result.is_err());
 
             match result {
-                Err(CatalogItemCreationError::BrandNotFound(brand_name)) => assert_eq!("ACME", brand_name),
+                Err(CatalogItemCreationError::BrandNotFound(brand)) => assert_eq!(BrandId::new("ACME"), brand),
                 _ => panic!("CatalogItemCreationError::BrandNotFound is expected (found: {result:?})"),
             }
         }
@@ -517,7 +518,7 @@ mod test {
             assert!(result.is_err());
 
             match result {
-                Err(CatalogItemCreationError::ScaleNotFound(scale_name)) => assert_eq!("H0", scale_name),
+                Err(CatalogItemCreationError::ScaleNotFound(scale)) => assert_eq!(ScaleId::new("H0"), scale),
                 _ => panic!("CatalogItemCreationError::ScaleNotFound is expected (found: {result:?})"),
             }
         }
@@ -543,11 +544,31 @@ mod test {
         }
 
         #[tokio::test]
-        async fn it_should_create_a_new_catalog_item() {
+        async fn it_should_return_an_error_when_the_railway_is_not_found() {
             let repo = InMemoryNewCatalogItemRepository::new()
                 .with_brand(BrandId::new("ACME"))
                 .with_scale(ScaleId::new("H0"));
             let rr_repo = InMemoryNewRollingStockRepository::new();
+            let db = NoOpDatabase;
+
+            let request = new_catalog_item();
+            let result = create_new_catalog_item(request, repo, rr_repo, db).await;
+
+            assert!(result.is_err());
+            match result {
+                Err(CatalogItemCreationError::RailwayNotFound(railway_id)) => {
+                    assert_eq!("fs", railway_id.to_string())
+                }
+                _ => panic!("CatalogItemCreationError::RailwayNotFound is expected (found: {result:?})"),
+            }
+        }
+
+        #[tokio::test]
+        async fn it_should_create_a_new_catalog_item() {
+            let repo = InMemoryNewCatalogItemRepository::new()
+                .with_brand(BrandId::new("ACME"))
+                .with_scale(ScaleId::new("H0"));
+            let rr_repo = InMemoryNewRollingStockRepository::new().with_railway(RailwayId::new("FS"));
             let db = NoOpDatabase;
 
             let request = new_catalog_item();
@@ -572,8 +593,26 @@ mod test {
             details: LocalizedText::with_italian("Dettagli"),
             delivery_date: Some(DeliveryDate::ByYear(2022)),
             availability_status: Some(AvailabilityStatus::Available),
-            rolling_stocks: Vec::new(),
+            rolling_stocks: vec![locomotive_request()],
             count: 1,
+        }
+    }
+
+    fn locomotive_request() -> RollingStockRequest {
+        RollingStockRequest::LocomotiveRequest {
+            railway: "FS".to_string(),
+            epoch: Epoch::IV,
+            livery: None,
+            length_over_buffers: None,
+            technical_specifications: None,
+            class_name: "E656".to_string(),
+            road_number: "E656 077".to_string(),
+            series: None,
+            depot: None,
+            locomotive_type: LocomotiveType::ElectricLocomotive,
+            dcc_interface: Some(DccInterface::Nem652),
+            control: Some(Control::DccReady),
+            is_dummy: false,
         }
     }
 
@@ -671,12 +710,17 @@ mod test {
                 railways: Vec::new(),
             }
         }
+
+        pub fn with_railway(mut self, railway_id: RailwayId) -> Self {
+            self.railways.push(railway_id);
+            self
+        }
     }
 
     #[async_trait]
     impl NewRollingStockRepository<'static, NoOpUnitOfWork> for InMemoryNewRollingStockRepository {
         async fn insert(&self, new_item: &NewRollingStockCommand, _unit_of_work: &mut NoOpUnitOfWork) -> Result<()> {
-            let rolling_stock_id = RollingStockId::from_str(new_item.catalog_item_id.value()).unwrap();
+            let rolling_stock_id = new_item.rolling_stock_id;
             self.rolling_stocks.add(rolling_stock_id, new_item.clone());
             Ok(())
         }
