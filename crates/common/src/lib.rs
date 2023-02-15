@@ -9,6 +9,7 @@ pub mod organizations;
 pub mod slug;
 pub mod socials;
 pub mod unit_of_work;
+pub mod validation;
 
 #[macro_use]
 extern crate serde_derive;

@@ -1,9 +1,11 @@
 use sqlx::Type;
+use std::borrow::Cow;
 use std::fmt;
 use std::fmt::Formatter;
 use std::str;
 use std::str::FromStr;
 use thiserror::Error;
+use validator::{validate_email, validate_length, ValidationError};
 
 /// It represents a mail address
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
@@ -13,6 +15,27 @@ pub struct MailAddress(String);
 impl MailAddress {
     pub fn new(mail_address: &str) -> Self {
         MailAddress::from_str(mail_address).unwrap()
+    }
+}
+
+pub fn validate_mail_address(input: &MailAddress) -> Result<(), ValidationError> {
+    if validate_email(&input.0) {
+        Ok(())
+    } else {
+        let mut error = ValidationError::new("email");
+        error.add_param(Cow::from("value"), &input.0);
+        Err(error)
+    }
+}
+
+pub fn validate_mail_address_length(input: &MailAddress) -> Result<(), ValidationError> {
+    if validate_length(&input.0, None, Some(250), None) {
+        Ok(())
+    } else {
+        let mut error = ValidationError::new("length");
+        error.add_param(Cow::from("value"), &input.0);
+        error.add_param(Cow::from("max"), &Some(250));
+        Err(error)
     }
 }
 

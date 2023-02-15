@@ -22,8 +22,11 @@ strum = { workspace = true }
 strum_macros = { workspace = true }
 thiserror = { workspace = true }
 url = { workspace = true }
+validator = { workspace = true }
 
 [dev-dependencies]
+fake = { workspace = true }
 pretty_assertions = { workspace = true }
+rand = { workspace = true }
 rstest = { workspace = true }
 serde_json = { workspace = true }

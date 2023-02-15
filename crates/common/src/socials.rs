@@ -1,9 +1,11 @@
+use crate::validation::Validator;
 use http::Uri;
 use sqlx::Type;
 use std::fmt;
 use std::fmt::Formatter;
 use std::str;
 use thiserror::Error;
+use validator::{Validate, ValidationErrors};
 
 /// the social profiles for an organization
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
@@ -18,6 +20,20 @@ pub struct Socials {
     pub twitter: Option<Handler>,
     /// the youtube handler
     pub youtube: Option<Handler>,
+}
+
+impl Validate for Socials {
+    fn validate(&self) -> Result<(), ValidationErrors> {
+        let mut validator = Validator::new();
+
+        validator.validate_length_optional("facebook", None, Some(100), self.facebook().map(|it| &it.0));
+        validator.validate_length_optional("instagram", None, Some(100), self.instagram().map(|it| &it.0));
+        validator.validate_length_optional("linkedin", None, Some(100), self.linkedin().map(|it| &it.0));
+        validator.validate_length_optional("twitter", None, Some(100), self.twitter().map(|it| &it.0));
+        validator.validate_length_optional("youtube", None, Some(100), self.youtube().map(|it| &it.0));
+
+        validator.into()
+    }
 }
 
 impl Socials {
@@ -200,6 +216,92 @@ mod test {
             assert_eq!(&Handler("linkedin_user".to_string()), social.linkedin().unwrap());
             assert_eq!(&Handler("twitter_user".to_string()), social.twitter().unwrap());
             assert_eq!(&Handler("youtube_user".to_string()), social.youtube().unwrap());
+        }
+    }
+
+    mod socials_validation {
+        use super::*;
+        use fake::{Fake, StringFaker};
+
+        #[test]
+        fn it_should_validate_the_linkedin_handler() {
+            let value = random_str(101);
+            let socials = SocialsBuilder::default().linkedin(&value).build().unwrap();
+
+            let result = socials.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("linkedin"));
+            assert_eq!(errors["linkedin"].len(), 1);
+            assert_eq!(errors["linkedin"][0].code, "length");
+            assert_eq!(errors["linkedin"][0].params["value"], value);
+            assert_eq!(errors["linkedin"][0].params["max"], 100);
+        }
+
+        #[test]
+        fn it_should_validate_the_facebook_handler() {
+            let value = random_str(101);
+            let socials = SocialsBuilder::default().facebook(&value).build().unwrap();
+
+            let result = socials.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("facebook"));
+            assert_eq!(errors["facebook"].len(), 1);
+            assert_eq!(errors["facebook"][0].code, "length");
+            assert_eq!(errors["facebook"][0].params["value"], value);
+            assert_eq!(errors["facebook"][0].params["max"], 100);
+        }
+
+        #[test]
+        fn it_should_validate_the_youtube_handler() {
+            let value = random_str(101);
+            let socials = SocialsBuilder::default().youtube(&value).build().unwrap();
+
+            let result = socials.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("youtube"));
+            assert_eq!(errors["youtube"].len(), 1);
+            assert_eq!(errors["youtube"][0].code, "length");
+            assert_eq!(errors["youtube"][0].params["value"], value);
+            assert_eq!(errors["youtube"][0].params["max"], 100);
+        }
+
+        #[test]
+        fn it_should_validate_the_instagram_handler() {
+            let value = random_str(101);
+            let socials = SocialsBuilder::default().instagram(&value).build().unwrap();
+
+            let result = socials.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("instagram"));
+            assert_eq!(errors["instagram"].len(), 1);
+            assert_eq!(errors["instagram"][0].code, "length");
+            assert_eq!(errors["instagram"][0].params["value"], value);
+            assert_eq!(errors["instagram"][0].params["max"], 100);
+        }
+
+        #[test]
+        fn it_should_validate_the_twitter_handler() {
+            let value = random_str(101);
+            let socials = SocialsBuilder::default().twitter(&value).build().unwrap();
+
+            let result = socials.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("twitter"));
+            assert_eq!(errors["twitter"].len(), 1);
+            assert_eq!(errors["twitter"][0].code, "length");
+            assert_eq!(errors["twitter"][0].params["value"], value);
+            assert_eq!(errors["twitter"][0].params["max"], 100);
+        }
+
+        pub fn random_str(len: usize) -> String {
+            const ASCII: &str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let f = StringFaker::with(Vec::from(ASCII), len);
+            f.fake()
         }
     }
 }

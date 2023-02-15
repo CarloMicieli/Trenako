@@ -7,18 +7,27 @@ use crate::contacts::phones::PhoneParsingError;
 use crate::contacts::website_urls::WebsiteUrlParsingError;
 use std::str::FromStr;
 use thiserror::Error;
+use validator::Validate;
 
 pub use emails::MailAddress;
 pub use phones::PhoneNumber;
 pub use website_urls::WebsiteUrl;
 
 /// The contact information provides the means to communicate with an organization.
-#[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize, Default)]
+#[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize, Default, Validate)]
 pub struct ContactInformation {
     /// the email address
+    #[validate(
+        custom = "crate::contacts::emails::validate_mail_address",
+        custom = "crate::contacts::emails::validate_mail_address_length"
+    )]
     pub email: Option<MailAddress>,
 
     /// the phone number
+    #[validate(
+        custom = "crate::contacts::phones::validate_phone_number",
+        custom = "crate::contacts::phones::validate_phone_number_length"
+    )]
     pub phone: Option<PhoneNumber>,
 
     /// the website url
@@ -141,7 +150,7 @@ mod tests {
         }
     }
 
-    mod contact_info_builder {
+    mod contact_information_builder {
         use super::*;
         use pretty_assertions::assert_eq;
         use rstest::rstest;
@@ -181,6 +190,69 @@ mod tests {
                 .website_url(website_url)
                 .build();
             assert_eq!(expected, result);
+        }
+    }
+
+    mod contact_information_validation {
+        use super::*;
+        use fake::{Fake, StringFaker};
+
+        #[test]
+        fn it_should_validate_phone_number() {
+            let ci = ContactInformationBuilder::default().phone("not valid").build().unwrap();
+
+            let result = ci.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("phone"));
+            assert_eq!(errors["phone"].len(), 1);
+            assert_eq!(errors["phone"][0].code, "phone");
+            assert_eq!(errors["phone"][0].params["value"], "not valid");
+        }
+
+        #[test]
+        fn it_should_validate_phone_number_length() {
+            let value = random_str(251);
+            let ci = ContactInformationBuilder::default().phone(&value).build().unwrap();
+
+            let result = ci.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("phone"));
+            assert_eq!(errors["phone"][1].code, "length");
+            assert_eq!(errors["phone"][1].params["value"], value);
+        }
+
+        #[test]
+        fn it_should_validate_mail_address() {
+            let ci = ContactInformationBuilder::default().email("not valid").build().unwrap();
+
+            let result = ci.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("email"));
+            assert_eq!(errors["email"].len(), 1);
+            assert_eq!(errors["email"][0].code, "email");
+            assert_eq!(errors["email"][0].params["value"], "not valid");
+        }
+
+        #[test]
+        fn it_should_validate_mail_address_length() {
+            let value = random_str(251);
+            let ci = ContactInformationBuilder::default().email(&value).build().unwrap();
+
+            let result = ci.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("email"));
+            assert_eq!(errors["email"][1].code, "length");
+            assert_eq!(errors["email"][1].params["value"], value);
+        }
+
+        pub fn random_str(len: usize) -> String {
+            const ASCII: &str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let f = StringFaker::with(Vec::from(ASCII), len);
+            f.fake()
         }
     }
 }

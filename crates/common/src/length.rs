@@ -1,12 +1,15 @@
 use crate::measure_units::MeasureUnit;
 use rust_decimal::prelude::Zero;
 use rust_decimal::Decimal;
+use rust_decimal_macros::dec;
+use std::borrow::Cow;
 use std::cmp;
 use std::cmp::Ordering;
 use std::fmt;
 use std::fmt::Formatter;
 use std::ops;
 use thiserror::Error;
+use validator::ValidationError;
 
 /// It represents a length.
 ///
@@ -18,6 +21,17 @@ pub enum Length {
     Meters(Decimal),
     Miles(Decimal),
     Millimeters(Decimal),
+}
+
+pub fn validate_length(input: &Length) -> Result<(), ValidationError> {
+    if input.quantity().is_sign_positive() {
+        Ok(())
+    } else {
+        let mut error = ValidationError::new("length");
+        error.add_param(Cow::from("min"), &dec!(0));
+        error.add_param(Cow::from("value"), &input.quantity());
+        Err(error)
+    }
 }
 
 #[derive(Debug, PartialEq, Error)]
@@ -443,6 +457,21 @@ mod test {
             assert!(l1 < l2);
             assert!(l2 > l1);
             assert!(l3 > l1);
+        }
+
+        #[rstest]
+        #[case(Length::Inches(dec!(-42.0)))]
+        #[case(Length::Meters(dec!(-42.0)))]
+        #[case(Length::Millimeters(dec!(-42.0)))]
+        #[case(Length::Miles(dec!(-42.0)))]
+        #[case(Length::Kilometers(dec!(-42.0)))]
+        fn it_should_validate_lengths(#[case] l1: Length) {
+            let result = validate_length(&l1);
+
+            let error = result.unwrap_err();
+            assert_eq!(error.code, "length");
+            assert_eq!(error.params["min"], "0");
+            assert_eq!(error.params["value"], "-42.0");
         }
     }
 

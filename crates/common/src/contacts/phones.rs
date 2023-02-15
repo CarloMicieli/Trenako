@@ -1,9 +1,11 @@
 use sqlx::Type;
+use std::borrow::Cow;
 use std::fmt;
 use std::fmt::Formatter;
 use std::str;
 use std::str::FromStr;
 use thiserror::Error;
+use validator::{validate_length, validate_phone, ValidationError};
 
 /// It represents a phone number
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
@@ -13,6 +15,27 @@ pub struct PhoneNumber(String);
 impl PhoneNumber {
     pub fn new(phone: &str) -> Self {
         PhoneNumber::from_str(phone).unwrap()
+    }
+}
+
+pub fn validate_phone_number(input: &PhoneNumber) -> Result<(), ValidationError> {
+    if validate_phone(&input.0) {
+        Ok(())
+    } else {
+        let mut error = ValidationError::new("phone");
+        error.add_param(Cow::from("value"), &input.0);
+        Err(error)
+    }
+}
+
+pub fn validate_phone_number_length(input: &PhoneNumber) -> Result<(), ValidationError> {
+    if validate_length(&input.0, None, Some(250), None) {
+        Ok(())
+    } else {
+        let mut error = ValidationError::new("length");
+        error.add_param(Cow::from("value"), &input.0);
+        error.add_param(Cow::from("max"), &Some(250));
+        Err(error)
     }
 }
 

@@ -1,18 +1,24 @@
 use isocountry::CountryCode;
 use thiserror::Error;
+use validator::Validate;
 
 /// It represents a physical street address
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Validate)]
 pub struct Address {
     /// the street address
+    #[validate(length(min = 5, max = 255))]
     pub street_address: String,
     /// the (optional) extended information for the address
+    #[validate(length(max = 255))]
     pub extended_address: Option<String>,
     /// the city/town
+    #[validate(length(min = 3, max = 50))]
     pub city: String,
     /// the region code; for example, the state or province.
+    #[validate(length(max = 50))]
     pub region: Option<String>,
     /// the postal code (ZIP code)
+    #[validate(length(min = 3, max = 10))]
     pub postal_code: String,
     /// the ISO country code (ISO 3166-1 alpha-3)
     pub country: CountryCode,
@@ -216,6 +222,136 @@ mod tests {
 
             let result = address_builder.build();
             assert_eq!(expected, result);
+        }
+    }
+
+    mod addresses_validation {
+        use crate::address::Address;
+        use fake::{Fake, StringFaker};
+        use isocountry::CountryCode;
+        use rstest::rstest;
+        use validator::Validate;
+
+        #[rstest]
+        #[case(random_str(4))]
+        #[case(random_str(256))]
+        fn it_should_validate_street_address(#[case] input: String) {
+            let address = Address {
+                street_address: input.clone(),
+                extended_address: None,
+                city: String::from("City"),
+                region: None,
+                postal_code: String::from("ZIP"),
+                country: CountryCode::DEU,
+            };
+
+            let result = address.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("street_address"));
+            assert_eq!(errors["street_address"].len(), 1);
+            assert_eq!(errors["street_address"][0].code, "length");
+            assert_eq!(errors["street_address"][0].params["value"], input);
+            assert_eq!(errors["street_address"][0].params["min"], 5);
+            assert_eq!(errors["street_address"][0].params["max"], 255);
+        }
+
+        #[rstest]
+        #[case(random_str(256))]
+        fn it_should_validate_extended_address(#[case] input: String) {
+            let address = Address {
+                street_address: String::from("street address"),
+                extended_address: Some(input.clone()),
+                city: String::from("City"),
+                region: None,
+                postal_code: String::from("ZIP"),
+                country: CountryCode::DEU,
+            };
+
+            let result = address.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("extended_address"));
+            assert_eq!(errors["extended_address"].len(), 1);
+            assert_eq!(errors["extended_address"][0].code, "length");
+            assert_eq!(errors["extended_address"][0].params["value"], input);
+            assert_eq!(errors["extended_address"][0].params["max"], 255);
+        }
+
+        #[rstest]
+        #[case(random_str(2))]
+        #[case(random_str(51))]
+        fn it_should_validate_city(#[case] input: String) {
+            let address = Address {
+                street_address: String::from("street address"),
+                extended_address: None,
+                city: input.clone(),
+                region: None,
+                postal_code: String::from("ZIP"),
+                country: CountryCode::DEU,
+            };
+
+            let result = address.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("city"));
+            assert_eq!(errors["city"].len(), 1);
+            assert_eq!(errors["city"][0].code, "length");
+            assert_eq!(errors["city"][0].params["value"], input);
+            assert_eq!(errors["city"][0].params["min"], 3);
+            assert_eq!(errors["city"][0].params["max"], 50);
+        }
+
+        #[rstest]
+        #[case(random_str(51))]
+        fn it_should_validate_region(#[case] input: String) {
+            let address = Address {
+                street_address: String::from("street address"),
+                extended_address: None,
+                city: String::from("city"),
+                region: Some(input.clone()),
+                postal_code: String::from("ZIP"),
+                country: CountryCode::DEU,
+            };
+
+            let result = address.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("region"));
+            assert_eq!(errors["region"].len(), 1);
+            assert_eq!(errors["region"][0].code, "length");
+            assert_eq!(errors["region"][0].params["value"], input);
+            assert_eq!(errors["region"][0].params["max"], 50);
+        }
+
+        #[rstest]
+        #[case(random_str(2))]
+        #[case(random_str(11))]
+        fn it_should_validate_postal_code(#[case] input: String) {
+            let address = Address {
+                street_address: String::from("street address"),
+                extended_address: None,
+                city: String::from("city"),
+                region: None,
+                postal_code: input.clone(),
+                country: CountryCode::DEU,
+            };
+
+            let result = address.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("postal_code"));
+            assert_eq!(errors["postal_code"].len(), 1);
+            assert_eq!(errors["postal_code"][0].code, "length");
+            assert_eq!(errors["postal_code"][0].params["value"], input);
+            assert_eq!(errors["postal_code"][0].params["min"], 3);
+            assert_eq!(errors["postal_code"][0].params["max"], 10);
+        }
+
+        pub fn random_str(len: usize) -> String {
+            const ASCII: &str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let f = StringFaker::with(Vec::from(ASCII), len);
+            f.fake()
         }
     }
 }

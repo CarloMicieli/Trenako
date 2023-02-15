@@ -11,6 +11,7 @@ args = ["clean"]
 [tasks.check]
 description = "build: analyze the workspace and report errors, but don't build object files"
 category = "Build"
+env = { "SQLX_OFFLINE" = "true" }
 command = "cargo"
 args = ["check"]
 

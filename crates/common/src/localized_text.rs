@@ -1,6 +1,8 @@
+use crate::validation::Validator;
 use std::collections::HashMap;
 use strum_macros;
 use strum_macros::{Display, EnumString};
+use validator::{Validate, ValidationErrors};
 
 /// It represents a multi-language text.
 #[derive(Debug, Serialize, Deserialize, Default, Clone, PartialEq, Eq)]
@@ -29,6 +31,17 @@ impl LocalizedText {
     /// Returns the label in Italian, if exists
     pub fn italian(&self) -> Option<&String> {
         self.0.get(&Language::Italian)
+    }
+}
+
+impl Validate for LocalizedText {
+    fn validate(&self) -> Result<(), ValidationErrors> {
+        let mut validator = Validator::new();
+
+        validator.validate_length_optional("en", None, Some(1000), self.english());
+        validator.validate_length_optional("it", None, Some(1000), self.italian());
+
+        validator.into()
     }
 }
 
@@ -134,6 +147,47 @@ mod test {
 
             assert_eq!(Some(&String::from("Buongiorno")), localized_text.italian());
             assert_eq!(Some(&String::from("hello world")), localized_text.english());
+        }
+    }
+
+    mod localize_texts_validation {
+        use super::*;
+        use fake::{Fake, StringFaker};
+
+        #[test]
+        fn it_should_validate_english_texts() {
+            let value = random_str(1001);
+            let localized = LocalizedText::with_english(&value);
+
+            let result = localized.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("en"));
+            assert_eq!(errors["en"].len(), 1);
+            assert_eq!(errors["en"][0].code, "length");
+            assert_eq!(errors["en"][0].params["value"], value);
+            assert_eq!(errors["en"][0].params["max"], 1000);
+        }
+
+        #[test]
+        fn it_should_validate_italian_texts() {
+            let value = random_str(1001);
+            let localized = LocalizedText::with_italian(&value);
+
+            let result = localized.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("it"));
+            assert_eq!(errors["it"].len(), 1);
+            assert_eq!(errors["it"][0].code, "length");
+            assert_eq!(errors["it"][0].params["value"], value);
+            assert_eq!(errors["it"][0].params["max"], 1000);
+        }
+
+        pub fn random_str(len: usize) -> String {
+            const ASCII: &str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let f = StringFaker::with(Vec::from(ASCII), len);
+            f.fake()
         }
     }
 }
