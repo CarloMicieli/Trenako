@@ -31,6 +31,7 @@ pub struct ContactInformation {
     pub phone: Option<PhoneNumber>,
 
     /// the website url
+    #[validate(custom = "crate::contacts::website_urls::validate_website_url_length")]
     pub website_url: Option<WebsiteUrl>,
 }
 
@@ -195,7 +196,20 @@ mod tests {
 
     mod contact_information_validation {
         use super::*;
-        use fake::{Fake, StringFaker};
+        use crate::test_helpers::random_str;
+
+        #[test]
+        fn it_should_validate_contact_information() {
+            let ci = ContactInformationBuilder::default()
+                .phone("+14152370800")
+                .email("mail@admin.com")
+                .website_url("https://www.site.com")
+                .build()
+                .unwrap();
+
+            let result = ci.validate();
+            assert!(result.is_ok());
+        }
 
         #[test]
         fn it_should_validate_phone_number() {
@@ -212,7 +226,7 @@ mod tests {
 
         #[test]
         fn it_should_validate_phone_number_length() {
-            let value = random_str(251);
+            let value = random_str(21);
             let ci = ContactInformationBuilder::default().phone(&value).build().unwrap();
 
             let result = ci.validate();
@@ -221,6 +235,7 @@ mod tests {
             assert!(errors.contains_key("phone"));
             assert_eq!(errors["phone"][1].code, "length");
             assert_eq!(errors["phone"][1].params["value"], value);
+            assert_eq!(errors["phone"][1].params["max"], 20);
         }
 
         #[test]
@@ -247,12 +262,24 @@ mod tests {
             assert!(errors.contains_key("email"));
             assert_eq!(errors["email"][1].code, "length");
             assert_eq!(errors["email"][1].params["value"], value);
+            assert_eq!(errors["email"][1].params["max"], 250);
         }
 
-        pub fn random_str(len: usize) -> String {
-            const ASCII: &str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            let f = StringFaker::with(Vec::from(ASCII), len);
-            f.fake()
+        #[test]
+        fn it_should_validate_website_url_length() {
+            let value = format!("https://{}.com/", random_str(101 - "https://.com/".len())).to_lowercase();
+            let ci = ContactInformationBuilder::default()
+                .website_url(&value)
+                .build()
+                .unwrap();
+
+            let result = ci.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("website_url"));
+            assert_eq!(errors["website_url"][0].code, "length");
+            assert_eq!(errors["website_url"][0].params["value"], value);
+            assert_eq!(errors["website_url"][0].params["max"], 100);
         }
     }
 }

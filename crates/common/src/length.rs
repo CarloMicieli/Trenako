@@ -458,6 +458,22 @@ mod test {
             assert!(l2 > l1);
             assert!(l3 > l1);
         }
+    }
+
+    mod lengths_validation {
+        use super::*;
+        use rstest::rstest;
+
+        #[rstest]
+        #[case(Length::Inches(dec!(42.0)))]
+        #[case(Length::Meters(dec!(42.0)))]
+        #[case(Length::Millimeters(dec!(42.0)))]
+        #[case(Length::Miles(dec!(42.0)))]
+        #[case(Length::Kilometers(dec!(42.0)))]
+        fn it_should_validate_lengths(#[case] l1: Length) {
+            let result = validate_length(&l1);
+            assert!(result.is_ok());
+        }
 
         #[rstest]
         #[case(Length::Inches(dec!(-42.0)))]
@@ -465,7 +481,7 @@ mod test {
         #[case(Length::Millimeters(dec!(-42.0)))]
         #[case(Length::Miles(dec!(-42.0)))]
         #[case(Length::Kilometers(dec!(-42.0)))]
-        fn it_should_validate_lengths(#[case] l1: Length) {
+        fn it_should_validate_negative_lengths(#[case] l1: Length) {
             let result = validate_length(&l1);
 
             let error = result.unwrap_err();

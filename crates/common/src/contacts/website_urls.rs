@@ -1,15 +1,27 @@
 use sqlx::Type;
+use std::borrow::Cow;
 use std::fmt;
 use std::fmt::Formatter;
 use std::str;
 use std::str::FromStr;
 use thiserror::Error;
 use url::Url;
+use validator::{validate_length, ValidationError};
 
 /// It represents a website url
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
 #[sqlx(transparent)]
 pub struct WebsiteUrl(Url);
+
+pub fn validate_website_url_length(input: &WebsiteUrl) -> Result<(), ValidationError> {
+    if validate_length(input.0.as_str(), None, Some(100), None) {
+        Ok(())
+    } else {
+        let mut error = ValidationError::new("length");
+        error.add_param(Cow::from("max"), &Some(100));
+        Err(error)
+    }
+}
 
 impl WebsiteUrl {
     /// Create a new website url

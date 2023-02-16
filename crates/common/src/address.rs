@@ -227,10 +227,25 @@ mod tests {
 
     mod addresses_validation {
         use crate::address::Address;
-        use fake::{Fake, StringFaker};
+        use crate::test_helpers::random_str;
         use isocountry::CountryCode;
         use rstest::rstest;
         use validator::Validate;
+
+        #[test]
+        fn it_should_validate_addresses() {
+            let address = Address {
+                street_address: String::from("Street address 1"),
+                extended_address: None,
+                city: String::from("City"),
+                region: None,
+                postal_code: String::from("ZIP"),
+                country: CountryCode::DEU,
+            };
+
+            let result = address.validate();
+            assert!(result.is_ok());
+        }
 
         #[rstest]
         #[case(random_str(4))]
@@ -346,12 +361,6 @@ mod tests {
             assert_eq!(errors["postal_code"][0].params["value"], input);
             assert_eq!(errors["postal_code"][0].params["min"], 3);
             assert_eq!(errors["postal_code"][0].params["max"], 10);
-        }
-
-        pub fn random_str(len: usize) -> String {
-            const ASCII: &str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            let f = StringFaker::with(Vec::from(ASCII), len);
-            f.fake()
         }
     }
 }

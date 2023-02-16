@@ -11,5 +11,8 @@ pub mod socials;
 pub mod unit_of_work;
 pub mod validation;
 
+#[cfg(test)]
+mod test_helpers;
+
 #[macro_use]
 extern crate serde_derive;

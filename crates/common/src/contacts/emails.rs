@@ -33,7 +33,6 @@ pub fn validate_mail_address_length(input: &MailAddress) -> Result<(), Validatio
         Ok(())
     } else {
         let mut error = ValidationError::new("length");
-        error.add_param(Cow::from("value"), &input.0);
         error.add_param(Cow::from("max"), &Some(250));
         Err(error)
     }

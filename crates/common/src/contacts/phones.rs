@@ -22,19 +22,16 @@ pub fn validate_phone_number(input: &PhoneNumber) -> Result<(), ValidationError>
     if validate_phone(&input.0) {
         Ok(())
     } else {
-        let mut error = ValidationError::new("phone");
-        error.add_param(Cow::from("value"), &input.0);
-        Err(error)
+        Err(ValidationError::new("phone"))
     }
 }
 
 pub fn validate_phone_number_length(input: &PhoneNumber) -> Result<(), ValidationError> {
-    if validate_length(&input.0, None, Some(250), None) {
+    if validate_length(&input.0, None, Some(20), None) {
         Ok(())
     } else {
         let mut error = ValidationError::new("length");
-        error.add_param(Cow::from("value"), &input.0);
-        error.add_param(Cow::from("max"), &Some(250));
+        error.add_param(Cow::from("max"), &Some(20));
         Err(error)
     }
 }

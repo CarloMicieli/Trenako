@@ -38,8 +38,8 @@ impl Validate for LocalizedText {
     fn validate(&self) -> Result<(), ValidationErrors> {
         let mut validator = Validator::new();
 
-        validator.validate_length_optional("en", None, Some(1000), self.english());
-        validator.validate_length_optional("it", None, Some(1000), self.italian());
+        validator.validate_length_optional("en", None, Some(2500), self.english());
+        validator.validate_length_optional("it", None, Some(2500), self.italian());
 
         validator.into()
     }
@@ -152,42 +152,47 @@ mod test {
 
     mod localize_texts_validation {
         use super::*;
-        use fake::{Fake, StringFaker};
+        use crate::test_helpers::random_str;
 
         #[test]
-        fn it_should_validate_english_texts() {
-            let value = random_str(1001);
-            let localized = LocalizedText::with_english(&value);
+        fn it_should_validate_localized_text() {
+            let localized_text = LocalizedTextBuilder::default()
+                .english_text("hello world")
+                .italian_text("Buongiorno")
+                .build();
 
-            let result = localized.validate();
+            let result = localized_text.validate();
+            assert!(result.is_ok());
+        }
+
+        #[test]
+        fn it_should_validate_the_english_text() {
+            let value = random_str(2501);
+            let localized_text = LocalizedText::with_english(&value);
+
+            let result = localized_text.validate();
             let err = result.unwrap_err();
             let errors = err.field_errors();
             assert!(errors.contains_key("en"));
             assert_eq!(errors["en"].len(), 1);
             assert_eq!(errors["en"][0].code, "length");
             assert_eq!(errors["en"][0].params["value"], value);
-            assert_eq!(errors["en"][0].params["max"], 1000);
+            assert_eq!(errors["en"][0].params["max"], 2500);
         }
 
         #[test]
-        fn it_should_validate_italian_texts() {
-            let value = random_str(1001);
-            let localized = LocalizedText::with_italian(&value);
+        fn it_should_validate_the_italian_text() {
+            let value = random_str(2501);
+            let localized_text = LocalizedText::with_italian(&value);
 
-            let result = localized.validate();
+            let result = localized_text.validate();
             let err = result.unwrap_err();
             let errors = err.field_errors();
             assert!(errors.contains_key("it"));
             assert_eq!(errors["it"].len(), 1);
             assert_eq!(errors["it"][0].code, "length");
             assert_eq!(errors["it"][0].params["value"], value);
-            assert_eq!(errors["it"][0].params["max"], 1000);
-        }
-
-        pub fn random_str(len: usize) -> String {
-            const ASCII: &str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            let f = StringFaker::with(Vec::from(ASCII), len);
-            f.fake()
+            assert_eq!(errors["it"][0].params["max"], 2500);
         }
     }
 }
