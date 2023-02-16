@@ -1,16 +1,32 @@
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;
 use sqlx::Type;
+use std::borrow::Cow;
 use std::cmp::Ordering;
 use std::fmt::Formatter;
 use std::{cmp, convert, fmt, ops};
 use thiserror::Error;
+use validator::ValidationError;
 
 /// It represents the {@code Ratio} between a model railway size
 /// and the size of an actual train.
 #[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize, Type)]
 #[sqlx(transparent)]
 pub struct Ratio(Decimal);
+
+pub fn validate_ratio(input: &Ratio) -> Result<(), ValidationError> {
+    let value = input.0;
+
+    if dec!(1.0) <= value && value <= dec!(220.0) {
+        Ok(())
+    } else {
+        let mut error = ValidationError::new("ratio");
+        error.add_param(Cow::from("min"), &Some(1));
+        error.add_param(Cow::from("max"), &Some(220));
+        error.add_param(Cow::from("value"), &value);
+        Err(error)
+    }
+}
 
 impl convert::TryFrom<Decimal> for Ratio {
     type Error = RatioError;
@@ -119,6 +135,21 @@ mod tests {
 
             assert!(ratio1 > ratio2, "1:87 > 1:160 must hold true");
             assert!(ratio2 < ratio1, "1:160 < 1:87 must hold true");
+        }
+    }
+
+    mod ratio_validation {
+        use super::*;
+
+        #[test]
+        fn it_should_validate_ratios() {
+            let ratio = Ratio(dec!(-1.0));
+            let result = validate_ratio(&ratio);
+            let error = result.unwrap_err();
+            assert_eq!(error.code, "ratio");
+            assert_eq!(error.params["value"], "-1.0");
+            assert_eq!(error.params["min"], 1);
+            assert_eq!(error.params["max"], 220);
         }
     }
 }

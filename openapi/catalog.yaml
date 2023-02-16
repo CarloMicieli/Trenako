@@ -13,20 +13,20 @@ components:
       description: a model railways manufacturer
       properties:
         brand_id:
+          description: the brand unique identifier (an url encoded string)
           type: string
           format: uri
-          description: the brand unique identifier (an url encoded string)
         name:
-          type: string
           description: the brand name
-        registered_company_name:
           type: string
+        registered_company_name:
           description: the registered company name for this brand
+          type: string
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
         group_name:
-          type: string
           description: the group name in case the brand is part of a group
+          type: string
         description:
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         address:
@@ -59,10 +59,12 @@ components:
       description: a request to create/update model railways brands
       properties:
         name:
+          description: the brand name
           type: string
           minLength: 3
           maxLength: 50
         registered_company_name:
+          description: the registered company name for this brand
           type: string
           maxLength: 100
         organization_entity_type:
@@ -702,33 +704,32 @@ components:
       description: a company which operates a railway network
       properties:
         railway_id:
+          description: the unique railway identifier (an URL encoded string)
           type: string
           format: uri
-          description: the unique railway identifier (an URL encoded string)
         name:
-          type: string
           description: the railway name
+          type: string
         abbreviation:
-          type: string
           description: the railway abbreviated name
-        registered_company_name:
           type: string
+        registered_company_name:
           description: the registered company name
+          type: string
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
         description:
-          description: the railway description
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         country:
-          type: string
           description: the registration country
+          type: string
         period_of_activity:
           $ref: "#/components/schemas/RailwayPeriodOfActivity"
         gauge:
           $ref: "#/components/schemas/RailwayGauge"
         headquarters:
-          type: string
           description: the railway headquarter
+          type: string
         total_length:
           $ref: "#/components/schemas/RailwayTotalLength"
         contact_info:
@@ -765,36 +766,36 @@ components:
       description: the request to create/update railways
       properties:
         name:
+          description: the railway name
           type: string
           minLength: 2
           maxLength: 25
-          description: the railway name
         abbreviation:
+          description: the railway abbreviated name
           type: string
           minLength: 2
           maxLength: 10
-          description: the railway abbreviated name
         registered_company_name:
+          description: the registered company name
           type: string
           maxLength: 250
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
         description:
-          description: the railway description
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         country:
+          description: the ISO country code (ISO 3166-1 alpha-2)
           type: string
           minLength: 2
           maxLength: 2
-          description: the ISO country code (ISO 3166-1 alpha-2)
         period_of_activity:
           $ref: "#/components/schemas/RailwayPeriodOfActivity"
         gauge:
           $ref: "#/components/schemas/RailwayGauge"
         headquarters:
+          description: the railway headquarter
           type: string
           maxLength: 250
-          description: the railway headquarter
         total_length:
           $ref: "#/components/schemas/RailwayTotalLength"
         contact_info:
@@ -808,11 +809,11 @@ components:
     RailwayGauge:
       type: object
       meters:
+        description: the distance between the two rails in meters
         type: number
         format: float
         minimum: 0.1
         maximum: 9.0
-        description: the distance between the two rails in meters
       track_gauge:
         $ref: "#/components/schemas/TrackGauge"
 
@@ -828,15 +829,15 @@ components:
       description: the total length of a railway network
       properties:
         miles:
-          type: number
-          format: float
-          minimum: 0.1
           description: the total railway network in miles
-        kilometers:
           type: number
           format: float
           minimum: 0.1
+        kilometers:
           description: the total railway network in kilometers
+          type: number
+          format: float
+          minimum: 0.1
 
     RollingStock:
       type: object

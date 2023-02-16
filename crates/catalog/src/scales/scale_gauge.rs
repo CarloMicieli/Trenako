@@ -1,5 +1,5 @@
 use crate::common::TrackGauge;
-use common::length::Length;
+use common::length::{validate_length_range, Length};
 use common::measure_units::MeasureUnit;
 use common::measure_units::MeasureUnit::Millimeters;
 use rust_decimal::Decimal;
@@ -8,6 +8,7 @@ use serde::{Deserialize, Serialize};
 use std::cmp;
 use std::cmp::Ordering;
 use thiserror::Error;
+use validator::{Validate, ValidationErrors};
 
 /// It represents the track gauge information for a modelling scale
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
@@ -20,6 +21,26 @@ pub struct Gauge {
     pub inches: Length,
     /// the track gauge
     pub track_gauge: TrackGauge,
+}
+
+impl Validate for Gauge {
+    fn validate(&self) -> Result<(), ValidationErrors> {
+        let mut errors = ValidationErrors::new();
+
+        if let Err(error) = validate_length_range(&self.millimeters, None) {
+            errors.add("millimeters", error);
+        }
+
+        if let Err(error) = validate_length_range(&self.inches, None) {
+            errors.add("inches", error);
+        }
+
+        if errors.is_empty() {
+            Ok(())
+        } else {
+            Err(errors)
+        }
+    }
 }
 
 impl Gauge {
@@ -194,6 +215,42 @@ mod tests {
         #[derive(Serialize, Deserialize)]
         struct TestStruct {
             gauge: Gauge,
+        }
+    }
+
+    mod scale_gauge_validation {
+        use super::*;
+
+        #[test]
+        fn it_should_validate_inches() {
+            let input = Gauge {
+                millimeters: Length::Millimeters(dec!(1.0)),
+                inches: Length::Millimeters(dec!(-1.0)),
+                track_gauge: TrackGauge::Standard,
+            };
+
+            let result = input.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("inches"));
+            assert_eq!(errors["inches"].len(), 1);
+            assert_eq!(errors["inches"][0].code, "range");
+        }
+
+        #[test]
+        fn it_should_validate_millimeters() {
+            let input = Gauge {
+                millimeters: Length::Millimeters(dec!(-1.0)),
+                inches: Length::Millimeters(dec!(1.0)),
+                track_gauge: TrackGauge::Standard,
+            };
+
+            let result = input.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("millimeters"));
+            assert_eq!(errors["millimeters"].len(), 1);
+            assert_eq!(errors["millimeters"][0].code, "range");
         }
     }
 }

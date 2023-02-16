@@ -1,7 +1,6 @@
 use crate::measure_units::MeasureUnit;
-use rust_decimal::prelude::Zero;
+use rust_decimal::prelude::{ToPrimitive, Zero};
 use rust_decimal::Decimal;
-use rust_decimal_macros::dec;
 use std::borrow::Cow;
 use std::cmp;
 use std::cmp::Ordering;
@@ -23,12 +22,18 @@ pub enum Length {
     Millimeters(Decimal),
 }
 
-pub fn validate_length(input: &Length) -> Result<(), ValidationError> {
-    if input.quantity().is_sign_positive() {
+pub fn validate_length_range(input: &Length, max: Option<Decimal>) -> Result<(), ValidationError> {
+    let value = input.quantity();
+    if value.is_sign_positive() && value < max.unwrap_or(Decimal::MAX) {
         Ok(())
     } else {
-        let mut error = ValidationError::new("length");
-        error.add_param(Cow::from("min"), &dec!(0));
+        let mut error = ValidationError::new("range");
+        error.add_param(Cow::from("min"), &Some(0));
+
+        if max.is_some() {
+            error.add_param(Cow::from("max"), &max.and_then(|it| it.to_f64()));
+        }
+
         error.add_param(Cow::from("value"), &input.quantity());
         Err(error)
     }
@@ -463,6 +468,7 @@ mod test {
     mod lengths_validation {
         use super::*;
         use rstest::rstest;
+        use rust_decimal_macros::dec;
 
         #[rstest]
         #[case(Length::Inches(dec!(42.0)))]
@@ -471,7 +477,7 @@ mod test {
         #[case(Length::Miles(dec!(42.0)))]
         #[case(Length::Kilometers(dec!(42.0)))]
         fn it_should_validate_lengths(#[case] l1: Length) {
-            let result = validate_length(&l1);
+            let result = validate_length_range(&l1, None);
             assert!(result.is_ok());
         }
 
@@ -482,12 +488,12 @@ mod test {
         #[case(Length::Miles(dec!(-42.0)))]
         #[case(Length::Kilometers(dec!(-42.0)))]
         fn it_should_validate_negative_lengths(#[case] l1: Length) {
-            let result = validate_length(&l1);
+            let result = validate_length_range(&l1, None);
 
             let error = result.unwrap_err();
-            assert_eq!(error.code, "length");
-            assert_eq!(error.params["min"], "0");
+            assert_eq!(error.code, "range");
             assert_eq!(error.params["value"], "-42.0");
+            assert_eq!(error.params["min"], 0);
         }
     }
 

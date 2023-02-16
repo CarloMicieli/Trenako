@@ -523,9 +523,11 @@ dependencies = [
  "async-trait",
  "chrono",
  "common",
+ "fake",
  "isocountry",
  "itertools 0.10.5",
  "pretty_assertions",
+ "rand",
  "rstest",
  "rust_decimal",
  "rust_decimal_macros",
@@ -538,6 +540,7 @@ dependencies = [
  "thiserror",
  "tokio",
  "uuid",
+ "validator",
 ]
 
 [[package]]

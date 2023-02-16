@@ -140,7 +140,11 @@ impl TryFrom<RailwayRequest> for RailwayCommandPayload {
             registered_company_name: request.registered_company_name,
             organization_entity_type: request.organization_entity_type,
             description: request.description.italian().map(String::to_string),
-            country: request.country.alpha2().to_string(),
+            country: request
+                .country
+                .expect("country code is required for railway requests")
+                .alpha2()
+                .to_string(),
             operating_since,
             operating_until,
             status: Some(status),
@@ -169,7 +173,6 @@ mod test {
         use super::*;
         use crate::railways::commands::repositories::in_memory::InMemoryRailwayRepository;
         use chrono::TimeZone;
-        use common::localized_text::LocalizedText;
         use common::unit_of_work::noop::NoOpDatabase;
         use isocountry::CountryCode;
         use pretty_assertions::assert_eq;
@@ -204,17 +207,8 @@ mod test {
         fn new_railway(name: &str) -> RailwayRequest {
             RailwayRequest {
                 name: name.to_string(),
-                abbreviation: None,
-                registered_company_name: None,
-                organization_entity_type: None,
-                description: LocalizedText::default(),
-                country: CountryCode::ITA,
-                period_of_activity: None,
-                gauge: None,
-                headquarters: None,
-                total_length: None,
-                contact_info: None,
-                socials: None,
+                country: Some(CountryCode::ITA),
+                ..RailwayRequest::default()
             }
         }
 

@@ -1,8 +1,9 @@
 use crate::common::TrackGauge;
-use common::length::Length;
+use common::length::{validate_length_range, Length};
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;
 use serde::{Deserialize, Serialize};
+use validator::{Validate, ValidationErrors};
 
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RailwayGauge {
@@ -11,6 +12,18 @@ pub struct RailwayGauge {
     pub meters: Length,
     /// the track gauge
     pub track_gauge: TrackGauge,
+}
+
+impl Validate for RailwayGauge {
+    fn validate(&self) -> Result<(), ValidationErrors> {
+        if let Err(error) = validate_length_range(&self.meters, Some(dec!(9.9))) {
+            let mut errors = ValidationErrors::new();
+            errors.add("meters", error);
+            Err(errors)
+        } else {
+            Ok(())
+        }
+    }
 }
 
 impl RailwayGauge {
@@ -126,6 +139,39 @@ mod test {
         #[derive(Serialize, Deserialize)]
         struct TestStruct {
             railway_gauge: RailwayGauge,
+        }
+    }
+
+    mod railway_gauge_validation {
+        use super::*;
+
+        #[test]
+        fn it_should_validate_railway_gauges() {
+            let railway_gauge = RailwayGauge {
+                meters: Length::Meters(dec!(1.435)),
+                track_gauge: TrackGauge::Standard,
+            };
+
+            let result = railway_gauge.validate();
+            assert!(result.is_ok());
+        }
+
+        #[test]
+        fn it_should_validate_negative_meters() {
+            let railway_gauge = RailwayGauge {
+                meters: Length::Meters(dec!(-10.0)),
+                track_gauge: TrackGauge::Standard,
+            };
+
+            let result = railway_gauge.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("meters"));
+            assert_eq!(errors["meters"].len(), 1);
+            assert_eq!(errors["meters"][0].code, "range");
+            assert_eq!(errors["meters"][0].params["value"], "-10.0");
+            assert_eq!(errors["meters"][0].params["min"], 0);
+            assert_eq!(errors["meters"][0].params["max"], 9.9);
         }
     }
 }

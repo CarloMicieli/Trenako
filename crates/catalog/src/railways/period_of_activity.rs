@@ -1,8 +1,11 @@
 use chrono::NaiveDate;
 use sqlx::Type;
+use std::borrow::Cow;
+use std::collections::HashMap;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 use thiserror::Error;
+use validator::ValidationError;
 
 /// It represents the period of activity for a railway company
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize, Default)]
@@ -13,6 +16,19 @@ pub struct PeriodOfActivity {
     pub operating_until: Option<NaiveDate>,
     /// the railway status
     pub status: RailwayStatus,
+}
+
+pub fn validate_period_of_activity(input: &PeriodOfActivity) -> Result<(), ValidationError> {
+    if let Err(why) = validate_inputs(input.operating_since, input.operating_until, input.status) {
+        let error = ValidationError {
+            code: Cow::from("period_of_activity"),
+            message: Some(Cow::from(why.to_string())),
+            params: HashMap::new(),
+        };
+        Err(error)
+    } else {
+        Ok(())
+    }
 }
 
 impl PeriodOfActivity {

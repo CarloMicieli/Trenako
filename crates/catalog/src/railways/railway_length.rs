@@ -1,9 +1,10 @@
-use common::length::Length;
+use common::length::{validate_length_range, Length};
 use common::measure_units::MeasureUnit;
 use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 use std::fmt::{Display, Formatter};
 use thiserror::Error;
+use validator::{Validate, ValidationErrors};
 
 /// The overall length of tracks (in km and miles) operated by a railway company
 #[derive(Debug, Eq, PartialEq, Clone, Copy, Serialize, Deserialize)]
@@ -14,6 +15,26 @@ pub struct RailwayLength {
     /// the total railway network in miles
     #[serde(with = "common::length::serde::miles")]
     pub miles: Length,
+}
+
+impl Validate for RailwayLength {
+    fn validate(&self) -> Result<(), ValidationErrors> {
+        let mut errors = ValidationErrors::new();
+
+        if let Err(error) = validate_length_range(&self.kilometers, None) {
+            errors.add("kilometers", error);
+        }
+
+        if let Err(error) = validate_length_range(&self.miles, None) {
+            errors.add("miles", error);
+        }
+
+        if errors.is_empty() {
+            Ok(())
+        } else {
+            Err(errors)
+        }
+    }
 }
 
 impl RailwayLength {
@@ -129,6 +150,53 @@ mod test {
         #[derive(Serialize, Deserialize)]
         struct TestStruct {
             railway_length: RailwayLength,
+        }
+    }
+
+    mod railway_length_validation {
+        use super::*;
+        use rust_decimal_macros::dec;
+
+        #[test]
+        fn it_should_validate_railway_lengths() {
+            let miles = Length::Miles(dec!(100));
+            let kilometers = Length::Kilometers(dec!(100));
+            let railway_length = RailwayLength { miles, kilometers };
+
+            let result = railway_length.validate();
+            assert!(result.is_ok());
+        }
+
+        #[test]
+        fn it_should_validate_railway_length_in_kilometers() {
+            let miles = Length::Miles(dec!(100));
+            let kilometers = Length::Kilometers(dec!(-100));
+            let railway_length = RailwayLength { miles, kilometers };
+
+            let result = railway_length.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("kilometers"));
+            assert_eq!(errors["kilometers"].len(), 1);
+            assert_eq!(errors["kilometers"][0].code, "range");
+            assert_eq!(errors["kilometers"][0].params["value"], "-100");
+            assert_eq!(errors["kilometers"][0].params["min"], 0);
+        }
+
+        #[test]
+        fn it_should_validate_railway_length_in_miles() {
+            let miles = Length::Miles(dec!(-100));
+            let kilometers = Length::Kilometers(dec!(100));
+            let railway_length = RailwayLength { miles, kilometers };
+
+            let result = railway_length.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("miles"));
+            assert_eq!(errors["miles"].len(), 1);
+            assert_eq!(errors["miles"][0].code, "range");
+            assert_eq!(errors["miles"][0].params["value"], "-100");
+            assert_eq!(errors["miles"][0].params["min"], 0);
         }
     }
 }

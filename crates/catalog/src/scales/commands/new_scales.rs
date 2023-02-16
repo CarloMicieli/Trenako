@@ -102,15 +102,17 @@ impl TryFrom<ScaleRequest> for ScaleCommandPayload {
             Some(s)
         };
 
+        let scale_gauge = request.gauge.expect("gauge is required for scale requests");
         let (track_gauge, gauge_inches, gauge_millimeters) = (
-            request.gauge.track_gauge,
-            Some(request.gauge.inches.quantity()),
-            Some(request.gauge.millimeters.quantity()),
+            scale_gauge.track_gauge,
+            Some(scale_gauge.inches.quantity()),
+            Some(scale_gauge.millimeters.quantity()),
         );
 
+        let ratio = request.ratio.expect("ratio is required for scale requests");
         Ok(ScaleCommandPayload {
             name: request.name,
-            ratio: *request.ratio,
+            ratio: *ratio,
             gauge_millimeters,
             gauge_inches,
             track_gauge,
@@ -182,8 +184,8 @@ mod test {
 
             ScaleRequest {
                 name: String::from(name),
-                ratio: Ratio::try_from(ratio).unwrap(),
-                gauge: Gauge::new(TrackGauge::Standard, gauge_mm, gauge_in).unwrap(),
+                ratio: Ratio::try_from(ratio).ok(),
+                gauge: Gauge::new(TrackGauge::Standard, gauge_mm, gauge_in).ok(),
                 description: LocalizedText::with_italian("Descrizione"),
                 standards: vec![Standard::NEM],
             }
