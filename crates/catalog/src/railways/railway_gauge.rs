@@ -16,7 +16,7 @@ pub struct RailwayGauge {
 
 impl Validate for RailwayGauge {
     fn validate(&self) -> Result<(), ValidationErrors> {
-        if let Err(error) = validate_length_range(&self.meters, Some(dec!(9.9))) {
+        if let Err(error) = validate_length_range(&self.meters, Some(dec!(0.1)), Some(dec!(9.9))) {
             let mut errors = ValidationErrors::new();
             errors.add("meters", error);
             Err(errors)
@@ -170,7 +170,7 @@ mod test {
             assert_eq!(errors["meters"].len(), 1);
             assert_eq!(errors["meters"][0].code, "range");
             assert_eq!(errors["meters"][0].params["value"], "-10.0");
-            assert_eq!(errors["meters"][0].params["min"], 0);
+            assert_eq!(errors["meters"][0].params["min"], 0.1);
             assert_eq!(errors["meters"][0].params["max"], 9.9);
         }
     }

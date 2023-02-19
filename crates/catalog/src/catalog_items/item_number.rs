@@ -1,9 +1,11 @@
 use common::slug::Slug;
 use sqlx::Type;
+use std::borrow::Cow;
 use std::fmt::Formatter;
 use std::str::FromStr;
 use std::{convert, fmt, ops, str};
 use thiserror::Error;
+use validator::{validate_length, ValidationError};
 
 /// It represent a catalog item number.
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize, Type)]
@@ -20,6 +22,18 @@ impl ItemNumber {
     /// Returns the item number value, this cannot be blank.
     pub fn value(&self) -> &str {
         &self.0
+    }
+}
+
+pub fn validate_item_number(input: &ItemNumber) -> Result<(), ValidationError> {
+    if !validate_length(&input.0, Some(1), Some(25), None) {
+        let mut error = ValidationError::new("length");
+        error.add_param(Cow::from("min"), &1);
+        error.add_param(Cow::from("max"), &25);
+        error.add_param(Cow::from("value"), &input.0);
+        Err(error)
+    } else {
+        Ok(())
     }
 }
 
@@ -68,6 +82,11 @@ impl convert::From<ItemNumber> for Slug {
 }
 
 #[cfg(test)]
+pub fn invalid_item_number() -> ItemNumber {
+    ItemNumber("".to_string())
+}
+
+#[cfg(test)]
 mod tests {
     use super::*;
 
@@ -112,6 +131,30 @@ mod tests {
         ) {
             let result = ItemNumber::from_str(input);
             assert_eq!(expected, result);
+        }
+    }
+
+    mod item_number_validation {
+        use super::*;
+
+        #[test]
+        fn it_should_validate_item_numbers() {
+            let item_number = ItemNumber("123456".to_string());
+
+            let result = validate_item_number(&item_number);
+            assert!(result.is_ok());
+        }
+
+        #[test]
+        fn it_should_reject_invalid_item_numbers() {
+            let item_number = ItemNumber("".to_string());
+
+            let result = validate_item_number(&item_number);
+            let error = result.unwrap_err();
+            assert_eq!(error.code, "length");
+            assert_eq!(error.params["value"], "");
+            assert_eq!(error.params["min"], 1);
+            assert_eq!(error.params["max"], 25);
         }
     }
 }

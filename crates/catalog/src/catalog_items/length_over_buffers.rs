@@ -1,8 +1,10 @@
-use common::length::Length;
+use common::length::{validate_length_range, Length};
 use common::measure_units::MeasureUnit;
 use rust_decimal::Decimal;
+use rust_decimal_macros::dec;
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
+use validator::{Validate, ValidationErrors};
 
 /// The rail vehicle measurement method expressed as the length over buffers
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Default, Serialize, Deserialize)]
@@ -65,6 +67,30 @@ impl LengthOverBuffers {
     /// the length over buffers value in millimeters
     pub fn millimeters(&self) -> Option<&Length> {
         self.millimeters.as_ref()
+    }
+}
+
+impl Validate for LengthOverBuffers {
+    fn validate(&self) -> Result<(), ValidationErrors> {
+        let mut errors = ValidationErrors::new();
+
+        if let Some(inches) = self.inches {
+            if let Err(error) = validate_length_range(&inches, Some(dec!(0.1)), Some(dec!(999.0))) {
+                errors.add("inches", error);
+            }
+        }
+
+        if let Some(millimeters) = self.millimeters {
+            if let Err(error) = validate_length_range(&millimeters, Some(dec!(0.1)), Some(dec!(9999.0))) {
+                errors.add("millimeters", error);
+            }
+        }
+
+        if errors.is_empty() {
+            Ok(())
+        } else {
+            Err(errors)
+        }
     }
 }
 
@@ -183,6 +209,47 @@ mod tests {
         #[derive(Serialize, Deserialize)]
         struct TestStruct {
             length_over_buffers: LengthOverBuffers,
+        }
+    }
+
+    mod length_over_buffer_validation {
+        use crate::catalog_items::length_over_buffers::LengthOverBuffers;
+        use common::length::Length;
+        use rust_decimal_macros::dec;
+        use validator::Validate;
+
+        #[test]
+        fn it_should_validate_length_over_buffers() {
+            let length_over_buffer = LengthOverBuffers::new(Some(dec!(0.65)), Some(dec!(16.5))).unwrap();
+            let result = length_over_buffer.validate();
+            assert!(result.is_ok());
+        }
+
+        #[test]
+        fn it_should_fail_to_validate_invalid_length_over_buffers() {
+            let millimeters = Length::Millimeters(dec!(-16.5));
+            let inches = Length::Inches(dec!(-0.65));
+            let length_over_buffer = LengthOverBuffers {
+                millimeters: Some(millimeters),
+                inches: Some(inches),
+            };
+            let result = length_over_buffer.validate();
+            assert!(result.is_err());
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("inches"));
+            assert_eq!(errors["inches"].len(), 1);
+            assert_eq!(errors["inches"][0].code, "range");
+            assert_eq!(errors["inches"][0].params["value"], "-0.65");
+            assert_eq!(errors["inches"][0].params["min"], 0.1);
+            assert_eq!(errors["inches"][0].params["max"], 999.0);
+
+            assert!(errors.contains_key("millimeters"));
+            assert_eq!(errors["millimeters"].len(), 1);
+            assert_eq!(errors["millimeters"][0].code, "range");
+            assert_eq!(errors["millimeters"][0].params["value"], "-16.5");
+            assert_eq!(errors["millimeters"][0].params["min"], 0.1);
+            assert_eq!(errors["millimeters"][0].params["max"], 9999.0);
         }
     }
 }

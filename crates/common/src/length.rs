@@ -22,13 +22,17 @@ pub enum Length {
     Millimeters(Decimal),
 }
 
-pub fn validate_length_range(input: &Length, max: Option<Decimal>) -> Result<(), ValidationError> {
+pub fn validate_length_range(
+    input: &Length,
+    min: Option<Decimal>,
+    max: Option<Decimal>,
+) -> Result<(), ValidationError> {
     let value = input.quantity();
-    if value.is_sign_positive() && value < max.unwrap_or(Decimal::MAX) {
+    if min.unwrap_or(Decimal::ZERO) < value && value < max.unwrap_or(Decimal::MAX) {
         Ok(())
     } else {
         let mut error = ValidationError::new("range");
-        error.add_param(Cow::from("min"), &Some(0));
+        error.add_param(Cow::from("min"), &min.and_then(|it| it.to_f64()));
 
         if max.is_some() {
             error.add_param(Cow::from("max"), &max.and_then(|it| it.to_f64()));
@@ -477,7 +481,7 @@ mod test {
         #[case(Length::Miles(dec!(42.0)))]
         #[case(Length::Kilometers(dec!(42.0)))]
         fn it_should_validate_lengths(#[case] l1: Length) {
-            let result = validate_length_range(&l1, None);
+            let result = validate_length_range(&l1, None, None);
             assert!(result.is_ok());
         }
 
@@ -488,12 +492,13 @@ mod test {
         #[case(Length::Miles(dec!(-42.0)))]
         #[case(Length::Kilometers(dec!(-42.0)))]
         fn it_should_validate_negative_lengths(#[case] l1: Length) {
-            let result = validate_length_range(&l1, None);
+            let result = validate_length_range(&l1, Some(dec!(1.0)), Some(dec!(99.9)));
 
             let error = result.unwrap_err();
             assert_eq!(error.code, "range");
             assert_eq!(error.params["value"], "-42.0");
-            assert_eq!(error.params["min"], 0);
+            assert_eq!(error.params["min"], 1.0);
+            assert_eq!(error.params["max"], 99.9);
         }
     }
 

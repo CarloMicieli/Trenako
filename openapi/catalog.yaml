@@ -1,16 +1,16 @@
 components:
   schemas:
     AvailabilityStatus:
-      type: string
       description: the availability status for a catalog item
+      type: string
       enum:
         - ANNOUNCED
         - AVAILABLE
         - DISCONTINUED
 
     Brand:
-      type: object
       description: a model railways manufacturer
+      type: object
       properties:
         brand_id:
           description: the brand unique identifier (an url encoded string)
@@ -48,15 +48,15 @@ components:
         - metadata
 
     BrandKind:
-      type: string
       description: the kind of brand
+      type: string
       enum:
         - BRASS_MODELS
         - INDUSTRIAL
 
     BrandRequest:
-      type: object
       description: a request to create/update model railways brands
+      type: object
       properties:
         name:
           description: the brand name
@@ -70,6 +70,7 @@ components:
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
         group_name:
+          description: the group name in case the brand is part of a group
           type: string
           maxLength: 100
         description:
@@ -89,40 +90,38 @@ components:
         - kind
 
     BrandStatus:
-      type: string
       description: the status of a brand
+      type: string
       enum:
         - ACTIVE
         - OUT_OF_BUSINESS
 
     CatalogItem:
-      type: object
       description: a model railway catalog item
+      type: object
       properties:
         catalog_item_id:
+          description: the unique identifier for this catalog item
           type: string
           format: uri
-          description: the unique identifier for this catalog item
         brand:
           $ref: "#/components/schemas/CatalogItemBrand"
         item_number:
-          type: string
           description: the catalog item number
+          type: string
         scale:
           $ref: "#/components/schemas/CatalogItemScale"
         category:
           $ref: "#/components/schemas/CatalogItemCategory"
         description:
-          description: the catalog item description
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         details:
-          description: the catalog item details
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         power_method:
           $ref: "#/components/schemas/PowerMethod"
         delivery_date:
-          type: string
           description: this catalog item delivery date (either the year or the quarter)
+          type: string
         availability_status:
           $ref: "#/components/schemas/AvailabilityStatus"
         rolling_stocks:
@@ -137,9 +136,9 @@ components:
             discriminator:
               propertyName: category
         count:
+          description: the number of rolling stocks for this catalog item
           type: integer
           format: int32
-          description: the number of rolling stocks for this catalog item
         metadata:
           $ref: "./common.yaml#/components/schemas/Metadata"
       required:
@@ -153,23 +152,23 @@ components:
         - metadata
 
     CatalogItemBrand:
-      type: object
       description: the catalog item brand
+      type: object
       properties:
         brand_id:
+          description: the brand unique identifier
           type: string
           format: uri
-          description: the brand unique identifier
         display:
-          type: string
           description: the brand display text
+          type: string
       required:
         - id
         - display
 
     CatalogItemCategory:
-      type: string
       description: the catalog item category
+      type: string
       enum:
         - ELECTRIC_MULTIPLE_UNITS
         - FREIGHT_CARS
@@ -180,39 +179,37 @@ components:
         - TRAIN_SETS
 
     CatalogItemRequest:
-      type: object
       description: the request to create/update a catalog item
+      type: object
       properties:
         brand:
+          description: the brand name
           type: string
           minLength: 3
           maxLength: 50
-          description: the brand name
         item_number:
+          description: the item number
           type: string
           minLength: 1
           maxLength: 25
-          description: the item number
         scale:
+          description: the scale name
           type: string
           minLength: 1
           maxLength: 50
-          description: the scale name
         category:
           $ref: "#/components/schemas/CatalogItemCategory"
         description:
-          description: the description
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         details:
-          description: the details
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         power_method:
           $ref: "#/components/schemas/PowerMethod"
         delivery_date:
+          description: this delivery date (either the year or the quarter)
           type: string
           minLength: 4
           maxLength: 7
-          description: this delivery date (either the year or the quarter)
         availability_status:
           $ref: "#/components/schemas/AvailabilityStatus"
         rolling_stocks:
@@ -227,11 +224,11 @@ components:
             discriminator:
               propertyName: category
         count:
+          description: the number of rolling stocks for this catalog item
           type: integer
           format: int32
           minimum: 1
           maximum: 99
-          description: the number of rolling stocks for this catalog item
       required:
         - brand
         - item_number
@@ -241,23 +238,23 @@ components:
         - count
 
     CatalogItemScale:
-      type: object
       description: the scale information for a catalog item
+      type: object
       properties:
         scale_id:
+          description: the scale unique identifier
           type: string
           format: uri
-          description: the scale unique identifier
         display:
-          type: string
           description: the scale display text
+          type: string
       required:
         - id
         - display
 
     Control:
-      type: string
       description: the control method for the rolling stock
+      type: string
       enum:
         - DCC
         - DCC_READY
@@ -265,8 +262,8 @@ components:
         - NO_DCC
 
     Coupling:
-      type: object
       description: the rolling stock coupling
+      type: object
       properties:
         socket:
           $ref: "#/components/schemas/CouplingSocket"
@@ -278,8 +275,8 @@ components:
         - socket
 
     CouplingSocket:
-      type: string
       description: the rolling stock coupling socket
+      type: string
       enum:
         - NONE
         - NEM_355
@@ -291,8 +288,8 @@ components:
         - NEM_365
 
     DccInterface:
-      type: string
       description: the rolling stock DCC interface
+      type: string
       enum:
         - MTC_21
         - NEM_651
@@ -312,22 +309,22 @@ components:
         - type: object
           properties:
             type_name:
+              description: the electric multiple unit type name
               type: string
               minLength: 3
               maxLength: 25
-              description: the electric multiple unit type name
             road_number:
-              type: string
-              maxLength: 50
               description: the identification marking for this electric multiple unit
-            series:
               type: string
               maxLength: 50
+            series:
               description: the prototype series information
+              type: string
+              maxLength: 50
             depot:
+              description: the depot name
               type: string
               maxLength: 100
-              description: the depot name
             electric_multiple_unit_type:
               $ref: "#/components/schemas/ElectricMultipleUnitType"
             dcc_interface:
@@ -335,8 +332,8 @@ components:
             control:
               $ref: "#/components/schemas/Control"
             is_dummy:
-              type: boolean
               description: indicate whether the rolling stock has a motor or not
+              type: boolean
       required:
         - type_name
         - electric_multiple_unit_type
@@ -349,17 +346,17 @@ components:
         - type: object
           properties:
             type_name:
-              type: string
               description: the electric multiple unit type name
+              type: string
             road_number:
-              type: string
               description: the identification marking for this electric multiple unit
+              type: string
             series:
-              type: string
               description: the prototype series information
-            depot:
               type: string
+            depot:
               description: the depot name
+              type: string
             electric_multiple_unit_type:
               $ref: "#/components/schemas/ElectricMultipleUnitType"
             dcc_interface:
@@ -367,16 +364,16 @@ components:
             control:
               $ref: "#/components/schemas/Control"
             is_dummy:
-              type: boolean
               description: indicate whether the rolling stock has a motor or not
+              type: boolean
       required:
         - type_name
         - electric_multiple_unit_type
         - is_dummy
 
     ElectricMultipleUnitType:
-      type: string
       description: the electric multiple unit type
+      type: string
       enum:
         - DRIVING_CAR
         - HIGH_SPEED_TRAIN
@@ -386,8 +383,8 @@ components:
         - TRAIN_SET
 
     FeatureFlag:
-      type: string
       description: a feature flag for rolling stock technical specifications
+      type: string
       enum:
         - YES
         - NO
@@ -400,11 +397,11 @@ components:
         - type: object
           properties:
             type_name:
-              type: string
               description: the freight car type name
-            road_number:
               type: string
+            road_number:
               description: the identification marking for this freight car
+              type: string
             freight_car_type:
               $ref: "#/components/schemas/FreightCarType"
       required:
@@ -417,22 +414,22 @@ components:
         - type: object
           properties:
             type_name:
+              description: the freight car type name
               type: string
               minLength: 1
               maxLength: 25
-              description: the freight car type name
             road_number:
+              description: the identification marking for this freight car
               type: string
               maxLength: 50
-              description: the identification marking for this freight car
             freight_car_type:
               $ref: "#/components/schemas/FreightCarType"
       required:
         - type_name
 
     FreightCarType:
-      type: string
       description: the freight car type
+      type: string
       enum:
         - AUTO_TRANSPORT_CARS
         - BRAKE_WAGON
@@ -455,18 +452,20 @@ components:
         - TELESCOPE_HOOD_WAGONS
 
     LengthOverBuffers:
-      type: object
       description: the length over buffer of a rolling stock
+      type: object
       properties:
         inches:
           type: number
           format: float
           minimum: 0.1
+          maximum: 999.0
           description: the overall length in inches
         millimeters:
           type: number
           format: float
           minimum: 0.1
+          maximum: 9999.0
           description: the overall length in millimeters
 
     Locomotive:
@@ -476,19 +475,19 @@ components:
         - type: object
           properties:
             class_name:
-              type: string
               description: |
                 the class of locomotives. The class is a group of locomotives built to a common design, 
                 typically for a single railroad or railway
+              type: string
             road_number:
-              type: string
               description: the identification marking for this locomotive
+              type: string
             series:
-              type: string
               description: the prototype series information
-            depot:
               type: string
+            depot:
               description: the depot name
+              type: string
             locomotive_type:
               $ref: "#/components/schemas/LocomotiveType"
             dcc_interface:
@@ -496,8 +495,8 @@ components:
             control:
               $ref: "#/components/schemas/Control"
             is_dummy:
-              type: boolean
               description: indicate whether the rolling stock has a motor or not
+              type: boolean
       required:
         - locomotive_type
         - class_name
@@ -511,24 +510,24 @@ components:
         - type: object
           properties:
             class_name:
-              type: string
-              maxLength: 15
               description: |
                 the class of locomotives. The class is a group of locomotives built to a common design, 
                 typically for a single railroad or railway
+              type: string
+              maxLength: 15
             road_number:
+              description: the identification marking for this locomotive
               type: string
               minLength: 3
               maxLength: 50
-              description: the identification marking for this locomotive
             series:
+              description: the prototype series information
               type: string
               maxLength: 50
-              description: the prototype series information
             depot:
+              description: the depot name
               type: string
               maxLength: 100
-              description: the depot name
             locomotive_type:
               $ref: "#/components/schemas/LocomotiveType"
             dcc_interface:
@@ -536,8 +535,8 @@ components:
             control:
               $ref: "#/components/schemas/Control"
             is_dummy:
-              type: boolean
               description: indicate whether the rolling stock has a motor or not
+              type: boolean
       required:
         - locomotive_type
         - class_name
@@ -545,8 +544,8 @@ components:
         - is_dummy
 
     LocomotiveType:
-      type: string
       description: the locomotive type
+      type: string
       enum:
         - DIESEL_LOCOMOTIVE
         - ELECTRIC_LOCOMOTIVE
@@ -559,14 +558,14 @@ components:
         - type: object
           properties:
             type_name:
-              type: string
               description: the passenger car type name
+              type: string
             road_number:
-              type: string
               description: the identification marking for this passenger car
-            series:
               type: string
+            series:
               description: the passenger car series
+              type: string
             passenger_car_type:
               $ref: "#/components/schemas/PassengerCarType"
             service_level:
@@ -581,17 +580,17 @@ components:
         - type: object
           properties:
             type_name:
+              description: the passenger car type name
               type: string
               maxLength: 25
-              description: the passenger car type name
             road_number:
-              type: string
-              maxLength: 50
               description: the identification marking for this passenger car
-            series:
               type: string
               maxLength: 50
+            series:
               description: the passenger car series
+              type: string
+              maxLength: 50
             passenger_car_type:
               $ref: "#/components/schemas/PassengerCarType"
             service_level:
@@ -600,8 +599,8 @@ components:
         - type_name
 
     PassengerCarType:
-      type: string
       description: the passenger car type
+      type: string
       enum:
         - BAGGAGE_CAR
         - COMBINE_CAR
@@ -616,8 +615,8 @@ components:
         - SLEEPING_CAR
 
     PowerMethod:
-      type: string
       description: the rolling stock power method
+      type: string
       enum:
         - AC
         - DC
@@ -630,17 +629,17 @@ components:
         - type: object
           properties:
             type_name:
-              type: string
               description: the railcar type name
+              type: string
             road_number:
-              type: string
               description: the identification marking for this railcar
+              type: string
             series:
-              type: string
               description: the railcar series
-            depot:
               type: string
+            depot:
               description: the depot name
+              type: string
             railcar_type:
               $ref: "#/components/schemas/RailcarType"
             dcc_interface:
@@ -648,8 +647,8 @@ components:
             control:
               $ref: "#/components/schemas/Control"
             is_dummy:
-              type: boolean
               description: indicate whether the rolling stock has a motor or not
+              type: boolean
       required:
         - type_name
         - railcar_type
@@ -662,22 +661,22 @@ components:
         - type: object
           properties:
             type_name:
+              description: the railcar type name
               type: string
               minLength: 3
               maxLength: 25
-              description: the railcar type name
             road_number:
-              type: string
-              maxLength: 50
               description: the identification marking for this railcar
-            series:
               type: string
               maxLength: 50
+            series:
               description: the railcar series
+              type: string
+              maxLength: 50
             depot:
+              description: the depot name
               type: string
               maxLength: 100
-              description: the depot name
             railcar_type:
               $ref: "#/components/schemas/RailcarType"
             dcc_interface:
@@ -685,23 +684,23 @@ components:
             control:
               $ref: "#/components/schemas/Control"
             is_dummy:
-              type: boolean
               description: indicate whether the rolling stock has a motor or not
+              type: boolean
       required:
         - type_name
         - railcar_type
         - is_dummy
 
     RailcarType:
-      type: string
       description: the railcar type
+      type: string
       enum:
         - POWER_CAR
         - TRAILER_CAR
 
     Railway:
-      type: object
       description: a company which operates a railway network
+      type: object
       properties:
         railway_id:
           description: the unique railway identifier (an URL encoded string)
@@ -721,7 +720,7 @@ components:
         description:
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         country:
-          description: the registration country
+          description: the registration ISO country code (ISO 3166-1 alpha-2)
           type: string
         period_of_activity:
           $ref: "#/components/schemas/RailwayPeriodOfActivity"
@@ -745,25 +744,25 @@ components:
         - metadata
 
     RailwayPeriodOfActivity:
-      type: object
       description: the period of activity for a railway company
+      type: object
       properties:
         operating_since:
-          type: string
-          format: date
           description: the date when the railway started its operation
-        operating_until:
           type: string
           format: date
+        operating_until:
           description: the date when the railway ended its operation, if not active anymore
+          type: string
+          format: date
         status:
           $ref: "#/components/schemas/RailwayStatus"
       required:
         - status
 
     RailwayRequest:
-      type: object
       description: the request to create/update railways
+      type: object
       properties:
         name:
           description: the railway name
@@ -807,6 +806,7 @@ components:
         - country
 
     RailwayGauge:
+      description: the railway gauge
       type: object
       meters:
         description: the distance between the two rails in meters
@@ -818,26 +818,28 @@ components:
         $ref: "#/components/schemas/TrackGauge"
 
     RailwayStatus:
-      type: string
       description: the railway activity status
+      type: string
       enum:
         - ACTIVE
         - INACTIVE
 
     RailwayTotalLength:
-      type: object
       description: the total length of a railway network
+      type: object
       properties:
         miles:
           description: the total railway network in miles
           type: number
           format: float
-          minimum: 0.1
+          minimum: 1.0
+          maximum: 200000.0
         kilometers:
           description: the total railway network in kilometers
           type: number
           format: float
-          minimum: 0.1
+          minimum: 1.0
+          maximum: 300000.0
 
     RollingStock:
       type: object
@@ -847,17 +849,17 @@ components:
         category:
           $ref: "#/components/schemas/RollingStockCategory"
         rolling_stock_id:
+          description: the unique identifier for this rolling stock
           type: string
           format: uuid
-          description: the unique identifier for this rolling stock
         railway:
           $ref: "#/components/schemas/RollingStockRailway"
         epoch:
-          type: string
           description: the epoch for this rolling stock
-        livery:
           type: string
+        livery:
           description: the rolling stock livery description
+          type: string
         length_over_buffers:
           $ref: "#/components/schemas/LengthOverBuffers"
         technical_specifications:
@@ -869,8 +871,8 @@ components:
         - epoch
 
     RollingStockCategory:
-      type: string
       description: the rolling stock category
+      type: string
       enum:
         - ELECTRIC_MULTIPLE_UNITS
         - FREIGHT_CARS
@@ -879,14 +881,15 @@ components:
         - RAILCARS
 
     RollingStockRailway:
-      type: object
       description: the railway company for a rolling stock
+      type: object
       properties:
         railway_id:
+          description: the railway unique identifier
           type: string
           format: uri
-          description: the railway unique identifier
         display:
+          description: the railway display text
           type: string
 
     RollingStockRequest:
@@ -897,19 +900,19 @@ components:
         category:
           $ref: "#/components/schemas/RollingStockCategory"
         railway:
+          description: the railway name for this rolling stock
           type: string
           minLength: 2
           maxLength: 50
-          description: the railway name for this rolling stock
         epoch:
+          description: the epoch for this rolling stock
           type: string
           minLength: 1
           maxLength: 10
-          description: the epoch for this rolling stock
         livery:
+          description: the rolling stock livery description
           type: string
           maxLength: 50
-          description: the rolling stock livery description
         length_over_buffers:
           $ref: "#/components/schemas/LengthOverBuffers"
         technical_specifications:
@@ -920,26 +923,26 @@ components:
         - epoch
 
     Scale:
-      type: object
       description: a rail transport modelling scale
+      type: object
       properties:
         scale_id:
+          description: the unique identifier for a scale
           type: string
           format: uri
-          description: the unique identifier for a scale
         name:
-          type: string
           description: the scale name
+          type: string
         ratio:
+          description: the ratio between the real world and the model (e.g. 1/87 or 1:87)
           type: number
           format: float
-          description: the ratio between the real world and the model (e.g. 1/87 or 1:87)
         gauge:
           $ref: "#/components/schemas/ScaleGauge"
         description:
-          description: the modelling scale description
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         standards:
+          description: the list of standards
           type: array
           items:
             type: string
@@ -957,44 +960,43 @@ components:
         - gauge
 
     ScaleGauge:
-      type: object
       description: the track gauge information for a modelling scale
+      type: object
       millimeters:
+        description: the distance between the rails in millimeters
         type: number
         format: float
         minimum: 1.0
-        description: the distance between the rails in millimeters
       inches:
+        description: the distance between the rails in inches
         type: number
         format: float
         minimum: 0.01
-        description: the distance between the rails in inches
       track_gauge:
         $ref: "#/components/schemas/TrackGauge"
 
     ScaleRequest:
-      type: object
       description: a request to create/update rail transport modelling scales
+      type: object
       properties:
         name:
+          description: the scale name
           type: string
           minLength: 1
           maxLength: 50
-          description: the scale name
         ratio:
+          description: the ratio between the real world and the model (e.g. 1/87 or 1:87)
           type: number
           format: float
           minimum: 1.0
           maximum: 220.0
-          description: the ratio between the real world and the model (e.g. 1/87 or 1:87)
         gauge:
           $ref: "#/components/schemas/ScaleGauge"
         description:
-          description: the modelling scale description
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         standards:
-          type: array
           description: the list of standards
+          type: array
           items:
             type: string
             enum:
@@ -1008,8 +1010,8 @@ components:
         - gauge
 
     ServiceLevel:
-      type: string
       description: the travel class for this passenger car. Passenger cars can have multiple service levels (ie, '1st/2nd')
+      type: string
       enum:
         - FIRST_CLASS
         - SECOND_CLASS
@@ -1019,8 +1021,8 @@ components:
         - SECOND_AND_THIRD_CLASS
 
     TrackGauge:
-      type: string
       description: the track gauge
+      type: string
       enum:
         - BROAD
         - MEDIUM
@@ -1029,14 +1031,15 @@ components:
         - STANDARD
 
     TechnicalSpecifications:
-      type: object
       description: the technical specification for a rolling stock
+      type: object
       properties:
         minimum_radius:
+          description: the minimum drivable radius (in millimeters)
           type: number
           format: float
           minimum: 0.1
-          description: the minimum drivable radius (in millimeters)
+          maximum: 9999.0
         coupling:
           $ref: "#/components/schemas/Coupling"
         flywheel_fitted:

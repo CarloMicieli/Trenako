@@ -1,6 +1,7 @@
 use common::length::{validate_length_range, Length};
 use common::measure_units::MeasureUnit;
 use rust_decimal::Decimal;
+use rust_decimal_macros::dec;
 use serde::{Deserialize, Serialize};
 use std::fmt::{Display, Formatter};
 use thiserror::Error;
@@ -21,11 +22,11 @@ impl Validate for RailwayLength {
     fn validate(&self) -> Result<(), ValidationErrors> {
         let mut errors = ValidationErrors::new();
 
-        if let Err(error) = validate_length_range(&self.kilometers, None) {
+        if let Err(error) = validate_length_range(&self.kilometers, Some(dec!(1.0)), Some(dec!(300000.0))) {
             errors.add("kilometers", error);
         }
 
-        if let Err(error) = validate_length_range(&self.miles, None) {
+        if let Err(error) = validate_length_range(&self.miles, Some(dec!(1.0)), Some(dec!(200000.0))) {
             errors.add("miles", error);
         }
 
@@ -180,7 +181,8 @@ mod test {
             assert_eq!(errors["kilometers"].len(), 1);
             assert_eq!(errors["kilometers"][0].code, "range");
             assert_eq!(errors["kilometers"][0].params["value"], "-100");
-            assert_eq!(errors["kilometers"][0].params["min"], 0);
+            assert_eq!(errors["kilometers"][0].params["min"], 1.0);
+            assert_eq!(errors["kilometers"][0].params["max"], 300000.0);
         }
 
         #[test]
@@ -196,7 +198,8 @@ mod test {
             assert_eq!(errors["miles"].len(), 1);
             assert_eq!(errors["miles"][0].code, "range");
             assert_eq!(errors["miles"][0].params["value"], "-100");
-            assert_eq!(errors["miles"][0].params["min"], 0);
+            assert_eq!(errors["miles"][0].params["min"], 1.0);
+            assert_eq!(errors["miles"][0].params["max"], 200000.0);
         }
     }
 }

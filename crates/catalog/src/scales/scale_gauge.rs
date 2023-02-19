@@ -27,11 +27,11 @@ impl Validate for Gauge {
     fn validate(&self) -> Result<(), ValidationErrors> {
         let mut errors = ValidationErrors::new();
 
-        if let Err(error) = validate_length_range(&self.millimeters, None) {
+        if let Err(error) = validate_length_range(&self.millimeters, None, None) {
             errors.add("millimeters", error);
         }
 
-        if let Err(error) = validate_length_range(&self.inches, None) {
+        if let Err(error) = validate_length_range(&self.inches, None, None) {
             errors.add("inches", error);
         }
 

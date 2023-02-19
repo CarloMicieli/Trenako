@@ -1,11 +1,14 @@
-use common::length::Length;
+use common::length::{validate_length_range, Length};
 use rust_decimal::Decimal;
+use rust_decimal_macros::dec;
 use sqlx::Type;
 use std::fmt;
 use std::fmt::Formatter;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 use thiserror::Error;
+use validator::Validate;
+use validator::ValidationError;
 
 /// It represents the coupling configuration for a rolling stock.
 #[derive(Debug, Copy, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
@@ -116,9 +119,10 @@ impl Default for CouplingSocket {
 }
 
 /// The technical specification data for a rolling stock model
-#[derive(Debug, Eq, PartialEq, Clone, Default, Serialize, Deserialize)]
+#[derive(Debug, Eq, PartialEq, Clone, Default, Serialize, Deserialize, Validate)]
 pub struct TechnicalSpecifications {
     /// the minimum drivable radius
+    #[validate(custom = "validate_radius")]
     pub minimum_radius: Option<Radius>,
     /// the coupling
     pub coupling: Option<Coupling>,
@@ -274,6 +278,10 @@ impl Radius {
     pub fn value(&self) -> Length {
         self.0
     }
+}
+
+pub fn validate_radius(input: &Radius) -> Result<(), ValidationError> {
+    validate_length_range(&input.0, Some(dec!(0.1)), Some(dec!(9999.0)))
 }
 
 impl fmt::Display for Radius {
@@ -438,6 +446,44 @@ mod test {
             assert_eq!(FeatureFlag::Yes, tech_specs.lights());
             assert_eq!(FeatureFlag::Yes, tech_specs.spring_buffers());
             assert_eq!(FeatureFlag::Yes, tech_specs.flywheel_fitted());
+        }
+    }
+
+    mod technical_specifications_validation {
+        use crate::catalog_items::technical_specifications::{Radius, TechnicalSpecifications};
+        use common::length::Length;
+        use rust_decimal_macros::dec;
+        use validator::Validate;
+
+        #[test]
+        fn it_should_validate_technical_specifications() {
+            let radius = Radius(Length::Millimeters(dec!(360.0)));
+            let tech_specs = TechnicalSpecifications {
+                minimum_radius: Some(radius),
+                ..TechnicalSpecifications::default()
+            };
+
+            let result = tech_specs.validate();
+            assert!(result.is_ok());
+        }
+
+        #[test]
+        fn it_should_failed_to_validate_invalid_radius() {
+            let radius = Radius(Length::Millimeters(dec!(-360.0)));
+            let tech_specs = TechnicalSpecifications {
+                minimum_radius: Some(radius),
+                ..TechnicalSpecifications::default()
+            };
+
+            let result = tech_specs.validate();
+            let err = result.unwrap_err();
+            let errors = err.field_errors();
+            assert!(errors.contains_key("minimum_radius"));
+            assert_eq!(errors["minimum_radius"].len(), 1);
+            assert_eq!(errors["minimum_radius"][0].code, "range");
+            assert_eq!(errors["minimum_radius"][0].params["value"], -360.0);
+            assert_eq!(errors["minimum_radius"][0].params["min"], 0.1);
+            assert_eq!(errors["minimum_radius"][0].params["max"], 9999.0);
         }
     }
 }

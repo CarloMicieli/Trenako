@@ -37,6 +37,16 @@ impl Validator {
         self.0
     }
 
+    pub fn add_nested(self, field: &'static str, result: Result<(), ValidationErrors>) -> Self {
+        let parent: Result<(), ValidationErrors> = self.into();
+        let result = ValidationErrors::merge(parent, field, result);
+
+        match result {
+            Err(errors) => Validator(errors),
+            _ => Validator::default(),
+        }
+    }
+
     pub fn validate_length(&mut self, field: &'static str, min: Option<u64>, max: Option<u64>, input: &String) {
         if !validate_length(input, min, max, None) {
             let mut error = ValidationError::new("length");
