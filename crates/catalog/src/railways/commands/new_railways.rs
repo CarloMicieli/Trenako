@@ -13,6 +13,7 @@ use common::unit_of_work::{Database, UnitOfWork};
 use rust_decimal::Decimal;
 use std::result;
 use thiserror::Error;
+use validator::{Validate, ValidationErrors};
 
 pub type Result<R> = result::Result<R, RailwayCreationError>;
 
@@ -45,8 +46,8 @@ pub enum RailwayCreationError {
     #[error(transparent)]
     UnexpectedError(#[from] anyhow::Error),
 
-    #[error("the railway request is not valid")]
-    InvalidRequest,
+    #[error("The railway request is not valid")]
+    InvalidRequest(ValidationErrors),
 
     #[error("The railway already exists (id: {0})")]
     RailwayAlreadyExists(RailwayId),
@@ -64,6 +65,7 @@ impl TryFrom<RailwayRequest> for NewRailwayCommand {
     type Error = RailwayCreationError;
 
     fn try_from(value: RailwayRequest) -> result::Result<Self, Self::Error> {
+        validate_request(&value)?;
         let railway_id = RailwayId::new(&value.name);
         let payload = RailwayCommandPayload::try_from(value)?;
         let metadata = Metadata::created_at(Utc::now());
@@ -73,6 +75,10 @@ impl TryFrom<RailwayRequest> for NewRailwayCommand {
             metadata,
         })
     }
+}
+
+fn validate_request(request: &RailwayRequest) -> result::Result<(), RailwayCreationError> {
+    request.validate().map_err(RailwayCreationError::InvalidRequest)
 }
 
 #[derive(Debug, Clone, Default)]

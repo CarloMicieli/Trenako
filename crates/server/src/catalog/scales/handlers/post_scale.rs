@@ -54,7 +54,7 @@ impl ResponseError for ScaleCreationResponseError {
         match self.error {
             ScaleCreationError::ScaleAlreadyExists(_) => StatusCode::CONFLICT,
             ScaleCreationError::UnexpectedError(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            ScaleCreationError::InvalidRequest => StatusCode::BAD_REQUEST,
+            ScaleCreationError::InvalidRequest(_) => StatusCode::BAD_REQUEST,
         }
     }
 
@@ -66,7 +66,7 @@ impl ResponseError for ScaleCreationResponseError {
                 ProblemDetail::resource_already_exists(*request_id, &error.to_string())
             }
             ScaleCreationError::UnexpectedError(why) => ProblemDetail::error(*request_id, &why.to_string()),
-            ScaleCreationError::InvalidRequest => ProblemDetail::bad_request(*request_id, ""),
+            ScaleCreationError::InvalidRequest(_) => ProblemDetail::bad_request(*request_id, ""),
         };
 
         problem_details.to_response()
@@ -109,6 +109,7 @@ mod test {
         use catalog::scales::scale_id::ScaleId;
         use pretty_assertions::assert_eq;
         use reqwest::header::HeaderValue;
+        use validator::ValidationErrors;
 
         #[tokio::test]
         async fn it_should_return_conflict_when_the_scale_already_exists() {
@@ -137,7 +138,7 @@ mod test {
         #[tokio::test]
         async fn it_should_return_bad_request_for_invalid_request() {
             let err = ScaleCreationResponseError {
-                error: ScaleCreationError::InvalidRequest,
+                error: ScaleCreationError::InvalidRequest(ValidationErrors::new()),
                 request_id: Uuid::new_v4(),
             };
 

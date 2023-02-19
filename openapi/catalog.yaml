@@ -768,7 +768,7 @@ components:
           description: the railway name
           type: string
           minLength: 2
-          maxLength: 25
+          maxLength: 50
         abbreviation:
           description: the railway abbreviated name
           type: string

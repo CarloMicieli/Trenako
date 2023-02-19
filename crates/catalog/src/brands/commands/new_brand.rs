@@ -13,6 +13,7 @@ use common::socials::{Handler, Socials};
 use common::unit_of_work::{Database, UnitOfWork};
 use std::result;
 use thiserror::Error;
+use validator::{Validate, ValidationErrors};
 
 pub type Result<R> = result::Result<R, BrandCreationError>;
 
@@ -43,7 +44,7 @@ pub async fn create_new_brand<'db, U: UnitOfWork<'db>, R: BrandRepository<'db, U
 #[derive(Debug, Error)]
 pub enum BrandCreationError {
     #[error("The brand request is not valid")]
-    InvalidRequest,
+    InvalidRequest(ValidationErrors),
 
     #[error("The brand already exists (id: {0})")]
     BrandAlreadyExists(BrandId),
@@ -63,13 +64,21 @@ pub struct NewBrandCommand {
 impl TryFrom<BrandRequest> for NewBrandCommand {
     type Error = BrandCreationError;
 
-    fn try_from(request: BrandRequest) -> result::Result<Self, Self::Error> {
+    fn try_from(value: BrandRequest) -> result::Result<Self, Self::Error> {
+        validate_request(&value)?;
+        let brand_id = BrandId::new(&value.name);
+        let payload = BrandCommandPayload::try_from(value)?;
+        let metadata = Metadata::created_at(Utc::now());
         Ok(NewBrandCommand {
-            brand_id: BrandId::new(&request.name),
-            payload: BrandCommandPayload::try_from(request)?,
-            metadata: Metadata::created_at(Utc::now()),
+            brand_id,
+            payload,
+            metadata,
         })
     }
+}
+
+fn validate_request(request: &BrandRequest) -> result::Result<(), BrandCreationError> {
+    request.validate().map_err(BrandCreationError::InvalidRequest)
 }
 
 #[derive(Debug, Clone, Default)]
@@ -225,7 +234,7 @@ mod test {
 
             let contact_info = ContactInformation::builder()
                 .email("mail@mail.com")
-                .phone("555 1234")
+                .phone("+14152370800")
                 .website_url("https://www.site.com")
                 .build()
                 .unwrap();

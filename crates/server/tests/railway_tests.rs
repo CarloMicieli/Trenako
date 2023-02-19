@@ -55,7 +55,7 @@ async fn it_should_return_409_when_the_railway_already_exists() {
             },
             "contact_info" : {
                 "email" : "mail@mail.com",
-                "phone" : "555 1234",
+                "phone" : "+14152370800",
                 "website_url" : "https://www.site.com"
             },
             "socials" : {
@@ -119,7 +119,7 @@ async fn it_should_create_new_railways() {
             },
             "contact_info" : {
                 "email" : "mail@mail.com",
-                "phone" : "555 1234",
+                "phone" : "+14152370800",
                 "website_url" : "https://www.site.com"
             },
             "socials" : {
@@ -201,7 +201,7 @@ async fn it_should_create_new_railways() {
         assert_eq!(Some(total_length_km), saved.total_length_km);
         assert_eq!(Some(total_length_mi), saved.total_length_mi);
         assert_eq!(Some(String::from("mail@mail.com")), saved.contact_email);
-        assert_eq!(Some(String::from("555 1234")), saved.contact_phone);
+        assert_eq!(Some(String::from("+14152370800")), saved.contact_phone);
         assert_eq!(Some(String::from("https://www.site.com/")), saved.contact_website_url);
         assert_eq!(Some(String::from("facebook_handler")), saved.socials_facebook);
         assert_eq!(Some(String::from("instagram_handler")), saved.socials_instagram);

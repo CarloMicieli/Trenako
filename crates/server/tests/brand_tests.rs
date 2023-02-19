@@ -46,7 +46,7 @@ async fn it_should_return_409_when_the_brand_already_exists() {
             },
             "contact_info" : {
                 "email" : "mail@mail.com",
-                "phone" : "555 1234",
+                "phone" : "+14152370800",
                 "website_url" : "https://www.site.com"
             },
             "socials" : {
@@ -105,7 +105,7 @@ async fn it_should_create_new_brands() {
             },
             "contact_info" : {
                 "email" : "mail@mail.com",
-                "phone" : "555 1234",
+                "phone" : "+14152370800",
                 "website_url" : "https://www.site.com"
             },
             "socials" : {
@@ -154,7 +154,7 @@ async fn it_should_create_new_brands() {
         assert_eq!(Some(OrganizationEntityType::LimitedCompany), saved.organization_entity_type);
         assert_eq!(Some(BrandStatus::Active), saved.status);
         assert_eq!(Some(String::from("mail@mail.com")), saved.contact_email);
-        assert_eq!(Some(String::from("555 1234")), saved.contact_phone);
+        assert_eq!(Some(String::from("+14152370800")), saved.contact_phone);
         assert_eq!(Some(String::from("https://www.site.com/")), saved.contact_website_url);
         assert_eq!(Some(String::from("Rue Morgue 22")), saved.address_street_address);
         assert_eq!(None, saved.address_extended_address);

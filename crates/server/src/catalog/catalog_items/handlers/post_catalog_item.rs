@@ -59,7 +59,7 @@ impl ResponseError for CatalogItemCreationResponseError {
             CatalogItemCreationError::RailwayNotFound(_) => StatusCode::UNPROCESSABLE_ENTITY,
             CatalogItemCreationError::ScaleNotFound(_) => StatusCode::UNPROCESSABLE_ENTITY,
             CatalogItemCreationError::UnexpectedError(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            CatalogItemCreationError::InvalidRequest => StatusCode::BAD_REQUEST,
+            CatalogItemCreationError::InvalidRequest(_) => StatusCode::BAD_REQUEST,
         }
     }
 
@@ -80,7 +80,7 @@ impl ResponseError for CatalogItemCreationResponseError {
                 ProblemDetail::unprocessable_entity(*request_id, &error.to_string())
             }
             CatalogItemCreationError::UnexpectedError(why) => ProblemDetail::error(*request_id, &why.to_string()),
-            CatalogItemCreationError::InvalidRequest => ProblemDetail::bad_request(*request_id, ""),
+            CatalogItemCreationError::InvalidRequest(_) => ProblemDetail::bad_request(*request_id, ""),
         };
 
         problem_details.to_response()
@@ -130,6 +130,7 @@ mod test {
         use catalog::scales::scale_id::ScaleId;
         use pretty_assertions::assert_eq;
         use reqwest::header::HeaderValue;
+        use validator::ValidationErrors;
 
         #[tokio::test]
         async fn it_should_return_conflict_when_the_railway_already_exists() {
@@ -231,7 +232,7 @@ mod test {
         #[tokio::test]
         async fn it_should_return_bad_request_for_invalid_request() {
             let err = CatalogItemCreationResponseError {
-                error: CatalogItemCreationError::InvalidRequest,
+                error: CatalogItemCreationError::InvalidRequest(ValidationErrors::new()),
                 request_id: Uuid::new_v4(),
             };
 

@@ -12,7 +12,7 @@ use validator::Validate;
 #[derive(Debug, Clone, PartialEq, Default, Serialize, Deserialize, Validate)]
 pub struct RailwayRequest {
     /// the railway name
-    #[validate(length(min = 2, max = 25))]
+    #[validate(length(min = 2, max = 50))]
     pub name: String,
     /// the railway abbreviated name
     #[validate(length(min = 2, max = 10))]
@@ -60,7 +60,7 @@ mod test {
         #[rstest]
         #[case(random_str(0))]
         #[case(random_str(1))]
-        #[case(random_str(26))]
+        #[case(random_str(51))]
         fn it_should_validate_the_railway_name(#[case] input: String) {
             let request = RailwayRequest {
                 name: input.clone(),
@@ -75,7 +75,7 @@ mod test {
             assert_eq!(errors["name"][0].code, "length");
             assert_eq!(errors["name"][0].params["value"], input);
             assert_eq!(errors["name"][0].params["min"], 2);
-            assert_eq!(errors["name"][0].params["max"], 25);
+            assert_eq!(errors["name"][0].params["max"], 50);
         }
 
         #[test]

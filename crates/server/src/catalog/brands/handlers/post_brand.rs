@@ -54,7 +54,7 @@ impl ResponseError for BrandCreationResponseError {
         match self.error {
             BrandCreationError::BrandAlreadyExists(_) => StatusCode::CONFLICT,
             BrandCreationError::UnexpectedError(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            BrandCreationError::InvalidRequest => StatusCode::BAD_REQUEST,
+            BrandCreationError::InvalidRequest(_) => StatusCode::BAD_REQUEST,
         }
     }
 
@@ -66,7 +66,7 @@ impl ResponseError for BrandCreationResponseError {
                 ProblemDetail::resource_already_exists(*request_id, &error.to_string())
             }
             BrandCreationError::UnexpectedError(why) => ProblemDetail::error(*request_id, &why.to_string()),
-            BrandCreationError::InvalidRequest => ProblemDetail::bad_request(*request_id, ""),
+            BrandCreationError::InvalidRequest(_) => ProblemDetail::bad_request(*request_id, ""),
         };
 
         problem_details.to_response()
@@ -109,6 +109,7 @@ mod test {
         use catalog::brands::brand_id::BrandId;
         use pretty_assertions::assert_eq;
         use reqwest::header::HeaderValue;
+        use validator::ValidationErrors;
 
         #[tokio::test]
         async fn it_should_return_conflict_when_the_brand_already_exists() {
@@ -137,7 +138,7 @@ mod test {
         #[tokio::test]
         async fn it_should_return_bad_request_for_invalid_request() {
             let err = BrandCreationResponseError {
-                error: BrandCreationError::InvalidRequest,
+                error: BrandCreationError::InvalidRequest(ValidationErrors::new()),
                 request_id: Uuid::new_v4(),
             };
 

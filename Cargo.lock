@@ -2702,6 +2702,7 @@ dependencies = [
  "tracing-subscriber",
  "url",
  "uuid",
+ "validator",
 ]
 
 [[package]]

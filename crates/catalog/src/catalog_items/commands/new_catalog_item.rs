@@ -26,6 +26,7 @@ use common::metadata::Metadata;
 use common::unit_of_work::{Database, UnitOfWork};
 use std::result;
 use thiserror::Error;
+use validator::{Validate, ValidationErrors};
 
 pub type Result<R> = result::Result<R, CatalogItemCreationError>;
 
@@ -78,6 +79,27 @@ pub async fn create_new_catalog_item<
     })
 }
 
+#[derive(Debug, Error)]
+pub enum CatalogItemCreationError {
+    #[error(transparent)]
+    UnexpectedError(#[from] anyhow::Error),
+
+    #[error("The catalog item request is not valid")]
+    InvalidRequest(ValidationErrors),
+
+    #[error("The catalog item already exists (id: {0})")]
+    CatalogItemAlreadyExists(CatalogItemId),
+
+    #[error("Unable to create the catalog item due to brand not found (id: {0})")]
+    BrandNotFound(BrandId),
+
+    #[error("Unable to create the catalog item due to railway not found (id: {0})")]
+    RailwayNotFound(RailwayId),
+
+    #[error("Unable to create the catalog item due to scale not found (id: {0})")]
+    ScaleNotFound(ScaleId),
+}
+
 #[derive(Debug, Clone)]
 pub struct NewCatalogItemCommand {
     pub catalog_item_id: CatalogItemId,
@@ -89,17 +111,18 @@ pub struct NewCatalogItemCommand {
 impl TryFrom<CatalogItemRequest> for NewCatalogItemCommand {
     type Error = CatalogItemCreationError;
 
-    fn try_from(request: CatalogItemRequest) -> result::Result<Self, Self::Error> {
-        let brand_id = BrandId::new(&request.brand);
-        let catalog_item_id = CatalogItemId::of(&brand_id, &request.item_number);
+    fn try_from(value: CatalogItemRequest) -> result::Result<Self, Self::Error> {
+        validate_request(&value)?;
+        let brand_id = BrandId::new(&value.brand);
+        let catalog_item_id = CatalogItemId::of(&brand_id, &value.item_number);
 
-        let rolling_stocks: Vec<NewRollingStockCommand> = request
+        let rolling_stocks: Vec<NewRollingStockCommand> = value
             .rolling_stocks
             .clone()
             .into_iter()
             .map(|rs| NewRollingStockCommand::new(&catalog_item_id, rs).unwrap())
             .collect();
-        let payload = CatalogItemCommandPayload::try_from(request)?;
+        let payload = CatalogItemCommandPayload::try_from(value)?;
         let metadata = Metadata::created_at(Utc::now());
 
         Ok(NewCatalogItemCommand {
@@ -109,6 +132,10 @@ impl TryFrom<CatalogItemRequest> for NewCatalogItemCommand {
             metadata,
         })
     }
+}
+
+fn validate_request(request: &CatalogItemRequest) -> result::Result<(), CatalogItemCreationError> {
+    request.validate().map_err(CatalogItemCreationError::InvalidRequest)
 }
 
 #[derive(Debug, Clone)]
@@ -420,27 +447,6 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
             }),
         }
     }
-}
-
-#[derive(Debug, Error)]
-pub enum CatalogItemCreationError {
-    #[error(transparent)]
-    UnexpectedError(#[from] anyhow::Error),
-
-    #[error("The catalog item request is not valid")]
-    InvalidRequest,
-
-    #[error("The catalog item already exists (id: {0})")]
-    CatalogItemAlreadyExists(CatalogItemId),
-
-    #[error("Unable to create the catalog item due to brand not found (id: {0})")]
-    BrandNotFound(BrandId),
-
-    #[error("Unable to create the catalog item due to railway not found (id: {0})")]
-    RailwayNotFound(RailwayId),
-
-    #[error("Unable to create the catalog item due to scale not found (id: {0})")]
-    ScaleNotFound(ScaleId),
 }
 
 #[cfg(test)]

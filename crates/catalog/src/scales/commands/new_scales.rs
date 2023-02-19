@@ -11,6 +11,7 @@ use itertools::Itertools;
 use rust_decimal::Decimal;
 use std::result;
 use thiserror::Error;
+use validator::{Validate, ValidationErrors};
 
 pub type Result<R> = result::Result<R, ScaleCreationError>;
 
@@ -43,8 +44,8 @@ pub enum ScaleCreationError {
     #[error(transparent)]
     UnexpectedError(#[from] anyhow::Error),
 
-    #[error("the scale request is not valid")]
-    InvalidRequest,
+    #[error("The scale request is not valid")]
+    InvalidRequest(ValidationErrors),
 
     #[error("The scale already exists (id: {0})")]
     ScaleAlreadyExists(ScaleId),
@@ -62,6 +63,7 @@ impl TryFrom<ScaleRequest> for NewScaleCommand {
     type Error = ScaleCreationError;
 
     fn try_from(value: ScaleRequest) -> result::Result<Self, Self::Error> {
+        validate_request(&value)?;
         let scale_id = ScaleId::new(&value.name);
         let payload = ScaleCommandPayload::try_from(value)?;
         let metadata = Metadata::created_at(Utc::now());
@@ -71,6 +73,10 @@ impl TryFrom<ScaleRequest> for NewScaleCommand {
             metadata,
         })
     }
+}
+
+fn validate_request(request: &ScaleRequest) -> result::Result<(), ScaleCreationError> {
+    request.validate().map_err(ScaleCreationError::InvalidRequest)
 }
 
 #[derive(Debug, Clone, Default)]

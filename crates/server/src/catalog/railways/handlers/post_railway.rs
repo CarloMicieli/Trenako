@@ -54,7 +54,7 @@ impl ResponseError for RailwayCreationResponseError {
         match self.error {
             RailwayCreationError::RailwayAlreadyExists(_) => StatusCode::CONFLICT,
             RailwayCreationError::UnexpectedError(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            RailwayCreationError::InvalidRequest => StatusCode::BAD_REQUEST,
+            RailwayCreationError::InvalidRequest(_) => StatusCode::BAD_REQUEST,
         }
     }
 
@@ -66,7 +66,7 @@ impl ResponseError for RailwayCreationResponseError {
                 ProblemDetail::resource_already_exists(*request_id, &error.to_string())
             }
             RailwayCreationError::UnexpectedError(why) => ProblemDetail::error(*request_id, &why.to_string()),
-            RailwayCreationError::InvalidRequest => ProblemDetail::bad_request(*request_id, ""),
+            RailwayCreationError::InvalidRequest(_) => ProblemDetail::bad_request(*request_id, ""),
         };
 
         problem_details.to_response()
@@ -109,6 +109,7 @@ mod test {
         use catalog::railways::railway_id::RailwayId;
         use pretty_assertions::assert_eq;
         use reqwest::header::HeaderValue;
+        use validator::ValidationErrors;
 
         #[tokio::test]
         async fn it_should_return_conflict_when_the_railway_already_exists() {
@@ -137,7 +138,7 @@ mod test {
         #[tokio::test]
         async fn it_should_return_bad_request_for_invalid_request() {
             let err = RailwayCreationResponseError {
-                error: RailwayCreationError::InvalidRequest,
+                error: RailwayCreationError::InvalidRequest(ValidationErrors::new()),
                 request_id: Uuid::new_v4(),
             };
 
