@@ -32,6 +32,7 @@ impl<'db> ScaleRepository<'db, PgUnitOfWork<'db>> for PgScaleRepository {
                     gauge_millimeters,
                     gauge_inches,
                     track_gauge,
+                    description_en,
                     description_it,
                     standards,
                     created_at,
@@ -39,7 +40,7 @@ impl<'db> ScaleRepository<'db, PgUnitOfWork<'db>> for PgScaleRepository {
                 )
                 VALUES (
                     $1, $2, $3, $4, $5, $6,
-                    $7, $8, $9, $10
+                    $7, $8, $9, $10, $11
                 )"#,
             scale_id as &ScaleId,
             request.name,
@@ -47,7 +48,8 @@ impl<'db> ScaleRepository<'db, PgUnitOfWork<'db>> for PgScaleRepository {
             request.gauge_millimeters,
             request.gauge_inches,
             request.track_gauge as TrackGauge,
-            request.description,
+            request.description.english(),
+            request.description.italian(),
             request.standards,
             metadata.created(),
             metadata.version() as i32

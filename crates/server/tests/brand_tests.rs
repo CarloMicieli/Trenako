@@ -136,7 +136,7 @@ async fn it_should_create_new_brands() {
                 r#"SELECT
                     brand_id, name, registered_company_name, 
                     organization_entity_type as "organization_entity_type: OrganizationEntityType", group_name, 
-                    description_it, kind as "kind: BrandKind", status as "status: BrandStatus",
+                    description_en, description_it, kind as "kind: BrandKind", status as "status: BrandStatus",
                     contact_email, contact_website_url, contact_phone,
                     address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,
                     socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube
@@ -148,6 +148,7 @@ async fn it_should_create_new_brands() {
         assert_eq!(brand_name, saved.brand_id);
         assert_eq!(brand_name, saved.name);
         assert_eq!(BrandKind::Industrial, saved.kind);
+        assert_eq!(Some(String::from("description")), saved.description_en);
         assert_eq!(Some(String::from("descrizione")), saved.description_it);
         assert_eq!(Some(String::from("UNKNOWN")), saved.group_name);
         assert_eq!(Some(String::from("Registered Company Ltd")), saved.registered_company_name);
@@ -178,6 +179,7 @@ struct Saved {
     registered_company_name: Option<String>,
     organization_entity_type: Option<OrganizationEntityType>,
     group_name: Option<String>,
+    description_en: Option<String>,
     description_it: Option<String>,
     kind: BrandKind,
     status: Option<BrandStatus>,

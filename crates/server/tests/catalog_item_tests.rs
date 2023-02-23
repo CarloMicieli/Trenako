@@ -264,9 +264,11 @@ async fn it_should_create_a_new_locomotive() {
             "scale" : "H0",
             "power_method" : "DC",
             "description" : {
+                "en" : "Electric Locomotive E 402A 015",
                 "it" : "Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco, pantografi 52 Sommerfeldt"
             },
             "details" : {
+                "en" : "5-poles motor",
                 "it" : "Motore a 5 poli"
             },
             "delivery_date" : "2005",
@@ -333,6 +335,11 @@ async fn it_should_create_a_new_locomotive() {
             item.description_it
         );
         assert_eq!(Some(String::from("Motore a 5 poli")), item.details_it);
+        assert_eq!(
+            Some(String::from("Electric Locomotive E 402A 015")),
+            item.description_en
+        );
+        assert_eq!(Some(String::from("5-poles motor")), item.details_en);
         assert_eq!(Some(DeliveryDate::by_year(2005).to_string()), item.delivery_date);
         assert_eq!(Some(AvailabilityStatus::Available), item.availability_status);
         assert_eq!(1, item.count);
@@ -397,9 +404,11 @@ async fn it_should_create_a_new_electric_multiple_unit() {
             "scale" : "H0",
             "power_method" : "AC",
             "description" : {
+                "en" : "Electric multiple unit Ale.540 013",
                 "it" : "Elettromotrice Ale.540 013 e rimorchiata Le.760 003"
             },
             "details" : {
+                "en" : "With internal lighting",
                 "it" : "il modello è dotato di illuminazione interna di serie"
             },
             "delivery_date" : "2005",
@@ -494,6 +503,11 @@ async fn it_should_create_a_new_electric_multiple_unit() {
             Some(String::from("il modello è dotato di illuminazione interna di serie")),
             item.details_it
         );
+        assert_eq!(
+            Some(String::from("Electric multiple unit Ale.540 013")),
+            item.description_en
+        );
+        assert_eq!(Some(String::from("With internal lighting")), item.details_en);
         assert_eq!(Some(DeliveryDate::by_year(2005).to_string()), item.delivery_date);
         assert_eq!(Some(AvailabilityStatus::Available), item.availability_status);
         assert_eq!(2, item.count);
@@ -598,9 +612,11 @@ async fn it_should_create_a_new_railcar() {
             "scale" : "H0",
             "power_method" : "DC",
             "description" : {
+                "en" : "Railcar FS ALn 668",
                 "it" : "Automotrice FS ALn 668"
             },
             "details" : {
+                "en" : "Green/yellow",
                 "it" : "Verde lichene/giallo coloniale con mantice frontale, motorizzata + folle"
             },
             "delivery_date" : "2008",
@@ -693,6 +709,8 @@ async fn it_should_create_a_new_railcar() {
             )),
             item.details_it
         );
+        assert_eq!(Some(String::from("Railcar FS ALn 668")), item.description_en);
+        assert_eq!(Some(String::from("Green/yellow")), item.details_en);
         assert_eq!(Some(DeliveryDate::by_year(2008).to_string()), item.delivery_date);
         assert_eq!(Some(AvailabilityStatus::Available), item.availability_status);
         assert_eq!(2, item.count);
@@ -791,9 +809,11 @@ async fn it_should_create_a_new_passenger_car() {
             "scale" : "H0",
             "power_method" : "DC",
             "description" : {
+                "en" : "Passenger car",
                 "it" : "Carrozza passeggeri"
             },
             "details" : {
+                "en" : "Golden doors",
                 "it" : "porte dorate, carrelli MD50"
             },
             "delivery_date" : "2005",
@@ -851,6 +871,8 @@ async fn it_should_create_a_new_passenger_car() {
         assert_eq!(PowerMethod::DC, item.power_method);
         assert_eq!(Some(String::from("Carrozza passeggeri")), item.description_it);
         assert_eq!(Some(String::from("porte dorate, carrelli MD50")), item.details_it);
+        assert_eq!(Some(String::from("Passenger car")), item.description_en);
+        assert_eq!(Some(String::from("Golden doors")), item.details_en);
         assert_eq!(Some(DeliveryDate::by_year(2005).to_string()), item.delivery_date);
         assert_eq!(Some(AvailabilityStatus::Announced), item.availability_status);
         assert_eq!(1, item.count);
@@ -912,10 +934,12 @@ async fn it_should_create_a_new_freight_car() {
             "scale" : "H0",
             "power_method" : "DC",
             "description" : {
+                "en" : "Freight car type Hbbillns",
                 "it" : "Carro FS Hbbillns coperto livrea livrea XMPR grigio/verde"
             },
             "details" : {
-                "it" : ""
+                "en" : "Some details go here",
+                "it" : "Alcuni dettagli"
             },
             "delivery_date" : "2005",
             "availability_status" : "ANNOUNCED",
@@ -974,7 +998,9 @@ async fn it_should_create_a_new_freight_car() {
             )),
             item.description_it
         );
-        assert_eq!(Some(String::from("")), item.details_it);
+        assert_eq!(Some(String::from("Alcuni dettagli")), item.details_it);
+        assert_eq!(Some(String::from("Freight car type Hbbillns")), item.description_en);
+        assert_eq!(Some(String::from("Some details go here")), item.details_en);
         assert_eq!(Some(DeliveryDate::by_year(2005).to_string()), item.delivery_date);
         assert_eq!(Some(AvailabilityStatus::Announced), item.availability_status);
         assert_eq!(1, item.count);
@@ -1020,7 +1046,9 @@ async fn fetch_saved_catalog_item(catalog_item_id: CatalogItemId, pg_pool: &PgPo
             scale_id as "scale_id: ScaleId",
             category as "category: Category",
             power_method as "power_method: PowerMethod",
+            description_en,
             description_it,
+            details_en,
             details_it,
             delivery_date,
             availability_status as "availability_status: AvailabilityStatus",
@@ -1091,7 +1119,9 @@ struct SavedCatalogItem {
     category: Category,
     scale_id: ScaleId,
     power_method: PowerMethod,
+    description_en: Option<String>,
     description_it: Option<String>,
+    details_en: Option<String>,
     details_it: Option<String>,
     delivery_date: Option<String>,
     availability_status: Option<AvailabilityStatus>,

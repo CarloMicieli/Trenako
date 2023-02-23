@@ -101,6 +101,7 @@ async fn it_should_create_new_railways() {
             "registered_company_name" : "Rust Raiload & Co",
             "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
             "description" : {
+                "en" : "description",
                 "it" : "descrizione"
             },
             "country" : "US",
@@ -152,6 +153,7 @@ async fn it_should_create_new_railways() {
                 abbreviation,
                 registered_company_name,
                 organization_entity_type as "organization_entity_type?: OrganizationEntityType",
+                description_en,
                 description_it,
                 country,
                 operating_since,
@@ -190,6 +192,7 @@ async fn it_should_create_new_railways() {
             Some(OrganizationEntityType::StateOwnedEnterprise),
             saved.organization_entity_type
         );
+        assert_eq!(Some(String::from("description")), saved.description_en);
         assert_eq!(Some(String::from("descrizione")), saved.description_it);
         assert_eq!(CountryCode::USA.alpha2(), saved.country);
         assert_eq!(Some(operating_since), saved.operating_since);
@@ -218,6 +221,7 @@ struct Saved {
     abbreviation: Option<String>,
     registered_company_name: Option<String>,
     organization_entity_type: Option<OrganizationEntityType>,
+    description_en: Option<String>,
     description_it: Option<String>,
     country: String,
     operating_since: Option<NaiveDate>,

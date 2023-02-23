@@ -35,6 +35,7 @@ async fn it_should_return_409_when_the_scale_already_exists() {
                 "track_gauge" : "STANDARD"
             },
             "description" : {
+                "en": "description",
                 "it": "descrizione"
             },
             "standards" : ["NEM", "NMRA"]
@@ -82,6 +83,7 @@ async fn it_should_create_new_scales() {
                 "track_gauge" : "STANDARD"
             },
             "description" : {
+                "en": "description",
                 "it": "descrizione"
             },
             "standards" : ["NEM", "NMRA"]
@@ -109,6 +111,7 @@ async fn it_should_create_new_scales() {
                 gauge_millimeters,
                 gauge_inches,
                 track_gauge as "track_gauge: TrackGauge",
+                description_en,
                 description_it,
                 standards
             FROM scales
@@ -121,6 +124,7 @@ async fn it_should_create_new_scales() {
 
         assert_eq!(scale_id, saved.scale_id);
         assert_eq!(scale_name, saved.name);
+        assert_eq!(Some(String::from("description")), saved.description_en);
         assert_eq!(Some(String::from("descrizione")), saved.description_it);
         assert_eq!(ratio_value, saved.ratio);
         assert_eq!(Some(gauge_mm), saved.gauge_millimeters);
@@ -138,6 +142,7 @@ struct Saved {
     gauge_millimeters: Option<Decimal>,
     gauge_inches: Option<Decimal>,
     track_gauge: TrackGauge,
+    description_en: Option<String>,
     description_it: Option<String>,
     standards: Option<String>,
 }

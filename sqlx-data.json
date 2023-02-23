@@ -1,6 +1,166 @@
 {
   "db": "PostgreSQL",
-  "0dabf91af182d0de34d43b770c726465a065cd7cf0efa9cc76705bfdd7c05401": {
+  "120054a16b26f95b407b4fd9b629ec086446262d4a09705978f88815958ecbce": {
+    "describe": {
+      "columns": [
+        {
+          "name": "scale_id",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT scale_id FROM scales WHERE scale_id = $1 LIMIT 1"
+  },
+  "169fd084bce45b76210d73f0a9c84bcb8791e1ca20bb67ff59f0638ad9a80b51": {
+    "describe": {
+      "columns": [
+        {
+          "name": "catalog_item_id",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT catalog_item_id FROM catalog_items WHERE catalog_item_id = $1 LIMIT 1"
+  },
+  "1976fbe031c566fa0c2108a533437afc4c9a54f96662c9914554b6cc70888736": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "CIVIL_LAW_PARTNERSHIP",
+                  "ENTREPRENEURIAL_COMPANY",
+                  "GLOBAL_PARTNERSHIP",
+                  "LIMITED_COMPANY",
+                  "LIMITED_PARTNERSHIP",
+                  "LIMITED_PARTNERSHIP_LIMITED_COMPANY",
+                  "OTHER",
+                  "PUBLIC_INSTITUTION",
+                  "PUBLIC_LIMITED_COMPANY",
+                  "REGISTERED_SOLE_TRADER",
+                  "SOLE_TRADER",
+                  "STATE_OWNED_ENTERPRISE"
+                ]
+              },
+              "name": "organization_entity_type"
+            }
+          },
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          "Date",
+          "Date",
+          {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "ACTIVE",
+                  "INACTIVE"
+                ]
+              },
+              "name": "railway_status"
+            }
+          },
+          "Numeric",
+          {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "BROAD",
+                  "MEDIUM",
+                  "MINIMUM",
+                  "NARROW",
+                  "STANDARD"
+                ]
+              },
+              "name": "gauge"
+            }
+          },
+          "Varchar",
+          "Numeric",
+          "Numeric",
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          "Timestamptz",
+          "Int4"
+        ]
+      }
+    },
+    "query": "INSERT INTO railways (\n                railway_id,\n                name,\n                abbreviation,\n                registered_company_name,\n                organization_entity_type,\n                description_en,\n                description_it,\n                country,\n                operating_since,\n                operating_until,\n                status,\n                gauge_m,\n                track_gauge,\n                headquarters,\n                total_length_mi,\n                total_length_km,\n                contact_email,\n                contact_website_url,\n                contact_phone,\n                socials_facebook,\n                socials_instagram,\n                socials_linkedin,\n                socials_twitter,\n                socials_youtube,\n                created_at,\n                version\n            )\n            VALUES (\n                $1, $2, $3, $4, $5, $6,\n                $7, $8, $9, $10, $11, $12, \n                $13, $14, $15, $16, $17, $18,\n                $19, $20, $21, $22, $23, $24, $25, $26\n            )"
+  },
+  "285c88aff0732e798a24d8241d3533e65843e14e390bdd57aee0175ebd26baef": {
+    "describe": {
+      "columns": [
+        {
+          "name": "brand_id",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1"
+  },
+  "3ae6773ac7189142e8a8a1f4ff071b6e6d641ce3cc010565c45b62038a89ca7e": {
+    "describe": {
+      "columns": [
+        {
+          "name": "railway_id",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT railway_id FROM railways WHERE railway_id = $1 LIMIT 1"
+  },
+  "4fa82b19db9c79dc3294ecef0273b6e316c8a185d0568603cf6448f00c2cc1df": {
     "describe": {
       "columns": [
         {
@@ -49,13 +209,18 @@
           "type_info": "Varchar"
         },
         {
-          "name": "description_it",
+          "name": "description_en",
           "ordinal": 5,
           "type_info": "Varchar"
         },
         {
-          "name": "kind: BrandKind",
+          "name": "description_it",
           "ordinal": 6,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "kind: BrandKind",
+          "ordinal": 7,
           "type_info": {
             "Custom": {
               "kind": {
@@ -70,7 +235,7 @@
         },
         {
           "name": "status: BrandStatus",
-          "ordinal": 7,
+          "ordinal": 8,
           "type_info": {
             "Custom": {
               "kind": {
@@ -85,78 +250,79 @@
         },
         {
           "name": "contact_email",
-          "ordinal": 8,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "contact_website_url",
           "ordinal": 9,
           "type_info": "Varchar"
         },
         {
-          "name": "contact_phone",
+          "name": "contact_website_url",
           "ordinal": 10,
           "type_info": "Varchar"
         },
         {
-          "name": "address_street_address",
+          "name": "contact_phone",
           "ordinal": 11,
           "type_info": "Varchar"
         },
         {
-          "name": "address_extended_address",
+          "name": "address_street_address",
           "ordinal": 12,
           "type_info": "Varchar"
         },
         {
-          "name": "address_city",
+          "name": "address_extended_address",
           "ordinal": 13,
           "type_info": "Varchar"
         },
         {
-          "name": "address_region",
+          "name": "address_city",
           "ordinal": 14,
           "type_info": "Varchar"
         },
         {
-          "name": "address_postal_code",
+          "name": "address_region",
           "ordinal": 15,
           "type_info": "Varchar"
         },
         {
-          "name": "address_country",
+          "name": "address_postal_code",
           "ordinal": 16,
           "type_info": "Varchar"
         },
         {
-          "name": "socials_facebook",
+          "name": "address_country",
           "ordinal": 17,
           "type_info": "Varchar"
         },
         {
-          "name": "socials_instagram",
+          "name": "socials_facebook",
           "ordinal": 18,
           "type_info": "Varchar"
         },
         {
-          "name": "socials_linkedin",
+          "name": "socials_instagram",
           "ordinal": 19,
           "type_info": "Varchar"
         },
         {
-          "name": "socials_twitter",
+          "name": "socials_linkedin",
           "ordinal": 20,
           "type_info": "Varchar"
         },
         {
-          "name": "socials_youtube",
+          "name": "socials_twitter",
           "ordinal": 21,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_youtube",
+          "ordinal": 22,
           "type_info": "Varchar"
         }
       ],
       "nullable": [
         false,
         false,
+        true,
         true,
         true,
         true,
@@ -184,89 +350,9 @@
         ]
       }
     },
-    "query": "SELECT\n                    brand_id, name, registered_company_name, \n                    organization_entity_type as \"organization_entity_type: OrganizationEntityType\", group_name, \n                    description_it, kind as \"kind: BrandKind\", status as \"status: BrandStatus\",\n                    contact_email, contact_website_url, contact_phone,\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube\n                FROM brands WHERE name = $1"
+    "query": "SELECT\n                    brand_id, name, registered_company_name, \n                    organization_entity_type as \"organization_entity_type: OrganizationEntityType\", group_name, \n                    description_en, description_it, kind as \"kind: BrandKind\", status as \"status: BrandStatus\",\n                    contact_email, contact_website_url, contact_phone,\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube\n                FROM brands WHERE name = $1"
   },
-  "120054a16b26f95b407b4fd9b629ec086446262d4a09705978f88815958ecbce": {
-    "describe": {
-      "columns": [
-        {
-          "name": "scale_id",
-          "ordinal": 0,
-          "type_info": "Varchar"
-        }
-      ],
-      "nullable": [
-        false
-      ],
-      "parameters": {
-        "Left": [
-          "Text"
-        ]
-      }
-    },
-    "query": "SELECT scale_id FROM scales WHERE scale_id = $1 LIMIT 1"
-  },
-  "169fd084bce45b76210d73f0a9c84bcb8791e1ca20bb67ff59f0638ad9a80b51": {
-    "describe": {
-      "columns": [
-        {
-          "name": "catalog_item_id",
-          "ordinal": 0,
-          "type_info": "Varchar"
-        }
-      ],
-      "nullable": [
-        false
-      ],
-      "parameters": {
-        "Left": [
-          "Text"
-        ]
-      }
-    },
-    "query": "SELECT catalog_item_id FROM catalog_items WHERE catalog_item_id = $1 LIMIT 1"
-  },
-  "285c88aff0732e798a24d8241d3533e65843e14e390bdd57aee0175ebd26baef": {
-    "describe": {
-      "columns": [
-        {
-          "name": "brand_id",
-          "ordinal": 0,
-          "type_info": "Varchar"
-        }
-      ],
-      "nullable": [
-        false
-      ],
-      "parameters": {
-        "Left": [
-          "Text"
-        ]
-      }
-    },
-    "query": "SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1"
-  },
-  "3ae6773ac7189142e8a8a1f4ff071b6e6d641ce3cc010565c45b62038a89ca7e": {
-    "describe": {
-      "columns": [
-        {
-          "name": "railway_id",
-          "ordinal": 0,
-          "type_info": "Varchar"
-        }
-      ],
-      "nullable": [
-        false
-      ],
-      "parameters": {
-        "Left": [
-          "Text"
-        ]
-      }
-    },
-    "query": "SELECT railway_id FROM railways WHERE railway_id = $1 LIMIT 1"
-  },
-  "5111319877a0e2b184a5fbf9e5dad63d89713c4ef90cdd1fa9b5d6bf05ebe37e": {
+  "5aa39ed6d3cf277dc6d680cb484eed8fce61196324923c30b92b407e6ed0d5d0": {
     "describe": {
       "columns": [],
       "nullable": [],
@@ -298,6 +384,7 @@
           },
           "Varchar",
           "Varchar",
+          "Varchar",
           {
             "Custom": {
               "kind": {
@@ -339,116 +426,7 @@
         ]
       }
     },
-    "query": "INSERT INTO brands (\n                    brand_id,\n                    name,\n                    registered_company_name,\n                    organization_entity_type,\n                    group_name,\n                    description_it,\n                    kind,\n                    status,\n                    contact_email, contact_website_url, contact_phone,\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube,\n                    created_at,\n                    version\n                )\n                VALUES (\n                    $1, $2, $3, $4, $5, $6,\n                    $7, $8, $9, $10, $11, $12, \n                    $13, $14, $15, $16, $17, $18,\n                    $19, $20, $21, $22, $23, $24\n                )"
-  },
-  "558fcdab4d32f9b6d941b4c036f9b7ac02e05a0100c1eb7b93157b4531db8a9c": {
-    "describe": {
-      "columns": [],
-      "nullable": [],
-      "parameters": {
-        "Left": [
-          "Varchar",
-          "Varchar",
-          "Numeric",
-          "Numeric",
-          "Numeric",
-          {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "BROAD",
-                  "MEDIUM",
-                  "MINIMUM",
-                  "NARROW",
-                  "STANDARD"
-                ]
-              },
-              "name": "gauge"
-            }
-          },
-          "Varchar",
-          "Varchar",
-          "Timestamptz",
-          "Int4"
-        ]
-      }
-    },
-    "query": "INSERT INTO scales (\n                    scale_id,\n                    name,\n                    ratio,\n                    gauge_millimeters,\n                    gauge_inches,\n                    track_gauge,\n                    description_it,\n                    standards,\n                    created_at,\n                    version\n                )\n                VALUES (\n                    $1, $2, $3, $4, $5, $6,\n                    $7, $8, $9, $10\n                )"
-  },
-  "5c8ac005c844c341b074e94fe6dd94bfce7d931b56585a96c11bf56b23fb36eb": {
-    "describe": {
-      "columns": [
-        {
-          "name": "scale_id: ScaleId",
-          "ordinal": 0,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "name",
-          "ordinal": 1,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "ratio",
-          "ordinal": 2,
-          "type_info": "Numeric"
-        },
-        {
-          "name": "gauge_millimeters",
-          "ordinal": 3,
-          "type_info": "Numeric"
-        },
-        {
-          "name": "gauge_inches",
-          "ordinal": 4,
-          "type_info": "Numeric"
-        },
-        {
-          "name": "track_gauge: TrackGauge",
-          "ordinal": 5,
-          "type_info": {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "BROAD",
-                  "MEDIUM",
-                  "MINIMUM",
-                  "NARROW",
-                  "STANDARD"
-                ]
-              },
-              "name": "gauge"
-            }
-          }
-        },
-        {
-          "name": "description_it",
-          "ordinal": 6,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "standards",
-          "ordinal": 7,
-          "type_info": "Varchar"
-        }
-      ],
-      "nullable": [
-        false,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true
-      ],
-      "parameters": {
-        "Left": [
-          "Text"
-        ]
-      }
-    },
-    "query": "SELECT\n                scale_id as \"scale_id: ScaleId\",\n                name,\n                ratio,\n                gauge_millimeters,\n                gauge_inches,\n                track_gauge as \"track_gauge: TrackGauge\",\n                description_it,\n                standards\n            FROM scales\n            WHERE name = $1"
+    "query": "INSERT INTO brands (\n                    brand_id,\n                    name,\n                    registered_company_name,\n                    organization_entity_type,\n                    group_name,\n                    description_en,\n                    description_it,\n                    kind,\n                    status,\n                    contact_email, contact_website_url, contact_phone,\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube,\n                    created_at,\n                    version\n                )\n                VALUES (\n                    $1, $2, $3, $4, $5, $6,\n                    $7, $8, $9, $10, $11, $12, \n                    $13, $14, $15, $16, $17, $18,\n                    $19, $20, $21, $22, $23, $24, $25\n                )"
   },
   "60218ffdef2eb8c4456926f1a03be32432135f982d64090e25fd437722a0c7b4": {
     "describe": {
@@ -868,90 +846,11 @@
     },
     "query": "SELECT \n            rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n            railway_id as \"railway_id: RailwayId\",\n            rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n            epoch,\n            livery,\n            length_over_buffers_mm,\n            length_over_buffers_in,\n            type_name,\n            road_number,\n            series,\n            depot,\n            dcc_interface as \"dcc_interface: DccInterface\",\n            control as \"control: Control\",\n            electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n            freight_car_type as \"freight_car_type: FreightCarType\",\n            locomotive_type as \"locomotive_type: LocomotiveType\",\n            passenger_car_type as \"passenger_car_type: PassengerCarType\",\n            railcar_type as \"railcar_type: RailcarType\",\n            service_level as \"service_level: ServiceLevel\",\n            is_dummy,\n            minimum_radius,\n            coupling_socket as \"coupling_socket: CouplingSocket\",\n            close_couplers as \"close_couplers: FeatureFlag\",\n            digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n            flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n            metal_body as \"metal_body: FeatureFlag\",\n            interior_lights as \"interior_lights: FeatureFlag\",\n            lights as \"lights: FeatureFlag\",\n            spring_buffers as \"spring_buffers: FeatureFlag\"\n        FROM rolling_stocks\n        WHERE catalog_item_id = $1"
   },
-  "66b43447183d8b44b73a59184740be1a1a389ca1ae57d9675550537a4774e7e3": {
-    "describe": {
-      "columns": [],
-      "nullable": [],
-      "parameters": {
-        "Left": [
-          "Varchar",
-          "Varchar",
-          "Varchar",
-          "Varchar",
-          {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "CIVIL_LAW_PARTNERSHIP",
-                  "ENTREPRENEURIAL_COMPANY",
-                  "GLOBAL_PARTNERSHIP",
-                  "LIMITED_COMPANY",
-                  "LIMITED_PARTNERSHIP",
-                  "LIMITED_PARTNERSHIP_LIMITED_COMPANY",
-                  "OTHER",
-                  "PUBLIC_INSTITUTION",
-                  "PUBLIC_LIMITED_COMPANY",
-                  "REGISTERED_SOLE_TRADER",
-                  "SOLE_TRADER",
-                  "STATE_OWNED_ENTERPRISE"
-                ]
-              },
-              "name": "organization_entity_type"
-            }
-          },
-          "Varchar",
-          "Varchar",
-          "Date",
-          "Date",
-          {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "ACTIVE",
-                  "INACTIVE"
-                ]
-              },
-              "name": "railway_status"
-            }
-          },
-          "Numeric",
-          {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "BROAD",
-                  "MEDIUM",
-                  "MINIMUM",
-                  "NARROW",
-                  "STANDARD"
-                ]
-              },
-              "name": "gauge"
-            }
-          },
-          "Varchar",
-          "Numeric",
-          "Numeric",
-          "Varchar",
-          "Varchar",
-          "Varchar",
-          "Varchar",
-          "Varchar",
-          "Varchar",
-          "Varchar",
-          "Varchar",
-          "Timestamptz",
-          "Int4"
-        ]
-      }
-    },
-    "query": "INSERT INTO railways (\n                railway_id,\n                name,\n                abbreviation,\n                registered_company_name,\n                organization_entity_type,\n                description_it,\n                country,\n                operating_since,\n                operating_until,\n                status,\n                gauge_m,\n                track_gauge,\n                headquarters,\n                total_length_mi,\n                total_length_km,\n                contact_email,\n                contact_website_url,\n                contact_phone,\n                socials_facebook,\n                socials_instagram,\n                socials_linkedin,\n                socials_twitter,\n                socials_youtube,\n                created_at,\n                version\n            )\n            VALUES (\n                $1, $2, $3, $4, $5, $6,\n                $7, $8, $9, $10, $11, $12, \n                $13, $14, $15, $16, $17, $18,\n                $19, $20, $21, $22, $23, $24, $25\n            )"
-  },
-  "9edfb8598f2810e9d513fb4358e7db2727c41a22e1f66e7eb1b7c9e8e35ea383": {
+  "88826e119069efb4e400a96b458371c1fbcff5dac6ff6bce60941f159ca4a15a": {
     "describe": {
       "columns": [
         {
-          "name": "railway_id: RailwayId",
+          "name": "scale_id: ScaleId",
           "ordinal": 0,
           "type_info": "Varchar"
         },
@@ -961,83 +860,23 @@
           "type_info": "Varchar"
         },
         {
-          "name": "abbreviation",
+          "name": "ratio",
           "ordinal": 2,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "registered_company_name",
-          "ordinal": 3,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "organization_entity_type?: OrganizationEntityType",
-          "ordinal": 4,
-          "type_info": {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "CIVIL_LAW_PARTNERSHIP",
-                  "ENTREPRENEURIAL_COMPANY",
-                  "GLOBAL_PARTNERSHIP",
-                  "LIMITED_COMPANY",
-                  "LIMITED_PARTNERSHIP",
-                  "LIMITED_PARTNERSHIP_LIMITED_COMPANY",
-                  "OTHER",
-                  "PUBLIC_INSTITUTION",
-                  "PUBLIC_LIMITED_COMPANY",
-                  "REGISTERED_SOLE_TRADER",
-                  "SOLE_TRADER",
-                  "STATE_OWNED_ENTERPRISE"
-                ]
-              },
-              "name": "organization_entity_type"
-            }
-          }
-        },
-        {
-          "name": "description_it",
-          "ordinal": 5,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "country",
-          "ordinal": 6,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "operating_since",
-          "ordinal": 7,
-          "type_info": "Date"
-        },
-        {
-          "name": "operating_until",
-          "ordinal": 8,
-          "type_info": "Date"
-        },
-        {
-          "name": "status?: RailwayStatus",
-          "ordinal": 9,
-          "type_info": {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "ACTIVE",
-                  "INACTIVE"
-                ]
-              },
-              "name": "railway_status"
-            }
-          }
-        },
-        {
-          "name": "gauge_m",
-          "ordinal": 10,
           "type_info": "Numeric"
         },
         {
-          "name": "track_gauge?: TrackGauge",
-          "ordinal": 11,
+          "name": "gauge_millimeters",
+          "ordinal": 3,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "gauge_inches",
+          "ordinal": 4,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "track_gauge: TrackGauge",
+          "ordinal": 5,
           "type_info": {
             "Custom": {
               "kind": {
@@ -1054,82 +893,28 @@
           }
         },
         {
-          "name": "headquarters",
-          "ordinal": 12,
+          "name": "description_en",
+          "ordinal": 6,
           "type_info": "Varchar"
         },
         {
-          "name": "total_length_mi",
-          "ordinal": 13,
-          "type_info": "Numeric"
-        },
-        {
-          "name": "total_length_km",
-          "ordinal": 14,
-          "type_info": "Numeric"
-        },
-        {
-          "name": "contact_email",
-          "ordinal": 15,
+          "name": "description_it",
+          "ordinal": 7,
           "type_info": "Varchar"
         },
         {
-          "name": "contact_website_url",
-          "ordinal": 16,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "contact_phone",
-          "ordinal": 17,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "socials_facebook",
-          "ordinal": 18,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "socials_instagram",
-          "ordinal": 19,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "socials_linkedin",
-          "ordinal": 20,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "socials_twitter",
-          "ordinal": 21,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "socials_youtube",
-          "ordinal": 22,
+          "name": "standards",
+          "ordinal": 8,
           "type_info": "Varchar"
         }
       ],
       "nullable": [
         false,
         false,
-        true,
-        true,
-        true,
-        true,
         false,
         true,
         true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
+        false,
         true,
         true,
         true
@@ -1140,7 +925,165 @@
         ]
       }
     },
-    "query": "SELECT\n                railway_id as \"railway_id: RailwayId\",\n                name,\n                abbreviation,\n                registered_company_name,\n                organization_entity_type as \"organization_entity_type?: OrganizationEntityType\",\n                description_it,\n                country,\n                operating_since,\n                operating_until,\n                status as \"status?: RailwayStatus\",\n                gauge_m,\n                track_gauge as \"track_gauge?: TrackGauge\",\n                headquarters,\n                total_length_mi,\n                total_length_km,\n                contact_email,\n                contact_website_url,\n                contact_phone,\n                socials_facebook,\n                socials_instagram,\n                socials_linkedin,\n                socials_twitter,\n                socials_youtube\n            FROM railways WHERE name = $1"
+    "query": "SELECT\n                scale_id as \"scale_id: ScaleId\",\n                name,\n                ratio,\n                gauge_millimeters,\n                gauge_inches,\n                track_gauge as \"track_gauge: TrackGauge\",\n                description_en,\n                description_it,\n                standards\n            FROM scales\n            WHERE name = $1"
+  },
+  "8cffb15334bf2709d7f7ad08dabcc3777ba25eaa05b9f89aa7b21a656a640daf": {
+    "describe": {
+      "columns": [
+        {
+          "name": "item_number",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "brand_id: BrandId",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "scale_id: ScaleId",
+          "ordinal": 2,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "category: Category",
+          "ordinal": 3,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "LOCOMOTIVES",
+                  "TRAIN_SETS",
+                  "STARTER_SETS",
+                  "FREIGHT_CARS",
+                  "PASSENGER_CARS",
+                  "ELECTRIC_MULTIPLE_UNITS",
+                  "RAILCARS"
+                ]
+              },
+              "name": "catalog_item_category"
+            }
+          }
+        },
+        {
+          "name": "power_method: PowerMethod",
+          "ordinal": 4,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "AC",
+                  "DC",
+                  "TRIX_EXPRESS"
+                ]
+              },
+              "name": "power_method"
+            }
+          }
+        },
+        {
+          "name": "description_en",
+          "ordinal": 5,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "description_it",
+          "ordinal": 6,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "details_en",
+          "ordinal": 7,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "details_it",
+          "ordinal": 8,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "delivery_date",
+          "ordinal": 9,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "availability_status: AvailabilityStatus",
+          "ordinal": 10,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "ANNOUNCED",
+                  "AVAILABLE",
+                  "DISCONTINUED"
+                ]
+              },
+              "name": "availability_status"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "ordinal": 11,
+          "type_info": "Int4"
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT\n            item_number,\n            brand_id as \"brand_id: BrandId\",\n            scale_id as \"scale_id: ScaleId\",\n            category as \"category: Category\",\n            power_method as \"power_method: PowerMethod\",\n            description_en,\n            description_it,\n            details_en,\n            details_it,\n            delivery_date,\n            availability_status as \"availability_status: AvailabilityStatus\",\n            count\n        FROM catalog_items WHERE catalog_item_id = $1"
+  },
+  "9b4c5fc0daa3253aa7cb8fa906c47c444223c1d985c3af277142f0224750e377": {
+    "describe": {
+      "columns": [],
+      "nullable": [],
+      "parameters": {
+        "Left": [
+          "Varchar",
+          "Varchar",
+          "Numeric",
+          "Numeric",
+          "Numeric",
+          {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "BROAD",
+                  "MEDIUM",
+                  "MINIMUM",
+                  "NARROW",
+                  "STANDARD"
+                ]
+              },
+              "name": "gauge"
+            }
+          },
+          "Varchar",
+          "Varchar",
+          "Varchar",
+          "Timestamptz",
+          "Int4"
+        ]
+      }
+    },
+    "query": "INSERT INTO scales (\n                    scale_id,\n                    name,\n                    ratio,\n                    gauge_millimeters,\n                    gauge_inches,\n                    track_gauge,\n                    description_en,\n                    description_it,\n                    standards,\n                    created_at,\n                    version\n                )\n                VALUES (\n                    $1, $2, $3, $4, $5, $6,\n                    $7, $8, $9, $10, $11\n                )"
   },
   "adf2bb259b2d0a5506268b169ccc867bf2e94f1f6f1a7732f90b8e774f946398": {
     "describe": {
@@ -1413,108 +1356,198 @@
     },
     "query": "INSERT INTO rolling_stocks (\n                        rolling_stock_id,\n                        catalog_item_id,\n                        railway_id,\n                        rolling_stock_category,\n                        epoch,\n                        livery,\n                        length_over_buffers_mm,\n                        length_over_buffers_in,\n                        type_name,\n                        road_number,\n                        series,\n                        depot,\n                        dcc_interface,\n                        control,\n                        electric_multiple_unit_type,\n                        freight_car_type,\n                        locomotive_type,\n                        passenger_car_type,\n                        railcar_type,\n                        service_level,\n                        is_dummy,\n                        minimum_radius,\n                        coupling_socket,\n                        close_couplers,\n                        digital_shunting_coupling,\n                        flywheel_fitted,\n                        metal_body,\n                        interior_lights,\n                        lights,\n                        spring_buffers\n                    )\n                    VALUES (\n                        $1, $2, $3, $4, $5, $6,\n                        $7, $8, $9, $10, $11, $12, \n                        $13, $14, $15, $16, $17, $18,\n                        $19, $20, $21, $22, $23, $24, \n                        $25, $26, $27, $28, $29, $30\n                    )"
   },
-  "d896cc91144dbe4a3521a24bb3bbceebd4dd0a53b81296977eb42cfddd504c3b": {
+  "d0a95e62e9526dce2795d49bb86d44af95a4400c1048fc303bb88dde0bcf1018": {
     "describe": {
       "columns": [
         {
-          "name": "item_number",
+          "name": "railway_id: RailwayId",
           "ordinal": 0,
           "type_info": "Varchar"
         },
         {
-          "name": "brand_id: BrandId",
+          "name": "name",
           "ordinal": 1,
           "type_info": "Varchar"
         },
         {
-          "name": "scale_id: ScaleId",
+          "name": "abbreviation",
           "ordinal": 2,
           "type_info": "Varchar"
         },
         {
-          "name": "category: Category",
+          "name": "registered_company_name",
           "ordinal": 3,
-          "type_info": {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "LOCOMOTIVES",
-                  "TRAIN_SETS",
-                  "STARTER_SETS",
-                  "FREIGHT_CARS",
-                  "PASSENGER_CARS",
-                  "ELECTRIC_MULTIPLE_UNITS",
-                  "RAILCARS"
-                ]
-              },
-              "name": "catalog_item_category"
-            }
-          }
+          "type_info": "Varchar"
         },
         {
-          "name": "power_method: PowerMethod",
+          "name": "organization_entity_type?: OrganizationEntityType",
           "ordinal": 4,
           "type_info": {
             "Custom": {
               "kind": {
                 "Enum": [
-                  "AC",
-                  "DC",
-                  "TRIX_EXPRESS"
+                  "CIVIL_LAW_PARTNERSHIP",
+                  "ENTREPRENEURIAL_COMPANY",
+                  "GLOBAL_PARTNERSHIP",
+                  "LIMITED_COMPANY",
+                  "LIMITED_PARTNERSHIP",
+                  "LIMITED_PARTNERSHIP_LIMITED_COMPANY",
+                  "OTHER",
+                  "PUBLIC_INSTITUTION",
+                  "PUBLIC_LIMITED_COMPANY",
+                  "REGISTERED_SOLE_TRADER",
+                  "SOLE_TRADER",
+                  "STATE_OWNED_ENTERPRISE"
                 ]
               },
-              "name": "power_method"
+              "name": "organization_entity_type"
             }
           }
         },
         {
-          "name": "description_it",
+          "name": "description_en",
           "ordinal": 5,
           "type_info": "Varchar"
         },
         {
-          "name": "details_it",
+          "name": "description_it",
           "ordinal": 6,
           "type_info": "Varchar"
         },
         {
-          "name": "delivery_date",
+          "name": "country",
           "ordinal": 7,
           "type_info": "Varchar"
         },
         {
-          "name": "availability_status: AvailabilityStatus",
+          "name": "operating_since",
           "ordinal": 8,
+          "type_info": "Date"
+        },
+        {
+          "name": "operating_until",
+          "ordinal": 9,
+          "type_info": "Date"
+        },
+        {
+          "name": "status?: RailwayStatus",
+          "ordinal": 10,
           "type_info": {
             "Custom": {
               "kind": {
                 "Enum": [
-                  "ANNOUNCED",
-                  "AVAILABLE",
-                  "DISCONTINUED"
+                  "ACTIVE",
+                  "INACTIVE"
                 ]
               },
-              "name": "availability_status"
+              "name": "railway_status"
             }
           }
         },
         {
-          "name": "count",
-          "ordinal": 9,
-          "type_info": "Int4"
+          "name": "gauge_m",
+          "ordinal": 11,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "track_gauge?: TrackGauge",
+          "ordinal": 12,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "BROAD",
+                  "MEDIUM",
+                  "MINIMUM",
+                  "NARROW",
+                  "STANDARD"
+                ]
+              },
+              "name": "gauge"
+            }
+          }
+        },
+        {
+          "name": "headquarters",
+          "ordinal": 13,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "total_length_mi",
+          "ordinal": 14,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "total_length_km",
+          "ordinal": 15,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "contact_email",
+          "ordinal": 16,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "contact_website_url",
+          "ordinal": 17,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "contact_phone",
+          "ordinal": 18,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_facebook",
+          "ordinal": 19,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_instagram",
+          "ordinal": 20,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_linkedin",
+          "ordinal": 21,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_twitter",
+          "ordinal": 22,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_youtube",
+          "ordinal": 23,
+          "type_info": "Varchar"
         }
       ],
       "nullable": [
         false,
         false,
+        true,
+        true,
+        true,
+        true,
+        true,
         false,
-        false,
-        false,
         true,
         true,
         true,
         true,
-        false
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
       ],
       "parameters": {
         "Left": [
@@ -1522,9 +1555,9 @@
         ]
       }
     },
-    "query": "SELECT\n            item_number,\n            brand_id as \"brand_id: BrandId\",\n            scale_id as \"scale_id: ScaleId\",\n            category as \"category: Category\",\n            power_method as \"power_method: PowerMethod\",\n            description_it,\n            details_it,\n            delivery_date,\n            availability_status as \"availability_status: AvailabilityStatus\",\n            count\n        FROM catalog_items WHERE catalog_item_id = $1"
+    "query": "SELECT\n                railway_id as \"railway_id: RailwayId\",\n                name,\n                abbreviation,\n                registered_company_name,\n                organization_entity_type as \"organization_entity_type?: OrganizationEntityType\",\n                description_en,\n                description_it,\n                country,\n                operating_since,\n                operating_until,\n                status as \"status?: RailwayStatus\",\n                gauge_m,\n                track_gauge as \"track_gauge?: TrackGauge\",\n                headquarters,\n                total_length_mi,\n                total_length_km,\n                contact_email,\n                contact_website_url,\n                contact_phone,\n                socials_facebook,\n                socials_instagram,\n                socials_linkedin,\n                socials_twitter,\n                socials_youtube\n            FROM railways WHERE name = $1"
   },
-  "fa9e9ff9bf3f26bbc414aaefda82bc191c208f05db1920ecfd4ec4d98dab23d5": {
+  "fb5c5af48e6ab2d8e77f7160ba698746b24d90e71f591c6d6ec31090ece2bf5d": {
     "describe": {
       "columns": [],
       "nullable": [],
@@ -1550,6 +1583,8 @@
               "name": "catalog_item_category"
             }
           },
+          "Varchar",
+          "Varchar",
           "Varchar",
           "Varchar",
           {
@@ -1583,6 +1618,6 @@
         ]
       }
     },
-    "query": "INSERT INTO catalog_items (\n                catalog_item_id,\n                brand_id,\n                item_number,\n                scale_id,\n                category,\n                description_it,\n                details_it,\n                power_method,\n                delivery_date,\n                availability_status,\n                count,\n                created_at,\n                version\n            )\n            VALUES (\n                $1, $2, $3, $4, $5, $6,\n                $7, $8, $9, $10, $11, $12, $13\n            )"
+    "query": "INSERT INTO catalog_items (\n                catalog_item_id,\n                brand_id,\n                item_number,\n                scale_id,\n                category,\n                description_en,\n                description_it,\n                details_en,\n                details_it,\n                power_method,\n                delivery_date,\n                availability_status,\n                count,\n                created_at,\n                version\n            )\n            VALUES (\n                $1, $2, $3, $4, $5, $6,\n                $7, $8, $9, $10, $11, $12, \n                $13, $14, $15\n            )"
   }
 }

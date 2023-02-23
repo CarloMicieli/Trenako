@@ -7,6 +7,7 @@ use crate::brands::commands::repositories::BrandRepository;
 use chrono::Utc;
 use common::address::Address;
 use common::contacts::{ContactInformation, MailAddress, PhoneNumber, WebsiteUrl};
+use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::{Handler, Socials};
@@ -87,7 +88,7 @@ pub struct BrandCommandPayload {
     pub registered_company_name: Option<String>,
     pub organization_entity_type: Option<OrganizationEntityType>,
     pub group_name: Option<String>,
-    pub description_it: Option<String>,
+    pub description: LocalizedText,
     pub kind: BrandKind,
     pub status: Option<BrandStatus>,
     pub contact_email: Option<MailAddress>,
@@ -159,7 +160,7 @@ impl TryFrom<BrandRequest> for BrandCommandPayload {
             registered_company_name: request.registered_company_name,
             organization_entity_type: request.organization_entity_type,
             group_name: request.group_name,
-            description_it: request.description.italian().map(String::to_string),
+            description: request.description,
             kind: request.kind,
             status: request.status,
             contact_email: email,

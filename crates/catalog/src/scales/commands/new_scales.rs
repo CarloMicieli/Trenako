@@ -5,6 +5,7 @@ use crate::scales::scale_request::ScaleRequest;
 use crate::scales::scale_response::ScaleCreated;
 use async_trait::async_trait;
 use chrono::Utc;
+use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use common::unit_of_work::{Database, UnitOfWork};
 use itertools::Itertools;
@@ -86,7 +87,7 @@ pub struct ScaleCommandPayload {
     pub gauge_millimeters: Option<Decimal>,
     pub gauge_inches: Option<Decimal>,
     pub track_gauge: TrackGauge,
-    pub description: Option<String>,
+    pub description: LocalizedText,
     pub standards: Option<String>,
 }
 
@@ -122,7 +123,7 @@ impl TryFrom<ScaleRequest> for ScaleCommandPayload {
             gauge_millimeters,
             gauge_inches,
             track_gauge,
-            description: request.description.italian().map(String::to_string),
+            description: request.description,
             standards,
         })
     }

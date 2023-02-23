@@ -58,7 +58,9 @@ impl<'db> CatalogItemRepository<'db, PgUnitOfWork<'db>> for PgCatalogItemReposit
                 item_number,
                 scale_id,
                 category,
+                description_en,
                 description_it,
+                details_en,
                 details_it,
                 power_method,
                 delivery_date,
@@ -69,14 +71,17 @@ impl<'db> CatalogItemRepository<'db, PgUnitOfWork<'db>> for PgCatalogItemReposit
             )
             VALUES (
                 $1, $2, $3, $4, $5, $6,
-                $7, $8, $9, $10, $11, $12, $13
+                $7, $8, $9, $10, $11, $12, 
+                $13, $14, $15
             )"#,
             catalog_item_id as &CatalogItemId,
             brand_id as &BrandId,
             request.item_number.value(),
             scale_id as &ScaleId,
             request.category as Category,
+            request.description.english(),
             request.description.italian(),
+            request.details.english(),
             request.details.italian(),
             request.power_method as PowerMethod,
             request.delivery_date.as_ref().map(|x| x.to_string()),

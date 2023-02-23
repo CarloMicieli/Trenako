@@ -6,6 +6,7 @@ use crate::railways::railway_request::RailwayRequest;
 use crate::railways::railway_response::RailwayCreated;
 use chrono::{NaiveDate, Utc};
 use common::contacts::{ContactInformation, MailAddress, PhoneNumber, WebsiteUrl};
+use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
 use common::socials::{Handler, Socials};
@@ -87,7 +88,7 @@ pub struct RailwayCommandPayload {
     pub abbreviation: Option<String>,
     pub registered_company_name: Option<String>,
     pub organization_entity_type: Option<OrganizationEntityType>,
-    pub description: Option<String>,
+    pub description: LocalizedText,
     pub country: String,
     pub operating_since: Option<NaiveDate>,
     pub operating_until: Option<NaiveDate>,
@@ -145,7 +146,7 @@ impl TryFrom<RailwayRequest> for RailwayCommandPayload {
             abbreviation: request.abbreviation,
             registered_company_name: request.registered_company_name,
             organization_entity_type: request.organization_entity_type,
-            description: request.description.italian().map(String::to_string),
+            description: request.description,
             country: request
                 .country
                 .expect("country code is required for railway requests")
