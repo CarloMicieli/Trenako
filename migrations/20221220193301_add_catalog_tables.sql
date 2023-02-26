@@ -65,7 +65,7 @@ CREATE TABLE public.railways
     status                   railway_status,
     gauge_meters             numeric(5, 3),
     track_gauge              gauge,
-    headquarters             varchar(250),
+    headquarters             varchar(250) array,
     total_length_mi          numeric(7, 1),
     total_length_km          numeric(7, 1),
     contact_email            varchar(255),

@@ -48,7 +48,6 @@ async fn it_should_return_409_when_the_railway_already_exists() {
                 "meters": 1.435,
                 "track_gauge": "STANDARD"
             },
-            "headquarters" : "Some City",
             "total_length" : {
                 "miles": 621.371,
                 "kilometers": 10000
@@ -113,7 +112,7 @@ async fn it_should_create_new_railways() {
                 "meters": 1.435,
                 "track_gauge": "STANDARD"
             },
-            "headquarters" : "Some City",
+            "headquarters" : [ "Some City" ],
             "total_length" : {
                 "miles": 621.371,
                 "kilometers": 10000
@@ -161,7 +160,7 @@ async fn it_should_create_new_railways() {
                 status as "status?: RailwayStatus",
                 gauge_meters,
                 track_gauge as "track_gauge?: TrackGauge",
-                headquarters,
+                headquarters as "headquarters!: Vec<String>",
                 total_length_mi,
                 total_length_km,
                 contact_email,
@@ -198,7 +197,7 @@ async fn it_should_create_new_railways() {
         assert_eq!(Some(operating_since), saved.operating_since);
         assert_eq!(None, saved.operating_until);
         assert_eq!(Some(RailwayStatus::Active), saved.status);
-        assert_eq!(Some(String::from("Some City")), saved.headquarters);
+        assert_eq!(vec![String::from("Some City")], saved.headquarters);
         assert_eq!(Some(gauge_mt), saved.gauge_meters);
         assert_eq!(Some(TrackGauge::Standard), saved.track_gauge);
         assert_eq!(Some(total_length_km), saved.total_length_km);
@@ -229,7 +228,7 @@ struct Saved {
     status: Option<RailwayStatus>,
     gauge_meters: Option<Decimal>,
     track_gauge: Option<TrackGauge>,
-    headquarters: Option<String>,
+    headquarters: Vec<String>,
     total_length_mi: Option<Decimal>,
     total_length_km: Option<Decimal>,
     contact_email: Option<String>,

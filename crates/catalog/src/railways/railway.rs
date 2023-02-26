@@ -39,7 +39,7 @@ pub struct Railway {
     /// the track gauge
     pub gauge: Option<RailwayGauge>,
     /// the railway headquarter
-    pub headquarters: Option<String>,
+    pub headquarters: Vec<String>,
     /// the railway total length
     pub total_length: Option<RailwayLength>,
     /// the contacts information
@@ -63,11 +63,13 @@ impl Railway {
         total_length: Option<RailwayLength>,
         gauge: Option<RailwayGauge>,
         country: CountryCode,
-        headquarters: Option<&str>,
+        headquarters: Vec<&str>,
         contact_info: Option<ContactInformation>,
         socials: Option<Socials>,
         metadata: Metadata,
     ) -> Self {
+        let headquarters: Vec<String> = headquarters.into_iter().map(str::to_string).collect();
+
         Railway {
             railway_id,
             name: String::from(name),
@@ -78,7 +80,7 @@ impl Railway {
             country,
             period_of_activity,
             gauge,
-            headquarters: headquarters.map(str::to_string),
+            headquarters,
             total_length,
             contact_info,
             socials,
@@ -138,8 +140,8 @@ impl Railway {
     }
 
     /// The railway headquarter
-    pub fn headquarters(&self) -> Option<&str> {
-        self.headquarters.as_deref()
+    pub fn headquarters(&self) -> &Vec<String> {
+        &self.headquarters
     }
 
     /// The contact railway info
@@ -212,7 +214,7 @@ mod test {
                 Some(length),
                 Some(gauge.clone()),
                 CountryCode::ITA,
-                Some("Rome"),
+                vec!["Rome"],
                 Some(contact_info.clone()),
                 Some(socials.clone()),
                 metadata.clone(),
@@ -226,7 +228,7 @@ mod test {
                 Some(OrganizationEntityType::StateOwnedEnterprise),
                 railway.organization_entity_type()
             );
-            assert_eq!(Some("Rome"), railway.headquarters());
+            assert_eq!(&vec!["Rome"], railway.headquarters());
             assert_eq!(Some(&length), railway.total_length());
             assert_eq!(Some(&String::from("Description text")), railway.description());
             assert_eq!(Some(&gauge), railway.gauge());
@@ -249,7 +251,7 @@ mod test {
                 None,
                 None,
                 CountryCode::ITA,
-                Some("Rome"),
+                vec!["Rome"],
                 None,
                 None,
                 metadata,

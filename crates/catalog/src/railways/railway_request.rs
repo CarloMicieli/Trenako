@@ -36,7 +36,8 @@ pub struct RailwayRequest {
     pub gauge: Option<RailwayGauge>,
     /// the railway headquarter
     #[validate(length(max = 100))]
-    pub headquarters: Option<String>,
+    #[serde(default)]
+    pub headquarters: Vec<String>,
     /// the railway total length
     #[validate]
     pub total_length: Option<RailwayLength>,

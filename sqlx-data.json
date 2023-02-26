@@ -160,207 +160,6 @@
     },
     "query": "SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1"
   },
-  "34ffa88c582254d97d1e8615887e33f2f973e05a30bd2ffd95996b5a28999c23": {
-    "describe": {
-      "columns": [
-        {
-          "name": "railway_id: RailwayId",
-          "ordinal": 0,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "name",
-          "ordinal": 1,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "abbreviation",
-          "ordinal": 2,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "registered_company_name",
-          "ordinal": 3,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "organization_entity_type?: OrganizationEntityType",
-          "ordinal": 4,
-          "type_info": {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "CIVIL_LAW_PARTNERSHIP",
-                  "ENTREPRENEURIAL_COMPANY",
-                  "GLOBAL_PARTNERSHIP",
-                  "LIMITED_COMPANY",
-                  "LIMITED_PARTNERSHIP",
-                  "LIMITED_PARTNERSHIP_LIMITED_COMPANY",
-                  "OTHER",
-                  "PUBLIC_INSTITUTION",
-                  "PUBLIC_LIMITED_COMPANY",
-                  "REGISTERED_SOLE_TRADER",
-                  "SOLE_TRADER",
-                  "STATE_OWNED_ENTERPRISE"
-                ]
-              },
-              "name": "organization_entity_type"
-            }
-          }
-        },
-        {
-          "name": "description_en",
-          "ordinal": 5,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "description_it",
-          "ordinal": 6,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "country",
-          "ordinal": 7,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "operating_since",
-          "ordinal": 8,
-          "type_info": "Date"
-        },
-        {
-          "name": "operating_until",
-          "ordinal": 9,
-          "type_info": "Date"
-        },
-        {
-          "name": "status?: RailwayStatus",
-          "ordinal": 10,
-          "type_info": {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "ACTIVE",
-                  "INACTIVE"
-                ]
-              },
-              "name": "railway_status"
-            }
-          }
-        },
-        {
-          "name": "gauge_meters",
-          "ordinal": 11,
-          "type_info": "Numeric"
-        },
-        {
-          "name": "track_gauge?: TrackGauge",
-          "ordinal": 12,
-          "type_info": {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "BROAD",
-                  "MEDIUM",
-                  "MINIMUM",
-                  "NARROW",
-                  "STANDARD"
-                ]
-              },
-              "name": "gauge"
-            }
-          }
-        },
-        {
-          "name": "headquarters",
-          "ordinal": 13,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "total_length_mi",
-          "ordinal": 14,
-          "type_info": "Numeric"
-        },
-        {
-          "name": "total_length_km",
-          "ordinal": 15,
-          "type_info": "Numeric"
-        },
-        {
-          "name": "contact_email",
-          "ordinal": 16,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "contact_website_url",
-          "ordinal": 17,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "contact_phone",
-          "ordinal": 18,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "socials_facebook",
-          "ordinal": 19,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "socials_instagram",
-          "ordinal": 20,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "socials_linkedin",
-          "ordinal": 21,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "socials_twitter",
-          "ordinal": 22,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "socials_youtube",
-          "ordinal": 23,
-          "type_info": "Varchar"
-        }
-      ],
-      "nullable": [
-        false,
-        false,
-        true,
-        true,
-        true,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true,
-        true
-      ],
-      "parameters": {
-        "Left": [
-          "Text"
-        ]
-      }
-    },
-    "query": "SELECT\n                railway_id as \"railway_id: RailwayId\",\n                name,\n                abbreviation,\n                registered_company_name,\n                organization_entity_type as \"organization_entity_type?: OrganizationEntityType\",\n                description_en,\n                description_it,\n                country,\n                operating_since,\n                operating_until,\n                status as \"status?: RailwayStatus\",\n                gauge_meters,\n                track_gauge as \"track_gauge?: TrackGauge\",\n                headquarters,\n                total_length_mi,\n                total_length_km,\n                contact_email,\n                contact_website_url,\n                contact_phone,\n                socials_facebook,\n                socials_instagram,\n                socials_linkedin,\n                socials_twitter,\n                socials_youtube\n            FROM railways WHERE name = $1"
-  },
   "3ae6773ac7189142e8a8a1f4ff071b6e6d641ce3cc010565c45b62038a89ca7e": {
     "describe": {
       "columns": [
@@ -572,6 +371,207 @@
       }
     },
     "query": "SELECT\n                    brand_id, name, registered_company_name, \n                    organization_entity_type as \"organization_entity_type: OrganizationEntityType\", group_name, \n                    description_en, description_it, kind as \"kind: BrandKind\", status as \"status: BrandStatus\",\n                    contact_email, contact_website_url, contact_phone,\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube\n                FROM brands WHERE name = $1"
+  },
+  "522637ce9939f4ba06b65855daba577ce0f59efc7de9b3e1f3bb6933989e41dd": {
+    "describe": {
+      "columns": [
+        {
+          "name": "railway_id: RailwayId",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "name",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "abbreviation",
+          "ordinal": 2,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "registered_company_name",
+          "ordinal": 3,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "organization_entity_type?: OrganizationEntityType",
+          "ordinal": 4,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "CIVIL_LAW_PARTNERSHIP",
+                  "ENTREPRENEURIAL_COMPANY",
+                  "GLOBAL_PARTNERSHIP",
+                  "LIMITED_COMPANY",
+                  "LIMITED_PARTNERSHIP",
+                  "LIMITED_PARTNERSHIP_LIMITED_COMPANY",
+                  "OTHER",
+                  "PUBLIC_INSTITUTION",
+                  "PUBLIC_LIMITED_COMPANY",
+                  "REGISTERED_SOLE_TRADER",
+                  "SOLE_TRADER",
+                  "STATE_OWNED_ENTERPRISE"
+                ]
+              },
+              "name": "organization_entity_type"
+            }
+          }
+        },
+        {
+          "name": "description_en",
+          "ordinal": 5,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "description_it",
+          "ordinal": 6,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "country",
+          "ordinal": 7,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "operating_since",
+          "ordinal": 8,
+          "type_info": "Date"
+        },
+        {
+          "name": "operating_until",
+          "ordinal": 9,
+          "type_info": "Date"
+        },
+        {
+          "name": "status?: RailwayStatus",
+          "ordinal": 10,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "ACTIVE",
+                  "INACTIVE"
+                ]
+              },
+              "name": "railway_status"
+            }
+          }
+        },
+        {
+          "name": "gauge_meters",
+          "ordinal": 11,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "track_gauge?: TrackGauge",
+          "ordinal": 12,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "BROAD",
+                  "MEDIUM",
+                  "MINIMUM",
+                  "NARROW",
+                  "STANDARD"
+                ]
+              },
+              "name": "gauge"
+            }
+          }
+        },
+        {
+          "name": "headquarters!: Vec<String>",
+          "ordinal": 13,
+          "type_info": "VarcharArray"
+        },
+        {
+          "name": "total_length_mi",
+          "ordinal": 14,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "total_length_km",
+          "ordinal": 15,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "contact_email",
+          "ordinal": 16,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "contact_website_url",
+          "ordinal": 17,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "contact_phone",
+          "ordinal": 18,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_facebook",
+          "ordinal": 19,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_instagram",
+          "ordinal": 20,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_linkedin",
+          "ordinal": 21,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_twitter",
+          "ordinal": 22,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_youtube",
+          "ordinal": 23,
+          "type_info": "Varchar"
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT\n                railway_id as \"railway_id: RailwayId\",\n                name,\n                abbreviation,\n                registered_company_name,\n                organization_entity_type as \"organization_entity_type?: OrganizationEntityType\",\n                description_en,\n                description_it,\n                country,\n                operating_since,\n                operating_until,\n                status as \"status?: RailwayStatus\",\n                gauge_meters,\n                track_gauge as \"track_gauge?: TrackGauge\",\n                headquarters as \"headquarters!: Vec<String>\",\n                total_length_mi,\n                total_length_km,\n                contact_email,\n                contact_website_url,\n                contact_phone,\n                socials_facebook,\n                socials_instagram,\n                socials_linkedin,\n                socials_twitter,\n                socials_youtube\n            FROM railways WHERE name = $1"
   },
   "5aa39ed6d3cf277dc6d680cb484eed8fce61196324923c30b92b407e6ed0d5d0": {
     "describe": {
@@ -1306,7 +1306,7 @@
               "name": "gauge"
             }
           },
-          "Varchar",
+          "VarcharArray",
           "Numeric",
           "Numeric",
           "Varchar",

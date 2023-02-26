@@ -29,7 +29,7 @@
         "twitter" : "FSitaliane",
         "youtube" : "fsitaliane"
       },
-      "headquarters" : "Roma"
+      "headquarters" : [ "Roma" ]
     }
   ]
 }

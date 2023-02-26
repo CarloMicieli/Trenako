@@ -20,6 +20,7 @@ pub struct ScaleRequest {
     #[validate]
     pub description: LocalizedText,
     /// the list of standards
+    #[serde(default)]
     pub standards: Vec<Standard>,
 }
 

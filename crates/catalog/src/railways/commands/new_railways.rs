@@ -95,7 +95,7 @@ pub struct RailwayCommandPayload {
     pub status: Option<RailwayStatus>,
     pub gauge_meters: Option<Decimal>,
     pub track_gauge: Option<TrackGauge>,
-    pub headquarters: Option<String>,
+    pub headquarters: Vec<String>,
     pub total_length_mi: Option<Decimal>,
     pub total_length_km: Option<Decimal>,
     pub contact_email: Option<MailAddress>,

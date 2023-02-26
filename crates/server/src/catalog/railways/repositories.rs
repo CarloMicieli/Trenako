@@ -83,7 +83,7 @@ impl<'db> RailwayRepository<'db, PgUnitOfWork<'db>> for PgRailwayRepository {
             request.status.as_ref() as Option<&RailwayStatus>,
             request.gauge_meters,
             request.track_gauge.as_ref() as Option<&TrackGauge>,
-            request.headquarters,
+            &request.headquarters,
             request.total_length_mi,
             request.total_length_km,
             request.contact_email.as_ref() as Option<&MailAddress>,

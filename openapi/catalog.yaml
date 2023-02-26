@@ -727,8 +727,10 @@ components:
         gauge:
           $ref: "#/components/schemas/RailwayGauge"
         headquarters:
-          description: the railway headquarter
-          type: string
+          description: the railway headquarters
+          type: array
+          items:
+            type: string
         total_length:
           $ref: "#/components/schemas/RailwayTotalLength"
         contact_info:
@@ -792,9 +794,11 @@ components:
         gauge:
           $ref: "#/components/schemas/RailwayGauge"
         headquarters:
-          description: the railway headquarter
-          type: string
-          maxLength: 250
+          description: the railway headquarters
+          type: array
+          items:
+            type: string
+            maxLength: 250
         total_length:
           $ref: "#/components/schemas/RailwayTotalLength"
         contact_info:
