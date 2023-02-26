@@ -44,6 +44,7 @@ args = ["test", "--test", '*', "--no-fail-fast", "--", "--test-threads", "2"]
 
 [tasks.docs]
 description = "docs: generate the rustdoc"
+env = { "SQLX_OFFLINE" = "true" }
 command = "cargo"
 args = ["doc", "--no-deps"]
 
