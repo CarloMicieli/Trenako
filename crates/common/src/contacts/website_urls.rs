@@ -6,12 +6,22 @@ use std::str;
 use std::str::FromStr;
 use thiserror::Error;
 use url::Url;
-use validator::{validate_length, ValidationError};
+use validator::{validate_length, validate_url, ValidationError};
 
 /// It represents a website url
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
 #[sqlx(transparent)]
-pub struct WebsiteUrl(Url);
+pub struct WebsiteUrl(String);
+
+pub fn validate_website_url(input: &WebsiteUrl) -> Result<(), ValidationError> {
+    if validate_url(input.0.as_str()) {
+        Ok(())
+    } else {
+        let mut error = ValidationError::new("url");
+        error.add_param(Cow::from("value"), &input.0);
+        Err(error)
+    }
+}
 
 pub fn validate_website_url_length(input: &WebsiteUrl) -> Result<(), ValidationError> {
     if validate_length(input.0.as_str(), None, Some(100), None) {
@@ -19,6 +29,7 @@ pub fn validate_website_url_length(input: &WebsiteUrl) -> Result<(), ValidationE
     } else {
         let mut error = ValidationError::new("length");
         error.add_param(Cow::from("max"), &Some(100));
+        error.add_param(Cow::from("value"), &input.0);
         Err(error)
     }
 }
@@ -41,7 +52,7 @@ impl str::FromStr for WebsiteUrl {
 
     fn from_str(value: &str) -> Result<Self, Self::Err> {
         let url = Url::parse(value)?;
-        Ok(WebsiteUrl(url))
+        Ok(WebsiteUrl(url.to_string()))
     }
 }
 
@@ -64,6 +75,39 @@ mod tests {
             let result = WebsiteUrl::from_str("http://www.website.com");
             assert!(result.is_ok());
             assert_eq!("http://www.website.com/", result.unwrap().to_string());
+        }
+    }
+
+    mod website_urls_validation {
+        use super::*;
+        use crate::test_helpers::random_str;
+
+        #[test]
+        fn it_should_validate_website_url() {
+            let input = WebsiteUrl(String::from("invalid url"));
+
+            let result = validate_website_url(&input);
+
+            assert!(result.is_err());
+
+            let error = result.unwrap_err();
+            assert_eq!(error.code, "url");
+            assert_eq!(error.params["value"], String::from("invalid url"));
+        }
+
+        #[test]
+        fn it_should_validate_website_url_length() {
+            let website_url = random_str(101);
+            let input = WebsiteUrl(website_url.clone());
+
+            let result = validate_website_url_length(&input);
+
+            assert!(result.is_err());
+
+            let error = result.unwrap_err();
+            assert_eq!(error.code, "length");
+            assert_eq!(error.params["value"], website_url);
+            assert_eq!(error.params["max"], 100);
         }
     }
 }

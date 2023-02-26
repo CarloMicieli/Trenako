@@ -85,6 +85,18 @@ impl ProblemDetail {
         }
     }
 
+    /// Creates a new problem detail for a resource not found
+    pub fn not_found(id: Uuid, detail: &str) -> ProblemDetail {
+        let type_url = Url::parse("https://httpstatuses.com/404").unwrap();
+        ProblemDetail {
+            problem_type: type_url,
+            title: String::from("The resource was not found"),
+            detail: detail.to_owned(),
+            status: StatusCode::NOT_FOUND.as_u16(),
+            instance: Trn::instance(&id),
+        }
+    }
+
     pub fn to_response(self) -> HttpResponse {
         let status_code = StatusCode::from_u16(self.status).expect("invalid http status code");
         HttpResponseBuilder::new(status_code)
@@ -183,6 +195,22 @@ mod tests {
             assert_eq!("The resource already exists", problem_detail.title);
             assert_eq!(detail, problem_detail.detail);
             assert_eq!(409, problem_detail.status);
+            assert_eq!(instance_id, problem_detail.instance);
+        }
+
+        #[test]
+        fn it_should_create_a_new_problem_detail_resource_not_found() {
+            let id = Uuid::new_v4();
+            let instance_id = Trn::instance(&id);
+            let detail = "my first conflict";
+            let type_url = Url::parse("https://httpstatuses.com/404").unwrap();
+
+            let problem_detail = ProblemDetail::not_found(id, detail);
+
+            assert_eq!(type_url, problem_detail.problem_type);
+            assert_eq!("The resource was not found", problem_detail.title);
+            assert_eq!(detail, problem_detail.detail);
+            assert_eq!(404, problem_detail.status);
             assert_eq!(instance_id, problem_detail.instance);
         }
 

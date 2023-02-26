@@ -9,6 +9,18 @@ use validator::{Validate, ValidationErrors};
 pub struct LocalizedText(HashMap<Language, String>);
 
 impl LocalizedText {
+    pub fn add_english(&mut self, label: Option<&String>) {
+        if let Some(label) = label {
+            self.0.insert(Language::English, label.to_owned());
+        }
+    }
+
+    pub fn add_italian(&mut self, label: Option<&String>) {
+        if let Some(label) = label {
+            self.0.insert(Language::Italian, label.to_owned());
+        }
+    }
+
     /// Creates a new `LocalizedText` with an English label
     pub fn with_english(label: &str) -> Self {
         let mut labels = HashMap::new();

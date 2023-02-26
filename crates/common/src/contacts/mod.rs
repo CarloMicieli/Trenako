@@ -31,7 +31,10 @@ pub struct ContactInformation {
     pub phone: Option<PhoneNumber>,
 
     /// the website url
-    #[validate(custom = "crate::contacts::website_urls::validate_website_url_length")]
+    #[validate(
+        custom = "crate::contacts::website_urls::validate_website_url",
+        custom = "crate::contacts::website_urls::validate_website_url_length"
+    )]
     pub website_url: Option<WebsiteUrl>,
 }
 

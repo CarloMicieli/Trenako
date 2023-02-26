@@ -10,7 +10,7 @@ use common::socials::Socials;
 use std::{cmp, fmt};
 
 /// It represents a model railways manufacturer.
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Brand {
     /// the brand unique identifier (an url encoded string)
     pub brand_id: BrandId,
@@ -31,7 +31,7 @@ pub struct Brand {
     /// the brand kind
     pub kind: BrandKind,
     /// the brand status
-    pub status: BrandStatus,
+    pub status: Option<BrandStatus>,
     /// the brand social profiles
     pub socials: Option<Socials>,
     /// the brand metadata
@@ -50,7 +50,7 @@ impl Brand {
         address: Option<Address>,
         contact_info: Option<ContactInformation>,
         kind: BrandKind,
-        status: BrandStatus,
+        status: Option<BrandStatus>,
         socials: Option<Socials>,
         metadata: Metadata,
     ) -> Self {
@@ -111,8 +111,8 @@ impl Brand {
     }
 
     /// this brand status
-    pub fn status(&self) -> BrandStatus {
-        self.status
+    pub fn status(&self) -> Option<&BrandStatus> {
+        self.status.as_ref()
     }
 
     /// this brand kind
@@ -187,7 +187,7 @@ mod tests {
                 Some(address.clone()),
                 Some(contact_info.clone()),
                 BrandKind::Industrial,
-                BrandStatus::Active,
+                Some(BrandStatus::Active),
                 Some(socials.clone()),
                 Metadata::created_at(now),
             );
@@ -207,7 +207,7 @@ mod tests {
             assert_eq!(None, brand.group_name());
             assert_eq!(None, brand.description());
             assert_eq!(BrandKind::Industrial, brand.kind());
-            assert_eq!(BrandStatus::Active, brand.status());
+            assert_eq!(Some(&BrandStatus::Active), brand.status());
             assert_eq!(Some(&address), brand.address());
             assert_eq!(Some(&contact_info), brand.contact_info());
             assert_eq!(Some(&socials), brand.socials());

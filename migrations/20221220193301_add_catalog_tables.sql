@@ -38,7 +38,7 @@ CREATE TABLE public.brands
     address_city             varchar(50),
     address_region           varchar(50),
     address_postal_code      varchar(10),
-    address_country          varchar(3),
+    address_country          varchar(2),
     socials_facebook         varchar(100),
     socials_instagram        varchar(100),
     socials_linkedin         varchar(100),

@@ -103,9 +103,15 @@ impl AddressBuilder {
         self
     }
 
-    /// the ISO country code (ISO 3166-1 alpha-3)
+    /// the ISO country code (ISO 3166-1 alpha-2)
     pub fn country(mut self, country_code: CountryCode) -> AddressBuilder {
         self.country_code = Some(country_code);
+        self
+    }
+
+    /// the ISO country code (ISO 3166-1 alpha-2)
+    pub fn country_code(mut self, country_code: &str) -> AddressBuilder {
+        self.country_code = CountryCode::for_alpha2(country_code).ok();
         self
     }
 

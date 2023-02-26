@@ -149,7 +149,7 @@ impl TryFrom<BrandRequest> for BrandCommandPayload {
                 Some(city),
                 region,
                 Some(postal_code),
-                Some(country.alpha3().to_string()),
+                Some(country.alpha2().to_string()),
             )
         } else {
             (None, None, None, None, None, None)

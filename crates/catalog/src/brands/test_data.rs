@@ -39,7 +39,7 @@ pub fn acme() -> Brand {
         Some(address),
         Some(contact_info),
         BrandKind::Industrial,
-        BrandStatus::Active,
+        Some(BrandStatus::Active),
         Some(socials),
         Metadata::created_at(now),
     )
@@ -78,7 +78,7 @@ pub fn roco() -> Brand {
         Some(address),
         Some(contact_info),
         BrandKind::Industrial,
-        BrandStatus::Active,
+        Some(BrandStatus::Active),
         Some(socials),
         Metadata::created_at(now),
     )

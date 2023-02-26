@@ -5,6 +5,7 @@ pub mod brand_request;
 pub mod brand_response;
 pub mod brand_status;
 pub mod commands;
+pub mod queries;
 
 #[cfg(test)]
 pub mod test_data;
