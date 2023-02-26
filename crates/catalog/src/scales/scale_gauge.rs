@@ -27,11 +27,11 @@ impl Validate for Gauge {
     fn validate(&self) -> Result<(), ValidationErrors> {
         let mut errors = ValidationErrors::new();
 
-        if let Err(error) = validate_length_range(&self.millimeters, None, None) {
+        if let Err(error) = validate_length_range(&self.millimeters, Some(dec!(6.5)), Some(dec!(200.0))) {
             errors.add("millimeters", error);
         }
 
-        if let Err(error) = validate_length_range(&self.inches, None, None) {
+        if let Err(error) = validate_length_range(&self.inches, Some(dec!(0.01)), Some(dec!(15.00))) {
             errors.add("inches", error);
         }
 
@@ -222,6 +222,19 @@ mod tests {
         use super::*;
 
         #[test]
+        fn it_should_validate_gauges() {
+            let input = Gauge {
+                millimeters: Length::Millimeters(dec!(16.5)),
+                inches: Length::Millimeters(dec!(0.65)),
+                track_gauge: TrackGauge::Standard,
+            };
+
+            let result = input.validate();
+
+            assert!(result.is_ok());
+        }
+
+        #[test]
         fn it_should_validate_inches() {
             let input = Gauge {
                 millimeters: Length::Millimeters(dec!(1.0)),
@@ -235,6 +248,9 @@ mod tests {
             assert!(errors.contains_key("inches"));
             assert_eq!(errors["inches"].len(), 1);
             assert_eq!(errors["inches"][0].code, "range");
+            assert_eq!(errors["inches"][0].params["value"], "-1.0");
+            assert_eq!(errors["inches"][0].params["min"], 0.01);
+            assert_eq!(errors["inches"][0].params["max"], 15.00);
         }
 
         #[test]
@@ -251,6 +267,9 @@ mod tests {
             assert!(errors.contains_key("millimeters"));
             assert_eq!(errors["millimeters"].len(), 1);
             assert_eq!(errors["millimeters"][0].code, "range");
+            assert_eq!(errors["millimeters"][0].params["value"], "-1.0");
+            assert_eq!(errors["millimeters"][0].params["min"], 6.5);
+            assert_eq!(errors["millimeters"][0].params["max"], 200.0);
         }
     }
 }

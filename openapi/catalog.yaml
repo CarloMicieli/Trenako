@@ -813,7 +813,7 @@ components:
         type: number
         format: float
         minimum: 0.1
-        maximum: 9.0
+        maximum: 2.0
       track_gauge:
         $ref: "#/components/schemas/TrackGauge"
 
@@ -966,12 +966,14 @@ components:
         description: the distance between the rails in millimeters
         type: number
         format: float
-        minimum: 1.0
+        minimum: 6.5
+        maximum: 200.0
       inches:
         description: the distance between the rails in inches
         type: number
         format: float
         minimum: 0.01
+        maximum: 15.00
       track_gauge:
         $ref: "#/components/schemas/TrackGauge"
 

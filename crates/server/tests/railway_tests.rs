@@ -159,7 +159,7 @@ async fn it_should_create_new_railways() {
                 operating_since,
                 operating_until,
                 status as "status?: RailwayStatus",
-                gauge_m,
+                gauge_meters,
                 track_gauge as "track_gauge?: TrackGauge",
                 headquarters,
                 total_length_mi,
@@ -182,7 +182,7 @@ async fn it_should_create_new_railways() {
         let operating_since = NaiveDate::from_ymd_opt(1900, 1, 1).unwrap();
         let gauge_mt = Decimal::from_str("1.435").unwrap();
         let total_length_km = Decimal::from_str("10000").unwrap();
-        let total_length_mi = Decimal::from_str("621.371").unwrap();
+        let total_length_mi = Decimal::from_str("621.4").unwrap();
 
         assert_eq!(railway_id, saved.railway_id);
         assert_eq!(railway_name, saved.name);
@@ -199,7 +199,7 @@ async fn it_should_create_new_railways() {
         assert_eq!(None, saved.operating_until);
         assert_eq!(Some(RailwayStatus::Active), saved.status);
         assert_eq!(Some(String::from("Some City")), saved.headquarters);
-        assert_eq!(Some(gauge_mt), saved.gauge_m);
+        assert_eq!(Some(gauge_mt), saved.gauge_meters);
         assert_eq!(Some(TrackGauge::Standard), saved.track_gauge);
         assert_eq!(Some(total_length_km), saved.total_length_km);
         assert_eq!(Some(total_length_mi), saved.total_length_mi);
@@ -227,7 +227,7 @@ struct Saved {
     operating_since: Option<NaiveDate>,
     operating_until: Option<NaiveDate>,
     status: Option<RailwayStatus>,
-    gauge_m: Option<Decimal>,
+    gauge_meters: Option<Decimal>,
     track_gauge: Option<TrackGauge>,
     headquarters: Option<String>,
     total_length_mi: Option<Decimal>,

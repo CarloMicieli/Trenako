@@ -352,7 +352,7 @@ async fn it_should_create_a_new_locomotive() {
         assert_eq!("Vb", rs.epoch);
         assert_eq!(Some("rosso/bianco".to_string()), rs.livery);
         assert_eq!(Some(dec!(220)), rs.length_over_buffers_mm);
-        assert_eq!(Some(dec!(8.66142)), rs.length_over_buffers_in);
+        assert_eq!(Some(dec!(8.66)), rs.length_over_buffers_in);
         assert_eq!(Some("E402 A".to_string()), rs.type_name);
         assert_eq!(Some("E402 026".to_string()), rs.road_number);
         assert_eq!(Some("PRIMA SERIE".to_string()), rs.series);

@@ -93,7 +93,7 @@ pub struct RailwayCommandPayload {
     pub operating_since: Option<NaiveDate>,
     pub operating_until: Option<NaiveDate>,
     pub status: Option<RailwayStatus>,
-    pub gauge_m: Option<Decimal>,
+    pub gauge_meters: Option<Decimal>,
     pub track_gauge: Option<TrackGauge>,
     pub headquarters: Option<String>,
     pub total_length_mi: Option<Decimal>,
@@ -135,7 +135,7 @@ impl TryFrom<RailwayRequest> for RailwayCommandPayload {
             youtube,
         } = socials;
 
-        let (track_gauge, gauge_m) = if let Some(gauge) = request.gauge {
+        let (track_gauge, gauge_meters) = if let Some(gauge) = request.gauge {
             (Some(gauge.track_gauge), Some(gauge.meters.quantity()))
         } else {
             (None, None)
@@ -156,7 +156,7 @@ impl TryFrom<RailwayRequest> for RailwayCommandPayload {
             operating_until,
             status: Some(status),
             track_gauge,
-            gauge_m,
+            gauge_meters,
             headquarters: request.headquarters,
             total_length_mi: request.total_length.map(|tl| tl.miles.quantity()),
             total_length_km: request.total_length.map(|tl| tl.kilometers.quantity()),
