@@ -1,5 +1,105 @@
 {
   "db": "PostgreSQL",
+  "11a226f57a194ae7522cc2a242bcc0dcd2bd997f76f055ef43ab15f9c8956d1b": {
+    "describe": {
+      "columns": [
+        {
+          "name": "scale_id: ScaleId",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "name",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "ratio",
+          "ordinal": 2,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "gauge_millimeters",
+          "ordinal": 3,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "gauge_inches",
+          "ordinal": 4,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "track_gauge: TrackGauge",
+          "ordinal": 5,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "BROAD",
+                  "MEDIUM",
+                  "MINIMUM",
+                  "NARROW",
+                  "STANDARD"
+                ]
+              },
+              "name": "gauge"
+            }
+          }
+        },
+        {
+          "name": "description_en",
+          "ordinal": 6,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "description_it",
+          "ordinal": 7,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "standards!: Vec<Standard>",
+          "ordinal": 8,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Array": {
+                  "Custom": {
+                    "kind": {
+                      "Enum": [
+                        "BRITISH",
+                        "JAPANESE",
+                        "NEM",
+                        "NMRA"
+                      ]
+                    },
+                    "name": "scale_standard"
+                  }
+                }
+              },
+              "name": "_scale_standard"
+            }
+          }
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT\n                scale_id as \"scale_id: ScaleId\",\n                name,\n                ratio,\n                gauge_millimeters,\n                gauge_inches,\n                track_gauge as \"track_gauge: TrackGauge\",\n                description_en,\n                description_it,\n                standards as \"standards!: Vec<Standard>\"\n            FROM scales\n            WHERE name = $1"
+  },
   "120054a16b26f95b407b4fd9b629ec086446262d4a09705978f88815958ecbce": {
     "describe": {
       "columns": [
@@ -967,87 +1067,6 @@
     },
     "query": "SELECT \n            rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n            railway_id as \"railway_id: RailwayId\",\n            rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n            epoch,\n            livery,\n            length_over_buffers_mm,\n            length_over_buffers_in,\n            type_name,\n            road_number,\n            series,\n            depot,\n            dcc_interface as \"dcc_interface: DccInterface\",\n            control as \"control: Control\",\n            electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n            freight_car_type as \"freight_car_type: FreightCarType\",\n            locomotive_type as \"locomotive_type: LocomotiveType\",\n            passenger_car_type as \"passenger_car_type: PassengerCarType\",\n            railcar_type as \"railcar_type: RailcarType\",\n            service_level as \"service_level: ServiceLevel\",\n            is_dummy,\n            minimum_radius,\n            coupling_socket as \"coupling_socket: CouplingSocket\",\n            close_couplers as \"close_couplers: FeatureFlag\",\n            digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n            flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n            metal_body as \"metal_body: FeatureFlag\",\n            interior_lights as \"interior_lights: FeatureFlag\",\n            lights as \"lights: FeatureFlag\",\n            spring_buffers as \"spring_buffers: FeatureFlag\"\n        FROM rolling_stocks\n        WHERE catalog_item_id = $1"
   },
-  "88826e119069efb4e400a96b458371c1fbcff5dac6ff6bce60941f159ca4a15a": {
-    "describe": {
-      "columns": [
-        {
-          "name": "scale_id: ScaleId",
-          "ordinal": 0,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "name",
-          "ordinal": 1,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "ratio",
-          "ordinal": 2,
-          "type_info": "Numeric"
-        },
-        {
-          "name": "gauge_millimeters",
-          "ordinal": 3,
-          "type_info": "Numeric"
-        },
-        {
-          "name": "gauge_inches",
-          "ordinal": 4,
-          "type_info": "Numeric"
-        },
-        {
-          "name": "track_gauge: TrackGauge",
-          "ordinal": 5,
-          "type_info": {
-            "Custom": {
-              "kind": {
-                "Enum": [
-                  "BROAD",
-                  "MEDIUM",
-                  "MINIMUM",
-                  "NARROW",
-                  "STANDARD"
-                ]
-              },
-              "name": "gauge"
-            }
-          }
-        },
-        {
-          "name": "description_en",
-          "ordinal": 6,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "description_it",
-          "ordinal": 7,
-          "type_info": "Varchar"
-        },
-        {
-          "name": "standards",
-          "ordinal": 8,
-          "type_info": "Varchar"
-        }
-      ],
-      "nullable": [
-        false,
-        false,
-        false,
-        true,
-        true,
-        false,
-        true,
-        true,
-        true
-      ],
-      "parameters": {
-        "Left": [
-          "Text"
-        ]
-      }
-    },
-    "query": "SELECT\n                scale_id as \"scale_id: ScaleId\",\n                name,\n                ratio,\n                gauge_millimeters,\n                gauge_inches,\n                track_gauge as \"track_gauge: TrackGauge\",\n                description_en,\n                description_it,\n                standards\n            FROM scales\n            WHERE name = $1"
-  },
   "8cffb15334bf2709d7f7ad08dabcc3777ba25eaa05b9f89aa7b21a656a640daf": {
     "describe": {
       "columns": [
@@ -1198,7 +1217,26 @@
           },
           "Varchar",
           "Varchar",
-          "Varchar",
+          {
+            "Custom": {
+              "kind": {
+                "Array": {
+                  "Custom": {
+                    "kind": {
+                      "Enum": [
+                        "BRITISH",
+                        "JAPANESE",
+                        "NEM",
+                        "NMRA"
+                      ]
+                    },
+                    "name": "scale_standard"
+                  }
+                }
+              },
+              "name": "_scale_standard"
+            }
+          },
           "Timestamptz",
           "Int4"
         ]

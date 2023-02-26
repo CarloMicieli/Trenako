@@ -1,24 +1,38 @@
+use sqlx::postgres::{PgHasArrayType, PgTypeInfo};
+use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 
-#[derive(Debug, Copy, Clone, Eq, PartialEq, Hash, Serialize, Deserialize, EnumString, Display)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Hash, Serialize, Deserialize, EnumString, Display, Type)]
+#[sqlx(type_name = "scale_standard")]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 pub enum Standard {
     #[serde(rename = "BRITISH")]
+    #[sqlx(rename = "BRITISH")]
     British,
 
     #[serde(rename = "JAPANESE")]
+    #[sqlx(rename = "JAPANESE")]
     Japanese,
 
     /// NEM-standards are used by model railway industry and hobbyists in Europe.
     #[serde(rename = "NEM")]
+    #[sqlx(rename = "NEM")]
     NEM,
 
     /// NMRA standards are used widely in North America and by certain special
     /// interest groups all over the world.
     #[serde(rename = "NMRA")]
+    #[sqlx(rename = "NMRA")]
     NMRA,
+}
+
+// See https://github.com/launchbadge/sqlx/issues/1004
+impl PgHasArrayType for Standard {
+    fn array_type_info() -> PgTypeInfo {
+        PgTypeInfo::with_name("_scale_standard")
+    }
 }
 
 #[cfg(test)]

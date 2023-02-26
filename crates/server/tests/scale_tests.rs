@@ -4,6 +4,7 @@ use crate::common::seeding::seed_scales;
 use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
 use catalog::common::TrackGauge;
 use catalog::scales::scale_id::ScaleId;
+use catalog::scales::standard::Standard;
 use reqwest::StatusCode;
 use rust_decimal::Decimal;
 use serde_json::json;
@@ -113,7 +114,7 @@ async fn it_should_create_new_scales() {
                 track_gauge as "track_gauge: TrackGauge",
                 description_en,
                 description_it,
-                standards
+                standards as "standards!: Vec<Standard>"
             FROM scales
             WHERE name = $1"#,
             &scale_name
@@ -130,7 +131,7 @@ async fn it_should_create_new_scales() {
         assert_eq!(Some(gauge_mm), saved.gauge_millimeters);
         assert_eq!(Some(gauge_in), saved.gauge_inches);
         assert_eq!(TrackGauge::Standard, saved.track_gauge);
-        assert_eq!(Some(String::from("NEM,NMRA")), saved.standards);
+        assert_eq!(vec![Standard::NEM, Standard::NMRA], saved.standards);
     })
     .await;
 }
@@ -144,5 +145,5 @@ struct Saved {
     track_gauge: TrackGauge,
     description_en: Option<String>,
     description_it: Option<String>,
-    standards: Option<String>,
+    standards: Vec<Standard>,
 }

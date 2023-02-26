@@ -3,12 +3,12 @@ use crate::scales::commands::repositories::ScaleRepository;
 use crate::scales::scale_id::ScaleId;
 use crate::scales::scale_request::ScaleRequest;
 use crate::scales::scale_response::ScaleCreated;
+use crate::scales::standard::Standard;
 use async_trait::async_trait;
 use chrono::Utc;
 use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use common::unit_of_work::{Database, UnitOfWork};
-use itertools::Itertools;
 use rust_decimal::Decimal;
 use std::result;
 use thiserror::Error;
@@ -88,27 +88,13 @@ pub struct ScaleCommandPayload {
     pub gauge_inches: Option<Decimal>,
     pub track_gauge: TrackGauge,
     pub description: LocalizedText,
-    pub standards: Option<String>,
+    pub standards: Vec<Standard>,
 }
 
 impl TryFrom<ScaleRequest> for ScaleCommandPayload {
     type Error = ScaleCreationError;
 
     fn try_from(request: ScaleRequest) -> result::Result<Self, Self::Error> {
-        let standards = if request.standards.is_empty() {
-            None
-        } else {
-            #[allow(unstable_name_collisions)]
-            let s: String = request
-                .standards
-                .iter()
-                .map(|s| s.to_string())
-                .intersperse(",".to_string())
-                .collect();
-
-            Some(s)
-        };
-
         let scale_gauge = request.gauge.expect("gauge is required for scale requests");
         let (track_gauge, gauge_inches, gauge_millimeters) = (
             scale_gauge.track_gauge,
@@ -124,7 +110,7 @@ impl TryFrom<ScaleRequest> for ScaleCommandPayload {
             gauge_inches,
             track_gauge,
             description: request.description,
-            standards,
+            standards: request.standards,
         })
     }
 }

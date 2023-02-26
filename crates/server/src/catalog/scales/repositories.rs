@@ -4,6 +4,7 @@ use catalog::common::TrackGauge;
 use catalog::scales::commands::new_scales::NewScaleCommand;
 use catalog::scales::commands::repositories::ScaleRepository;
 use catalog::scales::scale_id::ScaleId;
+use catalog::scales::standard::Standard;
 use common::unit_of_work::postgres::PgUnitOfWork;
 
 pub struct PgScaleRepository;
@@ -50,7 +51,7 @@ impl<'db> ScaleRepository<'db, PgUnitOfWork<'db>> for PgScaleRepository {
             request.track_gauge as TrackGauge,
             request.description.english(),
             request.description.italian(),
-            request.standards,
+            &request.standards as &Vec<Standard>,
             metadata.created(),
             metadata.version() as i32
         )

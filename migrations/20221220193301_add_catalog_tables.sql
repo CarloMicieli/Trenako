@@ -17,6 +17,7 @@ CREATE TYPE organization_entity_type AS ENUM (
     'STATE_OWNED_ENTERPRISE'
     );
 CREATE TYPE railway_status AS ENUM ('ACTIVE', 'INACTIVE');
+CREATE TYPE scale_standard AS ENUM ('BRITISH', 'JAPANESE', 'NEM', 'NMRA');
 
 CREATE TABLE public.brands
 (
@@ -91,7 +92,7 @@ CREATE TABLE public.scales
     track_gauge       gauge          NOT NULL,
     description_en    varchar(2500),
     description_it    varchar(2500),
-    standards         varchar(100),
+    standards         scale_standard array,
     created_at        timestamptz    NOT NULL,
     last_modified_at  timestamptz,
     version           integer        NOT NULL DEFAULT 1,
