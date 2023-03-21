@@ -101,20 +101,15 @@ pub enum PeriodOfActivityError {
     UntilDateForActiveRailway,
 }
 
-#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display, Type)]
+#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display, Type, Default)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "railway_status", rename_all = "SCREAMING_SNAKE_CASE")]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum RailwayStatus {
+    #[default]
     Active,
     Inactive,
-}
-
-impl Default for RailwayStatus {
-    fn default() -> Self {
-        RailwayStatus::Active
-    }
 }
 
 #[cfg(test)]

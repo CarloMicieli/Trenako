@@ -59,7 +59,7 @@ impl Coupling {
 }
 
 /// The NEM coupling socket standards
-#[derive(Debug, Copy, Clone, PartialEq, Eq, Serialize, Deserialize, EnumString, Display, Type)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq, Serialize, Deserialize, EnumString, Display, Type, Default)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "socket_type")]
@@ -67,6 +67,7 @@ pub enum CouplingSocket {
     #[serde(rename = "NONE")]
     #[strum(serialize = "NONE")]
     #[sqlx(rename = "NONE")]
+    #[default]
     None,
 
     /// Receptacle for Replaceable Coupling Heads in Scales TT and N
@@ -110,12 +111,6 @@ pub enum CouplingSocket {
     #[strum(serialize = "NEM_365")]
     #[sqlx(rename = "NEM_365")]
     Nem365,
-}
-
-impl Default for CouplingSocket {
-    fn default() -> Self {
-        CouplingSocket::None
-    }
 }
 
 /// The technical specification data for a rolling stock model
@@ -242,7 +237,7 @@ impl TechnicalSpecificationsBuilder {
     }
 }
 
-#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display, Type)]
+#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display, Type, Default)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "feature_flag", rename_all = "SCREAMING_SNAKE_CASE")]
@@ -250,13 +245,8 @@ impl TechnicalSpecificationsBuilder {
 pub enum FeatureFlag {
     Yes,
     No,
+    #[default]
     NotApplicable,
-}
-
-impl Default for FeatureFlag {
-    fn default() -> Self {
-        FeatureFlag::NotApplicable
-    }
 }
 
 /// The minimum drivable radius

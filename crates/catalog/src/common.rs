@@ -7,7 +7,7 @@ use strum_macros::{Display, EnumString};
 ///
 /// Since many different track gauges exist worldwide, gauge differences often present a barrier to wider operation on
 /// railway networks.
-#[derive(Debug, Eq, PartialEq, Clone, Copy, Serialize, Deserialize, EnumString, Display, Type)]
+#[derive(Debug, Eq, PartialEq, Clone, Copy, Serialize, Deserialize, EnumString, Display, Type, Default)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "gauge", rename_all = "SCREAMING_SNAKE_CASE")]
@@ -38,13 +38,8 @@ pub enum TrackGauge {
     /// In modern usage the term "standard gauge" refers to 1,435 mm (4 ft 8+1⁄2 inches).
     /// Standard gauge is dominant in a majority of countries, including those in North America, most of western Europe,
     /// North Africa and the Middle east, and in China.
+    #[default]
     Standard,
-}
-
-impl Default for TrackGauge {
-    fn default() -> Self {
-        TrackGauge::Standard
-    }
 }
 
 #[cfg(test)]
