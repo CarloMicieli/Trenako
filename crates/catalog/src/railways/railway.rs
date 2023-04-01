@@ -27,7 +27,7 @@ pub struct Railway {
     /// the railway abbreviated name
     pub abbreviation: Option<String>,
     /// the registered company name
-    pub registered_company_name: String,
+    pub registered_company_name: Option<String>,
     /// the organization entity type
     pub organization_entity_type: Option<OrganizationEntityType>,
     /// the railway description
@@ -74,7 +74,7 @@ impl Railway {
             railway_id,
             name: String::from(name),
             abbreviation: abbreviation.map(str::to_string),
-            registered_company_name: String::from(registered_company_name),
+            registered_company_name: Some(registered_company_name).map(ToString::to_string),
             organization_entity_type,
             description: description.map(LocalizedText::with_italian).unwrap_or_default(),
             country,
@@ -105,8 +105,8 @@ impl Railway {
 
     /// The registered company name (the more formal denomination)
     /// for this Railway company
-    pub fn registered_company_name(&self) -> &str {
-        &self.registered_company_name
+    pub fn registered_company_name(&self) -> Option<&str> {
+        self.registered_company_name.as_deref()
     }
 
     /// The organization entity type for this railway company
@@ -162,7 +162,10 @@ impl Railway {
 
 impl fmt::Display for Railway {
     fn fmt(&self, f: &mut Formatter<'_>) -> fmt::Result {
-        write!(f, "{} - {}", &self.name, self.registered_company_name)
+        match &self.abbreviation {
+            Some(abbr) => write!(f, "{} ({})", abbr, &self.name),
+            None => write!(f, "{}", &self.name),
+        }
     }
 }
 
@@ -223,7 +226,7 @@ mod test {
             assert_eq!(&RailwayId::new("FS"), railway.railway_id());
             assert_eq!("FS", railway.name());
             assert_eq!(Some("FS"), railway.abbreviation());
-            assert_eq!("Ferrovie dello stato italiane", railway.registered_company_name());
+            assert_eq!(Some("Ferrovie dello stato italiane"), railway.registered_company_name());
             assert_eq!(
                 Some(OrganizationEntityType::StateOwnedEnterprise),
                 railway.organization_entity_type()
@@ -257,7 +260,7 @@ mod test {
                 metadata,
             );
 
-            assert_eq!("FS - Ferrovie dello stato italiane", railway.to_string());
+            assert_eq!("FS (FS)", railway.to_string());
         }
 
         #[test]

@@ -7,6 +7,14 @@ pub trait ToOutputConverter<T> {
     fn to_output(self) -> Result<T, ConversionErrors>;
 }
 
+pub trait Converter<T>: Sized {
+    fn try_convert(row: &T) -> Result<Self, ConversionErrors>;
+}
+
+pub trait OptionConverter<T>: Sized {
+    fn try_convert(row: &T) -> Result<Option<Self>, ConversionErrors>;
+}
+
 /// It contains the conversion errors, after an attempt to convert a database row
 /// into a domain value
 #[derive(Debug, PartialEq, Eq, Clone, Default)]

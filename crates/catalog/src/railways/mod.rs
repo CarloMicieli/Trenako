@@ -1,5 +1,6 @@
 pub mod commands;
 pub mod period_of_activity;
+pub mod queries;
 pub mod railway;
 pub mod railway_gauge;
 pub mod railway_id;
