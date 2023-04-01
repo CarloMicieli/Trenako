@@ -1,7 +1,7 @@
 ###
 
 # Create a new model railway brand
-POST http://localhost:8080/api/brands
+POST http://{{host}}:{{port}}/api/brands
 Content-Type: application/json
 
 {
@@ -40,5 +40,5 @@ Content-Type: application/json
 ###
 
 # Get a brand by id
-GET http://localhost:8080/api/brands/acme
+GET http://{{host}}:{{port}}/api/brands/acme
 

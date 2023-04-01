@@ -72,7 +72,7 @@ The sqlx `query!` macro is checking the query commands against a live database, 
 | |_| | |  __/ | | | (_| |   < (_) |
  \__|_|  \___|_| |_|\__,_|_|\_\___/
 
-Starting the server (127.0.0.1:9999)...
+Starting the server (127.0.0.1:5000)...
 ```
 
 #### Environment variables
@@ -124,7 +124,7 @@ Please adhere to this project's [code of conduct](CODE_OF_CONDUCT.md).
 [Apache 2.0 License](https://choosealicense.com/licenses/apache-2.0/)
 
 ```
-   Copyright 2021 Carlo Micieli
+   Copyright 2022 Carlo Micieli
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
