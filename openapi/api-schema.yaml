@@ -1,5 +1,5 @@
 ---
-openapi: "3.0.3"
+openapi: "3.0.9"
 info:
   title: Trenako
   description: A model railway collections api
@@ -12,19 +12,21 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
 
 servers:
-  - url: http://localhost:5000
+  - url: http://localhost:8080
     description: local
 
 paths:
   /health-check:
     get:
-      summary: health check endpoint
+      summary: the health check endpoint
       tags:
         - monitoring
       operationId: health-check
       responses:
         "200":
           description: the application is healthy
+        "503":
+          description: the application is not available (for example when the database is not reachable)
 
   /api/brands:
     get:
