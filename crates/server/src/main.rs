@@ -12,7 +12,8 @@ async fn main() -> std::io::Result<()> {
     let listener = TcpListener::bind(settings.address()).expect("Failed to bind port");
 
     println!("{}", &BANNER_TEXT);
-    println!("Starting the server ({})...", settings.address());
+    tracing::info!("Starting the server...");
+    tracing::info!("{}", serde_json::to_string(&settings).unwrap());
     app::run(listener, &settings)?.await
 }
 

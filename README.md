@@ -77,17 +77,19 @@ Starting the server (127.0.0.1:9999)...
 
 #### Environment variables
 
-| Variable               | Description                          |
-|------------------------|--------------------------------------|
-| `SERVER_HOST`          | the server host name                 |
-| `SERVER_PORT`          | the server port number               |
-| `SERVER_WORKERS`       | the number of workers                |
-| `DATABASE_NAME`        | the database name                    |
-| `DATABASE_USERNAME`    | the database username                |
-| `DATABASE_PASSWORD`    | the database password                |
-| `DATABASE_HOST`        | the database hostname                |
-| `DATABASE_PORT`        | the database port number             |
-| `DATABASE_REQUIRE_SSL` | the database connection requires SSL |
+| Variable                    | Description                            |
+|-----------------------------|----------------------------------------|
+| `SERVER__HOST`              | the server host name                   |
+| `SERVER__PORT`              | the server port number                 |
+| `SERVER__WORKERS`           | the number of workers                  |
+| `DATABASE__NAME`            | the database name                      |
+| `DATABASE__USERNAME`        | the database username                  |
+| `DATABASE__PASSWORD`        | the database password                  |
+| `DATABASE__HOST`            | the database hostname                  |
+| `DATABASE__PORT`            | the database port number               |
+| `DATABASE__REQUIRE_SSL`     | the database connection requires SSL   |
+| `DATABASE__MIN_CONNECTIONS` | the database min number of connections |
+| `DATABASE__MAX_CONNECTIONS` | the database max number of connections |
 
 ### Checks
 

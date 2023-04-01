@@ -61,14 +61,16 @@ services:
       db_migrations:
         condition: service_completed_successfully
     environment:
-      SERVER_HOST: 0.0.0.0
-      SERVER_PORT: 5000
-      SERVER_WORKERS: 4
-      DATABASE_NAME: trenakodb
-      DATABASE_USERNAME: postgres
-      DATABASE_PASSWORD: mysecretpassword
-      DATABASE_HOST: db
-      DATABASE_PORT: 5432
+      SERVER__HOST: 0.0.0.0
+      SERVER__PORT: 5000
+      SERVER__WORKERS: 4
+      DATABASE__NAME: trenakodb
+      DATABASE__USERNAME: postgres
+      DATABASE__PASSWORD: mysecretpassword
+      DATABASE__HOST: db
+      DATABASE__PORT: 5432
+      DATABASE__MIN_CONNECTIONS: 5
+      DATABASE__MAX_CONNECTIONS: 25
     ports:
       - "5000:5000"
     networks:

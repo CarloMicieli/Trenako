@@ -1,11 +1,11 @@
 use config::{Config, Environment, File};
 use secrecy::{ExposeSecret, Secret};
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 use sqlx::postgres::{PgConnectOptions, PgPoolOptions, PgSslMode};
 use sqlx::PgPool;
 
 /// Application settings
-#[derive(Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Settings {
     pub database: DatabaseSettings,
     pub server: ServerSettings,
@@ -32,14 +32,14 @@ impl Settings {
     pub fn load() -> Result<Settings, config::ConfigError> {
         let s = Config::builder()
             .add_source(File::with_name("config/application").required(false))
-            .add_source(Environment::default().separator("_").ignore_empty(true))
+            .add_source(Environment::default().separator("__").ignore_empty(true))
             .build()?;
         s.try_deserialize()
     }
 }
 
 /// It contains the server configuration
-#[derive(Deserialize, Clone, Debug)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct ServerSettings {
     /// the server host name
     pub host: String,
@@ -50,11 +50,12 @@ pub struct ServerSettings {
 }
 
 /// It contains the database connection settings
-#[derive(Deserialize, Clone, Debug)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct DatabaseSettings {
     /// the username
     pub username: String,
     /// the password
+    #[serde(skip_serializing)]
     pub password: Secret<String>,
     /// the host name
     pub host: String,
@@ -62,6 +63,10 @@ pub struct DatabaseSettings {
     pub port: u16,
     /// the database name
     pub name: String,
+    /// the connection pool min number of connections
+    pub min_connections: u32,
+    /// the connection pool max number of connections
+    pub max_connections: u32,
     /// the SSL mode for the connection
     pub require_ssl: bool,
 }
@@ -74,6 +79,8 @@ impl DatabaseSettings {
             host: host.to_owned(),
             port,
             name: name.to_owned(),
+            min_connections: 5,
+            max_connections: 10,
             require_ssl: false,
         }
     }
@@ -81,6 +88,8 @@ impl DatabaseSettings {
     /// Creates a new postgres connection pool using the database connection settings.
     pub fn get_connection_pool(&self) -> PgPool {
         PgPoolOptions::new()
+            .min_connections(self.min_connections)
+            .max_connections(self.max_connections)
             .acquire_timeout(std::time::Duration::from_secs(2))
             .connect_lazy_with(self.pg_connection_options())
     }
