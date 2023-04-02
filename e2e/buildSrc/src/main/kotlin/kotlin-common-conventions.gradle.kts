@@ -2,6 +2,8 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
 import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
 import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
 import org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
+import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR
+import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -19,7 +21,7 @@ repositories {
 }
 
 extra["kotestVersion"] = "5.5.5"
-extra["testcontainersVersion"] = "1.17.6"
+extra["testcontainersVersion"] = "1.18.0"
 dependencyManagement {
     imports {
         mavenBom("org.testcontainers:testcontainers-bom:${property("testcontainersVersion")}")
@@ -109,11 +111,11 @@ tasks {
         minHeapSize = "512m"
         maxHeapSize = "1G"
         failFast = false
-        ignoreFailures = true
+        ignoreFailures = false
 
         testLogging {
             showStandardStreams = false
-            events(PASSED, FAILED, SKIPPED)
+            events(PASSED, FAILED, SKIPPED, STANDARD_OUT, STANDARD_ERROR)
             showExceptions = true
             showCauses = true
             showStackTraces = true

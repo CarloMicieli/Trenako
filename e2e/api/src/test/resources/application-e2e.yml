@@ -1,6 +1,6 @@
 logging:
   level:
-    org.springframework: INFO
-    org.springframework.web.reactive: INFO
+    org.springframework: ERROR
+    org.springframework.web.reactive: ERROR
     org.testcontainers: INFO
     io.github.carlomicieli.trenako: INFO

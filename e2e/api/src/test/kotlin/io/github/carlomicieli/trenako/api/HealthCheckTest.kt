@@ -1,5 +1,6 @@
-package io.github.carlomicieli.trenako
+package io.github.carlomicieli.trenako.api
 
+import io.github.carlomicieli.trenako.AbstractApiTest
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test

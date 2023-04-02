@@ -19,7 +19,7 @@ CREATE TYPE organization_entity_type AS ENUM (
 CREATE TYPE railway_status AS ENUM ('ACTIVE', 'INACTIVE');
 CREATE TYPE scale_standard AS ENUM ('BRITISH', 'JAPANESE', 'NEM', 'NMRA');
 
-CREATE TABLE public.brands
+CREATE TABLE IF NOT EXISTS public.brands
 (
     brand_id                 varchar(50) NOT NULL,
     name                     varchar(50) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE public.brands
     CONSTRAINT "PK_brands" PRIMARY KEY (brand_id)
 );
 
-CREATE TABLE public.railways
+CREATE TABLE IF NOT EXISTS public.railways
 (
     railway_id               varchar(50) NOT NULL,
     name                     varchar(50) NOT NULL,
@@ -82,20 +82,20 @@ CREATE TABLE public.railways
     CONSTRAINT "PK_railways" PRIMARY KEY (railway_id)
 );
 
-CREATE TABLE public.scales
+CREATE TABLE IF NOT EXISTS public.scales
 (
-    scale_id          varchar(50)   NOT NULL,
-    name              varchar(50)   NOT NULL,
+    scale_id          varchar(50)    NOT NULL,
+    name              varchar(50)    NOT NULL,
     ratio             numeric(6, 2) NOT NULL,
     gauge_millimeters numeric(4, 1),
     gauge_inches      numeric(5, 2),
-    track_gauge       gauge         NOT NULL,
+    track_gauge       gauge          NOT NULL,
     description_en    varchar(2500),
     description_it    varchar(2500),
     standards         scale_standard array,
-    created_at        timestamptz   NOT NULL,
+    created_at        timestamptz    NOT NULL,
     last_modified_at  timestamptz,
-    version           integer       NOT NULL DEFAULT 1,
+    version           integer        NOT NULL DEFAULT 1,
     CONSTRAINT "PK_scales" PRIMARY KEY (scale_id)
 );
 
@@ -209,8 +209,7 @@ CREATE TYPE service_level AS ENUM (
     'SECOND_AND_THIRD_CLASS'
     );
 
-
-CREATE TABLE public.catalog_items
+CREATE TABLE IF NOT EXISTS public.catalog_items
 (
     catalog_item_id     varchar(76)           NOT NULL,
     brand_id            varchar(50)           NOT NULL,
@@ -239,7 +238,7 @@ CREATE TABLE public.catalog_items
         ON DELETE NO ACTION
 );
 
-CREATE TABLE public.rolling_stocks
+CREATE TABLE IF NOT EXISTS public.rolling_stocks
 (
     rolling_stock_id            uuid                   NOT NULL,
     catalog_item_id             varchar(65)            NOT NULL,

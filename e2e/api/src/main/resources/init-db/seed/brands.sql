@@ -1,0 +1,4 @@
+-- noinspection SqlNoDataSourceInspectionForFile
+
+insert into public.brands (brand_id, name, registered_company_name, organization_entity_type, group_name, description_en, description_it, kind, status, contact_email, contact_website_url, contact_phone, address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country, socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube, created_at, last_modified_at, version)
+values  ('acme', 'ACME', 'Registered Company Ltd', 'LIMITED_COMPANY', 'UNKNOWN', 'description', 'descrizione', 'INDUSTRIAL', 'ACTIVE', 'mail@mail.com', 'https://www.site.com', '+14152370800', 'Rue Morgue 22', null, 'London', null, '1H2 4BB', 'GB', 'facebook_handler', 'instagram_handler', 'linkedin_handler', 'twitter_handler', 'youtube_handler', '2023-04-21 05:59:20.290408 +00:00', null, 1);

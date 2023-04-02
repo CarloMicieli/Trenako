@@ -4,12 +4,12 @@ plugins {
     id("kotlin-common-conventions")
     id("org.springframework.boot")
     id("io.spring.dependency-management")
-    id("org.openapi.generator") version "6.3.0"
+    id("org.openapi.generator") version "6.5.0"
 }
 
 dependencies {
-    implementation("org.springdoc:springdoc-openapi-ui:1.6.8")
-    implementation("org.openapitools:jackson-databind-nullable:0.2.6")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 }
 
 openApiGenerate {
@@ -47,13 +47,6 @@ tasks {
         dependsOn(openApiGenerate)
     }
 }
-/*
-configure<SourceSetContainer> {
-    named("main") {
-        kotlin.srcDir("${project.buildDir}/generated/src/main/kotlin")
-    }
-}
-*/
 
 sourceSets {
     main {
