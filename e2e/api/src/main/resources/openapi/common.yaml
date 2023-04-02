@@ -1,0 +1,150 @@
+components:
+  schemas:
+    Address:
+      type: object
+      description: an address of a location
+      properties:
+        street_address:
+          description: the street address
+          type: string
+          minLength: 5
+          maxLength: 255
+        extended_address:
+          description: the (optional) extended information for the address
+          type: string
+          maxLength: 255
+        city:
+          description: the city/town
+          type: string
+          minLength: 3
+          maxLength: 50
+        region:
+          description: the region code; for example, the state or province.
+          type: string
+          maxLength: 50
+        postal_code:
+          description: the postal code (ZIP code)
+          type: string
+          minLength: 3
+          maxLength: 10
+        country:
+          description: the ISO country code (ISO 3166-1 alpha-2)
+          type: string
+          minLength: 2
+          maxLength: 2
+      required:
+        - street_address
+        - city
+        - postal_code
+        - country_code
+
+    ContactInfo:
+      description: the contact information for an organization
+      type: object
+      properties:
+        email:
+          description: the mail address
+          type: string
+          format: email
+          maxLength: 250
+        phone:
+          description: the phone number
+          type: string
+          maxLength: 20
+        website_url:
+          description: the website url
+          type: string
+          format: uri
+          maxLength: 100
+
+    LocalizedText:
+      description: a map with localized text in different languages
+      type: object
+      additionalProperties:
+        type: string
+        properties:
+          code:
+            description: a valid ISO 639-1 language code
+            type: string
+            minLength: 2
+            maxLength: 2
+          text:
+            description: a label in the current language
+            type: string
+            maxLength: 2500
+      example:
+        en: Hello!
+        fr: Bonjour!
+
+    Metadata:
+      description: the resource metadata
+      type: object
+      properties:
+        version:
+          description: the resource version
+          type: integer
+          format: int32
+          minimum: 1
+        created_at:
+          description: the creation timestamp for this resource
+          type: string
+          format: date-time
+        last_modified_at:
+          description: the timestamp when this resource has been modified for the last time
+          type: string
+          format: date-time
+      required:
+        - version
+        - created
+
+    OrganizationEntityType:
+      type: string
+      description: the many types of business entities defined in the legal systems of various countries
+      enum:
+        - CIVIL_LAW_PARTNERSHIP
+        - ENTREPRENEURIAL_COMPANY
+        - GLOBAL_PARTNERSHIP
+        - LIMITED_COMPANY
+        - LIMITED_PARTNERSHIP
+        - LIMITED_PARTNERSHIP_LIMITED_COMPANY
+        - OTHER
+        - PUBLIC_INSTITUTION
+        - PUBLIC_LIMITED_COMPANY
+        - REGISTERED_SOLE_TRADER
+        - SOLE_TRADER
+        - STATE_OWNED_ENTERPRISE
+
+    Socials:
+      type: object
+      description: a group of social handlers
+      properties:
+        facebook:
+          description: a facebook handler
+          type: string
+          format: uri
+          minLength: 3
+          maxLength: 100
+        instagram:
+          description: an instagram handler
+          type: string
+          format: uri
+          minLength: 3
+          maxLength: 100
+        linkedin:
+          description: a linkedin handler
+          type: string
+          format: uri
+          minLength: 3
+          maxLength: 100
+        twitter:
+          description: a twitter handler
+          type: string
+          format: uri
+          minLength: 3
+          maxLength: 100
+        youtube:
+          description: a youtube handler (either user or channel name)
+          type: string
+          format: uri
+          minLength: 3
+          maxLength: 100
