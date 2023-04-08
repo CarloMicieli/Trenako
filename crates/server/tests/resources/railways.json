@@ -7,6 +7,8 @@
       "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
       "country" : "IT",
       "description" : {
+        "en": "description",
+        "it": "descrizione"
       },
       "period_of_activity" : {
         "operating_since" : "1905-07-01",
@@ -18,12 +20,15 @@
       },
       "total_length" : {
         "kilometers" : 24564.0,
-        "miles": 15263.362
+        "miles": 15263.4
       },
       "contact_info" : {
+        "email" : "mail@mail.com",
+        "phone" : "+14152370800",
         "website_url" : "https://www.fsitaliane.it"
       },
-      "social" : {
+      "socials" : {
+        "facebook": "fsitaliane",
         "instagram" : "fsitaliane",
         "linkedin" : "ferrovie-dello-stato-s-p-a-",
         "twitter" : "FSitaliane",

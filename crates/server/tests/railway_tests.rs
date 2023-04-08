@@ -2,14 +2,20 @@ pub mod common;
 
 use crate::common::seeding::seed_railways;
 use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
+use ::common::contacts::{MailAddress, PhoneNumber};
+use ::common::length::Length;
+use ::common::measure_units::MeasureUnit;
 use ::common::organizations::OrganizationEntityType;
+use ::common::socials::Handler;
 use catalog::common::TrackGauge;
 use catalog::railways::period_of_activity::RailwayStatus;
+use catalog::railways::railway::Railway;
 use catalog::railways::railway_id::RailwayId;
 use chrono::NaiveDate;
 use isocountry::CountryCode;
 use reqwest::StatusCode;
 use rust_decimal::prelude::*;
+use rust_decimal_macros::dec;
 use serde_json::json;
 use uuid::Uuid;
 
@@ -210,6 +216,103 @@ async fn it_should_create_new_railways() {
         assert_eq!(Some(String::from("linkedin_handler")), saved.socials_linkedin);
         assert_eq!(Some(String::from("twitter_handler")), saved.socials_twitter);
         assert_eq!(Some(String::from("youtube_handler")), saved.socials_youtube);
+    })
+    .await;
+}
+
+#[tokio::test]
+async fn it_should_find_railways_by_id() {
+    let test = create_docker_test();
+
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
+
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
+
+        let pg_pool = sut.pg_pool();
+        seed_railways(&pg_pool).await;
+
+        let endpoint = sut.endpoint(API_RAILWAYS);
+        let endpoint = format!("{endpoint}/fs");
+        let response = client.get(endpoint).send().await.expect("Failed to execute request.");
+
+        assert!(response.status().is_success());
+
+        let body = response
+            .json::<Railway>()
+            .await
+            .expect("Failed to fetch the response body");
+
+        let contact_info = body.contact_info.unwrap();
+        let socials = body.socials.unwrap();
+
+        assert_eq!(RailwayId::new("FS"), body.railway_id);
+        assert_eq!("FS", body.name);
+        assert_eq!(Some(String::from("FS")), body.abbreviation);
+        assert_eq!(
+            Some(String::from("Ferrovie dello Stato Italiane S.p.A.")),
+            body.registered_company_name
+        );
+        assert_eq!(
+            Some(OrganizationEntityType::StateOwnedEnterprise),
+            body.organization_entity_type
+        );
+        assert_eq!(Some(&String::from("description")), body.description.english());
+        assert_eq!(Some(&String::from("descrizione")), body.description.italian());
+
+        assert_eq!(Some(MailAddress::new("mail@mail.com")), contact_info.email);
+        assert_eq!(Some(PhoneNumber::new("+14152370800")), contact_info.phone);
+        assert_eq!(
+            Some(String::from("https://www.fsitaliane.it")),
+            contact_info.website_url.map(|it| it.to_string())
+        );
+        assert_eq!(Some(Handler::new("fsitaliane")), socials.facebook);
+        assert_eq!(Some(Handler::new("fsitaliane")), socials.instagram);
+        assert_eq!(Some(Handler::new("ferrovie-dello-stato-s-p-a-")), socials.linkedin);
+        assert_eq!(Some(Handler::new("FSitaliane")), socials.twitter);
+        assert_eq!(Some(Handler::new("fsitaliane")), socials.youtube);
+        assert_eq!(vec![String::from("Roma")], body.headquarters);
+
+        let gauge = body.gauge.expect("railway gauge is missing");
+        assert_eq!(TrackGauge::Standard, gauge.track_gauge);
+        assert_eq!(Length::new(dec!(1.435), MeasureUnit::Meters), gauge.meters);
+
+        let total_length = body.total_length.expect("railway total length is missing");
+        assert_eq!(Length::Kilometers(dec!(24564.0)), total_length.kilometers);
+        assert_eq!(Length::Miles(dec!(15263.4)), total_length.miles);
+
+        let period_of_activity = body.period_of_activity.expect("railway period of activity is missing");
+        assert_eq!(RailwayStatus::Active, period_of_activity.status);
+        assert_eq!(
+            Some(NaiveDate::from_ymd_opt(1905, 7, 1).unwrap()),
+            period_of_activity.operating_since
+        );
+        assert_eq!(None, period_of_activity.operating_until);
+    })
+    .await;
+}
+
+#[tokio::test]
+async fn it_should_return_404_not_found_when_the_railway_is_not_found() {
+    let test = create_docker_test();
+
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
+
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
+
+        let pg_pool = sut.pg_pool();
+        seed_railways(&pg_pool).await;
+
+        let endpoint = sut.endpoint(API_RAILWAYS);
+        let endpoint = format!("{endpoint}/not-found");
+        let response = client.get(endpoint).send().await.expect("Failed to execute request.");
+
+        assert_eq!(404, response.status().as_u16());
     })
     .await;
 }

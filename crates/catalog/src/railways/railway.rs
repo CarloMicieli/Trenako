@@ -18,7 +18,7 @@ use std::{cmp, fmt};
 /// by infrastructure operators and trains are run by different companies.
 ///
 /// Railway companies can be private or public.
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Railway {
     /// the unique railway identifier (an URL encoded string)
     pub railway_id: RailwayId,
