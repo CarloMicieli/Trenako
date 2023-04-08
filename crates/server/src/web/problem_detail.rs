@@ -1,7 +1,7 @@
 use crate::web::trn::Trn;
 use actix_web::http::StatusCode;
 use actix_web::{HttpResponse, HttpResponseBuilder};
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use url::Url;
 use uuid::Uuid;
 
@@ -12,13 +12,13 @@ use uuid::Uuid;
 /// From RFC-7807
 /// "problem detail" is a way to carry machine-readable details of errors in a HTTP response to avoid
 /// the need to define new error response formats for HTTP APIs.
-#[derive(Debug, Serialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ProblemDetail {
     /// A URI reference (RFC-3986) that identifies the problem type. This specification
     /// encourages that, when dereferenced, it provide human-readable documentation for the
     /// problem type (e.g., using HTML). When this member is not present,
     /// its value is assumed to be "about:blank".
-    #[serde(rename(serialize = "type"))]
+    #[serde(rename = "type")]
     pub problem_type: Url,
     /// A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence
     /// to occurrence of the problem, except for purposes of localization(e.g., using proactive
