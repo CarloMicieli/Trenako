@@ -1,4 +1,3 @@
-mod handlers;
-pub mod queries;
+pub mod handlers;
 pub mod repositories;
 pub mod routes;

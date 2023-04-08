@@ -253,9 +253,6 @@ async fn it_should_return_404_not_found_when_the_brand_is_not_found() {
         let client = reqwest::Client::new();
         sut.run_database_migrations().await;
 
-        let pg_pool = sut.pg_pool();
-        seed_brands(&pg_pool).await;
-
         let endpoint = sut.endpoint(API_BRANDS);
         let endpoint = format!("{endpoint}/not-found");
         let response = client.get(endpoint).send().await.expect("Failed to execute request.");

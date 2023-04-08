@@ -1,90 +1,36 @@
-use crate::catalog::brands::queries::PgFindBrandByIdQuery;
-use crate::hateoas::representations::EntityModel;
-use crate::web::problem_detail::ProblemDetail;
-use actix_web::http::StatusCode;
-use actix_web::{web, HttpResponse, ResponseError};
+use crate::catalog::brands::repositories::PgBrandRepository;
+use crate::catalog::brands::routes;
+use crate::web::queries::{to_http_response, to_response_error, QueryResponseError};
+use actix_web::{web, HttpResponse};
+use async_trait::async_trait;
 use catalog::brands::brand::Brand;
 use catalog::brands::brand_id::BrandId;
-use catalog::brands::queries::find_by_id::{FindBrandByIdQuery, QueryError};
-use common::unit_of_work::postgres::PgDatabase;
-use common::unit_of_work::{Database, UnitOfWork};
-use serde::Serialize;
+use catalog::brands::queries::brand_row::BrandRow;
+use common::queries::single_result::{ByIdCriteria, SingleResultQuery};
+use common::unit_of_work::postgres::{PgDatabase, PgUnitOfWork};
 use sqlx::PgPool;
-use std::fmt;
 use tracing_actix_web::RequestId;
-use uuid::Uuid;
 
 pub async fn handle(
     request_id: RequestId,
     brand_id: web::Path<BrandId>,
     db_pool: web::Data<PgPool>,
 ) -> Result<HttpResponse, QueryResponseError> {
-    let result = exec(&brand_id, &db_pool).await;
+    let database = PgDatabase::new(&db_pool);
+    let criteria: ByIdCriteria<BrandId> = ByIdCriteria::new(&brand_id);
+    let result = PgSingleBrandResultQuery::execute(&criteria, database).await;
 
     result.map(to_http_response).map_err(|why| {
-        tracing::error!("{:?}", why);
-        QueryResponseError {
-            request_id: *request_id,
-            error: why,
-            path: brand_id.to_string(),
-        }
+        let path = format!("{}/{}", routes::BRAND_ROOT_API, brand_id);
+        to_response_error(*request_id, why, &path)
     })
 }
 
-fn to_http_response<R>(result: R) -> HttpResponse
-where
-    R: Serialize + PartialEq + Clone,
-{
-    let model = EntityModel::of(result, Vec::new());
-    HttpResponse::Ok().json(model)
-}
+struct PgSingleBrandResultQuery;
 
-async fn exec(brand_id: &BrandId, db_pool: &PgPool) -> Result<Brand, QueryError> {
-    let query = PgFindBrandByIdQuery;
-    let database = PgDatabase::new(db_pool);
-
-    let mut unit_of_work = database.begin().await?;
-
-    let brand = query.execute(brand_id, &mut unit_of_work).await?;
-
-    unit_of_work.commit().await?;
-
-    Ok(brand)
-}
-
-#[derive(Debug)]
-pub struct QueryResponseError {
-    request_id: Uuid,
-    error: QueryError,
-    path: String,
-}
-
-impl fmt::Display for QueryResponseError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{:?}", self.error)
-    }
-}
-
-impl ResponseError for QueryResponseError {
-    fn status_code(&self) -> StatusCode {
-        match self.error {
-            QueryError::UnexpectedError(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            QueryError::EmptyResultSet => StatusCode::NOT_FOUND,
-        }
-    }
-
-    fn error_response(&self) -> HttpResponse {
-        let QueryResponseError {
-            request_id,
-            error,
-            path,
-        } = self;
-
-        let problem_details = match error {
-            QueryError::UnexpectedError(why) => ProblemDetail::error(*request_id, &why.to_string()),
-            QueryError::EmptyResultSet => ProblemDetail::not_found(*request_id, path),
-        };
-
-        problem_details.to_response()
-    }
+#[async_trait]
+impl<'db> SingleResultQuery<'db, PgUnitOfWork<'db>, PgDatabase<'db>, PgBrandRepository> for PgSingleBrandResultQuery {
+    type Id = BrandId;
+    type RowType = BrandRow;
+    type Output = Brand;
 }
