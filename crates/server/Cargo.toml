@@ -22,7 +22,9 @@ anyhow = { workspace = true }
 async-trait = { workspace = true }
 chrono = { workspace = true }
 config = { workspace = true }
+lazy_static = { workspace = true }
 log = { workspace = true }
+regex = { workspace = true }
 rust_decimal = { workspace = true }
 secrecy = { workspace = true }
 serde = { workspace = true }
@@ -45,5 +47,6 @@ isocountry = { workspace = true }
 once_cell = { workspace = true }
 pretty_assertions = { workspace = true }
 reqwest = { workspace = true }
+rstest = { workspace = true }
 rust_decimal_macros = { workspace = true }
 serde_derive = { workspace = true }
