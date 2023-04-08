@@ -1,0 +1,42 @@
+###
+
+# Create a new railway company
+POST http://{{host}}:{{port}}/api/railways
+Content-Type: application/json
+
+{
+  "name" : "FS",
+  "abbreviation" : "FS",
+  "registered_company_name" : "Ferrovie dello Stato Italiane S.p.A.",
+  "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
+  "country" : "IT",
+  "description" : {
+  },
+  "period_of_activity" : {
+    "operating_since" : "1905-07-01",
+    "status" : "ACTIVE"
+  },
+  "gauge" : {
+    "track_gauge" : "STANDARD",
+    "meters" : 1.435
+  },
+  "total_length" : {
+    "kilometers" : 24564.0,
+    "miles": 15263.362
+  },
+  "contact_info" : {
+    "website_url" : "https://www.fsitaliane.it"
+  },
+  "socials" : {
+    "instagram" : "fsitaliane",
+    "linkedin" : "ferrovie-dello-stato-s-p-a-",
+    "twitter" : "FSitaliane",
+    "youtube" : "fsitaliane"
+  },
+  "headquarters" : [ "Roma" ]
+}
+
+###
+
+# Get a railway by id
+GET http://{{host}}:{{port}}/api/railways/fs

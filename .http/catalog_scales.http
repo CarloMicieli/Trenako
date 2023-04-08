@@ -1,0 +1,25 @@
+###
+
+# Create a new modelling railway scale
+POST http://{{host}}:{{port}}/api/scales
+Content-Type: application/json
+
+{
+  "name" : "H0",
+  "description" : {
+    "it" : "descrizione",
+    "en" : "description"
+  },
+  "ratio" : 87.0,
+  "gauge" : {
+    "millimeters" : 16.5,
+    "inches" : 0.65,
+    "track_gauge" : "STANDARD"
+  },
+  "standards" : [ "NEM" ]
+}
+
+###
+
+# Get a scale by id
+GET http://{{host}}:{{port}}/api/scales/h0
