@@ -54,5 +54,6 @@ Content-Type: application/json
 ###
 
 # Get a catalog item by its id
+// @no-log
 GET http://{{host}}:{{port}}/api/catalog-items/acme-60011
 

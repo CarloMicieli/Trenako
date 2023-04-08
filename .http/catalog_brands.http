@@ -40,5 +40,6 @@ Content-Type: application/json
 ###
 
 # Get a brand by id
+// @no-log
 GET http://{{host}}:{{port}}/api/brands/acme
 

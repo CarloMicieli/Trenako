@@ -39,4 +39,5 @@ Content-Type: application/json
 ###
 
 # Get a railway by id
+// @no-log
 GET http://{{host}}:{{port}}/api/railways/fs
