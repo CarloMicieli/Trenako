@@ -1,10 +1,12 @@
-use anyhow::Context;
+use anyhow::{Context, Error};
 use async_trait::async_trait;
 use catalog::common::TrackGauge;
 use catalog::scales::commands::new_scales::NewScaleCommand;
 use catalog::scales::commands::repositories::ScaleRepository;
+use catalog::scales::queries::scale_row::ScaleRow;
 use catalog::scales::scale_id::ScaleId;
 use catalog::scales::standard::Standard;
+use common::queries::single_result::QueryRepository;
 use common::unit_of_work::postgres::PgUnitOfWork;
 
 pub struct PgScaleRepository;
@@ -60,5 +62,35 @@ impl<'db> ScaleRepository<'db, PgUnitOfWork<'db>> for PgScaleRepository {
         .context("A database failure was encountered while trying to store a scale.")?;
 
         Ok(())
+    }
+}
+
+#[async_trait]
+impl<'db> QueryRepository<'db, PgUnitOfWork<'db>, ScaleId, ScaleRow> for PgScaleRepository {
+    async fn find_by_id(id: &ScaleId, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<Option<ScaleRow>, Error> {
+        let result = sqlx::query_as!(
+            ScaleRow,
+            r#"SELECT
+                scale_id as "scale_id: ScaleId",
+                name,
+                ratio,
+                gauge_millimeters,
+                gauge_inches,
+                track_gauge as "track_gauge: TrackGauge",
+                description_en,
+                description_it,
+                standards as "standards!: Vec<Standard>",
+                created_at,
+                last_modified_at,
+                version
+            FROM scales
+            WHERE scale_id = $1"#,
+            id
+        )
+        .fetch_optional(&mut unit_of_work.transaction)
+        .await
+        .context("A database failure was encountered while trying to fetch a scale.")?;
+
+        Ok(result)
     }
 }

@@ -1,5 +1,6 @@
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;
+use serde::{Serialize, Serializer};
 use sqlx::Type;
 use std::borrow::Cow;
 use std::cmp::Ordering;
@@ -10,7 +11,7 @@ use validator::ValidationError;
 
 /// It represents the {@code Ratio} between a model railway size
 /// and the size of an actual train.
-#[derive(Debug, Eq, PartialEq, Clone, Deserialize, Serialize, Type)]
+#[derive(Debug, Eq, PartialEq, Clone, Deserialize, Type)]
 #[sqlx(transparent)]
 pub struct Ratio(Decimal);
 
@@ -39,6 +40,15 @@ impl convert::TryFrom<Decimal> for Ratio {
             _ if value < Decimal::ONE => Err(RatioError::OutsideAllowedRange),
             _ => Ok(Ratio(value)),
         }
+    }
+}
+
+impl Serialize for Ratio {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: Serializer,
+    {
+        rust_decimal::serde::float::serialize(&self.0, serializer)
     }
 }
 
@@ -140,6 +150,7 @@ mod tests {
 
     mod ratio_validation {
         use super::*;
+        use pretty_assertions::assert_eq;
 
         #[test]
         fn it_should_validate_ratios() {
@@ -150,6 +161,27 @@ mod tests {
             assert_eq!(error.params["value"], "-1.0");
             assert_eq!(error.params["min"], 1);
             assert_eq!(error.params["max"], 220);
+        }
+    }
+
+    mod ratio_serialization {
+        use super::*;
+        use pretty_assertions::assert_eq;
+
+        #[test]
+        fn it_should_serialize_ratios() {
+            let value = TestStruct {
+                ratio: Ratio::try_from(dec!(43.5)).unwrap(),
+            };
+
+            let json = serde_json::to_string(&value).expect("invalid json value");
+
+            assert_eq!(r#"{"ratio":43.5}"#, json);
+        }
+
+        #[derive(Debug, Serialize)]
+        struct TestStruct {
+            ratio: Ratio,
         }
     }
 }

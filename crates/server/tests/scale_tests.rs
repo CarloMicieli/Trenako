@@ -2,12 +2,18 @@ pub mod common;
 
 use crate::common::seeding::seed_scales;
 use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
+use ::common::length::Length;
+use ::common::measure_units::MeasureUnit;
 use catalog::common::TrackGauge;
+use catalog::scales::ratio::Ratio;
+use catalog::scales::scale::Scale;
 use catalog::scales::scale_id::ScaleId;
 use catalog::scales::standard::Standard;
 use reqwest::StatusCode;
 use rust_decimal::Decimal;
+use rust_decimal_macros::dec;
 use serde_json::json;
+use std::collections::HashSet;
 use uuid::Uuid;
 
 const API_SCALES: &str = "/api/scales";
@@ -132,6 +138,68 @@ async fn it_should_create_new_scales() {
         assert_eq!(Some(gauge_in), saved.gauge_inches);
         assert_eq!(TrackGauge::Standard, saved.track_gauge);
         assert_eq!(vec![Standard::NEM, Standard::NMRA], saved.standards);
+    })
+    .await;
+}
+
+#[tokio::test]
+async fn it_should_find_scales_by_id() {
+    let test = create_docker_test();
+
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
+
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
+
+        let pg_pool = sut.pg_pool();
+        seed_scales(&pg_pool).await;
+
+        let endpoint = sut.endpoint(API_SCALES);
+        let endpoint = format!("{endpoint}/h0");
+        let response = client.get(endpoint).send().await.expect("Failed to execute request.");
+
+        assert!(response.status().is_success());
+
+        let body = response
+            .json::<Scale>()
+            .await
+            .expect("Failed to fetch the response body");
+
+        assert_eq!(ScaleId::new("H0"), body.scale_id);
+        assert_eq!("H0", body.name);
+        assert_eq!(Some(&String::from("description")), body.description.english());
+        assert_eq!(Some(&String::from("descrizione")), body.description.italian());
+
+        let gauge = body.gauge;
+        assert_eq!(TrackGauge::Standard, gauge.track_gauge);
+        assert_eq!(Length::new(dec!(0.65), MeasureUnit::Inches), gauge.inches);
+        assert_eq!(Length::new(dec!(16.5), MeasureUnit::Millimeters), gauge.millimeters);
+
+        let ratio = body.ratio;
+        assert_eq!(Ratio::try_from(dec!(87.0)).unwrap(), ratio);
+        assert_eq!(HashSet::from([Standard::NEM]), body.standards);
+    })
+    .await;
+}
+
+#[tokio::test]
+async fn it_should_return_404_not_found_when_the_scale_is_not_found() {
+    let test = create_docker_test();
+
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
+
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
+
+        let endpoint = sut.endpoint(API_SCALES);
+        let endpoint = format!("{endpoint}/not-found");
+        let response = client.get(endpoint).send().await.expect("Failed to execute request.");
+
+        assert_eq!(404, response.status().as_u16());
     })
     .await;
 }

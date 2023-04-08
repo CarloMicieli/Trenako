@@ -30,7 +30,7 @@ struct PgSingleRailwayResultQuery;
 
 #[async_trait]
 impl<'db> SingleResultQuery<'db, PgUnitOfWork<'db>, PgDatabase<'db>, PgRailwayRepository>
-for PgSingleRailwayResultQuery
+    for PgSingleRailwayResultQuery
 {
     type Id = RailwayId;
     type RowType = RailwayRow;

@@ -423,6 +423,28 @@ mod test {
         }
     }
 
+    mod description_converter {
+        use super::*;
+        use pretty_assertions::assert_eq;
+
+        #[test]
+        fn it_should_convert_description() {
+            let row = RailwayRow {
+                description_en: Some(String::from("description")),
+                description_it: Some(String::from("descrizione")),
+                ..default_row()
+            };
+
+            let result = LocalizedText::try_convert(&row);
+
+            assert!(result.is_ok());
+
+            let description = result.unwrap();
+            assert_eq!(Some(&String::from("description")), description.english());
+            assert_eq!(Some(&String::from("descrizione")), description.italian());
+        }
+    }
+
     mod socials_converter {
         use super::*;
         use common::socials::Handler;
