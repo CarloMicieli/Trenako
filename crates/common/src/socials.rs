@@ -15,6 +15,8 @@ use validator::{Validate, ValidationErrors};
 ///
 /// ```rust
 /// // creates a new instance of Socials
+/// use common::socials::Socials;
+///
 /// let social = Socials::builder()
 ///   .facebook("facebook_user")
 ///   .instagram("instagram_user")
