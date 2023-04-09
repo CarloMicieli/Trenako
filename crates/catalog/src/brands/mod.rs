@@ -1,3 +1,5 @@
+//! the module includes everything related to brands
+
 pub mod brand;
 pub mod brand_id;
 pub mod brand_kind;

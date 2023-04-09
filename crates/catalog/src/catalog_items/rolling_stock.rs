@@ -1,3 +1,5 @@
+//! the rolling stock view models
+
 use crate::catalog_items::category::{
     ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType, RollingStockCategory,
 };

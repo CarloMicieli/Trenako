@@ -1,3 +1,5 @@
+//! the brand identifier
+
 use common::slug::{Slug, SlugParserError};
 use sqlx::Type;
 use std::fmt;
@@ -13,6 +15,9 @@ pub struct BrandId(Slug);
 
 impl BrandId {
     /// Creates a new brand unique identifier
+    ///
+    /// # Panics
+    /// Panics if `id` is not a valid value (ie, blank string)
     pub fn new(id: &str) -> Self {
         BrandId::from_str(id).expect("invalid brand id")
     }

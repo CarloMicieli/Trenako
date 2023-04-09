@@ -1,3 +1,5 @@
+//! the module includes everything related to modelling scales
+
 pub mod commands;
 pub mod queries;
 pub mod ratio;

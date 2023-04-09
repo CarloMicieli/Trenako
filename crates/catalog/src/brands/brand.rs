@@ -1,3 +1,5 @@
+//! the brand view models
+
 use crate::brands::brand_id::BrandId;
 use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_status::BrandStatus;

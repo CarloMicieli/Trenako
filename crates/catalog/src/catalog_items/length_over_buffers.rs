@@ -1,3 +1,5 @@
+//! the rolling stock length over buffers
+
 use common::length::{validate_length_range, Length};
 use common::measure_units::MeasureUnit;
 use rust_decimal::Decimal;
@@ -94,6 +96,7 @@ impl Validate for LengthOverBuffers {
     }
 }
 
+/// The length over buffers error enum
 #[derive(Debug, PartialEq, Error)]
 pub enum LengthOverBuffersError {
     #[error("the value in millimeters is not matching the one in inches")]

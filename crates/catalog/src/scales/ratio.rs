@@ -1,3 +1,5 @@
+//! the modelling scale ratio
+
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;
 use serde::{Serialize, Serializer};

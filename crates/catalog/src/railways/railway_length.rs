@@ -1,3 +1,5 @@
+//! the railway total length
+
 use common::length::{validate_length_range, Length};
 use common::measure_units::MeasureUnit;
 use rust_decimal::Decimal;

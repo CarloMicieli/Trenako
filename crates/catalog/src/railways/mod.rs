@@ -1,3 +1,5 @@
+//! the module includes everything related to railways
+
 pub mod commands;
 pub mod period_of_activity;
 pub mod queries;

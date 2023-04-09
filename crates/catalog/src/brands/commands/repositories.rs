@@ -1,3 +1,5 @@
+//! the brand command repositories
+
 use crate::brands::brand_id::BrandId;
 use crate::brands::commands::new_brand::NewBrandCommand;
 use async_trait::async_trait;

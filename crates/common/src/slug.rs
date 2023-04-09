@@ -1,3 +1,5 @@
+//! the module includes everything related to slugs
+
 use slug::slugify;
 use sqlx::Type;
 use std::ops;
@@ -13,11 +15,17 @@ pub struct Slug(String);
 
 impl Slug {
     /// Create a new Slug from the string in input.
+    ///
+    /// # Panics
+    /// Panics if `value` is not a valid value (ie, blank string)
     pub fn new(value: &str) -> Self {
         Slug::from_str(value).expect("the input is not a valid slug")
     }
 
     /// Combine this Slug with another value, after it is converted to a Slug
+    ///
+    /// # Panics
+    /// Panics if `other` cannot be converted into a `Slug` successfully
     pub fn combine<T: Into<Slug>>(&self, other: T) -> Self {
         let value = format!("{}-{}", self.0, other.into().0);
         Slug::new(&value)
@@ -36,6 +44,7 @@ impl str::FromStr for Slug {
     }
 }
 
+/// The slug parsing errors enum
 #[derive(Debug, Eq, PartialEq, Error)]
 pub enum SlugParserError {
     #[error("a slug cannot be blank")]

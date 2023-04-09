@@ -1,3 +1,5 @@
+//! the rolling stock technical specifications
+
 use common::length::{validate_length_range, Length};
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;

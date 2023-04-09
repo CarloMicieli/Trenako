@@ -1,3 +1,5 @@
+//! the module includes everything related to catalog items
+
 pub mod availability_status;
 pub mod catalog_item;
 pub mod catalog_item_id;

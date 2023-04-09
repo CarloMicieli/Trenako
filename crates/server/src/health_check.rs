@@ -1,3 +1,5 @@
+//! the health check web handler
+
 use actix_web::{web, HttpResponse, Responder};
 use sqlx::PgPool;
 

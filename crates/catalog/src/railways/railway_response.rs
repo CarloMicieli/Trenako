@@ -1,3 +1,5 @@
+//! the railway command responses
+
 use crate::railways::railway_id::RailwayId;
 use chrono::{DateTime, Utc};
 

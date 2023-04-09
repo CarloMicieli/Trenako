@@ -1,3 +1,5 @@
+//! the new brand creation command
+
 use crate::brands::brand_id::BrandId;
 use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_request::BrandRequest;

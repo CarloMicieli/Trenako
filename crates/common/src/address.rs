@@ -1,3 +1,5 @@
+//! the module includes everything related to physical street addresses
+
 use isocountry::CountryCode;
 use thiserror::Error;
 use validator::Validate;

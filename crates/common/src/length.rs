@@ -1,3 +1,5 @@
+//! the module includes everything related to lengths
+
 use crate::measure_units::MeasureUnit;
 use rust_decimal::prelude::{ToPrimitive, Zero};
 use rust_decimal::Decimal;
@@ -15,10 +17,15 @@ use validator::ValidationError;
 /// Lengths are defined by a non-negative value and a measure unit.
 #[derive(Debug, Copy, Clone, Serialize, Deserialize)]
 pub enum Length {
+    /// a length expressed in Inches
     Inches(Decimal),
+    /// a length expressed in Kilometers
     Kilometers(Decimal),
+    /// a length expressed in Meters
     Meters(Decimal),
+    /// a length expressed in Miles
     Miles(Decimal),
+    /// a length expressed in Millimeters
     Millimeters(Decimal),
 }
 

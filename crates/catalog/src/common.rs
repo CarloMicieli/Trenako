@@ -1,3 +1,5 @@
+//! the module includes common types for catalogs
+
 use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};

@@ -1,3 +1,5 @@
+//! the module includes everything related to localized texts
+
 use crate::validation::Validator;
 use std::collections::HashMap;
 use strum_macros;

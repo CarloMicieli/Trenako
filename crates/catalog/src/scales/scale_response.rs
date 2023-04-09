@@ -1,3 +1,5 @@
+//! the scale command responses
+
 use crate::scales::scale_id::ScaleId;
 use chrono::{DateTime, Utc};
 

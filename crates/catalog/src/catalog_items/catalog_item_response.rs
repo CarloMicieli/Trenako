@@ -1,3 +1,5 @@
+//! the catalog item command responses
+
 use crate::catalog_items::catalog_item_id::CatalogItemId;
 use chrono::{DateTime, Utc};
 

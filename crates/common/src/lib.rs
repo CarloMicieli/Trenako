@@ -1,3 +1,7 @@
+//! # Common
+//!
+//! This module provides common functions and types.
+
 pub mod address;
 pub mod contacts;
 pub mod in_memory;

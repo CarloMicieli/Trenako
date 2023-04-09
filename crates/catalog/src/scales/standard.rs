@@ -1,8 +1,11 @@
+//! the scale standards enum
+
 use sqlx::postgres::{PgHasArrayType, PgTypeInfo};
 use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};
 
+/// The enumeration of modelling scale standards
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Hash, Serialize, Deserialize, EnumString, Display, Type)]
 #[sqlx(type_name = "scale_standard")]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]

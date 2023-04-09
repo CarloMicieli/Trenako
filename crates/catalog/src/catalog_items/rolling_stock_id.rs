@@ -1,3 +1,5 @@
+//! the rolling stock identifier
+
 use sqlx::Type;
 use std::fmt;
 use std::fmt::Formatter;
@@ -15,6 +17,7 @@ impl RollingStockId {
         RollingStockId::default()
     }
 
+    /// the rolling stock unique identifier value
     pub fn value(&self) -> Uuid {
         self.0
     }

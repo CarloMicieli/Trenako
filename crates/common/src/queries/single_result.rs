@@ -1,3 +1,5 @@
+//! the module includes everything related to single result queries
+
 use crate::queries::converters::{ConversionErrors, ToOutputConverter};
 use crate::unit_of_work::{Database, UnitOfWork};
 use async_trait::async_trait;

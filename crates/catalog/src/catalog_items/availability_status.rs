@@ -1,3 +1,5 @@
+//! the catalog item availability status
+
 use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};

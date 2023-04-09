@@ -1,3 +1,5 @@
+//! the module includes everything related to social profiles
+
 use crate::validation::Validator;
 use http::Uri;
 use sqlx::Type;
@@ -7,7 +9,21 @@ use std::str;
 use thiserror::Error;
 use validator::{Validate, ValidationErrors};
 
-/// the social profiles for an organization
+/// The social profiles for an organization
+///
+/// # Examples
+///
+/// ```rust
+/// // creates a new instance of Socials
+/// let social = Socials::builder()
+///   .facebook("facebook_user")
+///   .instagram("instagram_user")
+///   .linkedin("linkedin_user")
+///   .twitter("twitter_user")
+///   .youtube("youtube_user")
+///   .build()
+///   .unwrap();
+/// ```
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct Socials {
     /// the facebook handler
@@ -68,6 +84,7 @@ impl Socials {
     }
 }
 
+/// The social handlers builder
 #[derive(Default)]
 pub struct SocialsBuilder {
     facebook: Option<Result<Handler, SocialHandlerError>>,
@@ -108,6 +125,7 @@ impl SocialsBuilder {
         self
     }
 
+    /// build a new `Socials` value
     pub fn build(self) -> Result<Socials, SocialsBuilderError> {
         let facebook = if let Some(f) = self.facebook { Some(f?) } else { None };
         let instagram = if let Some(i) = self.instagram { Some(i?) } else { None };
@@ -125,6 +143,7 @@ impl SocialsBuilder {
     }
 }
 
+/// The social builder errors enum
 #[derive(Debug, Eq, PartialEq, Error)]
 pub enum SocialsBuilderError {
     #[error("invalid social handler(s)")]
@@ -140,6 +159,9 @@ pub struct Handler(String);
 
 impl Handler {
     /// Create a new social network handler
+    ///
+    /// # Panics
+    /// Panics if `value` is not a valid social handler
     pub fn new(value: &str) -> Self {
         Handler::try_from(value).expect("invalid social handler")
     }
@@ -166,6 +188,7 @@ impl fmt::Display for Handler {
     }
 }
 
+/// The social handler errors enum
 #[derive(Debug, Eq, PartialEq, Error)]
 pub enum SocialHandlerError {
     #[error("invalid social handler")]

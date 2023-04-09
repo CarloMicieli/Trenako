@@ -1,3 +1,5 @@
+//! the railway period of activity
+
 use chrono::NaiveDate;
 use sqlx::Type;
 use std::borrow::Cow;

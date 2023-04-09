@@ -1,3 +1,5 @@
+//! the rolling stock command request
+
 use crate::catalog_items::category::{
     ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType, RollingStockCategory,
 };

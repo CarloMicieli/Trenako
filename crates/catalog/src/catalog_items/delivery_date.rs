@@ -1,3 +1,5 @@
+//! the catalog item delivery date
+
 use serde::de::{Unexpected, Visitor};
 use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
 use std::fmt;
@@ -6,13 +8,17 @@ use std::str;
 use std::str::FromStr;
 use thiserror::Error;
 
+/// The delivery date quarter number
 pub type Quarter = u8;
+/// The delivery date year
 pub type Year = i32;
 
 /// A delivery date for a catalog item (either by quarter or just year).
 #[derive(Debug, PartialEq, Eq, Clone)]
 pub enum DeliveryDate {
+    /// A delivery date with just a year (ie, _"2022"_)
     ByYear(Year),
+    /// A delivery date with year and quarter (ie, _"2022/Q1"_)
     ByQuarter(Year, Quarter),
 }
 
@@ -27,6 +33,7 @@ impl DeliveryDate {
         DeliveryDate::ByQuarter(year, quarter)
     }
 
+    /// Returns the year component from this delivery date
     pub fn year(&self) -> Year {
         match self {
             DeliveryDate::ByQuarter(y, _) => *y,
@@ -34,6 +41,7 @@ impl DeliveryDate {
         }
     }
 
+    /// Returns the (optional) quarter component from this delivery date
     pub fn quarter(&self) -> Option<Quarter> {
         match self {
             DeliveryDate::ByQuarter(_, q) => Some(*q),
@@ -140,6 +148,7 @@ impl<'de> Deserialize<'de> for DeliveryDate {
     }
 }
 
+/// The delivery date parsing errors enum
 #[derive(Debug, Error)]
 pub enum DeliveryDateParseError {
     #[error("Delivery date cannot be empty")]

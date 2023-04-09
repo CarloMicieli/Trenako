@@ -1,3 +1,5 @@
+//! the railway command request
+
 use crate::railways::period_of_activity::PeriodOfActivity;
 use crate::railways::railway_gauge::RailwayGauge;
 use crate::railways::railway_length::RailwayLength;

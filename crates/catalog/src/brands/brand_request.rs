@@ -1,3 +1,5 @@
+//! the brand command requests
+
 use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_status::BrandStatus;
 use common::address::Address;

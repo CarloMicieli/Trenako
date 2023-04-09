@@ -1,3 +1,5 @@
+//! The module includes everything related to HATEOAS
+//!
 //! # HATEOAS
 //!
 //! This module provides some APIs to ease creating REST representations that follow the HATEOAS principle,

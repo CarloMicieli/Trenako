@@ -1,3 +1,5 @@
+//! the module includes everything related to catalog web handlers
+
 use crate::catalog::brands::routes::configure_brand_routes;
 use crate::catalog::catalog_items::routes::configure_catalog_items_routes;
 use crate::catalog::railways::routes::configure_railway_routes;

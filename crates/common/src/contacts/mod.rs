@@ -1,3 +1,5 @@
+//! the module includes everything related to contact information
+
 mod emails;
 mod phones;
 mod website_urls;

@@ -1,3 +1,5 @@
+//! the rolling stock control
+
 use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};
@@ -24,6 +26,7 @@ pub enum Control {
 
 /// The NMRA and NEM Connectors for digital control (DCC)
 ///
+/// # Description
 /// The NMRA and NEM adopted standard mechanical and electrical interfaces to connect Multifunction
 /// Decoders to a locomotive's electrical system. These plugs and sockets make it simpler to install
 /// a decoder into a suitably equipped locomotive.

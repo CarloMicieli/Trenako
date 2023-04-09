@@ -1,3 +1,5 @@
+//! the catalog item number
+
 use common::slug::Slug;
 use sqlx::Type;
 use std::borrow::Cow;

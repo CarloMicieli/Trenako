@@ -1,3 +1,5 @@
+//! the scale identifier
+//!
 use common::slug::{Slug, SlugParserError};
 use sqlx::Type;
 use std::fmt;
@@ -12,6 +14,9 @@ pub struct ScaleId(Slug);
 
 impl ScaleId {
     /// Creates a new unique identifier for a modelling scale
+    ///
+    /// # Panics
+    /// Panics if `id` is not a valid value (ie, blank string)
     pub fn new(id: &str) -> Self {
         ScaleId::from_str(id).expect("invalid scale id")
     }

@@ -1,3 +1,5 @@
+//! the module includes everything related to organizations
+
 use serde_derive::{Deserialize, Serialize};
 use sqlx::Type;
 use strum_macros;

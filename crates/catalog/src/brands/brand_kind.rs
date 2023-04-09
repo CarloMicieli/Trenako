@@ -1,3 +1,5 @@
+//! the brand kinds
+
 use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};

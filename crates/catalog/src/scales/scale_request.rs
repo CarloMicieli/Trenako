@@ -1,3 +1,5 @@
+//! the scale command requests
+
 use crate::scales::ratio::Ratio;
 use crate::scales::scale_gauge::Gauge;
 use crate::scales::standard::Standard;

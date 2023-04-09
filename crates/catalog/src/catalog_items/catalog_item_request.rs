@@ -1,3 +1,5 @@
+//! the catalog item command request
+
 use crate::catalog_items::availability_status::AvailabilityStatus;
 use crate::catalog_items::category::Category;
 use crate::catalog_items::delivery_date::DeliveryDate;

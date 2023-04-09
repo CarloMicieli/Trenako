@@ -1,3 +1,5 @@
+//! the module includes everything related to measure units
+
 use rust_decimal::Decimal;
 use rust_decimal_macros::*;
 use std::fmt;

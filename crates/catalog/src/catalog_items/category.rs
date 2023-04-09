@@ -1,3 +1,5 @@
+//! the catalog item and rolling stock categories
+
 use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};
@@ -188,13 +190,27 @@ pub enum ElectricMultipleUnitType {
 }
 
 /// The types for railcar rolling stocks
+///
+/// # Description
+///
+/// A railcar is a self-propelled railway vehicle designed to transport passengers.
+/// The term _"railcar"_ is usually used in reference to a train consisting of a single coach
+/// (carriage, car), with a driver's cab at one or both ends.
+///
+/// In its simplest form, a "railcar" may also be little more than a motorized railway handcar
+/// or draisine.
 #[derive(Debug, Copy, Clone, PartialEq, Eq, EnumString, Display, Serialize, Deserialize, Type)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "railcar_type", rename_all = "SCREAMING_SNAKE_CASE")]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum RailcarType {
+    /// A self-propelled passenger vehicles also capable of hauling a train.
     PowerCar,
+
+    /// Trailer cars are any cars (sometimes semi-permanently coupled) that carry little or no
+    /// traction or power related equipment, and are similar to passenger cars in a
+    /// locomotive-hauled train.
     TrailerCar,
 }
 

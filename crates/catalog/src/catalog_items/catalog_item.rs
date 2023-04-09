@@ -1,3 +1,5 @@
+//! the catalog item view model
+
 use crate::brands::brand::Brand;
 use crate::brands::brand_id::BrandId;
 use crate::catalog_items::availability_status::AvailabilityStatus;

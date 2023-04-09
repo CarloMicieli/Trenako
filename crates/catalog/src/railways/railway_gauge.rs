@@ -1,3 +1,5 @@
+//! the railway gauge
+
 use crate::common::TrackGauge;
 use common::length::{validate_length_range, Length};
 use rust_decimal::Decimal;

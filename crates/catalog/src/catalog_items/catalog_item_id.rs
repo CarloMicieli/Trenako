@@ -1,3 +1,5 @@
+//! the catalog item identifier
+
 use crate::brands::brand_id::BrandId;
 use crate::catalog_items::catalog_item::CatalogItemBrand;
 use crate::catalog_items::item_number::ItemNumber;

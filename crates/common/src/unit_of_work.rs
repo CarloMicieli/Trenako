@@ -1,3 +1,5 @@
+//! the module includes everything related to unit of works
+
 use async_trait::async_trait;
 
 /// It represents a database unit of work, typically to wrap a transaction
@@ -15,6 +17,7 @@ pub trait Database<'db, U: UnitOfWork<'db>> {
     async fn begin(self) -> Result<U, anyhow::Error>;
 }
 
+/// A no-op unit of work, useful for testing
 pub mod noop {
     use crate::unit_of_work::{Database, UnitOfWork};
     use async_trait::async_trait;
@@ -37,6 +40,7 @@ pub mod noop {
     }
 }
 
+/// A unit of work implementation for Postgres
 pub mod postgres {
     use crate::unit_of_work::{Database, UnitOfWork};
     use anyhow::Context;

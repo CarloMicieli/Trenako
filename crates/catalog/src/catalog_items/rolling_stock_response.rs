@@ -1,3 +1,5 @@
+//! the rolling stock command responses
+
 use crate::catalog_items::rolling_stock_id::RollingStockId;
 use chrono::{DateTime, Utc};
 

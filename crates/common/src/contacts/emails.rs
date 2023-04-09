@@ -1,3 +1,5 @@
+//! the module includes everything related to mail addresses
+
 use sqlx::Type;
 use std::borrow::Cow;
 use std::fmt;

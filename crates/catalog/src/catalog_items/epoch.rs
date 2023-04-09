@@ -1,3 +1,5 @@
+//! the rolling stock epoch
+
 use itertools::Itertools;
 use serde::de::{Unexpected, Visitor};
 use serde::{de, Deserialize, Deserializer, Serialize, Serializer};
@@ -7,27 +9,55 @@ use std::str;
 use std::str::FromStr;
 use thiserror::Error;
 
-/// The model railway industry adopted an 'Era', or 'Epoch' system; the idea being to group models
+/// It represents a model railway epoch
+///
+/// # Description
+///
+/// The model railway industry adopted an _"Era"_, or _"Epoch"_ system; the idea being to group models
 /// into a defined time bracket, so that locomotives, coaching and wagon stock could be reasonably
 /// grouped together.
+///
+/// This enumeration respects the _European Epoch System_.
+///
+/// # European Epoch System
+/// There are six main Epochs for European railways, although as with most time periods,
+/// there is no hard and fast rule that every model must belong to a definitive era.
+/// Each Epoch is preceded by a Roman Numeral to split them into six.
+///
+/// Again, it’s impossible to truly capture every single nuance as each country developed slightly
+/// differently to fit their particular set of circumstances.
+///
+/// Typically Epochs include dates to give an idea of the time period being referenced, but
+/// these will differ country to country.
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone)]
 #[allow(non_snake_case)]
 pub enum Epoch {
+    /// _1848 – 1920_: was the definitive period for the birth of the European railway system.
     I,
+    /// _1921 – 1948_: construction and operating regulations had unified to create more progressive
+    /// railways and systems than ever before. Electric traction was introduced, culminating in
+    /// electric locomotives.
     II,
     IIa,
     IIb,
+    /// _1949 – 1970_: with Europe still recovering from the effects of the Second World War,
+    /// this was a period of reinvention.
     III,
     IIIa,
     IIIb,
     IIIc,
+    /// _1971 – 1990_: the traction system across Europe was looking very similar to what we use now.
     IV,
     IVa,
     IVb,
+    /// _1991 – 2006_: this period was one of freeing up the railways. Liberalised access to the
+    /// railway networks was put into action in the early 2000’s across a select few European countries.
     V,
     Va,
     Vb,
     Vm,
+    /// _2007 – Present_: has been a time of building upon all of the progress that has been made
+    /// over the last century.
     VI,
     Multiple(Box<Epoch>, Box<Epoch>),
 }

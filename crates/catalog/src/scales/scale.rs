@@ -1,3 +1,5 @@
+//! the scale view models
+
 use super::ratio::Ratio;
 use super::scale_gauge::Gauge;
 use super::scale_id::ScaleId;

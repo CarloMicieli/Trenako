@@ -1,3 +1,5 @@
+//! the railway identifier
+
 use common::slug::{Slug, SlugParserError};
 use sqlx::Type;
 use std::str;
@@ -10,6 +12,10 @@ use std::{fmt, ops};
 pub struct RailwayId(Slug);
 
 impl RailwayId {
+    /// Creates a new railway unique identifier
+    ///
+    /// # Panics
+    /// Panics if `id` is not a valid value (ie, blank string)
     pub fn new(id: &str) -> Self {
         RailwayId::from_str(id).expect("invalid railway id")
     }

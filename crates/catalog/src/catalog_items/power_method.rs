@@ -1,3 +1,5 @@
+//! the rolling stock power method
+
 use sqlx::Type;
 use strum_macros;
 use strum_macros::{Display, EnumString};

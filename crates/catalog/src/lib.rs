@@ -1,3 +1,13 @@
+//! # Catalog
+//! The Catalog module includes all types and functions to handle model railway catalogs.
+//!
+//! The list of supported types includes:
+//!
+//! - brands
+//! - catalog items and rolling stocks
+//! - railway companies
+//! - modeling scales
+
 pub mod brands;
 pub mod catalog_items;
 pub mod common;

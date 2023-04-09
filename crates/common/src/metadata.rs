@@ -1,3 +1,5 @@
+//! the module includes everything related to resource metadata
+
 use chrono::{DateTime, Utc};
 
 /// The metadata information for the current resource

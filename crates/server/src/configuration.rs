@@ -1,13 +1,17 @@
+//! the service configuration settings
+
 use config::{Config, Environment, File};
 use secrecy::{ExposeSecret, Secret};
 use serde::{Deserialize, Serialize};
 use sqlx::postgres::{PgConnectOptions, PgPoolOptions, PgSslMode};
 use sqlx::PgPool;
 
-/// Application settings
+/// It represents the settings for the service
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Settings {
+    /// the database settings
     pub database: DatabaseSettings,
+    /// the HTTP server settings
     pub server: ServerSettings,
 }
 
@@ -72,6 +76,7 @@ pub struct DatabaseSettings {
 }
 
 impl DatabaseSettings {
+    /// Creates the database settings
     pub fn new(username: &str, password: &str, host: &str, port: u16, name: &str) -> DatabaseSettings {
         DatabaseSettings {
             username: username.to_owned(),

@@ -1,3 +1,5 @@
+//! the passenger car service level
+
 use sqlx::Type;
 use std::str;
 use strum_macros;

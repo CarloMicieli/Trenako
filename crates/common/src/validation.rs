@@ -1,3 +1,5 @@
+//! This module provides some validation helpers
+
 use std::borrow::Cow;
 use validator::{validate_length, ValidationError, ValidationErrors};
 

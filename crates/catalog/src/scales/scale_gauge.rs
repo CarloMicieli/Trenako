@@ -1,3 +1,5 @@
+//! the scale gauge
+
 use crate::common::TrackGauge;
 use common::length::{validate_length_range, Length};
 use common::measure_units::MeasureUnit;

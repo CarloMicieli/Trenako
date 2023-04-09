@@ -1,3 +1,5 @@
+//! the module includes everything related to row converters
+
 use std::borrow::Cow;
 use std::fmt;
 use std::fmt::Formatter;

@@ -1,3 +1,5 @@
+//! the brand command responses
+
 use crate::brands::brand_id::BrandId;
 use chrono::{DateTime, Utc};
 
