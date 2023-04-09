@@ -45,6 +45,7 @@ If the required subsection does not exist yet under **Unreleased**, create it!
 ```shell
   cargo install cargo-tarpaulin
   cargo install cargo-audit
+  cargo install cargo-make
   cargo install sqlx-cli --no-default-features --features native-tls,postgres
   rustup component add clippy
   rustup component add rustfmt
@@ -58,15 +59,23 @@ If the required subsection does not exist yet under **Unreleased**, create it!
 
 ### Useful Commands
 
+Cargo commands
+
 | Command                          | Description                        |
 |----------------------------------|------------------------------------|
-| `cargo run`                      | run the app                        |
-| `cargo test`                     | run the tests                      |
-| `cargo fmt -- --check`           | check the formatting               |
-| `cargo clippy`                   | run the linter                     |
+| `cargo make run`                 | run the app                        |
+| `cargo make test`                | run the tests                      |
+| `cargo make fmt-check`           | check the formatting               |
+| `cargo make clippy`              | run the linter                     |
+| `cargo make docs`                | generate the rustdoc               |
+| `cargo make db-prepare`          | prepare the query for offline mode |
 | `cargo tarpaulin --ignore-tests` | compute code coverage              |
 | `cargo audit`                    | check for security warnings        |
-| `cargo sqlx prepare --merged`    | prepare the query for offline mode |
+
+Sqlx cli commands:
+
+| Command                          | Description                        |
+|----------------------------------|------------------------------------|
 | `sqlx migrate add <name>`        | creates a new `<name>` migration   |
 | `sqlx migrate run`               | run the database migrations        |
 
