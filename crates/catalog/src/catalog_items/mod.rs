@@ -13,6 +13,7 @@ pub mod epoch;
 pub mod item_number;
 pub mod length_over_buffers;
 pub mod power_method;
+pub mod queries;
 pub mod rolling_stock;
 pub mod rolling_stock_id;
 pub mod rolling_stock_request;
