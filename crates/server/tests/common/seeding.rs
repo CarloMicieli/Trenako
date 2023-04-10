@@ -3,7 +3,7 @@ use catalog::brands::commands::new_brand::NewBrandCommand;
 use catalog::brands::commands::repositories::BrandRepository;
 use catalog::catalog_items::catalog_item_request::CatalogItemRequest;
 use catalog::catalog_items::commands::new_catalog_item::NewCatalogItemCommand;
-use catalog::catalog_items::commands::repositories::CatalogItemRepository;
+use catalog::catalog_items::commands::repositories::{CatalogItemRepository, RollingStockRepository};
 use catalog::railways::commands::new_railways::NewRailwayCommand;
 use catalog::railways::commands::repositories::RailwayRepository;
 use catalog::railways::railway_request::RailwayRequest;
@@ -14,7 +14,7 @@ use common::unit_of_work::postgres::PgDatabase;
 use common::unit_of_work::{Database, UnitOfWork};
 use serde_derive::Deserialize;
 use server::catalog::brands::repositories::PgBrandRepository;
-use server::catalog::catalog_items::repositories::PgCatalogItemRepository;
+use server::catalog::catalog_items::repositories::{PgCatalogItemRepository, PgRollingStockRepository};
 use server::catalog::railways::repositories::PgRailwayRepository;
 use server::catalog::scales::repositories::PgScaleRepository;
 use sqlx::PgPool;
@@ -32,8 +32,8 @@ pub async fn seed_brands(pg_pool: &PgPool) {
         .map(|it| NewBrandCommand::try_from(it).expect("invalid brand request"))
         .collect();
 
-    for b in brands {
-        repo.insert(&b, &mut unit_of_work).await.unwrap();
+    for brand_cmd in brands {
+        repo.insert(&brand_cmd, &mut unit_of_work).await.unwrap();
     }
 
     unit_of_work.commit().await.unwrap();
@@ -44,15 +44,20 @@ pub async fn seed_catalog_items(pg_pool: &PgPool) {
     let mut unit_of_work = db.begin().await.unwrap();
 
     let repo = PgCatalogItemRepository;
+    let rs_repo = PgRollingStockRepository;
 
-    let scales: Vec<NewCatalogItemCommand> = catalog_items()
+    let catalog_items: Vec<NewCatalogItemCommand> = catalog_items()
         .items
         .into_iter()
         .map(|it| NewCatalogItemCommand::try_from(it).expect("invalid catalog item request"))
         .collect();
 
-    for s in scales {
-        repo.insert(&s, &mut unit_of_work).await.unwrap();
+    for catalog_item_cmd in catalog_items {
+        repo.insert(&catalog_item_cmd, &mut unit_of_work).await.unwrap();
+
+        for rs_cmd in catalog_item_cmd.rolling_stocks {
+            rs_repo.insert(&rs_cmd, &mut unit_of_work).await.unwrap();
+        }
     }
 
     unit_of_work.commit().await.unwrap();
@@ -70,8 +75,8 @@ pub async fn seed_railways(pg_pool: &PgPool) {
         .map(|it| NewRailwayCommand::try_from(it).expect("invalid railway request"))
         .collect();
 
-    for s in railways {
-        repo.insert(&s, &mut unit_of_work).await.unwrap();
+    for railway_cmd in railways {
+        repo.insert(&railway_cmd, &mut unit_of_work).await.unwrap();
     }
 
     unit_of_work.commit().await.unwrap();
@@ -89,8 +94,8 @@ pub async fn seed_scales(pg_pool: &PgPool) {
         .map(|it| NewScaleCommand::try_from(it).expect("invalid scale request"))
         .collect();
 
-    for s in scales {
-        repo.insert(&s, &mut unit_of_work).await.unwrap();
+    for scale_cmd in scales {
+        repo.insert(&scale_cmd, &mut unit_of_work).await.unwrap();
     }
 
     unit_of_work.commit().await.unwrap();

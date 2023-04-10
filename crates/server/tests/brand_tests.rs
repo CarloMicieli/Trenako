@@ -89,7 +89,7 @@ async fn it_should_create_new_brands() {
         sut.run_database_migrations().await;
 
         let brand_name = Uuid::new_v4().to_string();
-        let expected_location = format!("{API_BRANDS}/{brand_name}");
+        let expected_location = format!("{}/{}", API_BRANDS, brand_name);
 
         let request = json!({
             "name" : brand_name,
@@ -192,7 +192,7 @@ async fn it_should_find_brands_by_id() {
         seed_brands(&pg_pool).await;
 
         let endpoint = sut.endpoint(API_BRANDS);
-        let endpoint = format!("{endpoint}/acme");
+        let endpoint = format!("{}/acme", endpoint);
         let response = client.get(endpoint).send().await.expect("Failed to execute request.");
 
         assert!(response.status().is_success());
@@ -254,7 +254,7 @@ async fn it_should_return_404_not_found_when_the_brand_is_not_found() {
         sut.run_database_migrations().await;
 
         let endpoint = sut.endpoint(API_BRANDS);
-        let endpoint = format!("{endpoint}/not-found");
+        let endpoint = format!("{}/not-found", endpoint);
         let response = client.get(endpoint).send().await.expect("Failed to execute request.");
 
         assert_eq!(404, response.status().as_u16());

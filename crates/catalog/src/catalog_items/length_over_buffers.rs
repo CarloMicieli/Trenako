@@ -119,7 +119,7 @@ mod tests {
         #[case(None, None, Ok(LengthOverBuffers { inches: None, millimeters: None}))]
         #[case(Some(dec!(0.0)), Some(dec!(0.0)), Err(LengthOverBuffersError::NonPositiveValue))]
         #[case(Some(dec!(-0.65)), Some(dec!(-16.5)), Err(LengthOverBuffersError::NonPositiveValue))]
-        #[case(Some(dec!(0.65)), Some(dec!(16.3)), Err(LengthOverBuffersError::DifferentValues))]
+        #[case(Some(dec!(0.65)), Some(dec!(16.2)), Err(LengthOverBuffersError::DifferentValues))]
         fn it_should_create_new_length_over_buffers_values(
             #[case] inches: Option<Decimal>,
             #[case] millimeters: Option<Decimal>,

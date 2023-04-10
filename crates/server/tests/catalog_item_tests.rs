@@ -2,6 +2,7 @@ use crate::common::seeding::{seed_brands, seed_catalog_items, seed_railways, see
 use crate::common::{create_docker_test, spawn_app, IMAGE_NAME};
 use catalog::brands::brand_id::BrandId;
 use catalog::catalog_items::availability_status::AvailabilityStatus;
+use catalog::catalog_items::catalog_item::CatalogItem;
 use catalog::catalog_items::catalog_item_id::CatalogItemId;
 use catalog::catalog_items::category::{
     Category, ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType,
@@ -9,7 +10,9 @@ use catalog::catalog_items::category::{
 };
 use catalog::catalog_items::control::{Control, DccInterface};
 use catalog::catalog_items::delivery_date::DeliveryDate;
+use catalog::catalog_items::epoch::Epoch;
 use catalog::catalog_items::power_method::PowerMethod;
+use catalog::catalog_items::rolling_stock::RollingStock;
 use catalog::catalog_items::rolling_stock_id::RollingStockId;
 use catalog::catalog_items::service_level::ServiceLevel;
 use catalog::catalog_items::technical_specifications::{CouplingSocket, FeatureFlag};
@@ -27,6 +30,107 @@ pub mod common;
 const API_CATALOG_ITEMS: &str = "/api/catalog-items";
 
 #[tokio::test]
+async fn it_should_return_404_not_found_when_the_catalog_item_is_not_found() {
+    let test = create_docker_test();
+
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
+
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
+
+        let endpoint = sut.endpoint(API_CATALOG_ITEMS);
+        let endpoint = format!("{}/not-found", endpoint);
+        let response = client.get(endpoint).send().await.expect("Failed to execute request.");
+
+        assert_eq!(404, response.status().as_u16());
+    })
+    .await;
+}
+
+#[tokio::test]
+async fn it_should_find_catalog_items_by_id() {
+    let test = create_docker_test();
+
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
+
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
+
+        let pg_pool = sut.pg_pool();
+        seed_brands(&pg_pool).await;
+        seed_railways(&pg_pool).await;
+        seed_scales(&pg_pool).await;
+        seed_catalog_items(&pg_pool).await;
+
+        let endpoint = sut.endpoint(API_CATALOG_ITEMS);
+        let endpoint = format!("{}/acme-60011", endpoint);
+        let response = client.get(endpoint).send().await.expect("Failed to execute request.");
+
+        assert_eq!(StatusCode::from_u16(200).unwrap(), response.status());
+
+        let body = response
+            .json::<CatalogItem>()
+            .await
+            .expect("Failed to fetch the response body");
+
+        assert_eq!(body.catalog_item_id, CatalogItemId::from_str("acme-60011").unwrap());
+        assert_eq!(body.brand.brand_id, BrandId::new("ACME"));
+        assert_eq!(body.brand.display, String::from("ACME"));
+        assert_eq!(body.category, Category::Locomotives);
+        assert_eq!(body.scale.scale_id, ScaleId::new("H0"));
+        assert_eq!(body.scale.display, String::from("H0"));
+        assert_eq!(body.power_method, PowerMethod::DC);
+        assert_eq!(body.description.italian(), Some(&String::from("Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco versione di origine, pantografi 52 Sommerfeldt")));
+        assert_eq!(body.delivery_date, Some(DeliveryDate::by_year(2005)));
+        assert_eq!(body.availability_status, Some(AvailabilityStatus::Available));
+        assert_eq!(body.count, 1);
+
+        assert_eq!(body.rolling_stocks.len(), 1);
+
+        let rolling_stock: &RollingStock = body.rolling_stocks.get(0).expect("no rolling stock found");
+        let rolling_stock = rolling_stock.clone();
+        assert_eq!(rolling_stock.category(), RollingStockCategory::Locomotive);
+
+        match rolling_stock {
+            RollingStock::Locomotive {
+                id: _,
+                railway,
+                epoch,
+                livery,
+                length_over_buffer: _,
+                technical_specifications: _,
+                class_name,
+                road_number,
+                series,
+                depot,
+                locomotive_type,
+                dcc_interface,
+                control,
+                is_dummy } => {
+                assert_eq!(railway.railway_id, RailwayId::new("FS"));
+                assert_eq!(railway.display, String::from("FS"));
+                assert_eq!(epoch, Epoch::Va);
+                assert_eq!(livery, Some(String::from("rosso/bianco")));
+                assert_eq!(dcc_interface, Some(DccInterface::Mtc21));
+                assert_eq!(control, Some(Control::DccReady));
+                assert_eq!(class_name, String::from("E402 A"));
+                assert_eq!(road_number, String::from("E402 015"));
+                assert_eq!(depot, Some(String::from("Milano Centrale")));
+                assert_eq!(series, None);
+                assert_eq!(locomotive_type, LocomotiveType::ElectricLocomotive);
+                assert!(!is_dummy);
+            }
+            _ => unreachable!("expected a locomotive rolling stock"),
+        }
+    })
+    .await
+}
+
+#[tokio::test]
 async fn it_should_return_409_when_the_catalog_item_already_exists() {
     let test = create_docker_test();
 
@@ -38,6 +142,7 @@ async fn it_should_return_409_when_the_catalog_item_already_exists() {
 
         let pg_pool = sut.pg_pool();
         seed_brands(&pg_pool).await;
+        seed_railways(&pg_pool).await;
         seed_scales(&pg_pool).await;
         seed_catalog_items(&pg_pool).await;
 
@@ -255,7 +360,7 @@ async fn it_should_create_a_new_locomotive() {
         seed_scales(&pg_pool).await;
 
         let catalog_item_id = CatalogItemId::from_str("acme-123456").unwrap();
-        let expected_location = format!("{API_CATALOG_ITEMS}/{catalog_item_id}");
+        let expected_location = format!("{}/{}", API_CATALOG_ITEMS, catalog_item_id);
 
         let request = json!({
             "brand" : "ACME",
@@ -395,7 +500,7 @@ async fn it_should_create_a_new_electric_multiple_unit() {
         seed_scales(&pg_pool).await;
 
         let catalog_item_id = CatalogItemId::from_str("acme-123456").unwrap();
-        let expected_location = format!("{API_CATALOG_ITEMS}/{catalog_item_id}");
+        let expected_location = format!("{}/{}", API_CATALOG_ITEMS, catalog_item_id);
 
         let request = json!({
             "brand" : "ACME",
@@ -603,7 +708,7 @@ async fn it_should_create_a_new_railcar() {
         seed_scales(&pg_pool).await;
 
         let catalog_item_id = CatalogItemId::from_str("acme-123456").unwrap();
-        let expected_location = format!("{API_CATALOG_ITEMS}/{catalog_item_id}");
+        let expected_location = format!("{}/{}", API_CATALOG_ITEMS, catalog_item_id);
 
         let request = json!({
             "brand" : "ACME",
@@ -800,7 +905,7 @@ async fn it_should_create_a_new_passenger_car() {
         seed_scales(&pg_pool).await;
 
         let catalog_item_id = CatalogItemId::from_str("acme-123456").unwrap();
-        let expected_location = format!("{API_CATALOG_ITEMS}/{catalog_item_id}");
+        let expected_location = format!("{}/{}", API_CATALOG_ITEMS, catalog_item_id);
 
         let request = json!({
             "brand" : "ACME",
@@ -925,7 +1030,7 @@ async fn it_should_create_a_new_freight_car() {
         seed_scales(&pg_pool).await;
 
         let catalog_item_id = CatalogItemId::from_str("acme-123456").unwrap();
-        let expected_location = format!("{API_CATALOG_ITEMS}/{catalog_item_id}");
+        let expected_location = format!("{}/{}", API_CATALOG_ITEMS, catalog_item_id);
 
         let request = json!({
             "brand" : "ACME",

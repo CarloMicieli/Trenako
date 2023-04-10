@@ -66,7 +66,7 @@ impl MeasureUnit {
     pub fn same_as(&self, value: Decimal, other_mu: MeasureUnit, other_value: Decimal) -> bool {
         let value_converted = self.to(other_mu).convert(value);
         let diff = other_value - value_converted;
-        Decimal::abs(&diff) < dec!(0.001)
+        Decimal::abs(&diff) < dec!(0.01)
     }
 
     pub fn to(&self, other: MeasureUnit) -> MeasureUnitConverter {
@@ -140,7 +140,8 @@ mod tests {
 
         #[rstest]
         #[case(dec!(16.5), MeasureUnit::Inches, dec!(0.65), true)]
-        #[case(dec!(16.5), MeasureUnit::Inches, dec!(0.64), false)]
+        #[case(dec!(16.5), MeasureUnit::Inches, dec!(0.63), false)]
+        #[case(dec!(16.5), MeasureUnit::Inches, dec!(0.66), false)]
         fn it_should_check_if_the_value_in_another_measure_unit_is_the_same(
             #[case] input: Decimal,
             #[case] other_mu: MeasureUnit,

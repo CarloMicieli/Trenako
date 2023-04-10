@@ -258,6 +258,165 @@
     },
     "query": "SELECT\n                scale_id as \"scale_id: ScaleId\",\n                name,\n                ratio,\n                gauge_millimeters,\n                gauge_inches,\n                track_gauge as \"track_gauge: TrackGauge\",\n                description_en,\n                description_it,\n                standards as \"standards!: Vec<Standard>\",\n                created_at,\n                last_modified_at,\n                version\n            FROM scales\n            WHERE scale_id = $1"
   },
+  "22aab0dbc3b8fea9d35f3aecc1032ae7e1bed3834597f7b3ae0413c87ef789e3": {
+    "describe": {
+      "columns": [
+        {
+          "name": "catalog_item_id: CatalogItemId",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "item_number",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "brand_id: BrandId",
+          "ordinal": 2,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "brand_display",
+          "ordinal": 3,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "scale_id: ScaleId",
+          "ordinal": 4,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "scale_display",
+          "ordinal": 5,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "category: Category",
+          "ordinal": 6,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "LOCOMOTIVES",
+                  "TRAIN_SETS",
+                  "STARTER_SETS",
+                  "FREIGHT_CARS",
+                  "PASSENGER_CARS",
+                  "ELECTRIC_MULTIPLE_UNITS",
+                  "RAILCARS"
+                ]
+              },
+              "name": "catalog_item_category"
+            }
+          }
+        },
+        {
+          "name": "power_method: PowerMethod",
+          "ordinal": 7,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "AC",
+                  "DC",
+                  "TRIX_EXPRESS"
+                ]
+              },
+              "name": "power_method"
+            }
+          }
+        },
+        {
+          "name": "description_en",
+          "ordinal": 8,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "description_it",
+          "ordinal": 9,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "details_en",
+          "ordinal": 10,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "details_it",
+          "ordinal": 11,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "delivery_date",
+          "ordinal": 12,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "availability_status: AvailabilityStatus",
+          "ordinal": 13,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "ANNOUNCED",
+                  "AVAILABLE",
+                  "DISCONTINUED"
+                ]
+              },
+              "name": "availability_status"
+            }
+          }
+        },
+        {
+          "name": "count",
+          "ordinal": 14,
+          "type_info": "Int4"
+        },
+        {
+          "name": "created_at",
+          "ordinal": 15,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "last_modified_at",
+          "ordinal": 16,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "version",
+          "ordinal": 17,
+          "type_info": "Int4"
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        false
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT\n                c.catalog_item_id as \"catalog_item_id: CatalogItemId\",\n                c.item_number,\n                c.brand_id as \"brand_id: BrandId\",\n                b.name as brand_display,\n                c.scale_id as \"scale_id: ScaleId\",\n                s.name as scale_display,\n                c.category as \"category: Category\",\n                c.power_method as \"power_method: PowerMethod\",\n                c.description_en,\n                c.description_it,\n                c.details_en,\n                c.details_it,\n                c.delivery_date,\n                c.availability_status as \"availability_status: AvailabilityStatus\",\n                c.count,\n                c.created_at,\n                c.last_modified_at,\n                c.version\n            FROM catalog_items AS c\n            JOIN brands AS b\n              ON c.brand_id = b.brand_id\n            JOIN scales AS s\n              ON s.scale_id = c.scale_id\n            WHERE c.catalog_item_id = $1 "
+  },
   "285c88aff0732e798a24d8241d3533e65843e14e390bdd57aee0175ebd26baef": {
     "describe": {
       "columns": [
@@ -1184,6 +1343,436 @@
       }
     },
     "query": "SELECT \n            rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n            railway_id as \"railway_id: RailwayId\",\n            rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n            epoch,\n            livery,\n            length_over_buffers_mm,\n            length_over_buffers_in,\n            type_name,\n            road_number,\n            series,\n            depot,\n            dcc_interface as \"dcc_interface: DccInterface\",\n            control as \"control: Control\",\n            electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n            freight_car_type as \"freight_car_type: FreightCarType\",\n            locomotive_type as \"locomotive_type: LocomotiveType\",\n            passenger_car_type as \"passenger_car_type: PassengerCarType\",\n            railcar_type as \"railcar_type: RailcarType\",\n            service_level as \"service_level: ServiceLevel\",\n            is_dummy,\n            minimum_radius,\n            coupling_socket as \"coupling_socket: CouplingSocket\",\n            close_couplers as \"close_couplers: FeatureFlag\",\n            digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n            flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n            metal_body as \"metal_body: FeatureFlag\",\n            interior_lights as \"interior_lights: FeatureFlag\",\n            lights as \"lights: FeatureFlag\",\n            spring_buffers as \"spring_buffers: FeatureFlag\"\n        FROM rolling_stocks\n        WHERE catalog_item_id = $1"
+  },
+  "67162152d9f845da1921ccc7d91a4bed5932656e81873823ec71c3d9da1bdbc6": {
+    "describe": {
+      "columns": [
+        {
+          "name": "rolling_stock_id: RollingStockId",
+          "ordinal": 0,
+          "type_info": "Uuid"
+        },
+        {
+          "name": "catalog_item_id: CatalogItemId",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "railway_id: RailwayId",
+          "ordinal": 2,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "railway_label",
+          "ordinal": 3,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "rolling_stock_category: RollingStockCategory",
+          "ordinal": 4,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "LOCOMOTIVE",
+                  "FREIGHT_CAR",
+                  "PASSENGER_CAR",
+                  "ELECTRIC_MULTIPLE_UNIT",
+                  "RAILCAR"
+                ]
+              },
+              "name": "rolling_stock_category"
+            }
+          }
+        },
+        {
+          "name": "epoch",
+          "ordinal": 5,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "livery",
+          "ordinal": 6,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "length_over_buffers_mm",
+          "ordinal": 7,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "length_over_buffers_in",
+          "ordinal": 8,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "type_name",
+          "ordinal": 9,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "road_number",
+          "ordinal": 10,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "series",
+          "ordinal": 11,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "depot",
+          "ordinal": 12,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "dcc_interface: DccInterface",
+          "ordinal": 13,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "MTC_21",
+                  "NEM_651",
+                  "NEM_652",
+                  "NEM_654",
+                  "NEXT_18",
+                  "NEXT_18_S",
+                  "PLUX_16",
+                  "PLUX_22",
+                  "PLUX_8"
+                ]
+              },
+              "name": "dcc_interface"
+            }
+          }
+        },
+        {
+          "name": "control: Control",
+          "ordinal": 14,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "DCC",
+                  "DCC_READY",
+                  "DCC_SOUND",
+                  "NO_DCC"
+                ]
+              },
+              "name": "control"
+            }
+          }
+        },
+        {
+          "name": "electric_multiple_unit_type: ElectricMultipleUnitType",
+          "ordinal": 15,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "DRIVING_CAR",
+                  "HIGH_SPEED_TRAIN",
+                  "MOTOR_CAR",
+                  "POWER_CAR",
+                  "TRAILER_CAR",
+                  "TRAIN_SET"
+                ]
+              },
+              "name": "electric_multiple_unit_type"
+            }
+          }
+        },
+        {
+          "name": "freight_car_type: FreightCarType",
+          "ordinal": 16,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "AUTO_TRANSPORT_CARS",
+                  "BRAKE_WAGON",
+                  "CONTAINER_CARS",
+                  "COVERED_FREIGHT_CARS",
+                  "DEEP_WELL_FLAT_CARS",
+                  "DUMP_CARS",
+                  "GONDOLA",
+                  "HEAVY_GOODS_WAGONS",
+                  "HINGED_COVER_WAGONS",
+                  "HOPPER_WAGON",
+                  "REFRIGERATOR_CARS",
+                  "SILO_CONTAINER_CARS",
+                  "SLIDE_TARPAULIN_WAGON",
+                  "SLIDING_WALL_BOXCARS",
+                  "SPECIAL_TRANSPORT",
+                  "STAKE_WAGONS",
+                  "SWING_ROOF_WAGON",
+                  "TANK_CARS",
+                  "TELESCOPE_HOOD_WAGONS"
+                ]
+              },
+              "name": "freight_car_type"
+            }
+          }
+        },
+        {
+          "name": "locomotive_type: LocomotiveType",
+          "ordinal": 17,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "DIESEL_LOCOMOTIVE",
+                  "ELECTRIC_LOCOMOTIVE",
+                  "STEAM_LOCOMOTIVE"
+                ]
+              },
+              "name": "locomotive_type"
+            }
+          }
+        },
+        {
+          "name": "passenger_car_type: PassengerCarType",
+          "ordinal": 18,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "BAGGAGE_CAR",
+                  "COMBINE_CAR",
+                  "COMPARTMENT_COACH",
+                  "DINING_CAR",
+                  "DOUBLE_DECKER",
+                  "DRIVING_TRAILER",
+                  "LOUNGE",
+                  "OBSERVATION",
+                  "OPEN_COACH",
+                  "RAILWAY_POST_OFFICE",
+                  "SLEEPING_CAR"
+                ]
+              },
+              "name": "passenger_car_type"
+            }
+          }
+        },
+        {
+          "name": "railcar_type: RailcarType",
+          "ordinal": 19,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "POWER_CAR",
+                  "TRAILER_CAR"
+                ]
+              },
+              "name": "railcar_type"
+            }
+          }
+        },
+        {
+          "name": "service_level: ServiceLevel",
+          "ordinal": 20,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "FIRST_CLASS",
+                  "SECOND_CLASS",
+                  "THIRD_CLASS",
+                  "FIRST_AND_SECOND_CLASS",
+                  "FIRST_SECOND_AND_THIRD_CLASS",
+                  "SECOND_AND_THIRD_CLASS"
+                ]
+              },
+              "name": "service_level"
+            }
+          }
+        },
+        {
+          "name": "is_dummy",
+          "ordinal": 21,
+          "type_info": "Bool"
+        },
+        {
+          "name": "minimum_radius",
+          "ordinal": 22,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "coupling_socket: CouplingSocket",
+          "ordinal": 23,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "NONE",
+                  "NEM_355",
+                  "NEM_356",
+                  "NEM_357",
+                  "NEM_359",
+                  "NEM_360",
+                  "NEM_362",
+                  "NEM_365"
+                ]
+              },
+              "name": "socket_type"
+            }
+          }
+        },
+        {
+          "name": "close_couplers: FeatureFlag",
+          "ordinal": 24,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "YES",
+                  "NO",
+                  "NOT_AVAILABLE"
+                ]
+              },
+              "name": "feature_flag"
+            }
+          }
+        },
+        {
+          "name": "digital_shunting_coupling: FeatureFlag",
+          "ordinal": 25,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "YES",
+                  "NO",
+                  "NOT_AVAILABLE"
+                ]
+              },
+              "name": "feature_flag"
+            }
+          }
+        },
+        {
+          "name": "flywheel_fitted: FeatureFlag",
+          "ordinal": 26,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "YES",
+                  "NO",
+                  "NOT_AVAILABLE"
+                ]
+              },
+              "name": "feature_flag"
+            }
+          }
+        },
+        {
+          "name": "metal_body: FeatureFlag",
+          "ordinal": 27,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "YES",
+                  "NO",
+                  "NOT_AVAILABLE"
+                ]
+              },
+              "name": "feature_flag"
+            }
+          }
+        },
+        {
+          "name": "interior_lights: FeatureFlag",
+          "ordinal": 28,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "YES",
+                  "NO",
+                  "NOT_AVAILABLE"
+                ]
+              },
+              "name": "feature_flag"
+            }
+          }
+        },
+        {
+          "name": "lights: FeatureFlag",
+          "ordinal": 29,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "YES",
+                  "NO",
+                  "NOT_AVAILABLE"
+                ]
+              },
+              "name": "feature_flag"
+            }
+          }
+        },
+        {
+          "name": "spring_buffers: FeatureFlag",
+          "ordinal": 30,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "YES",
+                  "NO",
+                  "NOT_AVAILABLE"
+                ]
+              },
+              "name": "feature_flag"
+            }
+          }
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "parameters": {
+        "Left": [
+          "Text"
+        ]
+      }
+    },
+    "query": "SELECT \n                rs.rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n                rs.catalog_item_id as \"catalog_item_id: CatalogItemId\",\n                rs.railway_id as \"railway_id: RailwayId\",\n                r.name as railway_label, \n                rs.rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n                rs.epoch,\n                rs.livery,\n                rs.length_over_buffers_mm,\n                rs.length_over_buffers_in,\n                rs.type_name,\n                rs.road_number,\n                rs.series,\n                rs.depot,\n                rs.dcc_interface as \"dcc_interface: DccInterface\",\n                rs.control as \"control: Control\",\n                rs.electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n                rs.freight_car_type as \"freight_car_type: FreightCarType\",\n                rs.locomotive_type as \"locomotive_type: LocomotiveType\",\n                rs.passenger_car_type as \"passenger_car_type: PassengerCarType\",\n                rs.railcar_type as \"railcar_type: RailcarType\",\n                rs.service_level as \"service_level: ServiceLevel\",\n                rs.is_dummy,\n                rs.minimum_radius,\n                rs.coupling_socket as \"coupling_socket: CouplingSocket\",\n                rs.close_couplers as \"close_couplers: FeatureFlag\",\n                rs.digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n                rs.flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n                rs.metal_body as \"metal_body: FeatureFlag\",\n                rs.interior_lights as \"interior_lights: FeatureFlag\",\n                rs.lights as \"lights: FeatureFlag\",\n                rs.spring_buffers as \"spring_buffers: FeatureFlag\"\n            FROM rolling_stocks AS rs\n            JOIN railways AS r\n              ON r.railway_id = rs.railway_id\n            WHERE rs.catalog_item_id = $1"
   },
   "8cffb15334bf2709d7f7ad08dabcc3777ba25eaa05b9f89aa7b21a656a640daf": {
     "describe": {

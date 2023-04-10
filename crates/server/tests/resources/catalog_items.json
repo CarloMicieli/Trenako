@@ -24,11 +24,12 @@
         "railway" : "FS",
         "epoch" : "Va",
         "livery" : "rosso/bianco",
-        "depot" : null,
+        "depot" : "Milano Centrale",
         "dcc_interface" : "MTC_21",
         "control" : "DCC_READY",
-        "length_over_buffer" : {
-          "inches" : 210.0
+        "length_over_buffers" : {
+          "millimeters" : 210.0,
+          "inches": 8.27
         },
         "technical_specifications" : {
           "minimum_radius" : 360.0,
