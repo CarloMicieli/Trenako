@@ -109,8 +109,7 @@ CREATE TYPE service_level AS ENUM (
     'SECOND_AND_THIRD_CLASS'
     );
 
-
-CREATE TABLE public.catalog_items
+CREATE TABLE IF NOT EXISTS public.catalog_items
 (
     catalog_item_id     varchar(76)           NOT NULL,
     brand_id            varchar(50)           NOT NULL,
@@ -139,7 +138,7 @@ CREATE TABLE public.catalog_items
         ON DELETE NO ACTION
 );
 
-CREATE TABLE public.rolling_stocks
+CREATE TABLE IF NOT EXISTS public.rolling_stocks
 (
     rolling_stock_id            uuid                   NOT NULL,
     catalog_item_id             varchar(65)            NOT NULL,

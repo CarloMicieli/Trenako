@@ -19,7 +19,7 @@ CREATE TYPE organization_entity_type AS ENUM (
 CREATE TYPE railway_status AS ENUM ('ACTIVE', 'INACTIVE');
 CREATE TYPE scale_standard AS ENUM ('BRITISH', 'JAPANESE', 'NEM', 'NMRA');
 
-CREATE TABLE public.brands
+CREATE TABLE IF NOT EXISTS public.brands
 (
     brand_id                 varchar(50) NOT NULL,
     name                     varchar(50) NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE public.brands
     CONSTRAINT "PK_brands" PRIMARY KEY (brand_id)
 );
 
-CREATE TABLE public.railways
+CREATE TABLE IF NOT EXISTS public.railways
 (
     railway_id               varchar(50) NOT NULL,
     name                     varchar(50) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE public.railways
     CONSTRAINT "PK_railways" PRIMARY KEY (railway_id)
 );
 
-CREATE TABLE public.scales
+CREATE TABLE IF NOT EXISTS public.scales
 (
     scale_id          varchar(50)    NOT NULL,
     name              varchar(50)    NOT NULL,
