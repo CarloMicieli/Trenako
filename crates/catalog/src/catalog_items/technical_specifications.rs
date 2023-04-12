@@ -16,46 +16,55 @@ use validator::ValidationError;
 #[derive(Debug, Copy, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Coupling {
     /// the rolling stock coupling socket
-    pub socket: CouplingSocket,
+    pub socket: Option<CouplingSocket>,
     /// the rolling stock has a close coupling mechanism
-    pub close_couplers: FeatureFlag,
+    pub close_couplers: Option<FeatureFlag>,
     /// the rolling stock has a digital shunting couplers mechanism
-    pub digital_shunting: FeatureFlag,
+    pub digital_shunting: Option<FeatureFlag>,
 }
 
 impl Coupling {
     /// Creates a new rolling stock coupling configuration
     pub fn new(socket: CouplingSocket, close_couplers: FeatureFlag, digital_shunting: FeatureFlag) -> Self {
         Coupling {
-            socket,
-            close_couplers,
-            digital_shunting,
+            socket: Some(socket),
+            close_couplers: Some(close_couplers),
+            digital_shunting: Some(digital_shunting),
         }
     }
 
-    /// Creates a new rolling stock close coupling configuration with a given coupling socket
+    /// Creates a new close coupling configuration with the `socket` socket
     pub fn with_close_couplers(socket: CouplingSocket) -> Self {
         Coupling {
-            socket,
-            close_couplers: FeatureFlag::Yes,
-            digital_shunting: FeatureFlag::No,
+            socket: Some(socket),
+            close_couplers: Some(FeatureFlag::Yes),
+            digital_shunting: Some(FeatureFlag::No),
+        }
+    }
+
+    /// Creates a new digital shunting coupling configuration
+    pub fn with_digital_shunting_couplers() -> Self {
+        Coupling {
+            socket: Some(CouplingSocket::None),
+            close_couplers: Some(FeatureFlag::No),
+            digital_shunting: Some(FeatureFlag::Yes),
         }
     }
 
     /// the coupling socket if present
-    pub fn socket(&self) -> CouplingSocket {
+    pub fn socket(&self) -> Option<CouplingSocket> {
         self.socket
     }
 
     /// true if the coupling configuration include a mechanism to reduce the gaps between two
     /// rolling stocks; false otherwise
-    pub fn close_couplers(&self) -> FeatureFlag {
+    pub fn close_couplers(&self) -> Option<FeatureFlag> {
         self.close_couplers
     }
 
     /// true if the coupling configuration implements digital control functionalities,
     /// false otherwise  
-    pub fn digital_shunting(&self) -> FeatureFlag {
+    pub fn digital_shunting(&self) -> Option<FeatureFlag> {
         self.digital_shunting
     }
 }
@@ -124,15 +133,15 @@ pub struct TechnicalSpecifications {
     /// the coupling
     pub coupling: Option<Coupling>,
     /// has a flywheel fitted
-    pub flywheel_fitted: FeatureFlag,
+    pub flywheel_fitted: Option<FeatureFlag>,
     /// has metal body
-    pub metal_body: FeatureFlag,
+    pub metal_body: Option<FeatureFlag>,
     /// has interior lighting
-    pub interior_lights: FeatureFlag,
+    pub interior_lights: Option<FeatureFlag>,
     /// has lights
-    pub lights: FeatureFlag,
+    pub lights: Option<FeatureFlag>,
     /// has spring buffers
-    pub spring_buffers: FeatureFlag,
+    pub spring_buffers: Option<FeatureFlag>,
 }
 
 impl TechnicalSpecifications {
@@ -147,27 +156,27 @@ impl TechnicalSpecifications {
     }
 
     /// with flywheel fitted
-    pub fn flywheel_fitted(&self) -> FeatureFlag {
+    pub fn flywheel_fitted(&self) -> Option<FeatureFlag> {
         self.flywheel_fitted
     }
 
     /// with metal body
-    pub fn metal_body(&self) -> FeatureFlag {
+    pub fn metal_body(&self) -> Option<FeatureFlag> {
         self.metal_body
     }
 
     /// with interior lights
-    pub fn interior_lights(&self) -> FeatureFlag {
+    pub fn interior_lights(&self) -> Option<FeatureFlag> {
         self.interior_lights
     }
 
     /// with headlights
-    pub fn lights(&self) -> FeatureFlag {
+    pub fn lights(&self) -> Option<FeatureFlag> {
         self.lights
     }
 
     /// with spring buffers
-    pub fn spring_buffers(&self) -> FeatureFlag {
+    pub fn spring_buffers(&self) -> Option<FeatureFlag> {
         self.spring_buffers
     }
 }
@@ -176,11 +185,11 @@ impl TechnicalSpecifications {
 pub struct TechnicalSpecificationsBuilder {
     minimum_radius: Option<Radius>,
     coupling: Option<Coupling>,
-    flywheel_fitted: FeatureFlag,
-    metal_body: FeatureFlag,
-    interior_lights: FeatureFlag,
-    lights: FeatureFlag,
-    spring_buffers: FeatureFlag,
+    flywheel_fitted: Option<FeatureFlag>,
+    metal_body: Option<FeatureFlag>,
+    interior_lights: Option<FeatureFlag>,
+    lights: Option<FeatureFlag>,
+    spring_buffers: Option<FeatureFlag>,
 }
 
 impl TechnicalSpecificationsBuilder {
@@ -198,34 +207,35 @@ impl TechnicalSpecificationsBuilder {
 
     /// with flywheel fitted
     pub fn with_flywheel_fitted(mut self) -> Self {
-        self.flywheel_fitted = FeatureFlag::Yes;
+        self.flywheel_fitted = Some(FeatureFlag::Yes);
         self
     }
 
     /// with metal body
     pub fn with_metal_body(mut self) -> Self {
-        self.metal_body = FeatureFlag::Yes;
+        self.metal_body = Some(FeatureFlag::Yes);
         self
     }
 
     /// with interior lights
     pub fn with_interior_lights(mut self) -> Self {
-        self.interior_lights = FeatureFlag::Yes;
+        self.interior_lights = Some(FeatureFlag::Yes);
         self
     }
 
     /// with headlights
     pub fn with_lights(mut self) -> Self {
-        self.lights = FeatureFlag::Yes;
+        self.lights = Some(FeatureFlag::Yes);
         self
     }
 
     /// with spring buffers
     pub fn with_spring_buffers(mut self) -> Self {
-        self.spring_buffers = FeatureFlag::Yes;
+        self.spring_buffers = Some(FeatureFlag::Yes);
         self
     }
 
+    /// Build a new technical specifications value
     pub fn build(self) -> TechnicalSpecifications {
         TechnicalSpecifications {
             minimum_radius: self.minimum_radius,
@@ -239,14 +249,18 @@ impl TechnicalSpecificationsBuilder {
     }
 }
 
+/// A flag to indicate the presence/absence of a given technical specification feature
 #[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display, Type, Default)]
 #[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
 #[strum(ascii_case_insensitive)]
 #[sqlx(type_name = "feature_flag", rename_all = "SCREAMING_SNAKE_CASE")]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum FeatureFlag {
+    /// Yes: the feature is present
     Yes,
+    /// No: the feature is missing
     No,
+    /// The feature is not applicable
     #[default]
     NotApplicable,
 }
@@ -291,6 +305,38 @@ pub enum RadiusError {
 #[cfg(test)]
 mod test {
     use super::*;
+
+    mod coupling {
+        use super::*;
+        use pretty_assertions::assert_eq;
+
+        #[test]
+        fn it_should_create_new_couplings() {
+            let coupling = Coupling::new(CouplingSocket::Nem362, FeatureFlag::Yes, FeatureFlag::NotApplicable);
+
+            assert_eq!(coupling.socket(), Some(CouplingSocket::Nem362));
+            assert_eq!(coupling.digital_shunting(), Some(FeatureFlag::NotApplicable));
+            assert_eq!(coupling.close_couplers(), Some(FeatureFlag::Yes));
+        }
+
+        #[test]
+        fn it_should_create_close_couplers() {
+            let coupling = Coupling::with_close_couplers(CouplingSocket::Nem362);
+
+            assert_eq!(coupling.socket, Some(CouplingSocket::Nem362));
+            assert_eq!(coupling.digital_shunting, Some(FeatureFlag::No));
+            assert_eq!(coupling.close_couplers, Some(FeatureFlag::Yes));
+        }
+
+        #[test]
+        fn it_should_create_digital_shunting_couplers() {
+            let coupling = Coupling::with_digital_shunting_couplers();
+
+            assert_eq!(coupling.socket, Some(CouplingSocket::None));
+            assert_eq!(coupling.digital_shunting, Some(FeatureFlag::Yes));
+            assert_eq!(coupling.close_couplers, Some(FeatureFlag::No));
+        }
+    }
 
     mod sockets {
         use super::*;
@@ -433,11 +479,11 @@ mod test {
 
             assert_eq!(Some(coupling), tech_specs.coupling());
             assert_eq!(Some(radius), tech_specs.minimum_radius());
-            assert_eq!(FeatureFlag::Yes, tech_specs.metal_body());
-            assert_eq!(FeatureFlag::Yes, tech_specs.interior_lights());
-            assert_eq!(FeatureFlag::Yes, tech_specs.lights());
-            assert_eq!(FeatureFlag::Yes, tech_specs.spring_buffers());
-            assert_eq!(FeatureFlag::Yes, tech_specs.flywheel_fitted());
+            assert_eq!(Some(FeatureFlag::Yes), tech_specs.metal_body());
+            assert_eq!(Some(FeatureFlag::Yes), tech_specs.interior_lights());
+            assert_eq!(Some(FeatureFlag::Yes), tech_specs.lights());
+            assert_eq!(Some(FeatureFlag::Yes), tech_specs.spring_buffers());
+            assert_eq!(Some(FeatureFlag::Yes), tech_specs.flywheel_fitted());
         }
     }
 

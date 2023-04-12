@@ -209,18 +209,23 @@ impl OptionConverter<RollingStockRow> for TechnicalSpecifications {
             .transpose()
             .map_err(|_| ConversionErrors::new())?;
 
+        let coupling = match (row.close_couplers, row.coupling_socket, row.digital_shunting_coupling) {
+            (None, None, None) => None,
+            (close_couplers, socket, digital_shunting) => Some(Coupling {
+                close_couplers,
+                socket,
+                digital_shunting,
+            }),
+        };
+
         Ok(Some(TechnicalSpecifications {
             minimum_radius,
-            coupling: Some(Coupling {
-                close_couplers: row.close_couplers.unwrap_or_default(),
-                socket: row.coupling_socket.unwrap_or_default(),
-                digital_shunting: row.digital_shunting_coupling.unwrap_or_default(),
-            }),
-            flywheel_fitted: row.flywheel_fitted.unwrap_or_default(),
-            metal_body: row.metal_body.unwrap_or_default(),
-            interior_lights: row.interior_lights.unwrap_or_default(),
-            lights: row.lights.unwrap_or_default(),
-            spring_buffers: row.spring_buffers.unwrap_or_default(),
+            coupling,
+            flywheel_fitted: row.flywheel_fitted,
+            metal_body: row.metal_body,
+            interior_lights: row.interior_lights,
+            lights: row.lights,
+            spring_buffers: row.spring_buffers,
         }))
     }
 }
@@ -430,20 +435,11 @@ mod test {
 
                     assert!(technical_specifications.is_some());
                     let technical_specifications = technical_specifications.unwrap();
-                    assert_eq!(technical_specifications.lights, row.lights.unwrap_or_default());
-                    assert_eq!(
-                        technical_specifications.interior_lights,
-                        row.interior_lights.unwrap_or_default()
-                    );
-                    assert_eq!(
-                        technical_specifications.spring_buffers,
-                        row.spring_buffers.unwrap_or_default()
-                    );
-                    assert_eq!(technical_specifications.metal_body, row.metal_body.unwrap_or_default());
-                    assert_eq!(
-                        technical_specifications.flywheel_fitted,
-                        row.flywheel_fitted.unwrap_or_default()
-                    );
+                    assert_eq!(technical_specifications.lights, row.lights);
+                    assert_eq!(technical_specifications.interior_lights, row.interior_lights);
+                    assert_eq!(technical_specifications.spring_buffers, row.spring_buffers);
+                    assert_eq!(technical_specifications.metal_body, row.metal_body);
+                    assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
                         technical_specifications
                             .minimum_radius
@@ -452,14 +448,17 @@ mod test {
                         row.minimum_radius
                     );
                     assert_eq!(
-                        technical_specifications.coupling.map(|c| c.close_couplers),
+                        technical_specifications.coupling.and_then(|c| c.close_couplers),
                         row.close_couplers
                     );
                     assert_eq!(
-                        technical_specifications.coupling.map(|c| c.digital_shunting),
+                        technical_specifications.coupling.and_then(|c| c.digital_shunting),
                         row.digital_shunting_coupling
                     );
-                    assert_eq!(technical_specifications.coupling.map(|c| c.socket), row.coupling_socket);
+                    assert_eq!(
+                        technical_specifications.coupling.and_then(|c| c.socket),
+                        row.coupling_socket
+                    );
 
                     assert_eq!(locomotive_type, row.locomotive_type.unwrap());
                     assert_eq!(dcc_interface, row.dcc_interface);
@@ -533,20 +532,11 @@ mod test {
 
                     assert!(technical_specifications.is_some());
                     let technical_specifications = technical_specifications.unwrap();
-                    assert_eq!(technical_specifications.lights, row.lights.unwrap_or_default());
-                    assert_eq!(
-                        technical_specifications.interior_lights,
-                        row.interior_lights.unwrap_or_default()
-                    );
-                    assert_eq!(
-                        technical_specifications.spring_buffers,
-                        row.spring_buffers.unwrap_or_default()
-                    );
-                    assert_eq!(technical_specifications.metal_body, row.metal_body.unwrap_or_default());
-                    assert_eq!(
-                        technical_specifications.flywheel_fitted,
-                        row.flywheel_fitted.unwrap_or_default()
-                    );
+                    assert_eq!(technical_specifications.lights, row.lights);
+                    assert_eq!(technical_specifications.interior_lights, row.interior_lights);
+                    assert_eq!(technical_specifications.spring_buffers, row.spring_buffers);
+                    assert_eq!(technical_specifications.metal_body, row.metal_body);
+                    assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
                         technical_specifications
                             .minimum_radius
@@ -555,14 +545,17 @@ mod test {
                         row.minimum_radius
                     );
                     assert_eq!(
-                        technical_specifications.coupling.map(|c| c.close_couplers),
+                        technical_specifications.coupling.and_then(|c| c.close_couplers),
                         row.close_couplers
                     );
                     assert_eq!(
-                        technical_specifications.coupling.map(|c| c.digital_shunting),
+                        technical_specifications.coupling.and_then(|c| c.digital_shunting),
                         row.digital_shunting_coupling
                     );
-                    assert_eq!(technical_specifications.coupling.map(|c| c.socket), row.coupling_socket);
+                    assert_eq!(
+                        technical_specifications.coupling.and_then(|c| c.socket),
+                        row.coupling_socket
+                    );
 
                     assert_eq!(electric_multiple_unit_type, row.electric_multiple_unit_type.unwrap());
                     assert_eq!(dcc_interface, row.dcc_interface);
@@ -636,20 +629,11 @@ mod test {
 
                     assert!(technical_specifications.is_some());
                     let technical_specifications = technical_specifications.unwrap();
-                    assert_eq!(technical_specifications.lights, row.lights.unwrap_or_default());
-                    assert_eq!(
-                        technical_specifications.interior_lights,
-                        row.interior_lights.unwrap_or_default()
-                    );
-                    assert_eq!(
-                        technical_specifications.spring_buffers,
-                        row.spring_buffers.unwrap_or_default()
-                    );
-                    assert_eq!(technical_specifications.metal_body, row.metal_body.unwrap_or_default());
-                    assert_eq!(
-                        technical_specifications.flywheel_fitted,
-                        row.flywheel_fitted.unwrap_or_default()
-                    );
+                    assert_eq!(technical_specifications.lights, row.lights);
+                    assert_eq!(technical_specifications.interior_lights, row.interior_lights);
+                    assert_eq!(technical_specifications.spring_buffers, row.spring_buffers);
+                    assert_eq!(technical_specifications.metal_body, row.metal_body);
+                    assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
                         technical_specifications
                             .minimum_radius
@@ -658,14 +642,17 @@ mod test {
                         row.minimum_radius
                     );
                     assert_eq!(
-                        technical_specifications.coupling.map(|c| c.close_couplers),
+                        technical_specifications.coupling.and_then(|c| c.close_couplers),
                         row.close_couplers
                     );
                     assert_eq!(
-                        technical_specifications.coupling.map(|c| c.digital_shunting),
+                        technical_specifications.coupling.and_then(|c| c.digital_shunting),
                         row.digital_shunting_coupling
                     );
-                    assert_eq!(technical_specifications.coupling.map(|c| c.socket), row.coupling_socket);
+                    assert_eq!(
+                        technical_specifications.coupling.and_then(|c| c.socket),
+                        row.coupling_socket
+                    );
 
                     assert_eq!(railcar_type, row.railcar_type.unwrap());
                     assert_eq!(dcc_interface, row.dcc_interface);
@@ -732,20 +719,11 @@ mod test {
 
                     assert!(technical_specifications.is_some());
                     let technical_specifications = technical_specifications.unwrap();
-                    assert_eq!(technical_specifications.lights, row.lights.unwrap_or_default());
-                    assert_eq!(
-                        technical_specifications.interior_lights,
-                        row.interior_lights.unwrap_or_default()
-                    );
-                    assert_eq!(
-                        technical_specifications.spring_buffers,
-                        row.spring_buffers.unwrap_or_default()
-                    );
-                    assert_eq!(technical_specifications.metal_body, row.metal_body.unwrap_or_default());
-                    assert_eq!(
-                        technical_specifications.flywheel_fitted,
-                        row.flywheel_fitted.unwrap_or_default()
-                    );
+                    assert_eq!(technical_specifications.lights, row.lights);
+                    assert_eq!(technical_specifications.interior_lights, row.interior_lights);
+                    assert_eq!(technical_specifications.spring_buffers, row.spring_buffers);
+                    assert_eq!(technical_specifications.metal_body, row.metal_body);
+                    assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
                         technical_specifications
                             .minimum_radius
@@ -754,14 +732,17 @@ mod test {
                         row.minimum_radius
                     );
                     assert_eq!(
-                        technical_specifications.coupling.map(|c| c.close_couplers),
+                        technical_specifications.coupling.and_then(|c| c.close_couplers),
                         row.close_couplers
                     );
                     assert_eq!(
-                        technical_specifications.coupling.map(|c| c.digital_shunting),
+                        technical_specifications.coupling.and_then(|c| c.digital_shunting),
                         row.digital_shunting_coupling
                     );
-                    assert_eq!(technical_specifications.coupling.map(|c| c.socket), row.coupling_socket);
+                    assert_eq!(
+                        technical_specifications.coupling.and_then(|c| c.socket),
+                        row.coupling_socket
+                    );
 
                     assert_eq!(passenger_car_type, row.passenger_car_type);
                     assert_eq!(service_level, row.service_level);
@@ -823,20 +804,11 @@ mod test {
 
                     assert!(technical_specifications.is_some());
                     let technical_specifications = technical_specifications.unwrap();
-                    assert_eq!(technical_specifications.lights, row.lights.unwrap_or_default());
-                    assert_eq!(
-                        technical_specifications.interior_lights,
-                        row.interior_lights.unwrap_or_default()
-                    );
-                    assert_eq!(
-                        technical_specifications.spring_buffers,
-                        row.spring_buffers.unwrap_or_default()
-                    );
-                    assert_eq!(technical_specifications.metal_body, row.metal_body.unwrap_or_default());
-                    assert_eq!(
-                        technical_specifications.flywheel_fitted,
-                        row.flywheel_fitted.unwrap_or_default()
-                    );
+                    assert_eq!(technical_specifications.lights, row.lights);
+                    assert_eq!(technical_specifications.interior_lights, row.interior_lights);
+                    assert_eq!(technical_specifications.spring_buffers, row.spring_buffers);
+                    assert_eq!(technical_specifications.metal_body, row.metal_body);
+                    assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
                         technical_specifications
                             .minimum_radius
@@ -845,14 +817,17 @@ mod test {
                         row.minimum_radius
                     );
                     assert_eq!(
-                        technical_specifications.coupling.map(|c| c.close_couplers),
+                        technical_specifications.coupling.and_then(|c| c.close_couplers),
                         row.close_couplers
                     );
                     assert_eq!(
-                        technical_specifications.coupling.map(|c| c.digital_shunting),
+                        technical_specifications.coupling.and_then(|c| c.digital_shunting),
                         row.digital_shunting_coupling
                     );
-                    assert_eq!(technical_specifications.coupling.map(|c| c.socket), row.coupling_socket);
+                    assert_eq!(
+                        technical_specifications.coupling.and_then(|c| c.socket),
+                        row.coupling_socket
+                    );
 
                     assert_eq!(freight_car_type, row.freight_car_type);
                 }
