@@ -84,18 +84,18 @@ CREATE TABLE public.railways
 
 CREATE TABLE public.scales
 (
-    scale_id          varchar(50)    NOT NULL,
-    name              varchar(50)    NOT NULL,
+    scale_id          varchar(50)   NOT NULL,
+    name              varchar(50)   NOT NULL,
     ratio             numeric(6, 2) NOT NULL,
     gauge_millimeters numeric(4, 1),
     gauge_inches      numeric(5, 2),
-    track_gauge       gauge          NOT NULL,
+    track_gauge       gauge         NOT NULL,
     description_en    varchar(2500),
     description_it    varchar(2500),
     standards         scale_standard array,
-    created_at        timestamptz    NOT NULL,
+    created_at        timestamptz   NOT NULL,
     last_modified_at  timestamptz,
-    version           integer        NOT NULL DEFAULT 1,
+    version           integer       NOT NULL DEFAULT 1,
     CONSTRAINT "PK_scales" PRIMARY KEY (scale_id)
 );
 
@@ -249,7 +249,7 @@ CREATE TABLE public.rolling_stocks
     livery                      varchar(50),
     length_over_buffers_mm      numeric(9, 2),
     length_over_buffers_in      numeric(9, 2),
-    type_name                   varchar(25),
+    type_name                   varchar(25)            NOT NULL,
     road_number                 varchar(50),
     series                      varchar(50),
     depot                       varchar(100),

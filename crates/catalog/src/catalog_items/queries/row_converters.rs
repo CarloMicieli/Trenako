@@ -112,7 +112,7 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
                 livery: row.livery,
                 length_over_buffer,
                 technical_specifications,
-                class_name: row.type_name.expect("missing class name"),
+                class_name: row.type_name,
                 road_number: row.road_number.expect("missing road number"),
                 series: row.series,
                 depot: row.depot,
@@ -131,7 +131,7 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
                 livery: row.livery,
                 length_over_buffer,
                 technical_specifications,
-                type_name: row.type_name.expect("missing type name"),
+                type_name: row.type_name,
                 road_number: row.road_number,
                 series: row.series,
                 passenger_car_type: row.passenger_car_type,
@@ -147,7 +147,7 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
                 livery: row.livery,
                 length_over_buffer,
                 technical_specifications,
-                type_name: row.type_name.expect("missing type name"),
+                type_name: row.type_name,
                 road_number: row.road_number,
                 freight_car_type: row.freight_car_type,
             }),
@@ -161,7 +161,7 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
                 livery: row.livery,
                 length_over_buffer,
                 technical_specifications,
-                type_name: row.type_name.expect("missing type name"),
+                type_name: row.type_name,
                 road_number: row.road_number,
                 series: row.series,
                 depot: row.depot,
@@ -182,7 +182,7 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
                 livery: row.livery,
                 length_over_buffer,
                 technical_specifications,
-                type_name: row.type_name.expect("missing type name"),
+                type_name: row.type_name,
                 road_number: row.road_number,
                 series: row.series,
                 depot: row.depot,
@@ -380,7 +380,7 @@ mod test {
                 livery: Some(String::from("blue")),
                 length_over_buffers_mm: Some(dec!(16.5)),
                 length_over_buffers_in: Some(dec!(0.65)),
-                type_name: Some(String::from("Group 1")),
+                type_name: String::from("Group 1"),
                 road_number: Some(String::from("Number 42")),
                 depot: Some(String::from("Depot")),
                 series: Some(String::from("prototype")),
@@ -429,7 +429,7 @@ mod test {
                         row.length_over_buffers_mm
                     );
 
-                    assert_eq!(class_name, row.type_name.unwrap());
+                    assert_eq!(class_name, row.type_name);
                     assert_eq!(road_number, row.road_number.unwrap());
                     assert_eq!(series, row.series);
 
@@ -477,7 +477,7 @@ mod test {
                 livery: Some(String::from("blue")),
                 length_over_buffers_mm: Some(dec!(16.5)),
                 length_over_buffers_in: Some(dec!(0.65)),
-                type_name: Some(String::from("Group 1")),
+                type_name: String::from("Group 1"),
                 road_number: Some(String::from("Number 42")),
                 depot: Some(String::from("Depot")),
                 series: Some(String::from("prototype")),
@@ -526,7 +526,7 @@ mod test {
                         row.length_over_buffers_mm
                     );
 
-                    assert_eq!(type_name, row.type_name.unwrap());
+                    assert_eq!(type_name, row.type_name);
                     assert_eq!(road_number, row.road_number);
                     assert_eq!(series, row.series);
 
@@ -574,7 +574,7 @@ mod test {
                 livery: Some(String::from("blue")),
                 length_over_buffers_mm: Some(dec!(16.5)),
                 length_over_buffers_in: Some(dec!(0.65)),
-                type_name: Some(String::from("Group 1")),
+                type_name: String::from("Group 1"),
                 road_number: Some(String::from("Number 42")),
                 depot: Some(String::from("Depot")),
                 series: Some(String::from("prototype")),
@@ -623,7 +623,7 @@ mod test {
                         row.length_over_buffers_mm
                     );
 
-                    assert_eq!(type_name, row.type_name.unwrap());
+                    assert_eq!(type_name, row.type_name);
                     assert_eq!(road_number, row.road_number);
                     assert_eq!(series, row.series);
 
@@ -671,7 +671,7 @@ mod test {
                 livery: Some(String::from("blue")),
                 length_over_buffers_mm: Some(dec!(16.5)),
                 length_over_buffers_in: Some(dec!(0.65)),
-                type_name: Some(String::from("Group 1")),
+                type_name: String::from("Group 1"),
                 road_number: Some(String::from("Number 42")),
                 series: Some(String::from("prototype")),
                 minimum_radius: Some(dec!(360)),
@@ -713,7 +713,7 @@ mod test {
                         row.length_over_buffers_mm
                     );
 
-                    assert_eq!(type_name, row.type_name.unwrap());
+                    assert_eq!(type_name, row.type_name);
                     assert_eq!(road_number, row.road_number);
                     assert_eq!(series, row.series);
 
@@ -759,7 +759,7 @@ mod test {
                 livery: Some(String::from("blue")),
                 length_over_buffers_mm: Some(dec!(16.5)),
                 length_over_buffers_in: Some(dec!(0.65)),
-                type_name: Some(String::from("Group 1")),
+                type_name: String::from("Group 1"),
                 road_number: Some(String::from("Number 42")),
                 series: Some(String::from("prototype")),
                 minimum_radius: Some(dec!(360)),
@@ -799,7 +799,7 @@ mod test {
                         row.length_over_buffers_mm
                     );
 
-                    assert_eq!(type_name, row.type_name.unwrap());
+                    assert_eq!(type_name, row.type_name);
                     assert_eq!(road_number, row.road_number);
 
                     assert!(technical_specifications.is_some());
@@ -836,7 +836,7 @@ mod test {
         }
 
         fn default_row() -> RollingStockRow {
-            new_rolling_stock_row(CatalogItemId::from_str("acme-123456").unwrap(), "FS")
+            new_rolling_stock_row(CatalogItemId::from_str("acme-123456").unwrap(), "type", "FS")
         }
     }
 }

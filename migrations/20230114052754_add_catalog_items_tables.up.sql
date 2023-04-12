@@ -148,7 +148,7 @@ CREATE TABLE IF NOT EXISTS public.rolling_stocks
     livery                      varchar(50),
     length_over_buffers_mm      numeric(9, 2),
     length_over_buffers_in      numeric(9, 2),
-    type_name                   varchar(25),
+    type_name                   varchar(25)            NOT NULL,
     road_number                 varchar(50),
     series                      varchar(50),
     depot                       varchar(100),

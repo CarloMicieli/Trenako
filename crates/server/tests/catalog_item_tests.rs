@@ -458,7 +458,7 @@ async fn it_should_create_a_new_locomotive() {
         assert_eq!(Some("rosso/bianco".to_string()), rs.livery);
         assert_eq!(Some(dec!(220)), rs.length_over_buffers_mm);
         assert_eq!(Some(dec!(8.66)), rs.length_over_buffers_in);
-        assert_eq!(Some("E402 A".to_string()), rs.type_name);
+        assert_eq!("E402 A".to_string(), rs.type_name);
         assert_eq!(Some("E402 026".to_string()), rs.road_number);
         assert_eq!(Some("PRIMA SERIE".to_string()), rs.series);
         assert_eq!(Some("Milano Smistamento".to_string()), rs.depot);
@@ -628,7 +628,7 @@ async fn it_should_create_a_new_electric_multiple_unit() {
         assert_eq!(Some("castano/isabella".to_string()), rs1.livery);
         assert_eq!(Some(dec!(310)), rs1.length_over_buffers_mm);
         assert_eq!(None, rs1.length_over_buffers_in);
-        assert_eq!(Some("ALe 540".to_string()), rs1.type_name);
+        assert_eq!("ALe 540".to_string(), rs1.type_name);
         assert_eq!(Some("ALe 540 013".to_string()), rs1.road_number);
         assert_eq!(Some("SECONDA SERIE".to_string()), rs1.series);
         assert_eq!(Some("Milano Smistamento".to_string()), rs1.depot);
@@ -663,7 +663,7 @@ async fn it_should_create_a_new_electric_multiple_unit() {
         assert_eq!(Some("castano/isabella".to_string()), rs2.livery);
         assert_eq!(Some(dec!(310)), rs2.length_over_buffers_mm);
         assert_eq!(None, rs2.length_over_buffers_in);
-        assert_eq!(Some("Le 760".to_string()), rs2.type_name);
+        assert_eq!("Le 760".to_string(), rs2.type_name);
         assert_eq!(Some("Le 760 010".to_string()), rs2.road_number);
         assert_eq!(Some("SECONDA SERIE".to_string()), rs2.series);
         assert_eq!(None, rs2.depot);
@@ -831,7 +831,7 @@ async fn it_should_create_a_new_railcar() {
         assert_eq!(Some("verde lichene/giallo coloniale".to_string()), rs1.livery);
         assert_eq!(Some(dec!(310)), rs1.length_over_buffers_mm);
         assert_eq!(None, rs1.length_over_buffers_in);
-        assert_eq!(Some("ALn 668".to_string()), rs1.type_name);
+        assert_eq!("ALn 668".to_string(), rs1.type_name);
         assert_eq!(Some("ALn 668 1449".to_string()), rs1.road_number);
         assert_eq!(Some("SERIE 1400".to_string()), rs1.series);
         assert_eq!(None, rs1.depot);
@@ -863,7 +863,7 @@ async fn it_should_create_a_new_railcar() {
         assert_eq!(Some("verde lichene/giallo coloniale".to_string()), rs2.livery);
         assert_eq!(Some(dec!(310)), rs2.length_over_buffers_mm);
         assert_eq!(None, rs2.length_over_buffers_in);
-        assert_eq!(Some("ALn 668".to_string()), rs2.type_name);
+        assert_eq!("ALn 668".to_string(), rs2.type_name);
         assert_eq!(Some("ALn 668 1456".to_string()), rs2.road_number);
         assert_eq!(Some("SERIE 1400".to_string()), rs2.series);
         assert_eq!(None, rs2.depot);
@@ -991,7 +991,7 @@ async fn it_should_create_a_new_passenger_car() {
         assert_eq!(Some("rosso fegato/grigio beige".to_string()), rs.livery);
         assert_eq!(Some(dec!(303)), rs.length_over_buffers_mm);
         assert_eq!(None, rs.length_over_buffers_in);
-        assert_eq!(Some("UIC-X".to_string()), rs.type_name);
+        assert_eq!("UIC-X".to_string(), rs.type_name);
         assert_eq!(Some("50 83 10-88 076-2 A".to_string()), rs.road_number);
         assert_eq!(Some("TIPO 1964".to_string()), rs.series);
         assert_eq!(None, rs.electric_multiple_unit_type);
@@ -1119,7 +1119,7 @@ async fn it_should_create_a_new_freight_car() {
         assert_eq!(Some("XMPR".to_string()), rs.livery);
         assert_eq!(Some(dec!(180)), rs.length_over_buffers_mm);
         assert_eq!(None, rs.length_over_buffers_in);
-        assert_eq!(Some("Hbbillns".to_string()), rs.type_name);
+        assert_eq!("Hbbillns".to_string(), rs.type_name);
         assert_eq!(Some("21 83 245 7 266-6 Hbbillns".to_string()), rs.road_number);
         assert_eq!(None, rs.series);
         assert_eq!(None, rs.electric_multiple_unit_type);
@@ -1242,7 +1242,7 @@ struct SavedRollingStock {
     livery: Option<String>,
     length_over_buffers_mm: Option<Decimal>,
     length_over_buffers_in: Option<Decimal>,
-    type_name: Option<String>,
+    type_name: String,
     road_number: Option<String>,
     series: Option<String>,
     depot: Option<String>,

@@ -24,7 +24,7 @@ pub struct RollingStockRow {
     pub livery: Option<String>,
     pub length_over_buffers_mm: Option<Decimal>,
     pub length_over_buffers_in: Option<Decimal>,
-    pub type_name: Option<String>,
+    pub type_name: String,
     pub road_number: Option<String>,
     pub series: Option<String>,
     pub depot: Option<String>,
@@ -59,7 +59,7 @@ pub mod test {
     use super::*;
 
     #[allow(dead_code)]
-    pub fn new_rolling_stock_row(catalog_item_id: CatalogItemId, railway: &str) -> RollingStockRow {
+    pub fn new_rolling_stock_row(catalog_item_id: CatalogItemId, type_name: &str, railway: &str) -> RollingStockRow {
         RollingStockRow {
             rolling_stock_id: Default::default(),
             catalog_item_id,
@@ -70,7 +70,7 @@ pub mod test {
             livery: None,
             length_over_buffers_mm: None,
             length_over_buffers_in: None,
-            type_name: Some(String::from("type")),
+            type_name: String::from(type_name),
             road_number: None,
             series: None,
             depot: None,
