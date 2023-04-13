@@ -3,6 +3,7 @@ members = [
     "crates/catalog",
     "crates/cli",
     "crates/common",
+    "crates/db",
     "crates/server",
 ]
 

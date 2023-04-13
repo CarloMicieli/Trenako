@@ -1,0 +1,18 @@
+[package]
+name = "db"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+catalog = { path = "../catalog" }
+common = { path = "../common" }
+
+async-trait = { workspace = true }
+sqlx = { workspace = true }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }
+rstest = { workspace = true }

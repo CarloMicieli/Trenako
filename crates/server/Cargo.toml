@@ -16,6 +16,7 @@ name = "trenako-server"
 [dependencies]
 catalog = { path = "../catalog" }
 common = { path = "../common" }
+db = { path = "../db" }
 
 actix-web = { workspace = true }
 anyhow = { workspace = true }
