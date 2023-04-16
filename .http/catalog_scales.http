@@ -21,6 +21,12 @@ Content-Type: application/json
 
 ###
 
+# Get all scales
+// @no-log
+GET http://{{host}}:{{port}}/api/scales
+
+###
+
 # Get a scale by id
 // @no-log
 GET http://{{host}}:{{port}}/api/scales/h0

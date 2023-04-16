@@ -13,6 +13,20 @@
         "track_gauge" : "STANDARD"
       },
       "standards" : [ "NEM" ]
+    },
+    {
+      "name" : "N",
+      "description" : {
+        "it" : "descrizione",
+        "en" : "description"
+      },
+      "ratio" : 160.0,
+      "gauge" : {
+        "millimeters" : 9.0,
+        "inches" : 0.354,
+        "track_gauge" : "STANDARD"
+      },
+      "standards" : [ "NEM" ]
     }
   ]
 }

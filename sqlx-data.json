@@ -1897,6 +1897,122 @@
     },
     "query": "SELECT\n            item_number,\n            brand_id as \"brand_id: BrandId\",\n            scale_id as \"scale_id: ScaleId\",\n            category as \"category: Category\",\n            power_method as \"power_method: PowerMethod\",\n            description_en,\n            description_it,\n            details_en,\n            details_it,\n            delivery_date,\n            availability_status as \"availability_status: AvailabilityStatus\",\n            count\n        FROM catalog_items WHERE catalog_item_id = $1"
   },
+  "92dc7ea721406c927ffcc6bc316916043d4f3bd1d8ac67678736b082b2e7d310": {
+    "describe": {
+      "columns": [
+        {
+          "name": "scale_id: ScaleId",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "name",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "ratio",
+          "ordinal": 2,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "gauge_millimeters",
+          "ordinal": 3,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "gauge_inches",
+          "ordinal": 4,
+          "type_info": "Numeric"
+        },
+        {
+          "name": "track_gauge: TrackGauge",
+          "ordinal": 5,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "BROAD",
+                  "MEDIUM",
+                  "MINIMUM",
+                  "NARROW",
+                  "STANDARD"
+                ]
+              },
+              "name": "gauge"
+            }
+          }
+        },
+        {
+          "name": "description_en",
+          "ordinal": 6,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "description_it",
+          "ordinal": 7,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "standards!: Vec<Standard>",
+          "ordinal": 8,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Array": {
+                  "Custom": {
+                    "kind": {
+                      "Enum": [
+                        "BRITISH",
+                        "JAPANESE",
+                        "NEM",
+                        "NMRA"
+                      ]
+                    },
+                    "name": "scale_standard"
+                  }
+                }
+              },
+              "name": "_scale_standard"
+            }
+          }
+        },
+        {
+          "name": "created_at",
+          "ordinal": 9,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "last_modified_at",
+          "ordinal": 10,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "version",
+          "ordinal": 11,
+          "type_info": "Int4"
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "parameters": {
+        "Left": []
+      }
+    },
+    "query": "SELECT\n                scale_id as \"scale_id: ScaleId\",\n                name,\n                ratio,\n                gauge_millimeters,\n                gauge_inches,\n                track_gauge as \"track_gauge: TrackGauge\",\n                description_en,\n                description_it,\n                standards as \"standards!: Vec<Standard>\",\n                created_at,\n                last_modified_at,\n                version\n            FROM scales\n            ORDER BY name"
+  },
   "9423b03c192210f78c18fbbcb8394689981d97c6dfc4c01831aa243923c496bb": {
     "describe": {
       "columns": [
