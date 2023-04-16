@@ -35,6 +35,35 @@
         "youtube" : "fsitaliane"
       },
       "headquarters" : [ "Roma" ]
+    },
+    {
+      "name" : "DB",
+      "abbreviation" : "DB",
+      "registered_company_name" : "Deutsche Bahn AG",
+      "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
+      "country" : "DE",
+      "description" : {
+        "en": "description",
+        "it": "descrizione"
+      },
+      "period_of_activity" : {
+        "operating_since" : "1994-01-01",
+        "status" : "ACTIVE"
+      },
+      "gauge" : {
+        "track_gauge" : "STANDARD",
+        "meters" : 1.435
+      },
+      "contact_info" : {
+        "website_url" : "https://www.deutschebahn.com"
+      },
+      "social" : {
+        "instagram" : "deutschebahn",
+        "linkedin" : "deutschebahn",
+        "twitter" : "db_presse",
+        "youtube" : "deutschebahnkonzern"
+      },
+      "headquarters" : [ "Berlin" ]
     }
   ]
 }

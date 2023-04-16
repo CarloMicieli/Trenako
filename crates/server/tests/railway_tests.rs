@@ -305,14 +305,66 @@ async fn it_should_return_404_not_found_when_the_railway_is_not_found() {
         let client = reqwest::Client::new();
         sut.run_database_migrations().await;
 
-        let pg_pool = sut.pg_pool();
-        seed_railways(&pg_pool).await;
-
         let endpoint = sut.endpoint(API_RAILWAYS);
         let endpoint = format!("{endpoint}/not-found");
         let response = client.get(endpoint).send().await.expect("Failed to execute request.");
 
         assert_eq!(404, response.status().as_u16());
+    })
+    .await;
+}
+
+#[tokio::test]
+async fn it_should_return_200_with_empty_result_set_when_no_railway_is_found() {
+    let test = create_docker_test();
+
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
+
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
+
+        let endpoint = sut.endpoint(API_RAILWAYS);
+        let response = client.get(endpoint).send().await.expect("Failed to execute request.");
+
+        assert_eq!(200, response.status().as_u16());
+
+        let body = response
+            .json::<Vec<Railway>>()
+            .await
+            .expect("Failed to fetch the response body");
+
+        assert_eq!(0, body.len());
+    })
+    .await;
+}
+
+#[tokio::test]
+async fn it_should_return_the_railways_list() {
+    let test = create_docker_test();
+
+    test.run_async(|ops| async move {
+        let (_, port) = ops.handle(IMAGE_NAME).host_port(5432).unwrap();
+
+        let sut = spawn_app(*port).await;
+        let client = reqwest::Client::new();
+        sut.run_database_migrations().await;
+
+        let pg_pool = sut.pg_pool();
+        seed_railways(&pg_pool).await;
+
+        let endpoint = sut.endpoint(API_RAILWAYS);
+        let response = client.get(endpoint).send().await.expect("Failed to execute request.");
+
+        assert_eq!(200, response.status().as_u16());
+
+        let body = response
+            .json::<Vec<Railway>>()
+            .await
+            .expect("Failed to fetch the response body");
+
+        assert_eq!(2, body.len());
     })
     .await;
 }
