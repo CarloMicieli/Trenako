@@ -2731,6 +2731,214 @@
     },
     "query": "SELECT\n                    brand_id as \"brand_id!: BrandId\", \n                    name, registered_company_name, \n                    organization_entity_type as \"organization_entity_type: OrganizationEntityType\", \n                    group_name, \n                    description_en, description_it, \n                    kind as \"kind: BrandKind\", \n                    status as \"status?: BrandStatus\",\n                    contact_email as \"contact_email?: MailAddress\", \n                    contact_website_url as \"contact_website_url?: WebsiteUrl\", \n                    contact_phone as \"contact_phone?: PhoneNumber\",\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook as \"socials_facebook?: Handler\", \n                    socials_instagram as \"socials_instagram?: Handler\",     \n                    socials_linkedin as \"socials_linkedin?: Handler\",    \n                    socials_twitter as \"socials_twitter?: Handler\",    \n                    socials_youtube as \"socials_youtube?: Handler\",\n                    created_at,\n                    last_modified_at,\n                    version\n                FROM brands WHERE brand_id = $1"
   },
+  "ee55862876e197db890701d60fadfe0edc21d5d18af9a9f7399b7b3bcf942a9c": {
+    "describe": {
+      "columns": [
+        {
+          "name": "brand_id!: BrandId",
+          "ordinal": 0,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "name",
+          "ordinal": 1,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "registered_company_name",
+          "ordinal": 2,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "organization_entity_type: OrganizationEntityType",
+          "ordinal": 3,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "CIVIL_LAW_PARTNERSHIP",
+                  "ENTREPRENEURIAL_COMPANY",
+                  "GLOBAL_PARTNERSHIP",
+                  "LIMITED_COMPANY",
+                  "LIMITED_PARTNERSHIP",
+                  "LIMITED_PARTNERSHIP_LIMITED_COMPANY",
+                  "OTHER",
+                  "PUBLIC_INSTITUTION",
+                  "PUBLIC_LIMITED_COMPANY",
+                  "REGISTERED_SOLE_TRADER",
+                  "SOLE_TRADER",
+                  "STATE_OWNED_ENTERPRISE"
+                ]
+              },
+              "name": "organization_entity_type"
+            }
+          }
+        },
+        {
+          "name": "group_name",
+          "ordinal": 4,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "description_en",
+          "ordinal": 5,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "description_it",
+          "ordinal": 6,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "kind: BrandKind",
+          "ordinal": 7,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "INDUSTRIAL",
+                  "BRASS_MODELS"
+                ]
+              },
+              "name": "brand_kind"
+            }
+          }
+        },
+        {
+          "name": "status?: BrandStatus",
+          "ordinal": 8,
+          "type_info": {
+            "Custom": {
+              "kind": {
+                "Enum": [
+                  "ACTIVE",
+                  "OUT_OF_BUSINESS"
+                ]
+              },
+              "name": "brand_status"
+            }
+          }
+        },
+        {
+          "name": "contact_email?: MailAddress",
+          "ordinal": 9,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "contact_website_url?: WebsiteUrl",
+          "ordinal": 10,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "contact_phone?: PhoneNumber",
+          "ordinal": 11,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "address_street_address",
+          "ordinal": 12,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "address_extended_address",
+          "ordinal": 13,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "address_city",
+          "ordinal": 14,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "address_region",
+          "ordinal": 15,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "address_postal_code",
+          "ordinal": 16,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "address_country",
+          "ordinal": 17,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_facebook?: Handler",
+          "ordinal": 18,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_instagram?: Handler",
+          "ordinal": 19,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_linkedin?: Handler",
+          "ordinal": 20,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_twitter?: Handler",
+          "ordinal": 21,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "socials_youtube?: Handler",
+          "ordinal": 22,
+          "type_info": "Varchar"
+        },
+        {
+          "name": "created_at",
+          "ordinal": 23,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "last_modified_at",
+          "ordinal": 24,
+          "type_info": "Timestamptz"
+        },
+        {
+          "name": "version",
+          "ordinal": 25,
+          "type_info": "Int4"
+        }
+      ],
+      "nullable": [
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        false
+      ],
+      "parameters": {
+        "Left": []
+      }
+    },
+    "query": "SELECT\n                    brand_id as \"brand_id!: BrandId\", \n                    name, \n                    registered_company_name, \n                    organization_entity_type as \"organization_entity_type: OrganizationEntityType\", \n                    group_name, \n                    description_en, description_it, \n                    kind as \"kind: BrandKind\", \n                    status as \"status?: BrandStatus\",\n                    contact_email as \"contact_email?: MailAddress\", \n                    contact_website_url as \"contact_website_url?: WebsiteUrl\", \n                    contact_phone as \"contact_phone?: PhoneNumber\",\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook as \"socials_facebook?: Handler\", \n                    socials_instagram as \"socials_instagram?: Handler\",     \n                    socials_linkedin as \"socials_linkedin?: Handler\",    \n                    socials_twitter as \"socials_twitter?: Handler\",    \n                    socials_youtube as \"socials_youtube?: Handler\",\n                    created_at,\n                    last_modified_at,\n                    version\n                FROM brands\n                ORDER BY name"
+  },
   "fb5c5af48e6ab2d8e77f7160ba698746b24d90e71f591c6d6ec31090ece2bf5d": {
     "describe": {
       "columns": [],

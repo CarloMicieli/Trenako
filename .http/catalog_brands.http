@@ -39,7 +39,12 @@ Content-Type: application/json
 
 ###
 
+# Get all brands
+// @no-log
+GET http://{{host}}:{{port}}/api/brands
+
+###
+
 # Get a brand by id
 // @no-log
 GET http://{{host}}:{{port}}/api/brands/acme
-

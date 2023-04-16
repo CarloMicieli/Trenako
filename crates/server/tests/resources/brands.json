@@ -31,6 +31,32 @@
       },
       "kind" : "INDUSTRIAL",
       "status" : "ACTIVE"
+    },
+    {
+      "name" : "PIKO",
+      "registered_company_name" : "PIKO Spielwaren GmbH",
+      "organization_entity_type" : "LIMITED_COMPANY",
+      "description" : {
+        "it" : "descrizione",
+        "en" : "description"
+      },
+      "address" : {
+        "street_address" : "Lutherstraße 30",
+        "postal_code" : "D-96515",
+        "city" : "Sonneberg",
+        "country" : "DE"
+      },
+      "contact_info" : {
+        "email" : "info@piko.de",
+        "website_url" : "https://www.piko.de"
+      },
+      "socials" : {
+        "facebook" : "PIKO.Modellbahn",
+        "instagram" : "piko.modellbahn",
+        "youtube" : "pikode"
+      },
+      "kind" : "INDUSTRIAL",
+      "status" : "ACTIVE"
     }
   ]
 }
