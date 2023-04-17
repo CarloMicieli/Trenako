@@ -4,7 +4,7 @@ use actix_web::{web, HttpResponse};
 use catalog::railways::queries::find_all_railways::find_all_railways;
 use catalog::railways::railway::Railway;
 use common::unit_of_work::postgres::PgDatabase;
-use db::catalog::railways::RailwaysRepository;
+use db::catalog::railways::repositories::RailwaysRepository;
 use sqlx::PgPool;
 use tracing_actix_web::RequestId;
 
