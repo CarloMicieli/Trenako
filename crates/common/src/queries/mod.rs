@@ -2,4 +2,5 @@
 
 pub mod aggregate;
 pub mod converters;
+pub mod errors;
 pub mod single_result;

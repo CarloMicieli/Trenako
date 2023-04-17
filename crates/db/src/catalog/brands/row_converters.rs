@@ -1,5 +1,5 @@
-use crate::brands::brand::Brand;
-use crate::brands::queries::brand_row::BrandRow;
+use crate::catalog::brands::brand_row::BrandRow;
+use catalog::brands::brand::Brand;
 use common::address::{Address, AddressBuilder};
 use common::contacts::ContactInformation;
 use common::localized_text::LocalizedText;
@@ -123,7 +123,7 @@ impl OptionConverter<BrandRow> for Address {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::brands::queries::brand_row::test::new_brand_row;
+    use crate::catalog::brands::brand_row::test::new_brand_row;
     use chrono::Utc;
 
     fn default_row() -> BrandRow {
@@ -132,9 +132,9 @@ mod test {
 
     mod brand_row_converter {
         use super::*;
-        use crate::brands::brand_id::BrandId;
-        use crate::brands::brand_kind::BrandKind;
-        use crate::brands::brand_status::BrandStatus;
+        use catalog::brands::brand_id::BrandId;
+        use catalog::brands::brand_kind::BrandKind;
+        use catalog::brands::brand_status::BrandStatus;
         use common::organizations::OrganizationEntityType;
         use pretty_assertions::assert_eq;
 

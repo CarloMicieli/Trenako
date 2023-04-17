@@ -52,6 +52,13 @@ impl<Id: Debug + Eq + Hash, T: Debug + Clone> InMemoryRepository<Id, T> {
         let result = items.borrow().is_empty();
         result
     }
+
+    /// Find the item with the `id` id (if any)
+    pub fn find_by_id(&self, id: &Id) -> Option<T> {
+        let items = self.storage.lock().expect("unable to acquire the items lock");
+        let result = items.borrow().get(id).cloned();
+        result
+    }
 }
 
 #[cfg(test)]

@@ -1,15 +1,12 @@
-use anyhow::{Context, Error};
+use anyhow::Context;
 use async_trait::async_trait;
 use catalog::brands::brand_id::BrandId;
 use catalog::brands::brand_kind::BrandKind;
 use catalog::brands::brand_status::BrandStatus;
 use catalog::brands::commands::new_brand::NewBrandCommand;
 use catalog::brands::commands::repositories::BrandRepository;
-use catalog::brands::queries::brand_row::BrandRow;
-use common::contacts::WebsiteUrl;
 use common::contacts::{MailAddress, PhoneNumber};
 use common::organizations::OrganizationEntityType;
-use common::queries::single_result::QueryRepository;
 use common::socials::Handler;
 use common::unit_of_work::postgres::PgUnitOfWork;
 
@@ -85,39 +82,5 @@ impl<'db> BrandRepository<'db, PgUnitOfWork<'db>> for PgBrandRepository {
             .context("A database failure was encountered while trying to store a brand.")?;
 
         Ok(())
-    }
-}
-
-#[async_trait]
-impl<'db> QueryRepository<'db, PgUnitOfWork<'db>, BrandId, BrandRow> for PgBrandRepository {
-    async fn find_by_id(id: &BrandId, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<Option<BrandRow>, Error> {
-        let result = sqlx::query_as!(BrandRow,
-                r#"SELECT
-                    brand_id as "brand_id!: BrandId", 
-                    name, registered_company_name, 
-                    organization_entity_type as "organization_entity_type: OrganizationEntityType", 
-                    group_name, 
-                    description_en, description_it, 
-                    kind as "kind: BrandKind", 
-                    status as "status?: BrandStatus",
-                    contact_email as "contact_email?: MailAddress", 
-                    contact_website_url as "contact_website_url?: WebsiteUrl", 
-                    contact_phone as "contact_phone?: PhoneNumber",
-                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,
-                    socials_facebook as "socials_facebook?: Handler", 
-                    socials_instagram as "socials_instagram?: Handler",     
-                    socials_linkedin as "socials_linkedin?: Handler",    
-                    socials_twitter as "socials_twitter?: Handler",    
-                    socials_youtube as "socials_youtube?: Handler",
-                    created_at,
-                    last_modified_at,
-                    version
-                FROM brands WHERE brand_id = $1"#, 
-                id)
-            .fetch_optional(&mut unit_of_work.transaction)
-            .await
-            .context("A database failure was encountered while trying to fetch a brand.")?;
-
-        Ok(result)
     }
 }

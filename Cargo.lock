@@ -935,9 +935,12 @@ dependencies = [
  "anyhow",
  "async-trait",
  "catalog",
+ "chrono",
  "common",
+ "isocountry",
  "pretty_assertions",
  "rstest",
+ "rust_decimal",
  "sqlx",
 ]
 

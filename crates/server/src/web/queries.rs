@@ -41,6 +41,7 @@ impl ResponseError for QueryResponseError {
     fn status_code(&self) -> StatusCode {
         match self.error {
             QueryError::ConversionError(_) => StatusCode::INTERNAL_SERVER_ERROR,
+            QueryError::DatabaseError(_) => StatusCode::INTERNAL_SERVER_ERROR,
             QueryError::EmptyResultSet => StatusCode::NOT_FOUND,
             QueryError::UnexpectedError(_) => StatusCode::INTERNAL_SERVER_ERROR,
         }
@@ -55,6 +56,7 @@ impl ResponseError for QueryResponseError {
 
         let problem_details = match error {
             QueryError::ConversionError(_) => ProblemDetail::error(*request_id, "Something went wrong"),
+            QueryError::DatabaseError(_) => ProblemDetail::error(*request_id, "Something went wrong"),
             QueryError::EmptyResultSet => ProblemDetail::not_found(*request_id, path),
             QueryError::UnexpectedError(why) => ProblemDetail::error(*request_id, &why.to_string()),
         };
@@ -73,6 +75,7 @@ mod test {
         use actix_web::body::to_bytes;
         use anyhow::anyhow;
         use common::queries::converters::ConversionErrors;
+        use common::queries::errors::DatabaseError;
         use pretty_assertions::assert_eq;
         use rstest::rstest;
         use std::str::FromStr;
@@ -154,13 +157,34 @@ mod test {
             );
         }
 
+        #[tokio::test]
+        async fn it_should_produce_a_problem_detail_for_database_errors() {
+            let error = query_error(QueryError::DatabaseError(DatabaseError::UnexpectedError(anyhow!(
+                "something bad happened"
+            ))));
+            let response = error.error_response();
+
+            assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
+
+            let body = extract_body(response).await.expect("unable to extract the body");
+
+            assert_eq!(body.problem_type, Url::parse("https://httpstatuses.com/500").unwrap());
+            assert_eq!(body.title, "Error: Internal Server Error");
+            assert_eq!(body.detail, "Something went wrong");
+            assert_eq!(body.status, 500);
+            assert_eq!(
+                body.instance,
+                Trn::from_str("trn:instance:1a29fa04-8704-48d4-ab8b-31594eeaf504").unwrap()
+            );
+        }
+
         async fn extract_body(response: HttpResponse) -> Result<ProblemDetail, anyhow::Error> {
             let body = to_bytes(response.into_body())
                 .await
-                .map_err(|why| anyhow!("unable to extract the body {why:?}"))?;
+                .map_err(|why| anyhow!("unable to extract the body {:?}", why))?;
 
             let problem_detail: ProblemDetail =
-                serde_json::from_slice(&body).map_err(|why| anyhow!("unable to extract the body {why:?}"))?;
+                serde_json::from_slice(&body).map_err(|why| anyhow!("unable to extract the body {:?}", why))?;
             Ok(problem_detail)
         }
 

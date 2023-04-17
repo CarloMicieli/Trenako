@@ -4,7 +4,7 @@ use actix_web::{web, HttpResponse};
 use catalog::brands::brand::Brand;
 use catalog::brands::queries::find_all_brands::find_all_brands;
 use common::unit_of_work::postgres::PgDatabase;
-use db::catalog::brands::BrandsRepository;
+use db::catalog::brands::repositories::BrandsRepository;
 use sqlx::PgPool;
 use tracing_actix_web::RequestId;
 

@@ -2,6 +2,7 @@
 
 use crate::queries::aggregate::{Aggregate, AggregateRoot, WithId, WithRootId};
 use crate::queries::converters::{ConversionErrors, ToOutputConverter};
+use crate::queries::errors::DatabaseError;
 use crate::unit_of_work::{Database, UnitOfWork};
 use async_trait::async_trait;
 use std::fmt;
@@ -125,6 +126,9 @@ pub enum QueryError {
 
     #[error("Error during the row conversion")]
     ConversionError(ConversionErrors),
+
+    #[error(transparent)]
+    DatabaseError(#[from] DatabaseError),
 }
 
 #[cfg(test)]

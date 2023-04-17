@@ -1,6 +1,6 @@
-use crate::brands::brand_id::BrandId;
-use crate::brands::brand_kind::BrandKind;
-use crate::brands::brand_status::BrandStatus;
+use catalog::brands::brand_id::BrandId;
+use catalog::brands::brand_kind::BrandKind;
+use catalog::brands::brand_status::BrandStatus;
 use chrono::{DateTime, Utc};
 use common::contacts::{MailAddress, PhoneNumber, WebsiteUrl};
 use common::organizations::OrganizationEntityType;

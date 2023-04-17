@@ -1,6 +1,6 @@
 //! This module provides the functionality to aggregate results when they include a relationship
 
-use crate::converters::{ConversionErrors, ToOutputConverter};
+use common::queries::converters::{ConversionErrors, ToOutputConverter};
 use std::hash::Hash;
 
 /// An aggregate has the main purpose to merge results when they are in a sort of relationship.  
