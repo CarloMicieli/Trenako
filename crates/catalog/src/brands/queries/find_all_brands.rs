@@ -1,6 +1,6 @@
 use crate::brands::brand::Brand;
 use async_trait::async_trait;
-use common::queries::single_result::QueryError;
+use common::queries::errors::{DatabaseError, QueryError};
 use common::unit_of_work::{Database, UnitOfWork};
 
 pub async fn find_all_brands<'db, U, Repo, DB>(repo: Repo, db: DB) -> Result<Vec<Brand>, QueryError>
@@ -20,5 +20,5 @@ where
 
 #[async_trait]
 pub trait FindAllBrandsRepository<'db, U: UnitOfWork<'db>> {
-    async fn find_all(&self, unit_of_work: &mut U) -> Result<Vec<Brand>, QueryError>;
+    async fn find_all(&self, unit_of_work: &mut U) -> Result<Vec<Brand>, DatabaseError>;
 }

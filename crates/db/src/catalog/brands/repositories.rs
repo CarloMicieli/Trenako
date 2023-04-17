@@ -12,7 +12,6 @@ use common::contacts::{MailAddress, PhoneNumber};
 use common::organizations::OrganizationEntityType;
 use common::queries::converters::ToOutputConverter;
 use common::queries::errors::DatabaseError;
-use common::queries::single_result::QueryError;
 use common::socials::Handler;
 use common::unit_of_work::postgres::PgUnitOfWork;
 
@@ -21,7 +20,7 @@ pub struct BrandsRepository;
 
 #[async_trait]
 impl<'db> FindAllBrandsRepository<'db, PgUnitOfWork<'db>> for BrandsRepository {
-    async fn find_all(&self, unit_of_work: &mut PgUnitOfWork) -> Result<Vec<Brand>, QueryError> {
+    async fn find_all(&self, unit_of_work: &mut PgUnitOfWork) -> Result<Vec<Brand>, DatabaseError> {
         let results: Vec<BrandRow> = sqlx::query_as!(BrandRow,
                 r#"SELECT
                     brand_id as "brand_id!: BrandId", 
@@ -52,7 +51,7 @@ impl<'db> FindAllBrandsRepository<'db, PgUnitOfWork<'db>> for BrandsRepository {
 
         let mut output: Vec<Brand> = Vec::with_capacity(results.len());
         for row in results.into_iter() {
-            let brand = row.to_output().map_err(QueryError::ConversionError)?;
+            let brand = row.to_output().map_err(DatabaseError::ConversionError)?;
             output.push(brand);
         }
 

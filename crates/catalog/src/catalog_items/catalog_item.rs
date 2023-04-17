@@ -13,7 +13,6 @@ use crate::scales::scale::Scale;
 use crate::scales::scale_id::ScaleId;
 use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
-use common::queries::aggregate::AggregateRoot;
 use std::fmt::Formatter;
 use std::{cmp, convert, fmt};
 
@@ -72,20 +71,6 @@ impl cmp::Ord for CatalogItem {
         }
 
         cmp1
-    }
-}
-
-impl AggregateRoot<CatalogItemId, RollingStock> for CatalogItem {
-    fn id(&self) -> &CatalogItemId {
-        &self.catalog_item_id
-    }
-
-    fn add_child(&mut self, child: RollingStock) {
-        self.rolling_stocks.push(child);
-    }
-
-    fn add_children(&mut self, children: Vec<RollingStock>) {
-        self.rolling_stocks = children;
     }
 }
 

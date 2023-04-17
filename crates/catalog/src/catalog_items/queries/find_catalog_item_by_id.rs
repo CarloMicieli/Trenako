@@ -2,8 +2,7 @@ use crate::catalog_items::catalog_item::CatalogItem;
 use crate::catalog_items::catalog_item_id::CatalogItemId;
 use crate::catalog_items::rolling_stock::RollingStock;
 use async_trait::async_trait;
-use common::queries::errors::DatabaseError;
-use common::queries::single_result::QueryError;
+use common::queries::errors::{DatabaseError, QueryError};
 use common::unit_of_work::{Database, UnitOfWork};
 
 pub async fn find_catalog_item_by_id<'db, U, Repo, DB>(

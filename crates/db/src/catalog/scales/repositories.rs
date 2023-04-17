@@ -9,7 +9,6 @@ use catalog::scales::scale_id::ScaleId;
 use catalog::scales::standard::Standard;
 use common::queries::converters::ToOutputConverter;
 use common::queries::errors::DatabaseError;
-use common::queries::single_result::QueryError;
 use common::unit_of_work::postgres::PgUnitOfWork;
 
 #[derive(Debug)]
@@ -17,7 +16,7 @@ pub struct ScalesRepository;
 
 #[async_trait]
 impl<'db> FindAllScalesRepository<'db, PgUnitOfWork<'db>> for ScalesRepository {
-    async fn find_all(&self, unit_of_work: &mut PgUnitOfWork) -> Result<Vec<Scale>, QueryError> {
+    async fn find_all(&self, unit_of_work: &mut PgUnitOfWork) -> Result<Vec<Scale>, DatabaseError> {
         let results = sqlx::query_as!(
             ScaleRow,
             r#"SELECT
@@ -42,7 +41,7 @@ impl<'db> FindAllScalesRepository<'db, PgUnitOfWork<'db>> for ScalesRepository {
 
         let mut output: Vec<Scale> = Vec::with_capacity(results.len());
         for row in results.into_iter() {
-            let scale = row.to_output().map_err(QueryError::ConversionError)?;
+            let scale = row.to_output().map_err(DatabaseError::ConversionError)?;
             output.push(scale);
         }
 

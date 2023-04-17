@@ -12,7 +12,6 @@ use common::contacts::{MailAddress, PhoneNumber};
 use common::organizations::OrganizationEntityType;
 use common::queries::converters::ToOutputConverter;
 use common::queries::errors::DatabaseError;
-use common::queries::single_result::QueryError;
 use common::socials::Handler;
 use common::unit_of_work::postgres::PgUnitOfWork;
 
@@ -21,7 +20,7 @@ pub struct RailwaysRepository;
 
 #[async_trait]
 impl<'db> FindAllRailwaysRepository<'db, PgUnitOfWork<'db>> for RailwaysRepository {
-    async fn find_all(&self, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<Vec<Railway>, QueryError> {
+    async fn find_all(&self, unit_of_work: &mut PgUnitOfWork<'db>) -> Result<Vec<Railway>, DatabaseError> {
         let results = sqlx::query_as!(
             RailwayRow,
             r#"SELECT
@@ -61,7 +60,7 @@ impl<'db> FindAllRailwaysRepository<'db, PgUnitOfWork<'db>> for RailwaysReposito
 
         let mut output: Vec<Railway> = Vec::with_capacity(results.len());
         for row in results.into_iter() {
-            let railway = row.to_output().map_err(QueryError::ConversionError)?;
+            let railway = row.to_output().map_err(DatabaseError::ConversionError)?;
             output.push(railway);
         }
 

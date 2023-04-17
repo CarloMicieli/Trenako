@@ -1,8 +1,7 @@
 use crate::brands::brand::Brand;
 use crate::brands::brand_id::BrandId;
 use async_trait::async_trait;
-use common::queries::errors::DatabaseError;
-use common::queries::single_result::QueryError;
+use common::queries::errors::{DatabaseError, QueryError};
 use common::unit_of_work::{Database, UnitOfWork};
 
 /// The query to find a modelling brand by its `brand_id`

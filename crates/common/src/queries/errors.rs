@@ -12,3 +12,18 @@ pub enum DatabaseError {
     #[error("Error during the row conversion")]
     ConversionError(ConversionErrors),
 }
+
+#[derive(Debug, Error)]
+pub enum QueryError {
+    #[error("No results were found")]
+    EmptyResultSet,
+
+    #[error(transparent)]
+    UnexpectedError(#[from] anyhow::Error),
+
+    #[error("Error during the row conversion")]
+    ConversionError(ConversionErrors),
+
+    #[error(transparent)]
+    DatabaseError(#[from] DatabaseError),
+}

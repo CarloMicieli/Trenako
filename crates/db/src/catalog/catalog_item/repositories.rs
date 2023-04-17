@@ -83,7 +83,7 @@ impl<'db> FindRollingStocksByCatalogItemIdRepository<'db, PgUnitOfWork<'db>> for
         catalog_item_id: &CatalogItemId,
         unit_of_work: &mut PgUnitOfWork<'db>,
     ) -> Result<Vec<RollingStock>, DatabaseError> {
-        let rolling_stocks: Vec<RollingStockRow> = sqlx::query_as!(
+        let rolling_stocks = sqlx::query_as!(
             RollingStockRow,
             r#"SELECT 
                 rs.rolling_stock_id as "rolling_stock_id: RollingStockId",

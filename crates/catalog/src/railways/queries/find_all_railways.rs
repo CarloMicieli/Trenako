@@ -1,6 +1,6 @@
 use crate::railways::railway::Railway;
 use async_trait::async_trait;
-use common::queries::single_result::QueryError;
+use common::queries::errors::{DatabaseError, QueryError};
 use common::unit_of_work::{Database, UnitOfWork};
 
 pub async fn find_all_railways<'db, U, Repo, DB>(repo: Repo, db: DB) -> Result<Vec<Railway>, QueryError>
@@ -20,5 +20,5 @@ where
 
 #[async_trait]
 pub trait FindAllRailwaysRepository<'db, U: UnitOfWork<'db>> {
-    async fn find_all(&self, unit_of_work: &mut U) -> Result<Vec<Railway>, QueryError>;
+    async fn find_all(&self, unit_of_work: &mut U) -> Result<Vec<Railway>, DatabaseError>;
 }

@@ -2,7 +2,7 @@ use crate::railways::railway::Railway;
 use crate::railways::railway_id::RailwayId;
 use async_trait::async_trait;
 use common::queries::errors::DatabaseError;
-use common::queries::single_result::QueryError;
+use common::queries::errors::QueryError;
 use common::unit_of_work::{Database, UnitOfWork};
 
 /// The query to find a railway company with the given `railway_id`

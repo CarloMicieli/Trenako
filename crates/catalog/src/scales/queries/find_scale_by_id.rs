@@ -1,8 +1,7 @@
 use crate::scales::scale::Scale;
 use crate::scales::scale_id::ScaleId;
 use async_trait::async_trait;
-use common::queries::errors::DatabaseError;
-use common::queries::single_result::QueryError;
+use common::queries::errors::{DatabaseError, QueryError};
 use common::unit_of_work::{Database, UnitOfWork};
 
 /// The query to find a modelling scale with the given `scale_id`
