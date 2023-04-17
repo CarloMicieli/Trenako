@@ -1,6 +1,6 @@
-use crate::common::TrackGauge;
-use crate::railways::period_of_activity::RailwayStatus;
-use crate::railways::railway_id::RailwayId;
+use catalog::common::TrackGauge;
+use catalog::railways::period_of_activity::RailwayStatus;
+use catalog::railways::railway_id::RailwayId;
 use chrono::{DateTime, NaiveDate, Utc};
 use common::contacts::{MailAddress, PhoneNumber, WebsiteUrl};
 use common::organizations::OrganizationEntityType;

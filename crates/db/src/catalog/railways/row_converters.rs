@@ -1,8 +1,8 @@
-use crate::railways::period_of_activity::{PeriodOfActivity, RailwayStatus};
-use crate::railways::queries::railway_row::RailwayRow;
-use crate::railways::railway::Railway;
-use crate::railways::railway_gauge::RailwayGauge;
-use crate::railways::railway_length::RailwayLength;
+use crate::catalog::railways::railway_row::RailwayRow;
+use catalog::railways::period_of_activity::{PeriodOfActivity, RailwayStatus};
+use catalog::railways::railway::Railway;
+use catalog::railways::railway_gauge::RailwayGauge;
+use catalog::railways::railway_length::RailwayLength;
 use common::contacts::ContactInformation;
 use common::length::Length;
 use common::localized_text::LocalizedText;
@@ -146,7 +146,7 @@ impl Converter<RailwayRow> for Metadata {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::railways::queries::railway_row::test::new_railway_row;
+    use crate::catalog::railways::railway_row::test::new_railway_row;
     use chrono::Utc;
 
     fn default_row() -> RailwayRow {
@@ -155,8 +155,6 @@ mod test {
 
     mod contact_information_converter {
         use super::*;
-        use crate::railways::queries::railway_row::RailwayRow;
-        use crate::railways::queries::row_converters::test::default_row;
         use common::contacts::{ContactInformation, MailAddress, PhoneNumber, WebsiteUrl};
 
         #[test]
@@ -386,7 +384,7 @@ mod test {
 
     mod railway_gauge_converter {
         use super::*;
-        use crate::common::TrackGauge;
+        use catalog::common::TrackGauge;
         use pretty_assertions::assert_eq;
         use rust_decimal_macros::dec;
 

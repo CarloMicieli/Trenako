@@ -13,10 +13,11 @@ common = { path = "../common" }
 anyhow = { workspace = true }
 async-trait = { workspace = true }
 chrono = { workspace = true }
+isocountry = { workspace = true }
 rust_decimal = { workspace = true }
 sqlx = { workspace = true }
 
 [dev-dependencies]
-isocountry = { workspace = true }
 pretty_assertions = { workspace = true }
 rstest = { workspace = true }
+rust_decimal_macros = { workspace = true }
