@@ -1,15 +1,14 @@
-//! the rolling stocks row definition
+//! the rolling stock row definition
 
-use crate::catalog_items::catalog_item_id::CatalogItemId;
-use crate::catalog_items::category::{
+use catalog::catalog_items::catalog_item_id::CatalogItemId;
+use catalog::catalog_items::category::{
     ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType, RollingStockCategory,
 };
-use crate::catalog_items::control::{Control, DccInterface};
-use crate::catalog_items::rolling_stock_id::RollingStockId;
-use crate::catalog_items::service_level::ServiceLevel;
-use crate::catalog_items::technical_specifications::{CouplingSocket, FeatureFlag};
-use crate::railways::railway_id::RailwayId;
-use common::queries::aggregate::WithRootId;
+use catalog::catalog_items::control::{Control, DccInterface};
+use catalog::catalog_items::rolling_stock_id::RollingStockId;
+use catalog::catalog_items::service_level::ServiceLevel;
+use catalog::catalog_items::technical_specifications::{CouplingSocket, FeatureFlag};
+use catalog::railways::railway_id::RailwayId;
 use rust_decimal::Decimal;
 
 /// It represents the rolling stock row definition
@@ -46,12 +45,6 @@ pub struct RollingStockRow {
     pub interior_lights: Option<FeatureFlag>,
     pub lights: Option<FeatureFlag>,
     pub spring_buffers: Option<FeatureFlag>,
-}
-
-impl WithRootId<CatalogItemId> for RollingStockRow {
-    fn root_id(&self) -> &CatalogItemId {
-        &self.catalog_item_id
-    }
 }
 
 #[cfg(test)]

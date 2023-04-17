@@ -1,4 +1,4 @@
-use anyhow::{Context, Error};
+use anyhow::Context;
 use async_trait::async_trait;
 use catalog::brands::brand_id::BrandId;
 use catalog::catalog_items::availability_status::AvailabilityStatus;
@@ -11,14 +11,11 @@ use catalog::catalog_items::commands::new_catalog_item::{NewCatalogItemCommand, 
 use catalog::catalog_items::commands::repositories::{CatalogItemRepository, RollingStockRepository};
 use catalog::catalog_items::control::{Control, DccInterface};
 use catalog::catalog_items::power_method::PowerMethod;
-use catalog::catalog_items::queries::catalog_item_row::CatalogItemRow;
-use catalog::catalog_items::queries::rolling_stock_row::RollingStockRow;
 use catalog::catalog_items::rolling_stock_id::RollingStockId;
 use catalog::catalog_items::service_level::ServiceLevel;
 use catalog::catalog_items::technical_specifications::{CouplingSocket, FeatureFlag};
 use catalog::railways::railway_id::RailwayId;
 use catalog::scales::scale_id::ScaleId;
-use common::queries::single_result::{QueryByRootIdRepository, QueryRepository};
 use common::unit_of_work::postgres::PgUnitOfWork;
 
 pub struct PgCatalogItemRepository;
@@ -235,102 +232,5 @@ impl<'db> RollingStockRepository<'db, PgUnitOfWork<'db>> for PgRollingStockRepos
         .context("A database failure was encountered while trying to check for a railway existence.")?;
 
         Ok(result.is_some())
-    }
-}
-
-#[async_trait]
-impl<'db> QueryRepository<'db, PgUnitOfWork<'db>, CatalogItemId, CatalogItemRow> for PgCatalogItemRepository {
-    async fn find_by_id(
-        id: &CatalogItemId,
-        unit_of_work: &mut PgUnitOfWork,
-    ) -> Result<Option<CatalogItemRow>, anyhow::Error> {
-        let result = sqlx::query_as!(
-            CatalogItemRow,
-            r#"SELECT
-                c.catalog_item_id as "catalog_item_id: CatalogItemId",
-                c.item_number,
-                c.brand_id as "brand_id: BrandId",
-                b.name as brand_display,
-                c.scale_id as "scale_id: ScaleId",
-                s.name as scale_display,
-                c.category as "category: Category",
-                c.power_method as "power_method: PowerMethod",
-                c.description_en,
-                c.description_it,
-                c.details_en,
-                c.details_it,
-                c.delivery_date,
-                c.availability_status as "availability_status: AvailabilityStatus",
-                c.count,
-                c.created_at,
-                c.last_modified_at,
-                c.version
-            FROM catalog_items AS c
-            JOIN brands AS b
-              ON c.brand_id = b.brand_id
-            JOIN scales AS s
-              ON s.scale_id = c.scale_id
-            WHERE c.catalog_item_id = $1 "#,
-            id as &CatalogItemId
-        )
-        .fetch_optional(&mut unit_of_work.transaction)
-        .await
-        .context("")?;
-
-        Ok(result)
-    }
-}
-
-#[async_trait]
-impl<'db> QueryByRootIdRepository<'db, PgUnitOfWork<'db>, CatalogItemId, RollingStockRow> for PgRollingStockRepository {
-    async fn find_by_root_id(
-        root_id: &CatalogItemId,
-        unit_of_work: &mut PgUnitOfWork<'db>,
-    ) -> Result<Vec<RollingStockRow>, Error> {
-        let rolling_stocks = sqlx::query_as!(
-            RollingStockRow,
-            r#"SELECT 
-                rs.rolling_stock_id as "rolling_stock_id: RollingStockId",
-                rs.catalog_item_id as "catalog_item_id: CatalogItemId",
-                rs.railway_id as "railway_id: RailwayId",
-                r.name as railway_label, 
-                rs.rolling_stock_category as "rolling_stock_category: RollingStockCategory",
-                rs.epoch,
-                rs.livery,
-                rs.length_over_buffers_mm,
-                rs.length_over_buffers_in,
-                rs.type_name,
-                rs.road_number,
-                rs.series,
-                rs.depot,
-                rs.dcc_interface as "dcc_interface: DccInterface",
-                rs.control as "control: Control",
-                rs.electric_multiple_unit_type as "electric_multiple_unit_type: ElectricMultipleUnitType",
-                rs.freight_car_type as "freight_car_type: FreightCarType",
-                rs.locomotive_type as "locomotive_type: LocomotiveType",
-                rs.passenger_car_type as "passenger_car_type: PassengerCarType",
-                rs.railcar_type as "railcar_type: RailcarType",
-                rs.service_level as "service_level: ServiceLevel",
-                rs.is_dummy,
-                rs.minimum_radius,
-                rs.coupling_socket as "coupling_socket: CouplingSocket",
-                rs.close_couplers as "close_couplers: FeatureFlag",
-                rs.digital_shunting_coupling as "digital_shunting_coupling: FeatureFlag",
-                rs.flywheel_fitted as "flywheel_fitted: FeatureFlag",
-                rs.metal_body as "metal_body: FeatureFlag",
-                rs.interior_lights as "interior_lights: FeatureFlag",
-                rs.lights as "lights: FeatureFlag",
-                rs.spring_buffers as "spring_buffers: FeatureFlag"
-            FROM rolling_stocks AS rs
-            JOIN railways AS r
-              ON r.railway_id = rs.railway_id
-            WHERE rs.catalog_item_id = $1"#,
-            root_id as &CatalogItemId
-        )
-        .fetch_all(&mut unit_of_work.transaction)
-        .await
-        .expect("Failed to fetch saved rolling stock(s).");
-
-        Ok(rolling_stocks)
     }
 }

@@ -1,13 +1,12 @@
 //! the catalog items row definition
 
-use crate::brands::brand_id::BrandId;
-use crate::catalog_items::availability_status::AvailabilityStatus;
-use crate::catalog_items::catalog_item_id::CatalogItemId;
-use crate::catalog_items::category::Category;
-use crate::catalog_items::power_method::PowerMethod;
-use crate::scales::scale_id::ScaleId;
+use catalog::brands::brand_id::BrandId;
+use catalog::catalog_items::availability_status::AvailabilityStatus;
+use catalog::catalog_items::catalog_item_id::CatalogItemId;
+use catalog::catalog_items::category::Category;
+use catalog::catalog_items::power_method::PowerMethod;
+use catalog::scales::scale_id::ScaleId;
 use chrono::{DateTime, Utc};
-use common::queries::aggregate::WithId;
 
 /// It represents the catalog item row definition
 #[derive(Debug)]
@@ -32,16 +31,10 @@ pub struct CatalogItemRow {
     pub last_modified_at: Option<DateTime<Utc>>,
 }
 
-impl WithId<CatalogItemId> for CatalogItemRow {
-    fn id(&self) -> &CatalogItemId {
-        &self.catalog_item_id
-    }
-}
-
 #[cfg(test)]
 pub mod test {
     use super::*;
-    use crate::catalog_items::item_number::ItemNumber;
+    use catalog::catalog_items::item_number::ItemNumber;
 
     #[allow(dead_code)]
     pub fn new_catalog_item_row(

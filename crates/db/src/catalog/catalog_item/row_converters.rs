@@ -1,13 +1,13 @@
-use crate::catalog_items::catalog_item::{CatalogItem, CatalogItemBrand, CatalogItemScale};
-use crate::catalog_items::category::RollingStockCategory;
-use crate::catalog_items::delivery_date::DeliveryDate;
-use crate::catalog_items::epoch::Epoch;
-use crate::catalog_items::item_number::ItemNumber;
-use crate::catalog_items::length_over_buffers::LengthOverBuffers;
-use crate::catalog_items::queries::catalog_item_row::CatalogItemRow;
-use crate::catalog_items::queries::rolling_stock_row::RollingStockRow;
-use crate::catalog_items::rolling_stock::{RollingStock, RollingStockRailway};
-use crate::catalog_items::technical_specifications::{Coupling, Radius, TechnicalSpecifications};
+use crate::catalog::catalog_item::catalog_item_row::CatalogItemRow;
+use crate::catalog::catalog_item::rolling_stock_row::RollingStockRow;
+use catalog::catalog_items::catalog_item::{CatalogItem, CatalogItemBrand, CatalogItemScale};
+use catalog::catalog_items::category::RollingStockCategory;
+use catalog::catalog_items::delivery_date::DeliveryDate;
+use catalog::catalog_items::epoch::Epoch;
+use catalog::catalog_items::item_number::ItemNumber;
+use catalog::catalog_items::length_over_buffers::LengthOverBuffers;
+use catalog::catalog_items::rolling_stock::{RollingStock, RollingStockRailway};
+use catalog::catalog_items::technical_specifications::{Coupling, Radius, TechnicalSpecifications};
 use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use common::queries::converters::{ConversionErrors, Converter, OptionConverter, ToOutputConverter};
@@ -244,13 +244,13 @@ mod test {
 
     mod catalog_item_converter {
         use super::*;
-        use crate::brands::brand_id::BrandId;
-        use crate::catalog_items::availability_status::AvailabilityStatus;
-        use crate::catalog_items::catalog_item_id::CatalogItemId;
-        use crate::catalog_items::category::Category;
-        use crate::catalog_items::power_method::PowerMethod;
-        use crate::catalog_items::queries::catalog_item_row::test::new_catalog_item_row;
-        use crate::scales::scale_id::ScaleId;
+        use crate::catalog::catalog_item::catalog_item_row::test::new_catalog_item_row;
+        use catalog::brands::brand_id::BrandId;
+        use catalog::catalog_items::availability_status::AvailabilityStatus;
+        use catalog::catalog_items::catalog_item_id::CatalogItemId;
+        use catalog::catalog_items::category::Category;
+        use catalog::catalog_items::power_method::PowerMethod;
+        use catalog::scales::scale_id::ScaleId;
         use chrono::Utc;
         use pretty_assertions::assert_eq;
         use std::str::FromStr;
@@ -361,13 +361,13 @@ mod test {
 
     mod rolling_stock_converter {
         use super::*;
-        use crate::catalog_items::catalog_item_id::CatalogItemId;
-        use crate::catalog_items::category::{
+        use crate::catalog::catalog_item::rolling_stock_row::test::new_rolling_stock_row;
+        use catalog::catalog_items::catalog_item_id::CatalogItemId;
+        use catalog::catalog_items::category::{
             ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType,
         };
-        use crate::catalog_items::control::{Control, DccInterface};
-        use crate::catalog_items::queries::rolling_stock_row::test::new_rolling_stock_row;
-        use crate::catalog_items::technical_specifications::{CouplingSocket, FeatureFlag};
+        use catalog::catalog_items::control::{Control, DccInterface};
+        use catalog::catalog_items::technical_specifications::{CouplingSocket, FeatureFlag};
         use pretty_assertions::assert_eq;
         use rust_decimal_macros::dec;
         use std::str::FromStr;
