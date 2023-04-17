@@ -19,7 +19,7 @@ actix-web = "4.3.1"
 anyhow = "1.0.70"
 async-trait = "0.1.68"
 chrono = { version = "0.4.24", features = ["serde"] }
-clap = { version = "4.2.1", features = ["derive"] }
+clap = { version = "4.2.2", features = ["derive"] }
 config = { version = "0.13.3", default-features = false, features = ["yaml"] }
 dockertest = { git = "https://github.com/orcalabs/dockertest-rs", rev = "7e0a718", features = ["tls"] }
 http = "0.2.9"
@@ -37,16 +37,16 @@ rstest = "0.17.0"
 rust_decimal = { version = "1.29.1", features = ["serde-with-float"] }
 rust_decimal_macros = "1.29.1"
 secrecy = { version = "0.8.0", features = ["serde"] }
-serde = { version = "1.0.159", features = ["derive"] }
-serde_derive = "1.0.159"
-serde_json = "1.0.95"
+serde = { version = "1.0.160", features = ["derive"] }
+serde_derive = "1.0.160"
+serde_json = "1.0.96"
 slug = "0.1.4"
 strum = "0.24.1"
 strum_macros = "0.24.3"
 thiserror = "1.0.40"
 tokio = { version = "1.27.0", features = ["macros", "rt-multi-thread"] }
 tracing = "0.1.37"
-tracing-actix-web = "0.7.3"
+tracing-actix-web = "0.7.4"
 tracing-bunyan-formatter = "0.3.7"
 tracing-log = "0.1.3"
 tracing-subscriber = { version = "0.3.16", features = ["registry", "env-filter"] }
