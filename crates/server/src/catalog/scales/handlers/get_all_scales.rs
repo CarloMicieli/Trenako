@@ -4,7 +4,7 @@ use actix_web::{web, HttpResponse};
 use catalog::scales::queries::find_all_scales::find_all_scales;
 use catalog::scales::scale::Scale;
 use common::unit_of_work::postgres::PgDatabase;
-use db::catalog::scales::ScalesRepository;
+use db::catalog::scales::repositories::ScalesRepository;
 use sqlx::PgPool;
 use tracing_actix_web::RequestId;
 

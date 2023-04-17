@@ -1,6 +1,6 @@
-use crate::common::TrackGauge;
-use crate::scales::scale_id::ScaleId;
-use crate::scales::standard::Standard;
+use catalog::common::TrackGauge;
+use catalog::scales::scale_id::ScaleId;
+use catalog::scales::standard::Standard;
 use chrono::{DateTime, Utc};
 use rust_decimal::Decimal;
 

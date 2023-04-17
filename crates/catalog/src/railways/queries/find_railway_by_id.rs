@@ -63,7 +63,7 @@ mod test {
         }
 
         #[tokio::test]
-        async fn it_should_return_an_error_when_the_brand_is_not_found() {
+        async fn it_should_return_an_error_when_the_railway_is_not_found() {
             let repo = InMemoryFindRailwayByIdRepository::new();
 
             let result = find_railway_by_id(&RailwayId::new("ACME"), repo, NoOpDatabase).await;

@@ -1,7 +1,7 @@
-use crate::scales::queries::scale_row::ScaleRow;
-use crate::scales::ratio::Ratio;
-use crate::scales::scale::Scale;
-use crate::scales::scale_gauge::Gauge;
+use crate::catalog::scales::scale_row::ScaleRow;
+use catalog::scales::ratio::Ratio;
+use catalog::scales::scale::Scale;
+use catalog::scales::scale_gauge::Gauge;
 use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use common::queries::converters::{ConversionErrors, Converter, ToOutputConverter};
@@ -78,8 +78,8 @@ impl Converter<ScaleRow> for Metadata {
 #[cfg(test)]
 mod test {
     use super::*;
-    use crate::common::TrackGauge;
-    use crate::scales::queries::scale_row::test::new_scale_row;
+    use crate::catalog::scales::scale_row::test::new_scale_row;
+    use catalog::common::TrackGauge;
     use chrono::Utc;
     use rust_decimal_macros::dec;
 
@@ -89,10 +89,9 @@ mod test {
 
     mod scale_row_converter {
         use super::*;
+        use catalog::scales::scale_id::ScaleId;
+        use catalog::scales::standard::Standard;
         use pretty_assertions::assert_eq;
-
-        use crate::scales::scale_id::ScaleId;
-        use crate::scales::standard::Standard;
 
         #[test]
         fn it_should_convert_scale_rows() {
