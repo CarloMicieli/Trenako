@@ -1,4 +1,3 @@
-use crate::catalog::catalog_items::repositories::{PgCatalogItemRepository, PgRollingStockRepository};
 use crate::catalog::catalog_items::routes::CATALOG_ITEM_ROOT_API;
 use crate::web::problem_detail::ProblemDetail;
 use crate::web::responders::ToCreated;
@@ -9,6 +8,7 @@ use catalog::catalog_items::catalog_item_request::CatalogItemRequest;
 use catalog::catalog_items::catalog_item_response::CatalogItemCreated;
 use catalog::catalog_items::commands::new_catalog_item::{create_new_catalog_item, CatalogItemCreationError};
 use common::unit_of_work::postgres::PgDatabase;
+use db::catalog::catalog_item::repositories::{CatalogItemsRepository, RollingStocksRepository};
 use sqlx::PgPool;
 use std::fmt;
 use tracing_actix_web::RequestId;
@@ -19,8 +19,8 @@ pub async fn handle(
     request: web::Json<CatalogItemRequest>,
     db_pool: Data<PgPool>,
 ) -> Result<HttpResponse, CatalogItemCreationResponseError> {
-    let repo = PgCatalogItemRepository;
-    let rr_repo = PgRollingStockRepository;
+    let repo = CatalogItemsRepository;
+    let rr_repo = RollingStocksRepository;
     let database = PgDatabase::new(&db_pool);
 
     let result = create_new_catalog_item(request.0, repo, rr_repo, database).await;

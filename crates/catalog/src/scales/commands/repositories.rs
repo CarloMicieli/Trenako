@@ -5,7 +5,7 @@ use common::unit_of_work::UnitOfWork;
 
 /// The persistence related functionality for the scale commands
 #[async_trait]
-pub trait ScaleRepository<'db, U: UnitOfWork<'db>> {
+pub trait NewScaleRepository<'db, U: UnitOfWork<'db>> {
     /// Checks if a scale with the input id already exists
     async fn exists(&self, scale_id: &ScaleId, unit_of_work: &mut U) -> Result<bool, anyhow::Error>;
 
@@ -16,7 +16,7 @@ pub trait ScaleRepository<'db, U: UnitOfWork<'db>> {
 #[cfg(test)]
 pub mod in_memory {
     use crate::scales::commands::new_scales::NewScaleCommand;
-    use crate::scales::commands::repositories::ScaleRepository;
+    use crate::scales::commands::repositories::NewScaleRepository;
     use crate::scales::scale_id::ScaleId;
     use async_trait::async_trait;
     use common::in_memory::InMemoryRepository;
@@ -39,7 +39,7 @@ pub mod in_memory {
     }
 
     #[async_trait]
-    impl ScaleRepository<'static, NoOpUnitOfWork> for InMemoryScaleRepository {
+    impl NewScaleRepository<'static, NoOpUnitOfWork> for InMemoryScaleRepository {
         async fn exists(&self, scale_id: &ScaleId, _unit_of_work: &mut NoOpUnitOfWork) -> Result<bool, anyhow::Error> {
             Ok(self.0.contains(scale_id))
         }

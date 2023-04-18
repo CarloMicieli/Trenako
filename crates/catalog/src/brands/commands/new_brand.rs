@@ -5,7 +5,7 @@ use crate::brands::brand_kind::BrandKind;
 use crate::brands::brand_request::BrandRequest;
 use crate::brands::brand_response::BrandCreated;
 use crate::brands::brand_status::BrandStatus;
-use crate::brands::commands::repositories::BrandRepository;
+use crate::brands::commands::repositories::NewBrandRepository;
 use chrono::Utc;
 use common::address::Address;
 use common::contacts::{ContactInformation, MailAddress, PhoneNumber, WebsiteUrl};
@@ -21,11 +21,12 @@ use validator::{Validate, ValidationErrors};
 
 pub type Result<R> = result::Result<R, BrandCreationError>;
 
-pub async fn create_new_brand<'db, U: UnitOfWork<'db>, R: BrandRepository<'db, U>, DB: Database<'db, U>>(
-    request: BrandRequest,
-    repo: R,
-    db: DB,
-) -> Result<BrandCreated> {
+pub async fn create_new_brand<'db, U, Repo, DB>(request: BrandRequest, repo: Repo, db: DB) -> Result<BrandCreated>
+where
+    U: UnitOfWork<'db>,
+    Repo: NewBrandRepository<'db, U>,
+    DB: Database<'db, U>,
+{
     let brand_id = BrandId::new(&request.name);
 
     let mut unit_of_work = db.begin().await?;
@@ -226,7 +227,7 @@ mod test {
 
             match result {
                 Err(BrandCreationError::BrandAlreadyExists(id)) => assert_eq!(BrandId::new("ACME"), id),
-                _ => panic!("BrandAlreadyExists is expected (found: {result:?})"),
+                _ => panic!("BrandAlreadyExists is expected (found: {:?})", result),
             }
         }
 

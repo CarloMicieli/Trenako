@@ -1,4 +1,3 @@
-use crate::catalog::railways::repositories::PgRailwayRepository;
 use crate::catalog::railways::routes::RAILWAY_ROOT_API;
 use crate::web::problem_detail::ProblemDetail;
 use crate::web::responders::ToCreated;
@@ -8,6 +7,7 @@ use catalog::railways::commands::new_railways::{create_new_railway, RailwayCreat
 use catalog::railways::railway_request::RailwayRequest;
 use catalog::railways::railway_response::RailwayCreated;
 use common::unit_of_work::postgres::PgDatabase;
+use db::catalog::railways::repositories::RailwaysRepository;
 use sqlx::PgPool;
 use std::fmt;
 use tracing_actix_web::RequestId;
@@ -18,7 +18,7 @@ pub async fn handle(
     request: web::Json<RailwayRequest>,
     db_pool: web::Data<PgPool>,
 ) -> Result<HttpResponse, RailwayCreationResponseError> {
-    let repo = PgRailwayRepository;
+    let repo = RailwaysRepository;
     let database = PgDatabase::new(&db_pool);
 
     let result = create_new_railway(request.0, repo, database).await;

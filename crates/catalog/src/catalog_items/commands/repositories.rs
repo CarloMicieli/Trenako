@@ -8,7 +8,7 @@ use common::unit_of_work::UnitOfWork;
 
 /// The persistence related functionality for the catalog item commands
 #[async_trait]
-pub trait CatalogItemRepository<'db, U: UnitOfWork<'db>> {
+pub trait NewCatalogItemRepository<'db, U: UnitOfWork<'db>> {
     /// Checks if a catalog with the input id already exists
     async fn exists(&self, catalog_item_id: &CatalogItemId, unit_of_work: &mut U) -> Result<bool, anyhow::Error>;
 
@@ -24,7 +24,7 @@ pub trait CatalogItemRepository<'db, U: UnitOfWork<'db>> {
 
 /// The persistence related functionality for the rolling stock commands
 #[async_trait]
-pub trait RollingStockRepository<'db, U: UnitOfWork<'db>> {
+pub trait NewRollingStockRepository<'db, U: UnitOfWork<'db>> {
     /// Inserts a new catalog item
     async fn insert(&self, new_item: &NewRollingStockCommand, unit_of_work: &mut U) -> Result<(), anyhow::Error>;
 
@@ -37,7 +37,7 @@ pub mod in_memory {
     use crate::brands::brand_id::BrandId;
     use crate::catalog_items::catalog_item_id::CatalogItemId;
     use crate::catalog_items::commands::new_catalog_item::{NewCatalogItemCommand, NewRollingStockCommand};
-    use crate::catalog_items::commands::repositories::{CatalogItemRepository, RollingStockRepository};
+    use crate::catalog_items::commands::repositories::{NewCatalogItemRepository, NewRollingStockRepository};
     use crate::catalog_items::rolling_stock_id::RollingStockId;
     use crate::railways::railway_id::RailwayId;
     use crate::scales::scale_id::ScaleId;
@@ -87,7 +87,7 @@ pub mod in_memory {
     }
 
     #[async_trait]
-    impl CatalogItemRepository<'static, NoOpUnitOfWork> for InMemoryCatalogItemRepository {
+    impl NewCatalogItemRepository<'static, NoOpUnitOfWork> for InMemoryCatalogItemRepository {
         async fn exists(
             &self,
             catalog_item_id: &CatalogItemId,
@@ -148,7 +148,7 @@ pub mod in_memory {
     }
 
     #[async_trait]
-    impl RollingStockRepository<'static, NoOpUnitOfWork> for InMemoryRollingStockRepository {
+    impl NewRollingStockRepository<'static, NoOpUnitOfWork> for InMemoryRollingStockRepository {
         async fn insert(
             &self,
             new_item: &NewRollingStockCommand,

@@ -1,5 +1,5 @@
 use crate::common::TrackGauge;
-use crate::railways::commands::repositories::RailwayRepository;
+use crate::railways::commands::repositories::NewRailwayRepository;
 use crate::railways::period_of_activity::{PeriodOfActivity, RailwayStatus};
 use crate::railways::railway_id::RailwayId;
 use crate::railways::railway_request::RailwayRequest;
@@ -19,11 +19,12 @@ use validator::{Validate, ValidationErrors};
 
 pub type Result<R> = result::Result<R, RailwayCreationError>;
 
-pub async fn create_new_railway<'db, U: UnitOfWork<'db>, R: RailwayRepository<'db, U>, DB: Database<'db, U>>(
-    request: RailwayRequest,
-    repo: R,
-    db: DB,
-) -> Result<RailwayCreated> {
+pub async fn create_new_railway<'db, U, Repo, DB>(request: RailwayRequest, repo: Repo, db: DB) -> Result<RailwayCreated>
+where
+    U: UnitOfWork<'db>,
+    Repo: NewRailwayRepository<'db, U>,
+    DB: Database<'db, U>,
+{
     let railway_id = RailwayId::new(&request.name);
 
     let mut unit_of_work = db.begin().await?;

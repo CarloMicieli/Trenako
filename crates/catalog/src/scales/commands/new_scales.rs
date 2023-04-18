@@ -1,10 +1,9 @@
 use crate::common::TrackGauge;
-use crate::scales::commands::repositories::ScaleRepository;
+use crate::scales::commands::repositories::NewScaleRepository;
 use crate::scales::scale_id::ScaleId;
 use crate::scales::scale_request::ScaleRequest;
 use crate::scales::scale_response::ScaleCreated;
 use crate::scales::standard::Standard;
-use async_trait::async_trait;
 use chrono::Utc;
 use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
@@ -17,11 +16,12 @@ use validator::{Validate, ValidationErrors};
 
 pub type Result<R> = result::Result<R, ScaleCreationError>;
 
-pub async fn create_new_scale<'db, U: UnitOfWork<'db>, R: ScaleRepository<'db, U>, DB: Database<'db, U>>(
-    request: ScaleRequest,
-    repo: R,
-    db: DB,
-) -> Result<ScaleCreated> {
+pub async fn create_new_scale<'db, U, Repo, DB>(request: ScaleRequest, repo: Repo, db: DB) -> Result<ScaleCreated>
+where
+    U: UnitOfWork<'db>,
+    Repo: NewScaleRepository<'db, U>,
+    DB: Database<'db, U>,
+{
     let scale_id = ScaleId::new(&request.name);
 
     let mut unit_of_work = db.begin().await?;
@@ -119,16 +119,6 @@ impl TryFrom<ScaleRequest> for ScaleCommandPayload {
     }
 }
 
-/// The persistence related functionality for the new scales creation
-#[async_trait]
-pub trait NewScaleRepository<'db, U: UnitOfWork<'db>> {
-    /// Checks if a scale with the input id already exists
-    async fn exists_already(&self, scale_id: &ScaleId, unit_of_work: &mut U) -> Result<bool>;
-
-    /// Inserts a new scale
-    async fn insert(&self, new_scale: &NewScaleCommand, unit_of_work: &mut U) -> Result<()>;
-}
-
 #[cfg(test)]
 mod test {
     use super::*;
@@ -171,7 +161,7 @@ mod test {
 
             match result {
                 Err(ScaleCreationError::ScaleAlreadyExists(id)) => assert_eq!(ScaleId::new("H0"), id),
-                _ => panic!("ScaleAlreadyExists is expected (found: {result:?})"),
+                _ => panic!("ScaleAlreadyExists is expected (found: {:?})", result),
             }
         }
 

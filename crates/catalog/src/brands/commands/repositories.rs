@@ -7,7 +7,7 @@ use common::unit_of_work::UnitOfWork;
 
 /// The persistence related functionality for the brand commands
 #[async_trait]
-pub trait BrandRepository<'db, U: UnitOfWork<'db>> {
+pub trait NewBrandRepository<'db, U: UnitOfWork<'db>> {
     /// Checks if a brand with the input id already exists
     async fn exists(&self, brand_id: &BrandId, unit_of_work: &mut U) -> Result<bool, anyhow::Error>;
 
@@ -19,7 +19,7 @@ pub trait BrandRepository<'db, U: UnitOfWork<'db>> {
 pub mod in_memory {
     use crate::brands::brand_id::BrandId;
     use crate::brands::commands::new_brand::NewBrandCommand;
-    use crate::brands::commands::repositories::BrandRepository;
+    use crate::brands::commands::repositories::NewBrandRepository;
     use async_trait::async_trait;
     use common::in_memory::InMemoryRepository;
     use common::unit_of_work::noop::NoOpUnitOfWork;
@@ -41,7 +41,7 @@ pub mod in_memory {
     }
 
     #[async_trait]
-    impl BrandRepository<'static, NoOpUnitOfWork> for InMemoryBrandRepository {
+    impl NewBrandRepository<'static, NoOpUnitOfWork> for InMemoryBrandRepository {
         async fn exists(&self, brand_id: &BrandId, _unit_of_work: &mut NoOpUnitOfWork) -> Result<bool, anyhow::Error> {
             Ok(self.0.contains(brand_id))
         }

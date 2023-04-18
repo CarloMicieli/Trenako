@@ -2,7 +2,7 @@ use anyhow::Context;
 use async_trait::async_trait;
 use catalog::common::TrackGauge;
 use catalog::railways::commands::new_railways::NewRailwayCommand;
-use catalog::railways::commands::repositories::RailwayRepository;
+use catalog::railways::commands::repositories::NewRailwayRepository;
 use catalog::railways::period_of_activity::RailwayStatus;
 use catalog::railways::railway_id::RailwayId;
 use common::contacts::{MailAddress, PhoneNumber};
@@ -13,7 +13,7 @@ use common::unit_of_work::postgres::PgUnitOfWork;
 pub struct PgRailwayRepository;
 
 #[async_trait]
-impl<'db> RailwayRepository<'db, PgUnitOfWork<'db>> for PgRailwayRepository {
+impl<'db> NewRailwayRepository<'db, PgUnitOfWork<'db>> for PgRailwayRepository {
     async fn exists(&self, railway_id: &RailwayId, unit_of_work: &mut PgUnitOfWork) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!(
             "SELECT railway_id FROM railways WHERE railway_id = $1 LIMIT 1",

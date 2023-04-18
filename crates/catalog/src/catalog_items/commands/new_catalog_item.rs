@@ -7,7 +7,7 @@ use crate::catalog_items::category::{
     Category, ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType,
     RollingStockCategory,
 };
-use crate::catalog_items::commands::repositories::{CatalogItemRepository, RollingStockRepository};
+use crate::catalog_items::commands::repositories::{NewCatalogItemRepository, NewRollingStockRepository};
 use crate::catalog_items::control::{Control, DccInterface};
 use crate::catalog_items::delivery_date::DeliveryDate;
 use crate::catalog_items::epoch::Epoch;
@@ -31,18 +31,18 @@ use validator::{Validate, ValidationErrors};
 
 pub type Result<R> = result::Result<R, CatalogItemCreationError>;
 
-pub async fn create_new_catalog_item<
-    'db,
-    U: UnitOfWork<'db>,
-    R: CatalogItemRepository<'db, U>,
-    RR: RollingStockRepository<'db, U>,
-    DB: Database<'db, U>,
->(
+pub async fn create_new_catalog_item<'db, U, R, RR, DB>(
     request: CatalogItemRequest,
     repo: R,
     rs_repo: RR,
     db: DB,
-) -> Result<CatalogItemCreated> {
+) -> Result<CatalogItemCreated>
+where
+    U: UnitOfWork<'db>,
+    R: NewCatalogItemRepository<'db, U>,
+    RR: NewRollingStockRepository<'db, U>,
+    DB: Database<'db, U>,
+{
     let brand_id = BrandId::new(&request.brand);
     let scale_id = ScaleId::new(&request.scale);
     let catalog_item_id = CatalogItemId::of(&brand_id, &request.item_number);

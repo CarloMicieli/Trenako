@@ -1,4 +1,3 @@
-use crate::catalog::brands::repositories::PgBrandRepository;
 use crate::catalog::brands::routes::BRAND_ROOT_API;
 use crate::web::problem_detail::ProblemDetail;
 use crate::web::responders::ToCreated;
@@ -8,6 +7,7 @@ use catalog::brands::brand_request::BrandRequest;
 use catalog::brands::brand_response::BrandCreated;
 use catalog::brands::commands::new_brand::{create_new_brand, BrandCreationError};
 use common::unit_of_work::postgres::PgDatabase;
+use db::catalog::brands::repositories::BrandsRepository;
 use sqlx::PgPool;
 use std::fmt;
 use tracing_actix_web::RequestId;
@@ -18,7 +18,7 @@ pub async fn handle(
     request: web::Json<BrandRequest>,
     db_pool: web::Data<PgPool>,
 ) -> Result<HttpResponse, BrandCreationResponseError> {
-    let repo = PgBrandRepository;
+    let repo = BrandsRepository;
     let database = PgDatabase::new(&db_pool);
 
     let result = create_new_brand(request.0, repo, database).await;

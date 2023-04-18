@@ -5,7 +5,7 @@ use common::unit_of_work::UnitOfWork;
 
 /// The persistence related functionality for the railway commands
 #[async_trait]
-pub trait RailwayRepository<'db, U: UnitOfWork<'db>> {
+pub trait NewRailwayRepository<'db, U: UnitOfWork<'db>> {
     /// Checks if a railway with the input id already exists
     async fn exists(&self, railway_id: &RailwayId, unit_of_work: &mut U) -> Result<bool, anyhow::Error>;
 
@@ -16,7 +16,7 @@ pub trait RailwayRepository<'db, U: UnitOfWork<'db>> {
 #[cfg(test)]
 pub mod in_memory {
     use crate::railways::commands::new_railways::NewRailwayCommand;
-    use crate::railways::commands::repositories::RailwayRepository;
+    use crate::railways::commands::repositories::NewRailwayRepository;
     use crate::railways::railway_id::RailwayId;
     use async_trait::async_trait;
     use common::in_memory::InMemoryRepository;
@@ -39,7 +39,7 @@ pub mod in_memory {
     }
 
     #[async_trait]
-    impl RailwayRepository<'static, NoOpUnitOfWork> for InMemoryRailwayRepository {
+    impl NewRailwayRepository<'static, NoOpUnitOfWork> for InMemoryRailwayRepository {
         async fn exists(
             &self,
             railway_id: &RailwayId,
