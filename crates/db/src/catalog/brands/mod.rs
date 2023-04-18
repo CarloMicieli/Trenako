@@ -1,3 +1,5 @@
-pub mod brand_row;
+//! the persistence layer for modelling brands
+
+mod brand_row;
 pub mod repositories;
-pub mod row_converters;
+mod row_converters;

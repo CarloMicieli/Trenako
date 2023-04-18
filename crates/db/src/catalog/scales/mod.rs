@@ -1,3 +1,5 @@
+//! the persistence layer for modelling scales
+
 pub mod repositories;
-pub mod row_converters;
-pub mod scale_row;
+mod row_converters;
+mod scale_row;

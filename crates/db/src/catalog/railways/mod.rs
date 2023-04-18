@@ -1,3 +1,5 @@
-pub mod railway_row;
+//! the persistence layer for railway companies
+
+mod railway_row;
 pub mod repositories;
-pub mod row_converters;
+mod row_converters;
