@@ -60,6 +60,7 @@ impl ResponseError for CatalogItemCreationResponseError {
             CatalogItemCreationError::ScaleNotFound(_) => StatusCode::UNPROCESSABLE_ENTITY,
             CatalogItemCreationError::UnexpectedError(_) => StatusCode::INTERNAL_SERVER_ERROR,
             CatalogItemCreationError::InvalidRequest(_) => StatusCode::BAD_REQUEST,
+            CatalogItemCreationError::DatabaseError(_) => StatusCode::INTERNAL_SERVER_ERROR,
         }
     }
 
@@ -80,6 +81,7 @@ impl ResponseError for CatalogItemCreationResponseError {
                 ProblemDetail::unprocessable_entity(*request_id, &error.to_string())
             }
             CatalogItemCreationError::UnexpectedError(why) => ProblemDetail::error(*request_id, &why.to_string()),
+            CatalogItemCreationError::DatabaseError(why) => ProblemDetail::error(*request_id, &why.to_string()),
             CatalogItemCreationError::InvalidRequest(_) => ProblemDetail::bad_request(*request_id, ""),
         };
 
@@ -128,6 +130,7 @@ mod test {
         use catalog::catalog_items::item_number::ItemNumber;
         use catalog::railways::railway_id::RailwayId;
         use catalog::scales::scale_id::ScaleId;
+        use common::queries::errors::DatabaseError;
         use pretty_assertions::assert_eq;
         use reqwest::header::HeaderValue;
         use validator::ValidationErrors;
@@ -257,6 +260,32 @@ mod test {
         async fn it_should_return_an_internal_server_error_for_generic_errors() {
             let err = CatalogItemCreationResponseError {
                 error: CatalogItemCreationError::UnexpectedError(anyhow!("Something bad just happened")),
+                request_id: Uuid::new_v4(),
+            };
+
+            let status_code = err.status_code();
+            let response = err.error_response();
+
+            assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, status_code);
+            assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, response.status());
+
+            let expected_content_type: &HeaderValue = &HeaderValue::from_static("application/problem+json");
+            assert_eq!(Some(expected_content_type), response.headers().get(CONTENT_TYPE));
+
+            let http_response_values = from_http_response(response).await.expect("invalid http response");
+            http_response_values
+                .assert_status_is(StatusCode::INTERNAL_SERVER_ERROR)
+                .assert_type_is("https://httpstatuses.com/500")
+                .assert_detail_is("Something bad just happened")
+                .assert_title_is("Error: Internal Server Error");
+        }
+
+        #[tokio::test]
+        async fn it_should_return_an_internal_server_error_for_database_errors() {
+            let err = CatalogItemCreationResponseError {
+                error: CatalogItemCreationError::DatabaseError(DatabaseError::UnexpectedError(anyhow!(
+                    "Something bad just happened"
+                ))),
                 request_id: Uuid::new_v4(),
             };
 

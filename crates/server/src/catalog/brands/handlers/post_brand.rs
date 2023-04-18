@@ -54,6 +54,7 @@ impl ResponseError for BrandCreationResponseError {
         match self.error {
             BrandCreationError::BrandAlreadyExists(_) => StatusCode::CONFLICT,
             BrandCreationError::UnexpectedError(_) => StatusCode::INTERNAL_SERVER_ERROR,
+            BrandCreationError::DatabaseError(_) => StatusCode::INTERNAL_SERVER_ERROR,
             BrandCreationError::InvalidRequest(_) => StatusCode::BAD_REQUEST,
         }
     }
@@ -66,6 +67,7 @@ impl ResponseError for BrandCreationResponseError {
                 ProblemDetail::resource_already_exists(*request_id, &error.to_string())
             }
             BrandCreationError::UnexpectedError(why) => ProblemDetail::error(*request_id, &why.to_string()),
+            BrandCreationError::DatabaseError(why) => ProblemDetail::error(*request_id, &why.to_string()),
             BrandCreationError::InvalidRequest(_) => ProblemDetail::bad_request(*request_id, ""),
         };
 
@@ -107,6 +109,7 @@ mod test {
         use actix_web::http::header::CONTENT_TYPE;
         use anyhow::anyhow;
         use catalog::brands::brand_id::BrandId;
+        use common::queries::errors::DatabaseError;
         use pretty_assertions::assert_eq;
         use reqwest::header::HeaderValue;
         use validator::ValidationErrors;
@@ -163,6 +166,32 @@ mod test {
         async fn it_should_return_an_internal_server_error_for_generic_errors() {
             let err = BrandCreationResponseError {
                 error: BrandCreationError::UnexpectedError(anyhow!("Something bad just happened")),
+                request_id: Uuid::new_v4(),
+            };
+
+            let status_code = err.status_code();
+            let response = err.error_response();
+
+            assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, status_code);
+            assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, response.status());
+
+            let expected_content_type: &HeaderValue = &HeaderValue::from_static("application/problem+json");
+            assert_eq!(Some(expected_content_type), response.headers().get(CONTENT_TYPE));
+
+            let http_response_values = from_http_response(response).await.expect("invalid http response");
+            http_response_values
+                .assert_status_is(StatusCode::INTERNAL_SERVER_ERROR)
+                .assert_type_is("https://httpstatuses.com/500")
+                .assert_detail_is("Something bad just happened")
+                .assert_title_is("Error: Internal Server Error");
+        }
+
+        #[tokio::test]
+        async fn it_should_return_an_internal_server_error_for_database_errors() {
+            let err = BrandCreationResponseError {
+                error: BrandCreationError::DatabaseError(DatabaseError::UnexpectedError(anyhow!(
+                    "Something bad just happened"
+                ))),
                 request_id: Uuid::new_v4(),
             };
 

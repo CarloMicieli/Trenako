@@ -8,6 +8,7 @@ use async_trait::async_trait;
 use chrono::Utc;
 use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
+use common::queries::errors::DatabaseError;
 use common::unit_of_work::{Database, UnitOfWork};
 use rust_decimal::Decimal;
 use std::result;
@@ -47,6 +48,9 @@ pub enum ScaleCreationError {
 
     #[error("The scale request is not valid")]
     InvalidRequest(ValidationErrors),
+
+    #[error(transparent)]
+    DatabaseError(#[from] DatabaseError),
 
     #[error("The scale already exists (id: {0})")]
     ScaleAlreadyExists(ScaleId),

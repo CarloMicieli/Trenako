@@ -9,6 +9,7 @@ use common::contacts::{ContactInformation, MailAddress, PhoneNumber, WebsiteUrl}
 use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
+use common::queries::errors::DatabaseError;
 use common::socials::{Handler, Socials};
 use common::unit_of_work::{Database, UnitOfWork};
 use rust_decimal::Decimal;
@@ -49,6 +50,9 @@ pub enum RailwayCreationError {
 
     #[error("The railway request is not valid")]
     InvalidRequest(ValidationErrors),
+
+    #[error(transparent)]
+    DatabaseError(#[from] DatabaseError),
 
     #[error("The railway already exists (id: {0})")]
     RailwayAlreadyExists(RailwayId),

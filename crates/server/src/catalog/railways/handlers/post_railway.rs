@@ -54,6 +54,7 @@ impl ResponseError for RailwayCreationResponseError {
         match self.error {
             RailwayCreationError::RailwayAlreadyExists(_) => StatusCode::CONFLICT,
             RailwayCreationError::UnexpectedError(_) => StatusCode::INTERNAL_SERVER_ERROR,
+            RailwayCreationError::DatabaseError(_) => StatusCode::INTERNAL_SERVER_ERROR,
             RailwayCreationError::InvalidRequest(_) => StatusCode::BAD_REQUEST,
         }
     }
@@ -65,6 +66,7 @@ impl ResponseError for RailwayCreationResponseError {
             RailwayCreationError::RailwayAlreadyExists(_) => {
                 ProblemDetail::resource_already_exists(*request_id, &error.to_string())
             }
+            RailwayCreationError::DatabaseError(why) => ProblemDetail::error(*request_id, &why.to_string()),
             RailwayCreationError::UnexpectedError(why) => ProblemDetail::error(*request_id, &why.to_string()),
             RailwayCreationError::InvalidRequest(_) => ProblemDetail::bad_request(*request_id, ""),
         };
@@ -107,6 +109,7 @@ mod test {
         use actix_web::http::header::CONTENT_TYPE;
         use anyhow::anyhow;
         use catalog::railways::railway_id::RailwayId;
+        use common::queries::errors::DatabaseError;
         use pretty_assertions::assert_eq;
         use reqwest::header::HeaderValue;
         use validator::ValidationErrors;
@@ -163,6 +166,32 @@ mod test {
         async fn it_should_return_an_internal_server_error_for_generic_errors() {
             let err = RailwayCreationResponseError {
                 error: RailwayCreationError::UnexpectedError(anyhow!("Something bad just happened")),
+                request_id: Uuid::new_v4(),
+            };
+
+            let status_code = err.status_code();
+            let response = err.error_response();
+
+            assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, status_code);
+            assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, response.status());
+
+            let expected_content_type: &HeaderValue = &HeaderValue::from_static("application/problem+json");
+            assert_eq!(Some(expected_content_type), response.headers().get(CONTENT_TYPE));
+
+            let http_response_values = from_http_response(response).await.expect("invalid http response");
+            http_response_values
+                .assert_status_is(StatusCode::INTERNAL_SERVER_ERROR)
+                .assert_type_is("https://httpstatuses.com/500")
+                .assert_detail_is("Something bad just happened")
+                .assert_title_is("Error: Internal Server Error");
+        }
+
+        #[tokio::test]
+        async fn it_should_return_an_internal_server_error_for_database_errors() {
+            let err = RailwayCreationResponseError {
+                error: RailwayCreationError::DatabaseError(DatabaseError::UnexpectedError(anyhow!(
+                    "Something bad just happened"
+                ))),
                 request_id: Uuid::new_v4(),
             };
 

@@ -12,6 +12,7 @@ use common::contacts::{ContactInformation, MailAddress, PhoneNumber, WebsiteUrl}
 use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
 use common::organizations::OrganizationEntityType;
+use common::queries::errors::DatabaseError;
 use common::socials::{Handler, Socials};
 use common::unit_of_work::{Database, UnitOfWork};
 use std::result;
@@ -51,6 +52,9 @@ pub enum BrandCreationError {
 
     #[error("The brand already exists (id: {0})")]
     BrandAlreadyExists(BrandId),
+
+    #[error(transparent)]
+    DatabaseError(#[from] DatabaseError),
 
     #[error(transparent)]
     UnexpectedError(#[from] anyhow::Error),

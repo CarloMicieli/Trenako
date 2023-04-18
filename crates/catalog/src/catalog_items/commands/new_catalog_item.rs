@@ -23,6 +23,7 @@ use chrono::Utc;
 use common::length::Length;
 use common::localized_text::LocalizedText;
 use common::metadata::Metadata;
+use common::queries::errors::DatabaseError;
 use common::unit_of_work::{Database, UnitOfWork};
 use std::result;
 use thiserror::Error;
@@ -86,6 +87,9 @@ pub enum CatalogItemCreationError {
 
     #[error("The catalog item request is not valid")]
     InvalidRequest(ValidationErrors),
+
+    #[error(transparent)]
+    DatabaseError(#[from] DatabaseError),
 
     #[error("The catalog item already exists (id: {0})")]
     CatalogItemAlreadyExists(CatalogItemId),
