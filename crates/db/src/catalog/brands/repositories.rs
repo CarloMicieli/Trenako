@@ -168,10 +168,6 @@ impl<'db> FindBrandByIdRepository<'db, PgUnitOfWork<'db>> for BrandsRepository {
             .await
             .context("A database failure was encountered while trying to fetch a brand.")?;
 
-        result.map(row_to_brand).transpose()
+        result.to_output().map_err(DatabaseError::ConversionError)
     }
-}
-
-fn row_to_brand(row: BrandRow) -> Result<Brand, DatabaseError> {
-    row.to_output().map_err(DatabaseError::ConversionError)
 }

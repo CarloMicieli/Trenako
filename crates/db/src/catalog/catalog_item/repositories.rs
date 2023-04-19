@@ -286,12 +286,8 @@ impl<'db> FindCatalogItemByIdRepository<'db, PgUnitOfWork<'db>> for CatalogItems
         .await
         .context("A database failure was encountered while trying to fetch a catalog item.")?;
 
-        result.map(row_to_catalog_item).transpose()
+        result.to_output().map_err(DatabaseError::ConversionError)
     }
-}
-
-fn row_to_catalog_item(row: CatalogItemRow) -> Result<CatalogItem, DatabaseError> {
-    row.to_output().map_err(DatabaseError::ConversionError)
 }
 
 #[async_trait]
@@ -345,13 +341,6 @@ impl<'db> FindRollingStocksByCatalogItemIdRepository<'db, PgUnitOfWork<'db>> for
         .await
         .expect("A database failure was encountered while trying to fetch the rolling stock(s).");
 
-        let mut result = Vec::with_capacity(rolling_stocks.len());
-
-        for rolling_stock in rolling_stocks.into_iter() {
-            let rs = rolling_stock.to_output().map_err(DatabaseError::ConversionError)?;
-            result.push(rs);
-        }
-
-        Ok(result)
+        rolling_stocks.to_output().map_err(DatabaseError::ConversionError)
     }
 }

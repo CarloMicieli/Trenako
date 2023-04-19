@@ -153,13 +153,7 @@ impl<'db> FindAllRailwaysRepository<'db, PgUnitOfWork<'db>> for RailwaysReposito
         .await
         .context("A database failure was encountered while trying to fetch railways.")?;
 
-        let mut output: Vec<Railway> = Vec::with_capacity(results.len());
-        for row in results.into_iter() {
-            let railway = row.to_output().map_err(DatabaseError::ConversionError)?;
-            output.push(railway);
-        }
-
-        Ok(output)
+        results.to_output().map_err(DatabaseError::ConversionError)
     }
 }
 
@@ -208,10 +202,6 @@ impl<'db> FindRailwayByIdRepository<'db, PgUnitOfWork<'db>> for RailwaysReposito
         .await
         .context("A database failure was encountered while trying to fetch a railway.")?;
 
-        result.map(row_to_railway).transpose()
+        result.to_output().map_err(DatabaseError::ConversionError)
     }
-}
-
-fn row_to_railway(row: RailwayRow) -> Result<Railway, DatabaseError> {
-    row.to_output().map_err(DatabaseError::ConversionError)
 }

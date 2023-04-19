@@ -95,13 +95,7 @@ impl<'db> FindAllScalesRepository<'db, PgUnitOfWork<'db>> for ScalesRepository {
         .await
         .context("A database failure was encountered while trying to fetch scales.")?;
 
-        let mut output: Vec<Scale> = Vec::with_capacity(results.len());
-        for row in results.into_iter() {
-            let scale = row.to_output().map_err(DatabaseError::ConversionError)?;
-            output.push(scale);
-        }
-
-        Ok(output)
+        results.to_output().map_err(DatabaseError::ConversionError)
     }
 }
 
@@ -135,10 +129,6 @@ impl<'db> FindScaleByIdRepository<'db, PgUnitOfWork<'db>> for ScalesRepository {
         .await
         .context("A database failure was encountered while trying to fetch a scale.")?;
 
-        result.map(row_to_scale).transpose()
+        result.to_output().map_err(DatabaseError::ConversionError)
     }
-}
-
-fn row_to_scale(row: ScaleRow) -> Result<Scale, DatabaseError> {
-    row.to_output().map_err(DatabaseError::ConversionError)
 }

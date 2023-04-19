@@ -9,6 +9,23 @@ pub trait ToOutputConverter<T> {
     fn to_output(self) -> Result<T, ConversionErrors>;
 }
 
+impl<R: ToOutputConverter<T>, T> ToOutputConverter<Vec<T>> for Vec<R> {
+    fn to_output(self) -> Result<Vec<T>, ConversionErrors> {
+        let mut output = Vec::with_capacity(self.len());
+        for el in self.into_iter() {
+            let item = el.to_output()?;
+            output.push(item);
+        }
+        Ok(output)
+    }
+}
+
+impl<R: ToOutputConverter<T>, T> ToOutputConverter<Option<T>> for Option<R> {
+    fn to_output(self) -> Result<Option<T>, ConversionErrors> {
+        self.map(|it| it.to_output()).transpose()
+    }
+}
+
 pub trait Converter<T>: Sized {
     fn try_convert(row: &T) -> Result<Self, ConversionErrors>;
 }
@@ -57,6 +74,51 @@ impl fmt::Display for ConversionError {
 #[cfg(test)]
 mod test {
     use super::*;
+
+    mod to_output_tests {
+        use super::*;
+        use pretty_assertions::assert_eq;
+
+        #[test]
+        fn it_should_implement_to_output_for_vectors() {
+            let value = vec![1, 2, 3];
+            let result = value.to_output();
+            let output = result.expect("invalid conversion");
+            assert_eq!(vec!["1", "2", "3"], output);
+        }
+
+        #[test]
+        fn it_should_return_the_error_when_the_conversion_failed_for_the_vec() {
+            let value = vec![1, 42, 3];
+            let result = value.to_output();
+            assert!(result.is_err());
+        }
+
+        #[test]
+        fn it_should_implement_to_output_for_options() {
+            let value = Some(1);
+            let result = value.to_output();
+            let output = result.expect("invalid conversion");
+            assert_eq!(Some(String::from("1")), output);
+        }
+
+        #[test]
+        fn it_should_return_the_error_when_the_conversion_failed_for_the_option() {
+            let value = Some(42);
+            let result = value.to_output();
+            assert!(result.is_err());
+        }
+
+        impl ToOutputConverter<String> for i32 {
+            fn to_output(self) -> Result<String, ConversionErrors> {
+                if self == 42 {
+                    Err(ConversionErrors::new())
+                } else {
+                    Ok(self.to_string())
+                }
+            }
+        }
+    }
 
     mod conversion_error_tests {
         use super::*;
