@@ -25,6 +25,7 @@ chrono = { workspace = true }
 config = { workspace = true }
 lazy_static = { workspace = true }
 log = { workspace = true }
+mime = { workspace = true }
 regex = { workspace = true }
 rust_decimal = { workspace = true }
 secrecy = { workspace = true }

@@ -1,7 +1,8 @@
 use crate::web::trn::Trn;
 use actix_web::http::StatusCode;
-use actix_web::{HttpResponse, HttpResponseBuilder};
+use actix_web::{error, HttpResponse, HttpResponseBuilder};
 use serde::{Deserialize, Serialize};
+use std::fmt::{Display, Formatter};
 use url::Url;
 use uuid::Uuid;
 
@@ -98,6 +99,25 @@ impl ProblemDetail {
     }
 
     pub fn to_response(self) -> HttpResponse {
+        let status_code = StatusCode::from_u16(self.status).expect("invalid http status code");
+        HttpResponseBuilder::new(status_code)
+            .content_type(PROBLEM_DETAIL_CONTENT_TYPE)
+            .json(self)
+    }
+}
+
+impl Display for ProblemDetail {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.title)
+    }
+}
+
+impl error::ResponseError for ProblemDetail {
+    fn status_code(&self) -> StatusCode {
+        StatusCode::from_u16(self.status).unwrap_or(StatusCode::INTERNAL_SERVER_ERROR)
+    }
+
+    fn error_response(&self) -> HttpResponse {
         let status_code = StatusCode::from_u16(self.status).expect("invalid http status code");
         HttpResponseBuilder::new(status_code)
             .content_type(PROBLEM_DETAIL_CONTENT_TYPE)
