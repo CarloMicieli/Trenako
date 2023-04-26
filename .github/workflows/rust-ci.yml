@@ -51,7 +51,7 @@ jobs:
         if: ${{ steps.get-rustc-version.outputs.RUSTC_VERSION != steps.get-msrv.outputs.MSRV }}
 
       - name: Install cargo make
-        run: cargo install cargo-make@0.36.5
+        run: cargo install cargo-make@0.36.7
 
       - name: Set up cargo cache
         uses: actions/cache@v3

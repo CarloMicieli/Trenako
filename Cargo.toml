@@ -12,14 +12,14 @@ version = "0.1.0"
 edition = "2021"
 authors = ["CarloMicieli <piovarolo@gmail.com>"]
 license = "Apache-2.0"
-rust-version = "1.68"
+rust-version = "1.69"
 
 [workspace.dependencies]
 actix-web = "4.3.1"
 anyhow = "1.0.70"
 async-trait = "0.1.68"
 chrono = { version = "0.4.24", features = ["serde"] }
-clap = { version = "4.2.2", features = ["derive"] }
+clap = { version = "4.2.4", features = ["derive"] }
 config = { version = "0.13.3", default-features = false, features = ["yaml"] }
 dockertest = { git = "https://github.com/orcalabs/dockertest-rs", rev = "7e0a718", features = ["tls"] }
 http = "0.2.9"
@@ -28,11 +28,11 @@ itertools = "0.10.5"
 jsonschema = "0.17.0"
 lazy_static = "1.4.0"
 log = "0.4.17"
-mime = "0.3.1"
+mime = "0.3.17"
 once_cell = "1.17.1"
 pretty_assertions = "1.3.0"
 rand = "0.8.5"
-regex = "1.7.3"
+regex = "1.8.0"
 reqwest = { version = "0.11.16", features = ["json"] }
 rstest = "0.17.0"
 rust_decimal = { version = "1.29.1", features = ["serde-with-float"] }
