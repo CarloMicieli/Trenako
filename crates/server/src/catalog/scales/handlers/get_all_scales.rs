@@ -3,12 +3,17 @@ use crate::web::queries::{to_response_error, QueryResponseError};
 use actix_web::{web, HttpResponse};
 use catalog::scales::queries::find_all_scales::find_all_scales;
 use catalog::scales::scale::Scale;
+use common::queries::pagination::PageRequest;
 use common::unit_of_work::postgres::PgDatabase;
 use db::catalog::scales::repositories::ScalesRepository;
 use sqlx::PgPool;
 use tracing_actix_web::RequestId;
 
-pub async fn handle(request_id: RequestId, db_pool: web::Data<PgPool>) -> Result<HttpResponse, QueryResponseError> {
+pub async fn handle(
+    request_id: RequestId,
+    _page_request: web::Query<PageRequest>,
+    db_pool: web::Data<PgPool>,
+) -> Result<HttpResponse, QueryResponseError> {
     let database = PgDatabase::new(&db_pool);
     let repo = ScalesRepository;
 

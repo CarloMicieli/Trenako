@@ -27,6 +27,12 @@ GET http://{{host}}:{{port}}/api/scales
 
 ###
 
+# Get all scales (with pagination)
+// @no-log
+GET http://{{host}}:{{port}}/api/scales?offset=0&limit=10
+
+###
+
 # Get a scale by id
 // @no-log
 GET http://{{host}}:{{port}}/api/scales/h0

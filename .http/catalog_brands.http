@@ -45,6 +45,12 @@ GET http://{{host}}:{{port}}/api/brands
 
 ###
 
+# Get all brands (with pagination)
+// @no-log
+GET http://{{host}}:{{port}}/api/brands?offset=0&limit=10
+
+###
+
 # Get a brand by id
 // @no-log
 GET http://{{host}}:{{port}}/api/brands/acme

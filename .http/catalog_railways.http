@@ -44,6 +44,12 @@ GET http://{{host}}:{{port}}/api/railways
 
 ###
 
+# Get all railways (with pagination)
+// @no-log
+GET http://{{host}}:{{port}}/api/railways?offset=0&limit=10
+
+###
+
 # Get a railway by id
 // @no-log
 GET http://{{host}}:{{port}}/api/railways/fs

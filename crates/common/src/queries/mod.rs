@@ -2,3 +2,4 @@
 
 pub mod converters;
 pub mod errors;
+pub mod pagination;

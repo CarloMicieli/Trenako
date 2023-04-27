@@ -31,6 +31,17 @@ paths:
   /api/brands:
     get:
       summary: get the list of brands
+      parameters:
+        - in: query
+          name: offset
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       tags:
         - brands
       operationId: get-brands
@@ -405,6 +416,17 @@ paths:
   /api/railways:
     get:
       summary: get the list of railways
+      parameters:
+        - in: query
+          name: offset
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       tags:
         - railways
       operationId: get-railways
@@ -525,6 +547,17 @@ paths:
   /api/scales:
     get:
       summary: get the list of scales
+      parameters:
+        - in: query
+          name: offset
+          schema:
+            type: integer
+          description: The number of items to skip before starting to collect the result set
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: The numbers of items to return
       tags:
         - scales
       operationId: get-scales
@@ -643,6 +676,12 @@ paths:
 
 components:
   responses:
+    BadRequestError:
+      description: the resource was not well formed
+      content:
+        "application/vnd.trenako.problem+json":
+          schema:
+            $ref: "#/components/schemas/ProblemDetail"
     ConflictError:
       description: a conflict has occurred
       content:
