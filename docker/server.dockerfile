@@ -35,7 +35,7 @@ COPY --from=cacher /app/target target
 COPY --from=cacher /usr/local/cargo /usr/local/cargo
 RUN cargo build --release --bin trenako-server
 
-FROM debian:buster-slim as runtime
+FROM debian:bullseye-slim as runtime
 LABEL maintainer="Carlo Micieli <mail@trenako.com>"
 LABEL description="The trenako backend component"
 
