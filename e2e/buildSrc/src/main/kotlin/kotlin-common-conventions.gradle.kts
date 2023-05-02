@@ -131,6 +131,7 @@ spotless {
         toggleOffOn("fmt:off", "fmt:on")
         indentWithSpaces()
         trimTrailingWhitespace()
+        licenseHeaderFile("${project.rootDir}/.spotless/header.txt")
     }
 
     kotlinGradle {

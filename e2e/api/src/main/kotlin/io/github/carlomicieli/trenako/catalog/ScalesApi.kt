@@ -20,8 +20,8 @@
  */
 package io.github.carlomicieli.trenako.catalog
 
-import io.github.carlomicieli.trenako.model.Brand
-import io.github.carlomicieli.trenako.model.BrandRequest
+import io.github.carlomicieli.trenako.model.Scale
+import io.github.carlomicieli.trenako.model.ScaleRequest
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
@@ -33,20 +33,20 @@ import org.springframework.web.service.annotation.PutExchange
 import reactor.core.publisher.Mono
 
 @HttpExchange(
-    url = "/api/brands",
+    url = "/api/scales",
     accept = [MediaType.APPLICATION_JSON_VALUE],
     contentType = MediaType.APPLICATION_JSON_VALUE
 )
-interface BrandsApi {
+interface ScalesApi {
     @GetExchange
-    fun getBrands(): Mono<ResponseEntity<List<Brand>>>
+    fun getScales(): Mono<ResponseEntity<List<Scale>>>
 
     @GetExchange("{id}")
-    fun getBrandById(@PathVariable id: String): Mono<ResponseEntity<Brand?>>
+    fun getScaleById(@PathVariable id: String): Mono<ResponseEntity<Scale?>>
 
     @PostExchange
-    fun postBrand(@RequestBody brand: BrandRequest): Mono<ResponseEntity<Unit>>
+    fun postScale(@RequestBody scale: ScaleRequest): Mono<ResponseEntity<Unit>>
 
     @PutExchange("/{id}")
-    fun putBrand(@PathVariable id: String, @RequestBody brand: BrandRequest): Mono<ResponseEntity<Unit>>
+    fun putScale(@PathVariable id: String, @RequestBody scale: ScaleRequest): Mono<ResponseEntity<Unit>>
 }

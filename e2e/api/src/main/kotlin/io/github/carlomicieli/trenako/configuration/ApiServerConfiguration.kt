@@ -18,19 +18,9 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package io.github.carlomicieli.trenako
+package io.github.carlomicieli.trenako.configuration
 
-import org.springframework.boot.Banner
-import org.springframework.boot.WebApplicationType
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+import org.springframework.boot.context.properties.ConfigurationProperties
 
-@SpringBootApplication
-class ApiSpringApplication
-
-fun main(args: Array<String>) {
-    runApplication<ApiSpringApplication>(*args) {
-        webApplicationType = WebApplicationType.NONE
-        setBannerMode(Banner.Mode.OFF)
-    }
-}
+@ConfigurationProperties(prefix = "api.server")
+data class ApiServerConfiguration(var endpointUrl: String = "http://localhost:5000")

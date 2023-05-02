@@ -18,19 +18,11 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package io.github.carlomicieli.trenako
+package io.github.carlomicieli.trenako.database.converters
 
-import org.springframework.boot.Banner
-import org.springframework.boot.WebApplicationType
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
+import io.github.carlomicieli.trenako.model.BrandStatus
+import org.springframework.data.convert.WritingConverter
+import org.springframework.data.r2dbc.convert.EnumWriteSupport
 
-@SpringBootApplication
-class ApiSpringApplication
-
-fun main(args: Array<String>) {
-    runApplication<ApiSpringApplication>(*args) {
-        webApplicationType = WebApplicationType.NONE
-        setBannerMode(Banner.Mode.OFF)
-    }
-}
+@WritingConverter
+object BrandStatusConverter : EnumWriteSupport<BrandStatus>()

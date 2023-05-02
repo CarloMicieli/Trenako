@@ -476,7 +476,7 @@ components:
           properties:
             class_name:
               description: |
-                the class of locomotives. The class is a group of locomotives built to a common design, 
+                the class of locomotives. The class is a group of locomotives built to a common design,
                 typically for a single railroad or railway
               type: string
             road_number:
@@ -511,7 +511,7 @@ components:
           properties:
             class_name:
               description: |
-                the class of locomotives. The class is a group of locomotives built to a common design, 
+                the class of locomotives. The class is a group of locomotives built to a common design,
                 typically for a single railroad or railway
               type: string
               maxLength: 15
@@ -812,14 +812,15 @@ components:
     RailwayGauge:
       description: the railway gauge
       type: object
-      meters:
-        description: the distance between the two rails in meters
-        type: number
-        format: float
-        minimum: 0.1
-        maximum: 2.0
-      track_gauge:
-        $ref: "#/components/schemas/TrackGauge"
+      properties:
+        meters:
+          description: the distance between the two rails in meters
+          type: number
+          format: float
+          minimum: 0.1
+          maximum: 2.0
+        track_gauge:
+          $ref: "#/components/schemas/TrackGauge"
 
     RailwayStatus:
       description: the railway activity status
@@ -966,20 +967,21 @@ components:
     ScaleGauge:
       description: the track gauge information for a modelling scale
       type: object
-      millimeters:
-        description: the distance between the rails in millimeters
-        type: number
-        format: float
-        minimum: 6.5
-        maximum: 200.0
-      inches:
-        description: the distance between the rails in inches
-        type: number
-        format: float
-        minimum: 0.01
-        maximum: 15.00
-      track_gauge:
-        $ref: "#/components/schemas/TrackGauge"
+      properties:
+        millimeters:
+          description: the distance between the rails in millimeters
+          type: number
+          format: float
+          minimum: 6.5
+          maximum: 200.0
+        inches:
+          description: the distance between the rails in inches
+          type: number
+          format: float
+          minimum: 0.01
+          maximum: 15.00
+        track_gauge:
+          $ref: "#/components/schemas/TrackGauge"
 
     ScaleRequest:
       description: a request to create/update rail transport modelling scales

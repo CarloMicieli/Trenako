@@ -20,8 +20,8 @@
  */
 package io.github.carlomicieli.trenako.catalog
 
-import io.github.carlomicieli.trenako.model.Brand
-import io.github.carlomicieli.trenako.model.BrandRequest
+import io.github.carlomicieli.trenako.model.Railway
+import io.github.carlomicieli.trenako.model.RailwayRequest
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
@@ -33,20 +33,20 @@ import org.springframework.web.service.annotation.PutExchange
 import reactor.core.publisher.Mono
 
 @HttpExchange(
-    url = "/api/brands",
+    url = "/api/railways",
     accept = [MediaType.APPLICATION_JSON_VALUE],
     contentType = MediaType.APPLICATION_JSON_VALUE
 )
-interface BrandsApi {
+interface RailwaysApi {
     @GetExchange
-    fun getBrands(): Mono<ResponseEntity<List<Brand>>>
+    fun getRailways(): Mono<ResponseEntity<List<Railway>>>
 
     @GetExchange("{id}")
-    fun getBrandById(@PathVariable id: String): Mono<ResponseEntity<Brand?>>
+    fun getRailwayById(@PathVariable id: String): Mono<ResponseEntity<Railway?>>
 
     @PostExchange
-    fun postBrand(@RequestBody brand: BrandRequest): Mono<ResponseEntity<Unit>>
+    fun postRailway(@RequestBody railway: RailwayRequest): Mono<ResponseEntity<Unit>>
 
     @PutExchange("/{id}")
-    fun putBrand(@PathVariable id: String, @RequestBody brand: BrandRequest): Mono<ResponseEntity<Unit>>
+    fun putRailway(@PathVariable id: String, @RequestBody railway: RailwayRequest): Mono<ResponseEntity<Unit>>
 }

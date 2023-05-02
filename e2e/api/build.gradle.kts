@@ -9,12 +9,13 @@ plugins {
 
 dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+    implementation("org.postgresql:r2dbc-postgresql:1.0.0.RELEASE")
 }
 
 openApiGenerate {
     generatorName.set("java")
-    inputSpec.set("${project.projectDir}/src/main/resources/openapi/api-schema.yaml")
+    inputSpec.set("${project.projectDir}/src/main/resources/openapi/openapi.json")
     outputDir.set("${project.buildDir}/generated")
     apiPackage.set("io.github.carlomicieli.trenako.api")
     modelPackage.set("io.github.carlomicieli.trenako.model")

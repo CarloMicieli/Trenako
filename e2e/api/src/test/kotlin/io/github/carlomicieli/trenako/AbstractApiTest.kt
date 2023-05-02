@@ -1,3 +1,23 @@
+/*
+ *   Copyright (c) 2022-2023 (C) Carlo Micieli
+ *
+ *    Licensed to the Apache Software Foundation (ASF) under one
+ *    or more contributor license agreements.  See the NOTICE file
+ *    distributed with this work for additional information
+ *    regarding copyright ownership.  The ASF licenses this file
+ *    to you under the Apache License, Version 2.0 (the
+ *    "License"); you may not use this file except in compliance
+ *    with the License.  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing,
+ *    software distributed under the License is distributed on an
+ *    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *    KIND, either express or implied.  See the License for the
+ *    specific language governing permissions and limitations
+ *    under the License.
+ */
 package io.github.carlomicieli.trenako
 
 import org.slf4j.Logger
@@ -27,23 +47,32 @@ abstract class AbstractApiTest {
 
         private const val POSTGRES_IMAGE = "postgres:15.2-alpine"
         private const val TRENAKO_SERVER_IMAGE = "carlomicieli/trenako-server"
+        private const val TRENAKO_MIGRATIONS_IMAGE = "carlomicieli/trenako-migrations"
 
         private const val USERNAME: String = "postgres"
         private const val PASSWORD: String = "mysecretpassword"
+        private const val DATABASE_HOST: String = "db"
         private const val DATABASE_NAME: String = "trenakodb"
+        private const val DATABASE_PORT: Int = 5432
 
         private val postgresContainer: PostgreSQLContainer<*> = PostgreSQLContainer(POSTGRES_IMAGE)
             .withDatabaseName(DATABASE_NAME)
             .withUsername(USERNAME)
             .withPassword(PASSWORD)
-            .withExposedPorts(5432)
+            .withExposedPorts(DATABASE_PORT)
             .withNetwork(network)
             .withNetworkAliases("db")
-            .withInitScript("init-db/init_schema.sql")
+
+        private val migrationsContainer: GenericContainer<*> = GenericContainer(migrationsImageName())
+            .withEnv("DATABASE_URL", "postgresql://$USERNAME:$PASSWORD@$DATABASE_HOST:$DATABASE_PORT/$DATABASE_NAME")
+            .withNetwork(network)
+            .withNetworkAliases("db_migrations")
+            .dependsOn(postgresContainer)
+            .withImagePullPolicy(PullPolicy.defaultPolicy())
 
         private val serverContainer: GenericContainer<*> = GenericContainer(serverImageName())
-            .withEnv("DATABASE__HOST", "db")
-            .withEnv("DATABASE__PORT", "5432")
+            .withEnv("DATABASE__HOST", DATABASE_HOST)
+            .withEnv("DATABASE__PORT", DATABASE_PORT.toString())
             .withEnv("DATABASE__NAME", DATABASE_NAME)
             .withEnv("DATABASE__USERNAME", USERNAME)
             .withEnv("DATABASE__PASSWORD", PASSWORD)
@@ -51,12 +80,15 @@ abstract class AbstractApiTest {
             .withNetwork(network)
             .withNetworkAliases("server")
             .waitingFor(Wait.forHttp("/health-check"))
-            .dependsOn(postgresContainer)
+            .dependsOn(postgresContainer, migrationsContainer)
             .withImagePullPolicy(PullPolicy.defaultPolicy())
 
         init {
             postgresContainer.start()
             postgresContainer.followOutput(Slf4jLogConsumer(LOGGER))
+
+            migrationsContainer.start()
+            migrationsContainer.followOutput(Slf4jLogConsumer(LOGGER))
 
             serverContainer.start()
             serverContainer.followOutput(Slf4jLogConsumer(LOGGER))
@@ -66,7 +98,7 @@ abstract class AbstractApiTest {
         @JvmStatic
         fun registerDynamicProperties(registry: DynamicPropertyRegistry) {
             with(registry) {
-                add("app.endpointUrl") {
+                add("api.server.endpointUrl") {
                     val port = serverContainer.getMappedPort(5000)
                     "http://localhost:$port"
                 }
@@ -80,10 +112,26 @@ abstract class AbstractApiTest {
                 add("spring.datasource.password") {
                     postgresContainer.password
                 }
+
+                add("spring.r2dbc.url") {
+                    postgresContainer.jdbcUrl.replace("jdbc:", "r2dbc:")
+                }
+                add("spring.r2dbc.username") {
+                    postgresContainer.username
+                }
+                add("spring.r2dbc.password") {
+                    postgresContainer.password
+                }
             }
         }
 
-        fun serverImageName(): String {
+        private fun migrationsImageName(): String {
+            val registry: String = System.getenv("REGISTRY_NAME") ?: "ghr.io"
+            val tag: String = System.getenv("TAG") ?: "latest"
+            return "$registry/$TRENAKO_MIGRATIONS_IMAGE:$tag"
+        }
+
+        private fun serverImageName(): String {
             val registry: String = System.getenv("REGISTRY_NAME") ?: "ghr.io"
             val tag: String = System.getenv("TAG") ?: "latest"
             return "$registry/$TRENAKO_SERVER_IMAGE:$tag"

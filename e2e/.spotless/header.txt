@@ -1,5 +1,5 @@
 /*
- *   Copyright (c) 2022-2023 (C) Carlo Micieli
+ *   Copyright (c) 2022-$YEAR (C) Carlo Micieli
  *
  *    Licensed to the Apache Software Foundation (ASF) under one
  *    or more contributor license agreements.  See the NOTICE file
@@ -18,19 +18,3 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package io.github.carlomicieli.trenako
-
-import org.springframework.boot.Banner
-import org.springframework.boot.WebApplicationType
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
-
-@SpringBootApplication
-class ApiSpringApplication
-
-fun main(args: Array<String>) {
-    runApplication<ApiSpringApplication>(*args) {
-        webApplicationType = WebApplicationType.NONE
-        setBannerMode(Banner.Mode.OFF)
-    }
-}

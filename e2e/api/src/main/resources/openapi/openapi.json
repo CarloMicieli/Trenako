@@ -1,0 +1,2735 @@
+{
+  "openapi" : "3.0.9",
+  "info" : {
+    "contact" : {
+      "email" : "mail@trenako.com"
+    },
+    "description" : "A model railway collections api",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "https://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "termsOfService" : "https://www.trenako.com/terms",
+    "title" : "Trenako",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "description" : "local",
+    "url" : "http://localhost:5000"
+  } ],
+  "paths" : {
+    "/health-check" : {
+      "get" : {
+        "operationId" : "health-check",
+        "responses" : {
+          "200" : {
+            "description" : "the application is healthy"
+          },
+          "503" : {
+            "description" : "the application is not available (for example when the database is not reachable)"
+          }
+        },
+        "summary" : "the health check endpoint",
+        "tags" : [ "monitoring" ]
+      }
+    },
+    "/api/brands" : {
+      "get" : {
+        "operationId" : "get-brands",
+        "parameters" : [ {
+          "description" : "The number of items to skip before starting to collect the result set",
+          "explode" : true,
+          "in" : "query",
+          "name" : "offset",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "The numbers of items to return",
+          "explode" : true,
+          "in" : "query",
+          "name" : "limit",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "items" : {
+                    "$ref" : "#/components/schemas/Brand"
+                  },
+                  "type" : "array"
+                }
+              }
+            },
+            "description" : "a brands list"
+          },
+          "204" : {
+            "description" : "no brands were found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "get the list of brands",
+        "tags" : [ "brands" ]
+      },
+      "post" : {
+        "operationId" : "create-brand",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BrandRequest"
+              }
+            }
+          },
+          "description" : "a new brand",
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "the new brand has been created",
+            "headers" : {
+              "location" : {
+                "description" : "the uri for the newly created brand",
+                "explode" : false,
+                "schema" : {
+                  "format" : "uri",
+                  "type" : "string"
+                },
+                "style" : "simple"
+              }
+            }
+          },
+          "409" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the brand already exists"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "create a new model railway brand",
+        "tags" : [ "brands" ]
+      }
+    },
+    "/api/brands/{brand}" : {
+      "delete" : {
+        "operationId" : "delete-brand",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "brand",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "the brand has been removed successfully"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "409" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the brand is in use, not possible to delete it"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "delete a brand",
+        "tags" : [ "brands" ]
+      },
+      "get" : {
+        "operationId" : "get-brand",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "brand",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Brand"
+                }
+              }
+            },
+            "description" : "OK"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "get a brand",
+        "tags" : [ "brands" ]
+      },
+      "put" : {
+        "operationId" : "update-brand",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "brand",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BrandRequest"
+              }
+            }
+          },
+          "description" : "the updated brand",
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "the brand has been updated"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "update a brand",
+        "tags" : [ "brands" ]
+      }
+    },
+    "/api/catalog-items" : {
+      "post" : {
+        "operationId" : "create-catalog-item",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CatalogItemRequest"
+              }
+            }
+          },
+          "description" : "a new catalog item",
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "a new catalog item has been created",
+            "headers" : {
+              "location" : {
+                "description" : "the uri for the new catalog item",
+                "explode" : false,
+                "schema" : {
+                  "format" : "uri",
+                  "type" : "string"
+                },
+                "style" : "simple"
+              }
+            }
+          },
+          "400" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not well formed"
+          },
+          "409" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "a conflict has occurred"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "create a new catalog item",
+        "tags" : [ "catalog-items" ]
+      }
+    },
+    "/api/catalog-items/{catalogItemId}" : {
+      "get" : {
+        "operationId" : "get-catalog-item",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "catalogItemId",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CatalogItem"
+                }
+              }
+            },
+            "description" : "a catalog item"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "get a catalog item",
+        "tags" : [ "catalog-items" ]
+      },
+      "put" : {
+        "operationId" : "update-catalog-item",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "catalogItemId",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CatalogItemRequest"
+              }
+            }
+          },
+          "description" : "the updated catalog item",
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "catalog item updated"
+          },
+          "400" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not well formed"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "409" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "a conflict has occurred"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "update a catalog item",
+        "tags" : [ "catalog-items" ]
+      }
+    },
+    "/api/catalog-items/{catalogItemId}/rolling-stocks" : {
+      "get" : {
+        "operationId" : "get-rolling-stocks",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "catalogItemId",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "items" : {
+                    "$ref" : "#/components/schemas/get_rolling_stocks_200_response_inner"
+                  },
+                  "type" : "array"
+                }
+              }
+            },
+            "description" : "the rolling stocks list"
+          },
+          "204" : {
+            "description" : "the catalog item contains no rolling stocks"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "get the rolling stocks for the catalog item",
+        "tags" : [ "catalog-items" ]
+      },
+      "post" : {
+        "operationId" : "add-rolling-stock",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "catalogItemId",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RollingStockRequest"
+              }
+            }
+          },
+          "description" : "a new rolling stock",
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "rolling stock created",
+            "headers" : {
+              "location" : {
+                "description" : "the uri for the new rolling stock",
+                "explode" : false,
+                "schema" : {
+                  "format" : "uri",
+                  "type" : "string"
+                },
+                "style" : "simple"
+              }
+            }
+          },
+          "400" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not well formed"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "add a new rolling stock to this catalog item",
+        "tags" : [ "catalog-items" ]
+      }
+    },
+    "/api/catalog-items/{catalogItemId}/rolling-stocks/{rollingStockId}" : {
+      "delete" : {
+        "operationId" : "delete-rolling-stock",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "catalogItemId",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        }, {
+          "explode" : false,
+          "in" : "path",
+          "name" : "rollingStockId",
+          "required" : true,
+          "schema" : {
+            "format" : "urn",
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "rolling stock deleted"
+          },
+          "400" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not well formed"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "delete the rolling stock from the catalog item",
+        "tags" : [ "catalog-items" ]
+      },
+      "get" : {
+        "operationId" : "get-rolling-stock",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "catalogItemId",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        }, {
+          "explode" : false,
+          "in" : "path",
+          "name" : "rollingStockId",
+          "required" : true,
+          "schema" : {
+            "format" : "urn",
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/get_rolling_stocks_200_response_inner"
+                }
+              }
+            },
+            "description" : "a rolling stock"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "get the rolling stock",
+        "tags" : [ "catalog-items" ]
+      },
+      "put" : {
+        "operationId" : "update-rolling-stock",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "catalogItemId",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        }, {
+          "explode" : false,
+          "in" : "path",
+          "name" : "rollingStockId",
+          "required" : true,
+          "schema" : {
+            "format" : "urn",
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RollingStockRequest"
+              }
+            }
+          },
+          "description" : "a rolling stock update",
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "rolling stock updated"
+          },
+          "400" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not well formed"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "update the rolling stock in the catalog item",
+        "tags" : [ "catalog-items" ]
+      }
+    },
+    "/api/railways" : {
+      "get" : {
+        "operationId" : "get-railways",
+        "parameters" : [ {
+          "description" : "The number of items to skip before starting to collect the result set",
+          "explode" : true,
+          "in" : "query",
+          "name" : "offset",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "The numbers of items to return",
+          "explode" : true,
+          "in" : "query",
+          "name" : "limit",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "items" : {
+                    "$ref" : "#/components/schemas/Railway"
+                  },
+                  "type" : "array"
+                }
+              }
+            },
+            "description" : "a railways list"
+          },
+          "204" : {
+            "description" : "no railway has been found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "get the list of railways",
+        "tags" : [ "railways" ]
+      },
+      "post" : {
+        "operationId" : "create-railway",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RailwayRequest"
+              }
+            }
+          },
+          "description" : "a new railway",
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "the new railway has been created",
+            "headers" : {
+              "location" : {
+                "description" : "the uri for the newly created railway",
+                "explode" : false,
+                "schema" : {
+                  "format" : "uri",
+                  "type" : "string"
+                },
+                "style" : "simple"
+              }
+            }
+          },
+          "400" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not well formed"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "create a new railway",
+        "tags" : [ "railways" ]
+      }
+    },
+    "/api/railways/{railway}" : {
+      "delete" : {
+        "operationId" : "delete-railway",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "railway",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "the railway has been removed"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "409" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the railway is in use, not possible to delete it"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "delete a railway",
+        "tags" : [ "railways" ]
+      },
+      "get" : {
+        "operationId" : "get-railway",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "railway",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Railway"
+                }
+              }
+            },
+            "description" : "a railway"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "get a railway",
+        "tags" : [ "railways" ]
+      },
+      "put" : {
+        "operationId" : "update-railway",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "railway",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RailwayRequest"
+              }
+            }
+          },
+          "description" : "a new railway",
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "the railway has been updated"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "update a railway",
+        "tags" : [ "railways" ]
+      }
+    },
+    "/api/scales" : {
+      "get" : {
+        "operationId" : "get-scales",
+        "parameters" : [ {
+          "description" : "The number of items to skip before starting to collect the result set",
+          "explode" : true,
+          "in" : "query",
+          "name" : "offset",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        }, {
+          "description" : "The numbers of items to return",
+          "explode" : true,
+          "in" : "query",
+          "name" : "limit",
+          "required" : false,
+          "schema" : {
+            "type" : "integer"
+          },
+          "style" : "form"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "items" : {
+                    "$ref" : "#/components/schemas/Scale"
+                  },
+                  "type" : "array"
+                }
+              }
+            },
+            "description" : "a scales list"
+          },
+          "204" : {
+            "description" : "no scales were found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "get the list of scales",
+        "tags" : [ "scales" ]
+      },
+      "post" : {
+        "operationId" : "create-scale",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ScaleRequest"
+              }
+            }
+          },
+          "description" : "a new scale",
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "description" : "a new scale has been created",
+            "headers" : {
+              "location" : {
+                "description" : "the uri for the newly scale railway",
+                "explode" : false,
+                "schema" : {
+                  "format" : "uri",
+                  "type" : "string"
+                },
+                "style" : "simple"
+              }
+            }
+          },
+          "400" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not well formed"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "create a new scale",
+        "tags" : [ "scales" ]
+      }
+    },
+    "/api/scales/{scale}" : {
+      "delete" : {
+        "operationId" : "delete-scale",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "scale",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "the scale has been removed"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "409" : {
+            "description" : "scale is in use"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "delete a scale",
+        "tags" : [ "scales" ]
+      },
+      "get" : {
+        "operationId" : "get-scale",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "scale",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Scale"
+                }
+              }
+            },
+            "description" : "a model railway scale"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "get a scale",
+        "tags" : [ "scales" ]
+      },
+      "put" : {
+        "operationId" : "update-scale",
+        "parameters" : [ {
+          "explode" : false,
+          "in" : "path",
+          "name" : "scale",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          },
+          "style" : "simple"
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ScaleRequest"
+              }
+            }
+          },
+          "description" : "the updated scale",
+          "required" : true
+        },
+        "responses" : {
+          "204" : {
+            "description" : "the scale has been updated"
+          },
+          "400" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not well formed"
+          },
+          "404" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "the resource was not found"
+          },
+          "500" : {
+            "content" : {
+              "application/vnd.trenako.problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
+          }
+        },
+        "summary" : "updates a scale",
+        "tags" : [ "scales" ]
+      }
+    }
+  },
+  "components" : {
+    "responses" : {
+      "BadRequestError" : {
+        "content" : {
+          "application/vnd.trenako.problem+json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetail"
+            }
+          }
+        },
+        "description" : "the resource was not well formed"
+      },
+      "ConflictError" : {
+        "content" : {
+          "application/vnd.trenako.problem+json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetail"
+            }
+          }
+        },
+        "description" : "a conflict has occurred"
+      },
+      "Error" : {
+        "content" : {
+          "application/vnd.trenako.problem+json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetail"
+            }
+          }
+        },
+        "description" : "an error has occurred"
+      },
+      "NotFoundError" : {
+        "content" : {
+          "application/vnd.trenako.problem+json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ProblemDetail"
+            }
+          }
+        },
+        "description" : "the resource was not found"
+      }
+    },
+    "schemas" : {
+      "ProblemDetail" : {
+        "description" : "A machine-readable format for specifying errors in HTTP API\nresponses based on https://tools.ietf.org/html/rfc7807\n",
+        "properties" : {
+          "type" : {
+            "description" : "A URI reference [RFC3986] that identifies the problem type. This specification\nencourages that, when dereferenced, it provide human-readable documentation for the\nproblem type (e.g., using HTML [W3C.REC-html5-20141028]). When this member is not present,\nits value is assumed to be \"about:blank\".\n",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "title" : {
+            "description" : "A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence\nto occurrence of the problem, except for purposes of localization(e.g., using proactive\ncontent negotiation; see[RFC7231], Section 3.4).\n",
+            "example" : "Service Unavailable",
+            "type" : "string"
+          },
+          "detail" : {
+            "description" : "A human-readable explanation specific to this occurrence of the problem.",
+            "type" : "string"
+          },
+          "status" : {
+            "description" : "The HTTP status code([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.",
+            "example" : 503,
+            "exclusiveMaximum" : true,
+            "format" : "int32",
+            "maximum" : 600,
+            "minimum" : 400,
+            "type" : "integer"
+          },
+          "instance" : {
+            "description" : "A TRN reference that identifies the specific occurrence of the problem.\nIt may or may not yield further information if dereferenced.\n",
+            "format" : "uri",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "Brand" : {
+        "description" : "a model railways manufacturer",
+        "properties" : {
+          "brand_id" : {
+            "description" : "the brand unique identifier (an url encoded string)",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "name" : {
+            "description" : "the brand name",
+            "type" : "string"
+          },
+          "registered_company_name" : {
+            "description" : "the registered company name for this brand",
+            "type" : "string"
+          },
+          "organization_entity_type" : {
+            "$ref" : "#/components/schemas/OrganizationEntityType"
+          },
+          "group_name" : {
+            "description" : "the group name in case the brand is part of a group",
+            "type" : "string"
+          },
+          "description" : {
+            "$ref" : "#/components/schemas/LocalizedText"
+          },
+          "address" : {
+            "$ref" : "#/components/schemas/Address"
+          },
+          "contact_info" : {
+            "$ref" : "#/components/schemas/ContactInfo"
+          },
+          "kind" : {
+            "$ref" : "#/components/schemas/BrandKind"
+          },
+          "status" : {
+            "$ref" : "#/components/schemas/BrandStatus"
+          },
+          "socials" : {
+            "$ref" : "#/components/schemas/Socials"
+          },
+          "metadata" : {
+            "$ref" : "#/components/schemas/Metadata"
+          }
+        },
+        "required" : [ "brand_id", "kind", "metadata", "name" ],
+        "type" : "object"
+      },
+      "BrandKind" : {
+        "description" : "the kind of brand",
+        "enum" : [ "BRASS_MODELS", "INDUSTRIAL" ],
+        "type" : "string"
+      },
+      "BrandStatus" : {
+        "description" : "the status of a brand",
+        "enum" : [ "ACTIVE", "OUT_OF_BUSINESS" ],
+        "type" : "string"
+      },
+      "BrandRequest" : {
+        "description" : "a request to create/update model railways brands",
+        "properties" : {
+          "name" : {
+            "description" : "the brand name",
+            "maxLength" : 50,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "registered_company_name" : {
+            "description" : "the registered company name for this brand",
+            "maxLength" : 100,
+            "type" : "string"
+          },
+          "organization_entity_type" : {
+            "$ref" : "#/components/schemas/OrganizationEntityType"
+          },
+          "group_name" : {
+            "description" : "the group name in case the brand is part of a group",
+            "maxLength" : 100,
+            "type" : "string"
+          },
+          "description" : {
+            "$ref" : "#/components/schemas/LocalizedText"
+          },
+          "contact_info" : {
+            "$ref" : "#/components/schemas/ContactInfo"
+          },
+          "address" : {
+            "$ref" : "#/components/schemas/Address"
+          },
+          "socials" : {
+            "$ref" : "#/components/schemas/Socials"
+          },
+          "kind" : {
+            "$ref" : "#/components/schemas/BrandKind"
+          },
+          "status" : {
+            "$ref" : "#/components/schemas/BrandStatus"
+          }
+        },
+        "required" : [ "kind", "name" ],
+        "type" : "object"
+      },
+      "CatalogItemRequest" : {
+        "description" : "the request to create/update a catalog item",
+        "properties" : {
+          "brand" : {
+            "description" : "the brand name",
+            "maxLength" : 50,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "item_number" : {
+            "description" : "the item number",
+            "maxLength" : 25,
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "scale" : {
+            "description" : "the scale name",
+            "maxLength" : 50,
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "category" : {
+            "$ref" : "#/components/schemas/CatalogItemCategory"
+          },
+          "description" : {
+            "$ref" : "#/components/schemas/LocalizedText"
+          },
+          "details" : {
+            "$ref" : "#/components/schemas/LocalizedText"
+          },
+          "power_method" : {
+            "$ref" : "#/components/schemas/PowerMethod"
+          },
+          "delivery_date" : {
+            "description" : "this delivery date (either the year or the quarter)",
+            "maxLength" : 7,
+            "minLength" : 4,
+            "type" : "string"
+          },
+          "availability_status" : {
+            "$ref" : "#/components/schemas/AvailabilityStatus"
+          },
+          "rolling_stocks" : {
+            "items" : {
+              "$ref" : "#/components/schemas/CatalogItemRequest_rolling_stocks_inner"
+            },
+            "type" : "array"
+          },
+          "count" : {
+            "description" : "the number of rolling stocks for this catalog item",
+            "format" : "int32",
+            "maximum" : 99,
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        },
+        "required" : [ "brand", "category", "count", "item_number", "power_method", "scale" ],
+        "type" : "object"
+      },
+      "CatalogItemCategory" : {
+        "description" : "the catalog item category",
+        "enum" : [ "ELECTRIC_MULTIPLE_UNITS", "FREIGHT_CARS", "LOCOMOTIVES", "PASSENGER_CARS", "RAILCARS", "STARTER_SETS", "TRAIN_SETS" ],
+        "type" : "string"
+      },
+      "PowerMethod" : {
+        "description" : "the rolling stock power method",
+        "enum" : [ "AC", "DC", "TRIX_EXPRESS" ],
+        "type" : "string"
+      },
+      "AvailabilityStatus" : {
+        "description" : "the availability status for a catalog item",
+        "enum" : [ "ANNOUNCED", "AVAILABLE", "DISCONTINUED" ],
+        "type" : "string"
+      },
+      "ElectricMultipleUnitRequest" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStockRequest"
+        }, {
+          "$ref" : "#/components/schemas/ElectricMultipleUnitRequest_allOf"
+        } ],
+        "description" : "the request to create/update an electric multiple unit rolling stocks",
+        "required" : [ "electric_multiple_unit_type", "is_dummy", "type_name" ]
+      },
+      "RollingStockRequest" : {
+        "discriminator" : {
+          "propertyName" : "category"
+        },
+        "properties" : {
+          "category" : {
+            "$ref" : "#/components/schemas/RollingStockCategory"
+          },
+          "railway" : {
+            "description" : "the railway name for this rolling stock",
+            "maxLength" : 50,
+            "minLength" : 2,
+            "type" : "string"
+          },
+          "epoch" : {
+            "description" : "the epoch for this rolling stock",
+            "maxLength" : 10,
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "livery" : {
+            "description" : "the rolling stock livery description",
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "length_over_buffers" : {
+            "$ref" : "#/components/schemas/LengthOverBuffers"
+          },
+          "technical_specifications" : {
+            "$ref" : "#/components/schemas/TechnicalSpecifications"
+          }
+        },
+        "required" : [ "category", "epoch", "railway" ],
+        "type" : "object"
+      },
+      "RollingStockCategory" : {
+        "description" : "the rolling stock category",
+        "enum" : [ "ELECTRIC_MULTIPLE_UNITS", "FREIGHT_CARS", "LOCOMOTIVES", "PASSENGER_CARS", "RAILCARS" ],
+        "type" : "string"
+      },
+      "LengthOverBuffers" : {
+        "description" : "the length over buffer of a rolling stock",
+        "properties" : {
+          "inches" : {
+            "description" : "the overall length in inches",
+            "format" : "float",
+            "maximum" : 999.0,
+            "minimum" : 0.1,
+            "type" : "number"
+          },
+          "millimeters" : {
+            "description" : "the overall length in millimeters",
+            "format" : "float",
+            "maximum" : 9999.0,
+            "minimum" : 0.1,
+            "type" : "number"
+          }
+        },
+        "type" : "object"
+      },
+      "TechnicalSpecifications" : {
+        "description" : "the technical specification for a rolling stock",
+        "properties" : {
+          "minimum_radius" : {
+            "description" : "the minimum drivable radius (in millimeters)",
+            "format" : "float",
+            "maximum" : 9999.0,
+            "minimum" : 0.1,
+            "type" : "number"
+          },
+          "coupling" : {
+            "$ref" : "#/components/schemas/Coupling"
+          },
+          "flywheel_fitted" : {
+            "$ref" : "#/components/schemas/FeatureFlag"
+          },
+          "metal_body" : {
+            "$ref" : "#/components/schemas/FeatureFlag"
+          },
+          "interior_lights" : {
+            "$ref" : "#/components/schemas/FeatureFlag"
+          },
+          "lights" : {
+            "$ref" : "#/components/schemas/FeatureFlag"
+          },
+          "spring_buffers" : {
+            "$ref" : "#/components/schemas/FeatureFlag"
+          }
+        },
+        "type" : "object"
+      },
+      "Coupling" : {
+        "description" : "the rolling stock coupling",
+        "properties" : {
+          "socket" : {
+            "$ref" : "#/components/schemas/CouplingSocket"
+          },
+          "close_couplers" : {
+            "$ref" : "#/components/schemas/FeatureFlag"
+          },
+          "digital_shunting" : {
+            "$ref" : "#/components/schemas/FeatureFlag"
+          }
+        },
+        "required" : [ "socket" ],
+        "type" : "object"
+      },
+      "CouplingSocket" : {
+        "description" : "the rolling stock coupling socket",
+        "enum" : [ "NONE", "NEM_355", "NEM_356", "NEM_357", "NEM_359", "NEM_360", "NEM_362", "NEM_365" ],
+        "type" : "string"
+      },
+      "FeatureFlag" : {
+        "description" : "a feature flag for rolling stock technical specifications",
+        "enum" : [ "true", "false", "NOT_APPLICABLE" ],
+        "type" : "string"
+      },
+      "ElectricMultipleUnitType" : {
+        "description" : "the electric multiple unit type",
+        "enum" : [ "DRIVING_CAR", "HIGH_SPEED_TRAIN", "MOTOR_CAR", "POWER_CAR", "TRAILER_CAR", "TRAIN_SET" ],
+        "type" : "string"
+      },
+      "DccInterface" : {
+        "description" : "the rolling stock DCC interface",
+        "enum" : [ "MTC_21", "NEM_651", "NEM_652", "NEM_654", "NEXT_18", "NEXT_18_S", "PLUX_12", "PLUX_16", "PLUX_22", "PLUX_8" ],
+        "type" : "string"
+      },
+      "Control" : {
+        "description" : "the control method for the rolling stock",
+        "enum" : [ "DCC", "DCC_READY", "DCC_SOUND", "NO_DCC" ],
+        "type" : "string"
+      },
+      "FreightCarRequest" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStockRequest"
+        }, {
+          "$ref" : "#/components/schemas/FreightCarRequest_allOf"
+        } ],
+        "description" : "a request to create/update freight car rolling stocks",
+        "required" : [ "type_name" ]
+      },
+      "FreightCarType" : {
+        "description" : "the freight car type",
+        "enum" : [ "AUTO_TRANSPORT_CARS", "BRAKE_WAGON", "CONTAINER_CARS", "COVERED_FREIGHT_CARS", "DEEP_WELL_FLAT_CARS", "DUMP_CARS", "GONDOLA", "HEAVY_GOODS_WAGONS", "HINGED_COVER_WAGONS", "HOPPER_WAGON", "REFRIGERATOR_CARS", "SILO_CONTAINER_CARS", "SLIDE_TARPAULIN_WAGON", "SLIDING_WALL_BOXCARS", "SPECIAL_TRANSPORT", "STAKE_WAGONS", "SWING_ROOF_WAGON", "TANK_CARS", "TELESCOPE_HOOD_WAGONS" ],
+        "type" : "string"
+      },
+      "LocomotiveRequest" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStockRequest"
+        }, {
+          "$ref" : "#/components/schemas/LocomotiveRequest_allOf"
+        } ],
+        "description" : "a request to create/update locomotive rolling stocks",
+        "required" : [ "class_name", "is_dummy", "locomotive_type", "road_number" ]
+      },
+      "LocomotiveType" : {
+        "description" : "the locomotive type",
+        "enum" : [ "DIESEL_LOCOMOTIVE", "ELECTRIC_LOCOMOTIVE", "STEAM_LOCOMOTIVE" ],
+        "type" : "string"
+      },
+      "PassengerCarRequest" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStockRequest"
+        }, {
+          "$ref" : "#/components/schemas/PassengerCarRequest_allOf"
+        } ],
+        "description" : "a request to create/update passenger car rolling stocks",
+        "required" : [ "type_name" ]
+      },
+      "PassengerCarType" : {
+        "description" : "the passenger car type",
+        "enum" : [ "BAGGAGE_CAR", "COMBINE_CAR", "COMPARTMENT_COACH", "DINING_CAR", "DOUBLE_DECKER", "DRIVING_TRAILER", "LOUNGE", "OBSERVATION", "OPEN_COACH", "RAILWAY_POST_OFFICE", "SLEEPING_CAR" ],
+        "type" : "string"
+      },
+      "ServiceLevel" : {
+        "description" : "the travel class for this passenger car. Passenger cars can have multiple service levels (ie, '1st/2nd')",
+        "enum" : [ "FIRST_CLASS", "SECOND_CLASS", "THIRD_CLASS", "FIRST_AND_SECOND_CLASS", "FIRST_SECOND_AND_THIRD_CLASS", "SECOND_AND_THIRD_CLASS" ],
+        "type" : "string"
+      },
+      "RailcarRequest" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStockRequest"
+        }, {
+          "$ref" : "#/components/schemas/RailcarRequest_allOf"
+        } ],
+        "description" : "a request to create/update railcar rolling stocks",
+        "required" : [ "is_dummy", "railcar_type", "type_name" ]
+      },
+      "RailcarType" : {
+        "description" : "the railcar type",
+        "enum" : [ "POWER_CAR", "TRAILER_CAR" ],
+        "type" : "string"
+      },
+      "CatalogItem" : {
+        "description" : "a model railway catalog item",
+        "properties" : {
+          "catalog_item_id" : {
+            "description" : "the unique identifier for this catalog item",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "brand" : {
+            "$ref" : "#/components/schemas/CatalogItemBrand"
+          },
+          "item_number" : {
+            "description" : "the catalog item number",
+            "type" : "string"
+          },
+          "scale" : {
+            "$ref" : "#/components/schemas/CatalogItemScale"
+          },
+          "category" : {
+            "$ref" : "#/components/schemas/CatalogItemCategory"
+          },
+          "description" : {
+            "$ref" : "#/components/schemas/LocalizedText"
+          },
+          "details" : {
+            "$ref" : "#/components/schemas/LocalizedText"
+          },
+          "power_method" : {
+            "$ref" : "#/components/schemas/PowerMethod"
+          },
+          "delivery_date" : {
+            "description" : "this catalog item delivery date (either the year or the quarter)",
+            "type" : "string"
+          },
+          "availability_status" : {
+            "$ref" : "#/components/schemas/AvailabilityStatus"
+          },
+          "rolling_stocks" : {
+            "items" : {
+              "$ref" : "#/components/schemas/get_rolling_stocks_200_response_inner"
+            },
+            "type" : "array"
+          },
+          "count" : {
+            "description" : "the number of rolling stocks for this catalog item",
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "metadata" : {
+            "$ref" : "#/components/schemas/Metadata"
+          }
+        },
+        "required" : [ "brand", "catalog_item_id", "category", "count", "item_number", "metadata", "power_method", "scale" ],
+        "type" : "object"
+      },
+      "CatalogItemBrand" : {
+        "description" : "the catalog item brand",
+        "properties" : {
+          "brand_id" : {
+            "description" : "the brand unique identifier",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "display" : {
+            "description" : "the brand display text",
+            "type" : "string"
+          }
+        },
+        "required" : [ "display", "id" ],
+        "type" : "object"
+      },
+      "CatalogItemScale" : {
+        "description" : "the scale information for a catalog item",
+        "properties" : {
+          "scale_id" : {
+            "description" : "the scale unique identifier",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "display" : {
+            "description" : "the scale display text",
+            "type" : "string"
+          }
+        },
+        "required" : [ "display", "id" ],
+        "type" : "object"
+      },
+      "ElectricMultipleUnit" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStock"
+        }, {
+          "$ref" : "#/components/schemas/ElectricMultipleUnit_allOf"
+        } ],
+        "description" : "an electric multiple unit rolling stock",
+        "required" : [ "electric_multiple_unit_type", "is_dummy", "type_name" ]
+      },
+      "RollingStock" : {
+        "discriminator" : {
+          "propertyName" : "category"
+        },
+        "properties" : {
+          "category" : {
+            "$ref" : "#/components/schemas/RollingStockCategory"
+          },
+          "rolling_stock_id" : {
+            "description" : "the unique identifier for this rolling stock",
+            "format" : "uuid",
+            "type" : "string"
+          },
+          "railway" : {
+            "$ref" : "#/components/schemas/RollingStockRailway"
+          },
+          "epoch" : {
+            "description" : "the epoch for this rolling stock",
+            "type" : "string"
+          },
+          "livery" : {
+            "description" : "the rolling stock livery description",
+            "type" : "string"
+          },
+          "length_over_buffers" : {
+            "$ref" : "#/components/schemas/LengthOverBuffers"
+          },
+          "technical_specifications" : {
+            "$ref" : "#/components/schemas/TechnicalSpecifications"
+          }
+        },
+        "required" : [ "category", "epoch", "railway", "rolling_stock_id" ],
+        "type" : "object"
+      },
+      "RollingStockRailway" : {
+        "description" : "the railway company for a rolling stock",
+        "properties" : {
+          "railway_id" : {
+            "description" : "the railway unique identifier",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "display" : {
+            "description" : "the railway display text",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "FreightCar" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStock"
+        }, {
+          "$ref" : "#/components/schemas/FreightCar_allOf"
+        } ],
+        "description" : "a freight car rolling stock",
+        "required" : [ "type_name" ]
+      },
+      "Locomotive" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStock"
+        }, {
+          "$ref" : "#/components/schemas/Locomotive_allOf"
+        } ],
+        "description" : "a locomotive rolling stock",
+        "required" : [ "class_name", "is_dummy", "locomotive_type", "road_number" ]
+      },
+      "PassengerCar" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStock"
+        }, {
+          "$ref" : "#/components/schemas/PassengerCar_allOf"
+        } ],
+        "description" : "a passenger car rolling stock",
+        "required" : [ "type_name" ]
+      },
+      "Railcar" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStock"
+        }, {
+          "$ref" : "#/components/schemas/Railcar_allOf"
+        } ],
+        "description" : "a railcar rolling stock",
+        "required" : [ "is_dummy", "railcar_type", "type_name" ]
+      },
+      "Railway" : {
+        "description" : "a company which operates a railway network",
+        "properties" : {
+          "railway_id" : {
+            "description" : "the unique railway identifier (an URL encoded string)",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "name" : {
+            "description" : "the railway name",
+            "type" : "string"
+          },
+          "abbreviation" : {
+            "description" : "the railway abbreviated name",
+            "type" : "string"
+          },
+          "registered_company_name" : {
+            "description" : "the registered company name",
+            "type" : "string"
+          },
+          "organization_entity_type" : {
+            "$ref" : "#/components/schemas/OrganizationEntityType"
+          },
+          "description" : {
+            "$ref" : "#/components/schemas/LocalizedText"
+          },
+          "country" : {
+            "description" : "the registration ISO country code (ISO 3166-1 alpha-2)",
+            "type" : "string"
+          },
+          "period_of_activity" : {
+            "$ref" : "#/components/schemas/RailwayPeriodOfActivity"
+          },
+          "gauge" : {
+            "$ref" : "#/components/schemas/RailwayGauge"
+          },
+          "headquarters" : {
+            "description" : "the railway headquarters",
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "total_length" : {
+            "$ref" : "#/components/schemas/RailwayTotalLength"
+          },
+          "contact_info" : {
+            "$ref" : "#/components/schemas/ContactInfo"
+          },
+          "socials" : {
+            "$ref" : "#/components/schemas/Socials"
+          },
+          "metadata" : {
+            "$ref" : "#/components/schemas/Metadata"
+          }
+        },
+        "required" : [ "country", "metadata", "name", "railway_id" ],
+        "type" : "object"
+      },
+      "RailwayPeriodOfActivity" : {
+        "description" : "the period of activity for a railway company",
+        "properties" : {
+          "operating_since" : {
+            "description" : "the date when the railway started its operation",
+            "format" : "date",
+            "type" : "string"
+          },
+          "operating_until" : {
+            "description" : "the date when the railway ended its operation, if not active anymore",
+            "format" : "date",
+            "type" : "string"
+          },
+          "status" : {
+            "$ref" : "#/components/schemas/RailwayStatus"
+          }
+        },
+        "required" : [ "status" ],
+        "type" : "object"
+      },
+      "RailwayStatus" : {
+        "description" : "the railway activity status",
+        "enum" : [ "ACTIVE", "INACTIVE" ],
+        "type" : "string"
+      },
+      "RailwayGauge" : {
+        "description" : "the railway gauge",
+        "properties" : {
+          "meters" : {
+            "description" : "the distance between the two rails in meters",
+            "format" : "float",
+            "maximum" : 2.0,
+            "minimum" : 0.1,
+            "type" : "number"
+          },
+          "track_gauge" : {
+            "$ref" : "#/components/schemas/TrackGauge"
+          }
+        },
+        "type" : "object"
+      },
+      "TrackGauge" : {
+        "description" : "the track gauge",
+        "enum" : [ "BROAD", "MEDIUM", "MINIMUM", "NARROW", "STANDARD" ],
+        "type" : "string"
+      },
+      "RailwayTotalLength" : {
+        "description" : "the total length of a railway network",
+        "properties" : {
+          "miles" : {
+            "description" : "the total railway network in miles",
+            "format" : "float",
+            "maximum" : 200000.0,
+            "minimum" : 1.0,
+            "type" : "number"
+          },
+          "kilometers" : {
+            "description" : "the total railway network in kilometers",
+            "format" : "float",
+            "maximum" : 300000.0,
+            "minimum" : 1.0,
+            "type" : "number"
+          }
+        },
+        "type" : "object"
+      },
+      "RailwayRequest" : {
+        "description" : "the request to create/update railways",
+        "properties" : {
+          "name" : {
+            "description" : "the railway name",
+            "maxLength" : 50,
+            "minLength" : 2,
+            "type" : "string"
+          },
+          "abbreviation" : {
+            "description" : "the railway abbreviated name",
+            "maxLength" : 10,
+            "minLength" : 2,
+            "type" : "string"
+          },
+          "registered_company_name" : {
+            "description" : "the registered company name",
+            "maxLength" : 250,
+            "type" : "string"
+          },
+          "organization_entity_type" : {
+            "$ref" : "#/components/schemas/OrganizationEntityType"
+          },
+          "description" : {
+            "$ref" : "#/components/schemas/LocalizedText"
+          },
+          "country" : {
+            "description" : "the ISO country code (ISO 3166-1 alpha-2)",
+            "maxLength" : 2,
+            "minLength" : 2,
+            "type" : "string"
+          },
+          "period_of_activity" : {
+            "$ref" : "#/components/schemas/RailwayPeriodOfActivity"
+          },
+          "gauge" : {
+            "$ref" : "#/components/schemas/RailwayGauge"
+          },
+          "headquarters" : {
+            "description" : "the railway headquarters",
+            "items" : {
+              "maxLength" : 250,
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "total_length" : {
+            "$ref" : "#/components/schemas/RailwayTotalLength"
+          },
+          "contact_info" : {
+            "$ref" : "#/components/schemas/ContactInfo"
+          },
+          "socials" : {
+            "$ref" : "#/components/schemas/Socials"
+          }
+        },
+        "required" : [ "country", "name" ],
+        "type" : "object"
+      },
+      "Scale" : {
+        "description" : "a rail transport modelling scale",
+        "properties" : {
+          "scale_id" : {
+            "description" : "the unique identifier for a scale",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "name" : {
+            "description" : "the scale name",
+            "type" : "string"
+          },
+          "ratio" : {
+            "description" : "the ratio between the real world and the model (e.g. 1/87 or 1:87)",
+            "format" : "float",
+            "type" : "number"
+          },
+          "gauge" : {
+            "$ref" : "#/components/schemas/ScaleGauge"
+          },
+          "description" : {
+            "$ref" : "#/components/schemas/LocalizedText"
+          },
+          "standards" : {
+            "description" : "the list of standards",
+            "items" : {
+              "enum" : [ "BRITISH", "JAPANESE", "NEM", "NMRA" ],
+              "type" : "string"
+            },
+            "type" : "array"
+          },
+          "metadata" : {
+            "$ref" : "#/components/schemas/Metadata"
+          }
+        },
+        "required" : [ "gauge", "name", "ratio", "scale_id" ],
+        "type" : "object"
+      },
+      "ScaleGauge" : {
+        "description" : "the track gauge information for a modelling scale",
+        "properties" : {
+          "millimeters" : {
+            "description" : "the distance between the rails in millimeters",
+            "format" : "float",
+            "maximum" : 200.0,
+            "minimum" : 6.5,
+            "type" : "number"
+          },
+          "inches" : {
+            "description" : "the distance between the rails in inches",
+            "format" : "float",
+            "maximum" : 15.0,
+            "minimum" : 0.01,
+            "type" : "number"
+          },
+          "track_gauge" : {
+            "$ref" : "#/components/schemas/TrackGauge"
+          }
+        },
+        "type" : "object"
+      },
+      "ScaleRequest" : {
+        "description" : "a request to create/update rail transport modelling scales",
+        "properties" : {
+          "name" : {
+            "description" : "the scale name",
+            "maxLength" : 50,
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "ratio" : {
+            "description" : "the ratio between the real world and the model (e.g. 1/87 or 1:87)",
+            "format" : "float",
+            "maximum" : 220.0,
+            "minimum" : 1.0,
+            "type" : "number"
+          },
+          "gauge" : {
+            "$ref" : "#/components/schemas/ScaleGauge"
+          },
+          "description" : {
+            "$ref" : "#/components/schemas/LocalizedText"
+          },
+          "standards" : {
+            "description" : "the list of standards",
+            "items" : {
+              "enum" : [ "BRITISH", "JAPANESE", "NEM", "NMRA" ],
+              "type" : "string"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "gauge", "name", "ratio" ],
+        "type" : "object"
+      },
+      "OrganizationEntityType" : {
+        "description" : "the many types of business entities defined in the legal systems of various countries",
+        "enum" : [ "CIVIL_LAW_PARTNERSHIP", "ENTREPRENEURIAL_COMPANY", "GLOBAL_PARTNERSHIP", "LIMITED_COMPANY", "LIMITED_PARTNERSHIP", "LIMITED_PARTNERSHIP_LIMITED_COMPANY", "OTHER", "PUBLIC_INSTITUTION", "PUBLIC_LIMITED_COMPANY", "REGISTERED_SOLE_TRADER", "SOLE_TRADER", "STATE_OWNED_ENTERPRISE" ],
+        "type" : "string"
+      },
+      "LocalizedText" : {
+        "additionalProperties" : {
+          "properties" : {
+            "code" : {
+              "description" : "a valid ISO 639-1 language code",
+              "maxLength" : 2,
+              "minLength" : 2,
+              "type" : "string"
+            },
+            "text" : {
+              "description" : "a label in the current language",
+              "maxLength" : 2500,
+              "type" : "string"
+            }
+          },
+          "type" : "string"
+        },
+        "description" : "a map with localized text in different languages",
+        "example" : {
+          "en" : "Hello!",
+          "fr" : "Bonjour!"
+        },
+        "type" : "object"
+      },
+      "Address" : {
+        "description" : "an address of a location",
+        "properties" : {
+          "street_address" : {
+            "description" : "the street address",
+            "maxLength" : 255,
+            "minLength" : 5,
+            "type" : "string"
+          },
+          "extended_address" : {
+            "description" : "the (optional) extended information for the address",
+            "maxLength" : 255,
+            "type" : "string"
+          },
+          "city" : {
+            "description" : "the city/town",
+            "maxLength" : 50,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "region" : {
+            "description" : "the region code; for example, the state or province.",
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "postal_code" : {
+            "description" : "the postal code (ZIP code)",
+            "maxLength" : 10,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "country" : {
+            "description" : "the ISO country code (ISO 3166-1 alpha-2)",
+            "maxLength" : 2,
+            "minLength" : 2,
+            "type" : "string"
+          }
+        },
+        "required" : [ "city", "country_code", "postal_code", "street_address" ],
+        "type" : "object"
+      },
+      "ContactInfo" : {
+        "description" : "the contact information for an organization",
+        "properties" : {
+          "email" : {
+            "description" : "the mail address",
+            "format" : "email",
+            "maxLength" : 250,
+            "type" : "string"
+          },
+          "phone" : {
+            "description" : "the phone number",
+            "maxLength" : 20,
+            "type" : "string"
+          },
+          "website_url" : {
+            "description" : "the website url",
+            "format" : "uri",
+            "maxLength" : 100,
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "Socials" : {
+        "description" : "a group of social handlers",
+        "properties" : {
+          "facebook" : {
+            "description" : "a facebook handler",
+            "format" : "uri",
+            "maxLength" : 100,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "instagram" : {
+            "description" : "an instagram handler",
+            "format" : "uri",
+            "maxLength" : 100,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "linkedin" : {
+            "description" : "a linkedin handler",
+            "format" : "uri",
+            "maxLength" : 100,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "twitter" : {
+            "description" : "a twitter handler",
+            "format" : "uri",
+            "maxLength" : 100,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "youtube" : {
+            "description" : "a youtube handler (either user or channel name)",
+            "format" : "uri",
+            "maxLength" : 100,
+            "minLength" : 3,
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "Metadata" : {
+        "description" : "the resource metadata",
+        "properties" : {
+          "version" : {
+            "description" : "the resource version",
+            "format" : "int32",
+            "minimum" : 1,
+            "type" : "integer"
+          },
+          "created_at" : {
+            "description" : "the creation timestamp for this resource",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "last_modified_at" : {
+            "description" : "the timestamp when this resource has been modified for the last time",
+            "format" : "date-time",
+            "type" : "string"
+          }
+        },
+        "required" : [ "created", "version" ],
+        "type" : "object"
+      },
+      "get_rolling_stocks_200_response_inner" : {
+        "discriminator" : {
+          "propertyName" : "category"
+        },
+        "oneOf" : [ {
+          "$ref" : "#/components/schemas/ElectricMultipleUnit"
+        }, {
+          "$ref" : "#/components/schemas/FreightCar"
+        }, {
+          "$ref" : "#/components/schemas/Locomotive"
+        }, {
+          "$ref" : "#/components/schemas/PassengerCar"
+        }, {
+          "$ref" : "#/components/schemas/Railcar"
+        } ]
+      },
+      "CatalogItemRequest_rolling_stocks_inner" : {
+        "discriminator" : {
+          "propertyName" : "category"
+        },
+        "oneOf" : [ {
+          "$ref" : "#/components/schemas/ElectricMultipleUnitRequest"
+        }, {
+          "$ref" : "#/components/schemas/FreightCarRequest"
+        }, {
+          "$ref" : "#/components/schemas/LocomotiveRequest"
+        }, {
+          "$ref" : "#/components/schemas/PassengerCarRequest"
+        }, {
+          "$ref" : "#/components/schemas/RailcarRequest"
+        } ]
+      },
+      "ElectricMultipleUnitRequest_allOf" : {
+        "properties" : {
+          "type_name" : {
+            "description" : "the electric multiple unit type name",
+            "maxLength" : 25,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "road_number" : {
+            "description" : "the identification marking for this electric multiple unit",
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "series" : {
+            "description" : "the prototype series information",
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "depot" : {
+            "description" : "the depot name",
+            "maxLength" : 100,
+            "type" : "string"
+          },
+          "electric_multiple_unit_type" : {
+            "$ref" : "#/components/schemas/ElectricMultipleUnitType"
+          },
+          "dcc_interface" : {
+            "$ref" : "#/components/schemas/DccInterface"
+          },
+          "control" : {
+            "$ref" : "#/components/schemas/Control"
+          },
+          "is_dummy" : {
+            "description" : "indicate whether the rolling stock has a motor or not",
+            "type" : "boolean"
+          }
+        },
+        "type" : "object",
+        "example" : null
+      },
+      "FreightCarRequest_allOf" : {
+        "properties" : {
+          "type_name" : {
+            "description" : "the freight car type name",
+            "maxLength" : 25,
+            "minLength" : 1,
+            "type" : "string"
+          },
+          "road_number" : {
+            "description" : "the identification marking for this freight car",
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "freight_car_type" : {
+            "$ref" : "#/components/schemas/FreightCarType"
+          }
+        },
+        "type" : "object",
+        "example" : null
+      },
+      "LocomotiveRequest_allOf" : {
+        "properties" : {
+          "class_name" : {
+            "description" : "the class of locomotives. The class is a group of locomotives built to a common design,\ntypically for a single railroad or railway\n",
+            "maxLength" : 15,
+            "type" : "string"
+          },
+          "road_number" : {
+            "description" : "the identification marking for this locomotive",
+            "maxLength" : 50,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "series" : {
+            "description" : "the prototype series information",
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "depot" : {
+            "description" : "the depot name",
+            "maxLength" : 100,
+            "type" : "string"
+          },
+          "locomotive_type" : {
+            "$ref" : "#/components/schemas/LocomotiveType"
+          },
+          "dcc_interface" : {
+            "$ref" : "#/components/schemas/DccInterface"
+          },
+          "control" : {
+            "$ref" : "#/components/schemas/Control"
+          },
+          "is_dummy" : {
+            "description" : "indicate whether the rolling stock has a motor or not",
+            "type" : "boolean"
+          }
+        },
+        "type" : "object",
+        "example" : null
+      },
+      "PassengerCarRequest_allOf" : {
+        "properties" : {
+          "type_name" : {
+            "description" : "the passenger car type name",
+            "maxLength" : 25,
+            "type" : "string"
+          },
+          "road_number" : {
+            "description" : "the identification marking for this passenger car",
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "series" : {
+            "description" : "the passenger car series",
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "passenger_car_type" : {
+            "$ref" : "#/components/schemas/PassengerCarType"
+          },
+          "service_level" : {
+            "$ref" : "#/components/schemas/ServiceLevel"
+          }
+        },
+        "type" : "object",
+        "example" : null
+      },
+      "RailcarRequest_allOf" : {
+        "properties" : {
+          "type_name" : {
+            "description" : "the railcar type name",
+            "maxLength" : 25,
+            "minLength" : 3,
+            "type" : "string"
+          },
+          "road_number" : {
+            "description" : "the identification marking for this railcar",
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "series" : {
+            "description" : "the railcar series",
+            "maxLength" : 50,
+            "type" : "string"
+          },
+          "depot" : {
+            "description" : "the depot name",
+            "maxLength" : 100,
+            "type" : "string"
+          },
+          "railcar_type" : {
+            "$ref" : "#/components/schemas/RailcarType"
+          },
+          "dcc_interface" : {
+            "$ref" : "#/components/schemas/DccInterface"
+          },
+          "control" : {
+            "$ref" : "#/components/schemas/Control"
+          },
+          "is_dummy" : {
+            "description" : "indicate whether the rolling stock has a motor or not",
+            "type" : "boolean"
+          }
+        },
+        "type" : "object",
+        "example" : null
+      },
+      "ElectricMultipleUnit_allOf" : {
+        "properties" : {
+          "type_name" : {
+            "description" : "the electric multiple unit type name",
+            "type" : "string"
+          },
+          "road_number" : {
+            "description" : "the identification marking for this electric multiple unit",
+            "type" : "string"
+          },
+          "series" : {
+            "description" : "the prototype series information",
+            "type" : "string"
+          },
+          "depot" : {
+            "description" : "the depot name",
+            "type" : "string"
+          },
+          "electric_multiple_unit_type" : {
+            "$ref" : "#/components/schemas/ElectricMultipleUnitType"
+          },
+          "dcc_interface" : {
+            "$ref" : "#/components/schemas/DccInterface"
+          },
+          "control" : {
+            "$ref" : "#/components/schemas/Control"
+          },
+          "is_dummy" : {
+            "description" : "indicate whether the rolling stock has a motor or not",
+            "type" : "boolean"
+          }
+        },
+        "type" : "object",
+        "example" : null
+      },
+      "FreightCar_allOf" : {
+        "properties" : {
+          "type_name" : {
+            "description" : "the freight car type name",
+            "type" : "string"
+          },
+          "road_number" : {
+            "description" : "the identification marking for this freight car",
+            "type" : "string"
+          },
+          "freight_car_type" : {
+            "$ref" : "#/components/schemas/FreightCarType"
+          }
+        },
+        "type" : "object",
+        "example" : null
+      },
+      "Locomotive_allOf" : {
+        "properties" : {
+          "class_name" : {
+            "description" : "the class of locomotives. The class is a group of locomotives built to a common design,\ntypically for a single railroad or railway\n",
+            "type" : "string"
+          },
+          "road_number" : {
+            "description" : "the identification marking for this locomotive",
+            "type" : "string"
+          },
+          "series" : {
+            "description" : "the prototype series information",
+            "type" : "string"
+          },
+          "depot" : {
+            "description" : "the depot name",
+            "type" : "string"
+          },
+          "locomotive_type" : {
+            "$ref" : "#/components/schemas/LocomotiveType"
+          },
+          "dcc_interface" : {
+            "$ref" : "#/components/schemas/DccInterface"
+          },
+          "control" : {
+            "$ref" : "#/components/schemas/Control"
+          },
+          "is_dummy" : {
+            "description" : "indicate whether the rolling stock has a motor or not",
+            "type" : "boolean"
+          }
+        },
+        "type" : "object",
+        "example" : null
+      },
+      "PassengerCar_allOf" : {
+        "properties" : {
+          "type_name" : {
+            "description" : "the passenger car type name",
+            "type" : "string"
+          },
+          "road_number" : {
+            "description" : "the identification marking for this passenger car",
+            "type" : "string"
+          },
+          "series" : {
+            "description" : "the passenger car series",
+            "type" : "string"
+          },
+          "passenger_car_type" : {
+            "$ref" : "#/components/schemas/PassengerCarType"
+          },
+          "service_level" : {
+            "$ref" : "#/components/schemas/ServiceLevel"
+          }
+        },
+        "type" : "object",
+        "example" : null
+      },
+      "Railcar_allOf" : {
+        "properties" : {
+          "type_name" : {
+            "description" : "the railcar type name",
+            "type" : "string"
+          },
+          "road_number" : {
+            "description" : "the identification marking for this railcar",
+            "type" : "string"
+          },
+          "series" : {
+            "description" : "the railcar series",
+            "type" : "string"
+          },
+          "depot" : {
+            "description" : "the depot name",
+            "type" : "string"
+          },
+          "railcar_type" : {
+            "$ref" : "#/components/schemas/RailcarType"
+          },
+          "dcc_interface" : {
+            "$ref" : "#/components/schemas/DccInterface"
+          },
+          "control" : {
+            "$ref" : "#/components/schemas/Control"
+          },
+          "is_dummy" : {
+            "description" : "indicate whether the rolling stock has a motor or not",
+            "type" : "boolean"
+          }
+        },
+        "type" : "object",
+        "example" : null
+      }
+    }
+  }
+}

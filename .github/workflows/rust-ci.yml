@@ -21,7 +21,8 @@ env:
   SQLX_OFFLINE: true
   REGISTRY: ghcr.io
   LOCAL_REGISTRY: localhost:5000 
-  IMAGE_NAME: carlomicieli/trenako-server
+  SERVER_IMAGE_NAME: carlomicieli/trenako-server
+  MIGRATIONS_IMAGE_NAME: carlomicieli/trenako-migrations
 
 jobs:
   checks:
@@ -126,6 +127,14 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3
 
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install openapi-generator-cli
+        run: npm install @openapitools/openapi-generator-cli -g
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
@@ -152,30 +161,55 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
+      - name: Extract metadata (tags, labels) for the server Docker image
+        id: meta-server
         uses: docker/metadata-action@v4
         with:
           images: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-            ${{ env.LOCAL_REGISTRY }}/${{ env.IMAGE_NAME }}
+            ${{ env.REGISTRY }}/${{ env.SERVER_IMAGE_NAME }}
+            ${{ env.LOCAL_REGISTRY }}/${{ env.SERVER_IMAGE_NAME }}
           tags: |
             # set latest tag for default branch
             # type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
             type=raw,value=latest
-            type=raw,value={{date 'YYYYMMDDHHmmss'}}-{{sha}}      
+            type=raw,value={{date 'YYYYMMDDHHmm'}}-{{sha}}      
 
+      - name: Extract metadata (tags, labels) for the migrations Docker image
+        id: meta-migrations
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ${{ env.REGISTRY }}/${{ env.MIGRATIONS_IMAGE_NAME }}
+            ${{ env.LOCAL_REGISTRY }}/${{ env.MIGRATIONS_IMAGE_NAME }}
+          tags: |
+            # set latest tag for default branch
+            # type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
+            type=raw,value=latest
+            type=raw,value={{date 'YYYYMMDDHHmm'}}-{{sha}}      
+      
       - name: Build and export to Docker (server)
         uses: docker/build-push-action@v4
         with:
           context: .
           file: docker/server.dockerfile
           load: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.meta-server.outputs.tags }}
+          labels: ${{ steps.meta-server.outputs.labels }}
+
+      - name: Build and export to Docker (migrations)
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: docker/migrations.dockerfile
+          load: true
+          tags: ${{ steps.meta-migrations.outputs.tags }}
+          labels: ${{ steps.meta-migrations.outputs.labels }}
 
       - name: List docker images
         run: docker image ls
+
+      - name: Generate the openapi schema
+        run: openapi-generator-cli generate -i openapi/api-schema.yaml -g openapi -o e2e/api/src/main/resources/openapi
 
       - name: Run the E2E tests
         uses: gradle/gradle-build-action@v2
