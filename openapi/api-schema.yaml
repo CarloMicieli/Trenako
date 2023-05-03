@@ -4,12 +4,12 @@ info:
   title: Trenako
   description: A model railway collections api
   version: 1.0.0
-  termsOfService: http://www.trenako.com/terms
+  termsOfService: https://www.trenako.com/terms
   contact:
     email: mail@trenako.com
   license:
     name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
 
 servers:
   - url: http://localhost:5000
@@ -704,7 +704,7 @@ components:
   schemas:
     ProblemDetail:
       description: |
-        A machine-readable format for specifying errors in HTTP API 
+        A machine-readable format for specifying errors in HTTP API
         responses based on https://tools.ietf.org/html/rfc7807
       type: object
       properties:
@@ -712,15 +712,15 @@ components:
           type: string
           format: uri
           description: |
-            A URI reference [RFC3986] that identifies the problem type. This specification 
-            encourages that, when dereferenced, it provide human-readable documentation for the 
-            problem type (e.g., using HTML [W3C.REC-html5-20141028]). When this member is not present, 
+            A URI reference [RFC3986] that identifies the problem type. This specification
+            encourages that, when dereferenced, it provide human-readable documentation for the
+            problem type (e.g., using HTML [W3C.REC-html5-20141028]). When this member is not present,
             its value is assumed to be "about:blank".
         title:
           type: string
           description: |
-            A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence 
-            to occurrence of the problem, except for purposes of localization(e.g., using proactive 
+            A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence
+            to occurrence of the problem, except for purposes of localization(e.g., using proactive
             content negotiation; see[RFC7231], Section 3.4).
           example: Service Unavailable
         detail:
@@ -738,5 +738,5 @@ components:
           type: string
           format: uri
           description: |
-            A TRN reference that identifies the specific occurrence of the problem. 
+            A TRN reference that identifies the specific occurrence of the problem.
             It may or may not yield further information if dereferenced.
