@@ -1,0 +1,60 @@
+name: rust-coverage
+
+on:
+  push:
+    paths:
+      - '.github/workflows/rust-coverage.yml'
+      - 'Cargo.lock'
+      - 'Cargo.toml'
+      - 'crates/**'
+    branches:
+      - dev
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_MAKE_RUN_CODECOV: true
+  SQLX_OFFLINE: true
+
+jobs:
+  coverage:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Setup the rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install cargo make
+        run: cargo install cargo-make@0.36.7
+
+      - name: Set up cargo cache
+        uses: Swatinem/rust-cache@v2
+        continue-on-error: false
+
+      - name: Toolchain info
+        run: |
+          rustc --version
+          cargo --version --verbose
+          cargo make --version
+
+      - name: Run cargo-tarpaulin
+        run: cargo make code-coverage
+        if: github.ref == 'refs/heads/dev'
+
+      - name: Upload coverage to Codecov.io
+        uses: codecov/codecov-action@v3
+        if: github.ref == 'refs/heads/dev'
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          verbose: true
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        if: github.ref == 'refs/heads/dev'
+        with:
+          name: code-coverage-report
+          path: cobertura.xml
