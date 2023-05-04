@@ -950,12 +950,7 @@ components:
           description: the list of standards
           type: array
           items:
-            type: string
-            enum:
-              - BRITISH
-              - JAPANESE
-              - NEM
-              - NMRA
+            $ref: "#/components/schemas/ScaleStandard"
         metadata:
           $ref: "./common.yaml#/components/schemas/Metadata"
       required:
@@ -1006,16 +1001,20 @@ components:
           description: the list of standards
           type: array
           items:
-            type: string
-            enum:
-              - BRITISH
-              - JAPANESE
-              - NEM
-              - NMRA
+            $ref: "#/components/schemas/ScaleStandard"
       required:
         - name
         - ratio
         - gauge
+
+    ScaleStandard:
+      description: the modelling scale standards
+      type: string
+      enum:
+        - BRITISH
+        - JAPANESE
+        - NEM
+        - NMRA
 
     ServiceLevel:
       description: the travel class for this passenger car. Passenger cars can have multiple service levels (ie, '1st/2nd')

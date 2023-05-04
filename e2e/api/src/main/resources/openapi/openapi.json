@@ -2159,8 +2159,7 @@
           "standards" : {
             "description" : "the list of standards",
             "items" : {
-              "enum" : [ "BRITISH", "JAPANESE", "NEM", "NMRA" ],
-              "type" : "string"
+              "$ref" : "#/components/schemas/ScaleStandard"
             },
             "type" : "array"
           },
@@ -2194,6 +2193,11 @@
         },
         "type" : "object"
       },
+      "ScaleStandard" : {
+        "description" : "the modelling scale standards",
+        "enum" : [ "BRITISH", "JAPANESE", "NEM", "NMRA" ],
+        "type" : "string"
+      },
       "ScaleRequest" : {
         "description" : "a request to create/update rail transport modelling scales",
         "properties" : {
@@ -2219,8 +2223,7 @@
           "standards" : {
             "description" : "the list of standards",
             "items" : {
-              "enum" : [ "BRITISH", "JAPANESE", "NEM", "NMRA" ],
-              "type" : "string"
+              "$ref" : "#/components/schemas/ScaleStandard"
             },
             "type" : "array"
           }
