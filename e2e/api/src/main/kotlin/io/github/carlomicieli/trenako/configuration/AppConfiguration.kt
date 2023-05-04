@@ -21,7 +21,6 @@
 package io.github.carlomicieli.trenako.configuration
 
 import io.github.carlomicieli.trenako.ProblemDetailException
-import io.github.carlomicieli.trenako.catalog.BrandsApi
 import io.github.carlomicieli.trenako.model.ProblemDetail
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean
@@ -70,10 +69,5 @@ class AppConfiguration {
         return HttpServiceProxyFactory
             .builder(WebClientAdapter.forClient(webClient))
             .build()
-    }
-
-    @Bean
-    fun brandsApi(httpServiceProxyFactory: HttpServiceProxyFactory): BrandsApi {
-        return httpServiceProxyFactory.createClient(BrandsApi::class.java)
     }
 }

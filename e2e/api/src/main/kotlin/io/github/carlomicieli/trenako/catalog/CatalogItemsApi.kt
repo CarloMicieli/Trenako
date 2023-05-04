@@ -20,8 +20,10 @@
  */
 package io.github.carlomicieli.trenako.catalog
 
-import io.github.carlomicieli.trenako.model.Scale
-import io.github.carlomicieli.trenako.model.ScaleRequest
+import io.github.carlomicieli.trenako.model.CatalogItem
+import io.github.carlomicieli.trenako.model.CatalogItemRequest
+import io.github.carlomicieli.trenako.model.RollingStock
+import io.github.carlomicieli.trenako.model.RollingStockRequest
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
@@ -34,23 +36,48 @@ import org.springframework.web.service.annotation.PutExchange
 import reactor.core.publisher.Mono
 
 @HttpExchange(
-    url = "/api/scales",
+    url = "/api/catalog-items",
     accept = [MediaType.APPLICATION_JSON_VALUE],
     contentType = MediaType.APPLICATION_JSON_VALUE
 )
-interface ScalesApi {
-    @GetExchange
-    fun getScales(): Mono<ResponseEntity<List<Scale>>>
-
-    @GetExchange("{id}")
-    fun getScaleById(@PathVariable id: String): Mono<ResponseEntity<Scale?>>
-
+interface CatalogItemsApi {
     @PostExchange
-    fun postScale(@RequestBody scale: ScaleRequest): Mono<ResponseEntity<Unit>>
+    fun postCatalogItem(@RequestBody catalogItemRequest: CatalogItemRequest): Mono<ResponseEntity<Unit>>
+
+    @GetExchange("/{id}")
+    fun getCatalogItemById(@PathVariable id: String): Mono<ResponseEntity<CatalogItem?>>
 
     @PutExchange("/{id}")
-    fun putScale(@PathVariable id: String, @RequestBody scale: ScaleRequest): Mono<ResponseEntity<Unit>>
+    fun putCatalogItem(
+        @PathVariable id: String,
+        @RequestBody catalogItemRequest: CatalogItemRequest
+    ): Mono<ResponseEntity<Unit>>
 
     @DeleteExchange("/{id}")
-    fun deleteScale(@PathVariable id: String): Mono<ResponseEntity<Unit>>
+    fun deleteCatalogItemById(@PathVariable id: String): Mono<ResponseEntity<Unit>>
+
+    @PostExchange("/{id}/rolling-stocks")
+    fun postRollingStock(
+        @PathVariable id: String,
+        @RequestBody rollingStockRequest: RollingStockRequest
+    ): Mono<ResponseEntity<Unit>>
+
+    @GetExchange("/{id}/rolling-stocks/{rollingStockId}")
+    fun getRollingStockById(
+        @PathVariable id: String,
+        @PathVariable rollingStockId: String
+    ): Mono<ResponseEntity<List<RollingStock>>>
+
+    @PutExchange("/{id}/rolling-stocks/{rollingStockId}")
+    fun putRollingStockById(
+        @PathVariable id: String,
+        @PathVariable rollingStockId: String,
+        @RequestBody rollingStockRequest: RollingStockRequest
+    ): Mono<ResponseEntity<Unit>>
+
+    @DeleteExchange("/{id}/rolling-stocks/{rollingStockId}")
+    fun deleteRollingStockBy(
+        @PathVariable id: String,
+        @PathVariable rollingStockId: String
+    ): Mono<ResponseEntity<Unit>>
 }
