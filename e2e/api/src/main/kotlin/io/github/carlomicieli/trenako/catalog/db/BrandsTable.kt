@@ -18,26 +18,34 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package io.github.carlomicieli.trenako
+package io.github.carlomicieli.trenako.catalog.db
 
-import io.github.carlomicieli.trenako.catalog.db.CatalogSeeding
-import kotlinx.coroutines.runBlocking
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import org.springframework.boot.CommandLineRunner
+import kotlinx.coroutines.reactor.awaitSingle
+import org.springframework.data.r2dbc.core.R2dbcEntityTemplate
+import org.springframework.data.relational.core.query.Criteria.where
+import org.springframework.data.relational.core.query.Query.empty
+import org.springframework.data.relational.core.query.Query.query
 import org.springframework.stereotype.Component
 
-@Suppress("SqlResolve", "SqlNoDataSourceInspection")
 @Component
-class DbInitializer(private val catalogSeeding: CatalogSeeding) : CommandLineRunner {
-
-    companion object {
-        val LOG: Logger = LoggerFactory.getLogger(DbInitializer::class.java)
+class BrandsTable(private val r2dbcEntityTemplate: R2dbcEntityTemplate) {
+    suspend fun count(): Long {
+        return r2dbcEntityTemplate
+            .count(empty(), ENTITY)
+            .awaitSingle()
     }
 
-    override fun run(vararg args: String?) {
-        runBlocking {
-            catalogSeeding.seed()
-        }
+    suspend fun existsByName(name: String): Boolean {
+        return r2dbcEntityTemplate
+            .exists(query(where("name").`is`(name)), ENTITY)
+            .awaitSingle()
+    }
+
+    suspend fun insert(newBrand: BrandRow) {
+        r2dbcEntityTemplate.insert(newBrand).awaitSingle()
+    }
+
+    companion object {
+        private val ENTITY: Class<BrandRow> = BrandRow::class.java
     }
 }

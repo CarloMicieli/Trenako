@@ -18,26 +18,33 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package io.github.carlomicieli.trenako
+package io.github.carlomicieli.trenako.catalog.db
 
-import io.github.carlomicieli.trenako.catalog.db.CatalogSeeding
-import kotlinx.coroutines.runBlocking
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 
-@Suppress("SqlResolve", "SqlNoDataSourceInspection")
 @Component
-class DbInitializer(private val catalogSeeding: CatalogSeeding) : CommandLineRunner {
+class CatalogSeeding(
+    private val brandsTable: BrandsTable,
+    private val railwaysTable: RailwaysTable,
+    private val scalesTable: ScalesTable
+) {
 
     companion object {
-        val LOG: Logger = LoggerFactory.getLogger(DbInitializer::class.java)
+        val LOG: Logger = LoggerFactory.getLogger(CatalogSeeding::class.java)
     }
 
-    override fun run(vararg args: String?) {
-        runBlocking {
-            catalogSeeding.seed()
-        }
+    suspend fun seed() {
+        LOG.info("Seeding catalog database...")
+
+        brandsTable.insert(Brands.ACME)
+        LOG.info("Insert brand...")
+
+        railwaysTable.insert(Railways.FS)
+        LOG.info("Insert railway...")
+
+        scalesTable.insert(Scales.H0)
+        LOG.info("Insert scale...")
     }
 }

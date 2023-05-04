@@ -18,26 +18,24 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package io.github.carlomicieli.trenako
+package io.github.carlomicieli.trenako.catalog.db
 
-import io.github.carlomicieli.trenako.catalog.db.CatalogSeeding
-import kotlinx.coroutines.runBlocking
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import org.springframework.boot.CommandLineRunner
-import org.springframework.stereotype.Component
+import io.github.carlomicieli.trenako.model.ScaleGauge
+import io.github.carlomicieli.trenako.model.ScaleStandard
+import io.github.carlomicieli.trenako.model.TrackGauge
+import java.math.BigDecimal
+import java.time.Instant
 
-@Suppress("SqlResolve", "SqlNoDataSourceInspection")
-@Component
-class DbInitializer(private val catalogSeeding: CatalogSeeding) : CommandLineRunner {
-
-    companion object {
-        val LOG: Logger = LoggerFactory.getLogger(DbInitializer::class.java)
-    }
-
-    override fun run(vararg args: String?) {
-        runBlocking {
-            catalogSeeding.seed()
-        }
-    }
+object Scales {
+    val H0: ScaleRow = ScaleRow(
+        scaleId = "h0",
+        name = "H0",
+        ratio = BigDecimal(87),
+        gauge = ScaleGauge().trackGauge(TrackGauge.STANDARD).inches(0.65f).millimeters(16.5f),
+        standards = listOf(ScaleStandard.NEM),
+        description = mapOf("en" to "description", "it" to "descrizione"),
+        version = 0,
+        createdAt = Instant.parse("2023-04-21T10:15:30.00Z"),
+        lastModifiedAt = Instant.parse("2023-04-21T10:15:30.00Z")
+    )
 }

@@ -18,10 +18,10 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package io.github.carlomicieli.trenako.catalog
+package io.github.carlomicieli.trenako.catalog.api
 
-import io.github.carlomicieli.trenako.model.Railway
-import io.github.carlomicieli.trenako.model.RailwayRequest
+import io.github.carlomicieli.trenako.model.Scale
+import io.github.carlomicieli.trenako.model.ScaleRequest
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
@@ -34,23 +34,23 @@ import org.springframework.web.service.annotation.PutExchange
 import reactor.core.publisher.Mono
 
 @HttpExchange(
-    url = "/api/railways",
+    url = "/api/scales",
     accept = [MediaType.APPLICATION_JSON_VALUE],
     contentType = MediaType.APPLICATION_JSON_VALUE
 )
-interface RailwaysApi {
+interface ScalesApi {
     @GetExchange
-    fun getRailways(): Mono<ResponseEntity<List<Railway>>>
+    fun getScales(): Mono<ResponseEntity<List<Scale>>>
 
     @GetExchange("{id}")
-    fun getRailwayById(@PathVariable id: String): Mono<ResponseEntity<Railway?>>
+    fun getScaleById(@PathVariable id: String): Mono<ResponseEntity<Scale?>>
 
     @PostExchange
-    fun postRailway(@RequestBody railway: RailwayRequest): Mono<ResponseEntity<Unit>>
+    fun postScale(@RequestBody scale: ScaleRequest): Mono<ResponseEntity<Unit>>
 
     @PutExchange("/{id}")
-    fun putRailway(@PathVariable id: String, @RequestBody railway: RailwayRequest): Mono<ResponseEntity<Unit>>
+    fun putScale(@PathVariable id: String, @RequestBody scale: ScaleRequest): Mono<ResponseEntity<Unit>>
 
     @DeleteExchange("/{id}")
-    fun deleteRailway(@PathVariable id: String): Mono<ResponseEntity<Unit>>
+    fun deleteScale(@PathVariable id: String): Mono<ResponseEntity<Unit>>
 }

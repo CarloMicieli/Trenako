@@ -18,7 +18,7 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package io.github.carlomicieli.trenako.catalog
+package io.github.carlomicieli.trenako.catalog.api
 
 import io.github.carlomicieli.trenako.model.CatalogItem
 import io.github.carlomicieli.trenako.model.CatalogItemRequest

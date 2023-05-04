@@ -18,26 +18,33 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package io.github.carlomicieli.trenako
+package io.github.carlomicieli.trenako.catalog.db
 
-import io.github.carlomicieli.trenako.catalog.db.CatalogSeeding
-import kotlinx.coroutines.runBlocking
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import org.springframework.boot.CommandLineRunner
+import kotlinx.coroutines.reactor.awaitSingle
+import org.springframework.data.r2dbc.core.R2dbcEntityTemplate
+import org.springframework.data.relational.core.query.Criteria
+import org.springframework.data.relational.core.query.Query
 import org.springframework.stereotype.Component
 
-@Suppress("SqlResolve", "SqlNoDataSourceInspection")
 @Component
-class DbInitializer(private val catalogSeeding: CatalogSeeding) : CommandLineRunner {
-
-    companion object {
-        val LOG: Logger = LoggerFactory.getLogger(DbInitializer::class.java)
+class ScalesTable(private val r2dbcEntityTemplate: R2dbcEntityTemplate) {
+    suspend fun count(): Long {
+        return r2dbcEntityTemplate
+            .count(Query.empty(), ENTITY)
+            .awaitSingle()
     }
 
-    override fun run(vararg args: String?) {
-        runBlocking {
-            catalogSeeding.seed()
-        }
+    suspend fun existsByName(name: String): Boolean {
+        return r2dbcEntityTemplate
+            .exists(Query.query(Criteria.where("name").`is`(name)), ENTITY)
+            .awaitSingle()
+    }
+
+    suspend fun insert(row: ScaleRow) {
+        r2dbcEntityTemplate.insert(row).awaitSingle()
+    }
+
+    companion object {
+        private val ENTITY: Class<ScaleRow> = ScaleRow::class.java
     }
 }

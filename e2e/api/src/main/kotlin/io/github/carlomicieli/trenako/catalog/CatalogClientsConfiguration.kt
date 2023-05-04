@@ -20,12 +20,16 @@
  */
 package io.github.carlomicieli.trenako.catalog
 
+import io.github.carlomicieli.trenako.catalog.api.BrandsApi
+import io.github.carlomicieli.trenako.catalog.api.CatalogItemsApi
+import io.github.carlomicieli.trenako.catalog.api.RailwaysApi
+import io.github.carlomicieli.trenako.catalog.api.ScalesApi
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.service.invoker.HttpServiceProxyFactory
 
 @Configuration
-class CatalogApi {
+class CatalogClientsConfiguration {
     @Bean
     fun brandsApi(httpServiceProxyFactory: HttpServiceProxyFactory): BrandsApi {
         return httpServiceProxyFactory.createClient(BrandsApi::class.java)

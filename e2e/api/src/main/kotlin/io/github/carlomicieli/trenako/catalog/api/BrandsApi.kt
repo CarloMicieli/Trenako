@@ -18,10 +18,10 @@
  *    specific language governing permissions and limitations
  *    under the License.
  */
-package io.github.carlomicieli.trenako.catalog
+package io.github.carlomicieli.trenako.catalog.api
 
-import io.github.carlomicieli.trenako.model.Scale
-import io.github.carlomicieli.trenako.model.ScaleRequest
+import io.github.carlomicieli.trenako.model.Brand
+import io.github.carlomicieli.trenako.model.BrandRequest
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
@@ -34,23 +34,23 @@ import org.springframework.web.service.annotation.PutExchange
 import reactor.core.publisher.Mono
 
 @HttpExchange(
-    url = "/api/scales",
+    url = "/api/brands",
     accept = [MediaType.APPLICATION_JSON_VALUE],
     contentType = MediaType.APPLICATION_JSON_VALUE
 )
-interface ScalesApi {
+interface BrandsApi {
     @GetExchange
-    fun getScales(): Mono<ResponseEntity<List<Scale>>>
+    fun getBrands(): Mono<ResponseEntity<List<Brand>>>
 
     @GetExchange("{id}")
-    fun getScaleById(@PathVariable id: String): Mono<ResponseEntity<Scale?>>
+    fun getBrandById(@PathVariable id: String): Mono<ResponseEntity<Brand?>>
 
     @PostExchange
-    fun postScale(@RequestBody scale: ScaleRequest): Mono<ResponseEntity<Unit>>
+    fun postBrand(@RequestBody brand: BrandRequest): Mono<ResponseEntity<Unit>>
 
     @PutExchange("/{id}")
-    fun putScale(@PathVariable id: String, @RequestBody scale: ScaleRequest): Mono<ResponseEntity<Unit>>
+    fun putBrand(@PathVariable id: String, @RequestBody brand: BrandRequest): Mono<ResponseEntity<Unit>>
 
     @DeleteExchange("/{id}")
-    fun deleteScale(@PathVariable id: String): Mono<ResponseEntity<Unit>>
+    fun deleteBrand(@PathVariable id: String): Mono<ResponseEntity<Unit>>
 }
