@@ -21,6 +21,7 @@
 package io.github.carlomicieli.trenako.catalog.db
 
 import kotlinx.coroutines.reactor.awaitSingle
+import kotlinx.coroutines.reactor.awaitSingleOrNull
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate
 import org.springframework.data.relational.core.query.Criteria.where
 import org.springframework.data.relational.core.query.Query.empty
@@ -39,6 +40,12 @@ class BrandsTable(private val r2dbcEntityTemplate: R2dbcEntityTemplate) {
         return r2dbcEntityTemplate
             .exists(query(where("name").`is`(name)), ENTITY)
             .awaitSingle()
+    }
+
+    suspend fun selectByName(name: String): BrandRow? {
+        return r2dbcEntityTemplate
+            .selectOne(query(where("name").`is`(name)), ENTITY)
+            .awaitSingleOrNull()
     }
 
     suspend fun insert(newBrand: BrandRow) {

@@ -21,23 +21,31 @@
 package io.github.carlomicieli.trenako.catalog.db
 
 import kotlinx.coroutines.reactor.awaitSingle
+import kotlinx.coroutines.reactor.awaitSingleOrNull
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate
-import org.springframework.data.relational.core.query.Criteria
-import org.springframework.data.relational.core.query.Query
+import org.springframework.data.relational.core.query.Criteria.where
+import org.springframework.data.relational.core.query.Query.empty
+import org.springframework.data.relational.core.query.Query.query
 import org.springframework.stereotype.Component
 
 @Component
 class ScalesTable(private val r2dbcEntityTemplate: R2dbcEntityTemplate) {
     suspend fun count(): Long {
         return r2dbcEntityTemplate
-            .count(Query.empty(), ENTITY)
+            .count(empty(), ENTITY)
             .awaitSingle()
     }
 
     suspend fun existsByName(name: String): Boolean {
         return r2dbcEntityTemplate
-            .exists(Query.query(Criteria.where("name").`is`(name)), ENTITY)
+            .exists(query(where("name").`is`(name)), ENTITY)
             .awaitSingle()
+    }
+
+    suspend fun selectByName(name: String): ScaleRow? {
+        return r2dbcEntityTemplate
+            .selectOne(query(where("name").`is`(name)), ENTITY)
+            .awaitSingleOrNull()
     }
 
     suspend fun insert(row: ScaleRow) {
