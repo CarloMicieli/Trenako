@@ -16,12 +16,15 @@ components:
           description: the brand unique identifier (an url encoded string)
           type: string
           format: uri
+          example: acme
         name:
           description: the brand name
           type: string
+          example: ACME
         registered_company_name:
           description: the registered company name for this brand
           type: string
+          example: Associazione Costruzioni Modellistiche Esatte
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
         group_name:
@@ -63,16 +66,19 @@ components:
           type: string
           minLength: 3
           maxLength: 50
+          example: ACME
         registered_company_name:
           description: the registered company name for this brand
           type: string
           maxLength: 100
+          example: Associazione Costruzioni Modellistiche Esatte
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
         group_name:
           description: the group name in case the brand is part of a group
           type: string
           maxLength: 100
+          example: None
         description:
           $ref: "./common.yaml#/components/schemas/LocalizedText"
         contact_info:
@@ -104,11 +110,13 @@ components:
           description: the unique identifier for this catalog item
           type: string
           format: uri
+          example: acme-12345
         brand:
           $ref: "#/components/schemas/CatalogItemBrand"
         item_number:
           description: the catalog item number
           type: string
+          example: 12345
         scale:
           $ref: "#/components/schemas/CatalogItemScale"
         category:
@@ -122,23 +130,18 @@ components:
         delivery_date:
           description: this catalog item delivery date (either the year or the quarter)
           type: string
+          example: 2022/Q1
         availability_status:
           $ref: "#/components/schemas/AvailabilityStatus"
         rolling_stocks:
           type: array
           items:
-            oneOf:
-              - $ref: "#/components/schemas/ElectricMultipleUnit"
-              - $ref: "#/components/schemas/FreightCar"
-              - $ref: "#/components/schemas/Locomotive"
-              - $ref: "#/components/schemas/PassengerCar"
-              - $ref: "#/components/schemas/Railcar"
-            discriminator:
-              propertyName: category
+            $ref: "#/components/schemas/RollingStock"
         count:
           description: the number of rolling stocks for this catalog item
           type: integer
           format: int32
+          example: 1
         metadata:
           $ref: "./common.yaml#/components/schemas/Metadata"
       required:
@@ -159,9 +162,11 @@ components:
           description: the brand unique identifier
           type: string
           format: uri
+          example: acme
         display:
           description: the brand display text
           type: string
+          example: ACME
       required:
         - id
         - display
@@ -187,16 +192,19 @@ components:
           type: string
           minLength: 3
           maxLength: 50
+          example: ACME
         item_number:
           description: the item number
           type: string
           minLength: 1
           maxLength: 25
+          example: 12345
         scale:
           description: the scale name
           type: string
           minLength: 1
           maxLength: 50
+          example: H0
         category:
           $ref: "#/components/schemas/CatalogItemCategory"
         description:
@@ -210,25 +218,20 @@ components:
           type: string
           minLength: 4
           maxLength: 7
+          example: 2022/Q1
         availability_status:
           $ref: "#/components/schemas/AvailabilityStatus"
         rolling_stocks:
           type: array
           items:
-            oneOf:
-              - $ref: "#/components/schemas/ElectricMultipleUnitRequest"
-              - $ref: "#/components/schemas/FreightCarRequest"
-              - $ref: "#/components/schemas/LocomotiveRequest"
-              - $ref: "#/components/schemas/PassengerCarRequest"
-              - $ref: "#/components/schemas/RailcarRequest"
-            discriminator:
-              propertyName: category
+            $ref: "#/components/schemas/RollingStockRequest"
         count:
           description: the number of rolling stocks for this catalog item
           type: integer
           format: int32
           minimum: 1
           maximum: 99
+          example: 1
       required:
         - brand
         - item_number
@@ -245,9 +248,11 @@ components:
           description: the scale unique identifier
           type: string
           format: uri
+          example: h0
         display:
           description: the scale display text
           type: string
+          example: H0
       required:
         - id
         - display
@@ -313,18 +318,22 @@ components:
               type: string
               minLength: 3
               maxLength: 25
+              example: ALe 883
             road_number:
               description: the identification marking for this electric multiple unit
               type: string
               maxLength: 50
+              example: ALe 883 001
             series:
               description: the prototype series information
               type: string
               maxLength: 50
+              example: First Series
             depot:
               description: the depot name
               type: string
               maxLength: 100
+              example: Milano Centrale
             electric_multiple_unit_type:
               $ref: "#/components/schemas/ElectricMultipleUnitType"
             dcc_interface:
@@ -334,6 +343,7 @@ components:
             is_dummy:
               description: indicate whether the rolling stock has a motor or not
               type: boolean
+              example: false
       required:
         - type_name
         - electric_multiple_unit_type
@@ -348,15 +358,19 @@ components:
             type_name:
               description: the electric multiple unit type name
               type: string
+              example: ALe 883
             road_number:
               description: the identification marking for this electric multiple unit
               type: string
+              example: ALe 883 001
             series:
               description: the prototype series information
               type: string
+              example: First Series
             depot:
               description: the depot name
               type: string
+              example: Milano Centrale
             electric_multiple_unit_type:
               $ref: "#/components/schemas/ElectricMultipleUnitType"
             dcc_interface:
@@ -366,6 +380,7 @@ components:
             is_dummy:
               description: indicate whether the rolling stock has a motor or not
               type: boolean
+              example: false
       required:
         - type_name
         - electric_multiple_unit_type
@@ -399,9 +414,11 @@ components:
             type_name:
               description: the freight car type name
               type: string
+              example: Eaos
             road_number:
               description: the identification marking for this freight car
               type: string
+              example: 106 533 8 071-9
             freight_car_type:
               $ref: "#/components/schemas/FreightCarType"
       required:
@@ -418,10 +435,12 @@ components:
               type: string
               minLength: 1
               maxLength: 25
+              example: Eaos
             road_number:
               description: the identification marking for this freight car
               type: string
               maxLength: 50
+              example: 106 533 8 071-9
             freight_car_type:
               $ref: "#/components/schemas/FreightCarType"
       required:
@@ -456,17 +475,19 @@ components:
       type: object
       properties:
         inches:
+          description: the overall length in inches
           type: number
           format: float
           minimum: 0.1
           maximum: 999.0
-          description: the overall length in inches
+          example: 8.661
         millimeters:
+          description: the overall length in millimeters
           type: number
           format: float
           minimum: 0.1
           maximum: 9999.0
-          description: the overall length in millimeters
+          example: 220.0
 
     Locomotive:
       description: a locomotive rolling stock
@@ -479,15 +500,19 @@ components:
                 the class of locomotives. The class is a group of locomotives built to a common design,
                 typically for a single railroad or railway
               type: string
+              example: E444
             road_number:
               description: the identification marking for this locomotive
               type: string
+              example: E444 042
             series:
               description: the prototype series information
               type: string
+              example: First Series
             depot:
               description: the depot name
               type: string
+              example: Roma San Lorenzo
             locomotive_type:
               $ref: "#/components/schemas/LocomotiveType"
             dcc_interface:
@@ -497,6 +522,7 @@ components:
             is_dummy:
               description: indicate whether the rolling stock has a motor or not
               type: boolean
+              example: false
       required:
         - locomotive_type
         - class_name
@@ -514,20 +540,25 @@ components:
                 the class of locomotives. The class is a group of locomotives built to a common design,
                 typically for a single railroad or railway
               type: string
+              minLength: 1
               maxLength: 15
+              example: E444
             road_number:
               description: the identification marking for this locomotive
               type: string
               minLength: 3
               maxLength: 50
+              example: E444 042
             series:
               description: the prototype series information
               type: string
               maxLength: 50
+              example: First Series
             depot:
               description: the depot name
               type: string
               maxLength: 100
+              example: Roma San Lorenzo
             locomotive_type:
               $ref: "#/components/schemas/LocomotiveType"
             dcc_interface:
@@ -537,6 +568,7 @@ components:
             is_dummy:
               description: indicate whether the rolling stock has a motor or not
               type: boolean
+              example: false
       required:
         - locomotive_type
         - class_name
@@ -560,12 +592,14 @@ components:
             type_name:
               description: the passenger car type name
               type: string
+              example: UIC-X
             road_number:
               description: the identification marking for this passenger car
               type: string
             series:
               description: the passenger car series
               type: string
+              example: Tipo 1982
             passenger_car_type:
               $ref: "#/components/schemas/PassengerCarType"
             service_level:
@@ -583,6 +617,7 @@ components:
               description: the passenger car type name
               type: string
               maxLength: 25
+              example: UIC-X
             road_number:
               description: the identification marking for this passenger car
               type: string
@@ -591,6 +626,7 @@ components:
               description: the passenger car series
               type: string
               maxLength: 50
+              example: Tipo 1982
             passenger_car_type:
               $ref: "#/components/schemas/PassengerCarType"
             service_level:
@@ -631,15 +667,19 @@ components:
             type_name:
               description: the railcar type name
               type: string
+              example: ALn 668
             road_number:
               description: the identification marking for this railcar
               type: string
+              example: ALn 668 123
             series:
               description: the railcar series
               type: string
+              example: First Series
             depot:
               description: the depot name
               type: string
+              example: Milano Centrale
             railcar_type:
               $ref: "#/components/schemas/RailcarType"
             dcc_interface:
@@ -649,6 +689,7 @@ components:
             is_dummy:
               description: indicate whether the rolling stock has a motor or not
               type: boolean
+              example: false
       required:
         - type_name
         - railcar_type
@@ -665,18 +706,22 @@ components:
               type: string
               minLength: 3
               maxLength: 25
+              example: ALn 668
             road_number:
               description: the identification marking for this railcar
               type: string
               maxLength: 50
+              example: ALn 668 123
             series:
               description: the railcar series
               type: string
               maxLength: 50
+              example: First Series
             depot:
               description: the depot name
               type: string
               maxLength: 100
+              example: Milano Centrale
             railcar_type:
               $ref: "#/components/schemas/RailcarType"
             dcc_interface:
@@ -686,6 +731,7 @@ components:
             is_dummy:
               description: indicate whether the rolling stock has a motor or not
               type: boolean
+              example: false
       required:
         - type_name
         - railcar_type
@@ -706,15 +752,19 @@ components:
           description: the unique railway identifier (an URL encoded string)
           type: string
           format: uri
+          example: fs
         name:
           description: the railway name
           type: string
+          example: FS
         abbreviation:
           description: the railway abbreviated name
           type: string
+          example: FS
         registered_company_name:
           description: the registered company name
           type: string
+          example: Ferrovie dello stato
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
         description:
@@ -722,6 +772,7 @@ components:
         country:
           description: the registration ISO country code (ISO 3166-1 alpha-2)
           type: string
+          example: IT
         period_of_activity:
           $ref: "#/components/schemas/RailwayPeriodOfActivity"
         gauge:
@@ -771,15 +822,18 @@ components:
           type: string
           minLength: 2
           maxLength: 50
+          example: Ferrovie dello Stato
         abbreviation:
           description: the railway abbreviated name
           type: string
           minLength: 2
           maxLength: 10
+          example: FS
         registered_company_name:
           description: the registered company name
           type: string
           maxLength: 250
+          example: Ferrovie dello Stato SPA
         organization_entity_type:
           $ref: "./common.yaml#/components/schemas/OrganizationEntityType"
         description:
@@ -789,6 +843,7 @@ components:
           type: string
           minLength: 2
           maxLength: 2
+          example: IT
         period_of_activity:
           $ref: "#/components/schemas/RailwayPeriodOfActivity"
         gauge:
@@ -819,6 +874,7 @@ components:
           format: float
           minimum: 0.1
           maximum: 2.0
+          example: 1.435
         track_gauge:
           $ref: "#/components/schemas/TrackGauge"
 
@@ -848,8 +904,6 @@ components:
 
     RollingStock:
       type: object
-      discriminator:
-        propertyName: category
       properties:
         category:
           $ref: "#/components/schemas/RollingStockCategory"
@@ -862,9 +916,11 @@ components:
         epoch:
           description: the epoch for this rolling stock
           type: string
+          example: IV
         livery:
           description: the rolling stock livery description
           type: string
+          example: grey
         length_over_buffers:
           $ref: "#/components/schemas/LengthOverBuffers"
         technical_specifications:
@@ -874,6 +930,20 @@ components:
         - railway
         - category
         - epoch
+      discriminator:
+        propertyName: category
+        mapping:
+          ELECTRIC_MULTIPLE_UNITS: "#/components/schemas/ElectricMultipleUnit"
+          FREIGHT_CARS: "#/components/schemas/FreightCar"
+          LOCOMOTIVES: "#/components/schemas/Locomotive"
+          PASSENGER_CARS: "#/components/schemas/PassengerCar"
+          RAILCARS: "#/components/schemas/Railcar"
+      oneOf:
+        - $ref: "#/components/schemas/ElectricMultipleUnit"
+        - $ref: "#/components/schemas/FreightCar"
+        - $ref: "#/components/schemas/Locomotive"
+        - $ref: "#/components/schemas/PassengerCar"
+        - $ref: "#/components/schemas/Railcar"
 
     RollingStockCategory:
       description: the rolling stock category
@@ -893,14 +963,14 @@ components:
           description: the railway unique identifier
           type: string
           format: uri
+          example: fs
         display:
           description: the railway display text
           type: string
+          example: FS
 
     RollingStockRequest:
       type: object
-      discriminator:
-        propertyName: category
       properties:
         category:
           $ref: "#/components/schemas/RollingStockCategory"
@@ -909,15 +979,18 @@ components:
           type: string
           minLength: 2
           maxLength: 50
+          example: FS
         epoch:
           description: the epoch for this rolling stock
           type: string
           minLength: 1
           maxLength: 10
+          example: IV
         livery:
           description: the rolling stock livery description
           type: string
           maxLength: 50
+          example: gray
         length_over_buffers:
           $ref: "#/components/schemas/LengthOverBuffers"
         technical_specifications:
@@ -926,6 +999,20 @@ components:
         - railway
         - category
         - epoch
+      discriminator:
+        propertyName: category
+        mapping:
+          ELECTRIC_MULTIPLE_UNITS: "#/components/schemas/ElectricMultipleUnitRequest"
+          FREIGHT_CARS: "#/components/schemas/FreightCarRequest"
+          LOCOMOTIVES: "#/components/schemas/LocomotiveRequest"
+          PASSENGER_CARS: "#/components/schemas/PassengerCarRequest"
+          RAILCARS: "#/components/schemas/RailcarRequest"
+      oneOf:
+        - $ref: "#/components/schemas/ElectricMultipleUnitRequest"
+        - $ref: "#/components/schemas/FreightCarRequest"
+        - $ref: "#/components/schemas/LocomotiveRequest"
+        - $ref: "#/components/schemas/PassengerCarRequest"
+        - $ref: "#/components/schemas/RailcarRequest"
 
     Scale:
       description: a rail transport modelling scale
@@ -935,13 +1022,16 @@ components:
           description: the unique identifier for a scale
           type: string
           format: uri
+          example: h0
         name:
           description: the scale name
           type: string
+          example: H0
         ratio:
           description: the ratio between the real world and the model (e.g. 1/87 or 1:87)
           type: number
           format: float
+          example: 87.0
         gauge:
           $ref: "#/components/schemas/ScaleGauge"
         description:
@@ -969,12 +1059,14 @@ components:
           format: float
           minimum: 6.5
           maximum: 200.0
+          example: 16.5
         inches:
           description: the distance between the rails in inches
           type: number
           format: float
           minimum: 0.01
           maximum: 15.00
+          example: 0.65
         track_gauge:
           $ref: "#/components/schemas/TrackGauge"
 
@@ -987,12 +1079,14 @@ components:
           type: string
           minLength: 1
           maxLength: 50
+          example: H0
         ratio:
           description: the ratio between the real world and the model (e.g. 1/87 or 1:87)
           type: number
           format: float
           minimum: 1.0
           maximum: 220.0
+          example: 87.0
         gauge:
           $ref: "#/components/schemas/ScaleGauge"
         description:
@@ -1047,6 +1141,7 @@ components:
           format: float
           minimum: 0.1
           maximum: 9999.0
+          example: 360.0
         coupling:
           $ref: "#/components/schemas/Coupling"
         flywheel_fitted:
