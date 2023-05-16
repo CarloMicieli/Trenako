@@ -4,7 +4,7 @@ plugins {
     id("kotlin-common-conventions")
     id("org.springframework.boot")
     id("io.spring.dependency-management")
-    id("org.openapi.generator") version "6.5.0"
+    id("org.openapi.generator") version "6.6.0"
 }
 
 dependencies {

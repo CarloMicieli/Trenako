@@ -2,7 +2,6 @@
 openapi: "3.0.9"
 info:
   title: Trenako
-  description: A model railway collections api
   version: 1.0.0
   termsOfService: https://www.trenako.com/terms
   contact:
@@ -10,10 +9,24 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
+  description: |-
+    A model railway collections api
 
 servers:
   - url: http://localhost:5000
     description: local
+
+tags:
+  - name: monitoring
+    description: infrastructure
+  - name: brands
+    description: modelling railway brands
+  - name: catalog-items
+    description: model railway catalog items
+  - name: railways
+    description: railway companies
+  - name: scales
+    description: modelling railway scales
 
 paths:
   /health-check:
@@ -23,10 +36,20 @@ paths:
         - monitoring
       operationId: health-check
       responses:
-        "200":
+        '200':
           description: the application is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - UP
+                      - DOWN
         "503":
-          description: the application is not available (for example when the database is not reachable)
+          $ref: "#/components/responses/Error"
 
   /api/brands:
     get:
@@ -46,17 +69,15 @@ paths:
         - brands
       operationId: get-brands
       responses:
-        "200":
+        '200':
           description: a brands list
           content:
-            "application/json":
+            application/json:
               schema:
                 type: array
                 items:
                   $ref: "./catalog.yaml#/components/schemas/Brand"
-        "204":
-          description: no brands were found
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
     post:
       summary: create a new model railway brand
@@ -67,51 +88,47 @@ paths:
         description: a new brand
         required: true
         content:
-          "application/json":
+          application/json:
             schema:
               $ref: "./catalog.yaml#/components/schemas/BrandRequest"
       responses:
-        "201":
-          description: the new brand has been created
+        '201':
+          description: a new brand has been created
           headers:
             location:
               schema:
                 type: string
                 format: uri
               description: the uri for the newly created brand
-        "409":
-          description: the brand already exists
-          content:
-            "application/vnd.trenako.problem+json":
-              schema:
-                $ref: "#/components/schemas/ProblemDetail"
-        "500":
+        '409':
+          $ref: "#/components/responses/ConflictError"
+        '500':
           $ref: "#/components/responses/Error"
 
-  /api/brands/{brand}:
+  /api/brands/{brandId}:
     delete:
       summary: delete a brand
       tags:
         - brands
       operationId: delete-brand
       parameters:
-        - name: brand
+        - name: brandId
           in: path
           required: true
           schema:
             type: string
       responses:
-        "204":
-          description: the brand has been removed successfully
-        "404":
+        '204':
+          description: the brand has been deleted
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "409":
+        '409':
           description: the brand is in use, not possible to delete it
           content:
-            "application/vnd.trenako.problem+json":
+            application/problem+json:
               schema:
                 $ref: "#/components/schemas/ProblemDetail"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
     get:
@@ -120,21 +137,21 @@ paths:
         - brands
       operationId: get-brand
       parameters:
-        - name: brand
+        - name: brandId
           in: path
           required: true
           schema:
             type: string
       responses:
-        "200":
-          description: OK
+        '200':
+          description: a brand
           content:
-            "application/json":
+            application/json:
               schema:
                 $ref: "./catalog.yaml#/components/schemas/Brand"
-        "404":
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
     put:
@@ -143,7 +160,7 @@ paths:
         - brands
       operationId: update-brand
       parameters:
-        - name: brand
+        - name: brandId
           in: path
           required: true
           schema:
@@ -152,15 +169,19 @@ paths:
         description: the updated brand
         required: true
         content:
-          "application/json":
+          application/json:
             schema:
               $ref: "./catalog.yaml#/components/schemas/BrandRequest"
       responses:
-        "204":
+        '200':
           description: the brand has been updated
-        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "./catalog.yaml#/components/schemas/Brand"
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
   /api/catalog-items:
@@ -177,7 +198,7 @@ paths:
             schema:
               $ref: "./catalog.yaml#/components/schemas/CatalogItemRequest"
       responses:
-        "201":
+        '201':
           description: a new catalog item has been created
           headers:
             location:
@@ -187,9 +208,9 @@ paths:
               description: the uri for the new catalog item
         "400":
           $ref: "#/components/responses/BadRequestError"
-        "409":
+        '409':
           $ref: "#/components/responses/ConflictError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
   /api/catalog-items/{catalogItemId}:
@@ -205,15 +226,15 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: a catalog item
           content:
-            "application/json":
+            application/json:
               schema:
                 $ref: "./catalog.yaml#/components/schemas/CatalogItem"
-        "404":
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
     put:
@@ -231,19 +252,23 @@ paths:
         description: the updated catalog item
         required: true
         content:
-          "application/json":
+          application/json:
             schema:
               $ref: "./catalog.yaml#/components/schemas/CatalogItemRequest"
       responses:
-        "204":
+        '200':
           description: catalog item updated
+          content:
+            application/json:
+              schema:
+                $ref: "./catalog.yaml#/components/schemas/CatalogItem"
         "400":
           $ref: "#/components/responses/BadRequestError"
-        "404":
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "409":
+        '409':
           $ref: "#/components/responses/ConflictError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
   /api/catalog-items/{catalogItemId}/rolling-stocks:
@@ -259,26 +284,17 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: the rolling stocks list
           content:
-            "application/json":
+            application/json:
               schema:
                 type: array
                 items:
-                  oneOf:
-                    - $ref: "./catalog.yaml#/components/schemas/ElectricMultipleUnit"
-                    - $ref: "./catalog.yaml#/components/schemas/FreightCar"
-                    - $ref: "./catalog.yaml#/components/schemas/Locomotive"
-                    - $ref: "./catalog.yaml#/components/schemas/PassengerCar"
-                    - $ref: "./catalog.yaml#/components/schemas/Railcar"
-                  discriminator:
-                    propertyName: category
-        "204":
-          description: the catalog item contains no rolling stocks
-        "404":
+                  $ref: "./catalog.yaml#/components/schemas/RollingStock"
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
     post:
@@ -300,8 +316,8 @@ paths:
             schema:
               $ref: "./catalog.yaml#/components/schemas/RollingStockRequest"
       responses:
-        "201":
-          description: rolling stock created
+        '201':
+          description: a new rolling stock has been created
           headers:
             location:
               schema:
@@ -310,9 +326,9 @@ paths:
               description: the uri for the new rolling stock
         "400":
           $ref: "#/components/responses/BadRequestError"
-        "404":
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
   /api/catalog-items/{catalogItemId}/rolling-stocks/{rollingStockId}:
@@ -334,13 +350,13 @@ paths:
             type: string
             format: urn
       responses:
-        "204":
-          description: rolling stock deleted
+        '204':
+          description: the rolling stock has been deleted
         "400":
           $ref: "#/components/responses/BadRequestError"
-        "404":
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
     get:
@@ -361,22 +377,15 @@ paths:
             type: string
             format: urn
       responses:
-        "200":
+        '200':
           description: a rolling stock
           content:
-            "application/json":
+            application/json:
               schema:
-                oneOf:
-                  - $ref: "./catalog.yaml#/components/schemas/ElectricMultipleUnit"
-                  - $ref: "./catalog.yaml#/components/schemas/FreightCar"
-                  - $ref: "./catalog.yaml#/components/schemas/Locomotive"
-                  - $ref: "./catalog.yaml#/components/schemas/PassengerCar"
-                  - $ref: "./catalog.yaml#/components/schemas/Railcar"
-                discriminator:
-                  propertyName: category
-        "404":
+                $ref: "./catalog.yaml#/components/schemas/RollingStock"
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
     put:
@@ -404,13 +413,17 @@ paths:
             schema:
               $ref: "./catalog.yaml#/components/schemas/RollingStockRequest"
       responses:
-        "204":
+        '200':
           description: rolling stock updated
+          content:
+            application/json:
+              schema:
+                $ref: "./catalog.yaml#/components/schemas/RollingStock"
         "400":
           $ref: "#/components/responses/BadRequestError"
-        "404":
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
   /api/railways:
@@ -431,17 +444,15 @@ paths:
         - railways
       operationId: get-railways
       responses:
-        "200":
+        '200':
           description: a railways list
           content:
-            "application/json":
+            application/json:
               schema:
                 type: array
                 items:
                   $ref: "./catalog.yaml#/components/schemas/Railway"
-        "204":
-          description: no railway has been found
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
     post:
       summary: create a new railway
@@ -456,8 +467,8 @@ paths:
             schema:
               $ref: "./catalog.yaml#/components/schemas/RailwayRequest"
       responses:
-        "201":
-          description: the new railway has been created
+        '201':
+          description: a new railway has been created
           headers:
             location:
               schema:
@@ -466,33 +477,33 @@ paths:
               description: the uri for the newly created railway
         "400":
           $ref: "#/components/responses/BadRequestError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
-  /api/railways/{railway}:
+  /api/railways/{railwayId}:
     delete:
       summary: delete a railway
       tags:
         - railways
       operationId: delete-railway
       parameters:
-        - name: railway
+        - name: railwayId
           in: path
           required: true
           schema:
             type: string
       responses:
-        "204":
-          description: the railway has been removed
-        "404":
+        '204':
+          description: the railway has been deleted
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "409":
+        '409':
           description: the railway is in use, not possible to delete it
           content:
-            "application/vnd.trenako.problem+json":
+            application/problem+json:
               schema:
                 $ref: "#/components/schemas/ProblemDetail"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
     get:
@@ -501,21 +512,21 @@ paths:
         - railways
       operationId: get-railway
       parameters:
-        - name: railway
+        - name: railwayId
           in: path
           required: true
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: a railway
           content:
-            "application/json":
+            application/json:
               schema:
                 $ref: "./catalog.yaml#/components/schemas/Railway"
-        "404":
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
     put:
@@ -524,7 +535,7 @@ paths:
         - railways
       operationId: update-railway
       parameters:
-        - name: railway
+        - name: railwayId
           in: path
           required: true
           schema:
@@ -533,15 +544,19 @@ paths:
         description: a new railway
         required: true
         content:
-          "application/json":
+          application/json:
             schema:
               $ref: "./catalog.yaml#/components/schemas/RailwayRequest"
       responses:
-        "204":
+        '200':
           description: the railway has been updated
-        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "./catalog.yaml#/components/schemas/Railway"
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
   /api/scales:
@@ -562,17 +577,15 @@ paths:
         - scales
       operationId: get-scales
       responses:
-        "200":
+        '200':
           description: a scales list
           content:
-            "application/json":
+            application/json:
               schema:
                 type: array
                 items:
                   $ref: "./catalog.yaml#/components/schemas/Scale"
-        "204":
-          description: no scales were found
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
     post:
@@ -588,7 +601,7 @@ paths:
             schema:
               $ref: "./catalog.yaml#/components/schemas/ScaleRequest"
       responses:
-        "201":
+        '201':
           description: a new scale has been created
           headers:
             location:
@@ -598,29 +611,33 @@ paths:
               description: the uri for the newly scale railway
         "400":
           $ref: "#/components/responses/BadRequestError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
-  /api/scales/{scale}:
+  /api/scales/{scaleId}:
     delete:
       summary: delete a scale
       tags:
         - scales
       operationId: delete-scale
       parameters:
-        - name: scale
+        - name: scaleId
           in: path
           required: true
           schema:
             type: string
       responses:
-        "204":
-          description: the scale has been removed
-        "404":
+        '204':
+          description: the scale has been deleted
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "409":
-          description: scale is in use
-        "500":
+        '409':
+          description: scale is in use, not possible to delete it
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ProblemDetail"
+        '500':
           $ref: "#/components/responses/Error"
 
     get:
@@ -629,21 +646,21 @@ paths:
         - scales
       operationId: get-scale
       parameters:
-        - name: scale
+        - name: scaleId
           in: path
           required: true
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: a model railway scale
           content:
-            "application/json":
+            application/json:
               schema:
                 $ref: "./catalog.yaml#/components/schemas/Scale"
-        "404":
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
     put:
@@ -652,7 +669,7 @@ paths:
         - scales
       operationId: update-scale
       parameters:
-        - name: scale
+        - name: scaleId
           in: path
           required: true
           schema:
@@ -661,17 +678,21 @@ paths:
         description: the updated scale
         required: true
         content:
-          "application/json":
+          application/json:
             schema:
               $ref: "./catalog.yaml#/components/schemas/ScaleRequest"
       responses:
-        "204":
+        '200':
           description: the scale has been updated
+          content:
+            application/json:
+              schema:
+                $ref: "./catalog.yaml#/components/schemas/Scale"
         "400":
           $ref: "#/components/responses/BadRequestError"
-        "404":
+        '404':
           $ref: "#/components/responses/NotFoundError"
-        "500":
+        '500':
           $ref: "#/components/responses/Error"
 
 components:
@@ -679,25 +700,25 @@ components:
     BadRequestError:
       description: the resource was not well formed
       content:
-        "application/vnd.trenako.problem+json":
+        application/problem+json:
           schema:
             $ref: "#/components/schemas/ProblemDetail"
     ConflictError:
       description: a conflict has occurred
       content:
-        "application/vnd.trenako.problem+json":
+        application/problem+json:
           schema:
             $ref: "#/components/schemas/ProblemDetail"
     Error:
       description: an error has occurred
       content:
-        "application/vnd.trenako.problem+json":
+        application/problem+json:
           schema:
             $ref: "#/components/schemas/ProblemDetail"
     NotFoundError:
       description: the resource was not found
       content:
-        "application/vnd.trenako.problem+json":
+        application/problem+json:
           schema:
             $ref: "#/components/schemas/ProblemDetail"
 

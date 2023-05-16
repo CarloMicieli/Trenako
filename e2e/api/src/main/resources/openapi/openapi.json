@@ -17,16 +17,46 @@
     "description" : "local",
     "url" : "http://localhost:5000"
   } ],
+  "tags" : [ {
+    "description" : "infrastructure",
+    "name" : "monitoring"
+  }, {
+    "description" : "modelling railway brands",
+    "name" : "brands"
+  }, {
+    "description" : "model railway catalog items",
+    "name" : "catalog-items"
+  }, {
+    "description" : "railway companies",
+    "name" : "railways"
+  }, {
+    "description" : "modelling railway scales",
+    "name" : "scales"
+  } ],
   "paths" : {
     "/health-check" : {
       "get" : {
         "operationId" : "health-check",
         "responses" : {
           "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/health_check_200_response"
+                }
+              }
+            },
             "description" : "the application is healthy"
           },
           "503" : {
-            "description" : "the application is not available (for example when the database is not reachable)"
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "an error has occurred"
           }
         },
         "summary" : "the health check endpoint",
@@ -71,12 +101,9 @@
             },
             "description" : "a brands list"
           },
-          "204" : {
-            "description" : "no brands were found"
-          },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -103,7 +130,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "the new brand has been created",
+            "description" : "a new brand has been created",
             "headers" : {
               "location" : {
                 "description" : "the uri for the newly created brand",
@@ -118,17 +145,17 @@
           },
           "409" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
               }
             },
-            "description" : "the brand already exists"
+            "description" : "a conflict has occurred"
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -141,13 +168,13 @@
         "tags" : [ "brands" ]
       }
     },
-    "/api/brands/{brand}" : {
+    "/api/brands/{brandId}" : {
       "delete" : {
         "operationId" : "delete-brand",
         "parameters" : [ {
           "explode" : false,
           "in" : "path",
-          "name" : "brand",
+          "name" : "brandId",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -156,11 +183,11 @@
         } ],
         "responses" : {
           "204" : {
-            "description" : "the brand has been removed successfully"
+            "description" : "the brand has been deleted"
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -170,7 +197,7 @@
           },
           "409" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -180,7 +207,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -197,7 +224,7 @@
         "parameters" : [ {
           "explode" : false,
           "in" : "path",
-          "name" : "brand",
+          "name" : "brandId",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -213,11 +240,11 @@
                 }
               }
             },
-            "description" : "OK"
+            "description" : "a brand"
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -227,7 +254,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -244,7 +271,7 @@
         "parameters" : [ {
           "explode" : false,
           "in" : "path",
-          "name" : "brand",
+          "name" : "brandId",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -263,12 +290,19 @@
           "required" : true
         },
         "responses" : {
-          "204" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Brand"
+                }
+              }
+            },
             "description" : "the brand has been updated"
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -278,7 +312,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -322,7 +356,7 @@
           },
           "400" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -332,7 +366,7 @@
           },
           "409" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -342,7 +376,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -381,7 +415,7 @@
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -391,7 +425,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -427,12 +461,19 @@
           "required" : true
         },
         "responses" : {
-          "204" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CatalogItem"
+                }
+              }
+            },
             "description" : "catalog item updated"
           },
           "400" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -442,7 +483,7 @@
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -452,7 +493,7 @@
           },
           "409" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -462,7 +503,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -494,7 +535,7 @@
               "application/json" : {
                 "schema" : {
                   "items" : {
-                    "$ref" : "#/components/schemas/get_rolling_stocks_200_response_inner"
+                    "$ref" : "#/components/schemas/RollingStock"
                   },
                   "type" : "array"
                 }
@@ -502,12 +543,9 @@
             },
             "description" : "the rolling stocks list"
           },
-          "204" : {
-            "description" : "the catalog item contains no rolling stocks"
-          },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -517,7 +555,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -554,7 +592,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "rolling stock created",
+            "description" : "a new rolling stock has been created",
             "headers" : {
               "location" : {
                 "description" : "the uri for the new rolling stock",
@@ -569,7 +607,7 @@
           },
           "400" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -579,7 +617,7 @@
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -589,7 +627,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -627,11 +665,11 @@
         } ],
         "responses" : {
           "204" : {
-            "description" : "rolling stock deleted"
+            "description" : "the rolling stock has been deleted"
           },
           "400" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -641,7 +679,7 @@
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -651,7 +689,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -690,7 +728,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/get_rolling_stocks_200_response_inner"
+                  "$ref" : "#/components/schemas/RollingStock"
                 }
               }
             },
@@ -698,7 +736,7 @@
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -708,7 +746,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -754,12 +792,19 @@
           "required" : true
         },
         "responses" : {
-          "204" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/RollingStock"
+                }
+              }
+            },
             "description" : "rolling stock updated"
           },
           "400" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -769,7 +814,7 @@
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -779,7 +824,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -830,12 +875,9 @@
             },
             "description" : "a railways list"
           },
-          "204" : {
-            "description" : "no railway has been found"
-          },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -862,7 +904,7 @@
         },
         "responses" : {
           "201" : {
-            "description" : "the new railway has been created",
+            "description" : "a new railway has been created",
             "headers" : {
               "location" : {
                 "description" : "the uri for the newly created railway",
@@ -877,7 +919,7 @@
           },
           "400" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -887,7 +929,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -900,13 +942,13 @@
         "tags" : [ "railways" ]
       }
     },
-    "/api/railways/{railway}" : {
+    "/api/railways/{railwayId}" : {
       "delete" : {
         "operationId" : "delete-railway",
         "parameters" : [ {
           "explode" : false,
           "in" : "path",
-          "name" : "railway",
+          "name" : "railwayId",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -915,11 +957,11 @@
         } ],
         "responses" : {
           "204" : {
-            "description" : "the railway has been removed"
+            "description" : "the railway has been deleted"
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -929,7 +971,7 @@
           },
           "409" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -939,7 +981,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -956,7 +998,7 @@
         "parameters" : [ {
           "explode" : false,
           "in" : "path",
-          "name" : "railway",
+          "name" : "railwayId",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -976,7 +1018,7 @@
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -986,7 +1028,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1003,7 +1045,7 @@
         "parameters" : [ {
           "explode" : false,
           "in" : "path",
-          "name" : "railway",
+          "name" : "railwayId",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -1022,12 +1064,19 @@
           "required" : true
         },
         "responses" : {
-          "204" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Railway"
+                }
+              }
+            },
             "description" : "the railway has been updated"
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1037,7 +1086,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1088,12 +1137,9 @@
             },
             "description" : "a scales list"
           },
-          "204" : {
-            "description" : "no scales were found"
-          },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1135,7 +1181,7 @@
           },
           "400" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1145,7 +1191,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1158,13 +1204,13 @@
         "tags" : [ "scales" ]
       }
     },
-    "/api/scales/{scale}" : {
+    "/api/scales/{scaleId}" : {
       "delete" : {
         "operationId" : "delete-scale",
         "parameters" : [ {
           "explode" : false,
           "in" : "path",
-          "name" : "scale",
+          "name" : "scaleId",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -1173,11 +1219,11 @@
         } ],
         "responses" : {
           "204" : {
-            "description" : "the scale has been removed"
+            "description" : "the scale has been deleted"
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1186,11 +1232,18 @@
             "description" : "the resource was not found"
           },
           "409" : {
-            "description" : "scale is in use"
+            "content" : {
+              "application/problem+json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ProblemDetail"
+                }
+              }
+            },
+            "description" : "scale is in use, not possible to delete it"
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1207,7 +1260,7 @@
         "parameters" : [ {
           "explode" : false,
           "in" : "path",
-          "name" : "scale",
+          "name" : "scaleId",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -1227,7 +1280,7 @@
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1237,7 +1290,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1254,7 +1307,7 @@
         "parameters" : [ {
           "explode" : false,
           "in" : "path",
-          "name" : "scale",
+          "name" : "scaleId",
           "required" : true,
           "schema" : {
             "type" : "string"
@@ -1273,12 +1326,19 @@
           "required" : true
         },
         "responses" : {
-          "204" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Scale"
+                }
+              }
+            },
             "description" : "the scale has been updated"
           },
           "400" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1288,7 +1348,7 @@
           },
           "404" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1298,7 +1358,7 @@
           },
           "500" : {
             "content" : {
-              "application/vnd.trenako.problem+json" : {
+              "application/problem+json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/ProblemDetail"
                 }
@@ -1316,7 +1376,7 @@
     "responses" : {
       "BadRequestError" : {
         "content" : {
-          "application/vnd.trenako.problem+json" : {
+          "application/problem+json" : {
             "schema" : {
               "$ref" : "#/components/schemas/ProblemDetail"
             }
@@ -1326,7 +1386,7 @@
       },
       "ConflictError" : {
         "content" : {
-          "application/vnd.trenako.problem+json" : {
+          "application/problem+json" : {
             "schema" : {
               "$ref" : "#/components/schemas/ProblemDetail"
             }
@@ -1336,7 +1396,7 @@
       },
       "Error" : {
         "content" : {
-          "application/vnd.trenako.problem+json" : {
+          "application/problem+json" : {
             "schema" : {
               "$ref" : "#/components/schemas/ProblemDetail"
             }
@@ -1346,7 +1406,7 @@
       },
       "NotFoundError" : {
         "content" : {
-          "application/vnd.trenako.problem+json" : {
+          "application/problem+json" : {
             "schema" : {
               "$ref" : "#/components/schemas/ProblemDetail"
             }
@@ -1395,15 +1455,18 @@
         "properties" : {
           "brand_id" : {
             "description" : "the brand unique identifier (an url encoded string)",
+            "example" : "acme",
             "format" : "uri",
             "type" : "string"
           },
           "name" : {
             "description" : "the brand name",
+            "example" : "ACME",
             "type" : "string"
           },
           "registered_company_name" : {
             "description" : "the registered company name for this brand",
+            "example" : "Associazione Costruzioni Modellistiche Esatte",
             "type" : "string"
           },
           "organization_entity_type" : {
@@ -1411,6 +1474,7 @@
           },
           "group_name" : {
             "description" : "the group name in case the brand is part of a group",
+            "example" : "None",
             "type" : "string"
           },
           "description" : {
@@ -1453,12 +1517,14 @@
         "properties" : {
           "name" : {
             "description" : "the brand name",
+            "example" : "ACME",
             "maxLength" : 50,
             "minLength" : 3,
             "type" : "string"
           },
           "registered_company_name" : {
             "description" : "the registered company name for this brand",
+            "example" : "Associazione Costruzioni Modellistiche Esatte",
             "maxLength" : 100,
             "type" : "string"
           },
@@ -1467,6 +1533,7 @@
           },
           "group_name" : {
             "description" : "the group name in case the brand is part of a group",
+            "example" : "None",
             "maxLength" : 100,
             "type" : "string"
           },
@@ -1497,18 +1564,21 @@
         "properties" : {
           "brand" : {
             "description" : "the brand name",
+            "example" : "ACME",
             "maxLength" : 50,
             "minLength" : 3,
             "type" : "string"
           },
           "item_number" : {
             "description" : "the item number",
+            "example" : "12345",
             "maxLength" : 25,
             "minLength" : 1,
             "type" : "string"
           },
           "scale" : {
             "description" : "the scale name",
+            "example" : "H0",
             "maxLength" : 50,
             "minLength" : 1,
             "type" : "string"
@@ -1527,6 +1597,7 @@
           },
           "delivery_date" : {
             "description" : "this delivery date (either the year or the quarter)",
+            "example" : "2022/Q1",
             "maxLength" : 7,
             "minLength" : 4,
             "type" : "string"
@@ -1536,12 +1607,13 @@
           },
           "rolling_stocks" : {
             "items" : {
-              "$ref" : "#/components/schemas/CatalogItemRequest_rolling_stocks_inner"
+              "$ref" : "#/components/schemas/RollingStockRequest"
             },
             "type" : "array"
           },
           "count" : {
             "description" : "the number of rolling stocks for this catalog item",
+            "example" : 1,
             "format" : "int32",
             "maximum" : 99,
             "minimum" : 1,
@@ -1566,17 +1638,15 @@
         "enum" : [ "ANNOUNCED", "AVAILABLE", "DISCONTINUED" ],
         "type" : "string"
       },
-      "ElectricMultipleUnitRequest" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/RollingStockRequest"
-        }, {
-          "$ref" : "#/components/schemas/ElectricMultipleUnitRequest_allOf"
-        } ],
-        "description" : "the request to create/update an electric multiple unit rolling stocks",
-        "required" : [ "electric_multiple_unit_type", "is_dummy", "type_name" ]
-      },
       "RollingStockRequest" : {
         "discriminator" : {
+          "mapping" : {
+            "ELECTRIC_MULTIPLE_UNITS" : "#/components/schemas/ElectricMultipleUnitRequest",
+            "FREIGHT_CARS" : "#/components/schemas/FreightCarRequest",
+            "LOCOMOTIVES" : "#/components/schemas/LocomotiveRequest",
+            "PASSENGER_CARS" : "#/components/schemas/PassengerCarRequest",
+            "RAILCARS" : "#/components/schemas/RailcarRequest"
+          },
           "propertyName" : "category"
         },
         "properties" : {
@@ -1585,18 +1655,21 @@
           },
           "railway" : {
             "description" : "the railway name for this rolling stock",
+            "example" : "FS",
             "maxLength" : 50,
             "minLength" : 2,
             "type" : "string"
           },
           "epoch" : {
             "description" : "the epoch for this rolling stock",
+            "example" : "IV",
             "maxLength" : 10,
             "minLength" : 1,
             "type" : "string"
           },
           "livery" : {
             "description" : "the rolling stock livery description",
+            "example" : "gray",
             "maxLength" : 50,
             "type" : "string"
           },
@@ -1620,6 +1693,7 @@
         "properties" : {
           "inches" : {
             "description" : "the overall length in inches",
+            "example" : 8.661,
             "format" : "float",
             "maximum" : 999.0,
             "minimum" : 0.1,
@@ -1627,6 +1701,7 @@
           },
           "millimeters" : {
             "description" : "the overall length in millimeters",
+            "example" : 220.0,
             "format" : "float",
             "maximum" : 9999.0,
             "minimum" : 0.1,
@@ -1640,6 +1715,7 @@
         "properties" : {
           "minimum_radius" : {
             "description" : "the minimum drivable radius (in millimeters)",
+            "example" : 360.0,
             "format" : "float",
             "maximum" : 9999.0,
             "minimum" : 0.1,
@@ -1689,8 +1765,17 @@
       },
       "FeatureFlag" : {
         "description" : "a feature flag for rolling stock technical specifications",
-        "enum" : [ "true", "false", "NOT_APPLICABLE" ],
+        "enum" : [ "YES", "NO", "NOT_APPLICABLE" ],
         "type" : "string"
+      },
+      "ElectricMultipleUnitRequest" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStockRequest"
+        }, {
+          "$ref" : "#/components/schemas/ElectricMultipleUnitRequest_allOf"
+        } ],
+        "description" : "the request to create/update an electric multiple unit rolling stocks",
+        "required" : [ "electric_multiple_unit_type", "is_dummy", "type_name" ]
       },
       "ElectricMultipleUnitType" : {
         "description" : "the electric multiple unit type",
@@ -1773,6 +1858,7 @@
         "properties" : {
           "catalog_item_id" : {
             "description" : "the unique identifier for this catalog item",
+            "example" : "acme-12345",
             "format" : "uri",
             "type" : "string"
           },
@@ -1781,6 +1867,7 @@
           },
           "item_number" : {
             "description" : "the catalog item number",
+            "example" : "12345",
             "type" : "string"
           },
           "scale" : {
@@ -1800,6 +1887,7 @@
           },
           "delivery_date" : {
             "description" : "this catalog item delivery date (either the year or the quarter)",
+            "example" : "2022/Q1",
             "type" : "string"
           },
           "availability_status" : {
@@ -1807,12 +1895,13 @@
           },
           "rolling_stocks" : {
             "items" : {
-              "$ref" : "#/components/schemas/get_rolling_stocks_200_response_inner"
+              "$ref" : "#/components/schemas/RollingStock"
             },
             "type" : "array"
           },
           "count" : {
             "description" : "the number of rolling stocks for this catalog item",
+            "example" : 1,
             "format" : "int32",
             "type" : "integer"
           },
@@ -1828,11 +1917,13 @@
         "properties" : {
           "brand_id" : {
             "description" : "the brand unique identifier",
+            "example" : "acme",
             "format" : "uri",
             "type" : "string"
           },
           "display" : {
             "description" : "the brand display text",
+            "example" : "ACME",
             "type" : "string"
           }
         },
@@ -1844,30 +1935,41 @@
         "properties" : {
           "scale_id" : {
             "description" : "the scale unique identifier",
+            "example" : "h0",
             "format" : "uri",
             "type" : "string"
           },
           "display" : {
             "description" : "the scale display text",
+            "example" : "H0",
             "type" : "string"
           }
         },
         "required" : [ "display", "id" ],
         "type" : "object"
       },
-      "ElectricMultipleUnit" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/RollingStock"
-        }, {
-          "$ref" : "#/components/schemas/ElectricMultipleUnit_allOf"
-        } ],
-        "description" : "an electric multiple unit rolling stock",
-        "required" : [ "electric_multiple_unit_type", "is_dummy", "type_name" ]
-      },
       "RollingStock" : {
         "discriminator" : {
+          "mapping" : {
+            "ELECTRIC_MULTIPLE_UNITS" : "#/components/schemas/ElectricMultipleUnit",
+            "FREIGHT_CARS" : "#/components/schemas/FreightCar",
+            "LOCOMOTIVES" : "#/components/schemas/Locomotive",
+            "PASSENGER_CARS" : "#/components/schemas/PassengerCar",
+            "RAILCARS" : "#/components/schemas/Railcar"
+          },
           "propertyName" : "category"
         },
+        "oneOf" : [ {
+          "$ref" : "#/components/schemas/ElectricMultipleUnit"
+        }, {
+          "$ref" : "#/components/schemas/FreightCar"
+        }, {
+          "$ref" : "#/components/schemas/Locomotive"
+        }, {
+          "$ref" : "#/components/schemas/PassengerCar"
+        }, {
+          "$ref" : "#/components/schemas/Railcar"
+        } ],
         "properties" : {
           "category" : {
             "$ref" : "#/components/schemas/RollingStockCategory"
@@ -1882,10 +1984,12 @@
           },
           "epoch" : {
             "description" : "the epoch for this rolling stock",
+            "example" : "IV",
             "type" : "string"
           },
           "livery" : {
             "description" : "the rolling stock livery description",
+            "example" : "grey",
             "type" : "string"
           },
           "length_over_buffers" : {
@@ -1898,20 +2002,14 @@
         "required" : [ "category", "epoch", "railway", "rolling_stock_id" ],
         "type" : "object"
       },
-      "RollingStockRailway" : {
-        "description" : "the railway company for a rolling stock",
-        "properties" : {
-          "railway_id" : {
-            "description" : "the railway unique identifier",
-            "format" : "uri",
-            "type" : "string"
-          },
-          "display" : {
-            "description" : "the railway display text",
-            "type" : "string"
-          }
-        },
-        "type" : "object"
+      "ElectricMultipleUnit" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/RollingStock"
+        }, {
+          "$ref" : "#/components/schemas/ElectricMultipleUnit_allOf"
+        } ],
+        "description" : "an electric multiple unit rolling stock",
+        "required" : [ "electric_multiple_unit_type", "is_dummy", "type_name" ]
       },
       "FreightCar" : {
         "allOf" : [ {
@@ -1949,24 +2047,45 @@
         "description" : "a railcar rolling stock",
         "required" : [ "is_dummy", "railcar_type", "type_name" ]
       },
+      "RollingStockRailway" : {
+        "description" : "the railway company for a rolling stock",
+        "properties" : {
+          "railway_id" : {
+            "description" : "the railway unique identifier",
+            "example" : "fs",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "display" : {
+            "description" : "the railway display text",
+            "example" : "FS",
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
       "Railway" : {
         "description" : "a company which operates a railway network",
         "properties" : {
           "railway_id" : {
             "description" : "the unique railway identifier (an URL encoded string)",
+            "example" : "fs",
             "format" : "uri",
             "type" : "string"
           },
           "name" : {
             "description" : "the railway name",
+            "example" : "FS",
             "type" : "string"
           },
           "abbreviation" : {
             "description" : "the railway abbreviated name",
+            "example" : "FS",
             "type" : "string"
           },
           "registered_company_name" : {
             "description" : "the registered company name",
+            "example" : "Ferrovie dello stato",
             "type" : "string"
           },
           "organization_entity_type" : {
@@ -1977,6 +2096,7 @@
           },
           "country" : {
             "description" : "the registration ISO country code (ISO 3166-1 alpha-2)",
+            "example" : "IT",
             "type" : "string"
           },
           "period_of_activity" : {
@@ -1987,6 +2107,7 @@
           },
           "headquarters" : {
             "description" : "the railway headquarters",
+            "example" : [ "Rome" ],
             "items" : {
               "type" : "string"
             },
@@ -2038,6 +2159,7 @@
         "properties" : {
           "meters" : {
             "description" : "the distance between the two rails in meters",
+            "example" : 1.435,
             "format" : "float",
             "maximum" : 2.0,
             "minimum" : 0.1,
@@ -2079,18 +2201,21 @@
         "properties" : {
           "name" : {
             "description" : "the railway name",
+            "example" : "Ferrovie dello Stato",
             "maxLength" : 50,
             "minLength" : 2,
             "type" : "string"
           },
           "abbreviation" : {
             "description" : "the railway abbreviated name",
+            "example" : "FS",
             "maxLength" : 10,
             "minLength" : 2,
             "type" : "string"
           },
           "registered_company_name" : {
             "description" : "the registered company name",
+            "example" : "Ferrovie dello Stato SPA",
             "maxLength" : 250,
             "type" : "string"
           },
@@ -2102,6 +2227,7 @@
           },
           "country" : {
             "description" : "the ISO country code (ISO 3166-1 alpha-2)",
+            "example" : "IT",
             "maxLength" : 2,
             "minLength" : 2,
             "type" : "string"
@@ -2138,15 +2264,18 @@
         "properties" : {
           "scale_id" : {
             "description" : "the unique identifier for a scale",
+            "example" : "h0",
             "format" : "uri",
             "type" : "string"
           },
           "name" : {
             "description" : "the scale name",
+            "example" : "H0",
             "type" : "string"
           },
           "ratio" : {
             "description" : "the ratio between the real world and the model (e.g. 1/87 or 1:87)",
+            "example" : 87.0,
             "format" : "float",
             "type" : "number"
           },
@@ -2175,6 +2304,7 @@
         "properties" : {
           "millimeters" : {
             "description" : "the distance between the rails in millimeters",
+            "example" : 16.5,
             "format" : "float",
             "maximum" : 200.0,
             "minimum" : 6.5,
@@ -2182,6 +2312,7 @@
           },
           "inches" : {
             "description" : "the distance between the rails in inches",
+            "example" : 0.65,
             "format" : "float",
             "maximum" : 15.0,
             "minimum" : 0.01,
@@ -2203,12 +2334,14 @@
         "properties" : {
           "name" : {
             "description" : "the scale name",
+            "example" : "H0",
             "maxLength" : 50,
             "minLength" : 1,
             "type" : "string"
           },
           "ratio" : {
             "description" : "the ratio between the real world and the model (e.g. 1/87 or 1:87)",
+            "example" : 87.0,
             "format" : "float",
             "maximum" : 220.0,
             "minimum" : 1.0,
@@ -2238,25 +2371,12 @@
       },
       "LocalizedText" : {
         "additionalProperties" : {
-          "properties" : {
-            "code" : {
-              "description" : "a valid ISO 639-1 language code",
-              "maxLength" : 2,
-              "minLength" : 2,
-              "type" : "string"
-            },
-            "text" : {
-              "description" : "a label in the current language",
-              "maxLength" : 2500,
-              "type" : "string"
-            }
-          },
-          "type" : "string"
+          "$ref" : "#/components/schemas/LocalizedText_value"
         },
         "description" : "a map with localized text in different languages",
         "example" : {
-          "en" : "Hello!",
-          "fr" : "Bonjour!"
+          "it" : "Testo in Italiano",
+          "en" : "English Label"
         },
         "type" : "object"
       },
@@ -2265,6 +2385,7 @@
         "properties" : {
           "street_address" : {
             "description" : "the street address",
+            "example" : "221B Baker Street",
             "maxLength" : 255,
             "minLength" : 5,
             "type" : "string"
@@ -2276,6 +2397,7 @@
           },
           "city" : {
             "description" : "the city/town",
+            "example" : "London",
             "maxLength" : 50,
             "minLength" : 3,
             "type" : "string"
@@ -2287,12 +2409,14 @@
           },
           "postal_code" : {
             "description" : "the postal code (ZIP code)",
+            "example" : "NW1 6XE",
             "maxLength" : 10,
             "minLength" : 3,
             "type" : "string"
           },
           "country" : {
             "description" : "the ISO country code (ISO 3166-1 alpha-2)",
+            "example" : "GB",
             "maxLength" : 2,
             "minLength" : 2,
             "type" : "string"
@@ -2306,17 +2430,20 @@
         "properties" : {
           "email" : {
             "description" : "the mail address",
+            "example" : "mail@example.com",
             "format" : "email",
             "maxLength" : 250,
             "type" : "string"
           },
           "phone" : {
             "description" : "the phone number",
+            "example" : "441632960978",
             "maxLength" : 20,
             "type" : "string"
           },
           "website_url" : {
             "description" : "the website url",
+            "example" : "https://www.example.com",
             "format" : "uri",
             "maxLength" : 100,
             "type" : "string"
@@ -2329,6 +2456,7 @@
         "properties" : {
           "facebook" : {
             "description" : "a facebook handler",
+            "example" : "facebook_handler",
             "format" : "uri",
             "maxLength" : 100,
             "minLength" : 3,
@@ -2336,6 +2464,7 @@
           },
           "instagram" : {
             "description" : "an instagram handler",
+            "example" : "instagram_handler",
             "format" : "uri",
             "maxLength" : 100,
             "minLength" : 3,
@@ -2343,6 +2472,7 @@
           },
           "linkedin" : {
             "description" : "a linkedin handler",
+            "example" : "linkedin_handler",
             "format" : "uri",
             "maxLength" : 100,
             "minLength" : 3,
@@ -2350,6 +2480,7 @@
           },
           "twitter" : {
             "description" : "a twitter handler",
+            "example" : "twitter_handler",
             "format" : "uri",
             "maxLength" : 100,
             "minLength" : 3,
@@ -2357,6 +2488,7 @@
           },
           "youtube" : {
             "description" : "a youtube handler (either user or channel name)",
+            "example" : "youtube_handler",
             "format" : "uri",
             "maxLength" : 100,
             "minLength" : 3,
@@ -2388,58 +2520,39 @@
         "required" : [ "created", "version" ],
         "type" : "object"
       },
-      "get_rolling_stocks_200_response_inner" : {
-        "discriminator" : {
-          "propertyName" : "category"
+      "health_check_200_response" : {
+        "properties" : {
+          "status" : {
+            "enum" : [ "UP", "DOWN" ],
+            "type" : "string"
+          }
         },
-        "oneOf" : [ {
-          "$ref" : "#/components/schemas/ElectricMultipleUnit"
-        }, {
-          "$ref" : "#/components/schemas/FreightCar"
-        }, {
-          "$ref" : "#/components/schemas/Locomotive"
-        }, {
-          "$ref" : "#/components/schemas/PassengerCar"
-        }, {
-          "$ref" : "#/components/schemas/Railcar"
-        } ]
-      },
-      "CatalogItemRequest_rolling_stocks_inner" : {
-        "discriminator" : {
-          "propertyName" : "category"
-        },
-        "oneOf" : [ {
-          "$ref" : "#/components/schemas/ElectricMultipleUnitRequest"
-        }, {
-          "$ref" : "#/components/schemas/FreightCarRequest"
-        }, {
-          "$ref" : "#/components/schemas/LocomotiveRequest"
-        }, {
-          "$ref" : "#/components/schemas/PassengerCarRequest"
-        }, {
-          "$ref" : "#/components/schemas/RailcarRequest"
-        } ]
+        "type" : "object"
       },
       "ElectricMultipleUnitRequest_allOf" : {
         "properties" : {
           "type_name" : {
             "description" : "the electric multiple unit type name",
+            "example" : "ALe 883",
             "maxLength" : 25,
             "minLength" : 3,
             "type" : "string"
           },
           "road_number" : {
             "description" : "the identification marking for this electric multiple unit",
+            "example" : "ALe 883 001",
             "maxLength" : 50,
             "type" : "string"
           },
           "series" : {
             "description" : "the prototype series information",
+            "example" : "First Series",
             "maxLength" : 50,
             "type" : "string"
           },
           "depot" : {
             "description" : "the depot name",
+            "example" : "Milano Centrale",
             "maxLength" : 100,
             "type" : "string"
           },
@@ -2454,6 +2567,7 @@
           },
           "is_dummy" : {
             "description" : "indicate whether the rolling stock has a motor or not",
+            "example" : false,
             "type" : "boolean"
           }
         },
@@ -2464,12 +2578,14 @@
         "properties" : {
           "type_name" : {
             "description" : "the freight car type name",
+            "example" : "Eaos",
             "maxLength" : 25,
             "minLength" : 1,
             "type" : "string"
           },
           "road_number" : {
             "description" : "the identification marking for this freight car",
+            "example" : "106 533 8 071-9",
             "maxLength" : 50,
             "type" : "string"
           },
@@ -2484,22 +2600,27 @@
         "properties" : {
           "class_name" : {
             "description" : "the class of locomotives. The class is a group of locomotives built to a common design,\ntypically for a single railroad or railway\n",
+            "example" : "E444",
             "maxLength" : 15,
+            "minLength" : 1,
             "type" : "string"
           },
           "road_number" : {
             "description" : "the identification marking for this locomotive",
+            "example" : "E444 042",
             "maxLength" : 50,
             "minLength" : 3,
             "type" : "string"
           },
           "series" : {
             "description" : "the prototype series information",
+            "example" : "First Series",
             "maxLength" : 50,
             "type" : "string"
           },
           "depot" : {
             "description" : "the depot name",
+            "example" : "Roma San Lorenzo",
             "maxLength" : 100,
             "type" : "string"
           },
@@ -2514,6 +2635,7 @@
           },
           "is_dummy" : {
             "description" : "indicate whether the rolling stock has a motor or not",
+            "example" : false,
             "type" : "boolean"
           }
         },
@@ -2524,16 +2646,19 @@
         "properties" : {
           "type_name" : {
             "description" : "the passenger car type name",
+            "example" : "UIC-X",
             "maxLength" : 25,
             "type" : "string"
           },
           "road_number" : {
             "description" : "the identification marking for this passenger car",
+            "example" : "51 83 31-70 001-4 AB",
             "maxLength" : 50,
             "type" : "string"
           },
           "series" : {
             "description" : "the passenger car series",
+            "example" : "Tipo 1982",
             "maxLength" : 50,
             "type" : "string"
           },
@@ -2551,22 +2676,26 @@
         "properties" : {
           "type_name" : {
             "description" : "the railcar type name",
+            "example" : "ALn 668",
             "maxLength" : 25,
             "minLength" : 3,
             "type" : "string"
           },
           "road_number" : {
             "description" : "the identification marking for this railcar",
+            "example" : "ALn 668 123",
             "maxLength" : 50,
             "type" : "string"
           },
           "series" : {
             "description" : "the railcar series",
+            "example" : "First Series",
             "maxLength" : 50,
             "type" : "string"
           },
           "depot" : {
             "description" : "the depot name",
+            "example" : "Milano Centrale",
             "maxLength" : 100,
             "type" : "string"
           },
@@ -2581,6 +2710,7 @@
           },
           "is_dummy" : {
             "description" : "indicate whether the rolling stock has a motor or not",
+            "example" : false,
             "type" : "boolean"
           }
         },
@@ -2591,18 +2721,22 @@
         "properties" : {
           "type_name" : {
             "description" : "the electric multiple unit type name",
+            "example" : "ALe 883",
             "type" : "string"
           },
           "road_number" : {
             "description" : "the identification marking for this electric multiple unit",
+            "example" : "ALe 883 001",
             "type" : "string"
           },
           "series" : {
             "description" : "the prototype series information",
+            "example" : "First Series",
             "type" : "string"
           },
           "depot" : {
             "description" : "the depot name",
+            "example" : "Milano Centrale",
             "type" : "string"
           },
           "electric_multiple_unit_type" : {
@@ -2616,6 +2750,7 @@
           },
           "is_dummy" : {
             "description" : "indicate whether the rolling stock has a motor or not",
+            "example" : false,
             "type" : "boolean"
           }
         },
@@ -2626,10 +2761,12 @@
         "properties" : {
           "type_name" : {
             "description" : "the freight car type name",
+            "example" : "Eaos",
             "type" : "string"
           },
           "road_number" : {
             "description" : "the identification marking for this freight car",
+            "example" : "106 533 8 071-9",
             "type" : "string"
           },
           "freight_car_type" : {
@@ -2643,18 +2780,22 @@
         "properties" : {
           "class_name" : {
             "description" : "the class of locomotives. The class is a group of locomotives built to a common design,\ntypically for a single railroad or railway\n",
+            "example" : "E444",
             "type" : "string"
           },
           "road_number" : {
             "description" : "the identification marking for this locomotive",
+            "example" : "E444 042",
             "type" : "string"
           },
           "series" : {
             "description" : "the prototype series information",
+            "example" : "First Series",
             "type" : "string"
           },
           "depot" : {
             "description" : "the depot name",
+            "example" : "Roma San Lorenzo",
             "type" : "string"
           },
           "locomotive_type" : {
@@ -2668,6 +2809,7 @@
           },
           "is_dummy" : {
             "description" : "indicate whether the rolling stock has a motor or not",
+            "example" : false,
             "type" : "boolean"
           }
         },
@@ -2678,14 +2820,17 @@
         "properties" : {
           "type_name" : {
             "description" : "the passenger car type name",
+            "example" : "UIC-X",
             "type" : "string"
           },
           "road_number" : {
             "description" : "the identification marking for this passenger car",
+            "example" : "51 83 31-70 001-4 AB",
             "type" : "string"
           },
           "series" : {
             "description" : "the passenger car series",
+            "example" : "Tipo 1982",
             "type" : "string"
           },
           "passenger_car_type" : {
@@ -2702,18 +2847,22 @@
         "properties" : {
           "type_name" : {
             "description" : "the railcar type name",
+            "example" : "ALn 668",
             "type" : "string"
           },
           "road_number" : {
             "description" : "the identification marking for this railcar",
+            "example" : "ALn 668 123",
             "type" : "string"
           },
           "series" : {
             "description" : "the railcar series",
+            "example" : "First Series",
             "type" : "string"
           },
           "depot" : {
             "description" : "the depot name",
+            "example" : "Milano Centrale",
             "type" : "string"
           },
           "railcar_type" : {
@@ -2727,11 +2876,28 @@
           },
           "is_dummy" : {
             "description" : "indicate whether the rolling stock has a motor or not",
+            "example" : false,
             "type" : "boolean"
           }
         },
         "type" : "object",
         "example" : null
+      },
+      "LocalizedText_value" : {
+        "properties" : {
+          "code" : {
+            "description" : "a valid ISO 639-1 language code",
+            "maxLength" : 2,
+            "minLength" : 2,
+            "type" : "string"
+          },
+          "text" : {
+            "description" : "a label in the current language",
+            "maxLength" : 2500,
+            "type" : "string"
+          }
+        },
+        "type" : "object"
       }
     }
   }
