@@ -1,4 +1,5 @@
 use crate::catalog::scales::routes;
+use crate::hateoas::representations::CollectionModel;
 use crate::web::queries::{to_response_error, QueryResponseError};
 use actix_web::{web, HttpResponse};
 use catalog::scales::queries::find_all_scales::find_all_scales;
@@ -24,6 +25,10 @@ pub async fn handle(
         .map_err(|why| to_response_error(*request_id, why, routes::SCALE_ROOT_API))
 }
 
-fn to_http_response(results: Vec<Scale>) -> HttpResponse {
-    HttpResponse::Ok().json(results)
+fn to_http_response(items: Vec<Scale>) -> HttpResponse {
+    let model = CollectionModel {
+        items,
+        links: Vec::new(),
+    };
+    HttpResponse::Ok().json(model)
 }

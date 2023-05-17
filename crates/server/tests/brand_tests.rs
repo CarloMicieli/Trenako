@@ -11,6 +11,7 @@ use catalog::brands::brand_kind::BrandKind;
 use catalog::brands::brand_status::BrandStatus;
 use isocountry::CountryCode;
 use reqwest::StatusCode;
+use serde_derive::Deserialize;
 use serde_json::json;
 use uuid::Uuid;
 
@@ -282,11 +283,11 @@ async fn it_should_return_the_brands_list() {
         assert_eq!(200, response.status().as_u16());
 
         let body = response
-            .json::<Vec<Brand>>()
+            .json::<Brands>()
             .await
             .expect("Failed to fetch the response body");
 
-        assert_eq!(2, body.len());
+        assert_eq!(2, body.items.len());
     })
     .await;
 }
@@ -308,11 +309,11 @@ async fn it_should_return_200_with_empty_result_set_when_no_brand_is_found() {
         assert_eq!(200, response.status().as_u16());
 
         let body = response
-            .json::<Vec<Brand>>()
+            .json::<Brands>()
             .await
             .expect("Failed to fetch the response body");
 
-        assert_eq!(0, body.len());
+        assert_eq!(0, body.items.len());
     })
     .await;
 }
@@ -342,4 +343,9 @@ struct Saved {
     socials_linkedin: Option<String>,
     socials_twitter: Option<String>,
     socials_youtube: Option<String>,
+}
+
+#[derive(Debug, Deserialize)]
+struct Brands {
+    items: Vec<Brand>,
 }

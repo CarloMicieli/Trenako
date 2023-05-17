@@ -1,4 +1,5 @@
 use crate::catalog::railways::routes;
+use crate::hateoas::representations::CollectionModel;
 use crate::web::queries::{to_response_error, QueryResponseError};
 use actix_web::{web, HttpResponse};
 use catalog::railways::queries::find_all_railways::find_all_railways;
@@ -23,6 +24,10 @@ pub async fn handle(
         .map_err(|why| to_response_error(*request_id, why, routes::RAILWAY_ROOT_API))
 }
 
-fn to_http_response(results: Vec<Railway>) -> HttpResponse {
-    HttpResponse::Ok().json(results)
+fn to_http_response(items: Vec<Railway>) -> HttpResponse {
+    let model = CollectionModel {
+        items,
+        links: Vec::new(),
+    };
+    HttpResponse::Ok().json(model)
 }

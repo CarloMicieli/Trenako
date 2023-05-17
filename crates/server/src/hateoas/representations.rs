@@ -63,6 +63,34 @@ where
     }
 }
 
+#[derive(Debug, PartialEq, Clone, Serialize)]
+pub struct CollectionModel<T>
+where
+    T: Serialize + PartialEq + Clone,
+{
+    pub items: Vec<T>,
+
+    #[serde(rename = "_links")]
+    pub links: Vec<Link>,
+}
+
+impl<T> RepresentationModel for CollectionModel<T>
+where
+    T: Serialize + PartialEq + Clone,
+{
+    fn add_link(&mut self, link: Link) {
+        self.links.push(link);
+    }
+
+    fn add_links(&mut self, links: &mut Vec<Link>) {
+        self.links.append(links);
+    }
+
+    fn get_links(&self) -> &[Link] {
+        &self.links
+    }
+}
+
 #[cfg(test)]
 mod test {
     use super::*;

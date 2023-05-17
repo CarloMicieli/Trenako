@@ -12,6 +12,7 @@ use catalog::scales::standard::Standard;
 use reqwest::StatusCode;
 use rust_decimal::Decimal;
 use rust_decimal_macros::dec;
+use serde_derive::Deserialize;
 use serde_json::json;
 use std::collections::HashSet;
 use uuid::Uuid;
@@ -74,7 +75,7 @@ async fn it_should_create_new_scales() {
 
         let scale_name = Uuid::new_v4().to_string();
         let scale_id = ScaleId::new(&scale_name);
-        let expected_location = format!("{API_SCALES}/{scale_id}");
+        let expected_location = format!("{}/{}", API_SCALES, scale_id);
 
         let ratio_value = Decimal::from_str_exact("87").unwrap();
 
@@ -157,7 +158,7 @@ async fn it_should_find_scales_by_id() {
         seed_scales(&pg_pool).await;
 
         let endpoint = sut.endpoint(API_SCALES);
-        let endpoint = format!("{endpoint}/h0");
+        let endpoint = format!("{}/h0", endpoint);
         let response = client.get(endpoint).send().await.expect("Failed to execute request.");
 
         assert!(response.status().is_success());
@@ -196,7 +197,7 @@ async fn it_should_return_404_not_found_when_the_scale_is_not_found() {
         sut.run_database_migrations().await;
 
         let endpoint = sut.endpoint(API_SCALES);
-        let endpoint = format!("{endpoint}/not-found");
+        let endpoint = format!("{}/not-found", endpoint);
         let response = client.get(endpoint).send().await.expect("Failed to execute request.");
 
         assert_eq!(404, response.status().as_u16());
@@ -224,11 +225,11 @@ async fn it_should_get_the_scales_list() {
         assert_eq!(200, response.status().as_u16());
 
         let body = response
-            .json::<Vec<Scale>>()
+            .json::<Scales>()
             .await
             .expect("Failed to fetch the response body");
 
-        assert_eq!(2, body.len());
+        assert_eq!(2, body.items.len());
     })
     .await;
 }
@@ -250,15 +251,16 @@ async fn it_should_return_200_with_empty_result_set_when_no_scale_is_found() {
         assert_eq!(200, response.status().as_u16());
 
         let body = response
-            .json::<Vec<Scale>>()
+            .json::<Scales>()
             .await
             .expect("Failed to fetch the response body");
 
-        assert_eq!(0, body.len());
+        assert_eq!(0, body.items.len());
     })
     .await;
 }
 
+#[derive(Debug)]
 struct Saved {
     scale_id: ScaleId,
     name: String,
@@ -269,4 +271,9 @@ struct Saved {
     description_en: Option<String>,
     description_it: Option<String>,
     standards: Vec<Standard>,
+}
+
+#[derive(Debug, Deserialize)]
+struct Scales {
+    items: Vec<Scale>,
 }

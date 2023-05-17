@@ -16,6 +16,7 @@ use isocountry::CountryCode;
 use reqwest::StatusCode;
 use rust_decimal::prelude::*;
 use rust_decimal_macros::dec;
+use serde_derive::Deserialize;
 use serde_json::json;
 use uuid::Uuid;
 
@@ -98,7 +99,7 @@ async fn it_should_create_new_railways() {
 
         let railway_name = Uuid::new_v4().to_string();
         let railway_id = RailwayId::new(&railway_name);
-        let expected_location = format!("{API_RAILWAYS}/{railway_id}");
+        let expected_location = format!("{}/{}", API_RAILWAYS, railway_id);
 
         let request = json!({
             "name" : railway_name,
@@ -235,7 +236,7 @@ async fn it_should_find_railways_by_id() {
         seed_railways(&pg_pool).await;
 
         let endpoint = sut.endpoint(API_RAILWAYS);
-        let endpoint = format!("{endpoint}/fs");
+        let endpoint = format!("{}/fs", endpoint);
         let response = client.get(endpoint).send().await.expect("Failed to execute request.");
 
         assert!(response.status().is_success());
@@ -306,7 +307,7 @@ async fn it_should_return_404_not_found_when_the_railway_is_not_found() {
         sut.run_database_migrations().await;
 
         let endpoint = sut.endpoint(API_RAILWAYS);
-        let endpoint = format!("{endpoint}/not-found");
+        let endpoint = format!("{}/not-found", endpoint);
         let response = client.get(endpoint).send().await.expect("Failed to execute request.");
 
         assert_eq!(404, response.status().as_u16());
@@ -331,11 +332,11 @@ async fn it_should_return_200_with_empty_result_set_when_no_railway_is_found() {
         assert_eq!(200, response.status().as_u16());
 
         let body = response
-            .json::<Vec<Railway>>()
+            .json::<Railways>()
             .await
             .expect("Failed to fetch the response body");
 
-        assert_eq!(0, body.len());
+        assert_eq!(0, body.items.len());
     })
     .await;
 }
@@ -360,15 +361,16 @@ async fn it_should_return_the_railways_list() {
         assert_eq!(200, response.status().as_u16());
 
         let body = response
-            .json::<Vec<Railway>>()
+            .json::<Railways>()
             .await
             .expect("Failed to fetch the response body");
 
-        assert_eq!(2, body.len());
+        assert_eq!(2, body.items.len());
     })
     .await;
 }
 
+#[derive(Debug)]
 struct Saved {
     railway_id: RailwayId,
     name: String,
@@ -394,4 +396,9 @@ struct Saved {
     socials_linkedin: Option<String>,
     socials_twitter: Option<String>,
     socials_youtube: Option<String>,
+}
+
+#[derive(Debug, Deserialize)]
+struct Railways {
+    items: Vec<Railway>,
 }

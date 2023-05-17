@@ -74,9 +74,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "./catalog.yaml#/components/schemas/Brand"
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "./catalog.yaml#/components/schemas/Brand"
         '500':
           $ref: "#/components/responses/Error"
     post:
@@ -289,9 +292,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "./catalog.yaml#/components/schemas/RollingStock"
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "./catalog.yaml#/components/schemas/RollingStock"
         '404':
           $ref: "#/components/responses/NotFoundError"
         '500':
@@ -449,9 +455,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "./catalog.yaml#/components/schemas/Railway"
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "./catalog.yaml#/components/schemas/Railway"
         '500':
           $ref: "#/components/responses/Error"
     post:
@@ -582,9 +591,12 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "./catalog.yaml#/components/schemas/Scale"
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "./catalog.yaml#/components/schemas/Scale"
         '500':
           $ref: "#/components/responses/Error"
 

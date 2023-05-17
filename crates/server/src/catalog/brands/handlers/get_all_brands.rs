@@ -1,4 +1,5 @@
 use crate::catalog::brands::routes;
+use crate::hateoas::representations::CollectionModel;
 use crate::web::queries::{to_response_error, QueryResponseError};
 use actix_web::{web, HttpResponse};
 use catalog::brands::brand::Brand;
@@ -24,6 +25,10 @@ pub async fn handle(
         .map_err(|why| to_response_error(*request_id, why, routes::BRAND_ROOT_API))
 }
 
-fn to_http_response(results: Vec<Brand>) -> HttpResponse {
-    HttpResponse::Ok().json(results)
+fn to_http_response(items: Vec<Brand>) -> HttpResponse {
+    let model = CollectionModel {
+        items,
+        links: Vec::new(),
+    };
+    HttpResponse::Ok().json(model)
 }
