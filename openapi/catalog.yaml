@@ -942,12 +942,6 @@ components:
           LOCOMOTIVES: "#/components/schemas/Locomotive"
           PASSENGER_CARS: "#/components/schemas/PassengerCar"
           RAILCARS: "#/components/schemas/Railcar"
-      oneOf:
-        - $ref: "#/components/schemas/ElectricMultipleUnit"
-        - $ref: "#/components/schemas/FreightCar"
-        - $ref: "#/components/schemas/Locomotive"
-        - $ref: "#/components/schemas/PassengerCar"
-        - $ref: "#/components/schemas/Railcar"
 
     RollingStockCategory:
       description: the rolling stock category
@@ -1003,12 +997,6 @@ components:
         - railway
         - category
         - epoch
-      oneOf:
-        - $ref: "#/components/schemas/ElectricMultipleUnitRequest"
-        - $ref: "#/components/schemas/FreightCarRequest"
-        - $ref: "#/components/schemas/LocomotiveRequest"
-        - $ref: "#/components/schemas/PassengerCarRequest"
-        - $ref: "#/components/schemas/RailcarRequest"
       discriminator:
         propertyName: category
         mapping:

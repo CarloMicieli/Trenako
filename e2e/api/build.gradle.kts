@@ -15,7 +15,7 @@ dependencies {
 
 openApiGenerate {
     generatorName.set("java")
-    inputSpec.set("${project.projectDir}/src/main/resources/openapi/openapi.json")
+    inputSpec.set("${project.projectDir}/src/main/resources/openapi/api-schema.yaml")
     outputDir.set("${project.buildDir}/generated")
     apiPackage.set("io.github.carlomicieli.trenako.api")
     modelPackage.set("io.github.carlomicieli.trenako.model")
