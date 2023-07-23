@@ -12,7 +12,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["CarloMicieli <piovarolo@gmail.com>"]
 license = "Apache-2.0"
-rust-version = "1.69"
+rust-version = "1.71"
 
 [workspace.dependencies]
 actix-web = "4.3.1"
