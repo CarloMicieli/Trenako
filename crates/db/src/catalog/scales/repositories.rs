@@ -20,7 +20,7 @@ pub struct ScalesRepository;
 impl<'db> NewScaleRepository<'db, PgUnitOfWork<'db>> for ScalesRepository {
     async fn exists(&self, scale_id: &ScaleId, unit_of_work: &mut PgUnitOfWork) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!("SELECT scale_id FROM scales WHERE scale_id = $1 LIMIT 1", scale_id)
-            .fetch_optional(&mut unit_of_work.transaction)
+            .fetch_optional(&mut *unit_of_work.transaction)
             .await
             .context("A database failure was encountered while trying to check for scale existence.")?;
 
@@ -62,7 +62,7 @@ impl<'db> NewScaleRepository<'db, PgUnitOfWork<'db>> for ScalesRepository {
             metadata.created(),
             metadata.version() as i32
         )
-        .execute(&mut unit_of_work.transaction)
+        .execute(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to store a scale.")?;
 
@@ -91,7 +91,7 @@ impl<'db> FindAllScalesRepository<'db, PgUnitOfWork<'db>> for ScalesRepository {
             FROM scales
             ORDER BY name"#
         )
-        .fetch_all(&mut unit_of_work.transaction)
+        .fetch_all(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to fetch scales.")?;
 
@@ -125,7 +125,7 @@ impl<'db> FindScaleByIdRepository<'db, PgUnitOfWork<'db>> for ScalesRepository {
             WHERE scale_id = $1"#,
             scale_id
         )
-        .fetch_optional(&mut unit_of_work.transaction)
+        .fetch_optional(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to fetch a scale.")?;
 

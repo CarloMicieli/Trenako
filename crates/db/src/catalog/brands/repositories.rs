@@ -24,7 +24,7 @@ pub struct BrandsRepository;
 impl<'db> NewBrandRepository<'db, PgUnitOfWork<'db>> for BrandsRepository {
     async fn exists(&self, brand_id: &BrandId, unit_of_work: &mut PgUnitOfWork) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!("SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1", brand_id)
-            .fetch_optional(&mut unit_of_work.transaction)
+            .fetch_optional(&mut *unit_of_work.transaction)
             .await
             .context("A database failure was encountered while trying to check for a brand existence.")?;
 
@@ -85,7 +85,7 @@ impl<'db> NewBrandRepository<'db, PgUnitOfWork<'db>> for BrandsRepository {
                 metadata.created(),
                 metadata.version() as i32
             )
-            .execute(&mut unit_of_work.transaction)
+            .execute(&mut *unit_of_work.transaction)
             .await
             .context("A database failure was encountered while trying to store a brand.")?;
 
@@ -120,7 +120,7 @@ impl<'db> FindAllBrandsRepository<'db, PgUnitOfWork<'db>> for BrandsRepository {
                     version
                 FROM brands
                 ORDER BY name"#)
-            .fetch_all(&mut unit_of_work.transaction)
+            .fetch_all(&mut *unit_of_work.transaction)
             .await
             .context("A database failure was encountered while trying to fetch the brands.")?;
 
@@ -164,7 +164,7 @@ impl<'db> FindBrandByIdRepository<'db, PgUnitOfWork<'db>> for BrandsRepository {
                     version
                 FROM brands WHERE brand_id = $1"#, 
                 brand_id)
-            .fetch_optional(&mut unit_of_work.transaction)
+            .fetch_optional(&mut *unit_of_work.transaction)
             .await
             .context("A database failure was encountered while trying to fetch a brand.")?;
 

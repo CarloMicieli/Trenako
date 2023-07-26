@@ -267,7 +267,7 @@ pub enum FeatureFlag {
 
 /// The minimum drivable radius
 #[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, Type)]
-#[sqlx(transparent)]
+#[sqlx(transparent, no_pg_array)]
 pub struct Radius(#[serde(with = "common::length::serde::millimeters")] Length);
 
 impl Radius {

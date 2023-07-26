@@ -1,0 +1,102 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT\n                scale_id as \"scale_id: ScaleId\",\n                name,\n                ratio,\n                gauge_millimeters,\n                gauge_inches,\n                track_gauge as \"track_gauge: TrackGauge\",\n                description_en,\n                description_it,\n                standards as \"standards!: Vec<Standard>\"\n            FROM scales\n            WHERE name = $1",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "scale_id: ScaleId",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 1,
+        "name": "name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 2,
+        "name": "ratio",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 3,
+        "name": "gauge_millimeters",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 4,
+        "name": "gauge_inches",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 5,
+        "name": "track_gauge: TrackGauge",
+        "type_info": {
+          "Custom": {
+            "name": "gauge",
+            "kind": {
+              "Enum": [
+                "BROAD",
+                "MEDIUM",
+                "MINIMUM",
+                "NARROW",
+                "STANDARD"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 6,
+        "name": "description_en",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 7,
+        "name": "description_it",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 8,
+        "name": "standards!: Vec<Standard>",
+        "type_info": {
+          "Custom": {
+            "name": "_scale_standard",
+            "kind": {
+              "Array": {
+                "Custom": {
+                  "name": "scale_standard",
+                  "kind": {
+                    "Enum": [
+                      "BRITISH",
+                      "JAPANESE",
+                      "NEM",
+                      "NMRA"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "11a226f57a194ae7522cc2a242bcc0dcd2bd997f76f055ef43ab15f9c8956d1b"
+}

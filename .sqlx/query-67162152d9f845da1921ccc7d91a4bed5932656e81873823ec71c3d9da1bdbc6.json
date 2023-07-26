@@ -1,0 +1,432 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "SELECT \n                rs.rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n                rs.catalog_item_id as \"catalog_item_id: CatalogItemId\",\n                rs.railway_id as \"railway_id: RailwayId\",\n                r.name as railway_label, \n                rs.rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n                rs.epoch,\n                rs.livery,\n                rs.length_over_buffers_mm,\n                rs.length_over_buffers_in,\n                rs.type_name,\n                rs.road_number,\n                rs.series,\n                rs.depot,\n                rs.dcc_interface as \"dcc_interface: DccInterface\",\n                rs.control as \"control: Control\",\n                rs.electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n                rs.freight_car_type as \"freight_car_type: FreightCarType\",\n                rs.locomotive_type as \"locomotive_type: LocomotiveType\",\n                rs.passenger_car_type as \"passenger_car_type: PassengerCarType\",\n                rs.railcar_type as \"railcar_type: RailcarType\",\n                rs.service_level as \"service_level: ServiceLevel\",\n                rs.is_dummy,\n                rs.minimum_radius,\n                rs.coupling_socket as \"coupling_socket: CouplingSocket\",\n                rs.close_couplers as \"close_couplers: FeatureFlag\",\n                rs.digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n                rs.flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n                rs.metal_body as \"metal_body: FeatureFlag\",\n                rs.interior_lights as \"interior_lights: FeatureFlag\",\n                rs.lights as \"lights: FeatureFlag\",\n                rs.spring_buffers as \"spring_buffers: FeatureFlag\"\n            FROM rolling_stocks AS rs\n            JOIN railways AS r\n              ON r.railway_id = rs.railway_id\n            WHERE rs.catalog_item_id = $1",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "rolling_stock_id: RollingStockId",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "catalog_item_id: CatalogItemId",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 2,
+        "name": "railway_id: RailwayId",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 3,
+        "name": "railway_label",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 4,
+        "name": "rolling_stock_category: RollingStockCategory",
+        "type_info": {
+          "Custom": {
+            "name": "rolling_stock_category",
+            "kind": {
+              "Enum": [
+                "LOCOMOTIVE",
+                "FREIGHT_CAR",
+                "PASSENGER_CAR",
+                "ELECTRIC_MULTIPLE_UNIT",
+                "RAILCAR"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 5,
+        "name": "epoch",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 6,
+        "name": "livery",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 7,
+        "name": "length_over_buffers_mm",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 8,
+        "name": "length_over_buffers_in",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 9,
+        "name": "type_name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 10,
+        "name": "road_number",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 11,
+        "name": "series",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 12,
+        "name": "depot",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 13,
+        "name": "dcc_interface: DccInterface",
+        "type_info": {
+          "Custom": {
+            "name": "dcc_interface",
+            "kind": {
+              "Enum": [
+                "MTC_21",
+                "NEM_651",
+                "NEM_652",
+                "NEM_654",
+                "NEXT_18",
+                "NEXT_18_S",
+                "PLUX_16",
+                "PLUX_22",
+                "PLUX_8"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 14,
+        "name": "control: Control",
+        "type_info": {
+          "Custom": {
+            "name": "control",
+            "kind": {
+              "Enum": [
+                "DCC",
+                "DCC_READY",
+                "DCC_SOUND",
+                "NO_DCC"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 15,
+        "name": "electric_multiple_unit_type: ElectricMultipleUnitType",
+        "type_info": {
+          "Custom": {
+            "name": "electric_multiple_unit_type",
+            "kind": {
+              "Enum": [
+                "DRIVING_CAR",
+                "HIGH_SPEED_TRAIN",
+                "MOTOR_CAR",
+                "POWER_CAR",
+                "TRAILER_CAR",
+                "TRAIN_SET"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 16,
+        "name": "freight_car_type: FreightCarType",
+        "type_info": {
+          "Custom": {
+            "name": "freight_car_type",
+            "kind": {
+              "Enum": [
+                "AUTO_TRANSPORT_CARS",
+                "BRAKE_WAGON",
+                "CONTAINER_CARS",
+                "COVERED_FREIGHT_CARS",
+                "DEEP_WELL_FLAT_CARS",
+                "DUMP_CARS",
+                "GONDOLA",
+                "HEAVY_GOODS_WAGONS",
+                "HINGED_COVER_WAGONS",
+                "HOPPER_WAGON",
+                "REFRIGERATOR_CARS",
+                "SILO_CONTAINER_CARS",
+                "SLIDE_TARPAULIN_WAGON",
+                "SLIDING_WALL_BOXCARS",
+                "SPECIAL_TRANSPORT",
+                "STAKE_WAGONS",
+                "SWING_ROOF_WAGON",
+                "TANK_CARS",
+                "TELESCOPE_HOOD_WAGONS"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 17,
+        "name": "locomotive_type: LocomotiveType",
+        "type_info": {
+          "Custom": {
+            "name": "locomotive_type",
+            "kind": {
+              "Enum": [
+                "DIESEL_LOCOMOTIVE",
+                "ELECTRIC_LOCOMOTIVE",
+                "STEAM_LOCOMOTIVE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 18,
+        "name": "passenger_car_type: PassengerCarType",
+        "type_info": {
+          "Custom": {
+            "name": "passenger_car_type",
+            "kind": {
+              "Enum": [
+                "BAGGAGE_CAR",
+                "COMBINE_CAR",
+                "COMPARTMENT_COACH",
+                "DINING_CAR",
+                "DOUBLE_DECKER",
+                "DRIVING_TRAILER",
+                "LOUNGE",
+                "OBSERVATION",
+                "OPEN_COACH",
+                "RAILWAY_POST_OFFICE",
+                "SLEEPING_CAR"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 19,
+        "name": "railcar_type: RailcarType",
+        "type_info": {
+          "Custom": {
+            "name": "railcar_type",
+            "kind": {
+              "Enum": [
+                "POWER_CAR",
+                "TRAILER_CAR"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 20,
+        "name": "service_level: ServiceLevel",
+        "type_info": {
+          "Custom": {
+            "name": "service_level",
+            "kind": {
+              "Enum": [
+                "FIRST_CLASS",
+                "SECOND_CLASS",
+                "THIRD_CLASS",
+                "FIRST_AND_SECOND_CLASS",
+                "FIRST_SECOND_AND_THIRD_CLASS",
+                "SECOND_AND_THIRD_CLASS"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 21,
+        "name": "is_dummy",
+        "type_info": "Bool"
+      },
+      {
+        "ordinal": 22,
+        "name": "minimum_radius",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 23,
+        "name": "coupling_socket: CouplingSocket",
+        "type_info": {
+          "Custom": {
+            "name": "socket_type",
+            "kind": {
+              "Enum": [
+                "NONE",
+                "NEM_355",
+                "NEM_356",
+                "NEM_357",
+                "NEM_359",
+                "NEM_360",
+                "NEM_362",
+                "NEM_365"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 24,
+        "name": "close_couplers: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 25,
+        "name": "digital_shunting_coupling: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 26,
+        "name": "flywheel_fitted: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 27,
+        "name": "metal_body: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 28,
+        "name": "interior_lights: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 29,
+        "name": "lights: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 30,
+        "name": "spring_buffers: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "67162152d9f845da1921ccc7d91a4bed5932656e81873823ec71c3d9da1bdbc6"
+}

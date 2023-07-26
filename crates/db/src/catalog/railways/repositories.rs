@@ -27,7 +27,7 @@ impl<'db> NewRailwayRepository<'db, PgUnitOfWork<'db>> for RailwaysRepository {
             "SELECT railway_id FROM railways WHERE railway_id = $1 LIMIT 1",
             railway_id
         )
-        .fetch_optional(&mut unit_of_work.transaction)
+        .fetch_optional(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to check for railway existence.")?;
 
@@ -105,7 +105,7 @@ impl<'db> NewRailwayRepository<'db, PgUnitOfWork<'db>> for RailwaysRepository {
             metadata.created(),
             metadata.version() as i32
         )
-        .execute(&mut unit_of_work.transaction)
+        .execute(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to store a railway.")?;
 
@@ -149,7 +149,7 @@ impl<'db> FindAllRailwaysRepository<'db, PgUnitOfWork<'db>> for RailwaysReposito
             FROM railways
             ORDER BY name"#,
         )
-        .fetch_all(&mut unit_of_work.transaction)
+        .fetch_all(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to fetch railways.")?;
 
@@ -198,7 +198,7 @@ impl<'db> FindRailwayByIdRepository<'db, PgUnitOfWork<'db>> for RailwaysReposito
             WHERE railway_id = $1"#,
             railway_id
         )
-        .fetch_optional(&mut unit_of_work.transaction)
+        .fetch_optional(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to fetch a railway.")?;
 

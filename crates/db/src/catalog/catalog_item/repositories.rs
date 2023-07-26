@@ -43,7 +43,7 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for CatalogItemsRepos
             "SELECT catalog_item_id FROM catalog_items WHERE catalog_item_id = $1 LIMIT 1",
             catalog_item_id as &CatalogItemId
         )
-        .fetch_optional(&mut unit_of_work.transaction)
+        .fetch_optional(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to check for the catalog item existence.")?;
 
@@ -101,7 +101,7 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for CatalogItemsRepos
             metadata.created(),
             metadata.version() as i32
         )
-        .execute(&mut unit_of_work.transaction)
+        .execute(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to store a catalog item.")?;
 
@@ -114,7 +114,7 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for CatalogItemsRepos
         unit_of_work: &mut PgUnitOfWork<'db>,
     ) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!("SELECT brand_id FROM brands WHERE brand_id = $1 LIMIT 1", brand_id)
-            .fetch_optional(&mut unit_of_work.transaction)
+            .fetch_optional(&mut *unit_of_work.transaction)
             .await
             .context("A database failure was encountered while trying to check for brand existence.")?;
 
@@ -127,7 +127,7 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for CatalogItemsRepos
         unit_of_work: &mut PgUnitOfWork<'db>,
     ) -> Result<bool, anyhow::Error> {
         let result = sqlx::query!("SELECT scale_id FROM scales WHERE scale_id = $1 LIMIT 1", scale_id)
-            .fetch_optional(&mut unit_of_work.transaction)
+            .fetch_optional(&mut *unit_of_work.transaction)
             .await
             .context("A database failure was encountered while trying to check for scale existence.")?;
 
@@ -222,7 +222,7 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for RollingStocksRep
             request.lights as Option<FeatureFlag>,
             request.spring_buffers as Option<FeatureFlag>
         )
-        .execute(&mut unit_of_work.transaction)
+        .execute(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to store a rolling stock.")?;
 
@@ -238,7 +238,7 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for RollingStocksRep
             "SELECT railway_id FROM railways WHERE railway_id = $1 LIMIT 1",
             railway_id
         )
-        .fetch_optional(&mut unit_of_work.transaction)
+        .fetch_optional(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to check for a railway existence.")?;
 
@@ -282,7 +282,7 @@ impl<'db> FindCatalogItemByIdRepository<'db, PgUnitOfWork<'db>> for CatalogItems
             WHERE c.catalog_item_id = $1 "#,
             catalog_item_id as &CatalogItemId
         )
-        .fetch_optional(&mut unit_of_work.transaction)
+        .fetch_optional(&mut *unit_of_work.transaction)
         .await
         .context("A database failure was encountered while trying to fetch a catalog item.")?;
 
@@ -337,7 +337,7 @@ impl<'db> FindRollingStocksByCatalogItemIdRepository<'db, PgUnitOfWork<'db>> for
             WHERE rs.catalog_item_id = $1"#,
             catalog_item_id as &CatalogItemId
         )
-        .fetch_all(&mut unit_of_work.transaction)
+        .fetch_all(&mut *unit_of_work.transaction)
         .await
         .expect("A database failure was encountered while trying to fetch the rolling stock(s).");
 
