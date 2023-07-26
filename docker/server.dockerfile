@@ -26,7 +26,7 @@ ENV SQLX_OFFLINE true
 
 COPY Cargo.toml .
 COPY Cargo.lock .
-COPY sqlx-data.json .
+COPY .sqlx/ ./.sqlx
 COPY crates/ ./crates/
 COPY config/ ./config/
 
