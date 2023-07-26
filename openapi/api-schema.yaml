@@ -74,6 +74,7 @@ paths:
           content:
             application/json:
               schema:
+                title: BrandsList
                 type: object
                 properties:
                   items:
@@ -292,6 +293,7 @@ paths:
           content:
             application/json:
               schema:
+                title: RollingStocksList
                 type: object
                 properties:
                   items:
@@ -455,6 +457,7 @@ paths:
           content:
             application/json:
               schema:
+                title: RailwaysList
                 type: object
                 properties:
                   items:
@@ -591,6 +594,7 @@ paths:
           content:
             application/json:
               schema:
+                title: ScalesList
                 type: object
                 properties:
                   items:
