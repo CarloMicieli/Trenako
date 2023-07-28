@@ -1414,6 +1414,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "hateoas"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "thiserror",
+ "url",
+]
+
+[[package]]
 name = "heck"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2913,6 +2923,7 @@ dependencies = [
  "config",
  "db",
  "dockertest",
+ "hateoas",
  "isocountry",
  "lazy_static",
  "log",

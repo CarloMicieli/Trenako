@@ -1,5 +1,4 @@
 use crate::catalog::railways::routes;
-use crate::hateoas::representations::CollectionModel;
 use crate::web::queries::{to_response_error, QueryResponseError};
 use actix_web::{web, HttpResponse};
 use catalog::railways::queries::find_all_railways::find_all_railways;
@@ -7,6 +6,7 @@ use catalog::railways::railway::Railway;
 use common::queries::pagination::PageRequest;
 use common::unit_of_work::postgres::PgDatabase;
 use db::catalog::railways::repositories::RailwaysRepository;
+use hateoas::representations::CollectionModel;
 use sqlx::PgPool;
 use tracing_actix_web::RequestId;
 

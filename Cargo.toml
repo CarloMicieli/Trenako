@@ -4,6 +4,7 @@ members = [
     "crates/cli",
     "crates/common",
     "crates/db",
+    "crates/hateoas",
     "crates/server",
 ]
 

@@ -1,8 +1,8 @@
-use crate::hateoas::representations::EntityModel;
 use crate::web::problem_detail::ProblemDetail;
 use actix_web::http::StatusCode;
 use actix_web::{HttpResponse, ResponseError};
 use common::queries::errors::QueryError;
+use hateoas::representations::EntityModel;
 use serde::Serialize;
 use std::fmt;
 use uuid::Uuid;

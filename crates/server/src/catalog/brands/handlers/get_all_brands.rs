@@ -1,5 +1,4 @@
 use crate::catalog::brands::routes;
-use crate::hateoas::representations::CollectionModel;
 use crate::web::queries::{to_response_error, QueryResponseError};
 use actix_web::{web, HttpResponse};
 use catalog::brands::brand::Brand;
@@ -7,6 +6,7 @@ use catalog::brands::queries::find_all_brands::find_all_brands;
 use common::queries::pagination::PageRequest;
 use common::unit_of_work::postgres::PgDatabase;
 use db::catalog::brands::repositories::BrandsRepository;
+use hateoas::representations::CollectionModel;
 use sqlx::PgPool;
 use tracing_actix_web::RequestId;
 

@@ -1,4 +1,4 @@
-use crate::hateoas::links::{Link, LinkRelation};
+use crate::links::{Link, LinkRelation};
 use serde::Serialize;
 
 /// A trait for representation models to collect links.

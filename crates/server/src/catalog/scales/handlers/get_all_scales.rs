@@ -1,5 +1,4 @@
 use crate::catalog::scales::routes;
-use crate::hateoas::representations::CollectionModel;
 use crate::web::queries::{to_response_error, QueryResponseError};
 use actix_web::{web, HttpResponse};
 use catalog::scales::queries::find_all_scales::find_all_scales;
@@ -7,6 +6,7 @@ use catalog::scales::scale::Scale;
 use common::queries::pagination::PageRequest;
 use common::unit_of_work::postgres::PgDatabase;
 use db::catalog::scales::repositories::ScalesRepository;
+use hateoas::representations::CollectionModel;
 use sqlx::PgPool;
 use tracing_actix_web::RequestId;
 
