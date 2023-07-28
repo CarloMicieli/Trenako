@@ -35,7 +35,7 @@ impl Settings {
     /// and environment variables.
     pub fn load() -> Result<Settings, config::ConfigError> {
         let s = Config::builder()
-            .add_source(File::with_name("configuration/application").required(false))
+            .add_source(File::with_name("config/application").required(false))
             .add_source(Environment::default().separator("__").ignore_empty(true))
             .build()?;
         s.try_deserialize()
