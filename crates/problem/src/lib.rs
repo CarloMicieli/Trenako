@@ -1,6 +1,8 @@
-use crate::web::trn::Trn;
+#[cfg(feature = "actix-web")]
 use actix_web::http::StatusCode;
+#[cfg(feature = "actix-web")]
 use actix_web::{error, HttpResponse, HttpResponseBuilder};
+use common::trn::Trn;
 use serde::{Deserialize, Serialize};
 use std::fmt::{Display, Formatter};
 use url::Url;
@@ -98,6 +100,7 @@ impl ProblemDetail {
         }
     }
 
+    #[cfg(feature = "actix-web")]
     pub fn to_response(self) -> HttpResponse {
         let status_code = StatusCode::from_u16(self.status).expect("invalid http status code");
         HttpResponseBuilder::new(status_code)
@@ -112,6 +115,7 @@ impl Display for ProblemDetail {
     }
 }
 
+#[cfg(feature = "actix-web")]
 impl error::ResponseError for ProblemDetail {
     fn status_code(&self) -> StatusCode {
         StatusCode::from_u16(self.status).unwrap_or(StatusCode::INTERNAL_SERVER_ERROR)
@@ -125,7 +129,7 @@ impl error::ResponseError for ProblemDetail {
     }
 }
 
-#[cfg(test)]
+#[cfg(feature = "actix-web")]
 pub mod helpers {
     use actix_web::body::to_bytes;
     use actix_web::http::StatusCode;

@@ -13,6 +13,7 @@ pub mod organizations;
 pub mod queries;
 pub mod slug;
 pub mod socials;
+pub mod trn;
 pub mod unit_of_work;
 pub mod validation;
 

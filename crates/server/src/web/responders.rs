@@ -1,6 +1,6 @@
-use crate::web::problem_detail::ProblemDetail;
 use actix_web::http::header::LOCATION;
 use actix_web::{Error, HttpResponse};
+use problem::ProblemDetail;
 use std::fmt;
 use uuid::Uuid;
 

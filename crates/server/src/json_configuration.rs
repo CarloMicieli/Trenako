@@ -1,7 +1,7 @@
-use crate::web::problem_detail::ProblemDetail;
 use actix_web::error::JsonPayloadError;
 use actix_web::web::JsonConfig;
 use actix_web::{Error, HttpRequest};
+use problem::ProblemDetail;
 use uuid::Uuid;
 
 pub fn json_config() -> JsonConfig {

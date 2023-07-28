@@ -1,0 +1,24 @@
+[package]
+name = "problem"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[features]
+actix-web = ["dep:actix-web"]
+
+[dependencies]
+common = { path = "../common" }
+
+actix-web = { workspace = true, optional = true }
+anyhow = { workspace = true }
+serde = { workspace = true }
+serde_derive = { workspace = true }
+serde_json = { workspace = true }
+uuid = { workspace = true }
+url = { workspace = true }
+
+[dev-dependencies]
+pretty_assertions = { workspace = true }

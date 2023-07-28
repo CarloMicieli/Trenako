@@ -18,6 +18,7 @@ catalog = { path = "../catalog" }
 common = { path = "../common" }
 db = { path = "../db" }
 hateoas = { path = "../hateoas" }
+problem = { path = "../problem", features = ["actix-web"] }
 
 actix-web = { workspace = true }
 anyhow = { workspace = true }

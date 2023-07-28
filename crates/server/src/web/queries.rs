@@ -1,8 +1,8 @@
-use crate::web::problem_detail::ProblemDetail;
 use actix_web::http::StatusCode;
 use actix_web::{HttpResponse, ResponseError};
 use common::queries::errors::QueryError;
 use hateoas::representations::EntityModel;
+use problem::ProblemDetail;
 use serde::Serialize;
 use std::fmt;
 use uuid::Uuid;
@@ -71,11 +71,11 @@ mod test {
 
     mod query_response_errors {
         use super::*;
-        use crate::web::trn::Trn;
         use actix_web::body::to_bytes;
         use anyhow::anyhow;
         use common::queries::converters::ConversionErrors;
         use common::queries::errors::DatabaseError;
+        use common::trn::Trn;
         use pretty_assertions::assert_eq;
         use rstest::rstest;
         use std::str::FromStr;

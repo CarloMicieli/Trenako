@@ -756,8 +756,10 @@ dependencies = [
  "fake",
  "http",
  "isocountry",
+ "lazy_static",
  "pretty_assertions",
  "rand",
+ "regex",
  "rstest",
  "rust_decimal",
  "rust_decimal_macros",
@@ -772,6 +774,7 @@ dependencies = [
  "thiserror",
  "tokio",
  "url",
+ "uuid",
  "validator",
 ]
 
@@ -2284,6 +2287,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "problem"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "anyhow",
+ "common",
+ "pretty_assertions",
+ "serde",
+ "serde_derive",
+ "serde_json",
+ "url",
+ "uuid",
+]
+
+[[package]]
 name = "proc-macro-crate"
 version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2930,6 +2948,7 @@ dependencies = [
  "mime",
  "once_cell",
  "pretty_assertions",
+ "problem",
  "regex",
  "reqwest",
  "rstest",

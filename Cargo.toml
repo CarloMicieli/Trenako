@@ -5,6 +5,7 @@ members = [
     "crates/common",
     "crates/db",
     "crates/hateoas",
+    "crates/problem",
     "crates/server",
 ]
 

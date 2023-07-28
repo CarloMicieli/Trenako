@@ -1,5 +1,4 @@
 use crate::catalog::scales::routes::SCALE_ROOT_API;
-use crate::web::problem_detail::ProblemDetail;
 use crate::web::responders::{ToCreated, ToError, ToProblemDetail};
 use actix_web::{web, Error, HttpResponse};
 use catalog::scales::commands::new_scales::{create_new_scale, ScaleCreationError};
@@ -7,6 +6,7 @@ use catalog::scales::scale_request::ScaleRequest;
 use catalog::scales::scale_response::ScaleCreated;
 use common::unit_of_work::postgres::PgDatabase;
 use db::catalog::scales::repositories::ScalesRepository;
+use problem::ProblemDetail;
 use sqlx::PgPool;
 use tracing_actix_web::RequestId;
 use uuid::Uuid;
@@ -77,13 +77,13 @@ mod test {
 
     mod scale_creation_response_error {
         use super::*;
-        use crate::web::problem_detail::helpers::from_http_response;
         use actix_web::http::header::CONTENT_TYPE;
         use actix_web::http::StatusCode;
         use anyhow::anyhow;
         use catalog::scales::scale_id::ScaleId;
         use common::queries::errors::DatabaseError;
         use pretty_assertions::assert_eq;
+        use problem::helpers::from_http_response;
         use reqwest::header::HeaderValue;
         use validator::ValidationErrors;
 

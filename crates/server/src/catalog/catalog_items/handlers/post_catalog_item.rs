@@ -1,5 +1,4 @@
 use crate::catalog::catalog_items::routes::CATALOG_ITEM_ROOT_API;
-use crate::web::problem_detail::ProblemDetail;
 use crate::web::responders::{ToCreated, ToError, ToProblemDetail};
 use actix_web::web::Data;
 use actix_web::{web, Error, HttpResponse};
@@ -8,6 +7,7 @@ use catalog::catalog_items::catalog_item_response::CatalogItemCreated;
 use catalog::catalog_items::commands::new_catalog_item::{create_new_catalog_item, CatalogItemCreationError};
 use common::unit_of_work::postgres::PgDatabase;
 use db::catalog::catalog_item::repositories::{CatalogItemsRepository, RollingStocksRepository};
+use problem::ProblemDetail;
 use sqlx::PgPool;
 use tracing_actix_web::RequestId;
 use uuid::Uuid;
@@ -91,7 +91,6 @@ mod test {
 
     mod railway_creation_response_error {
         use super::*;
-        use crate::web::problem_detail::helpers::from_http_response;
         use actix_web::http::header::CONTENT_TYPE;
         use actix_web::http::StatusCode;
         use anyhow::anyhow;
@@ -102,6 +101,7 @@ mod test {
         use catalog::scales::scale_id::ScaleId;
         use common::queries::errors::DatabaseError;
         use pretty_assertions::assert_eq;
+        use problem::helpers::from_http_response;
         use reqwest::header::HeaderValue;
         use validator::ValidationErrors;
 
