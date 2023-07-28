@@ -86,7 +86,7 @@ This repository is following the conventional commits practice.
 #### Enforcing using git hooks
 
 ```shell
-  git config core.hooksPath .githooks
+  git configuration core.hooksPath .githooks
 ```
 
 The hook itself can be found in `.githooks/commit-msg`.

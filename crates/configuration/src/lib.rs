@@ -31,11 +31,11 @@ impl Settings {
         self.database.pg_connection_options()
     }
 
-    /// Load the settings from the configuration file (config/application.yaml)
+    /// Load the settings from the configuration file (configuration/application.yaml)
     /// and environment variables.
     pub fn load() -> Result<Settings, config::ConfigError> {
         let s = Config::builder()
-            .add_source(File::with_name("config/application").required(false))
+            .add_source(File::with_name("configuration/application").required(false))
             .add_source(Environment::default().separator("__").ignore_empty(true))
             .build()?;
         s.try_deserialize()

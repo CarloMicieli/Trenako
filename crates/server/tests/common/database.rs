@@ -1,7 +1,7 @@
 use crate::common::IMAGE_NAME;
+use configuration::DatabaseSettings;
 use dockertest::waitfor::{MessageSource, MessageWait};
 use dockertest::{Image, TestBodySpecification};
-use server::configuration::DatabaseSettings;
 use sqlx::PgPool;
 
 const POSTGRES_USER: &str = "postgres";

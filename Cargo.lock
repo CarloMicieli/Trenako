@@ -793,6 +793,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "configuration"
+version = "0.1.0"
+dependencies = [
+ "config",
+ "pretty_assertions",
+ "secrecy",
+ "serde",
+ "sqlx",
+]
+
+[[package]]
 name = "const-oid"
 version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2938,7 +2949,7 @@ dependencies = [
  "catalog",
  "chrono",
  "common",
- "config",
+ "configuration",
  "db",
  "dockertest",
  "hateoas",
@@ -2954,7 +2965,6 @@ dependencies = [
  "rstest",
  "rust_decimal",
  "rust_decimal_macros",
- "secrecy",
  "serde",
  "serde_derive",
  "serde_json",

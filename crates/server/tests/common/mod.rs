@@ -1,8 +1,8 @@
 use crate::common::database::Database;
+use configuration::{ServerSettings, Settings};
 use dockertest::{DockerTest, Source};
 use once_cell::sync::Lazy;
 use server::app;
-use server::configuration::{ServerSettings, Settings};
 use server::telemetry::{get_subscriber, init_subscriber};
 use sqlx::PgPool;
 use std::net::TcpListener;

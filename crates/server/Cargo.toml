@@ -16,6 +16,7 @@ name = "trenako-server"
 [dependencies]
 catalog = { path = "../catalog" }
 common = { path = "../common" }
+configuration = { path = "../configuration" }
 db = { path = "../db" }
 hateoas = { path = "../hateoas" }
 problem = { path = "../problem", features = ["actix-web"] }
@@ -24,13 +25,11 @@ actix-web = { workspace = true }
 anyhow = { workspace = true }
 async-trait = { workspace = true }
 chrono = { workspace = true }
-config = { workspace = true }
 lazy_static = { workspace = true }
 log = { workspace = true }
 mime = { workspace = true }
 regex = { workspace = true }
 rust_decimal = { workspace = true }
-secrecy = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 serde_urlencoded = { workspace = true }

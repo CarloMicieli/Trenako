@@ -1,8 +1,8 @@
-use crate::configuration::Settings;
 use crate::{catalog, health_check, json_configuration};
 use actix_web::dev::Server;
 use actix_web::middleware::{Compress, DefaultHeaders};
 use actix_web::{web, App, HttpServer};
+use configuration::Settings;
 use std::net::TcpListener;
 use tracing_actix_web::TracingLogger;
 

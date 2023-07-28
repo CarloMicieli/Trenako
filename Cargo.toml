@@ -3,6 +3,7 @@ members = [
     "crates/catalog",
     "crates/cli",
     "crates/common",
+    "crates/configuration",
     "crates/db",
     "crates/hateoas",
     "crates/problem",

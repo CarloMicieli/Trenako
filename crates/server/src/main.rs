@@ -1,5 +1,5 @@
+use configuration::Settings;
 use server::app;
-use server::configuration::Settings;
 use server::telemetry::{get_subscriber, init_subscriber};
 use std::net::TcpListener;
 

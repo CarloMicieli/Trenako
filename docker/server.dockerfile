@@ -54,7 +54,7 @@ ENV TZ=Etc/UTC \
 RUN groupadd $APP_USER \
     && useradd -g $APP_USER $APP_USER \
     && mkdir -p ${APP} \
-    && mkdir -p ${APP}/config
+    && mkdir -p ${APP}/configuration
 
 COPY --from=builder /app/target/release/trenako-server ${APP}/trenako-server
 COPY --from=builder /app/config/application-docker.yml ${APP}/config/application.yml
