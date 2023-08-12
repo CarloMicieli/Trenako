@@ -1,33 +1,32 @@
+use crate::app::AppState;
 use crate::catalog::brands::routes::BRAND_ROOT_API;
-use crate::web::responders::{ToCreated, ToError, ToProblemDetail};
-use actix_web::{web, Error, HttpResponse};
+use crate::web::responders::ToProblemDetail;
+use axum::extract::State;
+use axum::http::{header, HeaderValue, StatusCode};
+use axum::response::IntoResponse;
+use axum::Json;
 use catalog::brands::brand_request::BrandRequest;
-use catalog::brands::brand_response::BrandCreated;
 use catalog::brands::commands::new_brand::{create_new_brand, BrandCreationError};
-use common::unit_of_work::postgres::PgDatabase;
 use db::catalog::brands::repositories::BrandsRepository;
 use problem::ProblemDetail;
-use sqlx::PgPool;
-use tracing_actix_web::RequestId;
 use uuid::Uuid;
 
-pub async fn handle(
-    request_id: RequestId,
-    request: web::Json<BrandRequest>,
-    db_pool: web::Data<PgPool>,
-) -> Result<HttpResponse, Error> {
+pub async fn handle(State(app_state): State<AppState>, Json(request): Json<BrandRequest>) -> impl IntoResponse {
     let repo = BrandsRepository;
-    let database = PgDatabase::new(&db_pool);
+    let database = app_state.get_database();
 
-    let result = create_new_brand(request.0, repo, database).await;
-    result
-        .map(|created| created.to_created())
-        .map_err(|why| why.to_error(*request_id))
-}
-
-impl ToCreated for BrandCreated {
-    fn location(&self) -> String {
-        format!("{}/{}", BRAND_ROOT_API, self.brand_id)
+    let result = create_new_brand(request, repo, database).await;
+    match result {
+        Ok(created) => {
+            let location = format!("{}/{}", BRAND_ROOT_API, created.brand_id);
+            (
+                StatusCode::CREATED,
+                [(header::LOCATION, location.parse::<HeaderValue>().unwrap())],
+                (),
+            )
+                .into_response()
+        }
+        Err(why) => why.to_problem_detail(Uuid::new_v4()).into_response(),
     }
 }
 
@@ -44,124 +43,71 @@ impl ToProblemDetail for BrandCreationError {
     }
 }
 
-impl ToError for BrandCreationError {}
-
 #[cfg(test)]
 mod test {
     use super::*;
 
-    mod brand_created {
+    mod brand_creation_error_to_problem_detail {
         use super::*;
-        use actix_web::http::header::HeaderValue;
-        use actix_web::http::header::LOCATION;
-        use actix_web::http::StatusCode;
-        use catalog::brands::brand_id::BrandId;
-        use chrono::Utc;
-        use pretty_assertions::assert_eq;
-
-        #[test]
-        fn it_should_create_a_created_response() {
-            let created = BrandCreated {
-                brand_id: BrandId::new("ACME"),
-                created_at: Utc::now(),
-            };
-
-            let http_response = created.to_created();
-
-            assert_eq!(StatusCode::CREATED, http_response.status());
-
-            let expected_location: &HeaderValue = &HeaderValue::from_static("/api/brands/acme");
-            assert_eq!(Some(expected_location), http_response.headers().get(LOCATION));
-        }
-    }
-
-    mod brand_creation_response_error {
-        use super::*;
-
-        use actix_web::http::header::CONTENT_TYPE;
-        use actix_web::http::StatusCode;
         use anyhow::anyhow;
         use catalog::brands::brand_id::BrandId;
         use common::queries::errors::DatabaseError;
+        use common::trn::Trn;
         use pretty_assertions::assert_eq;
-        use problem::helpers::from_http_response;
-        use reqwest::header::HeaderValue;
         use validator::ValidationErrors;
 
-        #[tokio::test]
-        async fn it_should_return_conflict_when_the_brand_already_exists() {
-            let err = BrandCreationError::BrandAlreadyExists(BrandId::new("ACME")).to_error(Uuid::new_v4());
+        #[test]
+        fn it_should_return_conflict_when_the_railway_already_exists() {
+            let err = BrandCreationError::BrandAlreadyExists(BrandId::new("ACME"));
 
-            let response = err.error_response();
-            assert_eq!(StatusCode::CONFLICT, response.status());
-
-            let expected_content_type: &HeaderValue = &HeaderValue::from_static("application/problem+json");
-            assert_eq!(Some(expected_content_type), response.headers().get(CONTENT_TYPE));
-
-            let http_response_values = from_http_response(response).await.expect("invalid http response");
-            http_response_values
-                .assert_status_is(StatusCode::CONFLICT)
-                .assert_type_is("https://httpstatuses.com/409")
-                .assert_detail_is("The brand already exists (id: acme)")
-                .assert_title_is("The resource already exists");
+            let id = Uuid::new_v4();
+            let problem_detail = err.to_problem_detail(id);
+            assert_eq!(StatusCode::CONFLICT, problem_detail.status);
+            assert_eq!("https://httpstatuses.com/409", problem_detail.problem_type.as_str());
+            assert_eq!("The brand already exists (id: acme)", problem_detail.detail);
+            assert_eq!("The resource already exists", problem_detail.title);
+            assert_eq!(Trn::instance(&id), problem_detail.instance);
         }
 
-        #[tokio::test]
-        async fn it_should_return_bad_request_for_invalid_request() {
-            let err = BrandCreationError::InvalidRequest(ValidationErrors::new()).to_error(Uuid::new_v4());
+        #[test]
+        fn it_should_return_bad_request_for_invalid_request() {
+            let err = BrandCreationError::InvalidRequest(ValidationErrors::new());
 
-            let response = err.error_response();
-            assert_eq!(StatusCode::BAD_REQUEST, response.status());
-
-            let expected_content_type: &HeaderValue = &HeaderValue::from_static("application/problem+json");
-            assert_eq!(Some(expected_content_type), response.headers().get(CONTENT_TYPE));
-
-            let http_response_values = from_http_response(response).await.expect("invalid http response");
-            http_response_values
-                .assert_status_is(StatusCode::BAD_REQUEST)
-                .assert_type_is("https://httpstatuses.com/400")
-                .assert_detail_is("")
-                .assert_title_is("Bad request");
+            let id = Uuid::new_v4();
+            let problem_detail = err.to_problem_detail(id);
+            assert_eq!(StatusCode::BAD_REQUEST, problem_detail.status);
+            assert_eq!("https://httpstatuses.com/400", problem_detail.problem_type.as_str());
+            assert_eq!("", problem_detail.detail);
+            assert_eq!("Bad request", problem_detail.title);
+            assert_eq!(Trn::instance(&id), problem_detail.instance);
         }
 
-        #[tokio::test]
-        async fn it_should_return_an_internal_server_error_for_generic_errors() {
-            let err =
-                BrandCreationError::UnexpectedError(anyhow!("Something bad just happened")).to_error(Uuid::new_v4());
+        #[test]
+        fn it_should_return_an_internal_server_error_for_generic_errors() {
+            let err = BrandCreationError::UnexpectedError(anyhow!("Something bad just happened"));
 
-            let response = err.error_response();
-            assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, response.status());
-
-            let expected_content_type: &HeaderValue = &HeaderValue::from_static("application/problem+json");
-            assert_eq!(Some(expected_content_type), response.headers().get(CONTENT_TYPE));
-
-            let http_response_values = from_http_response(response).await.expect("invalid http response");
-            http_response_values
-                .assert_status_is(StatusCode::INTERNAL_SERVER_ERROR)
-                .assert_type_is("https://httpstatuses.com/500")
-                .assert_detail_is("Something bad just happened")
-                .assert_title_is("Error: Internal Server Error");
+            let id = Uuid::new_v4();
+            let problem_detail = err.to_problem_detail(id);
+            assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, problem_detail.status);
+            assert_eq!("https://httpstatuses.com/500", problem_detail.problem_type.as_str());
+            assert_eq!("Something bad just happened", problem_detail.detail);
+            assert_eq!("Error: Internal Server Error", problem_detail.title);
+            assert_eq!(Trn::instance(&id), problem_detail.instance);
         }
 
-        #[tokio::test]
-        async fn it_should_return_an_internal_server_error_for_database_errors() {
+        #[test]
+        fn it_should_return_an_internal_server_error_for_database_errors() {
             let err = BrandCreationError::DatabaseError(DatabaseError::UnexpectedError(anyhow!(
                 "Something bad just happened"
-            )))
-            .to_error(Uuid::new_v4());
+            )));
 
-            let response = err.error_response();
-            assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, response.status());
-
-            let expected_content_type: &HeaderValue = &HeaderValue::from_static("application/problem+json");
-            assert_eq!(Some(expected_content_type), response.headers().get(CONTENT_TYPE));
-
-            let http_response_values = from_http_response(response).await.expect("invalid http response");
-            http_response_values
-                .assert_status_is(StatusCode::INTERNAL_SERVER_ERROR)
-                .assert_type_is("https://httpstatuses.com/500")
-                .assert_detail_is("Something bad just happened")
-                .assert_title_is("Error: Internal Server Error");
+            let id = Uuid::new_v4();
+            let problem_detail = err.to_problem_detail(id);
+            assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, problem_detail.status);
+            assert_eq!("https://httpstatuses.com/500", problem_detail.problem_type.as_str());
+            assert_eq!("Something bad just happened", problem_detail.detail);
+            assert_eq!("Error: Internal Server Error", problem_detail.title);
+            assert_eq!(Trn::instance(&id), problem_detail.instance);
         }
     }
 }

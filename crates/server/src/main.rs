@@ -3,8 +3,8 @@ use server::app;
 use server::telemetry::{get_subscriber, init_subscriber};
 use std::net::TcpListener;
 
-#[actix_web::main]
-async fn main() -> std::io::Result<()> {
+#[tokio::main]
+async fn main() {
     let subscriber = get_subscriber("trenako".into(), "info".into(), std::io::stdout);
     init_subscriber(subscriber);
 
@@ -14,7 +14,8 @@ async fn main() -> std::io::Result<()> {
     println!("{}", &BANNER_TEXT);
     tracing::info!("Starting the server...");
     tracing::info!("{}", serde_json::to_string(&settings).unwrap());
-    app::run(listener, &settings)?.await
+
+    app::run(listener, &settings).await;
 }
 
 const BANNER_TEXT: &str = r#"

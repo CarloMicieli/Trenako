@@ -1,22 +1,21 @@
+use crate::app::AppState;
 use crate::catalog::railways::handlers;
-use actix_web::web;
+use axum::routing::get;
+use axum::Router;
 
 pub const RAILWAY_ROOT_API: &str = "/api/railways";
+pub const RAILWAY_API: &str = "/api/railways/:railwayId";
 
-pub fn configure_railway_routes(cfg: &mut web::ServiceConfig) {
-    #[rustfmt::skip]
-    cfg.service(
-    web::scope(RAILWAY_ROOT_API)
-        .service(
-            web::resource("")
-                .route(web::get().to(handlers::get_all_railways))
-                .route(web::post().to(handlers::post_railway))
+pub fn railways_router() -> Router<AppState> {
+    Router::new()
+        .route(
+            RAILWAY_ROOT_API,
+            get(handlers::get_all_railways).post(handlers::post_railway),
         )
-        .service(
-            web::resource("/{railway}")
-                .route(web::delete().to(handlers::delete_railway))
-                .route(web::get().to(handlers::get_railway_by_id))
-                .route(web::put().to(handlers::put_railway))
+        .route(
+            RAILWAY_API,
+            get(handlers::get_railway_by_id)
+                .put(handlers::put_railway)
+                .delete(handlers::delete_railway),
         )
-    );
 }

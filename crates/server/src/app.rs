@@ -1,34 +1,42 @@
-use crate::{catalog, health_check, json_configuration};
-use actix_web::dev::Server;
-use actix_web::middleware::{Compress, DefaultHeaders};
-use actix_web::{web, App, HttpServer};
+use crate::catalog::catalog_router;
+use crate::health_check;
+use axum;
+use axum::routing::get;
+use axum::Router;
+use common::unit_of_work::postgres::PgDatabase;
 use configuration::Settings;
+use sqlx::PgPool;
 use std::net::TcpListener;
-use tracing_actix_web::TracingLogger;
+use std::sync::Arc;
 
 /// Run the web server
-pub fn run(listener: TcpListener, settings: &Settings) -> Result<Server, std::io::Error> {
-    let db_pool = web::Data::new(settings.database.get_connection_pool());
-
-    #[rustfmt::skip]
-    let server = HttpServer::new(move || {
-        App::new()
-            .wrap(TracingLogger::default())
-            .wrap(Compress::default())
-            .wrap(default_headers())
-            .route("/health-check", web::get().to(health_check::handler))
-            .configure(catalog::config_services)
-            .app_data(json_configuration::json_config())
-            .app_data(db_pool.clone())
-        })
-        .workers(settings.workers())
-        .listen(listener)?
-        .run();
-    Ok(server)
+pub async fn run(tcp_listener: TcpListener, settings: &Settings) {
+    axum::Server::from_tcp(tcp_listener)
+        .unwrap()
+        .serve(build_app(settings).into_make_service())
+        .await
+        .unwrap();
 }
 
-fn default_headers() -> DefaultHeaders {
-    DefaultHeaders::new()
-        //Set to "nosniff" to prevent the browser guessing the correct Content-Type.
-        .add(("X-Content-Type-Options", "nosniff"))
+pub fn build_app(settings: &Settings) -> Router {
+    let app_state = AppState::from_settings(settings);
+    let management_router = Router::new().route("/health-check", get(health_check::handler));
+
+    catalog_router().merge(management_router).with_state(app_state.clone())
+}
+
+#[derive(Clone)]
+pub struct AppState {
+    pub pg_pool: Arc<PgPool>,
+}
+
+impl AppState {
+    pub fn from_settings(settings: &Settings) -> Self {
+        let pg_pool = Arc::new(settings.database.get_connection_pool());
+        AppState { pg_pool }
+    }
+
+    pub fn get_database(&self) -> PgDatabase {
+        PgDatabase::new(&self.pg_pool)
+    }
 }

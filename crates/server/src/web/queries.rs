@@ -1,19 +1,8 @@
-use actix_web::http::StatusCode;
-use actix_web::{HttpResponse, ResponseError};
+use axum::response::{IntoResponse, Response};
 use common::queries::errors::QueryError;
-use hateoas::representations::EntityModel;
 use problem::ProblemDetail;
-use serde::Serialize;
 use std::fmt;
 use uuid::Uuid;
-
-pub fn to_http_response<R>(result: R) -> HttpResponse
-where
-    R: Serialize + PartialEq + Clone,
-{
-    let model = EntityModel::of(result, Vec::new());
-    HttpResponse::Ok().json(model)
-}
 
 pub fn to_response_error(request_id: Uuid, error: QueryError, path: &str) -> QueryResponseError {
     tracing::error!("request_id: {}, error: {:?}", request_id, error);
@@ -37,17 +26,8 @@ impl fmt::Display for QueryResponseError {
     }
 }
 
-impl ResponseError for QueryResponseError {
-    fn status_code(&self) -> StatusCode {
-        match self.error {
-            QueryError::ConversionError(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            QueryError::DatabaseError(_) => StatusCode::INTERNAL_SERVER_ERROR,
-            QueryError::EmptyResultSet => StatusCode::NOT_FOUND,
-            QueryError::UnexpectedError(_) => StatusCode::INTERNAL_SERVER_ERROR,
-        }
-    }
-
-    fn error_response(&self) -> HttpResponse {
+impl IntoResponse for QueryResponseError {
+    fn into_response(self) -> Response {
         let QueryResponseError {
             request_id,
             error,
@@ -55,13 +35,12 @@ impl ResponseError for QueryResponseError {
         } = self;
 
         let problem_details = match error {
-            QueryError::ConversionError(_) => ProblemDetail::error(*request_id, "Something went wrong"),
-            QueryError::DatabaseError(_) => ProblemDetail::error(*request_id, "Something went wrong"),
-            QueryError::EmptyResultSet => ProblemDetail::not_found(*request_id, path),
-            QueryError::UnexpectedError(why) => ProblemDetail::error(*request_id, &why.to_string()),
+            QueryError::ConversionError(_) => ProblemDetail::error(request_id, "Something went wrong"),
+            QueryError::DatabaseError(_) => ProblemDetail::error(request_id, "Something went wrong"),
+            QueryError::EmptyResultSet => ProblemDetail::not_found(request_id, &path),
+            QueryError::UnexpectedError(why) => ProblemDetail::error(request_id, &why.to_string()),
         };
-
-        problem_details.to_response()
+        problem_details.into_response()
     }
 }
 
@@ -71,8 +50,9 @@ mod test {
 
     mod query_response_errors {
         use super::*;
-        use actix_web::body::to_bytes;
         use anyhow::anyhow;
+        use axum::body::Bytes;
+        use axum::http::StatusCode;
         use common::queries::converters::ConversionErrors;
         use common::queries::errors::DatabaseError;
         use common::trn::Trn;
@@ -96,25 +76,29 @@ mod test {
             #[case] query_response_errors: QueryResponseError,
             #[case] expected_status_code: StatusCode,
         ) {
-            let status_code = query_response_errors.status_code();
+            let status_code = query_response_errors.into_response().status();
             assert_eq!(expected_status_code, status_code);
         }
 
         #[tokio::test]
         async fn it_should_produce_a_problem_detail_for_unexpected_error() {
             let error = query_error(QueryError::UnexpectedError(anyhow!("something bad happened")));
-            let response = error.error_response();
+            let response = error.into_response();
 
             assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
 
-            let body = extract_body(response).await.expect("unable to extract the body");
+            let body_bytes = extract_body(response).await.expect("unable to extract the body");
+            let problem_detail = serde_json::from_slice::<ProblemDetail>(&body_bytes).unwrap();
 
-            assert_eq!(body.problem_type, Url::parse("https://httpstatuses.com/500").unwrap());
-            assert_eq!(body.title, "Error: Internal Server Error");
-            assert_eq!(body.detail, "something bad happened");
-            assert_eq!(body.status, 500);
             assert_eq!(
-                body.instance,
+                problem_detail.problem_type,
+                Url::parse("https://httpstatuses.com/500").unwrap()
+            );
+            assert_eq!(problem_detail.title, "Error: Internal Server Error");
+            assert_eq!(problem_detail.detail, "something bad happened");
+            assert_eq!(problem_detail.status, 500);
+            assert_eq!(
+                problem_detail.instance,
                 Trn::from_str("trn:instance:1a29fa04-8704-48d4-ab8b-31594eeaf504").unwrap()
             );
         }
@@ -122,18 +106,22 @@ mod test {
         #[tokio::test]
         async fn it_should_produce_a_problem_detail_for_empty_result_sets() {
             let error = query_error(QueryError::EmptyResultSet);
-            let response = error.error_response();
+            let response = error.into_response();
 
             assert_eq!(response.status(), StatusCode::NOT_FOUND);
 
-            let body = extract_body(response).await.expect("unable to extract the body");
+            let body_bytes = extract_body(response).await.expect("unable to extract the body");
+            let problem_detail = serde_json::from_slice::<ProblemDetail>(&body_bytes).unwrap();
 
-            assert_eq!(body.problem_type, Url::parse("https://httpstatuses.com/404").unwrap());
-            assert_eq!(body.title, "The resource was not found");
-            assert_eq!(body.detail, "/my-path");
-            assert_eq!(body.status, 404);
             assert_eq!(
-                body.instance,
+                problem_detail.problem_type,
+                Url::parse("https://httpstatuses.com/404").unwrap()
+            );
+            assert_eq!(problem_detail.title, "The resource was not found");
+            assert_eq!(problem_detail.detail, "/my-path");
+            assert_eq!(problem_detail.status, 404);
+            assert_eq!(
+                problem_detail.instance,
                 Trn::from_str("trn:instance:1a29fa04-8704-48d4-ab8b-31594eeaf504").unwrap()
             );
         }
@@ -141,18 +129,22 @@ mod test {
         #[tokio::test]
         async fn it_should_produce_a_problem_detail_for_conversion_errors() {
             let error = query_error(QueryError::ConversionError(ConversionErrors::new()));
-            let response = error.error_response();
+            let response = error.into_response();
 
             assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
 
-            let body = extract_body(response).await.expect("unable to extract the body");
+            let body_bytes = extract_body(response).await.expect("unable to extract the body");
+            let problem_detail = serde_json::from_slice::<ProblemDetail>(&body_bytes).unwrap();
 
-            assert_eq!(body.problem_type, Url::parse("https://httpstatuses.com/500").unwrap());
-            assert_eq!(body.title, "Error: Internal Server Error");
-            assert_eq!(body.detail, "Something went wrong");
-            assert_eq!(body.status, 500);
             assert_eq!(
-                body.instance,
+                problem_detail.problem_type,
+                Url::parse("https://httpstatuses.com/500").unwrap()
+            );
+            assert_eq!(problem_detail.title, "Error: Internal Server Error");
+            assert_eq!(problem_detail.detail, "Something went wrong");
+            assert_eq!(problem_detail.status, 500);
+            assert_eq!(
+                problem_detail.instance,
                 Trn::from_str("trn:instance:1a29fa04-8704-48d4-ab8b-31594eeaf504").unwrap()
             );
         }
@@ -162,30 +154,34 @@ mod test {
             let error = query_error(QueryError::DatabaseError(DatabaseError::UnexpectedError(anyhow!(
                 "something bad happened"
             ))));
-            let response = error.error_response();
+            let response = error.into_response();
 
             assert_eq!(response.status(), StatusCode::INTERNAL_SERVER_ERROR);
 
-            let body = extract_body(response).await.expect("unable to extract the body");
+            let body_bytes = extract_body(response).await.expect("unable to extract the body");
+            let problem_detail = serde_json::from_slice::<ProblemDetail>(&body_bytes).unwrap();
 
-            assert_eq!(body.problem_type, Url::parse("https://httpstatuses.com/500").unwrap());
-            assert_eq!(body.title, "Error: Internal Server Error");
-            assert_eq!(body.detail, "Something went wrong");
-            assert_eq!(body.status, 500);
             assert_eq!(
-                body.instance,
+                problem_detail.problem_type,
+                Url::parse("https://httpstatuses.com/500").unwrap()
+            );
+            assert_eq!(problem_detail.title, "Error: Internal Server Error");
+            assert_eq!(problem_detail.detail, "Something went wrong");
+            assert_eq!(problem_detail.status, 500);
+            assert_eq!(
+                problem_detail.instance,
                 Trn::from_str("trn:instance:1a29fa04-8704-48d4-ab8b-31594eeaf504").unwrap()
             );
         }
 
-        async fn extract_body(response: HttpResponse) -> Result<ProblemDetail, anyhow::Error> {
-            let body = to_bytes(response.into_body())
-                .await
-                .map_err(|why| anyhow!("unable to extract the body {:?}", why))?;
+        async fn extract_body(response: Response) -> anyhow::Result<Bytes> {
+            let (_, body) = response.into_parts();
+            let bytes = match hyper::body::to_bytes(body).await {
+                Ok(bytes) => bytes,
+                Err(why) => return Err(anyhow!(why.to_string())),
+            };
 
-            let problem_detail: ProblemDetail =
-                serde_json::from_slice(&body).map_err(|why| anyhow!("unable to extract the body {:?}", why))?;
-            Ok(problem_detail)
+            Ok(bytes)
         }
 
         fn query_error(error: QueryError) -> QueryResponseError {

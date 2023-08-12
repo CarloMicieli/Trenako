@@ -1,7 +1,6 @@
-#[cfg(feature = "actix-web")]
-use actix_web::http::StatusCode;
-#[cfg(feature = "actix-web")]
-use actix_web::{error, HttpResponse, HttpResponseBuilder};
+use axum::http::{header, HeaderName, StatusCode};
+use axum::response::IntoResponse;
+use axum::response::Response;
 use common::trn::Trn;
 use serde::{Deserialize, Serialize};
 use std::fmt::{Display, Formatter};
@@ -42,12 +41,13 @@ static PROBLEM_DETAIL_CONTENT_TYPE: &str = "application/problem+json";
 impl ProblemDetail {
     /// Creates a new problem detail from an error
     pub fn error(id: Uuid, error: &str) -> ProblemDetail {
+        let status_code = StatusCode::INTERNAL_SERVER_ERROR.as_u16();
         let type_url = Url::parse("https://httpstatuses.com/500").unwrap();
         ProblemDetail {
             problem_type: type_url,
             title: String::from("Error: Internal Server Error"),
             detail: error.to_owned(),
-            status: StatusCode::INTERNAL_SERVER_ERROR.as_u16(),
+            status: status_code,
             instance: Trn::instance(&id),
         }
     }
@@ -99,14 +99,6 @@ impl ProblemDetail {
             instance: Trn::instance(&id),
         }
     }
-
-    #[cfg(feature = "actix-web")]
-    pub fn to_response(self) -> HttpResponse {
-        let status_code = StatusCode::from_u16(self.status).expect("invalid http status code");
-        HttpResponseBuilder::new(status_code)
-            .content_type(PROBLEM_DETAIL_CONTENT_TYPE)
-            .json(self)
-    }
 }
 
 impl Display for ProblemDetail {
@@ -115,70 +107,11 @@ impl Display for ProblemDetail {
     }
 }
 
-#[cfg(feature = "actix-web")]
-impl error::ResponseError for ProblemDetail {
-    fn status_code(&self) -> StatusCode {
-        StatusCode::from_u16(self.status).unwrap_or(StatusCode::INTERNAL_SERVER_ERROR)
-    }
-
-    fn error_response(&self) -> HttpResponse {
-        let status_code = StatusCode::from_u16(self.status).expect("invalid http status code");
-        HttpResponseBuilder::new(status_code)
-            .content_type(PROBLEM_DETAIL_CONTENT_TYPE)
-            .json(self)
-    }
-}
-
-#[cfg(feature = "actix-web")]
-pub mod helpers {
-    use actix_web::body::to_bytes;
-    use actix_web::http::StatusCode;
-    use actix_web::HttpResponse;
-    use anyhow::anyhow;
-    use serde_derive::Deserialize;
-    use url::Url;
-
-    pub async fn from_http_response(response: HttpResponse) -> Result<HttpResponseValues, anyhow::Error> {
-        let body = to_bytes(response.into_body())
-            .await
-            .map_err(|why| anyhow!("unable to extract the body {why:?}"))?;
-
-        let body_str = std::str::from_utf8(&body).unwrap();
-
-        let values: HttpResponseValues = serde_json::from_str(body_str).unwrap();
-        Ok(values)
-    }
-
-    #[derive(Debug, Deserialize)]
-    pub struct HttpResponseValues {
-        #[serde(rename(deserialize = "type"))]
-        problem_type: Url,
-        title: String,
-        detail: String,
-        status: u16,
-    }
-
-    impl HttpResponseValues {
-        pub fn assert_status_is(self, status_code: StatusCode) -> Self {
-            assert_eq!(status_code, StatusCode::from_u16(self.status).unwrap());
-            self
-        }
-
-        pub fn assert_type_is(self, expected_type: &str) -> Self {
-            let expected_url = Url::parse(expected_type).expect("invalid URL");
-            assert_eq!(expected_url, self.problem_type);
-            self
-        }
-
-        pub fn assert_title_is(self, expected_title: &str) -> Self {
-            assert_eq!(expected_title, self.title);
-            self
-        }
-
-        pub fn assert_detail_is(self, expected_detail: &str) -> Self {
-            assert_eq!(expected_detail, self.detail);
-            self
-        }
+impl IntoResponse for ProblemDetail {
+    fn into_response(self) -> Response {
+        let status_code = StatusCode::from_u16(self.status).unwrap_or(StatusCode::INTERNAL_SERVER_ERROR);
+        let headers: [(HeaderName, &'static str); 1] = [(header::CONTENT_TYPE, PROBLEM_DETAIL_CONTENT_TYPE)];
+        (status_code, headers, axum::response::Json(self)).into_response()
     }
 }
 

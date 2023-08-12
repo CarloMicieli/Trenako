@@ -6,13 +6,10 @@ authors.workspace = true
 license.workspace = true
 rust-version.workspace = true
 
-[features]
-actix-web = ["dep:actix-web"]
-
 [dependencies]
 common = { path = "../common" }
 
-actix-web = { workspace = true, optional = true }
+axum = { workspace = true }
 anyhow = { workspace = true }
 serde = { workspace = true }
 serde_derive = { workspace = true }

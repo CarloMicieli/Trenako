@@ -61,8 +61,11 @@ pub async fn spawn_app(postgres_port: u32) -> ServiceUnderTest {
 
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
     let port = listener.local_addr().unwrap().port();
-    let server = app::run(listener, &settings).expect("Failed to bind address");
-    let _handle = tokio::spawn(server);
+
+    let http_server = axum::Server::from_tcp(listener)
+        .unwrap()
+        .serve(app::build_app(&settings).into_make_service());
+    let _handle = tokio::spawn(http_server);
 
     ServiceUnderTest {
         base_endpoint_url: format!("http://127.0.0.1:{port}"),

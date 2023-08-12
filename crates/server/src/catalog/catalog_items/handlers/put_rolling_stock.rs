@@ -1,6 +1,16 @@
-use actix_web::{web, HttpResponse, Responder};
-use sqlx::PgPool;
+use crate::app::AppState;
+use axum::extract::{Path, State};
+use axum::response::IntoResponse;
+use axum::Json;
+use catalog::catalog_items::catalog_item_id::CatalogItemId;
+use catalog::catalog_items::rolling_stock_id::RollingStockId;
+use catalog::catalog_items::rolling_stock_request::RollingStockRequest;
 
-pub async fn handle(_db_pool: web::Data<PgPool>) -> impl Responder {
-    HttpResponse::Ok()
+pub async fn handle(
+    Path(_catalog_item_id): Path<CatalogItemId>,
+    Path(_rolling_stock_id): Path<RollingStockId>,
+    State(_app_state): State<AppState>,
+    Json(_request): Json<RollingStockRequest>,
+) -> impl IntoResponse {
+    ().into_response()
 }

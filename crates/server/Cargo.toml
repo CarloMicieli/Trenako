@@ -19,12 +19,14 @@ common = { path = "../common" }
 configuration = { path = "../configuration" }
 db = { path = "../db" }
 hateoas = { path = "../hateoas" }
-problem = { path = "../problem", features = ["actix-web"] }
+problem = { path = "../problem" }
 
-actix-web = { workspace = true }
 anyhow = { workspace = true }
 async-trait = { workspace = true }
+axum = { workspace = true }
+axum-macros = { workspace = true }
 chrono = { workspace = true }
+hyper = { workspace = true }
 lazy_static = { workspace = true }
 log = { workspace = true }
 mime = { workspace = true }
@@ -36,8 +38,9 @@ serde_urlencoded = { workspace = true }
 sqlx = { workspace = true }
 thiserror = { workspace = true }
 tokio = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
 tracing = { workspace = true }
-tracing-actix-web = { workspace = true }
 tracing-bunyan-formatter = { workspace = true }
 tracing-log = { workspace = true }
 tracing-subscriber = { workspace = true }

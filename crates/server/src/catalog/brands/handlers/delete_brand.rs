@@ -1,7 +1,8 @@
-use actix_web::{web, HttpResponse, Responder};
+use crate::app::AppState;
+use axum::extract::{Path, State};
+use axum::response::IntoResponse;
 use catalog::brands::brand_id::BrandId;
-use sqlx::PgPool;
 
-pub async fn handle(_brand_id: web::Path<BrandId>, _db_pool: web::Data<PgPool>) -> impl Responder {
-    HttpResponse::Ok()
+pub async fn handle(Path(_brand_id): Path<BrandId>, State(_app_state): State<AppState>) -> impl IntoResponse {
+    ().into_response()
 }

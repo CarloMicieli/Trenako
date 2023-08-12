@@ -1,22 +1,18 @@
+use crate::app::AppState;
 use crate::catalog::brands::handlers;
-use actix_web::web;
+use axum::routing::{delete, get};
+use axum::Router;
 
 pub const BRAND_ROOT_API: &str = "/api/brands";
+pub const BRAND_API: &str = "/api/brands/:brand_id";
 
-pub fn configure_brand_routes(cfg: &mut web::ServiceConfig) {
-    #[rustfmt::skip]
-    cfg.service(
-    web::scope(BRAND_ROOT_API)
-        .service(
-            web::resource("")
-                .route(web::get().to(handlers::get_all_brands))
-                .route(web::post().to(handlers::post_brand))
+pub fn brands_router() -> Router<AppState> {
+    Router::new()
+        .route(BRAND_ROOT_API, get(handlers::get_all_brands).post(handlers::post_brand))
+        .route(
+            BRAND_API,
+            delete(handlers::delete_brand)
+                .get(handlers::get_brand_by_id)
+                .put(handlers::put_brand),
         )
-        .service(
-            web::resource("/{brand}")
-                .route(web::delete().to(handlers::delete_brand))
-                .route(web::get().to(handlers::get_brand_by_id))
-                .route(web::put().to(handlers::put_brand))
-        )
-    );
 }

@@ -1,22 +1,18 @@
+use crate::app::AppState;
 use crate::catalog::scales::handlers;
-use actix_web::web;
+use axum::routing::{delete, get};
+use axum::Router;
 
 pub const SCALE_ROOT_API: &str = "/api/scales";
+pub const SCALE_API: &str = "/api/scales/:scale_id";
 
-pub fn configure_scale_routes(cfg: &mut web::ServiceConfig) {
-    # [rustfmt::skip]
-    cfg.service(
-        web::scope(SCALE_ROOT_API)
-            .service(
-                web::resource("")
-                    .route(web::get().to(handlers::get_all_scales))
-                    .route(web::post().to(handlers::post_scale))
-            )
-            .service(
-                web::resource("/{scale}")
-                    .route(web::delete().to(handlers::delete_scale))
-                    .route(web::get().to(handlers::get_scale_by_id))
-                    .route(web::put().to(handlers::put_scale))
-            )
-    );
+pub fn scales_router() -> Router<AppState> {
+    Router::new()
+        .route(SCALE_ROOT_API, get(handlers::get_all_scales).post(handlers::post_scale))
+        .route(
+            SCALE_API,
+            delete(handlers::delete_scale)
+                .get(handlers::get_scale_by_id)
+                .put(handlers::put_scale),
+        )
 }

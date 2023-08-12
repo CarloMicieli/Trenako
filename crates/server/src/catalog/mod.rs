@@ -1,19 +1,20 @@
 //! the module includes everything related to catalog web handlers
 
-use crate::catalog::brands::routes::configure_brand_routes;
-use crate::catalog::catalog_items::routes::configure_catalog_items_routes;
-use crate::catalog::railways::routes::configure_railway_routes;
-use crate::catalog::scales::routes::configure_scale_routes;
-use actix_web::web;
+use crate::app::AppState;
+use crate::catalog::brands::routes::brands_router;
+use crate::catalog::catalog_items::routes::catalog_items_router;
+use crate::catalog::railways::routes::railways_router;
+use crate::catalog::scales::routes::scales_router;
+use axum::Router;
 
 pub mod brands;
 pub mod catalog_items;
 pub mod railways;
 pub mod scales;
 
-pub fn config_services(cfg: &mut web::ServiceConfig) {
-    cfg.configure(configure_brand_routes);
-    cfg.configure(configure_catalog_items_routes);
-    cfg.configure(configure_railway_routes);
-    cfg.configure(configure_scale_routes);
+pub fn catalog_router() -> Router<AppState> {
+    brands_router()
+        .merge(catalog_items_router())
+        .merge(railways_router())
+        .merge(scales_router())
 }
