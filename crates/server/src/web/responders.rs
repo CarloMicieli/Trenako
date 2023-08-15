@@ -1,4 +1,4 @@
-use problem::ProblemDetail;
+use crate::web::problem::ProblemDetail;
 use uuid::Uuid;
 
 pub trait ToProblemDetail {

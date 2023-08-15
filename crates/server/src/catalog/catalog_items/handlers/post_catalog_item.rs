@@ -1,5 +1,6 @@
 use crate::app::AppState;
 use crate::catalog::catalog_items::routes::CATALOG_ITEMS_ROOT_API;
+use crate::web::problem::ProblemDetail;
 use crate::web::responders::ToProblemDetail;
 use axum::extract::State;
 use axum::http::{header, HeaderValue, StatusCode};
@@ -8,7 +9,6 @@ use axum::Json;
 use catalog::catalog_items::catalog_item_request::CatalogItemRequest;
 use catalog::catalog_items::commands::new_catalog_item::{create_new_catalog_item, CatalogItemCreationError};
 use data::catalog::catalog_item::repositories::{CatalogItemsRepository, RollingStocksRepository};
-use problem::ProblemDetail;
 use uuid::Uuid;
 
 pub async fn handle(State(app_state): State<AppState>, Json(request): Json<CatalogItemRequest>) -> impl IntoResponse {

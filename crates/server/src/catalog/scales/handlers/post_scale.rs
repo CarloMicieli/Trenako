@@ -1,5 +1,6 @@
 use crate::app::AppState;
 use crate::catalog::scales::routes::SCALE_ROOT_API;
+use crate::web::problem::ProblemDetail;
 use crate::web::responders::ToProblemDetail;
 use axum::extract::State;
 use axum::http::{header, HeaderValue, StatusCode};
@@ -8,7 +9,6 @@ use axum::Json;
 use catalog::scales::commands::new_scales::{create_new_scale, ScaleCreationError};
 use catalog::scales::scale_request::ScaleRequest;
 use data::catalog::scales::repositories::ScalesRepository;
-use problem::ProblemDetail;
 use uuid::Uuid;
 
 pub async fn handle(State(app_state): State<AppState>, Json(request): Json<ScaleRequest>) -> impl IntoResponse {

@@ -1,5 +1,6 @@
 use crate::app::AppState;
 use crate::catalog::brands::routes::BRAND_ROOT_API;
+use crate::web::problem::ProblemDetail;
 use crate::web::responders::ToProblemDetail;
 use axum::extract::State;
 use axum::http::{header, HeaderValue, StatusCode};
@@ -8,7 +9,6 @@ use axum::Json;
 use catalog::brands::brand_request::BrandRequest;
 use catalog::brands::commands::new_brand::{create_new_brand, BrandCreationError};
 use data::catalog::brands::repositories::BrandsRepository;
-use problem::ProblemDetail;
 use uuid::Uuid;
 
 pub async fn handle(State(app_state): State<AppState>, Json(request): Json<BrandRequest>) -> impl IntoResponse {

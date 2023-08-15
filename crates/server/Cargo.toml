@@ -18,7 +18,6 @@ catalog = { path = "../catalog" }
 common = { path = "../common" }
 configuration = { path = "../configuration" }
 data = { path = "../data" }
-problem = { path = "../problem" }
 
 anyhow = { workspace = true }
 async-trait = { workspace = true }

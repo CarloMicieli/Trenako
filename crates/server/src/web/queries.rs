@@ -1,6 +1,6 @@
+use crate::web::problem::ProblemDetail;
 use axum::response::{IntoResponse, Response};
 use common::queries::errors::QueryError;
-use problem::ProblemDetail;
 use std::fmt;
 use uuid::Uuid;
 
