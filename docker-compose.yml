@@ -63,7 +63,6 @@ services:
     environment:
       SERVER__HOST: 0.0.0.0
       SERVER__PORT: 5000
-      SERVER__WORKERS: 4
       DATABASE__NAME: trenakodb
       DATABASE__USERNAME: postgres
       DATABASE__PASSWORD: mysecretpassword

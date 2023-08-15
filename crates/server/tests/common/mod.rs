@@ -54,7 +54,6 @@ pub async fn spawn_app(postgres_port: u32) -> ServiceUnderTest {
         server: ServerSettings {
             host: String::from("127.0.0.1"),
             port: 0,
-            workers: 2,
         },
         database: database_settings,
     };

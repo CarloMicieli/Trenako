@@ -83,7 +83,6 @@ Starting the server (127.0.0.1:5000)...
 |-----------------------------|----------------------------------------|
 | `SERVER__HOST`              | the server host name                   |
 | `SERVER__PORT`              | the server port number                 |
-| `SERVER__WORKERS`           | the number of workers                  |
 | `DATABASE__NAME`            | the database name                      |
 | `DATABASE__USERNAME`        | the database username                  |
 | `DATABASE__PASSWORD`        | the database password                  |

@@ -21,11 +21,6 @@ impl Settings {
         format!("{}:{}", self.server.host, self.server.port)
     }
 
-    /// Returns the number of actix workers
-    pub fn workers(&self) -> usize {
-        self.server.workers
-    }
-
     /// Returns the postgres connection options
     pub fn pg_connection_options(&self) -> PgConnectOptions {
         self.database.pg_connection_options()
@@ -49,8 +44,6 @@ pub struct ServerSettings {
     pub host: String,
     /// the server port number
     pub port: u16,
-    /// the number of actix workers
-    pub workers: usize,
 }
 
 /// It contains the database connection settings
@@ -133,7 +126,6 @@ mod tests {
                 server: ServerSettings {
                     host: String::from("127.0.0.1"),
                     port: 8080,
-                    workers: 4,
                 },
             };
 
@@ -147,7 +139,6 @@ mod tests {
                 server: ServerSettings {
                     host: String::from("127.0.0.1"),
                     port: 8080,
-                    workers: 4,
                 },
             };
 
