@@ -18,7 +18,6 @@ catalog = { path = "../catalog" }
 common = { path = "../common" }
 configuration = { path = "../configuration" }
 data = { path = "../data" }
-hateoas = { path = "../hateoas" }
 problem = { path = "../problem" }
 
 anyhow = { workspace = true }

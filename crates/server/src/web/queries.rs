@@ -50,8 +50,8 @@ mod test {
 
     mod query_response_errors {
         use super::*;
+        use crate::testing::extract_body;
         use anyhow::anyhow;
-        use axum::body::Bytes;
         use axum::http::StatusCode;
         use common::queries::converters::ConversionErrors;
         use common::queries::errors::DatabaseError;
@@ -172,16 +172,6 @@ mod test {
                 problem_detail.instance,
                 Trn::from_str("trn:instance:1a29fa04-8704-48d4-ab8b-31594eeaf504").unwrap()
             );
-        }
-
-        async fn extract_body(response: Response) -> anyhow::Result<Bytes> {
-            let (_, body) = response.into_parts();
-            let bytes = match hyper::body::to_bytes(body).await {
-                Ok(bytes) => bytes,
-                Err(why) => return Err(anyhow!(why.to_string())),
-            };
-
-            Ok(bytes)
         }
 
         fn query_error(error: QueryError) -> QueryResponseError {

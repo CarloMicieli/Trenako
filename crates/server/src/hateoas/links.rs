@@ -4,6 +4,7 @@ use url::{ParseError, Url};
 
 /// It represents a resource Link.
 #[derive(Debug, PartialEq, Eq, Clone, Serialize)]
+#[cfg_attr(test, derive(serde::Deserialize))]
 pub struct Link {
     pub href: Url,
     pub rel: LinkRelation,
@@ -34,6 +35,7 @@ pub enum LinkError {
 
 /// The enumeration of link relation types
 #[derive(Debug, PartialEq, Eq, Copy, Clone, Serialize)]
+#[cfg_attr(test, derive(serde::Deserialize))]
 #[serde(rename_all = "lowercase")]
 pub enum LinkRelation {
     /// An IRI that refers to the furthest preceding resource in a series of resources.
