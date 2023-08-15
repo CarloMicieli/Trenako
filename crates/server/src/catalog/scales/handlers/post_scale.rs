@@ -1,9 +1,8 @@
 use crate::app::AppState;
 use crate::catalog::scales::routes::SCALE_ROOT_API;
 use crate::web::problem::ProblemDetail;
-use crate::web::responders::ToProblemDetail;
+use crate::web::responders::{Created, ToProblemDetail};
 use axum::extract::State;
-use axum::http::{header, HeaderValue, StatusCode};
 use axum::response::IntoResponse;
 use axum::Json;
 use catalog::scales::commands::new_scales::{create_new_scale, ScaleCreationError};
@@ -18,8 +17,8 @@ pub async fn handle(State(app_state): State<AppState>, Json(request): Json<Scale
     let result = create_new_scale(request, repo, database).await;
     match result {
         Ok(created) => {
-            let location: HeaderValue = format!("{}/{}", SCALE_ROOT_API, created.scale_id).parse().unwrap();
-            (StatusCode::CREATED, [(header::LOCATION, location)], ()).into_response()
+            let location = format!("{}/{}", SCALE_ROOT_API, created.scale_id);
+            Created::with_location(&location).into_response()
         }
         Err(why) => why.to_problem_detail(Uuid::new_v4()).into_response(),
     }
@@ -45,6 +44,7 @@ mod test {
     mod scale_creation_error_to_problem_detail {
         use super::*;
         use anyhow::anyhow;
+        use axum::http::StatusCode;
         use catalog::scales::scale_id::ScaleId;
         use common::queries::errors::DatabaseError;
         use common::trn::Trn;

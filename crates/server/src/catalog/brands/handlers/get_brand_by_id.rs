@@ -16,6 +16,6 @@ pub async fn handle(Path(brand_id): Path<BrandId>, State(app_state): State<AppSt
     let result = find_brand_by_id(&brand_id, repo, database).await;
     match result {
         Ok(brand) => Json(brand).into_response(),
-        Err(why) => to_response_error(Uuid::new_v4(), why, routes::BRAND_ROOT_API).into_response(),
+        Err(why) => to_response_error(Uuid::new_v4(), why, routes::BRANDS_ROOT_API).into_response(),
     }
 }

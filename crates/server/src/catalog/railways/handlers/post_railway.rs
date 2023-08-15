@@ -1,9 +1,8 @@
 use crate::app::AppState;
 use crate::catalog::railways::routes::RAILWAY_ROOT_API;
 use crate::web::problem::ProblemDetail;
-use crate::web::responders::ToProblemDetail;
+use crate::web::responders::{Created, ToProblemDetail};
 use axum::extract::State;
-use axum::http::{header, HeaderValue, StatusCode};
 use axum::response::IntoResponse;
 use axum::Json;
 use catalog::railways::commands::new_railways::{create_new_railway, RailwayCreationError};
@@ -18,8 +17,8 @@ pub async fn handle(State(app_state): State<AppState>, Json(request): Json<Railw
     let result = create_new_railway(request, repo, database).await;
     match result {
         Ok(created) => {
-            let location: HeaderValue = format!("{}/{}", RAILWAY_ROOT_API, created.railway_id).parse().unwrap();
-            (StatusCode::CREATED, [(header::LOCATION, location)], ()).into_response()
+            let location = format!("{}/{}", RAILWAY_ROOT_API, created.railway_id);
+            Created::with_location(&location).into_response()
         }
         Err(why) => why.to_problem_detail(Uuid::new_v4()).into_response(),
     }
@@ -45,6 +44,7 @@ mod test {
     mod railway_creation_error_to_problem_detail {
         use super::*;
         use anyhow::anyhow;
+        use axum::http::StatusCode;
         use catalog::railways::railway_id::RailwayId;
         use common::queries::errors::DatabaseError;
         use common::trn::Trn;

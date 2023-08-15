@@ -16,6 +16,6 @@ pub async fn handle(Query(_page_request): Query<PageRequest>, State(app_state): 
     let results = find_all_brands(repo, database).await;
     match results {
         Ok(items) => CollectionModel::of(items, Vec::new()).into_response(),
-        Err(why) => to_response_error(Uuid::new_v4(), why, routes::BRAND_ROOT_API).into_response(),
+        Err(why) => to_response_error(Uuid::new_v4(), why, routes::BRANDS_ROOT_API).into_response(),
     }
 }

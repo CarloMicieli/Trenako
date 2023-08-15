@@ -1,9 +1,8 @@
 use crate::app::AppState;
 use crate::catalog::catalog_items::routes::CATALOG_ITEMS_ROOT_API;
 use crate::web::problem::ProblemDetail;
-use crate::web::responders::ToProblemDetail;
+use crate::web::responders::{Created, ToProblemDetail};
 use axum::extract::State;
-use axum::http::{header, HeaderValue, StatusCode};
 use axum::response::IntoResponse;
 use axum::Json;
 use catalog::catalog_items::catalog_item_request::CatalogItemRequest;
@@ -19,10 +18,8 @@ pub async fn handle(State(app_state): State<AppState>, Json(request): Json<Catal
     let result = create_new_catalog_item(request, repo, rr_repo, database).await;
     match result {
         Ok(created) => {
-            let location: HeaderValue = format!("{}/{}", CATALOG_ITEMS_ROOT_API, created.catalog_item_id)
-                .parse()
-                .unwrap();
-            (StatusCode::CREATED, [(header::LOCATION, location)], ()).into_response()
+            let location = format!("{}/{}", CATALOG_ITEMS_ROOT_API, created.catalog_item_id);
+            Created::with_location(&location).into_response()
         }
         Err(why) => why.to_problem_detail(Uuid::new_v4()).into_response(),
     }
@@ -57,6 +54,7 @@ mod test {
     mod catalog_item_creation_error_to_problem_detail {
         use super::*;
         use anyhow::anyhow;
+        use axum::http::StatusCode;
         use catalog::brands::brand_id::BrandId;
         use catalog::catalog_items::catalog_item_id::CatalogItemId;
         use catalog::catalog_items::item_number::ItemNumber;

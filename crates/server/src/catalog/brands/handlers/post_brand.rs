@@ -1,9 +1,8 @@
 use crate::app::AppState;
-use crate::catalog::brands::routes::BRAND_ROOT_API;
+use crate::catalog::brands::routes::BRANDS_ROOT_API;
 use crate::web::problem::ProblemDetail;
-use crate::web::responders::ToProblemDetail;
+use crate::web::responders::{Created, ToProblemDetail};
 use axum::extract::State;
-use axum::http::{header, HeaderValue, StatusCode};
 use axum::response::IntoResponse;
 use axum::Json;
 use catalog::brands::brand_request::BrandRequest;
@@ -18,13 +17,8 @@ pub async fn handle(State(app_state): State<AppState>, Json(request): Json<Brand
     let result = create_new_brand(request, repo, database).await;
     match result {
         Ok(created) => {
-            let location = format!("{}/{}", BRAND_ROOT_API, created.brand_id);
-            (
-                StatusCode::CREATED,
-                [(header::LOCATION, location.parse::<HeaderValue>().unwrap())],
-                (),
-            )
-                .into_response()
+            let location = format!("{}/{}", BRANDS_ROOT_API, created.brand_id);
+            Created::with_location(&location).into_response()
         }
         Err(why) => why.to_problem_detail(Uuid::new_v4()).into_response(),
     }
@@ -50,6 +44,7 @@ mod test {
     mod brand_creation_error_to_problem_detail {
         use super::*;
         use anyhow::anyhow;
+        use axum::http::StatusCode;
         use catalog::brands::brand_id::BrandId;
         use common::queries::errors::DatabaseError;
         use common::trn::Trn;
