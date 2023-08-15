@@ -6,7 +6,7 @@ use axum::response::IntoResponse;
 use axum::Json;
 use catalog::railways::queries::find_all_railways::find_all_railways;
 use common::queries::pagination::PageRequest;
-use db::catalog::railways::repositories::RailwaysRepository;
+use data::catalog::railways::repositories::RailwaysRepository;
 use hateoas::representations::CollectionModel;
 use uuid::Uuid;
 

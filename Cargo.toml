@@ -4,7 +4,7 @@ members = [
     "crates/cli",
     "crates/common",
     "crates/configuration",
-    "crates/db",
+    "crates/data",
     "crates/hateoas",
     "crates/problem",
     "crates/server",

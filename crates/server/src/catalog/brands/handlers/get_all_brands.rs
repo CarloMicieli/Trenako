@@ -6,7 +6,7 @@ use axum::response::IntoResponse;
 use axum::Json;
 use catalog::brands::queries::find_all_brands::find_all_brands;
 use common::queries::pagination::PageRequest;
-use db::catalog::brands::repositories::BrandsRepository;
+use data::catalog::brands::repositories::BrandsRepository;
 use hateoas::representations::CollectionModel;
 use uuid::Uuid;
 

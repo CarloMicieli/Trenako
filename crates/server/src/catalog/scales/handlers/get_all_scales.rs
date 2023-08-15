@@ -6,7 +6,7 @@ use axum::response::IntoResponse;
 use axum::Json;
 use catalog::scales::queries::find_all_scales::find_all_scales;
 use common::queries::pagination::PageRequest;
-use db::catalog::scales::repositories::ScalesRepository;
+use data::catalog::scales::repositories::ScalesRepository;
 use hateoas::representations::CollectionModel;
 use uuid::Uuid;
 

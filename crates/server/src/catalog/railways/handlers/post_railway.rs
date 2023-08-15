@@ -7,7 +7,7 @@ use axum::response::IntoResponse;
 use axum::Json;
 use catalog::railways::commands::new_railways::{create_new_railway, RailwayCreationError};
 use catalog::railways::railway_request::RailwayRequest;
-use db::catalog::railways::repositories::RailwaysRepository;
+use data::catalog::railways::repositories::RailwaysRepository;
 use problem::ProblemDetail;
 use uuid::Uuid;
 

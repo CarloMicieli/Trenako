@@ -17,7 +17,7 @@ name = "trenako-server"
 catalog = { path = "../catalog" }
 common = { path = "../common" }
 configuration = { path = "../configuration" }
-db = { path = "../db" }
+data = { path = "../data" }
 hateoas = { path = "../hateoas" }
 problem = { path = "../problem" }
 

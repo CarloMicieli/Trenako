@@ -1,3 +1,7 @@
+use ::data::catalog::brands::repositories::BrandsRepository;
+use ::data::catalog::catalog_item::repositories::{CatalogItemsRepository, RollingStocksRepository};
+use ::data::catalog::railways::repositories::RailwaysRepository;
+use ::data::catalog::scales::repositories::ScalesRepository;
 use catalog::brands::brand_request::BrandRequest;
 use catalog::brands::commands::new_brand::NewBrandCommand;
 use catalog::brands::commands::repositories::NewBrandRepository;
@@ -12,10 +16,6 @@ use catalog::scales::commands::repositories::NewScaleRepository;
 use catalog::scales::scale_request::ScaleRequest;
 use common::unit_of_work::postgres::PgDatabase;
 use common::unit_of_work::{Database, UnitOfWork};
-use db::catalog::brands::repositories::BrandsRepository;
-use db::catalog::catalog_item::repositories::{CatalogItemsRepository, RollingStocksRepository};
-use db::catalog::railways::repositories::RailwaysRepository;
-use db::catalog::scales::repositories::ScalesRepository;
 use serde_derive::Deserialize;
 use sqlx::PgPool;
 

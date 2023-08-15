@@ -7,7 +7,7 @@ use axum::response::IntoResponse;
 use axum::Json;
 use catalog::brands::brand_request::BrandRequest;
 use catalog::brands::commands::new_brand::{create_new_brand, BrandCreationError};
-use db::catalog::brands::repositories::BrandsRepository;
+use data::catalog::brands::repositories::BrandsRepository;
 use problem::ProblemDetail;
 use uuid::Uuid;
 

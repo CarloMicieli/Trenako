@@ -6,7 +6,7 @@ use axum::response::IntoResponse;
 use axum::Json;
 use catalog::brands::brand_id::BrandId;
 use catalog::brands::queries::find_brand_by_id::find_brand_by_id;
-use db::catalog::brands::repositories::BrandsRepository;
+use data::catalog::brands::repositories::BrandsRepository;
 use uuid::Uuid;
 
 pub async fn handle(Path(brand_id): Path<BrandId>, State(app_state): State<AppState>) -> impl IntoResponse {

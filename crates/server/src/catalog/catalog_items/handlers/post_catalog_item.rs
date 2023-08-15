@@ -7,7 +7,7 @@ use axum::response::IntoResponse;
 use axum::Json;
 use catalog::catalog_items::catalog_item_request::CatalogItemRequest;
 use catalog::catalog_items::commands::new_catalog_item::{create_new_catalog_item, CatalogItemCreationError};
-use db::catalog::catalog_item::repositories::{CatalogItemsRepository, RollingStocksRepository};
+use data::catalog::catalog_item::repositories::{CatalogItemsRepository, RollingStocksRepository};
 use problem::ProblemDetail;
 use uuid::Uuid;
 

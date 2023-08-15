@@ -6,7 +6,7 @@ use axum::response::IntoResponse;
 use axum::Json;
 use catalog::catalog_items::catalog_item_id::CatalogItemId;
 use catalog::catalog_items::queries::find_catalog_item_by_id::find_catalog_item_by_id;
-use db::catalog::catalog_item::repositories::CatalogItemsRepository;
+use data::catalog::catalog_item::repositories::CatalogItemsRepository;
 use uuid::Uuid;
 
 pub async fn handle(

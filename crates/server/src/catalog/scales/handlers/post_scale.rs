@@ -7,7 +7,7 @@ use axum::response::IntoResponse;
 use axum::Json;
 use catalog::scales::commands::new_scales::{create_new_scale, ScaleCreationError};
 use catalog::scales::scale_request::ScaleRequest;
-use db::catalog::scales::repositories::ScalesRepository;
+use data::catalog::scales::repositories::ScalesRepository;
 use problem::ProblemDetail;
 use uuid::Uuid;
 

@@ -6,7 +6,7 @@ use axum::response::IntoResponse;
 use axum::Json;
 use catalog::scales::queries::find_scale_by_id::find_scale_by_id;
 use catalog::scales::scale_id::ScaleId;
-use db::catalog::scales::repositories::ScalesRepository;
+use data::catalog::scales::repositories::ScalesRepository;
 use uuid::Uuid;
 
 pub async fn handle(Path(scale_id): Path<ScaleId>, State(app_state): State<AppState>) -> impl IntoResponse {

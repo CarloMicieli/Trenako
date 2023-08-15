@@ -6,7 +6,7 @@ use axum::response::IntoResponse;
 use axum::Json;
 use catalog::railways::queries::find_railway_by_id::find_railway_by_id;
 use catalog::railways::railway_id::RailwayId;
-use db::catalog::railways::repositories::RailwaysRepository;
+use data::catalog::railways::repositories::RailwaysRepository;
 use uuid::Uuid;
 
 pub async fn handle(Path(railway_id): Path<RailwayId>, State(app_state): State<AppState>) -> impl IntoResponse {
