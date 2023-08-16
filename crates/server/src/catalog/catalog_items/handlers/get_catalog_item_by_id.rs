@@ -1,7 +1,8 @@
 use crate::app::AppState;
 use crate::catalog::catalog_items::routes;
 use crate::hateoas::representations::EntityModel;
-use crate::web::queries::{to_response_error, QueryResponseError};
+use crate::web::problem::ProblemDetail;
+use crate::web::responders::ToProblemDetail;
 use axum::extract::{Path, State};
 use catalog::catalog_items::catalog_item::CatalogItem;
 use catalog::catalog_items::catalog_item_id::CatalogItemId;
@@ -12,7 +13,7 @@ use uuid::Uuid;
 pub async fn handle(
     Path(catalog_item_id): Path<CatalogItemId>,
     State(app_state): State<AppState>,
-) -> Result<EntityModel<CatalogItem>, QueryResponseError> {
+) -> Result<EntityModel<CatalogItem>, ProblemDetail> {
     let database = app_state.get_database();
     let repo = CatalogItemsRepository;
 
@@ -21,6 +22,6 @@ pub async fn handle(
         .map(|catalog_item| EntityModel::of(catalog_item, Vec::new()))
         .map_err(|why| {
             let path = format!("{}/{}", routes::CATALOG_ITEMS_ROOT_API, catalog_item_id);
-            to_response_error(Uuid::new_v4(), why, &path)
+            why.to_problem_detail(Uuid::new_v4(), Some(&path))
         })
 }

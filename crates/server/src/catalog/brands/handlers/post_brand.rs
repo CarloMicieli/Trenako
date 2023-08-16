@@ -22,11 +22,11 @@ pub async fn handle(
             let location = format!("{}/{}", BRANDS_ROOT_API, created.brand_id);
             Created::with_location(&location)
         })
-        .map_err(|why| why.to_problem_detail(Uuid::new_v4()))
+        .map_err(|why| why.to_problem_detail(Uuid::new_v4(), None))
 }
 
 impl ToProblemDetail for BrandCreationError {
-    fn to_problem_detail(self, request_id: Uuid) -> ProblemDetail {
+    fn to_problem_detail(self, request_id: Uuid, _path: Option<&str>) -> ProblemDetail {
         match self {
             BrandCreationError::BrandAlreadyExists(_) => {
                 ProblemDetail::resource_already_exists(request_id, &self.to_string())
@@ -57,7 +57,7 @@ mod test {
             let err = BrandCreationError::BrandAlreadyExists(BrandId::new("ACME"));
 
             let id = Uuid::new_v4();
-            let problem_detail = err.to_problem_detail(id);
+            let problem_detail = err.to_problem_detail(id, None);
             assert_eq!(StatusCode::CONFLICT, problem_detail.status);
             assert_eq!("https://httpstatuses.com/409", problem_detail.problem_type.as_str());
             assert_eq!("The brand already exists (id: acme)", problem_detail.detail);
@@ -70,7 +70,7 @@ mod test {
             let err = BrandCreationError::InvalidRequest(ValidationErrors::new());
 
             let id = Uuid::new_v4();
-            let problem_detail = err.to_problem_detail(id);
+            let problem_detail = err.to_problem_detail(id, None);
             assert_eq!(StatusCode::BAD_REQUEST, problem_detail.status);
             assert_eq!("https://httpstatuses.com/400", problem_detail.problem_type.as_str());
             assert_eq!("", problem_detail.detail);
@@ -83,7 +83,7 @@ mod test {
             let err = BrandCreationError::UnexpectedError(anyhow!("Something bad just happened"));
 
             let id = Uuid::new_v4();
-            let problem_detail = err.to_problem_detail(id);
+            let problem_detail = err.to_problem_detail(id, None);
             assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, problem_detail.status);
             assert_eq!("https://httpstatuses.com/500", problem_detail.problem_type.as_str());
             assert_eq!("Something bad just happened", problem_detail.detail);
@@ -98,7 +98,7 @@ mod test {
             )));
 
             let id = Uuid::new_v4();
-            let problem_detail = err.to_problem_detail(id);
+            let problem_detail = err.to_problem_detail(id, None);
             assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, problem_detail.status);
             assert_eq!("https://httpstatuses.com/500", problem_detail.problem_type.as_str());
             assert_eq!("Something bad just happened", problem_detail.detail);

@@ -23,11 +23,11 @@ pub async fn handle(
             let location = format!("{}/{}", CATALOG_ITEMS_ROOT_API, created.catalog_item_id);
             Created::with_location(&location)
         })
-        .map_err(|why| why.to_problem_detail(Uuid::new_v4()))
+        .map_err(|why| why.to_problem_detail(Uuid::new_v4(), None))
 }
 
 impl ToProblemDetail for CatalogItemCreationError {
-    fn to_problem_detail(self, request_id: Uuid) -> ProblemDetail {
+    fn to_problem_detail(self, request_id: Uuid, _path: Option<&str>) -> ProblemDetail {
         match self {
             CatalogItemCreationError::BrandNotFound(_) => {
                 ProblemDetail::unprocessable_entity(request_id, &self.to_string())
@@ -72,7 +72,7 @@ mod test {
             let error = CatalogItemCreationError::CatalogItemAlreadyExists(catalog_item_id);
 
             let id = Uuid::new_v4();
-            let problem_detail = error.to_problem_detail(id);
+            let problem_detail = error.to_problem_detail(id, None);
             assert_eq!(StatusCode::CONFLICT, problem_detail.status);
             assert_eq!("https://httpstatuses.com/409", problem_detail.problem_type.as_str());
             assert_eq!(
@@ -88,7 +88,7 @@ mod test {
             let error = CatalogItemCreationError::BrandNotFound(BrandId::new("acme"));
 
             let id = Uuid::new_v4();
-            let problem_detail = error.to_problem_detail(id);
+            let problem_detail = error.to_problem_detail(id, None);
             assert_eq!(StatusCode::UNPROCESSABLE_ENTITY, problem_detail.status);
             assert_eq!("https://httpstatuses.com/422", problem_detail.problem_type.as_str());
             assert_eq!(
@@ -104,7 +104,7 @@ mod test {
             let error = CatalogItemCreationError::RailwayNotFound(RailwayId::new("fs"));
 
             let id = Uuid::new_v4();
-            let problem_detail = error.to_problem_detail(id);
+            let problem_detail = error.to_problem_detail(id, None);
             assert_eq!(StatusCode::UNPROCESSABLE_ENTITY, problem_detail.status);
             assert_eq!("https://httpstatuses.com/422", problem_detail.problem_type.as_str());
             assert_eq!(
@@ -120,7 +120,7 @@ mod test {
             let error = CatalogItemCreationError::ScaleNotFound(ScaleId::new("h0"));
 
             let id = Uuid::new_v4();
-            let problem_detail = error.to_problem_detail(id);
+            let problem_detail = error.to_problem_detail(id, None);
             assert_eq!(StatusCode::UNPROCESSABLE_ENTITY, problem_detail.status);
             assert_eq!("https://httpstatuses.com/422", problem_detail.problem_type.as_str());
             assert_eq!(
@@ -136,7 +136,7 @@ mod test {
             let error = CatalogItemCreationError::InvalidRequest(ValidationErrors::new());
 
             let id = Uuid::new_v4();
-            let problem_detail = error.to_problem_detail(id);
+            let problem_detail = error.to_problem_detail(id, None);
             assert_eq!(StatusCode::BAD_REQUEST, problem_detail.status);
             assert_eq!("https://httpstatuses.com/400", problem_detail.problem_type.as_str());
             assert_eq!("", problem_detail.detail);
@@ -149,7 +149,7 @@ mod test {
             let error = CatalogItemCreationError::UnexpectedError(anyhow!("Something bad just happened"));
 
             let id = Uuid::new_v4();
-            let problem_detail = error.to_problem_detail(id);
+            let problem_detail = error.to_problem_detail(id, None);
             assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, problem_detail.status);
             assert_eq!("https://httpstatuses.com/500", problem_detail.problem_type.as_str());
             assert_eq!("Something bad just happened", problem_detail.detail);
@@ -164,7 +164,7 @@ mod test {
             )));
 
             let id = Uuid::new_v4();
-            let problem_detail = error.to_problem_detail(id);
+            let problem_detail = error.to_problem_detail(id, None);
             assert_eq!(StatusCode::INTERNAL_SERVER_ERROR, problem_detail.status);
             assert_eq!("https://httpstatuses.com/500", problem_detail.problem_type.as_str());
             assert_eq!("Something bad just happened", problem_detail.detail);
