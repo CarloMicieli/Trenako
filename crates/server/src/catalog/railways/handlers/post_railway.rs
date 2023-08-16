@@ -3,25 +3,26 @@ use crate::catalog::railways::routes::RAILWAY_ROOT_API;
 use crate::web::problem::ProblemDetail;
 use crate::web::responders::{Created, ToProblemDetail};
 use axum::extract::State;
-use axum::response::IntoResponse;
 use axum::Json;
 use catalog::railways::commands::new_railways::{create_new_railway, RailwayCreationError};
 use catalog::railways::railway_request::RailwayRequest;
 use data::catalog::railways::repositories::RailwaysRepository;
 use uuid::Uuid;
 
-pub async fn handle(State(app_state): State<AppState>, Json(request): Json<RailwayRequest>) -> impl IntoResponse {
+pub async fn handle(
+    State(app_state): State<AppState>,
+    Json(request): Json<RailwayRequest>,
+) -> Result<Created, ProblemDetail> {
     let repo = RailwaysRepository;
     let database = app_state.get_database();
 
     let result = create_new_railway(request, repo, database).await;
-    match result {
-        Ok(created) => {
+    result
+        .map(|created| {
             let location = format!("{}/{}", RAILWAY_ROOT_API, created.railway_id);
-            Created::with_location(&location).into_response()
-        }
-        Err(why) => why.to_problem_detail(Uuid::new_v4()).into_response(),
-    }
+            Created::with_location(&location)
+        })
+        .map_err(|why| why.to_problem_detail(Uuid::new_v4()))
 }
 
 impl ToProblemDetail for RailwayCreationError {

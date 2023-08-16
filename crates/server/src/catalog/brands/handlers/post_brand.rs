@@ -3,25 +3,26 @@ use crate::catalog::brands::routes::BRANDS_ROOT_API;
 use crate::web::problem::ProblemDetail;
 use crate::web::responders::{Created, ToProblemDetail};
 use axum::extract::State;
-use axum::response::IntoResponse;
 use axum::Json;
 use catalog::brands::brand_request::BrandRequest;
 use catalog::brands::commands::new_brand::{create_new_brand, BrandCreationError};
 use data::catalog::brands::repositories::BrandsRepository;
 use uuid::Uuid;
 
-pub async fn handle(State(app_state): State<AppState>, Json(request): Json<BrandRequest>) -> impl IntoResponse {
+pub async fn handle(
+    State(app_state): State<AppState>,
+    Json(request): Json<BrandRequest>,
+) -> Result<Created, ProblemDetail> {
     let repo = BrandsRepository;
     let database = app_state.get_database();
 
     let result = create_new_brand(request, repo, database).await;
-    match result {
-        Ok(created) => {
+    result
+        .map(|created| {
             let location = format!("{}/{}", BRANDS_ROOT_API, created.brand_id);
-            Created::with_location(&location).into_response()
-        }
-        Err(why) => why.to_problem_detail(Uuid::new_v4()).into_response(),
-    }
+            Created::with_location(&location)
+        })
+        .map_err(|why| why.to_problem_detail(Uuid::new_v4()))
 }
 
 impl ToProblemDetail for BrandCreationError {

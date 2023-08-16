@@ -3,25 +3,26 @@ use crate::catalog::scales::routes::SCALE_ROOT_API;
 use crate::web::problem::ProblemDetail;
 use crate::web::responders::{Created, ToProblemDetail};
 use axum::extract::State;
-use axum::response::IntoResponse;
 use axum::Json;
 use catalog::scales::commands::new_scales::{create_new_scale, ScaleCreationError};
 use catalog::scales::scale_request::ScaleRequest;
 use data::catalog::scales::repositories::ScalesRepository;
 use uuid::Uuid;
 
-pub async fn handle(State(app_state): State<AppState>, Json(request): Json<ScaleRequest>) -> impl IntoResponse {
+pub async fn handle(
+    State(app_state): State<AppState>,
+    Json(request): Json<ScaleRequest>,
+) -> Result<Created, ProblemDetail> {
     let repo = ScalesRepository;
     let database = app_state.get_database();
 
     let result = create_new_scale(request, repo, database).await;
-    match result {
-        Ok(created) => {
+    result
+        .map(|created| {
             let location = format!("{}/{}", SCALE_ROOT_API, created.scale_id);
-            Created::with_location(&location).into_response()
-        }
-        Err(why) => why.to_problem_detail(Uuid::new_v4()).into_response(),
-    }
+            Created::with_location(&location)
+        })
+        .map_err(|why| why.to_problem_detail(Uuid::new_v4()))
 }
 
 impl ToProblemDetail for ScaleCreationError {

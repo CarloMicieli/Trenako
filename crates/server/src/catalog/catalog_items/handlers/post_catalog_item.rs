@@ -3,26 +3,27 @@ use crate::catalog::catalog_items::routes::CATALOG_ITEMS_ROOT_API;
 use crate::web::problem::ProblemDetail;
 use crate::web::responders::{Created, ToProblemDetail};
 use axum::extract::State;
-use axum::response::IntoResponse;
 use axum::Json;
 use catalog::catalog_items::catalog_item_request::CatalogItemRequest;
 use catalog::catalog_items::commands::new_catalog_item::{create_new_catalog_item, CatalogItemCreationError};
 use data::catalog::catalog_item::repositories::{CatalogItemsRepository, RollingStocksRepository};
 use uuid::Uuid;
 
-pub async fn handle(State(app_state): State<AppState>, Json(request): Json<CatalogItemRequest>) -> impl IntoResponse {
+pub async fn handle(
+    State(app_state): State<AppState>,
+    Json(request): Json<CatalogItemRequest>,
+) -> Result<Created, ProblemDetail> {
     let repo = CatalogItemsRepository;
     let rr_repo = RollingStocksRepository;
     let database = app_state.get_database();
 
     let result = create_new_catalog_item(request, repo, rr_repo, database).await;
-    match result {
-        Ok(created) => {
+    result
+        .map(|created| {
             let location = format!("{}/{}", CATALOG_ITEMS_ROOT_API, created.catalog_item_id);
-            Created::with_location(&location).into_response()
-        }
-        Err(why) => why.to_problem_detail(Uuid::new_v4()).into_response(),
-    }
+            Created::with_location(&location)
+        })
+        .map_err(|why| why.to_problem_detail(Uuid::new_v4()))
 }
 
 impl ToProblemDetail for CatalogItemCreationError {
