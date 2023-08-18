@@ -16,7 +16,6 @@ license = "Apache-2.0"
 rust-version = "1.71"
 
 [workspace.dependencies]
-actix-web = "4.3.1"
 anyhow = "1.0.73"
 async-trait = "0.1.73"
 axum = "0.6.20"
@@ -54,7 +53,6 @@ tokio = { version = "1.31.0", features = ["macros", "rt-multi-thread"] }
 tower = { version = "0.4.13", features = ["limit", "timeout"] }
 tower-http = { version = "0.4.3", features = ["request-id", "trace"] }
 tracing = "0.1.37"
-tracing-actix-web = "0.7.6"
 tracing-bunyan-formatter = "0.3.8"
 tracing-log = "0.1.3"
 tracing-subscriber = { version = "0.3.17", features = ["registry", "env-filter"] }
