@@ -1,12 +1,15 @@
 use configuration::Settings;
 use server::app;
-use server::telemetry::{get_subscriber, init_subscriber};
 use std::net::TcpListener;
 
 #[tokio::main]
 async fn main() {
-    let subscriber = get_subscriber("trenako".into(), "info".into(), std::io::stdout);
-    init_subscriber(subscriber);
+    let subscriber = tracing_subscriber::fmt()
+        .with_target(false)
+        .with_thread_ids(true)
+        .json()
+        .finish();
+    tracing::subscriber::set_global_default(subscriber).unwrap();
 
     let settings = Settings::load().expect("Failed to read configuration");
     let listener = TcpListener::bind(settings.address()).expect("Failed to bind port");
