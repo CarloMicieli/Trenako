@@ -45,7 +45,7 @@ pub fn build_app(settings: &Settings) -> Router {
                         .latency_unit(LatencyUnit::Millis),
                 ),
         )
-        .layer(SetRequestIdLayer::new(x_request_id.clone(), MakeRequestUuid::default()))
+        .layer(SetRequestIdLayer::new(x_request_id.clone(), MakeRequestUuid))
         .layer(PropagateHeaderLayer::new(x_request_id))
         .layer(CompressionLayer::new())
 }
