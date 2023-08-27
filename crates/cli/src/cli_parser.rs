@@ -1,7 +1,7 @@
 use crate::Command;
 use clap::{Parser, Subcommand};
 
-const BANNER_TEXT: &str = r#"
+const BANNER_TEXT: &str = r"
  _                        _                   _ _
 | |                      | |                 | (_)
 | |_ _ __ ___ _ __   __ _| | _____ ______ ___| |_
@@ -10,7 +10,7 @@ const BANNER_TEXT: &str = r#"
  \__|_|  \___|_| |_|\__,_|_|\_\___/      \___|_|_|
 
 > A command line tool on top of trenako.com
-"#;
+";
 
 #[derive(Parser)]
 #[command(name = "trenako-cli")]

@@ -7,21 +7,22 @@ members = [
     "crates/data",
     "crates/server",
 ]
+resolver = "2"
 
 [workspace.package]
 version = "0.1.0"
 edition = "2021"
 authors = ["CarloMicieli <piovarolo@gmail.com>"]
 license = "Apache-2.0"
-rust-version = "1.71"
+rust-version = "1.72"
 
 [workspace.dependencies]
-anyhow = "1.0.73"
+anyhow = "1.0.75"
 async-trait = "0.1.73"
 axum = "0.6.20"
 axum-macros = "0.3.8"
 chrono = { version = "0.4.26", features = ["serde"] }
-clap = { version = "4.3.21", features = ["derive"] }
+clap = { version = "4.4.0", features = ["derive"] }
 config = { version = "0.13.3", default-features = false, features = ["yaml"] }
 dockertest = { git = "https://github.com/orcalabs/dockertest-rs", rev = "7e0a718", features = ["tls"] }
 http = "0.2.9"
@@ -35,25 +36,25 @@ mime = "0.3.17"
 once_cell = "1.18.0"
 pretty_assertions = "1.4.0"
 rand = "0.8.5"
-regex = "1.9.3"
-reqwest = { version = "0.11.18", features = ["json"] }
+regex = "1.9.4"
+reqwest = { version = "0.11.20", features = ["json"] }
 rstest = "0.18.2"
-rust_decimal = { version = "1.31.0", features = ["serde-with-float"] }
-rust_decimal_macros = "1.31.0"
+rust_decimal = { version = "1.32.0", features = ["serde-with-float"] }
+rust_decimal_macros = "1.32.0"
 secrecy = { version = "0.8.0", features = ["serde"] }
-serde = { version = "1.0.183", features = ["derive"] }
-serde_derive = "1.0.183"
-serde_json = "1.0.104"
+serde = { version = "1.0.188", features = ["derive"] }
+serde_derive = "1.0.188"
+serde_json = "1.0.105"
 serde_urlencoded = "0.7.1"
 slug = "0.1.4"
 strum = "0.25.0"
 strum_macros = "0.25.2"
-thiserror = "1.0.45"
-tokio = { version = "1.31.0", features = ["macros", "rt-multi-thread"] }
+thiserror = "1.0.47"
+tokio = { version = "1.32.0", features = ["macros", "rt-multi-thread"] }
 tower = { version = "0.4.13", features = ["limit", "timeout"] }
 tower-http = { version = "0.4.3", features = ["compression-gzip", "propagate-header", "request-id", "trace"] }
 tracing = "0.1.37"
-tracing-bunyan-formatter = "0.3.8"
+tracing-bunyan-formatter = "0.3.9"
 tracing-log = "0.1.3"
 tracing-subscriber = { version = "0.3.17", features = ["registry", "env-filter", "json"] }
 url = { version = "2.4.0", features = ["serde"] }
@@ -75,7 +76,7 @@ features = [
 ]
 
 [workspace.dependencies.fake]
-version = "2.6.1"
+version = "2.8.0"
 default-features = false
 features = [
     "chrono",
