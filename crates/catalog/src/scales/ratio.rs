@@ -84,7 +84,13 @@ impl convert::AsRef<Decimal> for Ratio {
 
 impl cmp::PartialOrd for Ratio {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-        other.0.partial_cmp(&self.0)
+        Some(self.cmp(other))
+    }
+}
+
+impl cmp::Ord for Ratio {
+    fn cmp(&self, other: &Self) -> Ordering {
+        other.0.cmp(&self.0)
     }
 }
 

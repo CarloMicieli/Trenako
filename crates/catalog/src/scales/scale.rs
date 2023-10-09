@@ -114,13 +114,13 @@ impl cmp::Eq for Scale {}
 
 impl cmp::PartialOrd for Scale {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-        self.ratio.partial_cmp(other.ratio())
+        Some(self.cmp(other))
     }
 }
 
 impl cmp::Ord for Scale {
     fn cmp(&self, other: &Self) -> Ordering {
-        self.partial_cmp(other).unwrap()
+        self.ratio.cmp(other.ratio())
     }
 }
 

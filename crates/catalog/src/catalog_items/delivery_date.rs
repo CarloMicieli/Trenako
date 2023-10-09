@@ -53,7 +53,7 @@ impl DeliveryDate {
         let year = s
             .parse::<Year>()
             .map_err(|_| DeliveryDateParseError::InvalidYearValue)?;
-        if year < 1900 && year >= 2999 {
+        if !(1900..=2999).contains(&year) {
             return Err(DeliveryDateParseError::InvalidYearValue);
         }
 
@@ -68,7 +68,7 @@ impl DeliveryDate {
         let quarter = s[1..]
             .parse::<Quarter>()
             .map_err(|_| DeliveryDateParseError::InvalidQuarterValue)?;
-        if quarter < 1 && quarter >= 4 {
+        if !(1..=4).contains(&quarter) {
             return Err(DeliveryDateParseError::InvalidQuarterValue);
         }
 
@@ -87,7 +87,7 @@ impl str::FromStr for DeliveryDate {
         if s.contains('/') {
             let tokens: Vec<&str> = s.split_terminator('/').collect();
             if tokens.len() != 2 {
-                return Err(DeliveryDateParseError::InvalidByQuarterValue);
+                return Err(DeliveryDateParseError::InvalidDeliveryDateFormat);
             }
 
             let year = DeliveryDate::parse_year(tokens[0])?;
@@ -149,12 +149,12 @@ impl<'de> Deserialize<'de> for DeliveryDate {
 }
 
 /// The delivery date parsing errors enum
-#[derive(Debug, Error)]
+#[derive(Debug, Error, PartialEq)]
 pub enum DeliveryDateParseError {
     #[error("Delivery date cannot be empty")]
     EmptyValue,
-    #[error("Invalid delivery date by quarter")]
-    InvalidByQuarterValue,
+    #[error("Invalid format for a delivery date")]
+    InvalidDeliveryDateFormat,
     #[error("Delivery date year component is not valid")]
     InvalidYearValue,
     #[error("Delivery date quarter component is not valid")]
@@ -204,6 +204,24 @@ mod tests {
             let dd1 = input.parse::<DeliveryDate>().unwrap();
             let result = serde_json::to_string(&dd1).unwrap();
             assert_eq!(expected, result);
+        }
+
+        #[rstest]
+        #[case("2020/Q11", DeliveryDateParseError::InvalidQuarterValue)]
+        #[case("2020/Q0", DeliveryDateParseError::InvalidQuarterValue)]
+        #[case("2020/Q5", DeliveryDateParseError::InvalidQuarterValue)]
+        #[case("2020/QA", DeliveryDateParseError::InvalidQuarterValue)]
+        #[case("202/Q1", DeliveryDateParseError::InvalidYearValue)]
+        #[case("1899/Q1", DeliveryDateParseError::InvalidYearValue)]
+        #[case("3000/Q1", DeliveryDateParseError::InvalidYearValue)]
+        #[case("3000/Q1/?", DeliveryDateParseError::InvalidDeliveryDateFormat)]
+        fn it_should_fail_to_parse_invalid_delivery_dates(
+            #[case] input: &str,
+            #[case] expected: DeliveryDateParseError,
+        ) {
+            let result = input.parse::<DeliveryDate>();
+            assert!(result.is_err());
+            assert_eq!(result.unwrap_err(), expected);
         }
 
         #[test]

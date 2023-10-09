@@ -126,7 +126,7 @@ impl fmt::Display for Resource {
 
 impl PartialOrd for Resource {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
-        self.file_name.partial_cmp(&other.file_name)
+        Some(self.cmp(other))
     }
 }
 
