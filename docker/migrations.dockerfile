@@ -4,7 +4,7 @@ COPY ./migrations ./migrations
 
 RUN cargo install sqlx-cli --no-default-features --features native-tls,postgres
 
-FROM debian:bullseye-slim as runtime
+FROM debian:bookworm-slim as runtime
 
 LABEL maintainer="Carlo Micieli <mail@trenako.com>"
 LABEL description="The trenako database migrations"
@@ -19,6 +19,8 @@ RUN groupadd --gid ${USER_GID} ${USERNAME} \
 
 COPY --from=builder /usr/local/cargo/bin/sqlx ${APP}/sqlx
 COPY --from=builder /app/migrations ${APP}/migrations
+
+RUN apt-get update && apt install -y openssl
 
 USER ${USERNAME}
 
