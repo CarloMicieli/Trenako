@@ -1,4 +1,4 @@
-FROM rust:1.73 as builder
+FROM rust:bookworm as builder
 WORKDIR /app
 COPY ./migrations ./migrations
 
