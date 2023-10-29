@@ -1,0 +1,3723 @@
+---
+openapi: 3.0.9
+
+info:
+  title: Trenako
+  contact:
+    email: mail@trenako.com
+  description: A web api for model railways collectors
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://www.trenako.com/terms
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5000
+    description: local
+
+tags:
+  - description: modelling railway brands
+    name: brands
+  - description: model railway catalog items
+    name: catalog-items
+  - description: the model railway collections
+    name: collections
+  - description: railway companies
+    name: railways
+  - description: modelling railway scales
+    name: scales
+  - description: the model railway shops
+    name: shops
+  - description: the user profiles
+    name: users
+  - description: the model railway wishlists
+    name: wishlists
+
+paths:
+  /api/brands:
+    get:
+      summary: returns the model railway brands list
+      tags:
+        - brands
+      operationId: get-brands
+      parameters:
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        "200":
+          description: a brands list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandsList'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    post:
+      summary: create a new model railway brand
+      tags:
+        - brands
+      operationId: create-brand
+      requestBody:
+        description: a new brand
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandRequest'
+      responses:
+        "201":
+          description: a new brand has been created
+          headers:
+            location:
+              description: the uri for the newly created brand
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/brands/{brandId}:
+    delete:
+      summary: delete the model railway brand identified by "brandId"
+      tags:
+        - brands
+      operationId: delete-brand
+      parameters:
+        - $ref: '#/components/parameters/BrandId'
+      responses:
+        "204":
+          description: the brand has been deleted
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: the brand is in use, not possible to delete it
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    get:
+      summary: get the model railway brand identified by "brandId"
+      tags:
+        - brands
+      operationId: get-brand
+      parameters:
+        - $ref: '#/components/parameters/BrandId'
+      responses:
+        "200":
+          description: a model railway brand
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    put:
+      summary: update the model railway brand identified by "brandId"
+      tags:
+        - brands
+      operationId: update-brand
+      parameters:
+        - $ref: '#/components/parameters/BrandId'
+      requestBody:
+        description: the updated brand
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandRequest'
+      responses:
+        "200":
+          description: the brand has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brand'
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/catalog-items:
+    post:
+      summary: create a new catalog item
+      tags:
+        - catalog-items
+      operationId: create-catalog-item
+      requestBody:
+        description: a new catalog item
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CatalogItemRequest'
+      responses:
+        "201":
+          description: a new catalog item has been created
+          headers:
+            location:
+              description: the uri for the new catalog item
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/catalog-items/{catalogItemId}:
+    delete:
+      summary: delete the catalog item identified by "catalogItemId"
+      tags:
+        - catalog-items
+      operationId: delete-catalog-item
+      parameters:
+        - $ref: '#/components/parameters/CatalogItemId'
+      responses:
+        "204":
+          description: the catalog item has been deleted
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: the catalog item is in use, not possible to delete it
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    get:
+      summary: get the catalog item identified by "catalogItemId"
+      tags:
+        - catalog-items
+      operationId: get-catalog-item
+      parameters:
+        - $ref: '#/components/parameters/CatalogItemId'
+      responses:
+        "200":
+          description: a catalog item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogItem'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    put:
+      summary: update the catalog item identified by "catalogItemId"
+      tags:
+        - catalog-items
+      operationId: update-catalog-item
+      parameters:
+        - $ref: '#/components/parameters/CatalogItemId'
+      requestBody:
+        description: the updated catalog item
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CatalogItemRequest'
+      responses:
+        "200":
+          description: catalog item updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogItem'
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/catalog-items/{catalogItemId}/rolling-stocks:
+    get:
+      summary: get the rolling stocks for the catalog item identified by "catalogItemId"
+      tags:
+        - catalog-items
+      operationId: get-rolling-stocks
+      parameters:
+        - $ref: '#/components/parameters/CatalogItemId'
+      responses:
+        "200":
+          description: the rolling stocks list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RollingStocksList'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    post:
+      summary: add a new rolling stock to the catalog item identified by "catalogItemId"
+      tags:
+        - catalog-items
+      operationId: add-rolling-stock
+      parameters:
+        - $ref: '#/components/parameters/CatalogItemId'
+      requestBody:
+        description: a new rolling stock
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RollingStockRequest'
+      responses:
+        "201":
+          description: a new rolling stock has been created
+          headers:
+            location:
+              description: the uri for the new rolling stock
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/catalog-items/{catalogItemId}/rolling-stocks/{rollingStockId}:
+    delete:
+      summary: delete the rolling stock from the catalog item identified by "catalogItemId"
+      tags:
+        - catalog-items
+      operationId: delete-rolling-stock
+      parameters:
+        - $ref: '#/components/parameters/CatalogItemId'
+        - $ref: '#/components/parameters/RollingStockId'
+      responses:
+        "204":
+          description: the rolling stock has been deleted
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    get:
+      summary: get the rolling stock identified by "rollingStockId"
+      tags:
+        - catalog-items
+      operationId: get-rolling-stock
+      parameters:
+        - $ref: '#/components/parameters/CatalogItemId'
+        - $ref: '#/components/parameters/RollingStockId'
+      responses:
+        "200":
+          description: a rolling stock
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RollingStock'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    put:
+      summary: update the rolling stock identified by "rollingStockId" in the catalog item identified by "catalogItemId"
+      tags:
+        - catalog-items
+      operationId: update-rolling-stock
+      parameters:
+        - $ref: '#/components/parameters/CatalogItemId'
+        - $ref: '#/components/parameters/RollingStockId'
+      requestBody:
+        description: a rolling stock update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RollingStockRequest'
+      responses:
+        "200":
+          description: rolling stock updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RollingStock'
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/collections:
+    post:
+      summary: create a new model railway collection
+      tags:
+        - collections
+      operationId: create-collection
+      requestBody:
+        description: a new collection
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectionRequest'
+      responses:
+        "201":
+          description: a new collection has been created
+          headers:
+            location:
+              description: the uri for the new collection
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/collections/{collectionId}:
+    get:
+      summary: get the collection identified by "collectionId"
+      tags:
+        - collections
+      operationId: get-collection
+      parameters:
+        - $ref: '#/components/parameters/CollectionId'
+      responses:
+        "200":
+          description: a collection
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    put:
+      summary: update the collection identified by "collectionId"
+      tags:
+        - collections
+      operationId: update-collection
+      parameters:
+        - $ref: '#/components/parameters/CollectionId'
+      requestBody:
+        description: a modified collection
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectionRequest'
+      responses:
+        "200":
+          description: the collection has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/collections/{collectionId}/items:
+    post:
+      summary: add a new item to the collection identified by "collectionId"
+      tags:
+        - collections
+      operationId: add-collection-item
+      parameters:
+        - $ref: '#/components/parameters/CollectionId'
+      requestBody:
+        description: a collection item request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectionItemRequest'
+      responses:
+        "201":
+          description: a new collection item has been added
+          headers:
+            location:
+              description: the uri for the new collection item
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/collections/{collectionId}/items/{itemId}:
+    delete:
+      summary: delete the item from the collection identified by "collectionId"
+      tags:
+        - collections
+      operationId: delete-collection-item
+      parameters:
+        - $ref: '#/components/parameters/CollectionId'
+        - $ref: '#/components/parameters/CollectionItemId'
+      responses:
+        "204":
+          description: the collection item has been removed
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    get:
+      summary: get the collection item identified by "collectionItemId"
+      tags:
+        - collections
+      operationId: get-collection-item
+      parameters:
+        - $ref: '#/components/parameters/CollectionId'
+        - $ref: '#/components/parameters/CollectionItemId'
+      responses:
+        "200":
+          description: a collection item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionItem'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    put:
+      summary: update the collection item identified by "collectionItemId"
+      tags:
+        - collections
+      operationId: update-collection-item
+      parameters:
+        - $ref: '#/components/parameters/CollectionId'
+        - $ref: '#/components/parameters/CollectionItemId'
+      requestBody:
+        description: a collection item request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CollectionItemRequest'
+      responses:
+        "200":
+          description: the collection item has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionItem'
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/collections/{collectionId}/statistics:
+    get:
+      summary: get the statistics for the collection identified by "collectionId"
+      tags:
+        - collections
+      operationId: get-collection-statistics
+      parameters:
+        - $ref: '#/components/parameters/CollectionId'
+      responses:
+        "200":
+          description: the collection statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CollectionStatistics'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/railways:
+    get:
+      summary: get the railway companies list
+      tags:
+        - railways
+      operationId: get-railways
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        "200":
+          description: a railways list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RailwaysList'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    post:
+      summary: create a new railway company
+      tags:
+        - railways
+      operationId: create-railway
+      requestBody:
+        description: a new railway
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RailwayRequest'
+      responses:
+        "201":
+          description: a new railway has been created
+          headers:
+            location:
+              description: the uri for the newly created railway
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/railways/{railwayId}:
+    delete:
+      summary: delete the railway company identified by "railwayId"
+      tags:
+        - railways
+      operationId: delete-railway
+      parameters:
+        - $ref: '#/components/parameters/RailwayId'
+      responses:
+        "204":
+          description: the railway has been deleted
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    get:
+      summary: get the railway company identified by "railwayId"
+      tags:
+        - railways
+      operationId: get-railway
+      parameters:
+        - $ref: '#/components/parameters/RailwayId'
+      responses:
+        "200":
+          description: a railway company
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Railway'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    put:
+      summary: update the railway company identified by "railwayId"
+      tags:
+        - railways
+      operationId: update-railway
+      parameters:
+        - $ref: '#/components/parameters/RailwayId'
+      requestBody:
+        description: a railway company update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RailwayRequest'
+      responses:
+        "200":
+          description: the railway company has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Railway'
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/scales:
+    get:
+      summary: get the list of scales
+      tags:
+        - scales
+      operationId: get-scales
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        "200":
+          description: a scales list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScalesList'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    post:
+      summary: create a new scale
+      tags:
+        - scales
+      operationId: create-scale
+      requestBody:
+        description: a new scale
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScaleRequest'
+      responses:
+        "201":
+          description: a new scale has been created
+          headers:
+            location:
+              description: the uri for the newly scale railway
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/scales/{scaleId}:
+    delete:
+      summary: delete the scale identified by "scaleId"
+      tags:
+        - scales
+      operationId: delete-scale
+      parameters:
+        - $ref: '#/components/parameters/ScaleId'
+      responses:
+        "204":
+          description: the scale has been deleted
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: scale is in use, not possible to delete it
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    get:
+      summary: get the scale identified by "scaleId"
+      tags:
+        - scales
+      operationId: get-scale
+      parameters:
+        - $ref: '#/components/parameters/ScaleId'
+      responses:
+        "200":
+          description: a model railway scale
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scale'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    put:
+      summary: updates the scale identified by "scaleId"
+      tags:
+        - scales
+      operationId: update-scale
+      parameters:
+        - $ref: '#/components/parameters/ScaleId'
+      requestBody:
+        description: the updated scale
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScaleRequest'
+      responses:
+        "200":
+          description: the scale has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Scale'
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/shops:
+    get:
+      summary: get the model railway shops list
+      tags:
+        - shops
+      operationId: get-shops
+      parameters:
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
+      responses:
+        "200":
+          description: a model railway shops list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShopsList'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    post:
+      summary: creates a new model railway shop
+      tags:
+        - shops
+      operationId: create-shop
+      requestBody:
+        description: a new shop
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShopRequest'
+      responses:
+        "201":
+          description: a new shop has been created
+          headers:
+            location:
+              description: the uri for the new shop
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/shops/{shopId}:
+    delete:
+      summary: delete the model railway shop identified by "shopId"
+      tags:
+        - shops
+      operationId: delete-shop
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+      responses:
+        "204":
+          description: the shop has been deleted
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    get:
+      summary: get a new model railway shop
+      tags:
+        - shops
+      operationId: get-shop
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+      responses:
+        "200":
+          description: a model railway shop
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    put:
+      summary: update the model railway shop identified by "shopId"
+      tags:
+        - shops
+      operationId: update-shop
+      parameters:
+        - $ref: '#/components/parameters/ShopId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShopRequest'
+        description: a new shop
+        required: true
+      responses:
+        "200":
+          description: the shop has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shop'
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/users/{userId}:
+    get:
+      summary: get the user profile identified by "userId"
+      tags:
+        - users
+      operationId: get-user-profile
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        "200":
+          description: a user profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/users/{userId}/collection:
+    get:
+      summary: get the collection for user identified by "userId"
+      tags:
+        - users
+      operationId: get-user-collection
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        "200":
+          description: a user profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/users/{userId}/wishlists:
+    get:
+      summary: get the wishlists list for user identified by "userId"
+      tags:
+        - users
+      operationId: get-user-wishlists
+      parameters:
+        - $ref: '#/components/parameters/UserId'
+      responses:
+        "200":
+          description: a user profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/wishlists:
+    post:
+      summary: creates a new model railway wishlist
+      tags:
+        - wishlists
+      operationId: create-wishlist
+      requestBody:
+        description: a new wishlist
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WishlistRequest'
+      responses:
+        "201":
+          description: a new wishlist has been created
+          headers:
+            location:
+              description: the uri for the new wishlist
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/wishlists/{wishlistId}:
+    delete:
+      summary: delete the wishlist identified by "wishlistId"
+      tags:
+        - wishlists
+      operationId: delete-wishlist
+      parameters:
+        - $ref: '#/components/parameters/WishlistId'
+      responses:
+        "204":
+          description: the wishlist has been deleted
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    get:
+      summary: get the wishlist identified by "wishlistId"
+      tags:
+        - wishlists
+      operationId: get-wishlist
+      parameters:
+        - $ref: '#/components/parameters/WishlistId'
+      responses:
+        "200":
+          description: a wishlist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wishlist'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    put:
+      summary: update the wishlist identified by "wishlistId"
+      tags:
+        - wishlists
+      operationId: update-wishlist
+      parameters:
+        - $ref: '#/components/parameters/WishlistId'
+      requestBody:
+        description: the modified wishlist
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WishlistRequest'
+      responses:
+        "200":
+          description: the wishlist has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wishlist'
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/wishlists/{wishlistId}/items:
+    post:
+      summary: add a new item to the wishlist identified by "wishlistId"
+      tags:
+        - wishlists
+      operationId: add-wishlist-item
+      parameters:
+        - $ref: '#/components/parameters/WishlistId'
+      requestBody:
+        description: a wishlist item
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WishlistItemRequest'
+      responses:
+        "201":
+          description: a new wishlist item has been added
+          headers:
+            location:
+              description: the uri for the new wishlist item
+              explode: false
+              schema:
+                format: uri
+                type: string
+              style: simple
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+  /api/wishlists/{wishlistId}/items/{itemId}:
+    delete:
+      summary: delete the wishlist item identified by "itemId"
+      tags:
+        - wishlists
+      operationId: delete-wishlist-item
+      parameters:
+        - $ref: '#/components/parameters/WishlistId'
+        - $ref: '#/components/parameters/WishlistItemId'
+      responses:
+        "204":
+          description: the wishlist item has been deleted
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    get:
+      summary: get the wishlist item identified by "itemId"
+      tags:
+        - wishlists
+      operationId: get-wishlist-item
+      parameters:
+        - $ref: '#/components/parameters/WishlistId'
+        - $ref: '#/components/parameters/WishlistItemId'
+      responses:
+        "200":
+          description: a wishlist item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WishlistItem'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+    put:
+      summary: update the wishlist item identified by "itemId"
+      tags:
+        - wishlists
+      operationId: update-wishlist-item
+      parameters:
+        - $ref: '#/components/parameters/WishlistId'
+        - $ref: '#/components/parameters/WishlistItemId'
+      requestBody:
+        description: a wishlist item
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WishlistItemRequest'
+      responses:
+        "200":
+          description: the wishlist item has been updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WishlistItem'
+        "400":
+          description: the resource was not well formed
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "404":
+          description: the resource was not found
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "409":
+          description: a conflict has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "422":
+          description: the request was unprocessable
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+        "500":
+          description: an error has occurred
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetail'
+
+components:
+  parameters:
+    BrandId:
+      description: the brand unique identifier
+      explode: false
+      in: path
+      name: brandId
+      required: true
+      schema:
+        type: string
+      style: simple
+    CatalogItemId:
+      description: the catalog item unique identifier
+      explode: false
+      in: path
+      name: catalogItemId
+      required: true
+      schema:
+        type: string
+      style: simple
+    CollectionId:
+      description: the collection unique identifier
+      explode: false
+      in: path
+      name: collectionId
+      required: true
+      schema:
+        format: urn
+        type: string
+      style: simple
+    CollectionItemId:
+      description: the collection item unique identifier
+      explode: false
+      in: path
+      name: itemId
+      required: true
+      schema:
+        format: urn
+        type: string
+      style: simple
+    Limit:
+      description: The numbers of items to return
+      explode: true
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+      style: form
+    Offset:
+      description: The number of items to skip before starting to collect the result set
+      explode: true
+      in: query
+      name: offset
+      required: false
+      schema:
+        type: integer
+      style: form
+    RailwayId:
+      description: the railway unique identifier
+      explode: false
+      in: path
+      name: railwayId
+      required: true
+      schema:
+        type: string
+      style: simple
+    RollingStockId:
+      description: the rolling stock unique identifier
+      explode: false
+      in: path
+      name: rollingStockId
+      required: true
+      schema:
+        format: urn
+        type: string
+      style: simple
+    ScaleId:
+      description: the scale unique identifier
+      explode: false
+      in: path
+      name: scaleId
+      required: true
+      schema:
+        type: string
+      style: simple
+    ShopId:
+      description: the shop unique identifier
+      explode: false
+      in: path
+      name: shopId
+      required: true
+      schema:
+        format: urn
+        type: string
+      style: simple
+    UserId:
+      description: the user profile unique identifier
+      explode: false
+      in: path
+      name: userId
+      required: true
+      schema:
+        format: urn
+        type: string
+      style: simple
+    WishlistId:
+      description: the wishlist unique identifier
+      explode: false
+      in: path
+      name: wishlistId
+      required: true
+      schema:
+        format: urn
+        type: string
+      style: simple
+    WishlistItemId:
+      description: the wishlist item unique identifier
+      explode: false
+      in: path
+      name: itemId
+      required: true
+      schema:
+        format: urn
+        type: string
+      style: simple
+
+  responses:
+    BadRequestError:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+      description: the resource was not well formed
+    ConflictError:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+      description: a conflict has occurred
+    Error:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+      description: an error has occurred
+    NotFoundError:
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetail'
+      description: the resource was not found
+
+  schemas:
+    Address:
+      description: an address of a location
+      type: object
+      properties:
+        street_address:
+          description: the street address
+          type: string
+          minLength: 5
+          maxLength: 255
+          example: 221B Baker Street
+        extended_address:
+          description: the (optional) extended information for the address
+          type: string
+          maxLength: 255
+        city:
+          description: the city/town
+          type: string
+          minLength: 3
+          maxLength: 50
+          example: London
+        region:
+          description: the region code; for example, the state or province.
+          type: string
+          maxLength: 50
+        postal_code:
+          description: the postal code (ZIP code)
+          type: string
+          minLength: 3
+          maxLength: 10
+          example: NW1 6XE
+        country:
+          description: the ISO country code (ISO 3166-1 alpha-2)
+          type: string
+          minLength: 2
+          maxLength: 2
+          example: GB
+      required:
+        - street_address
+        - city
+        - postal_code
+        - country
+    AvailabilityStatus:
+      description: the availability status for a catalog item
+      type: string
+      enum:
+        - ANNOUNCED
+        - AVAILABLE
+        - DISCONTINUED
+    Brand:
+      description: a model railways manufacturer
+      type: object
+      properties:
+        brand_id:
+          description: the brand unique identifier (an url encoded string)
+          type: string
+          format: uri
+          example: acme
+        name:
+          description: the brand name
+          type: string
+          example: ACME
+        registered_company_name:
+          description: the registered company name for this brand
+          type: string
+          example: Associazione Costruzioni Modellistiche Esatte
+        organization_entity_type:
+          $ref: "#/components/schemas/OrganizationEntityType"
+        group_name:
+          description: the group name in case the brand is part of a group
+          type: string
+          example: None
+        description:
+          $ref: "#/components/schemas/LocalizedText"
+        address:
+          $ref: "#/components/schemas/Address"
+        contact_info:
+          $ref: "#/components/schemas/ContactInfo"
+        kind:
+          $ref: "#/components/schemas/BrandKind"
+        status:
+          $ref: "#/components/schemas/BrandStatus"
+        socials:
+          $ref: "#/components/schemas/Socials"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      required:
+        - brand_id
+        - name
+        - kind
+        - metadata
+    BrandKind:
+      description: the kind of brand
+      type: string
+      enum:
+        - BRASS_MODELS
+        - INDUSTRIAL
+    BrandRequest:
+      description: a request to create/update model railways brands
+      type: object
+      properties:
+        name:
+          description: the brand name
+          type: string
+          minLength: 3
+          maxLength: 50
+          example: ACME
+        registered_company_name:
+          description: the registered company name for this brand
+          type: string
+          maxLength: 100
+          example: Associazione Costruzioni Modellistiche Esatte
+        organization_entity_type:
+          $ref: "#/components/schemas/OrganizationEntityType"
+        group_name:
+          description: the group name in case the brand is part of a group
+          type: string
+          maxLength: 100
+          example: None
+        description:
+          $ref: "#/components/schemas/LocalizedText"
+        contact_info:
+          $ref: "#/components/schemas/ContactInfo"
+        address:
+          $ref: "#/components/schemas/Address"
+        socials:
+          $ref: "#/components/schemas/Socials"
+        kind:
+          $ref: "#/components/schemas/BrandKind"
+        status:
+          $ref: "#/components/schemas/BrandStatus"
+      required:
+        - name
+        - kind
+    BrandStatus:
+      description: the status of a brand
+      type: string
+      enum:
+        - ACTIVE
+        - OUT_OF_BUSINESS
+    BrandsList:
+      description: a model railway brands list
+      type: object
+      properties:
+        items:
+          description: the list items
+          type: array
+          items:
+            $ref: "#/components/schemas/Brand"
+      required:
+        - items
+    CatalogItem:
+      description: a model railway catalog item
+      type: object
+      properties:
+        catalog_item_id:
+          description: the unique identifier for this catalog item
+          type: string
+          format: uri
+          example: acme-12345
+        brand:
+          $ref: "#/components/schemas/CatalogItemBrand"
+        item_number:
+          description: the catalog item number
+          type: string
+          example: 12345
+        scale:
+          $ref: "#/components/schemas/CatalogItemScale"
+        category:
+          $ref: "#/components/schemas/CatalogItemCategory"
+        description:
+          $ref: "#/components/schemas/LocalizedText"
+        details:
+          $ref: "#/components/schemas/LocalizedText"
+        power_method:
+          $ref: "#/components/schemas/PowerMethod"
+        delivery_date:
+          description: this catalog item delivery date (either the year "yyyy" or the quarter "yyyy/q[1-4]")
+          type: string
+          example: 2022/Q1
+        availability_status:
+          $ref: "#/components/schemas/AvailabilityStatus"
+        rolling_stocks:
+          type: array
+          items:
+            $ref: "#/components/schemas/RollingStock"
+        count:
+          description: the number of rolling stocks for this catalog item
+          type: integer
+          format: int32
+          example: 1
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      required:
+        - catalog_item_id
+        - brand
+        - item_number
+        - scale
+        - category
+        - power_method
+        - count
+        - metadata
+    CatalogItemBrand:
+      description: the catalog item brand
+      type: object
+      properties:
+        brand_id:
+          description: the brand unique identifier
+          type: string
+          format: uri
+          example: acme
+        display:
+          description: the brand display text
+          type: string
+          example: ACME
+      required:
+        - brand_id
+        - display
+    CatalogItemCategory:
+      description: the catalog item category
+      type: string
+      enum:
+        - ELECTRIC_MULTIPLE_UNITS
+        - FREIGHT_CARS
+        - LOCOMOTIVES
+        - PASSENGER_CARS
+        - RAILCARS
+        - STARTER_SETS
+        - TRAIN_SETS
+    CatalogItemRef:
+      description: the reference to a catalog item
+      type: object
+      properties:
+        catalog_item_id:
+          description: the catalog item unique identifier
+          type: string
+          example: acme-123456
+        display:
+          description: the text to display for the catalog item
+          type: string
+          example: Electric locomotive group 123
+        count:
+          description: the number of rolling stocks for this catalog item
+          type: integer
+          format: int32
+        category:
+          $ref: "#/components/schemas/CatalogItemCategory"
+      required:
+        - catalog_item_id
+        - display
+        - count
+    CatalogItemRequest:
+      description: the request to create/update catalog items
+      type: object
+      properties:
+        brand:
+          description: the brand name
+          type: string
+          minLength: 3
+          maxLength: 50
+          example: ACME
+        item_number:
+          description: the item number
+          type: string
+          minLength: 1
+          maxLength: 25
+          example: 12345
+        scale:
+          description: the scale name
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: H0
+        category:
+          $ref: "#/components/schemas/CatalogItemCategory"
+        description:
+          $ref: "#/components/schemas/LocalizedText"
+        details:
+          $ref: "#/components/schemas/LocalizedText"
+        power_method:
+          $ref: "#/components/schemas/PowerMethod"
+        delivery_date:
+          description: this catalog item delivery date (either the year "yyyy" or the quarter "yyyy/q[1-4]")
+          type: string
+          minLength: 4
+          maxLength: 7
+          example: 2022/Q1
+        availability_status:
+          $ref: "#/components/schemas/AvailabilityStatus"
+        rolling_stocks:
+          type: array
+          items:
+            $ref: "#/components/schemas/RollingStockRequest"
+        count:
+          description: the number of rolling stocks for this catalog item
+          type: integer
+          format: int32
+          minimum: 1
+          maximum: 99
+          example: 1
+      required:
+        - brand
+        - item_number
+        - scale
+        - category
+        - power_method
+        - count
+    CatalogItemScale:
+      description: the scale information for a catalog item
+      type: object
+      properties:
+        scale_id:
+          description: the scale unique identifier
+          type: string
+          format: uri
+          example: h0
+        display:
+          description: the scale display text
+          type: string
+          example: H0
+      required:
+        - scale_id
+        - display
+    Collection:
+      description: a model railway collection
+      type: object
+      properties:
+        collection_id:
+          description: the collection unique identifier (an url encoded string)
+          type: string
+          format: uri
+          example: 7834e302-595b-11ee-8c99-0242ac120002
+        owner:
+          $ref: "#/components/schemas/Owner"
+        notes:
+          description: the collection notes
+          type: string
+        items:
+          description: the collection items
+          type: array
+          items:
+            $ref: "#/components/schemas/CollectionItem"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      required:
+        - collection_id
+        - owner
+        - metadata
+    CollectionItem:
+      description: a model railway collection item
+      type: object
+      properties:
+        collection_item_id:
+          description: the collection item unique identifier (an url encoded string)
+          type: string
+          format: uri
+          example: 7834e302-595b-11ee-8c99-0242ac120002
+        catalog_item:
+          $ref: "#/components/schemas/CatalogItemRef"
+        condition:
+          $ref: "#/components/schemas/Condition"
+        price:
+          $ref: "#/components/schemas/MonetaryAmount"
+        purchased_at:
+          $ref: "#/components/schemas/Shop"
+        purchase_date:
+          description: the date when the item has been purchased
+          type: string
+          format: date
+          example: "2021-01-30"
+        removed_date:
+          description: the date when the item was (eventually) sold and removed from the collection
+          type: string
+          format: date
+          example: "2021-01-30"
+        notes:
+          description: free text notes about this collection element
+          type: string
+      required:
+        - collection_item_id
+        - catalog_item
+        - price
+        - purchase_date
+    CollectionItemRequest:
+      description: a request to create/update model collection items
+      type: object
+      properties:
+        catalog_item_id:
+          description: the catalog item id
+          type: string
+          minLength: 3
+          maxLength: 76
+        condition:
+          $ref: "#/components/schemas/Condition"
+        price:
+          $ref: "#/components/schemas/MonetaryAmount"
+        purchased_at:
+          $ref: "#/components/schemas/CollectionItemShop"
+        purchase_date:
+          description: the date when the item has been purchased
+          type: string
+          format: date
+          example: "2021-01-30"
+        removed_date:
+          description: the date when the item was (eventually) sold and removed from the collection
+          type: string
+          format: date
+          example: "2021-01-30"
+        notes:
+          description: free text notes about this collection element
+          type: string
+          maxLength: 1000
+      required:
+        - catalog_item_id
+        - price
+        - purchase_date
+    CollectionItemShop:
+      description: the purchase information
+      type: object
+      properties:
+        shop_id:
+          description: the shop unique identifier
+          type: string
+          format: uri
+      required:
+        - shop_id
+    CollectionRequest:
+      description: a collection request
+      type: object
+      properties:
+        notes:
+          type: string
+          maxLength: 1000
+    CollectionStatistics:
+      description: statistics for a model railway collection
+      type: object
+      properties:
+        collection_id:
+          description: the collection unique identifier (an url encoded string)
+          type: string
+          format: uri
+          example: 7834e302-595b-11ee-8c99-0242ac120002
+        owner:
+          $ref: "#/components/schemas/Owner"
+        total_value:
+          $ref: "#/components/schemas/MonetaryAmount"
+        categories:
+          description: collection statistics by catalog item category
+          type: array
+          items:
+            $ref: "#/components/schemas/CollectionStatisticsItem"
+        value_by_year:
+          description: collection value by year
+          type: array
+          items:
+            type: object
+            properties:
+              year:
+                description: the year of purchase
+                type: integer
+                format: int32
+                example: 2021
+              yearly_value:
+                $ref: "#/components/schemas/MonetaryAmount"
+            required:
+              - year
+              - yearly_value
+        last_modified_at:
+          description: the timestamp when this resource has been modified for the last time
+          type: string
+          format: date-time
+      required:
+        - collection_id
+        - owner
+        - total_value
+        - last_modified_at
+    CollectionStatisticsItem:
+      description: collection statistics by catalog item category
+      type: object
+      properties:
+        year:
+          description: the year
+          type: integer
+          format: int32
+          example: 2021
+        category:
+          $ref: "#/components/schemas/CatalogItemCategory"
+        total_value:
+          $ref: "#/components/schemas/MonetaryAmount"
+        count:
+          description: the number of rolling stocks
+          type: integer
+          format: int32
+          example: 42
+      required:
+        - year
+        - category
+        - total_value
+        - count
+    Condition:
+      description: the condition of a model railway collection item
+      type: string
+      enum:
+        - NEW
+        - PRE_OWNED
+    ContactInfo:
+      description: the contact information for an organization
+      type: object
+      properties:
+        email:
+          description: the mail address
+          type: string
+          format: email
+          maxLength: 250
+          example: mail@example.com
+        phone:
+          description: the phone number
+          type: string
+          format: E.164
+          pattern: '\+?\d{1,15}'
+          maxLength: 20
+          example: +441632960978
+        website_url:
+          description: the website url
+          type: string
+          format: uri
+          maxLength: 100
+          example: https://www.example.com
+    Control:
+      description: the control method for the rolling stock
+      type: string
+      enum:
+        - DCC
+        - DCC_READY
+        - DCC_SOUND
+        - NO_DCC
+    Coupling:
+      description: the rolling stock coupling
+      type: object
+      properties:
+        socket:
+          $ref: "#/components/schemas/CouplingSocket"
+        close_couplers:
+          $ref: "#/components/schemas/FeatureFlag"
+        digital_shunting:
+          $ref: "#/components/schemas/FeatureFlag"
+      required:
+        - socket
+    CouplingSocket:
+      description: the rolling stock coupling socket
+      type: string
+      enum:
+        - NONE
+        - NEM_355
+        - NEM_356
+        - NEM_357
+        - NEM_359
+        - NEM_360
+        - NEM_362
+        - NEM_365
+    DccInterface:
+      description: the rolling stock DCC interface
+      type: string
+      enum:
+        - MTC_21
+        - NEM_651
+        - NEM_652
+        - NEM_654
+        - NEXT_18
+        - NEXT_18_S
+        - PLUX_12
+        - PLUX_16
+        - PLUX_22
+        - PLUX_8
+    ElectricMultipleUnit:
+      description: an electric multiple unit rolling stock
+      allOf:
+        - $ref: "#/components/schemas/RollingStock"
+        - type: object
+          properties:
+            type_name:
+              description: the electric multiple unit type name
+              type: string
+              example: ALe 883
+            road_number:
+              description: the identification marking for this electric multiple unit
+              type: string
+              example: ALe 883 001
+            series:
+              description: the prototype series information
+              type: string
+              example: First Series
+            depot:
+              description: the depot name
+              type: string
+              example: Milano Centrale
+            electric_multiple_unit_type:
+              $ref: "#/components/schemas/ElectricMultipleUnitType"
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              description: indicate whether the rolling stock has a motor or not
+              type: boolean
+              example: false
+          required:
+            - type_name
+            - electric_multiple_unit_type
+            - is_dummy
+    ElectricMultipleUnitRequest:
+      description: the request to create/update an electric multiple unit rolling stocks
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            type_name:
+              description: the electric multiple unit type name
+              type: string
+              minLength: 3
+              maxLength: 25
+              example: ALe 883
+            road_number:
+              description: the identification marking for this electric multiple unit
+              type: string
+              maxLength: 50
+              example: ALe 883 001
+            series:
+              description: the prototype series information
+              type: string
+              maxLength: 50
+              example: First Series
+            depot:
+              description: the depot name
+              type: string
+              maxLength: 100
+              example: Milano Centrale
+            electric_multiple_unit_type:
+              $ref: "#/components/schemas/ElectricMultipleUnitType"
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              description: indicate whether the rolling stock has a motor or not
+              type: boolean
+              example: false
+          required:
+            - type_name
+            - electric_multiple_unit_type
+            - is_dummy
+    ElectricMultipleUnitType:
+      description: the electric multiple unit type
+      type: string
+      enum:
+        - DRIVING_CAR
+        - HIGH_SPEED_TRAIN
+        - MOTOR_CAR
+        - POWER_CAR
+        - TRAILER_CAR
+        - TRAIN_SET
+    FeatureFlag:
+      description: a feature flag for rolling stock technical specifications
+      type: string
+      enum:
+        - 'YES'
+        - 'NO'
+        - 'NOT_APPLICABLE'
+    FreightCar:
+      description: a freight car rolling stock
+      allOf:
+        - $ref: "#/components/schemas/RollingStock"
+        - type: object
+          properties:
+            type_name:
+              description: the freight car type name
+              type: string
+              example: Eaos
+            road_number:
+              description: the identification marking for this freight car
+              type: string
+              example: 106 533 8 071-9
+            freight_car_type:
+              $ref: "#/components/schemas/FreightCarType"
+          required:
+            - type_name
+    FreightCarRequest:
+      description: a request to create/update freight car rolling stocks
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            type_name:
+              description: the freight car type name
+              type: string
+              minLength: 1
+              maxLength: 25
+              example: Eaos
+            road_number:
+              description: the identification marking for this freight car
+              type: string
+              maxLength: 50
+              example: 106 533 8 071-9
+            freight_car_type:
+              $ref: "#/components/schemas/FreightCarType"
+          required:
+            - type_name
+    FreightCarType:
+      description: the freight car type
+      type: string
+      enum:
+        - AUTO_TRANSPORT_CARS
+        - BRAKE_WAGON
+        - CONTAINER_CARS
+        - COVERED_FREIGHT_CARS
+        - DEEP_WELL_FLAT_CARS
+        - DUMP_CARS
+        - GONDOLA
+        - HEAVY_GOODS_WAGONS
+        - HINGED_COVER_WAGONS
+        - HOPPER_WAGON
+        - REFRIGERATOR_CARS
+        - SILO_CONTAINER_CARS
+        - SLIDE_TARPAULIN_WAGON
+        - SLIDING_WALL_BOXCARS
+        - SPECIAL_TRANSPORT
+        - STAKE_WAGONS
+        - SWING_ROOF_WAGON
+        - TANK_CARS
+        - TELESCOPE_HOOD_WAGONS
+    LengthOverBuffers:
+      description: the length over buffer of a rolling stock
+      type: object
+      properties:
+        inches:
+          description: the overall length in inches
+          type: number
+          format: float
+          minimum: 0.1
+          maximum: 999.0
+          example: 8.661
+        millimeters:
+          description: the overall length in millimeters
+          type: number
+          format: float
+          minimum: 0.1
+          maximum: 9999.0
+          example: 220.0
+    LocalizedText:
+      description: a text in different languages
+      type: object
+      properties:
+        de:
+          description: the text in German
+          type: string
+          maxLength: 2500
+        en:
+          description: the text in English
+          type: string
+          maxLength: 2500
+        fr:
+          description: the text in French
+          type: string
+          maxLength: 2500
+        it:
+          description: the text in Italian
+          type: string
+          maxLength: 2500
+      example:
+        de: guten Tag
+        fr: bonjour
+        it: ciao
+        en: hello
+    Locomotive:
+      description: a locomotive rolling stock
+      allOf:
+        - $ref: "#/components/schemas/RollingStock"
+        - type: object
+          properties:
+            class_name:
+              description: |
+                the class of locomotives. The class is a group of locomotives built to a common design,
+                typically for a single railroad or railway
+              type: string
+              example: E444
+            road_number:
+              description: the identification marking for this locomotive
+              type: string
+              example: E444 042
+            series:
+              description: the prototype series information
+              type: string
+              example: First Series
+            depot:
+              description: the depot name
+              type: string
+              example: Roma San Lorenzo
+            locomotive_type:
+              $ref: "#/components/schemas/LocomotiveType"
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              description: indicate whether the rolling stock has a motor or not
+              type: boolean
+              example: false
+          required:
+            - locomotive_type
+            - class_name
+            - road_number
+            - is_dummy
+    LocomotiveRequest:
+      description: a request to create/update locomotive rolling stocks
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            class_name:
+              description: |
+                the class of locomotives. The class is a group of locomotives built to a common design,
+                typically for a single railroad or railway
+              type: string
+              minLength: 1
+              maxLength: 15
+              example: E444
+            road_number:
+              description: the identification marking for this locomotive
+              type: string
+              minLength: 3
+              maxLength: 50
+              example: E444 042
+            series:
+              description: the prototype series information
+              type: string
+              maxLength: 50
+              example: First Series
+            depot:
+              description: the depot name
+              type: string
+              maxLength: 100
+              example: Roma San Lorenzo
+            locomotive_type:
+              $ref: "#/components/schemas/LocomotiveType"
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              description: indicate whether the rolling stock has a motor or not
+              type: boolean
+              example: false
+          required:
+            - locomotive_type
+            - class_name
+            - road_number
+            - is_dummy
+    LocomotiveType:
+      description: the locomotive type
+      type: string
+      enum:
+        - DIESEL_LOCOMOTIVE
+        - ELECTRIC_LOCOMOTIVE
+        - STEAM_LOCOMOTIVE
+    Metadata:
+      description: the resource metadata
+      type: object
+      properties:
+        version:
+          description: the resource version
+          type: integer
+          format: int32
+          minimum: 1
+        created_at:
+          description: the creation timestamp for this resource
+          type: string
+          format: date-time
+        last_modified_at:
+          description: the timestamp when this resource has been modified for the last time
+          type: string
+          format: date-time
+      required:
+        - version
+        - created_at
+        - last_modified_at
+    MonetaryAmount:
+      description: a price
+      type: object
+      properties:
+        amount:
+          description: the amount expressed in cents of major currency units (1 USD is represented as "100")
+          type: integer
+          format: int64
+          minimum: 0
+          maximum: 999900
+          example: 10050
+        currency:
+          description: the currency code (ISO 4217) associated with the amount
+          type: string
+          format: iso-4217
+          minLength: 3
+          maxLength: 3
+          example: EUR
+      required:
+        - amount
+        - currency
+    OrganizationEntityType:
+      type: string
+      description: the many types of business entities defined in the legal systems of various countries
+      enum:
+        - CIVIL_LAW_PARTNERSHIP
+        - ENTREPRENEURIAL_COMPANY
+        - GLOBAL_PARTNERSHIP
+        - LIMITED_COMPANY
+        - LIMITED_PARTNERSHIP
+        - LIMITED_PARTNERSHIP_LIMITED_COMPANY
+        - OTHER
+        - PUBLIC_INSTITUTION
+        - PUBLIC_LIMITED_COMPANY
+        - REGISTERED_SOLE_TRADER
+        - SOLE_TRADER
+        - STATE_OWNED_ENTERPRISE
+    Owner:
+      description: a owner
+      type: object
+      properties:
+        owner_id:
+          description: the owner id
+          type: string
+          format: uri
+          example: 7834e302-595b-11ee-8c99-0242ac120002
+        display_name:
+          description: the owner display name
+          type: string
+          example: John Doe
+      required:
+        - owner_id
+        - display_name
+    PassengerCar:
+      description: a passenger car rolling stock
+      allOf:
+        - $ref: "#/components/schemas/RollingStock"
+        - type: object
+          properties:
+            type_name:
+              description: the passenger car type name
+              type: string
+              example: UIC-X
+            road_number:
+              description: the identification marking for this passenger car
+              type: string
+              example: 51 83 31-70 001-4 AB
+            series:
+              description: the passenger car series
+              type: string
+              example: Tipo 1982
+            passenger_car_type:
+              $ref: "#/components/schemas/PassengerCarType"
+            service_level:
+              $ref: "#/components/schemas/ServiceLevel"
+          required:
+            - type_name
+    PassengerCarRequest:
+      description: a request to create/update passenger car rolling stocks
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            type_name:
+              description: the passenger car type name
+              type: string
+              maxLength: 25
+              example: UIC-X
+            road_number:
+              description: the identification marking for this passenger car
+              type: string
+              maxLength: 50
+              example: 51 83 31-70 001-4 AB
+            series:
+              description: the passenger car series
+              type: string
+              maxLength: 50
+              example: Tipo 1982
+            passenger_car_type:
+              $ref: "#/components/schemas/PassengerCarType"
+            service_level:
+              $ref: "#/components/schemas/ServiceLevel"
+          required:
+            - type_name
+    PassengerCarType:
+      description: the passenger car type
+      type: string
+      enum:
+        - BAGGAGE_CAR
+        - COMBINE_CAR
+        - COMPARTMENT_COACH
+        - DINING_CAR
+        - DOUBLE_DECKER
+        - DRIVING_TRAILER
+        - LOUNGE
+        - OBSERVATION
+        - OPEN_COACH
+        - RAILWAY_POST_OFFICE
+        - SLEEPING_CAR
+    PowerMethod:
+      description: the rolling stock power method
+      type: string
+      enum:
+        - AC
+        - DC
+        - TRIX_EXPRESS
+    Priority:
+      description: the level of priorities for a wishlist item
+      type: string
+      enum:
+        - HIGH
+        - LOW
+        - NORMAL
+    ProblemDetail:
+      description: |
+        A machine-readable format for specifying errors in HTTP API
+        responses based on https://tools.ietf.org/html/rfc7807
+      type: object
+      properties:
+        instance:
+          description: |
+            A URI reference that identifies the specific occurrence of the problem.
+            It may or may not yield further information if dereferenced.
+          type: string
+          format: uri
+        type:
+          description: |
+            A URI reference [RFC3986] that identifies the problem type. This specification
+            encourages that, when dereferenced, it provide human-readable documentation for the
+            problem type (e.g., using HTML [W3C.REC-html5-20141028]). When this member is not present,
+            its value is assumed to be "about:blank".
+          type: string
+          format: uri
+        title:
+          description: |
+            A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence
+            to occurrence of the problem, except for purposes of localization(e.g., using proactive
+            content negotiation; see[RFC7231], Section 3.4).
+          type: string
+          example: Service Unavailable
+        status:
+          description: The HTTP status code([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
+          type: integer
+          format: int32
+          minimum: 400
+          maximum: 600
+          exclusiveMaximum: true
+          example: 503
+        detail:
+          description: A human-readable explanation specific to this occurrence of the problem.
+          type: string
+        invalid_values:
+          description: Invalid values which made the request fails the validation
+          type: object
+          additionalProperties:
+            x-additionalPropertiesName: InvalidValue
+            type: object
+            properties:
+              reasons:
+                description: the reason(s) for the validation failure
+                type: array
+                items:
+                  type: string
+              invalid_value:
+                description: invalid value
+                type: string
+      required:
+        - instance
+        - type
+        - title
+        - status
+    Railcar:
+      description: a railcar rolling stock
+      allOf:
+        - $ref: "#/components/schemas/RollingStock"
+        - type: object
+          properties:
+            type_name:
+              description: the railcar type name
+              type: string
+              example: ALn 668
+            road_number:
+              description: the identification marking for this railcar
+              type: string
+              example: ALn 668 123
+            series:
+              description: the railcar series
+              type: string
+              example: First Series
+            depot:
+              description: the depot name
+              type: string
+              example: Milano Centrale
+            railcar_type:
+              $ref: "#/components/schemas/RailcarType"
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              description: indicate whether the rolling stock has a motor or not
+              type: boolean
+              example: false
+          required:
+            - type_name
+            - railcar_type
+            - is_dummy
+    RailcarRequest:
+      description: a request to create/update railcar rolling stocks
+      allOf:
+        - $ref: "#/components/schemas/RollingStockRequest"
+        - type: object
+          properties:
+            type_name:
+              description: the railcar type name
+              type: string
+              minLength: 3
+              maxLength: 25
+              example: ALn 668
+            road_number:
+              description: the identification marking for this railcar
+              type: string
+              maxLength: 50
+              example: ALn 668 123
+            series:
+              description: the railcar series
+              type: string
+              maxLength: 50
+              example: First Series
+            depot:
+              description: the depot name
+              type: string
+              maxLength: 100
+              example: Milano Centrale
+            railcar_type:
+              $ref: "#/components/schemas/RailcarType"
+            dcc_interface:
+              $ref: "#/components/schemas/DccInterface"
+            control:
+              $ref: "#/components/schemas/Control"
+            is_dummy:
+              description: indicate whether the rolling stock has a motor or not
+              type: boolean
+              example: false
+          required:
+            - type_name
+            - railcar_type
+            - is_dummy
+    RailcarType:
+      description: the railcar type
+      type: string
+      enum:
+        - POWER_CAR
+        - TRAILER_CAR
+    Railway:
+      description: a company which operates a railway network
+      type: object
+      properties:
+        railway_id:
+          description: the unique railway identifier (an URL encoded string)
+          type: string
+          format: uri
+          example: fs
+        name:
+          description: the railway name
+          type: string
+          example: FS
+        abbreviation:
+          description: the railway abbreviated name
+          type: string
+          example: FS
+        registered_company_name:
+          description: the registered company name
+          type: string
+          example: Ferrovie dello stato
+        organization_entity_type:
+          $ref: "#/components/schemas/OrganizationEntityType"
+        description:
+          $ref: "#/components/schemas/LocalizedText"
+        country:
+          description: the registration ISO country code (ISO 3166-1 alpha-2)
+          type: string
+          example: IT
+        period_of_activity:
+          $ref: "#/components/schemas/RailwayPeriodOfActivity"
+        gauge:
+          $ref: "#/components/schemas/RailwayGauge"
+        headquarters:
+          description: the railway headquarters
+          type: array
+          items:
+            type: string
+          example: [ "Rome" ]
+        total_length:
+          $ref: "#/components/schemas/RailwayTotalLength"
+        contact_info:
+          $ref: "#/components/schemas/ContactInfo"
+        socials:
+          $ref: "#/components/schemas/Socials"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      required:
+        - railway_id
+        - name
+        - country
+        - metadata
+    RailwayGauge:
+      description: the railway gauge
+      type: object
+      properties:
+        meters:
+          description: the distance between the two rails in meters
+          type: number
+          format: float
+          minimum: 0.1
+          maximum: 2.0
+          example: 1.435
+        track_gauge:
+          $ref: "#/components/schemas/TrackGauge"
+      required:
+        - meters
+        - track_gauge
+    RailwayPeriodOfActivity:
+      description: the period of activity for a railway company
+      type: object
+      properties:
+        status:
+          $ref: "#/components/schemas/RailwayStatus"
+        operating_since:
+          description: the date when the railway started its operation
+          type: string
+          format: date
+        operating_until:
+          description: the date when the railway ended its operation, if not active anymore
+          type: string
+          format: date
+      required:
+        - status
+    RailwayRequest:
+      description: the request to create/update railways
+      type: object
+      properties:
+        name:
+          description: the railway name
+          type: string
+          minLength: 2
+          maxLength: 50
+          example: Ferrovie dello Stato
+        abbreviation:
+          description: the railway abbreviated name
+          type: string
+          minLength: 2
+          maxLength: 10
+          example: FS
+        registered_company_name:
+          description: the registered company name
+          type: string
+          maxLength: 250
+          example: Ferrovie dello Stato SPA
+        organization_entity_type:
+          $ref: "#/components/schemas/OrganizationEntityType"
+        description:
+          $ref: "#/components/schemas/LocalizedText"
+        country:
+          description: the ISO country code (ISO 3166-1 alpha-2)
+          type: string
+          minLength: 2
+          maxLength: 2
+          example: IT
+        period_of_activity:
+          $ref: "#/components/schemas/RailwayPeriodOfActivity"
+        gauge:
+          $ref: "#/components/schemas/RailwayGauge"
+        headquarters:
+          description: the railway headquarters
+          type: array
+          items:
+            type: string
+            maxLength: 250
+        total_length:
+          $ref: "#/components/schemas/RailwayTotalLength"
+        contact_info:
+          $ref: "#/components/schemas/ContactInfo"
+        socials:
+          $ref: "#/components/schemas/Socials"
+      required:
+        - name
+        - country
+    RailwaysList:
+      description: a railway companies list
+      type: object
+      properties:
+        items:
+          description: the list items
+          type: array
+          items:
+            $ref: "#/components/schemas/Railway"
+      required:
+        - items
+    RailwayStatus:
+      description: the railway activity status
+      type: string
+      enum:
+        - ACTIVE
+        - INACTIVE
+    RailwayTotalLength:
+      description: the total length of a railway network
+      type: object
+      properties:
+        miles:
+          description: the total railway network in miles
+          type: number
+          format: float
+          minimum: 1.0
+          maximum: 200000.0
+        kilometers:
+          description: the total railway network in kilometers
+          type: number
+          format: float
+          minimum: 1.0
+          maximum: 300000.0
+    RollingStock:
+      type: object
+      properties:
+        rolling_stock_id:
+          description: the unique identifier for this rolling stock
+          type: string
+          format: uuid
+        category:
+          $ref: "#/components/schemas/RollingStockCategory"
+        railway:
+          $ref: "#/components/schemas/RollingStockRailway"
+        epoch:
+          description: the epoch for this rolling stock
+          type: string
+          example: IV
+        livery:
+          description: the rolling stock livery description
+          type: string
+          example: grey
+        length_over_buffers:
+          $ref: "#/components/schemas/LengthOverBuffers"
+        technical_specifications:
+          $ref: "#/components/schemas/TechnicalSpecifications"
+      required:
+        - rolling_stock_id
+        - category
+        - railway
+        - epoch
+      discriminator:
+        propertyName: category
+        mapping:
+          ELECTRIC_MULTIPLE_UNITS: "#/components/schemas/ElectricMultipleUnit"
+          FREIGHT_CARS: "#/components/schemas/FreightCar"
+          LOCOMOTIVES: "#/components/schemas/Locomotive"
+          PASSENGER_CARS: "#/components/schemas/PassengerCar"
+          RAILCARS: "#/components/schemas/Railcar"
+    RollingStockCategory:
+      description: the rolling stock category
+      type: string
+      enum:
+        - ELECTRIC_MULTIPLE_UNITS
+        - FREIGHT_CARS
+        - LOCOMOTIVES
+        - PASSENGER_CARS
+        - RAILCARS
+    RollingStockRailway:
+      description: the railway company for a rolling stock
+      type: object
+      properties:
+        railway_id:
+          description: the railway unique identifier
+          type: string
+          format: uri
+          example: fs
+        display:
+          description: the railway display text
+          type: string
+          example: FS
+      required:
+        - railway_id
+        - display
+    RollingStockRequest:
+      type: object
+      properties:
+        category:
+          $ref: "#/components/schemas/RollingStockCategory"
+        railway:
+          description: the railway name for this rolling stock
+          type: string
+          minLength: 2
+          maxLength: 50
+          example: FS
+        epoch:
+          description: the epoch for this rolling stock
+          type: string
+          minLength: 1
+          maxLength: 10
+          example: IV
+        livery:
+          description: the rolling stock livery description
+          type: string
+          maxLength: 50
+          example: gray
+        length_over_buffers:
+          $ref: "#/components/schemas/LengthOverBuffers"
+        technical_specifications:
+          $ref: "#/components/schemas/TechnicalSpecifications"
+      required:
+        - category
+        - railway
+        - epoch
+      discriminator:
+        propertyName: category
+        mapping:
+          ELECTRIC_MULTIPLE_UNITS: "#/components/schemas/ElectricMultipleUnitRequest"
+          FREIGHT_CARS: "#/components/schemas/FreightCarRequest"
+          LOCOMOTIVES: "#/components/schemas/LocomotiveRequest"
+          PASSENGER_CARS: "#/components/schemas/PassengerCarRequest"
+          RAILCARS: "#/components/schemas/RailcarRequest"
+    RollingStocksList:
+      description: a rolling stocks list
+      type: object
+      properties:
+        items:
+          description: the list items
+          type: array
+          items:
+            $ref: "#/components/schemas/RollingStock"
+      required:
+        - items
+    Scale:
+      description: a rail transport modelling scale
+      type: object
+      properties:
+        scale_id:
+          description: the unique identifier for a scale
+          type: string
+          format: uri
+          example: h0
+        name:
+          description: the scale name
+          type: string
+          example: H0
+        ratio:
+          description: the ratio between the real world and the model (e.g. 1/87 or 1:87)
+          type: number
+          format: float
+          example: 87.0
+        gauge:
+          $ref: "#/components/schemas/ScaleGauge"
+        description:
+          $ref: "#/components/schemas/LocalizedText"
+        standards:
+          description: the list of standards
+          type: array
+          items:
+            $ref: "#/components/schemas/ScaleStandard"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      required:
+        - scale_id
+        - name
+        - ratio
+        - gauge
+    ScaleGauge:
+      description: the track gauge information for a modelling scale
+      type: object
+      properties:
+        millimeters:
+          description: the distance between the rails in millimeters
+          type: number
+          format: float
+          minimum: 6.5
+          maximum: 200.0
+          example: 16.5
+        inches:
+          description: the distance between the rails in inches
+          type: number
+          format: float
+          minimum: 0.01
+          maximum: 15.00
+          example: 0.65
+        track_gauge:
+          $ref: "#/components/schemas/TrackGauge"
+    ScalesList:
+      description: a model railway scales list
+      type: object
+      properties:
+        items:
+          description: the list items
+          type: array
+          items:
+            $ref: "#/components/schemas/Scale"
+      required:
+        - items
+    ScaleRequest:
+      description: a request to create/update rail transport modelling scales
+      type: object
+      properties:
+        name:
+          description: the scale name
+          type: string
+          minLength: 1
+          maxLength: 50
+          example: H0
+        ratio:
+          description: the ratio between the real world and the model (e.g. 1/87 or 1:87)
+          type: number
+          format: float
+          minimum: 1.0
+          maximum: 220.0
+          example: 87.0
+        gauge:
+          $ref: "#/components/schemas/ScaleGauge"
+        description:
+          $ref: "#/components/schemas/LocalizedText"
+        standards:
+          description: the list of standards
+          type: array
+          items:
+            $ref: "#/components/schemas/ScaleStandard"
+      required:
+        - name
+        - ratio
+        - gauge
+    ScaleStandard:
+      description: the modelling scale standards
+      type: string
+      enum:
+        - BRITISH
+        - JAPANESE
+        - NEM
+        - NMRA
+    Shop:
+      description: a model railway shop
+      type: object
+      properties:
+        shop_id:
+          description: the shop unique identifier (an url encoded string)
+          type: string
+          format: uri
+          example: 7834e302-595b-11ee-8c99-0242ac120002
+        name:
+          description: the shop name
+          type: string
+          example: Precious Trains Ltd.
+        address:
+          $ref: "#/components/schemas/Address"
+        contact_info:
+          $ref: "#/components/schemas/ContactInfo"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      required:
+        - shop_id
+        - name
+        - metadata
+    ShopsList:
+      description: a model railway shops list
+      type: object
+      properties:
+        items:
+          description: the list items
+          type: array
+          items:
+            $ref: "#/components/schemas/Shop"
+      required:
+        - items
+    ShopRequest:
+      description: a model railway shop request
+      type: object
+      properties:
+        name:
+          description: the shop name
+          type: string
+          example: Precious Trains Ltd.
+        address:
+          $ref: "#/components/schemas/Address"
+        contact_info:
+          $ref: "#/components/schemas/ContactInfo"
+      required:
+        - name
+    ServiceLevel:
+      description: the travel class for this passenger car. Passenger cars can have multiple service levels (ie, first/second class)
+      type: string
+      enum:
+        - FIRST_AND_SECOND_CLASS
+        - FIRST_CLASS
+        - FIRST_SECOND_AND_THIRD_CLASS
+        - SECOND_AND_THIRD_CLASS
+        - SECOND_CLASS
+        - THIRD_CLASS
+    Socials:
+      type: object
+      description: a group of social handlers
+      properties:
+        facebook:
+          description: a facebook handler
+          type: string
+          format: uri
+          minLength: 3
+          maxLength: 100
+          example: facebook_handler
+        instagram:
+          description: an instagram handler
+          type: string
+          format: uri
+          minLength: 3
+          maxLength: 100
+          example: instagram_handler
+        linkedin:
+          description: a linkedin handler
+          type: string
+          format: uri
+          minLength: 3
+          maxLength: 100
+          example: linkedin_handler
+        twitter:
+          description: a twitter handler
+          type: string
+          format: uri
+          minLength: 3
+          maxLength: 100
+          example: twitter_handler
+        youtube:
+          description: a youtube handler (either user or channel name)
+          type: string
+          format: uri
+          minLength: 3
+          maxLength: 100
+          example: youtube_handler
+    TechnicalSpecifications:
+      description: the technical specification for a rolling stock
+      type: object
+      properties:
+        minimum_radius:
+          description: the minimum drivable radius (in millimeters)
+          type: number
+          format: float
+          minimum: 0.1
+          maximum: 9999.0
+          example: 360.0
+        coupling:
+          $ref: "#/components/schemas/Coupling"
+        flywheel_fitted:
+          $ref: "#/components/schemas/FeatureFlag"
+        metal_body:
+          $ref: "#/components/schemas/FeatureFlag"
+        interior_lights:
+          $ref: "#/components/schemas/FeatureFlag"
+        lights:
+          $ref: "#/components/schemas/FeatureFlag"
+        spring_buffers:
+          $ref: "#/components/schemas/FeatureFlag"
+    TrackGauge:
+      description: the track gauge
+      type: string
+      enum:
+        - BROAD
+        - MEDIUM
+        - MINIMUM
+        - NARROW
+        - STANDARD
+    Visibility:
+      description: the wishlist visibility
+      type: string
+      enum:
+        - PRIVATE
+        - PUBLIC
+    VisibilityCriteria:
+      description: the wishlist visibility criteria
+      type: string
+      enum:
+        - ALL
+        - PRIVATE
+        - PUBLIC
+    UserProfile:
+      title: UserProfile
+      description: the user profile
+      type: object
+      properties:
+        user_id:
+          description: the user profile id
+          type: string
+          format: urn
+      required:
+        - user_id
+    Wishlist:
+      description: a model railway wishlist
+      type: object
+      properties:
+        wishlist_id:
+          description: the wishlist unique identifier (an url encoded string)
+          type: string
+          format: uri
+          example: 7834e302-595b-11ee-8c99-0242ac120002
+        wishlist_name:
+          description: the wishlist friendly name
+          type: string
+          example: My awesome list
+        owner:
+          $ref: "#/components/schemas/Owner"
+        budget:
+          $ref: "#/components/schemas/MonetaryAmount"
+        items:
+          description: the wishlist items
+          type: array
+          items:
+            $ref: "#/components/schemas/WishlistItem"
+        visibility:
+          $ref: "#/components/schemas/Visibility"
+        metadata:
+          $ref: "#/components/schemas/Metadata"
+      required:
+        - wishlist_id
+        - owner
+        - visibility
+        - metadata
+    WishlistItem:
+      description: a model railway wishlist
+      type: object
+      properties:
+        wishlist_item_id:
+          description: the wishlist unique identifier (an url encoded string)
+          type: string
+          format: uri
+          example: 7834e302-595b-11ee-8c99-0242ac120002
+        catalog_item:
+          $ref: "#/components/schemas/CatalogItemRef"
+        priority:
+          $ref: "#/components/schemas/Priority"
+        added_date:
+          description: the date when the item has been added to the list
+          type: string
+          format: date
+          example: "2021-01-30"
+        removed_date:
+          description: the date when the item was removed from the list
+          type: string
+          format: date
+          example: "2021-01-30"
+        price:
+          $ref: "#/components/schemas/MonetaryAmount"
+        notes:
+          description: free text notes about this wishlist element
+          type: string
+      required:
+        - wishlist_item_id
+        - catalog_item
+        - priority
+        - added_date
+    WishlistItemRequest:
+      description: a wishlist item request
+      type: object
+      properties:
+        catalog_item_id:
+          description: the catalog item id
+          type: string
+          minLength: 3
+          maxLength: 76
+        priority:
+          $ref: "#/components/schemas/Priority"
+        added_date:
+          description: the date when the item has been added to the list
+          type: string
+          format: date
+          example: "2021-01-30"
+        removed_date:
+          description: the date when the item was removed from the list
+          type: string
+          format: date
+          example: "2021-01-30"
+        price:
+          $ref: "#/components/schemas/MonetaryAmount"
+        notes:
+          description: free text notes about this wishlist element
+          type: string
+      required:
+        - catalog_item_id
+        - priority
+        - added_date
+    WishlistRequest:
+      description: a wishlist request
+      type: object
+      properties:
+        wishlist_name:
+          description: the wishlist friendly name
+          type: string
+          example: My awesome list
+        notes:
+          type: string
+          maxLength: 1000
+        budget:
+          $ref: "#/components/schemas/MonetaryAmount"
+        visibility:
+          $ref: "#/components/schemas/Visibility"
+      required:
+        - visibility
+    WishlistSummary:
+      description: a summary for a wishlist
+      type: object
+      properties:
+        budget:
+          $ref: "#/components/schemas/MonetaryAmount"
+        allocated:
+          $ref: "#/components/schemas/MonetaryAmount"
+        percentage:
+          description: the percentage of the budget allocated with this wishlist
+          type: integer
+          format: int32
+          example: 5678
+      required:
+        - allocated

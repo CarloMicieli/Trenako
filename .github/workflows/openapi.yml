@@ -32,7 +32,7 @@ jobs:
         run: openapi-generator-cli version
 
       - name: Validate the openapi schema
-        run: openapi-generator-cli validate -i openapi/api-schema.yaml
+        run: openapi-generator-cli validate -i openapi/openapi.yaml
 
   docker:
     runs-on: ubuntu-22.04

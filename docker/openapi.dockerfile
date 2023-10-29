@@ -9,7 +9,7 @@ COPY ../openapi .
 RUN npm update -g npm
 RUN npm install redoc-cli -g
 
-RUN redoc-cli build api-schema.yaml --options.theme.colors.primary.main=blue
+RUN redoc-cli build openapi.yaml --options.theme.colors.primary.main=blue
 
 FROM nginx:alpine as runtime
 LABEL maintainer="Carlo Micieli <mail@trenako.com>"
