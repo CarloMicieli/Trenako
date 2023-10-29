@@ -24,7 +24,7 @@ axum-macros = "0.3.8"
 chrono = { version = "0.4.31", features = ["serde"] }
 clap = { version = "4.4.7", features = ["derive"] }
 config = { version = "0.13.3", default-features = false, features = ["yaml"] }
-dockertest = { git = "https://github.com/orcalabs/dockertest-rs", rev = "7e0a718", features = ["tls"] }
+dockertest = { version = "0.4.0", features = ["tls"] }
 http = "0.2.9"
 hyper = { version = "0.14.27", features = ["http1", "server"] }
 isocountry = "0.3.2"
