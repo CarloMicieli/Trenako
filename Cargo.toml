@@ -14,7 +14,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["CarloMicieli <piovarolo@gmail.com>"]
 license = "Apache-2.0"
-rust-version = "1.73"
+rust-version = "1.74"
 
 [workspace.dependencies]
 anyhow = "1.0.75"
@@ -44,7 +44,7 @@ rust_decimal_macros = "1.32.0"
 secrecy = { version = "0.8.0", features = ["serde"] }
 serde = { version = "1.0.190", features = ["derive"] }
 serde_derive = "1.0.190"
-serde_json = "1.0.107"
+serde_json = "1.0.108"
 serde_urlencoded = "0.7.1"
 slug = "0.1.4"
 strum = "0.25.0"
