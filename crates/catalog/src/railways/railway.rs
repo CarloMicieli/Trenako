@@ -76,7 +76,7 @@ impl Railway {
             railway_id,
             name: String::from(name),
             abbreviation: abbreviation.map(str::to_string),
-            registered_company_name: Some(registered_company_name).map(ToString::to_string),
+            registered_company_name: Some(String::from(registered_company_name)),
             organization_entity_type,
             description: description.map(LocalizedText::with_italian).unwrap_or_default(),
             country,

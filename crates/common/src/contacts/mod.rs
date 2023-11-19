@@ -80,19 +80,19 @@ pub struct ContactInformationBuilder {
 impl ContactInformationBuilder {
     /// Set the mail address
     pub fn email(mut self, mail_address: &str) -> Self {
-        self.email = Some(mail_address).map(String::from);
+        self.email = Some(String::from(mail_address));
         self
     }
 
     /// Set the phone number
     pub fn phone(mut self, phone: &str) -> Self {
-        self.phone = Some(phone).map(String::from);
+        self.phone = Some(String::from(phone));
         self
     }
 
     /// Set the website url
     pub fn website_url(mut self, website_url: &str) -> Self {
-        self.website_url = Some(website_url).map(String::from);
+        self.website_url = Some(String::from(website_url));
         self
     }
 
