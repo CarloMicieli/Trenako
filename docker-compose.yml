@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   db:
-    image: postgres:15.3-alpine
+    image: postgres:16.1-alpine@sha256:6cec07cb67f8e819dfe044dd6fc07d87c2c58051f90273d0d8c2611a4d24da16
     ports:
       - "5432:5432"
     environment:
@@ -35,7 +35,7 @@ services:
 
   db_admin:
     container_name: db_admin
-    image: dpage/pgadmin4:7.4
+    image: dpage/pgadmin4:8.0@sha256:15b9e1362fbe05b50b644ef3f69acdfb67e84f01f000b808db65f0ef25203ce9
     depends_on:
       db:
         condition: service_healthy

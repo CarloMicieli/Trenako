@@ -1,4 +1,4 @@
-FROM rust:1.74 as planner
+FROM rust:1.74.0-slim-bookworm@sha256:2be643123c6835c2666ef59acab42dd5ca67cee1fcded9ef987209b910d5db4b as planner
 WORKDIR /app
 # We only pay the installation cost once, 
 # it will be cached from the second build onwards
@@ -12,14 +12,14 @@ COPY crates/ ./crates/
 
 RUN cargo chef prepare  --recipe-path recipe.json
 
-FROM rust:1.74 as cacher
+FROM rust:1.74.0-slim-bookworm@sha256:2be643123c6835c2666ef59acab42dd5ca67cee1fcded9ef987209b910d5db4b  as cacher
 WORKDIR /app
 
 RUN cargo install cargo-chef
 COPY --from=planner /app/recipe.json recipe.json
 RUN cargo chef cook --release --recipe-path recipe.json
 
-FROM rust:1.74 as builder
+FROM rust:1.74.0-slim-bookworm@sha256:2be643123c6835c2666ef59acab42dd5ca67cee1fcded9ef987209b910d5db4b  as builder
 WORKDIR /app
 
 ENV SQLX_OFFLINE true
@@ -35,7 +35,7 @@ COPY --from=cacher /app/target target
 COPY --from=cacher /usr/local/cargo /usr/local/cargo
 RUN cargo build --release --bin trenako-server
 
-FROM debian:bullseye-slim as runtime
+FROM debian:bookworm-slim@sha256:93ff361288a7c365614a5791efa3633ce4224542afb6b53a1790330a8e52fc7d as runtime
 LABEL maintainer="Carlo Micieli <mail@trenako.com>"
 LABEL description="The trenako backend component"
 
