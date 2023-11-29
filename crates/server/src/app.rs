@@ -7,8 +7,8 @@ use common::unit_of_work::postgres::PgDatabase;
 use configuration::Settings;
 use hyper::http::HeaderName;
 use sqlx::PgPool;
-use std::net::TcpListener;
 use std::sync::Arc;
+use tokio::net::TcpListener;
 use tower_http::compression::CompressionLayer;
 use tower_http::propagate_header::PropagateHeaderLayer;
 use tower_http::request_id::{MakeRequestUuid, SetRequestIdLayer};
@@ -18,11 +18,7 @@ use tracing::Level;
 
 /// Run the web server
 pub async fn run(tcp_listener: TcpListener, settings: &Settings) {
-    axum::Server::from_tcp(tcp_listener)
-        .unwrap()
-        .serve(build_app(settings).into_make_service())
-        .await
-        .unwrap();
+    axum::serve(tcp_listener, build_app(settings)).await.unwrap();
 }
 
 pub fn build_app(settings: &Settings) -> Router {

@@ -1,6 +1,6 @@
 use configuration::Settings;
 use server::app;
-use std::net::TcpListener;
+use tokio::net::TcpListener;
 
 #[tokio::main]
 async fn main() {
@@ -12,7 +12,9 @@ async fn main() {
     tracing::subscriber::set_global_default(subscriber).unwrap();
 
     let settings = Settings::load().expect("Failed to read configuration");
-    let listener = TcpListener::bind(settings.address()).expect("Failed to bind port");
+    let listener = TcpListener::bind(settings.address())
+        .await
+        .expect("Failed to bind port");
 
     println!("{}", &BANNER_TEXT);
     tracing::info!("Starting the server...");

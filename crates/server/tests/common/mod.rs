@@ -3,7 +3,8 @@ use configuration::{ServerSettings, Settings};
 use dockertest::{DockerTest, Source};
 use server::app;
 use sqlx::PgPool;
-use std::net::TcpListener;
+use std::future::IntoFuture;
+use tokio::net::TcpListener;
 
 pub const IMAGE_NAME: &str = "postgres";
 
@@ -41,12 +42,12 @@ pub async fn spawn_app(postgres_port: u32) -> ServiceUnderTest {
         database: database_settings,
     };
 
-    let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
+    let listener = TcpListener::bind("127.0.0.1:0")
+        .await
+        .expect("Failed to bind random port");
     let port = listener.local_addr().unwrap().port();
 
-    let http_server = axum::Server::from_tcp(listener)
-        .unwrap()
-        .serve(app::build_app(&settings).into_make_service());
+    let http_server = axum::serve(listener, app::build_app(&settings)).into_future();
     let _handle = tokio::spawn(http_server);
 
     ServiceUnderTest {
