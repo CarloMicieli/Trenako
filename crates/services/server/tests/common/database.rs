@@ -42,7 +42,7 @@ impl Database {
     }
 
     pub async fn run_database_migrations(&self) {
-        sqlx::migrate!("../../migrations")
+        sqlx::migrate!("../../../migrations")
             .run(&self.pg_pool())
             .await
             .expect("Failed to migrate the database");

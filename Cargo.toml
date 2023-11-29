@@ -1,11 +1,11 @@
 [workspace]
 members = [
-    "crates/catalog",
-    "crates/cli",
-    "crates/common",
-    "crates/configuration",
-    "crates/data",
-    "crates/server",
+    "crates/libs/catalog",
+    "crates/tools/cli",
+    "crates/libs/common",
+    "crates/libs/configuration",
+    "crates/libs/data",
+    "crates/services/server",
 ]
 resolver = "2"
 

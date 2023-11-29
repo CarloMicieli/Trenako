@@ -14,10 +14,10 @@ path = "src/main.rs"
 name = "trenako-server"
 
 [dependencies]
-catalog = { path = "../catalog" }
-common = { path = "../common" }
-configuration = { path = "../configuration" }
-data = { path = "../data" }
+catalog = { path = "../../libs/catalog" }
+common = { path = "../../libs/common" }
+configuration = { path = "../../libs/configuration" }
+data = { path = "../../libs/data" }
 
 anyhow = { workspace = true }
 async-trait = { workspace = true }

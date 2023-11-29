@@ -14,8 +14,8 @@ path = "src/main.rs"
 name = "trenako-cli"
 
 [dependencies]
-catalog = { path = "../catalog" }
-common = { path = "../common" }
+catalog = { path = "../../libs/catalog" }
+common = { path = "../../libs/common" }
 
 anyhow = { workspace = true }
 chrono = { workspace = true }
