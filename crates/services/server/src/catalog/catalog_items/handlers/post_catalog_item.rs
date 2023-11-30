@@ -1,5 +1,5 @@
-use crate::app::AppState;
 use crate::catalog::catalog_items::routes::CATALOG_ITEMS_ROOT_API;
+use crate::state::AppState;
 use crate::web::problem::ProblemDetail;
 use crate::web::responders::{Created, ToProblemDetail};
 use axum::extract::State;

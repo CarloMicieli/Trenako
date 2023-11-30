@@ -1,10 +1,10 @@
 //! the module includes everything related to catalog web handlers
 
-use crate::app::AppState;
 use crate::catalog::brands::routes::brands_router;
 use crate::catalog::catalog_items::routes::catalog_items_router;
 use crate::catalog::railways::routes::railways_router;
 use crate::catalog::scales::routes::scales_router;
+use crate::state::AppState;
 use axum::Router;
 
 pub mod brands;

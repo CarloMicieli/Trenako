@@ -1,4 +1,4 @@
-use crate::app::AppState;
+use crate::state::AppState;
 use axum::extract::{Path, State};
 use axum::response::IntoResponse;
 use catalog::catalog_items::catalog_item_id::CatalogItemId;

@@ -1,5 +1,5 @@
-use crate::app::AppState;
 use crate::catalog::scales::handlers;
+use crate::state::AppState;
 use axum::routing::{delete, get};
 use axum::Router;
 

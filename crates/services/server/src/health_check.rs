@@ -1,6 +1,6 @@
 //! the health check web handler
 
-use crate::app::AppState;
+use crate::state::AppState;
 use axum::extract::State;
 use axum::http::StatusCode;
 use axum::response::IntoResponse;

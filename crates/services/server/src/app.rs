@@ -1,13 +1,11 @@
 use crate::catalog::catalog_router;
 use crate::health_check;
+use crate::state::AppState;
 use axum;
 use axum::routing::get;
 use axum::Router;
-use common::unit_of_work::postgres::PgDatabase;
 use configuration::Settings;
 use hyper::http::HeaderName;
-use sqlx::PgPool;
-use std::sync::Arc;
 use tokio::net::TcpListener;
 use tower_http::compression::CompressionLayer;
 use tower_http::propagate_header::PropagateHeaderLayer;
@@ -44,20 +42,4 @@ pub fn build_app(settings: &Settings) -> Router {
         .layer(SetRequestIdLayer::new(x_request_id.clone(), MakeRequestUuid))
         .layer(PropagateHeaderLayer::new(x_request_id))
         .layer(CompressionLayer::new())
-}
-
-#[derive(Debug, Clone)]
-pub struct AppState {
-    pub pg_pool: Arc<PgPool>,
-}
-
-impl AppState {
-    pub fn from_settings(settings: &Settings) -> Self {
-        let pg_pool = Arc::new(settings.database.get_connection_pool());
-        AppState { pg_pool }
-    }
-
-    pub fn get_database(&self) -> PgDatabase {
-        PgDatabase::new(&self.pg_pool)
-    }
 }

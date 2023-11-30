@@ -1,6 +1,6 @@
-use crate::app::AppState;
 use crate::catalog::railways::routes;
 use crate::hateoas::representations::CollectionModel;
+use crate::state::AppState;
 use crate::web::problem::ProblemDetail;
 use crate::web::responders::ToProblemDetail;
 use axum::extract::{Query, State};
