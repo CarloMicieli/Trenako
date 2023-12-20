@@ -3,6 +3,7 @@
 use crate::catalog_items::availability_status::AvailabilityStatus;
 use crate::catalog_items::category::Category;
 use crate::catalog_items::delivery_date::DeliveryDate;
+use crate::catalog_items::epoch::Epoch;
 use crate::catalog_items::item_number::ItemNumber;
 use crate::catalog_items::power_method::PowerMethod;
 use crate::catalog_items::rolling_stock_request::RollingStockRequest;
@@ -25,6 +26,8 @@ pub struct CatalogItemRequest {
     pub category: Category,
     /// the power method
     pub power_method: PowerMethod,
+    /// the epoch
+    pub epoch: Epoch,
     /// the catalog item description
     #[validate]
     pub description: LocalizedText,
@@ -48,6 +51,7 @@ mod test {
     mod catalog_item_request_validation {
         use crate::catalog_items::catalog_item_request::CatalogItemRequest;
         use crate::catalog_items::category::Category;
+        use crate::catalog_items::epoch::Epoch;
         use crate::catalog_items::item_number::{invalid_item_number, ItemNumber};
         use crate::catalog_items::power_method::PowerMethod;
         use crate::catalog_items::rolling_stock_request::data::{
@@ -206,6 +210,7 @@ mod test {
                 scale: "H0".to_string(),
                 category: Category::TrainSets,
                 power_method: PowerMethod::DC,
+                epoch: Epoch::II,
                 description: LocalizedText::with_italian("label"),
                 details: LocalizedText::with_italian("label"),
                 delivery_date: None,

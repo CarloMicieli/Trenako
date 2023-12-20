@@ -74,6 +74,7 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for CatalogItemsRepos
                 details_en,
                 details_it,
                 power_method,
+                epoch,
                 delivery_date,
                 availability_status,
                 count,
@@ -83,7 +84,7 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for CatalogItemsRepos
             VALUES (
                 $1, $2, $3, $4, $5, $6,
                 $7, $8, $9, $10, $11, $12, 
-                $13, $14, $15
+                $13, $14, $15, $16
             )"#,
             catalog_item_id as &CatalogItemId,
             brand_id as &BrandId,
@@ -95,6 +96,7 @@ impl<'db> NewCatalogItemRepository<'db, PgUnitOfWork<'db>> for CatalogItemsRepos
             request.details.english(),
             request.details.italian(),
             request.power_method as PowerMethod,
+            request.epoch.to_string(),
             request.delivery_date.as_ref().map(|x| x.to_string()),
             request.availability_status as Option<AvailabilityStatus>,
             request.count,
@@ -264,6 +266,7 @@ impl<'db> FindCatalogItemByIdRepository<'db, PgUnitOfWork<'db>> for CatalogItems
                 s.name as scale_display,
                 c.category as "category: Category",
                 c.power_method as "power_method: PowerMethod",
+                c.epoch,
                 c.description_en,
                 c.description_it,
                 c.details_en,

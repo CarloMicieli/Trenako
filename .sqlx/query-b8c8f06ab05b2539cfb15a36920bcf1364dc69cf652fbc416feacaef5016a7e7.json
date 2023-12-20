@@ -1,6 +1,6 @@
 {
   "db_name": "PostgreSQL",
-  "query": "SELECT\n                c.catalog_item_id as \"catalog_item_id: CatalogItemId\",\n                c.item_number,\n                c.brand_id as \"brand_id: BrandId\",\n                b.name as brand_display,\n                c.scale_id as \"scale_id: ScaleId\",\n                s.name as scale_display,\n                c.category as \"category: Category\",\n                c.power_method as \"power_method: PowerMethod\",\n                c.description_en,\n                c.description_it,\n                c.details_en,\n                c.details_it,\n                c.delivery_date,\n                c.availability_status as \"availability_status: AvailabilityStatus\",\n                c.count,\n                c.created_at,\n                c.last_modified_at,\n                c.version\n            FROM catalog_items AS c\n            JOIN brands AS b\n              ON c.brand_id = b.brand_id\n            JOIN scales AS s\n              ON s.scale_id = c.scale_id\n            WHERE c.catalog_item_id = $1 ",
+  "query": "SELECT\n                c.catalog_item_id as \"catalog_item_id: CatalogItemId\",\n                c.item_number,\n                c.brand_id as \"brand_id: BrandId\",\n                b.name as brand_display,\n                c.scale_id as \"scale_id: ScaleId\",\n                s.name as scale_display,\n                c.category as \"category: Category\",\n                c.power_method as \"power_method: PowerMethod\",\n                c.epoch,\n                c.description_en,\n                c.description_it,\n                c.details_en,\n                c.details_it,\n                c.delivery_date,\n                c.availability_status as \"availability_status: AvailabilityStatus\",\n                c.count,\n                c.created_at,\n                c.last_modified_at,\n                c.version\n            FROM catalog_items AS c\n            JOIN brands AS b\n              ON c.brand_id = b.brand_id\n            JOIN scales AS s\n              ON s.scale_id = c.scale_id\n            WHERE c.catalog_item_id = $1 ",
   "describe": {
     "columns": [
       {
@@ -71,31 +71,36 @@
       },
       {
         "ordinal": 8,
-        "name": "description_en",
+        "name": "epoch",
         "type_info": "Varchar"
       },
       {
         "ordinal": 9,
-        "name": "description_it",
+        "name": "description_en",
         "type_info": "Varchar"
       },
       {
         "ordinal": 10,
-        "name": "details_en",
+        "name": "description_it",
         "type_info": "Varchar"
       },
       {
         "ordinal": 11,
-        "name": "details_it",
+        "name": "details_en",
         "type_info": "Varchar"
       },
       {
         "ordinal": 12,
-        "name": "delivery_date",
+        "name": "details_it",
         "type_info": "Varchar"
       },
       {
         "ordinal": 13,
+        "name": "delivery_date",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 14,
         "name": "availability_status: AvailabilityStatus",
         "type_info": {
           "Custom": {
@@ -111,22 +116,22 @@
         }
       },
       {
-        "ordinal": 14,
+        "ordinal": 15,
         "name": "count",
         "type_info": "Int4"
       },
       {
-        "ordinal": 15,
+        "ordinal": 16,
         "name": "created_at",
         "type_info": "Timestamptz"
       },
       {
-        "ordinal": 16,
+        "ordinal": 17,
         "name": "last_modified_at",
         "type_info": "Timestamptz"
       },
       {
-        "ordinal": 17,
+        "ordinal": 18,
         "name": "version",
         "type_info": "Int4"
       }
@@ -137,6 +142,7 @@
       ]
     },
     "nullable": [
+      false,
       false,
       false,
       false,
@@ -157,5 +163,5 @@
       false
     ]
   },
-  "hash": "22aab0dbc3b8fea9d35f3aecc1032ae7e1bed3834597f7b3ae0413c87ef789e3"
+  "hash": "b8c8f06ab05b2539cfb15a36920bcf1364dc69cf652fbc416feacaef5016a7e7"
 }

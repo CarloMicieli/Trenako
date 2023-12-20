@@ -6,6 +6,7 @@ use crate::catalog_items::availability_status::AvailabilityStatus;
 use crate::catalog_items::catalog_item_id::CatalogItemId;
 use crate::catalog_items::category::Category;
 use crate::catalog_items::delivery_date::DeliveryDate;
+use crate::catalog_items::epoch::Epoch;
 use crate::catalog_items::item_number::ItemNumber;
 use crate::catalog_items::power_method::PowerMethod;
 use crate::catalog_items::rolling_stock::RollingStock;
@@ -33,6 +34,8 @@ pub struct CatalogItem {
     pub category: Category,
     /// the power method
     pub power_method: PowerMethod,
+    /// the epoch for this catalog item
+    pub epoch: Epoch,
     /// the catalog item description
     pub description: LocalizedText,
     /// the catalog item details
@@ -86,6 +89,7 @@ impl CatalogItem {
         details: Option<&str>,
         rolling_stocks: Vec<RollingStock>,
         power_method: PowerMethod,
+        epoch: Epoch,
         delivery_date: Option<DeliveryDate>,
         availability_status: Option<AvailabilityStatus>,
         count: u8,
@@ -100,6 +104,7 @@ impl CatalogItem {
             details: details.map(LocalizedText::with_italian).unwrap_or_default(),
             scale,
             power_method,
+            epoch,
             rolling_stocks,
             delivery_date,
             availability_status,
@@ -156,6 +161,11 @@ impl CatalogItem {
     /// the power method for this catalog item
     pub fn power_method(&self) -> PowerMethod {
         self.power_method
+    }
+
+    /// the catalog item epoch
+    pub fn epoch(&self) -> &Epoch {
+        &self.epoch
     }
 
     /// the delivery date for this catalog item
@@ -342,6 +352,7 @@ mod tests {
                 Some("test details"),
                 Vec::new(),
                 PowerMethod::DC,
+                Epoch::IV,
                 Some(DeliveryDate::ByYear(2000)),
                 Some(AvailabilityStatus::Available),
                 1,

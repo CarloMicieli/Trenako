@@ -19,6 +19,7 @@ pub struct CatalogItemRow {
     pub scale_id: ScaleId,
     pub scale_display: String,
     pub power_method: PowerMethod,
+    pub epoch: String,
     pub description_en: Option<String>,
     pub description_it: Option<String>,
     pub details_en: Option<String>,
@@ -34,6 +35,7 @@ pub struct CatalogItemRow {
 #[cfg(test)]
 pub mod test {
     use super::*;
+    use catalog::catalog_items::epoch::Epoch;
     use catalog::catalog_items::item_number::ItemNumber;
 
     #[allow(dead_code)]
@@ -53,6 +55,7 @@ pub mod test {
             scale_id: ScaleId::new(scale),
             scale_display: String::from(scale),
             power_method: PowerMethod::DC,
+            epoch: Epoch::III.to_string(),
             description_en: None,
             description_it: None,
             details_en: None,

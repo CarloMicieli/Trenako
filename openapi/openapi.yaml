@@ -2079,6 +2079,8 @@ components:
           $ref: "#/components/schemas/LocalizedText"
         power_method:
           $ref: "#/components/schemas/PowerMethod"
+        epoch:
+          $ref: "#/components/schemas/Epoch"
         delivery_date:
           description: this catalog item delivery date (either the year "yyyy" or the quarter "yyyy/q[1-4]")
           type: string
@@ -2103,6 +2105,7 @@ components:
         - scale
         - category
         - power_method
+        - epoch
         - count
         - metadata
     CatalogItemBrand:
@@ -2184,6 +2187,8 @@ components:
           $ref: "#/components/schemas/LocalizedText"
         power_method:
           $ref: "#/components/schemas/PowerMethod"
+        epoch:
+          $ref: "#/components/schemas/Epoch"
         delivery_date:
           description: this catalog item delivery date (either the year "yyyy" or the quarter "yyyy/q[1-4]")
           type: string
@@ -2209,6 +2214,7 @@ components:
         - scale
         - category
         - power_method
+        - epoch
         - count
     CatalogItemScale:
       description: the scale information for a catalog item
@@ -2564,6 +2570,13 @@ components:
         - POWER_CAR
         - TRAILER_CAR
         - TRAIN_SET
+    Epoch:
+      description: |
+        epochs mark technical characteristics and changes in corporate structures and help enthusiasts to distinguish 
+        their favourite models by the era they belong to.
+        Allowed values: I, Ia, Ib, II, IIa, IIb, III, IIIa, IIIb, IV, IVa, IVb, V, Vm, VI
+      type: string
+      example: IV
     FeatureFlag:
       description: a feature flag for rolling stock technical specifications
       type: string

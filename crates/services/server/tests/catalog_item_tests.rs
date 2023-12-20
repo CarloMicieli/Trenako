@@ -84,6 +84,7 @@ async fn it_should_find_catalog_items_by_id() {
         assert_eq!(body.scale.scale_id, ScaleId::new("H0"));
         assert_eq!(body.scale.display, String::from("H0"));
         assert_eq!(body.power_method, PowerMethod::DC);
+        assert_eq!(body.epoch, Epoch::V);
         assert_eq!(body.description.italian(), Some(&String::from("Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco versione di origine, pantografi 52 Sommerfeldt")));
         assert_eq!(body.delivery_date, Some(DeliveryDate::by_year(2005)));
         assert_eq!(body.availability_status, Some(AvailabilityStatus::Available));
@@ -152,6 +153,7 @@ async fn it_should_return_409_when_the_catalog_item_already_exists() {
             "category" : "LOCOMOTIVES",
             "scale" : "H0",
             "power_method" : "DC",
+            "epoch": "V",
             "description" : {
                 "it" : "Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco, pantografi 52 Sommerfeldt"
             },
@@ -197,6 +199,7 @@ async fn it_should_return_422_when_the_brand_is_not_found() {
             "category" : "LOCOMOTIVES",
             "scale" : "H0",
             "power_method" : "DC",
+            "epoch": "V",
             "description" : {
                 "it" : "Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco, pantografi 52 Sommerfeldt"
             },
@@ -242,6 +245,7 @@ async fn it_should_return_422_when_the_scale_is_not_found() {
             "category" : "LOCOMOTIVES",
             "scale" : "H0",
             "power_method" : "DC",
+            "epoch": "V",
             "description" : {
                 "it" : "Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco, pantografi 52 Sommerfeldt"
             },
@@ -288,6 +292,7 @@ async fn it_should_return_422_when_the_railway_is_not_found() {
             "category" : "LOCOMOTIVES",
             "scale" : "H0",
             "power_method" : "DC",
+            "epoch": "V",
             "description" : {
                 "it" : "Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco, pantografi 52 Sommerfeldt"
             },
@@ -368,6 +373,7 @@ async fn it_should_create_a_new_locomotive() {
             "category" : "LOCOMOTIVES",
             "scale" : "H0",
             "power_method" : "DC",
+            "epoch": "V",
             "description" : {
                 "en" : "Electric Locomotive E 402A 015",
                 "it" : "Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco, pantografi 52 Sommerfeldt"
@@ -433,6 +439,7 @@ async fn it_should_create_a_new_locomotive() {
         assert_eq!(Category::Locomotives, item.category);
         assert_eq!(ScaleId::new("H0"), item.scale_id);
         assert_eq!(PowerMethod::DC, item.power_method);
+        assert_eq!("V", item.epoch);
         assert_eq!(
             Some(String::from(
                 "Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco, pantografi 52 Sommerfeldt"
@@ -508,6 +515,7 @@ async fn it_should_create_a_new_electric_multiple_unit() {
             "category" : "ELECTRIC_MULTIPLE_UNITS",
             "scale" : "H0",
             "power_method" : "AC",
+            "epoch": "V",
             "description" : {
                 "en" : "Electric multiple unit Ale.540 013",
                 "it" : "Elettromotrice Ale.540 013 e rimorchiata Le.760 003"
@@ -600,6 +608,7 @@ async fn it_should_create_a_new_electric_multiple_unit() {
         assert_eq!(Category::ElectricMultipleUnits, item.category);
         assert_eq!(ScaleId::new("H0"), item.scale_id);
         assert_eq!(PowerMethod::AC, item.power_method);
+        assert_eq!("V", item.epoch);
         assert_eq!(
             Some(String::from("Elettromotrice Ale.540 013 e rimorchiata Le.760 003")),
             item.description_it
@@ -716,6 +725,7 @@ async fn it_should_create_a_new_railcar() {
             "category" : "RAILCARS",
             "scale" : "H0",
             "power_method" : "DC",
+            "epoch": "V",
             "description" : {
                 "en" : "Railcar FS ALn 668",
                 "it" : "Automotrice FS ALn 668"
@@ -807,6 +817,7 @@ async fn it_should_create_a_new_railcar() {
         assert_eq!(Category::Railcars, item.category);
         assert_eq!(ScaleId::new("H0"), item.scale_id);
         assert_eq!(PowerMethod::DC, item.power_method);
+        assert_eq!("V", item.epoch);
         assert_eq!(Some(String::from("Automotrice FS ALn 668")), item.description_it);
         assert_eq!(
             Some(String::from(
@@ -913,6 +924,7 @@ async fn it_should_create_a_new_passenger_car() {
             "category" : "PASSENGER_CARS",
             "scale" : "H0",
             "power_method" : "DC",
+            "epoch": "V",
             "description" : {
                 "en" : "Passenger car",
                 "it" : "Carrozza passeggeri"
@@ -974,6 +986,7 @@ async fn it_should_create_a_new_passenger_car() {
         assert_eq!(Category::PassengerCars, item.category);
         assert_eq!(ScaleId::new("H0"), item.scale_id);
         assert_eq!(PowerMethod::DC, item.power_method);
+        assert_eq!("V", item.epoch);
         assert_eq!(Some(String::from("Carrozza passeggeri")), item.description_it);
         assert_eq!(Some(String::from("porte dorate, carrelli MD50")), item.details_it);
         assert_eq!(Some(String::from("Passenger car")), item.description_en);
@@ -1038,6 +1051,7 @@ async fn it_should_create_a_new_freight_car() {
             "category" : "FREIGHT_CARS",
             "scale" : "H0",
             "power_method" : "DC",
+            "epoch": "V",
             "description" : {
                 "en" : "Freight car type Hbbillns",
                 "it" : "Carro FS Hbbillns coperto livrea livrea XMPR grigio/verde"
@@ -1097,6 +1111,7 @@ async fn it_should_create_a_new_freight_car() {
         assert_eq!(Category::FreightCars, item.category);
         assert_eq!(ScaleId::new("H0"), item.scale_id);
         assert_eq!(PowerMethod::DC, item.power_method);
+        assert_eq!("V", item.epoch);
         assert_eq!(
             Some(String::from(
                 "Carro FS Hbbillns coperto livrea livrea XMPR grigio/verde"
@@ -1151,6 +1166,7 @@ async fn fetch_saved_catalog_item(catalog_item_id: CatalogItemId, pg_pool: &PgPo
             scale_id as "scale_id: ScaleId",
             category as "category: Category",
             power_method as "power_method: PowerMethod",
+            epoch,
             description_en,
             description_it,
             details_en,
@@ -1224,6 +1240,7 @@ struct SavedCatalogItem {
     category: Category,
     scale_id: ScaleId,
     power_method: PowerMethod,
+    epoch: String,
     description_en: Option<String>,
     description_it: Option<String>,
     details_en: Option<String>,

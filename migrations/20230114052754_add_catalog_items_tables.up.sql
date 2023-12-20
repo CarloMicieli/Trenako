@@ -121,6 +121,7 @@ CREATE TABLE IF NOT EXISTS public.catalog_items
     details_en          varchar(2500),
     details_it          varchar(2500),
     power_method        power_method          NOT NULL,
+    epoch               varchar(10)           NOT NULL,
     delivery_date       varchar(10),
     availability_status availability_status,
     count               integer               NOT NULL DEFAULT 1,

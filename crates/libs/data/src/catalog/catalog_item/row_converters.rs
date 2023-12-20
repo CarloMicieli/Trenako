@@ -22,6 +22,7 @@ impl ToOutputConverter<CatalogItem> for CatalogItemRow {
         let details = try_convert_details(&row)?;
         let delivery_date = DeliveryDate::try_convert(&row)?;
         let metadata = Metadata::try_convert(&row)?;
+        let epoch = Epoch::try_convert(&row)?;
 
         Ok(CatalogItem {
             catalog_item_id: row.catalog_item_id,
@@ -36,6 +37,7 @@ impl ToOutputConverter<CatalogItem> for CatalogItemRow {
             },
             category: row.category,
             power_method: row.power_method,
+            epoch,
             description,
             details,
             delivery_date,
@@ -197,6 +199,12 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
 
 impl Converter<RollingStockRow> for Epoch {
     fn try_convert(row: &RollingStockRow) -> Result<Self, ConversionErrors> {
+        Epoch::from_str(&row.epoch).map_err(|_| ConversionErrors::new())
+    }
+}
+
+impl Converter<CatalogItemRow> for Epoch {
+    fn try_convert(row: &CatalogItemRow) -> Result<Self, ConversionErrors> {
         Epoch::from_str(&row.epoch).map_err(|_| ConversionErrors::new())
     }
 }

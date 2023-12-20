@@ -6,6 +6,7 @@
       "category" : "LOCOMOTIVES",
       "scale" : "H0",
       "power_method" : "DC",
+      "epoch": "V",
       "description" : {
         "it" : "Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco versione di origine, pantografi 52 Sommerfeldt"
       },
