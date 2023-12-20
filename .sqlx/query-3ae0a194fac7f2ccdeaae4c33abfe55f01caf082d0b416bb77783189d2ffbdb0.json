@@ -1,11 +1,11 @@
 {
   "db_name": "PostgreSQL",
-  "query": "SELECT\n                    brand_id, name, registered_company_name, \n                    organization_entity_type as \"organization_entity_type: OrganizationEntityType\", group_name, \n                    description_en, description_it, kind as \"kind: BrandKind\", status as \"status: BrandStatus\",\n                    contact_email, contact_website_url, contact_phone,\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube\n                FROM brands WHERE name = $1",
+  "query": "SELECT\n                    brand_id as \"brand_id!: BrandId\", \n                    name, registered_company_name, \n                    organization_entity_type as \"organization_entity_type: OrganizationEntityType\", \n                    group_name, \n                    description_de, \n                    description_en,\n                    description_fr, \n                    description_it,\n                    kind as \"kind: BrandKind\", \n                    status as \"status?: BrandStatus\",\n                    contact_email as \"contact_email?: MailAddress\", \n                    contact_website_url as \"contact_website_url?: WebsiteUrl\", \n                    contact_phone as \"contact_phone?: PhoneNumber\",\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook as \"socials_facebook?: Handler\", \n                    socials_instagram as \"socials_instagram?: Handler\",     \n                    socials_linkedin as \"socials_linkedin?: Handler\",    \n                    socials_twitter as \"socials_twitter?: Handler\",    \n                    socials_youtube as \"socials_youtube?: Handler\",\n                    created_at,\n                    last_modified_at,\n                    version\n                FROM brands WHERE brand_id = $1",
   "describe": {
     "columns": [
       {
         "ordinal": 0,
-        "name": "brand_id",
+        "name": "brand_id!: BrandId",
         "type_info": "Varchar"
       },
       {
@@ -50,16 +50,26 @@
       },
       {
         "ordinal": 5,
-        "name": "description_en",
+        "name": "description_de",
         "type_info": "Varchar"
       },
       {
         "ordinal": 6,
-        "name": "description_it",
+        "name": "description_en",
         "type_info": "Varchar"
       },
       {
         "ordinal": 7,
+        "name": "description_fr",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 8,
+        "name": "description_it",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 9,
         "name": "kind: BrandKind",
         "type_info": {
           "Custom": {
@@ -74,8 +84,8 @@
         }
       },
       {
-        "ordinal": 8,
-        "name": "status: BrandStatus",
+        "ordinal": 10,
+        "name": "status?: BrandStatus",
         "type_info": {
           "Custom": {
             "name": "brand_status",
@@ -89,74 +99,89 @@
         }
       },
       {
-        "ordinal": 9,
-        "name": "contact_email",
-        "type_info": "Varchar"
-      },
-      {
-        "ordinal": 10,
-        "name": "contact_website_url",
-        "type_info": "Varchar"
-      },
-      {
         "ordinal": 11,
-        "name": "contact_phone",
+        "name": "contact_email?: MailAddress",
         "type_info": "Varchar"
       },
       {
         "ordinal": 12,
-        "name": "address_street_address",
+        "name": "contact_website_url?: WebsiteUrl",
         "type_info": "Varchar"
       },
       {
         "ordinal": 13,
-        "name": "address_extended_address",
+        "name": "contact_phone?: PhoneNumber",
         "type_info": "Varchar"
       },
       {
         "ordinal": 14,
-        "name": "address_city",
+        "name": "address_street_address",
         "type_info": "Varchar"
       },
       {
         "ordinal": 15,
-        "name": "address_region",
+        "name": "address_extended_address",
         "type_info": "Varchar"
       },
       {
         "ordinal": 16,
-        "name": "address_postal_code",
+        "name": "address_city",
         "type_info": "Varchar"
       },
       {
         "ordinal": 17,
-        "name": "address_country",
+        "name": "address_region",
         "type_info": "Varchar"
       },
       {
         "ordinal": 18,
-        "name": "socials_facebook",
+        "name": "address_postal_code",
         "type_info": "Varchar"
       },
       {
         "ordinal": 19,
-        "name": "socials_instagram",
+        "name": "address_country",
         "type_info": "Varchar"
       },
       {
         "ordinal": 20,
-        "name": "socials_linkedin",
+        "name": "socials_facebook?: Handler",
         "type_info": "Varchar"
       },
       {
         "ordinal": 21,
-        "name": "socials_twitter",
+        "name": "socials_instagram?: Handler",
         "type_info": "Varchar"
       },
       {
         "ordinal": 22,
-        "name": "socials_youtube",
+        "name": "socials_linkedin?: Handler",
         "type_info": "Varchar"
+      },
+      {
+        "ordinal": 23,
+        "name": "socials_twitter?: Handler",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 24,
+        "name": "socials_youtube?: Handler",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 25,
+        "name": "created_at",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 26,
+        "name": "last_modified_at",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 27,
+        "name": "version",
+        "type_info": "Int4"
       }
     ],
     "parameters": {
@@ -172,6 +197,8 @@
       true,
       true,
       true,
+      true,
+      true,
       false,
       true,
       true,
@@ -187,8 +214,11 @@
       true,
       true,
       true,
-      true
+      true,
+      false,
+      true,
+      false
     ]
   },
-  "hash": "4fa82b19db9c79dc3294ecef0273b6e316c8a185d0568603cf6448f00c2cc1df"
+  "hash": "3ae0a194fac7f2ccdeaae4c33abfe55f01caf082d0b416bb77783189d2ffbdb0"
 }

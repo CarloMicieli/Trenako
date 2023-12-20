@@ -1,6 +1,6 @@
 {
   "db_name": "PostgreSQL",
-  "query": "INSERT INTO catalog_items (\n                catalog_item_id,\n                brand_id,\n                item_number,\n                scale_id,\n                category,\n                description_en,\n                description_it,\n                details_en,\n                details_it,\n                power_method,\n                epoch,\n                delivery_date,\n                availability_status,\n                count,\n                created_at,\n                version\n            )\n            VALUES (\n                $1, $2, $3, $4, $5, $6,\n                $7, $8, $9, $10, $11, $12, \n                $13, $14, $15, $16\n            )",
+  "query": "INSERT INTO catalog_items (\n                catalog_item_id,\n                brand_id,\n                item_number,\n                scale_id,\n                category,\n                description_de,\n                description_en,\n                description_fr,\n                description_it,\n                details_en,\n                details_it,\n                power_method,\n                epoch,\n                delivery_date,\n                availability_status,\n                count,\n                created_at,\n                version\n            )\n            VALUES (\n                $1, $2, $3, $4, $5, $6,\n                $7, $8, $9, $10, $11, $12, \n                $13, $14, $15, $16, $17, $18\n            )",
   "describe": {
     "columns": [],
     "parameters": {
@@ -25,6 +25,8 @@
             }
           }
         },
+        "Varchar",
+        "Varchar",
         "Varchar",
         "Varchar",
         "Varchar",
@@ -62,5 +64,5 @@
     },
     "nullable": []
   },
-  "hash": "cd18a7a51aa3381c44a2143de4cadd7b27d0376c34bb34e12dbf98155611b562"
+  "hash": "ea4bab7967434de9e2df0fa26f4d5312df74bbd6c6fd9d4ddecfa6234e4d7312"
 }

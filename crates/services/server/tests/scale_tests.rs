@@ -43,8 +43,10 @@ async fn it_should_return_409_when_the_scale_already_exists() {
                 "track_gauge" : "STANDARD"
             },
             "description" : {
-                "en": "description",
-                "it": "descrizione"
+                "de": "beschreibung",
+                "en" : "description",
+                "fr": "description",
+                "it" : "descrizione"
             },
             "standards" : ["NEM", "NMRA"]
         });
@@ -91,8 +93,10 @@ async fn it_should_create_new_scales() {
                 "track_gauge" : "STANDARD"
             },
             "description" : {
-                "en": "description",
-                "it": "descrizione"
+                "de": "beschreibung",
+                "en" : "description",
+                "fr": "description",
+                "it" : "descrizione"
             },
             "standards" : ["NEM", "NMRA"]
         });
@@ -119,7 +123,9 @@ async fn it_should_create_new_scales() {
                 gauge_millimeters,
                 gauge_inches,
                 track_gauge as "track_gauge: TrackGauge",
+                description_de,
                 description_en,
+                description_fr,
                 description_it,
                 standards as "standards!: Vec<Standard>"
             FROM scales
@@ -134,6 +140,8 @@ async fn it_should_create_new_scales() {
         assert_eq!(scale_name, saved.name);
         assert_eq!(Some(String::from("description")), saved.description_en);
         assert_eq!(Some(String::from("descrizione")), saved.description_it);
+        assert_eq!(Some(String::from("beschreibung")), saved.description_de);
+        assert_eq!(Some(String::from("description")), saved.description_fr);
         assert_eq!(ratio_value, saved.ratio);
         assert_eq!(Some(gauge_mm), saved.gauge_millimeters);
         assert_eq!(Some(gauge_in), saved.gauge_inches);
@@ -172,6 +180,8 @@ async fn it_should_find_scales_by_id() {
         assert_eq!("H0", body.name);
         assert_eq!(Some(&String::from("description")), body.description.english());
         assert_eq!(Some(&String::from("descrizione")), body.description.italian());
+        assert_eq!(Some(&String::from("beschreibung")), body.description.german());
+        assert_eq!(Some(&String::from("description")), body.description.french());
 
         let gauge = body.gauge;
         assert_eq!(TrackGauge::Standard, gauge.track_gauge);
@@ -268,7 +278,9 @@ struct Saved {
     gauge_millimeters: Option<Decimal>,
     gauge_inches: Option<Decimal>,
     track_gauge: TrackGauge,
+    description_de: Option<String>,
     description_en: Option<String>,
+    description_fr: Option<String>,
     description_it: Option<String>,
     standards: Vec<Standard>,
 }

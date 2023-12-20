@@ -1,6 +1,6 @@
 {
   "db_name": "PostgreSQL",
-  "query": "SELECT\n                railway_id as \"railway_id: RailwayId\",\n                name,\n                abbreviation,\n                registered_company_name,\n                organization_entity_type as \"organization_entity_type?: OrganizationEntityType\",\n                description_en,\n                description_it,\n                country,\n                operating_since,\n                operating_until,\n                status as \"status?: RailwayStatus\",\n                gauge_meters,\n                track_gauge as \"track_gauge?: TrackGauge\",\n                headquarters as \"headquarters!: Vec<String>\",\n                total_length_mi,\n                total_length_km,\n                contact_email as \"contact_email?: MailAddress\",\n                contact_website_url as \"contact_website_url?: WebsiteUrl\",\n                contact_phone as \"contact_phone?: PhoneNumber\",\n                socials_facebook as \"socials_facebook?: Handler\",\n                socials_instagram as \"socials_instagram?: Handler\",\n                socials_linkedin as \"socials_linkedin?: Handler\",\n                socials_twitter as \"socials_twitter?: Handler\",\n                socials_youtube as \"socials_youtube?: Handler\",\n                created_at,\n                last_modified_at,\n                version\n            FROM railways \n            WHERE railway_id = $1",
+  "query": "SELECT\n                railway_id as \"railway_id: RailwayId\",\n                name,\n                abbreviation,\n                registered_company_name,\n                organization_entity_type as \"organization_entity_type?: OrganizationEntityType\",\n                description_de,\n                description_en,\n                description_fr,\n                description_it,\n                country,\n                operating_since,\n                operating_until,\n                status as \"status?: RailwayStatus\",\n                gauge_meters,\n                track_gauge as \"track_gauge?: TrackGauge\",\n                headquarters as \"headquarters!: Vec<String>\",\n                total_length_mi,\n                total_length_km,\n                contact_email,\n                contact_website_url,\n                contact_phone,\n                socials_facebook,\n                socials_instagram,\n                socials_linkedin,\n                socials_twitter,\n                socials_youtube\n            FROM railways WHERE name = $1",
   "describe": {
     "columns": [
       {
@@ -50,31 +50,41 @@
       },
       {
         "ordinal": 5,
-        "name": "description_en",
+        "name": "description_de",
         "type_info": "Varchar"
       },
       {
         "ordinal": 6,
-        "name": "description_it",
+        "name": "description_en",
         "type_info": "Varchar"
       },
       {
         "ordinal": 7,
-        "name": "country",
+        "name": "description_fr",
         "type_info": "Varchar"
       },
       {
         "ordinal": 8,
+        "name": "description_it",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 9,
+        "name": "country",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 10,
         "name": "operating_since",
         "type_info": "Date"
       },
       {
-        "ordinal": 9,
+        "ordinal": 11,
         "name": "operating_until",
         "type_info": "Date"
       },
       {
-        "ordinal": 10,
+        "ordinal": 12,
         "name": "status?: RailwayStatus",
         "type_info": {
           "Custom": {
@@ -89,12 +99,12 @@
         }
       },
       {
-        "ordinal": 11,
+        "ordinal": 13,
         "name": "gauge_meters",
         "type_info": "Numeric"
       },
       {
-        "ordinal": 12,
+        "ordinal": 14,
         "name": "track_gauge?: TrackGauge",
         "type_info": {
           "Custom": {
@@ -112,74 +122,59 @@
         }
       },
       {
-        "ordinal": 13,
+        "ordinal": 15,
         "name": "headquarters!: Vec<String>",
         "type_info": "VarcharArray"
       },
       {
-        "ordinal": 14,
+        "ordinal": 16,
         "name": "total_length_mi",
         "type_info": "Numeric"
       },
       {
-        "ordinal": 15,
+        "ordinal": 17,
         "name": "total_length_km",
         "type_info": "Numeric"
       },
       {
-        "ordinal": 16,
-        "name": "contact_email?: MailAddress",
-        "type_info": "Varchar"
-      },
-      {
-        "ordinal": 17,
-        "name": "contact_website_url?: WebsiteUrl",
-        "type_info": "Varchar"
-      },
-      {
         "ordinal": 18,
-        "name": "contact_phone?: PhoneNumber",
+        "name": "contact_email",
         "type_info": "Varchar"
       },
       {
         "ordinal": 19,
-        "name": "socials_facebook?: Handler",
+        "name": "contact_website_url",
         "type_info": "Varchar"
       },
       {
         "ordinal": 20,
-        "name": "socials_instagram?: Handler",
+        "name": "contact_phone",
         "type_info": "Varchar"
       },
       {
         "ordinal": 21,
-        "name": "socials_linkedin?: Handler",
+        "name": "socials_facebook",
         "type_info": "Varchar"
       },
       {
         "ordinal": 22,
-        "name": "socials_twitter?: Handler",
+        "name": "socials_instagram",
         "type_info": "Varchar"
       },
       {
         "ordinal": 23,
-        "name": "socials_youtube?: Handler",
+        "name": "socials_linkedin",
         "type_info": "Varchar"
       },
       {
         "ordinal": 24,
-        "name": "created_at",
-        "type_info": "Timestamptz"
+        "name": "socials_twitter",
+        "type_info": "Varchar"
       },
       {
         "ordinal": 25,
-        "name": "last_modified_at",
-        "type_info": "Timestamptz"
-      },
-      {
-        "ordinal": 26,
-        "name": "version",
-        "type_info": "Int4"
+        "name": "socials_youtube",
+        "type_info": "Varchar"
       }
     ],
     "parameters": {
@@ -195,27 +190,26 @@
       true,
       true,
       true,
-      false,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
-      true,
       true,
       true,
       false,
       true,
-      false
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
     ]
   },
-  "hash": "eecefadaf85ccb295638da50601c34d06c4b09090e6190c0107001d93170c1dd"
+  "hash": "e4d08266b2e30251fc5520818e286170e5bc1444e52a3715ee17c84abecf8a04"
 }

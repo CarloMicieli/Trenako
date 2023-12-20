@@ -5,8 +5,10 @@
       "registered_company_name" : "Associazione Costruzioni Modellistiche Esatte",
       "organization_entity_type" : "LIMITED_COMPANY",
       "description" : {
-        "it" : "descrizione",
-        "en" : "description"
+        "de": "beschreibung",
+        "en" : "description",
+        "fr": "description",
+        "it" : "descrizione"
       },
       "group_name": "UNKNOWN",
       "address" : {
@@ -37,8 +39,10 @@
       "registered_company_name" : "PIKO Spielwaren GmbH",
       "organization_entity_type" : "LIMITED_COMPANY",
       "description" : {
-        "it" : "descrizione",
-        "en" : "description"
+        "de": "beschreibung",
+        "en" : "description",
+        "fr": "description",
+        "it" : "descrizione"
       },
       "address" : {
         "street_address" : "Lutherstraße 30",

@@ -1,6 +1,6 @@
 {
   "db_name": "PostgreSQL",
-  "query": "SELECT\n                scale_id as \"scale_id: ScaleId\",\n                name,\n                ratio,\n                gauge_millimeters,\n                gauge_inches,\n                track_gauge as \"track_gauge: TrackGauge\",\n                description_en,\n                description_it,\n                standards as \"standards!: Vec<Standard>\"\n            FROM scales\n            WHERE name = $1",
+  "query": "SELECT\n                scale_id as \"scale_id: ScaleId\",\n                name,\n                ratio,\n                gauge_millimeters,\n                gauge_inches,\n                track_gauge as \"track_gauge: TrackGauge\",\n                description_de, \n                description_en,\n                description_fr, \n                description_it,\n                standards as \"standards!: Vec<Standard>\",\n                created_at,\n                last_modified_at,\n                version\n            FROM scales\n            WHERE scale_id = $1",
   "describe": {
     "columns": [
       {
@@ -48,16 +48,26 @@
       },
       {
         "ordinal": 6,
-        "name": "description_en",
+        "name": "description_de",
         "type_info": "Varchar"
       },
       {
         "ordinal": 7,
-        "name": "description_it",
+        "name": "description_en",
         "type_info": "Varchar"
       },
       {
         "ordinal": 8,
+        "name": "description_fr",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 9,
+        "name": "description_it",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 10,
         "name": "standards!: Vec<Standard>",
         "type_info": {
           "Custom": {
@@ -79,6 +89,21 @@
             }
           }
         }
+      },
+      {
+        "ordinal": 11,
+        "name": "created_at",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 12,
+        "name": "last_modified_at",
+        "type_info": "Timestamptz"
+      },
+      {
+        "ordinal": 13,
+        "name": "version",
+        "type_info": "Int4"
       }
     ],
     "parameters": {
@@ -95,8 +120,13 @@
       false,
       true,
       true,
-      true
+      true,
+      true,
+      true,
+      false,
+      true,
+      false
     ]
   },
-  "hash": "11a226f57a194ae7522cc2a242bcc0dcd2bd997f76f055ef43ab15f9c8956d1b"
+  "hash": "ec803b1a2cefddeaca6d53103a30e3cbef325c8d6d02b791ed4703d0904f16fe"
 }

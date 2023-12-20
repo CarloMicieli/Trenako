@@ -7,8 +7,10 @@
       "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
       "country" : "IT",
       "description" : {
-        "en": "description",
-        "it": "descrizione"
+        "de": "beschreibung",
+        "en" : "description",
+        "fr": "description",
+        "it" : "descrizione"
       },
       "period_of_activity" : {
         "operating_since" : "1905-07-01",
@@ -43,8 +45,10 @@
       "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
       "country" : "DE",
       "description" : {
-        "en": "description",
-        "it": "descrizione"
+        "de": "beschreibung",
+        "en" : "description",
+        "fr": "description",
+        "it" : "descrizione"
       },
       "period_of_activity" : {
         "operating_since" : "1994-01-01",

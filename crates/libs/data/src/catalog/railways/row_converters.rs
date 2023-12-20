@@ -5,7 +5,7 @@ use catalog::railways::railway_gauge::RailwayGauge;
 use catalog::railways::railway_length::RailwayLength;
 use common::contacts::ContactInformation;
 use common::length::Length;
-use common::localized_text::LocalizedText;
+use common::localized_text::{Language, LocalizedText};
 use common::measure_units::MeasureUnit;
 use common::metadata::Metadata;
 use common::queries::converters::{ConversionErrors, Converter, OptionConverter, ToOutputConverter};
@@ -78,8 +78,10 @@ impl Converter<RailwayRow> for LocalizedText {
     fn try_convert(value: &RailwayRow) -> Result<Self, ConversionErrors> {
         let mut localized_text = LocalizedText::default();
 
-        localized_text.add_english(value.description_en.as_ref());
-        localized_text.add_italian(value.description_it.as_ref());
+        localized_text.insert(Language::English, value.description_en.as_ref());
+        localized_text.insert(Language::French, value.description_fr.as_ref());
+        localized_text.insert(Language::German, value.description_de.as_ref());
+        localized_text.insert(Language::Italian, value.description_it.as_ref());
 
         Ok(localized_text)
     }
@@ -428,8 +430,10 @@ mod test {
         #[test]
         fn it_should_convert_description() {
             let row = RailwayRow {
-                description_en: Some(String::from("description")),
-                description_it: Some(String::from("descrizione")),
+                description_de: Some(String::from("de")),
+                description_en: Some(String::from("en")),
+                description_fr: Some(String::from("fr")),
+                description_it: Some(String::from("it")),
                 ..default_row()
             };
 
@@ -438,8 +442,10 @@ mod test {
             assert!(result.is_ok());
 
             let description = result.unwrap();
-            assert_eq!(Some(&String::from("description")), description.english());
-            assert_eq!(Some(&String::from("descrizione")), description.italian());
+            assert_eq!(Some(&String::from("en")), description.english());
+            assert_eq!(Some(&String::from("it")), description.italian());
+            assert_eq!(Some(&String::from("fr")), description.french());
+            assert_eq!(Some(&String::from("de")), description.german());
         }
     }
 

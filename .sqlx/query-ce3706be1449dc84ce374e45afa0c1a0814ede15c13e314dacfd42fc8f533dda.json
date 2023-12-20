@@ -1,11 +1,11 @@
 {
   "db_name": "PostgreSQL",
-  "query": "SELECT\n                railway_id as \"railway_id: RailwayId\",\n                name,\n                abbreviation,\n                registered_company_name,\n                organization_entity_type as \"organization_entity_type?: OrganizationEntityType\",\n                description_en,\n                description_it,\n                country,\n                operating_since,\n                operating_until,\n                status as \"status?: RailwayStatus\",\n                gauge_meters,\n                track_gauge as \"track_gauge?: TrackGauge\",\n                headquarters as \"headquarters!: Vec<String>\",\n                total_length_mi,\n                total_length_km,\n                contact_email,\n                contact_website_url,\n                contact_phone,\n                socials_facebook,\n                socials_instagram,\n                socials_linkedin,\n                socials_twitter,\n                socials_youtube\n            FROM railways WHERE name = $1",
+  "query": "SELECT\n                    brand_id, name, registered_company_name, \n                    organization_entity_type as \"organization_entity_type: OrganizationEntityType\", group_name, \n                    description_de, description_en, description_fr, description_it, kind as \"kind: BrandKind\", status as \"status: BrandStatus\",\n                    contact_email, contact_website_url, contact_phone,\n                    address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,\n                    socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube\n                FROM brands WHERE name = $1",
   "describe": {
     "columns": [
       {
         "ordinal": 0,
-        "name": "railway_id: RailwayId",
+        "name": "brand_id",
         "type_info": "Varchar"
       },
       {
@@ -15,17 +15,12 @@
       },
       {
         "ordinal": 2,
-        "name": "abbreviation",
-        "type_info": "Varchar"
-      },
-      {
-        "ordinal": 3,
         "name": "registered_company_name",
         "type_info": "Varchar"
       },
       {
-        "ordinal": 4,
-        "name": "organization_entity_type?: OrganizationEntityType",
+        "ordinal": 3,
+        "name": "organization_entity_type: OrganizationEntityType",
         "type_info": {
           "Custom": {
             "name": "organization_entity_type",
@@ -49,40 +44,55 @@
         }
       },
       {
+        "ordinal": 4,
+        "name": "group_name",
+        "type_info": "Varchar"
+      },
+      {
         "ordinal": 5,
-        "name": "description_en",
+        "name": "description_de",
         "type_info": "Varchar"
       },
       {
         "ordinal": 6,
-        "name": "description_it",
+        "name": "description_en",
         "type_info": "Varchar"
       },
       {
         "ordinal": 7,
-        "name": "country",
+        "name": "description_fr",
         "type_info": "Varchar"
       },
       {
         "ordinal": 8,
-        "name": "operating_since",
-        "type_info": "Date"
+        "name": "description_it",
+        "type_info": "Varchar"
       },
       {
         "ordinal": 9,
-        "name": "operating_until",
-        "type_info": "Date"
+        "name": "kind: BrandKind",
+        "type_info": {
+          "Custom": {
+            "name": "brand_kind",
+            "kind": {
+              "Enum": [
+                "INDUSTRIAL",
+                "BRASS_MODELS"
+              ]
+            }
+          }
+        }
       },
       {
         "ordinal": 10,
-        "name": "status?: RailwayStatus",
+        "name": "status: BrandStatus",
         "type_info": {
           "Custom": {
-            "name": "railway_status",
+            "name": "brand_status",
             "kind": {
               "Enum": [
                 "ACTIVE",
-                "INACTIVE"
+                "OUT_OF_BUSINESS"
               ]
             }
           }
@@ -90,79 +100,71 @@
       },
       {
         "ordinal": 11,
-        "name": "gauge_meters",
-        "type_info": "Numeric"
-      },
-      {
-        "ordinal": 12,
-        "name": "track_gauge?: TrackGauge",
-        "type_info": {
-          "Custom": {
-            "name": "gauge",
-            "kind": {
-              "Enum": [
-                "BROAD",
-                "MEDIUM",
-                "MINIMUM",
-                "NARROW",
-                "STANDARD"
-              ]
-            }
-          }
-        }
-      },
-      {
-        "ordinal": 13,
-        "name": "headquarters!: Vec<String>",
-        "type_info": "VarcharArray"
-      },
-      {
-        "ordinal": 14,
-        "name": "total_length_mi",
-        "type_info": "Numeric"
-      },
-      {
-        "ordinal": 15,
-        "name": "total_length_km",
-        "type_info": "Numeric"
-      },
-      {
-        "ordinal": 16,
         "name": "contact_email",
         "type_info": "Varchar"
       },
       {
-        "ordinal": 17,
+        "ordinal": 12,
         "name": "contact_website_url",
         "type_info": "Varchar"
       },
       {
-        "ordinal": 18,
+        "ordinal": 13,
         "name": "contact_phone",
         "type_info": "Varchar"
       },
       {
+        "ordinal": 14,
+        "name": "address_street_address",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 15,
+        "name": "address_extended_address",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 16,
+        "name": "address_city",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 17,
+        "name": "address_region",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 18,
+        "name": "address_postal_code",
+        "type_info": "Varchar"
+      },
+      {
         "ordinal": 19,
-        "name": "socials_facebook",
+        "name": "address_country",
         "type_info": "Varchar"
       },
       {
         "ordinal": 20,
-        "name": "socials_instagram",
+        "name": "socials_facebook",
         "type_info": "Varchar"
       },
       {
         "ordinal": 21,
-        "name": "socials_linkedin",
+        "name": "socials_instagram",
         "type_info": "Varchar"
       },
       {
         "ordinal": 22,
-        "name": "socials_twitter",
+        "name": "socials_linkedin",
         "type_info": "Varchar"
       },
       {
         "ordinal": 23,
+        "name": "socials_twitter",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 24,
         "name": "socials_youtube",
         "type_info": "Varchar"
       }
@@ -180,8 +182,9 @@
       true,
       true,
       true,
-      false,
       true,
+      true,
+      false,
       true,
       true,
       true,
@@ -199,5 +202,5 @@
       true
     ]
   },
-  "hash": "522637ce9939f4ba06b65855daba577ce0f59efc7de9b3e1f3bb6933989e41dd"
+  "hash": "ce3706be1449dc84ce374e45afa0c1a0814ede15c13e314dacfd42fc8f533dda"
 }

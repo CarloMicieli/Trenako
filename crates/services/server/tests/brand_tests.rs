@@ -39,8 +39,10 @@ async fn it_should_return_409_when_the_brand_already_exists() {
             "organization_entity_type" : "LIMITED_COMPANY",
             "group_name": "UNKNOWN",
             "description" : {
-                "it" : "descrizione",
-                "en" : "description"
+                "de": "beschreibung",
+                "en" : "description",
+                "fr": "description",
+                "it" : "descrizione"
             },
             "address" : {
                 "street_address" : "Rue Morgue 22",
@@ -98,8 +100,10 @@ async fn it_should_create_new_brands() {
             "organization_entity_type" : "LIMITED_COMPANY",
             "group_name": "UNKNOWN",
             "description" : {
-                "it" : "descrizione",
-                "en" : "description"
+                "de": "beschreibung",
+                "en" : "description",
+                "fr": "description",
+                "it" : "descrizione"
             },
             "address" : {
                 "street_address" : "Rue Morgue 22",
@@ -142,7 +146,7 @@ async fn it_should_create_new_brands() {
                 r#"SELECT
                     brand_id, name, registered_company_name, 
                     organization_entity_type as "organization_entity_type: OrganizationEntityType", group_name, 
-                    description_en, description_it, kind as "kind: BrandKind", status as "status: BrandStatus",
+                    description_de, description_en, description_fr, description_it, kind as "kind: BrandKind", status as "status: BrandStatus",
                     contact_email, contact_website_url, contact_phone,
                     address_street_address, address_extended_address, address_city, address_region, address_postal_code, address_country,
                     socials_facebook, socials_instagram, socials_linkedin, socials_twitter, socials_youtube
@@ -154,7 +158,9 @@ async fn it_should_create_new_brands() {
         assert_eq!(brand_name, saved.brand_id);
         assert_eq!(brand_name, saved.name);
         assert_eq!(BrandKind::Industrial, saved.kind);
+        assert_eq!(Some(String::from("beschreibung")), saved.description_de);
         assert_eq!(Some(String::from("description")), saved.description_en);
+        assert_eq!(Some(String::from("description")), saved.description_fr);
         assert_eq!(Some(String::from("descrizione")), saved.description_it);
         assert_eq!(Some(String::from("UNKNOWN")), saved.group_name);
         assert_eq!(Some(String::from("Registered Company Ltd")), saved.registered_company_name);
@@ -212,6 +218,8 @@ async fn it_should_find_brands_by_id() {
         assert_eq!(BrandKind::Industrial, body.kind);
         assert_eq!(Some(&String::from("description")), body.description.english());
         assert_eq!(Some(&String::from("descrizione")), body.description.italian());
+        assert_eq!(Some(&String::from("description")), body.description.french());
+        assert_eq!(Some(&String::from("beschreibung")), body.description.german());
         assert_eq!(Some(String::from("UNKNOWN")), body.group_name);
         assert_eq!(
             Some(String::from("Associazione Costruzioni Modellistiche Esatte")),
@@ -325,7 +333,9 @@ struct Saved {
     registered_company_name: Option<String>,
     organization_entity_type: Option<OrganizationEntityType>,
     group_name: Option<String>,
+    description_de: Option<String>,
     description_en: Option<String>,
+    description_fr: Option<String>,
     description_it: Option<String>,
     kind: BrandKind,
     status: Option<BrandStatus>,

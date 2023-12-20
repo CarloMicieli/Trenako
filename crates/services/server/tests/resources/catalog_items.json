@@ -8,10 +8,16 @@
       "power_method" : "DC",
       "epoch": "V",
       "description" : {
+        "de": "Beschreibung auf Deutsch",
+        "en": "English description",
+        "fr": "Description en anglais",
         "it" : "Locomotiva elettrica E 402A 015 nella livrea di origine rosso/bianco versione di origine, pantografi 52 Sommerfeldt"
       },
       "details" : {
-        "it" : ""
+        "de": "einzelheiten",
+        "en": "details",
+        "fr": "détails",
+        "it" : "dettagli"
       },
       "delivery_date" : "2005",
       "availability_status" : "AVAILABLE",

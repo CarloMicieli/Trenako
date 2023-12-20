@@ -8,7 +8,7 @@ use catalog::catalog_items::item_number::ItemNumber;
 use catalog::catalog_items::length_over_buffers::LengthOverBuffers;
 use catalog::catalog_items::rolling_stock::{RollingStock, RollingStockRailway};
 use catalog::catalog_items::technical_specifications::{Coupling, Radius, TechnicalSpecifications};
-use common::localized_text::LocalizedText;
+use common::localized_text::{Language, LocalizedText};
 use common::metadata::Metadata;
 use common::queries::converters::{ConversionErrors, Converter, OptionConverter, ToOutputConverter};
 use std::str::FromStr;
@@ -52,8 +52,10 @@ impl ToOutputConverter<CatalogItem> for CatalogItemRow {
 fn try_convert_description(value: &CatalogItemRow) -> Result<LocalizedText, ConversionErrors> {
     let mut localized_text = LocalizedText::default();
 
-    localized_text.add_english(value.description_en.as_ref());
-    localized_text.add_italian(value.description_it.as_ref());
+    localized_text.insert(Language::English, value.description_en.as_ref());
+    localized_text.insert(Language::French, value.description_fr.as_ref());
+    localized_text.insert(Language::German, value.description_de.as_ref());
+    localized_text.insert(Language::Italian, value.description_it.as_ref());
 
     Ok(localized_text)
 }
@@ -61,8 +63,10 @@ fn try_convert_description(value: &CatalogItemRow) -> Result<LocalizedText, Conv
 fn try_convert_details(value: &CatalogItemRow) -> Result<LocalizedText, ConversionErrors> {
     let mut localized_text = LocalizedText::default();
 
-    localized_text.add_english(value.details_en.as_ref());
-    localized_text.add_italian(value.details_it.as_ref());
+    localized_text.insert(Language::English, value.details_en.as_ref());
+    localized_text.insert(Language::French, value.details_fr.as_ref());
+    localized_text.insert(Language::German, value.details_de.as_ref());
+    localized_text.insert(Language::Italian, value.details_it.as_ref());
 
     Ok(localized_text)
 }
@@ -270,6 +274,42 @@ mod test {
             let catalog_item = row.to_output().expect("the catalog item conversion failed");
 
             assert_eq!(catalog_item.item_number, ItemNumber::new("123456"));
+        }
+
+        #[test]
+        fn it_should_convert_catalog_item_description() {
+            let row = CatalogItemRow {
+                description_de: Some("de".to_owned()),
+                description_en: Some("en".to_owned()),
+                description_fr: Some("fr".to_owned()),
+                description_it: Some("it".to_owned()),
+                ..default_row()
+            };
+
+            let catalog_item = row.to_output().expect("the catalog item conversion failed");
+
+            assert_eq!(catalog_item.description.de, Some("de".to_owned()));
+            assert_eq!(catalog_item.description.en, Some("en".to_owned()));
+            assert_eq!(catalog_item.description.fr, Some("fr".to_owned()));
+            assert_eq!(catalog_item.description.it, Some("it".to_owned()));
+        }
+
+        #[test]
+        fn it_should_convert_catalog_item_details() {
+            let row = CatalogItemRow {
+                details_de: Some("de".to_owned()),
+                details_en: Some("en".to_owned()),
+                details_fr: Some("fr".to_owned()),
+                details_it: Some("it".to_owned()),
+                ..default_row()
+            };
+
+            let catalog_item = row.to_output().expect("the catalog item conversion failed");
+
+            assert_eq!(catalog_item.details.de, Some("de".to_owned()));
+            assert_eq!(catalog_item.details.en, Some("en".to_owned()));
+            assert_eq!(catalog_item.details.fr, Some("fr".to_owned()));
+            assert_eq!(catalog_item.details.it, Some("it".to_owned()));
         }
 
         #[test]

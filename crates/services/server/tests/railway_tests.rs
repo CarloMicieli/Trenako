@@ -44,6 +44,9 @@ async fn it_should_return_409_when_the_railway_already_exists() {
             "registered_company_name" : "Rust Raiload & Co",
             "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
             "description" : {
+                "de": "beschreibung",
+                "en" : "description",
+                "fr": "description",
                 "it" : "descrizione"
             },
             "country" : "US",
@@ -107,7 +110,9 @@ async fn it_should_create_new_railways() {
             "registered_company_name" : "Rust Raiload & Co",
             "organization_entity_type" : "STATE_OWNED_ENTERPRISE",
             "description" : {
+                "de": "beschreibung",
                 "en" : "description",
+                "fr": "description",
                 "it" : "descrizione"
             },
             "country" : "US",
@@ -159,7 +164,9 @@ async fn it_should_create_new_railways() {
                 abbreviation,
                 registered_company_name,
                 organization_entity_type as "organization_entity_type?: OrganizationEntityType",
+                description_de,
                 description_en,
+                description_fr,
                 description_it,
                 country,
                 operating_since,
@@ -200,6 +207,8 @@ async fn it_should_create_new_railways() {
         );
         assert_eq!(Some(String::from("description")), saved.description_en);
         assert_eq!(Some(String::from("descrizione")), saved.description_it);
+        assert_eq!(Some(String::from("beschreibung")), saved.description_de);
+        assert_eq!(Some(String::from("description")), saved.description_fr);
         assert_eq!(CountryCode::USA.alpha2(), saved.country);
         assert_eq!(Some(operating_since), saved.operating_since);
         assert_eq!(None, saved.operating_until);
@@ -262,6 +271,8 @@ async fn it_should_find_railways_by_id() {
         );
         assert_eq!(Some(&String::from("description")), body.description.english());
         assert_eq!(Some(&String::from("descrizione")), body.description.italian());
+        assert_eq!(Some(&String::from("description")), body.description.french());
+        assert_eq!(Some(&String::from("beschreibung")), body.description.german());
 
         assert_eq!(Some(MailAddress::new("mail@mail.com")), contact_info.email);
         assert_eq!(Some(PhoneNumber::new("+14152370800")), contact_info.phone);
@@ -377,7 +388,9 @@ struct Saved {
     abbreviation: Option<String>,
     registered_company_name: Option<String>,
     organization_entity_type: Option<OrganizationEntityType>,
+    description_de: Option<String>,
     description_en: Option<String>,
+    description_fr: Option<String>,
     description_it: Option<String>,
     country: String,
     operating_since: Option<NaiveDate>,

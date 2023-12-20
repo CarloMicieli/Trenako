@@ -1,6 +1,6 @@
 {
   "db_name": "PostgreSQL",
-  "query": "SELECT\n                scale_id as \"scale_id: ScaleId\",\n                name,\n                ratio,\n                gauge_millimeters,\n                gauge_inches,\n                track_gauge as \"track_gauge: TrackGauge\",\n                description_en,\n                description_it,\n                standards as \"standards!: Vec<Standard>\",\n                created_at,\n                last_modified_at,\n                version\n            FROM scales\n            WHERE scale_id = $1",
+  "query": "SELECT\n                scale_id as \"scale_id: ScaleId\",\n                name,\n                ratio,\n                gauge_millimeters,\n                gauge_inches,\n                track_gauge as \"track_gauge: TrackGauge\",\n                description_de, \n                description_en,\n                description_fr, \n                description_it,\n                standards as \"standards!: Vec<Standard>\",\n                created_at,\n                last_modified_at,\n                version\n            FROM scales\n            ORDER BY name",
   "describe": {
     "columns": [
       {
@@ -48,16 +48,26 @@
       },
       {
         "ordinal": 6,
-        "name": "description_en",
+        "name": "description_de",
         "type_info": "Varchar"
       },
       {
         "ordinal": 7,
-        "name": "description_it",
+        "name": "description_en",
         "type_info": "Varchar"
       },
       {
         "ordinal": 8,
+        "name": "description_fr",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 9,
+        "name": "description_it",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 10,
         "name": "standards!: Vec<Standard>",
         "type_info": {
           "Custom": {
@@ -81,25 +91,23 @@
         }
       },
       {
-        "ordinal": 9,
+        "ordinal": 11,
         "name": "created_at",
         "type_info": "Timestamptz"
       },
       {
-        "ordinal": 10,
+        "ordinal": 12,
         "name": "last_modified_at",
         "type_info": "Timestamptz"
       },
       {
-        "ordinal": 11,
+        "ordinal": 13,
         "name": "version",
         "type_info": "Int4"
       }
     ],
     "parameters": {
-      "Left": [
-        "Text"
-      ]
+      "Left": []
     },
     "nullable": [
       false,
@@ -111,10 +119,12 @@
       true,
       true,
       true,
+      true,
+      true,
       false,
       true,
       false
     ]
   },
-  "hash": "1bb8e64f01a45f893f0936e54e902e5abd17a4d74cc5866e4e07e5a27392a536"
+  "hash": "5d1fc1ba3005d4d1f5133e577fbb9d2c290989c26885b50500bb3d9b26ee5e1c"
 }

@@ -1,6 +1,6 @@
 {
   "db_name": "PostgreSQL",
-  "query": "INSERT INTO scales (\n                    scale_id,\n                    name,\n                    ratio,\n                    gauge_millimeters,\n                    gauge_inches,\n                    track_gauge,\n                    description_en,\n                    description_it,\n                    standards,\n                    created_at,\n                    version\n                )\n                VALUES (\n                    $1, $2, $3, $4, $5, $6,\n                    $7, $8, $9, $10, $11\n                )",
+  "query": "INSERT INTO scales (\n                    scale_id,\n                    name,\n                    ratio,\n                    gauge_millimeters,\n                    gauge_inches,\n                    track_gauge,\n                    description_de, \n                    description_en,\n                    description_fr, \n                    description_it,\n                    standards,\n                    created_at,\n                    version\n                )\n                VALUES (\n                    $1, $2, $3, $4, $5, $6,\n                    $7, $8, $9, $10, \n                    $11, $12, $13\n                )",
   "describe": {
     "columns": [],
     "parameters": {
@@ -24,6 +24,8 @@
             }
           }
         },
+        "Varchar",
+        "Varchar",
         "Varchar",
         "Varchar",
         {
@@ -52,5 +54,5 @@
     },
     "nullable": []
   },
-  "hash": "9b4c5fc0daa3253aa7cb8fa906c47c444223c1d985c3af277142f0224750e377"
+  "hash": "d1896b49d5251523ae92e8caf34d50366a9d5472dbfc8ee9244f38c601075d78"
 }
