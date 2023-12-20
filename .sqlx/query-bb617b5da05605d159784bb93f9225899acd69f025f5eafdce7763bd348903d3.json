@@ -1,6 +1,6 @@
 {
   "db_name": "PostgreSQL",
-  "query": "SELECT \n                rs.rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n                rs.catalog_item_id as \"catalog_item_id: CatalogItemId\",\n                rs.railway_id as \"railway_id: RailwayId\",\n                r.name as railway_label, \n                rs.rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n                rs.epoch,\n                rs.livery,\n                rs.length_over_buffers_mm,\n                rs.length_over_buffers_in,\n                rs.type_name,\n                rs.road_number,\n                rs.series,\n                rs.depot,\n                rs.dcc_interface as \"dcc_interface: DccInterface\",\n                rs.control as \"control: Control\",\n                rs.electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n                rs.freight_car_type as \"freight_car_type: FreightCarType\",\n                rs.locomotive_type as \"locomotive_type: LocomotiveType\",\n                rs.passenger_car_type as \"passenger_car_type: PassengerCarType\",\n                rs.railcar_type as \"railcar_type: RailcarType\",\n                rs.service_level as \"service_level: ServiceLevel\",\n                rs.is_dummy,\n                rs.minimum_radius,\n                rs.coupling_socket as \"coupling_socket: CouplingSocket\",\n                rs.close_couplers as \"close_couplers: FeatureFlag\",\n                rs.digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n                rs.flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n                rs.metal_body as \"metal_body: FeatureFlag\",\n                rs.interior_lights as \"interior_lights: FeatureFlag\",\n                rs.lights as \"lights: FeatureFlag\",\n                rs.spring_buffers as \"spring_buffers: FeatureFlag\"\n            FROM rolling_stocks AS rs\n            JOIN railways AS r\n              ON r.railway_id = rs.railway_id\n            WHERE rs.catalog_item_id = $1",
+  "query": "SELECT \n                rs.rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n                rs.catalog_item_id as \"catalog_item_id: CatalogItemId\",\n                rs.railway_id as \"railway_id: RailwayId\",\n                r.name as railway_label, \n                rs.rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n                rs.livery,\n                rs.length_over_buffers_mm,\n                rs.length_over_buffers_in,\n                rs.type_name,\n                rs.road_number,\n                rs.series,\n                rs.depot,\n                rs.dcc_interface as \"dcc_interface: DccInterface\",\n                rs.control as \"control: Control\",\n                rs.electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n                rs.freight_car_type as \"freight_car_type: FreightCarType\",\n                rs.locomotive_type as \"locomotive_type: LocomotiveType\",\n                rs.passenger_car_type as \"passenger_car_type: PassengerCarType\",\n                rs.railcar_type as \"railcar_type: RailcarType\",\n                rs.service_level as \"service_level: ServiceLevel\",\n                rs.is_dummy,\n                rs.minimum_radius,\n                rs.coupling_socket as \"coupling_socket: CouplingSocket\",\n                rs.close_couplers as \"close_couplers: FeatureFlag\",\n                rs.digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n                rs.flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n                rs.metal_body as \"metal_body: FeatureFlag\",\n                rs.interior_lights as \"interior_lights: FeatureFlag\",\n                rs.lights as \"lights: FeatureFlag\",\n                rs.spring_buffers as \"spring_buffers: FeatureFlag\"\n            FROM rolling_stocks AS rs\n            JOIN railways AS r\n              ON r.railway_id = rs.railway_id\n            WHERE rs.catalog_item_id = $1",
   "describe": {
     "columns": [
       {
@@ -43,46 +43,41 @@
       },
       {
         "ordinal": 5,
-        "name": "epoch",
-        "type_info": "Varchar"
-      },
-      {
-        "ordinal": 6,
         "name": "livery",
         "type_info": "Varchar"
       },
       {
-        "ordinal": 7,
+        "ordinal": 6,
         "name": "length_over_buffers_mm",
         "type_info": "Numeric"
       },
       {
-        "ordinal": 8,
+        "ordinal": 7,
         "name": "length_over_buffers_in",
         "type_info": "Numeric"
       },
       {
-        "ordinal": 9,
+        "ordinal": 8,
         "name": "type_name",
         "type_info": "Varchar"
       },
       {
-        "ordinal": 10,
+        "ordinal": 9,
         "name": "road_number",
         "type_info": "Varchar"
       },
       {
-        "ordinal": 11,
+        "ordinal": 10,
         "name": "series",
         "type_info": "Varchar"
       },
       {
-        "ordinal": 12,
+        "ordinal": 11,
         "name": "depot",
         "type_info": "Varchar"
       },
       {
-        "ordinal": 13,
+        "ordinal": 12,
         "name": "dcc_interface: DccInterface",
         "type_info": {
           "Custom": {
@@ -104,7 +99,7 @@
         }
       },
       {
-        "ordinal": 14,
+        "ordinal": 13,
         "name": "control: Control",
         "type_info": {
           "Custom": {
@@ -121,7 +116,7 @@
         }
       },
       {
-        "ordinal": 15,
+        "ordinal": 14,
         "name": "electric_multiple_unit_type: ElectricMultipleUnitType",
         "type_info": {
           "Custom": {
@@ -140,7 +135,7 @@
         }
       },
       {
-        "ordinal": 16,
+        "ordinal": 15,
         "name": "freight_car_type: FreightCarType",
         "type_info": {
           "Custom": {
@@ -172,7 +167,7 @@
         }
       },
       {
-        "ordinal": 17,
+        "ordinal": 16,
         "name": "locomotive_type: LocomotiveType",
         "type_info": {
           "Custom": {
@@ -188,7 +183,7 @@
         }
       },
       {
-        "ordinal": 18,
+        "ordinal": 17,
         "name": "passenger_car_type: PassengerCarType",
         "type_info": {
           "Custom": {
@@ -212,7 +207,7 @@
         }
       },
       {
-        "ordinal": 19,
+        "ordinal": 18,
         "name": "railcar_type: RailcarType",
         "type_info": {
           "Custom": {
@@ -227,7 +222,7 @@
         }
       },
       {
-        "ordinal": 20,
+        "ordinal": 19,
         "name": "service_level: ServiceLevel",
         "type_info": {
           "Custom": {
@@ -246,17 +241,17 @@
         }
       },
       {
-        "ordinal": 21,
+        "ordinal": 20,
         "name": "is_dummy",
         "type_info": "Bool"
       },
       {
-        "ordinal": 22,
+        "ordinal": 21,
         "name": "minimum_radius",
         "type_info": "Numeric"
       },
       {
-        "ordinal": 23,
+        "ordinal": 22,
         "name": "coupling_socket: CouplingSocket",
         "type_info": {
           "Custom": {
@@ -277,7 +272,7 @@
         }
       },
       {
-        "ordinal": 24,
+        "ordinal": 23,
         "name": "close_couplers: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -293,7 +288,7 @@
         }
       },
       {
-        "ordinal": 25,
+        "ordinal": 24,
         "name": "digital_shunting_coupling: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -309,7 +304,7 @@
         }
       },
       {
-        "ordinal": 26,
+        "ordinal": 25,
         "name": "flywheel_fitted: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -325,7 +320,7 @@
         }
       },
       {
-        "ordinal": 27,
+        "ordinal": 26,
         "name": "metal_body: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -341,7 +336,7 @@
         }
       },
       {
-        "ordinal": 28,
+        "ordinal": 27,
         "name": "interior_lights: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -357,7 +352,7 @@
         }
       },
       {
-        "ordinal": 29,
+        "ordinal": 28,
         "name": "lights: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -373,7 +368,7 @@
         }
       },
       {
-        "ordinal": 30,
+        "ordinal": 29,
         "name": "spring_buffers: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -395,7 +390,6 @@
       ]
     },
     "nullable": [
-      false,
       false,
       false,
       false,
@@ -428,5 +422,5 @@
       true
     ]
   },
-  "hash": "67162152d9f845da1921ccc7d91a4bed5932656e81873823ec71c3d9da1bdbc6"
+  "hash": "bb617b5da05605d159784bb93f9225899acd69f025f5eafdce7763bd348903d3"
 }

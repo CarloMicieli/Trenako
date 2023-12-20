@@ -99,7 +99,6 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
     fn to_output(self) -> Result<RollingStock, ConversionErrors> {
         let row = self;
 
-        let epoch = Epoch::try_convert(&row)?;
         let technical_specifications = TechnicalSpecifications::try_convert(&row)?;
         let length_over_buffer = LengthOverBuffers::try_convert(&row)?;
 
@@ -110,7 +109,6 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
                     railway_id: row.railway_id,
                     display: row.railway_label,
                 },
-                epoch,
                 livery: row.livery,
                 length_over_buffer,
                 technical_specifications,
@@ -129,7 +127,6 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
                     railway_id: row.railway_id,
                     display: row.railway_label,
                 },
-                epoch,
                 livery: row.livery,
                 length_over_buffer,
                 technical_specifications,
@@ -145,7 +142,6 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
                     railway_id: row.railway_id,
                     display: row.railway_label,
                 },
-                epoch,
                 livery: row.livery,
                 length_over_buffer,
                 technical_specifications,
@@ -159,7 +155,6 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
                     railway_id: row.railway_id,
                     display: row.railway_label,
                 },
-                epoch,
                 livery: row.livery,
                 length_over_buffer,
                 technical_specifications,
@@ -180,7 +175,6 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
                     railway_id: row.railway_id,
                     display: row.railway_label,
                 },
-                epoch,
                 livery: row.livery,
                 length_over_buffer,
                 technical_specifications,
@@ -194,12 +188,6 @@ impl ToOutputConverter<RollingStock> for RollingStockRow {
                 is_dummy: row.is_dummy.unwrap_or(false),
             }),
         }
-    }
-}
-
-impl Converter<RollingStockRow> for Epoch {
-    fn try_convert(row: &RollingStockRow) -> Result<Self, ConversionErrors> {
-        Epoch::from_str(&row.epoch).map_err(|_| ConversionErrors::new())
     }
 }
 
@@ -407,7 +395,6 @@ mod test {
                 RollingStock::Locomotive {
                     id,
                     railway,
-                    epoch,
                     livery,
                     length_over_buffer,
                     technical_specifications,
@@ -422,7 +409,6 @@ mod test {
                 } => {
                     assert_eq!(id, row.rolling_stock_id);
                     assert_eq!(railway.railway_id, row.railway_id);
-                    assert_eq!(epoch, Epoch::IV);
                     assert_eq!(livery, row.livery);
                     assert_eq!(depot, row.depot);
 
@@ -504,7 +490,6 @@ mod test {
                 RollingStock::ElectricMultipleUnit {
                     id,
                     railway,
-                    epoch,
                     livery,
                     length_over_buffer,
                     technical_specifications,
@@ -519,7 +504,6 @@ mod test {
                 } => {
                     assert_eq!(id, row.rolling_stock_id);
                     assert_eq!(railway.railway_id, row.railway_id);
-                    assert_eq!(epoch, Epoch::IV);
                     assert_eq!(livery, row.livery);
                     assert_eq!(depot, row.depot);
 
@@ -601,7 +585,6 @@ mod test {
                 RollingStock::Railcar {
                     id,
                     railway,
-                    epoch,
                     livery,
                     length_over_buffer,
                     technical_specifications,
@@ -616,7 +599,6 @@ mod test {
                 } => {
                     assert_eq!(id, row.rolling_stock_id);
                     assert_eq!(railway.railway_id, row.railway_id);
-                    assert_eq!(epoch, Epoch::IV);
                     assert_eq!(livery, row.livery);
                     assert_eq!(depot, row.depot);
 
@@ -695,7 +677,6 @@ mod test {
                 RollingStock::PassengerCar {
                     id,
                     railway,
-                    epoch,
                     livery,
                     length_over_buffer,
                     technical_specifications,
@@ -707,7 +688,6 @@ mod test {
                 } => {
                     assert_eq!(id, row.rolling_stock_id);
                     assert_eq!(railway.railway_id, row.railway_id);
-                    assert_eq!(epoch, Epoch::IV);
                     assert_eq!(livery, row.livery);
 
                     assert!(length_over_buffer.is_some());
@@ -783,7 +763,6 @@ mod test {
                 RollingStock::FreightCar {
                     id,
                     railway,
-                    epoch,
                     livery,
                     length_over_buffer,
                     technical_specifications,
@@ -793,7 +772,6 @@ mod test {
                 } => {
                     assert_eq!(id, row.rolling_stock_id);
                     assert_eq!(railway.railway_id, row.railway_id);
-                    assert_eq!(epoch, Epoch::IV);
                     assert_eq!(livery, row.livery);
 
                     assert!(length_over_buffer.is_some());

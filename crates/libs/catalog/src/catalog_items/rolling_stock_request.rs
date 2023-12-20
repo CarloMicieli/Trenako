@@ -4,7 +4,6 @@ use crate::catalog_items::category::{
     ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType, RollingStockCategory,
 };
 use crate::catalog_items::control::{Control, DccInterface};
-use crate::catalog_items::epoch::Epoch;
 use crate::catalog_items::length_over_buffers::LengthOverBuffers;
 use crate::catalog_items::rolling_stock_request::validators::{
     validate_electric_multiple_unit, validate_freight_car, validate_locomotive, validate_passenger_car,
@@ -24,8 +23,6 @@ pub enum RollingStockRequest {
     ElectricMultipleUnitRequest {
         /// the railway name for this rolling stock
         railway: String,
-        /// the epoch for this rolling stock
-        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -54,8 +51,6 @@ pub enum RollingStockRequest {
     FreightCarRequest {
         /// the railway name for this rolling stock
         railway: String,
-        /// the epoch for this rolling stock
-        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -74,8 +69,6 @@ pub enum RollingStockRequest {
     LocomotiveRequest {
         /// the railway name for this rolling stock
         railway: String,
-        /// the epoch for this rolling stock
-        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -105,8 +98,6 @@ pub enum RollingStockRequest {
     PassengerCarRequest {
         /// the railway name for this rolling stock
         railway: String,
-        /// the epoch for this rolling stock
-        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -130,8 +121,6 @@ pub enum RollingStockRequest {
     RailcarRequest {
         /// the railway name for this rolling stock
         railway: String,
-        /// the epoch for this rolling stock
-        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -405,7 +394,6 @@ mod test {
 
     mod electric_multiple_unit_requests_validation {
         use crate::catalog_items::category::ElectricMultipleUnitType;
-        use crate::catalog_items::epoch::Epoch;
         use crate::catalog_items::rolling_stock_request::RollingStockRequest;
         use crate::test_helpers::random_str;
         use rstest::rstest;
@@ -534,7 +522,6 @@ mod test {
 
             RollingStockRequest::ElectricMultipleUnitRequest {
                 railway,
-                epoch: Epoch::IV,
                 livery: livery.map(String::to_string),
                 length_over_buffers: None,
                 technical_specifications: None,
@@ -552,7 +539,6 @@ mod test {
 
     mod freight_car_requests_validation {
         use crate::catalog_items::category::FreightCarType;
-        use crate::catalog_items::epoch::Epoch;
         use crate::catalog_items::rolling_stock_request::RollingStockRequest;
         use crate::test_helpers::random_str;
         use rstest::rstest;
@@ -646,7 +632,6 @@ mod test {
 
             RollingStockRequest::FreightCarRequest {
                 railway,
-                epoch: Epoch::IV,
                 livery: livery.map(String::to_string),
                 length_over_buffers: None,
                 technical_specifications: None,
@@ -659,7 +644,6 @@ mod test {
 
     mod locomotive_requests_validation {
         use crate::catalog_items::category::LocomotiveType;
-        use crate::catalog_items::epoch::Epoch;
         use crate::catalog_items::rolling_stock_request::RollingStockRequest;
         use crate::test_helpers::random_str;
         use rstest::rstest;
@@ -793,7 +777,6 @@ mod test {
 
             RollingStockRequest::LocomotiveRequest {
                 railway,
-                epoch: Epoch::IV,
                 livery: livery.map(String::to_string),
                 length_over_buffers: None,
                 technical_specifications: None,
@@ -811,7 +794,6 @@ mod test {
 
     mod passenger_car_requests_validation {
         use crate::catalog_items::category::PassengerCarType;
-        use crate::catalog_items::epoch::Epoch;
         use crate::catalog_items::rolling_stock_request::RollingStockRequest;
         use crate::catalog_items::service_level::ServiceLevel;
         use crate::test_helpers::random_str;
@@ -923,7 +905,6 @@ mod test {
 
             RollingStockRequest::PassengerCarRequest {
                 railway,
-                epoch: Epoch::IV,
                 livery: livery.map(String::to_string),
                 length_over_buffers: None,
                 technical_specifications: None,
@@ -938,7 +919,6 @@ mod test {
 
     mod railcar_requests_validation {
         use crate::catalog_items::category::RailcarType;
-        use crate::catalog_items::epoch::Epoch;
         use crate::catalog_items::rolling_stock_request::RollingStockRequest;
         use crate::test_helpers::random_str;
         use rstest::rstest;
@@ -1067,7 +1047,6 @@ mod test {
 
             RollingStockRequest::RailcarRequest {
                 railway,
-                epoch: Epoch::IV,
                 livery: livery.map(String::to_string),
                 length_over_buffers: None,
                 technical_specifications: None,
@@ -1087,7 +1066,6 @@ mod test {
 #[cfg(test)]
 pub mod data {
     use crate::catalog_items::category::{ElectricMultipleUnitType, LocomotiveType, RailcarType};
-    use crate::catalog_items::epoch::Epoch;
     use crate::catalog_items::rolling_stock_request::RollingStockRequest;
     use crate::catalog_items::technical_specifications::TechnicalSpecifications;
 
@@ -1095,7 +1073,6 @@ pub mod data {
     pub fn electric_multiple_unit_request() -> RollingStockRequest {
         RollingStockRequest::ElectricMultipleUnitRequest {
             railway: "FS".to_string(),
-            epoch: Epoch::IV,
             livery: Some(String::from("castano/isabella")),
             length_over_buffers: None,
             technical_specifications: technical_specifications(),
@@ -1114,7 +1091,6 @@ pub mod data {
     pub fn freight_car_request() -> RollingStockRequest {
         RollingStockRequest::FreightCarRequest {
             railway: "FS".to_string(),
-            epoch: Epoch::IV,
             livery: Some(String::from("castano/isabella")),
             length_over_buffers: None,
             technical_specifications: technical_specifications(),
@@ -1128,7 +1104,6 @@ pub mod data {
     pub fn locomotive_request() -> RollingStockRequest {
         RollingStockRequest::LocomotiveRequest {
             railway: "FS".to_string(),
-            epoch: Epoch::IV,
             livery: Some(String::from("castano/isabella")),
             length_over_buffers: None,
             technical_specifications: technical_specifications(),
@@ -1147,7 +1122,6 @@ pub mod data {
     pub fn passenger_car_request() -> RollingStockRequest {
         RollingStockRequest::PassengerCarRequest {
             railway: "FS".to_string(),
-            epoch: Epoch::IV,
             livery: Some(String::from("castano/isabella")),
             length_over_buffers: None,
             technical_specifications: technical_specifications(),
@@ -1163,7 +1137,6 @@ pub mod data {
     pub fn railcar_request() -> RollingStockRequest {
         RollingStockRequest::RailcarRequest {
             railway: "FS".to_string(),
-            epoch: Epoch::IV,
             livery: Some(String::from("castano/isabella")),
             length_over_buffers: None,
             technical_specifications: technical_specifications(),

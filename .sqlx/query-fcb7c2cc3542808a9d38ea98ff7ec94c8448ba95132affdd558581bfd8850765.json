@@ -1,6 +1,6 @@
 {
   "db_name": "PostgreSQL",
-  "query": "INSERT INTO rolling_stocks (\n                        rolling_stock_id,\n                        catalog_item_id,\n                        railway_id,\n                        rolling_stock_category,\n                        epoch,\n                        livery,\n                        length_over_buffers_mm,\n                        length_over_buffers_in,\n                        type_name,\n                        road_number,\n                        series,\n                        depot,\n                        dcc_interface,\n                        control,\n                        electric_multiple_unit_type,\n                        freight_car_type,\n                        locomotive_type,\n                        passenger_car_type,\n                        railcar_type,\n                        service_level,\n                        is_dummy,\n                        minimum_radius,\n                        coupling_socket,\n                        close_couplers,\n                        digital_shunting_coupling,\n                        flywheel_fitted,\n                        metal_body,\n                        interior_lights,\n                        lights,\n                        spring_buffers\n                    )\n                    VALUES (\n                        $1, $2, $3, $4, $5, $6,\n                        $7, $8, $9, $10, $11, $12, \n                        $13, $14, $15, $16, $17, $18,\n                        $19, $20, $21, $22, $23, $24, \n                        $25, $26, $27, $28, $29, $30\n                    )",
+  "query": "INSERT INTO rolling_stocks (\n                        rolling_stock_id,\n                        catalog_item_id,\n                        railway_id,\n                        rolling_stock_category,\n                        livery,\n                        length_over_buffers_mm,\n                        length_over_buffers_in,\n                        type_name,\n                        road_number,\n                        series,\n                        depot,\n                        dcc_interface,\n                        control,\n                        electric_multiple_unit_type,\n                        freight_car_type,\n                        locomotive_type,\n                        passenger_car_type,\n                        railcar_type,\n                        service_level,\n                        is_dummy,\n                        minimum_radius,\n                        coupling_socket,\n                        close_couplers,\n                        digital_shunting_coupling,\n                        flywheel_fitted,\n                        metal_body,\n                        interior_lights,\n                        lights,\n                        spring_buffers\n                    )\n                    VALUES (\n                        $1, $2, $3, $4, $5, $6,\n                        $7, $8, $9, $10, $11, $12, \n                        $13, $14, $15, $16, $17, $18,\n                        $19, $20, $21, $22, $23, $24, \n                        $25, $26, $27, $28, $29\n                    )",
   "describe": {
     "columns": [],
     "parameters": {
@@ -22,7 +22,6 @@
             }
           }
         },
-        "Varchar",
         "Varchar",
         "Numeric",
         "Numeric",
@@ -269,5 +268,5 @@
     },
     "nullable": []
   },
-  "hash": "adf2bb259b2d0a5506268b169ccc867bf2e94f1f6f1a7732f90b8e774f946398"
+  "hash": "fcb7c2cc3542808a9d38ea98ff7ec94c8448ba95132affdd558581bfd8850765"
 }

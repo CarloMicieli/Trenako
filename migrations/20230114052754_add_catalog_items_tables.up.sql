@@ -145,7 +145,6 @@ CREATE TABLE IF NOT EXISTS public.rolling_stocks
     catalog_item_id             varchar(65)            NOT NULL,
     railway_id                  varchar(25)            NOT NULL,
     rolling_stock_category      rolling_stock_category NOT NULL,
-    epoch                       varchar(10)            NOT NULL,
     livery                      varchar(50),
     length_over_buffers_mm      numeric(9, 2),
     length_over_buffers_in      numeric(9, 2),

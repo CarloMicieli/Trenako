@@ -4,7 +4,6 @@ use crate::catalog_items::category::{
     ElectricMultipleUnitType, FreightCarType, LocomotiveType, PassengerCarType, RailcarType, RollingStockCategory,
 };
 use crate::catalog_items::control::{Control, DccInterface};
-use crate::catalog_items::epoch::Epoch;
 use crate::catalog_items::length_over_buffers::LengthOverBuffers;
 use crate::catalog_items::rolling_stock_id::RollingStockId;
 use crate::catalog_items::service_level::ServiceLevel;
@@ -22,8 +21,6 @@ pub enum RollingStock {
         id: RollingStockId,
         /// the railway for this rolling stock
         railway: RollingStockRailway,
-        /// the epoch for this rolling stock
-        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -53,8 +50,6 @@ pub enum RollingStock {
         id: RollingStockId,
         /// the railway for this rolling stock
         railway: RollingStockRailway,
-        /// the epoch for this rolling stock
-        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -74,8 +69,6 @@ pub enum RollingStock {
         id: RollingStockId,
         /// the railway for this rolling stock
         railway: RollingStockRailway,
-        /// the epoch for this rolling stock
-        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -106,8 +99,6 @@ pub enum RollingStock {
         id: RollingStockId,
         /// the railway for this rolling stock
         railway: RollingStockRailway,
-        /// the epoch for this rolling stock
-        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -132,8 +123,6 @@ pub enum RollingStock {
         id: RollingStockId,
         /// the railway for this rolling stock
         railway: RollingStockRailway,
-        /// the epoch for this rolling stock
-        epoch: Epoch,
         /// the livery description
         livery: Option<String>,
         /// the overall length
@@ -167,7 +156,6 @@ impl RollingStock {
         road_number: Option<&str>,
         series: Option<&str>,
         railway: RollingStockRailway,
-        epoch: Epoch,
         electric_multiple_unit_type: ElectricMultipleUnitType,
         depot: Option<&str>,
         livery: Option<&str>,
@@ -180,7 +168,6 @@ impl RollingStock {
         RollingStock::ElectricMultipleUnit {
             id,
             railway,
-            epoch,
             livery: livery.map(str::to_string),
             length_over_buffer,
             technical_specifications,
@@ -201,7 +188,6 @@ impl RollingStock {
         type_name: &str,
         road_number: Option<&str>,
         railway: RollingStockRailway,
-        epoch: Epoch,
         freight_car_type: Option<FreightCarType>,
         livery: Option<&str>,
         length_over_buffer: Option<LengthOverBuffers>,
@@ -210,7 +196,6 @@ impl RollingStock {
         RollingStock::FreightCar {
             id,
             railway,
-            epoch,
             livery: livery.map(str::to_string),
             length_over_buffer,
             technical_specifications,
@@ -227,7 +212,6 @@ impl RollingStock {
         road_number: &str,
         series: Option<&str>,
         railway: RollingStockRailway,
-        epoch: Epoch,
         locomotive_type: LocomotiveType,
         depot: Option<&str>,
         livery: Option<&str>,
@@ -240,7 +224,6 @@ impl RollingStock {
         RollingStock::Locomotive {
             id,
             railway,
-            epoch,
             livery: livery.map(str::to_string),
             length_over_buffer,
             technical_specifications,
@@ -262,7 +245,6 @@ impl RollingStock {
         road_number: Option<&str>,
         series: Option<&str>,
         railway: RollingStockRailway,
-        epoch: Epoch,
         passenger_car_type: Option<PassengerCarType>,
         service_level: Option<ServiceLevel>,
         livery: Option<&str>,
@@ -272,7 +254,6 @@ impl RollingStock {
         RollingStock::PassengerCar {
             id,
             railway,
-            epoch,
             livery: livery.map(str::to_string),
             length_over_buffer,
             technical_specifications,
@@ -291,7 +272,6 @@ impl RollingStock {
         road_number: Option<&str>,
         series: Option<&str>,
         railway: RollingStockRailway,
-        epoch: Epoch,
         railcar_type: RailcarType,
         depot: Option<&str>,
         livery: Option<&str>,
@@ -304,7 +284,6 @@ impl RollingStock {
         RollingStock::Railcar {
             id,
             railway,
-            epoch,
             livery: livery.map(str::to_string),
             length_over_buffer,
             technical_specifications,
@@ -338,17 +317,6 @@ impl RollingStock {
             RollingStock::FreightCar { id, .. } => *id,
             RollingStock::PassengerCar { id, .. } => *id,
             RollingStock::Railcar { id, .. } => *id,
-        }
-    }
-
-    /// The epoch for this rolling stock
-    pub fn epoch(&self) -> &Epoch {
-        match self {
-            RollingStock::ElectricMultipleUnit { epoch, .. } => epoch,
-            RollingStock::Locomotive { epoch, .. } => epoch,
-            RollingStock::FreightCar { epoch, .. } => epoch,
-            RollingStock::PassengerCar { epoch, .. } => epoch,
-            RollingStock::Railcar { epoch, .. } => epoch,
         }
     }
 
@@ -536,7 +504,6 @@ mod test {
                 "E.656 077",
                 Some("I serie"),
                 fs.clone(),
-                Epoch::IV,
                 LocomotiveType::ElectricLocomotive,
                 Some("Milano Centrale"),
                 Some("blu/grigio"),
@@ -549,7 +516,6 @@ mod test {
 
             assert_eq!(id, locomotive.id());
             assert_eq!(RollingStockCategory::Locomotive, locomotive.category());
-            assert_eq!(&Epoch::IV, locomotive.epoch());
             assert_eq!(Some("blu/grigio"), locomotive.livery());
             assert_eq!(Some(&length), locomotive.length_over_buffer());
             assert_eq!(&fs, locomotive.railway());
@@ -573,7 +539,6 @@ mod test {
                 Some("ALe 801 003"),
                 None,
                 fs.clone(),
-                Epoch::IV,
                 ElectricMultipleUnitType::PowerCar,
                 Some("Milano Centrale"),
                 Some("livrea originale giallo/arancio"),
@@ -586,7 +551,6 @@ mod test {
 
             assert_eq!(id, power_car.id());
             assert_eq!(RollingStockCategory::ElectricMultipleUnit, power_car.category());
-            assert_eq!(&Epoch::IV, power_car.epoch());
             assert_eq!(Some("livrea originale giallo/arancio"), power_car.livery());
             assert_eq!(Some(&length), power_car.length_over_buffer());
             assert_eq!(&fs, power_car.railway());
@@ -610,7 +574,6 @@ mod test {
                 Some("61 83 19-90 105-3 A"),
                 None,
                 fs.clone(),
-                Epoch::V,
                 Some(PassengerCarType::CompartmentCoach),
                 Some(ServiceLevel::FirstClass),
                 Some("XMPR"),
@@ -620,7 +583,6 @@ mod test {
 
             assert_eq!(id, passenger_car.id());
             assert_eq!(RollingStockCategory::PassengerCar, passenger_car.category());
-            assert_eq!(&Epoch::V, passenger_car.epoch());
             assert_eq!(Some("XMPR"), passenger_car.livery());
             assert_eq!(Some(&length), passenger_car.length_over_buffer());
             assert_eq!(&fs, passenger_car.railway());
@@ -644,7 +606,6 @@ mod test {
                 Some("ALn 668 1449"),
                 None,
                 fs.clone(),
-                Epoch::IIIb,
                 RailcarType::PowerCar,
                 Some("Milano Centrale"),
                 Some("verde lichene/giallo coloniale"),
@@ -657,7 +618,6 @@ mod test {
 
             assert_eq!(id, power_car.id());
             assert_eq!(RollingStockCategory::Railcar, power_car.category());
-            assert_eq!(&Epoch::IIIb, power_car.epoch());
             assert_eq!(Some("verde lichene/giallo coloniale"), power_car.livery());
             assert_eq!(Some(&length), power_car.length_over_buffer());
             assert_eq!(&fs, power_car.railway());
@@ -675,14 +635,11 @@ mod test {
 
             let tech_specs = technical_specification();
 
-            let epoch = Epoch::Multiple(Box::new(Epoch::IV), Box::new(Epoch::V));
-
             let freight_car = RollingStock::new_freight_car(
                 id,
                 "Fals",
                 Some("31 83 665 0 150-6"),
                 fs.clone(),
-                epoch.clone(),
                 Some(FreightCarType::Gondola),
                 Some("castano"),
                 Some(length),
@@ -691,7 +648,6 @@ mod test {
 
             assert_eq!(id, freight_car.id());
             assert_eq!(RollingStockCategory::FreightCar, freight_car.category());
-            assert_eq!(&epoch, freight_car.epoch());
             assert_eq!(Some("castano"), freight_car.livery());
             assert_eq!(Some(&length), freight_car.length_over_buffer());
             assert_eq!(&fs, freight_car.railway());

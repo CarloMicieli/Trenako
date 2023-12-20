@@ -100,7 +100,6 @@ async fn it_should_find_catalog_items_by_id() {
             RollingStock::Locomotive {
                 id: _,
                 railway,
-                epoch,
                 livery,
                 length_over_buffer: _,
                 technical_specifications: _,
@@ -114,7 +113,6 @@ async fn it_should_find_catalog_items_by_id() {
                 is_dummy } => {
                 assert_eq!(railway.railway_id, RailwayId::new("FS"));
                 assert_eq!(railway.display, String::from("FS"));
-                assert_eq!(epoch, Epoch::Va);
                 assert_eq!(livery, Some(String::from("rosso/bianco")));
                 assert_eq!(dcc_interface, Some(DccInterface::Mtc21));
                 assert_eq!(control, Some(Control::DccReady));
@@ -392,7 +390,6 @@ async fn it_should_create_a_new_locomotive() {
                 "series" : "PRIMA SERIE",
                 "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
                 "railway" : "FS",
-                "epoch" : "Vb",
                 "livery" : "rosso/bianco",
                 "depot" : "Milano Smistamento",
                 "dcc_interface" : "MTC_21",
@@ -461,7 +458,6 @@ async fn it_should_create_a_new_locomotive() {
         assert_ne!("", rs.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs.railway_id);
         assert_eq!(RollingStockCategory::Locomotive, rs.rolling_stock_category);
-        assert_eq!("Vb", rs.epoch);
         assert_eq!(Some("rosso/bianco".to_string()), rs.livery);
         assert_eq!(Some(dec!(220)), rs.length_over_buffers_mm);
         assert_eq!(Some(dec!(8.66)), rs.length_over_buffers_in);
@@ -534,7 +530,6 @@ async fn it_should_create_a_new_electric_multiple_unit() {
                 "series" : "SECONDA SERIE",
                 "electric_multiple_unit_type" : "POWER_CAR",
                 "railway" : "FS",
-                "epoch" : "IVa",
                 "livery" : "castano/isabella",
                 "depot" : "Milano Smistamento",
                 "dcc_interface" : "PLUX_22",
@@ -564,7 +559,6 @@ async fn it_should_create_a_new_electric_multiple_unit() {
                 "series" : "SECONDA SERIE",
                 "electric_multiple_unit_type" : "TRAILER_CAR",
                 "railway" : "FS",
-                "epoch" : "IVa",
                 "livery" : "castano/isabella",
                 "control" : "NO_DCC",
                 "length_over_buffers" : {
@@ -633,7 +627,6 @@ async fn it_should_create_a_new_electric_multiple_unit() {
         assert_ne!("", rs1.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs1.railway_id);
         assert_eq!(RollingStockCategory::ElectricMultipleUnit, rs1.rolling_stock_category);
-        assert_eq!("IVa", rs1.epoch);
         assert_eq!(Some("castano/isabella".to_string()), rs1.livery);
         assert_eq!(Some(dec!(310)), rs1.length_over_buffers_mm);
         assert_eq!(None, rs1.length_over_buffers_in);
@@ -668,7 +661,6 @@ async fn it_should_create_a_new_electric_multiple_unit() {
         assert_ne!("", rs2.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs2.railway_id);
         assert_eq!(RollingStockCategory::ElectricMultipleUnit, rs2.rolling_stock_category);
-        assert_eq!("IVa", rs2.epoch);
         assert_eq!(Some("castano/isabella".to_string()), rs2.livery);
         assert_eq!(Some(dec!(310)), rs2.length_over_buffers_mm);
         assert_eq!(None, rs2.length_over_buffers_in);
@@ -744,7 +736,6 @@ async fn it_should_create_a_new_railcar() {
                 "series" : "SERIE 1400",
                 "railcar_type" : "POWER_CAR",
                 "railway" : "FS",
-                "epoch" : "IIIb",
                 "livery" : "verde lichene/giallo coloniale",
                 "dcc_interface" : "PLUX_22",
                 "control" : "DCC_READY",
@@ -773,7 +764,6 @@ async fn it_should_create_a_new_railcar() {
                 "series" : "SERIE 1400",
                 "railcar_type" : "POWER_CAR",
                 "railway" : "FS",
-                "epoch" : "IIIb",
                 "livery" : "verde lichene/giallo coloniale",
                 "control" : "NO_DCC",
                 "length_over_buffers" : {
@@ -838,7 +828,6 @@ async fn it_should_create_a_new_railcar() {
         assert_ne!("", rs1.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs1.railway_id);
         assert_eq!(RollingStockCategory::Railcar, rs1.rolling_stock_category);
-        assert_eq!("IIIb", rs1.epoch);
         assert_eq!(Some("verde lichene/giallo coloniale".to_string()), rs1.livery);
         assert_eq!(Some(dec!(310)), rs1.length_over_buffers_mm);
         assert_eq!(None, rs1.length_over_buffers_in);
@@ -870,7 +859,6 @@ async fn it_should_create_a_new_railcar() {
         assert_ne!("", rs2.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs2.railway_id);
         assert_eq!(RollingStockCategory::Railcar, rs2.rolling_stock_category);
-        assert_eq!("IIIb", rs2.epoch);
         assert_eq!(Some("verde lichene/giallo coloniale".to_string()), rs2.livery);
         assert_eq!(Some(dec!(310)), rs2.length_over_buffers_mm);
         assert_eq!(None, rs2.length_over_buffers_in);
@@ -943,7 +931,6 @@ async fn it_should_create_a_new_passenger_car() {
                 "series" : "TIPO 1964",
                 "passenger_car_type" : "COMPARTMENT_COACH",
                 "railway" : "FS",
-                "epoch" : "IVb/V",
                 "livery" : "rosso fegato/grigio beige",
                 "length_over_buffers" : {
                   "millimeters" : 303.0
@@ -1000,7 +987,6 @@ async fn it_should_create_a_new_passenger_car() {
         assert_ne!("", rs.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs.railway_id);
         assert_eq!(RollingStockCategory::PassengerCar, rs.rolling_stock_category);
-        assert_eq!("IVb/V", rs.epoch);
         assert_eq!(Some("rosso fegato/grigio beige".to_string()), rs.livery);
         assert_eq!(Some(dec!(303)), rs.length_over_buffers_mm);
         assert_eq!(None, rs.length_over_buffers_in);
@@ -1069,7 +1055,6 @@ async fn it_should_create_a_new_freight_car() {
                 "road_number" : "21 83 245 7 266-6 Hbbillns",
                 "freight_car_type" : "SLIDING_WALL_BOXCARS",
                 "railway" : "FS",
-                "epoch" : "V",
                 "livery" : "XMPR",
                 "length_over_buffers" : {
                   "millimeters" : 180.0
@@ -1130,7 +1115,6 @@ async fn it_should_create_a_new_freight_car() {
         assert_ne!("", rs.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs.railway_id);
         assert_eq!(RollingStockCategory::FreightCar, rs.rolling_stock_category);
-        assert_eq!("V", rs.epoch);
         assert_eq!(Some("XMPR".to_string()), rs.livery);
         assert_eq!(Some(dec!(180)), rs.length_over_buffers_mm);
         assert_eq!(None, rs.length_over_buffers_in);
@@ -1187,7 +1171,6 @@ async fn fetch_saved_catalog_item(catalog_item_id: CatalogItemId, pg_pool: &PgPo
             rolling_stock_id as "rolling_stock_id: RollingStockId",
             railway_id as "railway_id: RailwayId",
             rolling_stock_category as "rolling_stock_category: RollingStockCategory",
-            epoch,
             livery,
             length_over_buffers_mm,
             length_over_buffers_in,
@@ -1255,7 +1238,6 @@ struct SavedRollingStock {
     rolling_stock_id: RollingStockId,
     railway_id: RailwayId,
     rolling_stock_category: RollingStockCategory,
-    epoch: String,
     livery: Option<String>,
     length_over_buffers_mm: Option<Decimal>,
     length_over_buffers_in: Option<Decimal>,

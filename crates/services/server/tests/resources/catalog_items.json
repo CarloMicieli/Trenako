@@ -23,7 +23,6 @@
         "series" : null,
         "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
         "railway" : "FS",
-        "epoch" : "Va",
         "livery" : "rosso/bianco",
         "depot" : "Milano Centrale",
         "dcc_interface" : "MTC_21",

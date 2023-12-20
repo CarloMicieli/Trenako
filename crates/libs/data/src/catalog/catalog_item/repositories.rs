@@ -155,7 +155,6 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for RollingStocksRep
                         catalog_item_id,
                         railway_id,
                         rolling_stock_category,
-                        epoch,
                         livery,
                         length_over_buffers_mm,
                         length_over_buffers_in,
@@ -187,17 +186,12 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for RollingStocksRep
                         $7, $8, $9, $10, $11, $12, 
                         $13, $14, $15, $16, $17, $18,
                         $19, $20, $21, $22, $23, $24, 
-                        $25, $26, $27, $28, $29, $30
+                        $25, $26, $27, $28, $29
                     )"#,
             rolling_stock_id as &RollingStockId,
             catalog_item_id as &CatalogItemId,
             railway_id as &RailwayId,
             request.category.expect("rolling stock category is mandatory") as RollingStockCategory,
-            request
-                .epoch
-                .as_ref()
-                .expect("rolling stock epoch is mandatory")
-                .to_string(),
             request.livery,
             request.length_over_buffers_mm.map(|x| x.quantity()),
             request.length_over_buffers_in.map(|x| x.quantity()),
@@ -308,7 +302,6 @@ impl<'db> FindRollingStocksByCatalogItemIdRepository<'db, PgUnitOfWork<'db>> for
                 rs.railway_id as "railway_id: RailwayId",
                 r.name as railway_label, 
                 rs.rolling_stock_category as "rolling_stock_category: RollingStockCategory",
-                rs.epoch,
                 rs.livery,
                 rs.length_over_buffers_mm,
                 rs.length_over_buffers_in,

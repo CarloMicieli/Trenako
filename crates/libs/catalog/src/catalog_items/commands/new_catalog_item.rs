@@ -203,7 +203,6 @@ impl NewRollingStockCommand {
 #[derive(Debug, Clone, Default)]
 pub struct RollingStockPayload {
     pub category: Option<RollingStockCategory>,
-    pub epoch: Option<Epoch>,
     pub livery: Option<String>,
     pub length_over_buffers_mm: Option<Length>,
     pub length_over_buffers_in: Option<Length>,
@@ -266,7 +265,6 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
         match request {
             RollingStockRequest::ElectricMultipleUnitRequest {
                 railway: _,
-                epoch,
                 livery,
                 length_over_buffers: _,
                 technical_specifications: _,
@@ -280,7 +278,6 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 is_dummy,
             } => Ok(RollingStockPayload {
                 category: Some(category),
-                epoch: Some(epoch),
                 livery,
                 length_over_buffers_mm: millimeters,
                 length_over_buffers_in: inches,
@@ -305,7 +302,6 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
             }),
             RollingStockRequest::RailcarRequest {
                 railway: _,
-                epoch,
                 livery,
                 length_over_buffers: _,
                 technical_specifications: _,
@@ -319,7 +315,6 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 is_dummy,
             } => Ok(RollingStockPayload {
                 category: Some(category),
-                epoch: Some(epoch),
                 livery,
                 length_over_buffers_mm: millimeters,
                 length_over_buffers_in: inches,
@@ -344,7 +339,6 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
             }),
             RollingStockRequest::LocomotiveRequest {
                 railway: _,
-                epoch,
                 livery,
                 length_over_buffers: _,
                 technical_specifications: _,
@@ -358,7 +352,6 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 is_dummy,
             } => Ok(RollingStockPayload {
                 category: Some(category),
-                epoch: Some(epoch),
                 livery,
                 length_over_buffers_mm: millimeters,
                 length_over_buffers_in: inches,
@@ -383,7 +376,6 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
             }),
             RollingStockRequest::PassengerCarRequest {
                 railway: _,
-                epoch,
                 livery,
                 length_over_buffers: _,
                 technical_specifications: _,
@@ -394,7 +386,6 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 service_level,
             } => Ok(RollingStockPayload {
                 category: Some(category),
-                epoch: Some(epoch),
                 livery,
                 length_over_buffers_mm: millimeters,
                 length_over_buffers_in: inches,
@@ -416,7 +407,6 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
             }),
             RollingStockRequest::FreightCarRequest {
                 railway: _,
-                epoch,
                 livery,
                 length_over_buffers: _,
                 technical_specifications: _,
@@ -425,7 +415,6 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 freight_car_type,
             } => Ok(RollingStockPayload {
                 category: Some(category),
-                epoch: Some(epoch),
                 livery,
                 length_over_buffers_mm: millimeters,
                 length_over_buffers_in: inches,
@@ -578,7 +567,6 @@ mod test {
     fn locomotive_request() -> RollingStockRequest {
         RollingStockRequest::LocomotiveRequest {
             railway: "FS".to_string(),
-            epoch: Epoch::IV,
             livery: None,
             length_over_buffers: None,
             technical_specifications: None,
