@@ -83,6 +83,7 @@ dependencies = [
 [tasks.run]
 description = "run: starts the backend server"
 category = "Run"
+env = { "RUST_LOG" = "trenako_server=debug" }
 command = "cargo"
 args = ["run", "--bin", "trenako-server"]
 

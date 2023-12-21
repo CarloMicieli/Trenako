@@ -16,13 +16,14 @@ on:
   workflow_dispatch:
 
 env:
-  CARGO_TERM_COLOR: always
   CARGO_MAKE_RUN_CODECOV: true
-  SQLX_OFFLINE: true
-  REGISTRY: ghcr.io
-  LOCAL_REGISTRY: localhost:5000 
-  SERVER_IMAGE_NAME: carlomicieli/trenako-server
+  CARGO_TERM_COLOR: always
+  LOCAL_REGISTRY: localhost:5000
   MIGRATIONS_IMAGE_NAME: carlomicieli/trenako-migrations
+  REGISTRY: ghcr.io
+  RUST_LOG: trenako_server=debug
+  SERVER_IMAGE_NAME: carlomicieli/trenako-server
+  SQLX_OFFLINE: true
 
 jobs:
   checks:
@@ -31,14 +32,6 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@v3
-
-      - name: Setup node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - name: Install bunyan
-        run: npm install -g bunyan
 
       - name: Setup the rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -69,7 +62,7 @@ jobs:
         run: cargo make unit-test
 
       - name: Run the integration tests
-        run: cargo make integration-test | bunyan
+        run: cargo make integration-test
 
   docker:
     runs-on: ubuntu-22.04
