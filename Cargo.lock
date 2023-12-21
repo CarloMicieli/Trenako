@@ -2713,7 +2713,6 @@ dependencies = [
  "isocountry",
  "lazy_static",
  "mime",
- "once_cell",
  "pretty_assertions",
  "regex",
  "reqwest",
