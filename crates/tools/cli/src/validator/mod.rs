@@ -234,6 +234,7 @@ mod test {
                     "en" : null
                   },
                   "power_method" : "DC",
+                  "epoch" : "VI",
                   "delivery_date" : "2022",
                   "availability_status" : "AVAILABLE",
                   "rolling_stocks" : [ {
@@ -243,7 +244,6 @@ mod test {
                     "series" : "",
                     "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
                     "railway" : "FS",
-                    "epoch" : "VI",
                     "depot" : "",
                     "dcc_interface" : "MTC_21",
                     "control" : "DCC_READY",
