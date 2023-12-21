@@ -4,14 +4,14 @@ on:
   push:
     paths:
       - '.github/workflows/rust-ci.yml'
+      - '.sqlx/**'
       - 'Cargo.lock'
       - 'Cargo.toml'
-      - 'crates/**'
       - 'Makefile.toml'
+      - 'crates/**'
       - 'migrations/**'
       - 'rust-toolchain.toml'
       - 'rustfmt.toml'
-      - 'sqlx-data.json'
   pull_request:
   workflow_dispatch:
 
@@ -19,9 +19,10 @@ env:
   CARGO_MAKE_RUN_CODECOV: true
   CARGO_TERM_COLOR: always
   LOCAL_REGISTRY: localhost:5000
+  LOGGING__FORMAT: compact
+  LOGGING__LEVEL: info
   MIGRATIONS_IMAGE_NAME: carlomicieli/trenako-migrations
   REGISTRY: ghcr.io
-  RUST_LOG: trenako_server=debug
   SERVER_IMAGE_NAME: carlomicieli/trenako-server
   SQLX_OFFLINE: true
 
@@ -70,7 +71,7 @@ jobs:
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
     permissions:
       contents: read
-      packages: write    
+      packages: write
     services:
       registry:
         image: registry:2
@@ -79,15 +80,15 @@ jobs:
 
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
         with:
           driver-opts: network=host
 
       - name: Log in to the Container registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
@@ -95,7 +96,7 @@ jobs:
 
       - name: Extract metadata (tags, labels) for the server Docker image
         id: meta-server
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         with:
           images: |
             ${{ env.REGISTRY }}/${{ env.SERVER_IMAGE_NAME }}
@@ -108,7 +109,7 @@ jobs:
 
       - name: Extract metadata (tags, labels) for the migrations Docker image
         id: meta-migrations
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         with:
           images: |
             ${{ env.REGISTRY }}/${{ env.MIGRATIONS_IMAGE_NAME }}
@@ -120,7 +121,7 @@ jobs:
             type=raw,value={{date 'YYYYMMDDHHmm'}}-{{sha}}      
       
       - name: Build and export to Docker (server)
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: docker/server.dockerfile
@@ -129,7 +130,7 @@ jobs:
           labels: ${{ steps.meta-server.outputs.labels }}
 
       - name: Build and export to Docker (migrations)
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: docker/migrations.dockerfile
