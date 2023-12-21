@@ -1,23 +1,24 @@
 [package]
 name = "data"
-version.workspace = true
-edition.workspace = true
-authors.workspace = true
-license.workspace = true
-rust-version.workspace = true
+
+authors      = { workspace = true }
+edition      = { workspace = true }
+license      = { workspace = true }
+rust-version = { workspace = true }
+version      = { workspace = true }
 
 [dependencies]
 catalog = { path = "../catalog" }
-common = { path = "../common" }
+common  = { path = "../common" }
 
-anyhow = { workspace = true }
-async-trait = { workspace = true }
-chrono = { workspace = true }
-isocountry = { workspace = true }
-rust_decimal = { workspace = true }
-sqlx = { workspace = true }
+anyhow              = { workspace = true }
+async-trait         = { workspace = true }
+chrono              = { workspace = true }
+isocountry          = { workspace = true }
+rust_decimal        = { workspace = true }
+sqlx                = { workspace = true }
 
 [dev-dependencies]
-pretty_assertions = { workspace = true }
-rstest = { workspace = true }
+pretty_assertions   = { workspace = true }
+rstest              = { workspace = true }
 rust_decimal_macros = { workspace = true }

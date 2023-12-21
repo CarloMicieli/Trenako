@@ -1,10 +1,11 @@
 [package]
 name = "server"
-version.workspace = true
-edition.workspace = true
-authors.workspace = true
-license.workspace = true
-rust-version.workspace = true
+
+authors      = { workspace = true }
+edition      = { workspace = true }
+license      = { workspace = true }
+rust-version = { workspace = true }
+version      = { workspace = true }
 
 [lib]
 path = "src/lib.rs"
@@ -14,45 +15,42 @@ path = "src/main.rs"
 name = "trenako-server"
 
 [dependencies]
-catalog = { path = "../../libs/catalog" }
-common = { path = "../../libs/common" }
-configuration = { path = "../../libs/configuration" }
-data = { path = "../../libs/data" }
+catalog         = { path = "../../libs/catalog" }
+common          = { path = "../../libs/common" }
+configuration   = { path = "../../libs/configuration" }
+data            = { path = "../../libs/data" }
 
-anyhow = { workspace = true }
-async-trait = { workspace = true }
-axum = { workspace = true }
-axum-macros = { workspace = true }
-chrono = { workspace = true }
-http-body-util = { workspace = true }
-hyper = { workspace = true }
-lazy_static = { workspace = true }
-log = { workspace = true }
-mime = { workspace = true }
-regex = { workspace = true }
-rust_decimal = { workspace = true }
-serde = { workspace = true }
-serde_json = { workspace = true }
-serde_urlencoded = { workspace = true }
-sqlx = { workspace = true }
-thiserror = { workspace = true }
-tokio = { workspace = true }
-tower = { workspace = true }
-tower-http = { workspace = true }
-tracing = { workspace = true }
-tracing-bunyan-formatter = { workspace = true }
-tracing-log = { workspace = true }
-tracing-subscriber = { workspace = true }
-uuid = { workspace = true }
-url = { workspace = true }
-validator = { workspace = true }
+anyhow              = { workspace = true }
+async-trait         = { workspace = true }
+axum                = { workspace = true }
+axum-macros         = { workspace = true }
+chrono              = { workspace = true }
+http-body-util      = { workspace = true }
+hyper               = { workspace = true }
+lazy_static         = { workspace = true }
+mime                = { workspace = true }
+regex               = { workspace = true }
+rust_decimal        = { workspace = true }
+serde               = { workspace = true }
+serde_json          = { workspace = true }
+serde_urlencoded    = { workspace = true }
+sqlx                = { workspace = true }
+thiserror           = { workspace = true }
+tokio               = { workspace = true }
+tower               = { workspace = true }
+tower-http          = { workspace = true }
+tracing             = { workspace = true }
+tracing-subscriber  = { workspace = true }
+uuid                = { workspace = true }
+url                 = { workspace = true }
+validator           = { workspace = true }
 
 [dev-dependencies]
-dockertest = { workspace = true }
-isocountry = { workspace = true }
-once_cell = { workspace = true }
-pretty_assertions = { workspace = true }
-reqwest = { workspace = true }
-rstest = { workspace = true }
+dockertest          = { workspace = true }
+isocountry          = { workspace = true }
+once_cell           = { workspace = true }
+pretty_assertions   = { workspace = true }
+reqwest             = { workspace = true }
+rstest              = { workspace = true }
 rust_decimal_macros = { workspace = true }
-serde_derive = { workspace = true }
+serde_derive        = { workspace = true }
