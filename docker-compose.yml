@@ -35,7 +35,7 @@ services:
 
   db_admin:
     container_name: db_admin
-    image: dpage/pgadmin4:8.0@sha256:15b9e1362fbe05b50b644ef3f69acdfb67e84f01f000b808db65f0ef25203ce9
+    image: dpage/pgadmin4:8.1@sha256:b3f34dcff774d62e7922f405685ce6524bf28e2b96a4518ad3453d524d56c972
     depends_on:
       db:
         condition: service_healthy
