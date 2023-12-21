@@ -1,49 +1,50 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60150",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva elettrica FS E.646 014 (1a serie) nella livrea verde e grigio di origine senza fregio, pantografi 42LR, separatore di Arbela, portelli A.T. bassi, griglie sui vetri anteriori, scalette piccole. Edizione Limitata 600 PZ",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60150",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IIIb",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva elettrica FS E.646 014 (1a serie) nella livrea verde e grigio di origine senza fregio, pantografi 42LR, separatore di Arbela, portelli A.T. bassi, griglie sui vetri anteriori, scalette piccole. Edizione Limitata 600 PZ"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2010",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E646",
-    "road_number" : "E646 014",
-    "series" : "PRIMA SERIE",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IIIb",
-    "livery" : "verde/grigio",
-    "depot" : null,
-    "dcc_interface" : "NEM_652",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 210.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2010",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E646",
+      "road_number": "E646 014",
+      "series": "PRIMA SERIE",
+      "livery": "verde/grigio",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "NEM_652",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

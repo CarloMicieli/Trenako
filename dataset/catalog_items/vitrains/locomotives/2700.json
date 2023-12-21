@@ -1,49 +1,48 @@
 {
-  "brand" : "ViTrains",
-  "item_number" : "2700",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Castano/isabella, separatore di Arbela, RS, scritte bianche, dep. Bologna C.le, museale, DCC Sound",
-    "en" : null
+  "brand": "ViTrains",
+  "item_number": "2700",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "Vm",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Castano/isabella, separatore di Arbela, RS, scritte bianche, dep. Bologna C.le, museale, DCC Sound"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : null,
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E326",
-    "road_number" : "E326 004",
-    "series" : null,
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "Vm",
-    "livery" : "",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": null,
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E326",
+      "road_number": "E326 004",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

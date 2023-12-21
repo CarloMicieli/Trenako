@@ -1,49 +1,49 @@
 {
-  "brand" : "ACME",
-  "item_number" : "70087",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Set E646 navetta, tetto alluminio + nDU '78R + 2 carrozze piano ribassato (1 pilota), livrea MDVC",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "70087",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IVb/V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Set E646 navetta, tetto alluminio + nDU '78R + 2 carrozze piano ribassato (1 pilota), livrea MDVC"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : null,
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E646",
-    "road_number" : "",
-    "series" : "SECONDA SERIE Trasformate Navetta",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IVb/V",
-    "livery" : "",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": null,
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E646",
+      "road_number": "",
+      "series": "SECONDA SERIE Trasformate Navetta",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

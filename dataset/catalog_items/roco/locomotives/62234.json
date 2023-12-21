@@ -1,49 +1,48 @@
 {
-  "brand" : "Roco",
-  "item_number" : "62234",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Cabina chiusa, fanali a petrolio, ruotino a razze, telaio rosso vagone",
-    "en" : null
+  "brand": "Roco",
+  "item_number": "62234",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "III/IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Cabina chiusa, fanali a petrolio, ruotino a razze, telaio rosso vagone"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2013",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "875",
-    "road_number" : "875 019",
-    "series" : null,
-    "locomotive_type" : "STEAM_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "III/IV",
-    "livery" : "",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": "2013",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "STEAM_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "875",
+      "road_number": "875 019",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

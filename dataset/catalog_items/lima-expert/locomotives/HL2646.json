@@ -1,0 +1,49 @@
+{
+  "brand": "Lima Expert",
+  "item_number": "HL2646",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Isabella, vetri Triplex, fregio rosso, 4 sabbiere, senza RS, strisciante piano, dep. Reggio Calabria"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2015",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E645",
+      "road_number": "E645 070",
+      "series": "SECONDA SERIE",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

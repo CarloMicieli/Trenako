@@ -1,0 +1,51 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2566",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva elettrica E428 109 nella livrea castano/isabella, prese d'aria basse e su avancorpo posteriore, tamponi in gomma, dep. Foggia"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2016",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E428",
+      "road_number": "E428 109",
+      "series": "seconda serie con avancorpi",
+      "depot": "Foggia",
+      "livery": "castano/isabella",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "YES"
+      },
+      "control": "DCC_SOUND",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

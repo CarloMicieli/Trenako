@@ -1,49 +1,51 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60261",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva elettrica FS E 656 185 \"Caimano\" nella livrea blu/grigio con respingenti tondi, senza smorzatori, senza condizionatori, striscianti curvi, deposito locomotive Torino",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60261",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IV/V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva elettrica FS E 656 185 \"Caimano\" nella livrea blu/grigio con respingenti tondi, senza smorzatori, senza condizionatori, striscianti curvi, deposito locomotive Torino"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2017",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E656",
-    "road_number" : "E656 185",
-    "series" : "QUARTA SERIE",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IV/V",
-    "livery" : "blu/grigio",
-    "depot" : "Torino",
-    "dcc_interface" : "NEM_652",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 210.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2017",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E656",
+      "road_number": "E656 185",
+      "series": "QUARTA SERIE",
+      "depot": "Torino",
+      "livery": "blu/grigio",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "NEM_652",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

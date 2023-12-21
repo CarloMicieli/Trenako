@@ -1,0 +1,73 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2875",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IVb/V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Set di due Locomotive elettrice E 633 serie \"200\" nella livrea d'origine con pantografi tipo 52FS, articoli con numerazione di servizio diverse, entrambe motorizzate."
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": null,
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E633",
+      "road_number": "",
+      "livery": "blu/grigio",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    },
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E633",
+      "road_number": "",
+      "livery": "blu/grigio",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 2
+}

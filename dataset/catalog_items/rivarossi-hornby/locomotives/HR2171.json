@@ -1,0 +1,49 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2171",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "III",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "FS livrea castano/isabella, bielle rosse"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2009",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "D236",
+      "road_number": "236 002",
+      "series": "ex V36 DB",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

@@ -1,49 +1,49 @@
 {
-  "brand" : "Rivarossi",
-  "item_number" : "1423",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Verde magnolia/grigio nebbia con modanature, scalette grandi, dep. Napoli Sm.",
-    "en" : null
+  "brand": "Rivarossi",
+  "item_number": "1423",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IVa",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Verde magnolia/grigio nebbia con modanature, scalette grandi, dep. Napoli Sm."
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "1994",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E646",
-    "road_number" : "E646 071",
-    "series" : "SECONDA SERIE",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IVa",
-    "livery" : "",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : "NO_DCC",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": "1994",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E646",
+      "road_number": "E646 071",
+      "series": "SECONDA SERIE",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "NO_DCC",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

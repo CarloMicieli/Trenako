@@ -1,49 +1,51 @@
 {
-  "brand" : "ACME",
-  "item_number" : "69143",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva elettrica E 645 001 di prima serie, in livrea castano e isabella, con prese d'aria di origine, scalette piccole, anno 1967",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "69143",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva elettrica 645 055 in livrea castano isabella, dep. Loc Reggio Calabria ep. V"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2022",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E645",
-    "road_number" : "E645 001",
-    "series" : "PRIMA SERIE (ex E646)",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IIIc",
-    "livery" : "castano/isabella",
-    "depot" : "Bologna Centrale",
-    "dcc_interface" : "MTC_21",
-    "control" : "DCC_SOUND",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 210.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2022",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E645",
+      "road_number": "E645 055",
+      "series": "SECONDA SERIE",
+      "depot": "Reggio Calabria",
+      "livery": "castano/isabella",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_SOUND",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

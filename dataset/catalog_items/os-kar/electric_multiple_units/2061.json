@@ -1,0 +1,73 @@
+{
+  "brand": "Os.Kar",
+  "item_number": "2061",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "IVa",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Elettromotrice Ale.540 013 e rimorchiata Le.760 003, FSElettromotrice Ale.540 013 con rimorchiata Le.760 003 delle Ferrovie dello Stato. Epoca IV.Nella livrea castano isabella, il modello è dotato di illuminazione interna di serie, decoder Plux22 con predisposizione sonoro."
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2021",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "electric_multiple_unit_type": "POWER_CAR",
+      "railway": "FS",
+      "type_name": "ALe 540",
+      "road_number": "ALe 540 013",
+      "series": "seconda serie",
+      "livery": "castano/isabella",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "dcc_interface": "PLUX_22",
+      "is_dummy": false
+    },
+    {
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "railway": "FS",
+      "type_name": "Le 760",
+      "road_number": "Le 760 010",
+      "livery": "castano/isabella",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "control": "NO_DCC",
+      "is_dummy": false
+    }
+  ],
+  "count": 2
+}

@@ -1,49 +1,49 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60342",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva diesel D442 401 nella livrea isabella/bianco/rosso, tetto blu con “mezzaluna”, fregio Ansaldo triangolare, carenature",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60342",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "III",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva diesel D442 401 nella livrea isabella/bianco/rosso, tetto blu con “mezzaluna”, fregio Ansaldo triangolare, carenature"
   },
-  "details" : {
-    "it" : "Locomotiva diesel-idraulica D 442.401 nello stato di servizio dei primi anni Sessanta, con carenatura dei carrelli integrale e livrea originale con tetto blu, delle FS. Edizione limita a 500 pz. Telaio in metallo pressofuso, motore Mashima con 2 volani e trasmissione cardanica su tutti gli assi con sospensione isostatica, presa di corrente su tutte le ruote e luci a microled bianche e rosse a seconda del senso di marcia, connettore NEM per il collegamento del decoder a 21 poli. Epoca III",
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva diesel-idraulica D 442.401 nello stato di servizio dei primi anni Sessanta, con carenatura dei carrelli integrale e livrea originale con tetto blu, delle FS. Edizione limita a 500 pz. Telaio in metallo pressofuso, motore Mashima con 2 volani e trasmissione cardanica su tutti gli assi con sospensione isostatica, presa di corrente su tutte le ruote e luci a microled bianche e rosse a seconda del senso di marcia, connettore NEM per il collegamento del decoder a 21 poli. Epoca III"
   },
-  "delivery_date" : "2013",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "D442",
-    "road_number" : "D442 401",
-    "series" : null,
-    "locomotive_type" : "DIESEL_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "III",
-    "livery" : "isabella/bianco/rosso",
-    "depot" : null,
-    "dcc_interface" : "MTC_21",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 178.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2013",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "D442",
+      "road_number": "D442 401",
+      "livery": "isabella/bianco/rosso",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

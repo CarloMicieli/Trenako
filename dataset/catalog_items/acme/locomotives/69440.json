@@ -1,49 +1,51 @@
 {
-  "brand" : "ACME",
-  "item_number" : "69440",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotive elettrica FS E636 351 XMPR Trenitalia prima versione, luci rosse, terzo faro alto, aria condizata, OMR La Spezia",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "69440",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "Vb",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotive elettrica FS E636 351 XMPR Trenitalia prima versione, luci rosse, terzo faro alto, aria condizata, OMR La Spezia"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2014",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E636",
-    "road_number" : "E636 351",
-    "series" : "TERZA SERIE",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "Vb",
-    "livery" : "XMPR",
-    "depot" : "La Spezia",
-    "dcc_interface" : "MTC_21",
-    "control" : "DCC_SOUND",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 210.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2014",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E636",
+      "road_number": "E636 351",
+      "series": "TERZA SERIE",
+      "depot": "La Spezia",
+      "livery": "XMPR",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_SOUND",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

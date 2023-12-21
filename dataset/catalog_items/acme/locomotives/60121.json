@@ -1,79 +1,76 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60121",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Set due E645 castano/isabella senza modanature, gocciolatoio, fregio castano, 039 motorizzata tetto castano portelloni alti dep. Milano Sm. + 068 folle tetto isabella dep. Bologna",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60121",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IVb",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Set due E645 castano/isabella senza modanature, gocciolatoio, fregio castano, 039 motorizzata tetto castano portelloni alti dep. Milano Sm. + 068 folle tetto isabella dep. Bologna"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2009",
-  "availability_status" : "AVAILABLE",
-  "count" : 2,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E645",
-    "road_number" : "E645 039",
-    "series" : "SECONDA SERIE",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IVb",
-    "livery" : "",
-    "depot" : "Milano Smistamento",
-    "dcc_interface" : "NEM_652",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 210.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2009",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E645",
+      "road_number": "E645 039",
+      "series": "SECONDA SERIE",
+      "depot": "Milano Smistamento",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
+      "control": "DCC_READY",
+      "dcc_interface": "NEM_652",
+      "is_dummy": false
     },
-    "is_dummy" : false
-  }, {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E645",
-    "road_number" : "E645 068",
-    "series" : "SECONDA SERIE",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IVb",
-    "livery" : "",
-    "depot" : "Bologna",
-    "dcc_interface" : null,
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 210.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E645",
+      "road_number": "E645 068",
+      "series": "SECONDA SERIE",
+      "depot": "Bologna",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : true
-  } ]
+      "control": "DCC_READY",
+      "is_dummy": true
+    }
+  ],
+  "count": 2
 }

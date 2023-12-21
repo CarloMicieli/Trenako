@@ -1,49 +1,48 @@
 {
-  "brand" : "ACME",
-  "item_number" : "70020",
-  "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "ETR300 7 elementi, stato primi anni 60, verde magnolia/grigio nebbia, senza terzo pantografo, porta macchinista, illuminazione interna, decoder DCC ESU Lokpilot 4",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "70020",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "III",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "ETR300 7 elementi, stato primi anni 60, verde magnolia/grigio nebbia, senza terzo pantografo, porta macchinista, illuminazione interna, decoder DCC ESU Lokpilot 4"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2011",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "type_name" : "ETR 300",
-    "road_number" : "ETR 302",
-    "series" : null,
-    "electric_multiple_unit_type" : "POWER_CAR",
-    "railway" : "FS",
-    "epoch" : "III",
-    "livery" : "",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : "DCC",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": "2011",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "electric_multiple_unit_type": "POWER_CAR",
+      "railway": "FS",
+      "type_name": "ETR 300",
+      "road_number": "ETR 302",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

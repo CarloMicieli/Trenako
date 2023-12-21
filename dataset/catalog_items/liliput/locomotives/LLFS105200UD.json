@@ -1,0 +1,48 @@
+{
+  "brand": "Liliput",
+  "item_number": "LLFS105200UD",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "II/III",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "BR 52 livrea grigio scuro deposito Udine, serie speciale DOC Models 25 pezzi"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2009",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "STEAM_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "BR 52",
+      "road_number": "52 3523",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

@@ -1,74 +1,72 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60067",
-  "category" : "TRAIN_SETS",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Set D342 castano/isabella/rosso, stato di origine, 2 fanali, porta frontale, modanature, dep. Padova + carro riscaldo Vrz livrea castano",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60067",
+  "scale": "H0",
+  "category": "TRAIN_SETS",
+  "power_method": "DC",
+  "epoch": "IIIb",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Set D342 castano/isabella/rosso, stato di origine, 2 fanali, porta frontale, modanature, dep. Padova + carro riscaldo Vrz livrea castano"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2012",
-  "availability_status" : "AVAILABLE",
-  "count" : 2,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "D342",
-    "road_number" : "D342 4011",
-    "series" : "ANSALDO",
-    "locomotive_type" : "DIESEL_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IIIb",
-    "livery" : "castano/isabella/rosso",
-    "depot" : "Padova",
-    "dcc_interface" : "MTC_21",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 175.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": "2012",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "D342",
+      "road_number": "D342 4011",
+      "series": "ANSALDO",
+      "depot": "Padova",
+      "livery": "castano/isabella/rosso",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
+      "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
     },
-    "is_dummy" : false
-  }, {
-    "category" : "FREIGHT_CAR",
-    "type_name" : "Vrz",
-    "road_number" : "Vrz 808 914",
-    "freight_car_type" : null,
-    "railway" : "FS",
-    "epoch" : "IIIb",
-    "livery" : "castano",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+    {
+      "railway": "FS",
+      "type_name": "Vrz",
+      "road_number": "Vrz 808 914",
+      "livery": "castano",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "NO",
-      "spring_buffers" : "NO"
+      "is_dummy": null
     }
-  } ]
+  ],
+  "count": 2
 }

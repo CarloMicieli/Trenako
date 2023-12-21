@@ -1,49 +1,50 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60089",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva elettrica FS E655 089 nella livrea XMPR Trenitalia Cargo, nuovo logo FS, condiz., tubi blu, resp. tondi, marc. UIC, IMC MI Sm.",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60089",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva elettrica FS E655 089 nella livrea XMPR Trenitalia Cargo, nuovo logo FS, condiz., tubi blu, resp. tondi, marc. UIC, IMC MI Sm."
   },
-  "details" : {
-    "it" : "Modello con motore 5 poli centrale e trasmissione a doppio cardano con volani per la distribuzione a tutti gli assi, luci a led bianche e rosse con inversione automatica più terzo faro, bellissimi pantografi ACME FS 52, predisposta per decoder DCC 8pin",
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Modello con motore 5 poli centrale e trasmissione a doppio cardano con volani per la distribuzione a tutti gli assi, luci a led bianche e rosse con inversione automatica più terzo faro, bellissimi pantografi ACME FS 52, predisposta per decoder DCC 8pin"
   },
-  "delivery_date" : "2013",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E656",
-    "road_number" : "E655 089",
-    "series" : "PRIMA SERIE",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "VI",
-    "livery" : "livrea",
-    "depot" : "Milano Smistamento",
-    "dcc_interface" : null,
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 210.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2013",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E656",
+      "road_number": "E655 089",
+      "series": "PRIMA SERIE",
+      "depot": "Milano Smistamento",
+      "livery": "livrea",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

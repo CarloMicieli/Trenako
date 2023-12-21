@@ -1,0 +1,48 @@
+{
+  "brand": "Rivarossi",
+  "item_number": "R05598",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IV/V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Start set “Deluxe” DCC, E454 + 2 Tipo X '75 grigio ardesia (1a+2a cl.), centralina, binari"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": null,
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E454",
+      "road_number": "E454 002",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

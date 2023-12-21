@@ -1,49 +1,51 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60284",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva elettrica FS E 656 551 \"Caimano\" (6a serie) \"Navetta\" nella livrea blu/grigio con dispositivo per telecomando e comando multiplo, respingenti rettangolari, smorzatori, striscianti curvi, deposito di Firenze",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60284",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "Va",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva elettrica FS E 656 551 \"Caimano\" (6a serie) \"Navetta\" nella livrea blu/grigio con dispositivo per telecomando e comando multiplo, respingenti rettangolari, smorzatori, striscianti curvi, deposito di Firenze"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2021",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E656",
-    "road_number" : "E656 551",
-    "series" : "SESTA SERIE navetta",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "Va",
-    "livery" : "blu/grigio",
-    "depot" : "Firenze",
-    "dcc_interface" : "MTC_21",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 210.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2021",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E656",
+      "road_number": "E656 551",
+      "series": "SESTA SERIE navetta",
+      "depot": "Firenze",
+      "livery": "blu/grigio",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

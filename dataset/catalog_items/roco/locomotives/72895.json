@@ -1,49 +1,48 @@
 {
-  "brand" : "Roco",
-  "item_number" : "72895",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Serie 2000 Breda, vetri curvi, modanature, griglia squadrata, 2 scarichi centrali, dep. Cremona",
-    "en" : null
+  "brand": "Roco",
+  "item_number": "72895",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IVa",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Serie 2000 Breda, vetri curvi, modanature, griglia squadrata, 2 scarichi centrali, dep. Cremona"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : null,
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "D343",
-    "road_number" : "D343 2019",
-    "series" : null,
-    "locomotive_type" : "DIESEL_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IVa",
-    "livery" : "",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": null,
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "D343",
+      "road_number": "D343 2019",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

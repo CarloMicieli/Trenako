@@ -1,0 +1,50 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2706D",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "E655 XMPR Trenitalia Cargo, nuovo logo FS, strisc. piatti, EVN, OMR Livorno"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2018",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E656",
+      "road_number": "E655 166",
+      "series": "quarta serie",
+      "depot": "Livorno",
+      "livery": "XMPR",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "control": "DCC",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

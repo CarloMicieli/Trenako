@@ -1,49 +1,51 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60068",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva Diesel D.342 4006 delle FS, in livrea castano isabella con modanature, 2 fanali, corrimani sul tetto, porta frontale.",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60068",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "III/IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva Diesel D.342 4006 delle FS, in livrea castano isabella con modanature, 2 fanali, corrimani sul tetto, porta frontale."
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2015",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "D342",
-    "road_number" : "D342 4006",
-    "series" : "ANSALDO",
-    "locomotive_type" : "DIESEL_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "III/IV",
-    "livery" : "castano/isabella/rosso",
-    "depot" : "Siena",
-    "dcc_interface" : "NEM_652",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 175.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": "2015",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "D342",
+      "road_number": "D342 4006",
+      "series": "ANSALDO",
+      "depot": "Siena",
+      "livery": "castano/isabella/rosso",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "NEM_652",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

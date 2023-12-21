@@ -1,49 +1,50 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60250",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva diesel FS D 143 3019 \"Truman\" nella livrea verde con fasce gialle e telaio nero.Cabina corazzata, panconi rinforzati, dep. Roma Trastevere",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60250",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IVb",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva diesel FS D 143 3019 \"Truman\" nella livrea verde con fasce gialle e telaio nero.Cabina corazzata, panconi rinforzati, dep. Roma Trastevere"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2010",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "D143",
-    "road_number" : "D143 3019",
-    "series" : null,
-    "locomotive_type" : "DIESEL_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IVb",
-    "livery" : "verde con fasce gialle",
-    "depot" : "Roma Trastevere",
-    "dcc_interface" : "NEM_651",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 149.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2010",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "D143",
+      "road_number": "D143 3019",
+      "depot": "Roma Trastevere",
+      "livery": "verde con fasce gialle",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "NEM_651",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

@@ -1,0 +1,48 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2384",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "III/IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Fanali elettrici, tender a 3 assi"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2015",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "STEAM_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "741",
+      "road_number": "741 205",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

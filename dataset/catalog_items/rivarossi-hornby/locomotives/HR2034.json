@@ -1,0 +1,51 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2034",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "Va",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva elettrica E428 226 \"Pirata\" nella livrea MDVC beige fasce arancio/viola, telaio nero, carrelli Ap 1110"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2007",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E428",
+      "road_number": "E428 226",
+      "series": "quarta serie aerodinamica",
+      "depot": "Bologna San Donato",
+      "livery": "MDVC beige fasce arancio/viola",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "YES"
+      },
+      "control": "DCC_READY",
+      "dcc_interface": "NEM_652",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

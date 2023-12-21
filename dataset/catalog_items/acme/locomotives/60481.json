@@ -1,49 +1,51 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60481",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva elettrica FS E.645 018 con griglie laterali supplementari nella livrea isabella, fregio rosso, griglie sperimentali, pantografi 52 strisciante piano, deposito di Milano Smistamento.",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60481",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva elettrica FS E.645 018 con griglie laterali supplementari nella livrea isabella, fregio rosso, griglie sperimentali, pantografi 52 strisciante piano, deposito di Milano Smistamento."
   },
-  "details" : {
-    "it" : "- Pantografi in metallo pressofuso con \"effetto piatto\".\n- Respingenti molleggiati.\n- Perfetta riproduzione del pancone con portalampada riportati.\n- Arredamento interno delle cabine con doppio maniglione del reostato e tachigrafo, riportati e decorati.\n- Motore di alta qualità CANON a 5 poli e meccanica con scatola degli ingranaggi in metallo, per un funzionamento dolce ma potente anche a basse velocità.\n- Cinematismo di allontanamento del gancio modellistico.\n- Predisposizione per il decoder digitale a 21 poli MTC, anche sonoro, con alloggiamento per l'altoparlante.\n- Illuminazione a microled bianchi e rossi a seconda del senso di marcia.",
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "- Pantografi in metallo pressofuso con \"effetto piatto\".\n- Respingenti molleggiati.\n- Perfetta riproduzione del pancone con portalampada riportati.\n- Arredamento interno delle cabine con doppio maniglione del reostato e tachigrafo, riportati e decorati.\n- Motore di alta qualità CANON a 5 poli e meccanica con scatola degli ingranaggi in metallo, per un funzionamento dolce ma potente anche a basse velocità.\n- Cinematismo di allontanamento del gancio modellistico.\n- Predisposizione per il decoder digitale a 21 poli MTC, anche sonoro, con alloggiamento per l'altoparlante.\n- Illuminazione a microled bianchi e rossi a seconda del senso di marcia."
   },
-  "delivery_date" : "2017",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E645",
-    "road_number" : "E645 018",
-    "series" : "prima serie (ex E646)",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "V",
-    "livery" : "isabella",
-    "depot" : "Milano Smistamento",
-    "dcc_interface" : "MTC_21",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 210.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2017",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E645",
+      "road_number": "E645 018",
+      "series": "prima serie (ex E646)",
+      "depot": "Milano Smistamento",
+      "livery": "isabella",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

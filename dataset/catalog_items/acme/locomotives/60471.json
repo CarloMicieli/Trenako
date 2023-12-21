@@ -1,79 +1,73 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60471",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Set formato dalla locomotiva elettrica E.633.003 in livrea provvisoria grigia con respingenti arancioni e la locomotiva elettrica E.444.051 (non motorizzata), come in servizio da Marzo a Giugno del 1980. Edizione Limitata 250 pezzi, con certificato numerato.",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60471",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Set formato dalla locomotiva elettrica E.633.003 in livrea provvisoria grigia con respingenti arancioni e la locomotiva elettrica E.444.051 (non motorizzata), come in servizio da Marzo a Giugno del 1980. Edizione Limitata 250 pezzi, con certificato numerato."
   },
-  "details" : {
-    "it" : "Pantografi: E 633 Faiveley, E444 FS 52, Motore centrale con volani e trasmissione cardanica su entrambi i carrelli (E633), presa per decoder a 21 pin con predisposizione sound, fari illuminati bianco/rosso anche il terzo faro con micro led.",
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Pantografi: E 633 Faiveley, E444 FS 52, Motore centrale con volani e trasmissione cardanica su entrambi i carrelli (E633), presa per decoder a 21 pin con predisposizione sound, fari illuminati bianco/rosso anche il terzo faro con micro led."
   },
-  "delivery_date" : "2016",
-  "availability_status" : "AVAILABLE",
-  "count" : 2,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E633",
-    "road_number" : "E633 003",
-    "series" : "PROTOTIPO",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IV",
-    "livery" : "provvisoria grigia",
-    "depot" : null,
-    "dcc_interface" : "MTC_21",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 206.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2016",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E633",
+      "road_number": "E633 003",
+      "series": "PROTOTIPO",
+      "livery": "provvisoria grigia",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
+      "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
     },
-    "is_dummy" : false
-  }, {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E444",
-    "road_number" : "E444 051",
-    "series" : null,
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IV",
-    "livery" : "",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E444",
+      "road_number": "E444 051",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : true
-  } ]
+      "control": "DCC_READY",
+      "is_dummy": true
+    }
+  ],
+  "count": 2
 }

@@ -1,49 +1,48 @@
 {
-  "brand" : "ViTrains",
-  "item_number" : "2197",
-  "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Rimorchiata Le 840 costruzione Pozzuoli, castano/isabella ",
-    "en" : null
+  "brand": "ViTrains",
+  "item_number": "2197",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "IIIb",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Rimorchiata Le 840 costruzione Pozzuoli, castano/isabella "
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2010",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "type_name" : "Le 840",
-    "road_number" : "Le 840 011",
-    "series" : null,
-    "electric_multiple_unit_type" : "TRAILER_CAR",
-    "railway" : "FS",
-    "epoch" : "IIIb",
-    "livery" : "castano/isabella",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : "NO_DCC",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 322.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": "2010",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "railway": "FS",
+      "type_name": "Le 840",
+      "road_number": "Le 840 011",
+      "livery": "castano/isabella",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "NO_DCC",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

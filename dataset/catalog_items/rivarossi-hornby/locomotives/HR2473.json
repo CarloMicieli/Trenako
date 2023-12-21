@@ -1,0 +1,49 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2473",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IIIa",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Livrea nera, telaio rosso vagone, panconi rossi, marcature bianche"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2013",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "STEAM_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "831",
+      "road_number": "831 001",
+      "series": "(ex S100 USATC)",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

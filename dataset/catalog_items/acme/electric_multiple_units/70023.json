@@ -1,49 +1,49 @@
 {
-  "brand" : "ACME",
-  "item_number" : "70023",
-  "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Carrozza ristorante per ETR500 “AV” grigio/argento, logo FS Trenitalia verde/blu (carrozza 5)",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "70023",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "Vb",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Carrozza ristorante per ETR500 “AV” grigio/argento, logo FS Trenitalia verde/blu (carrozza 5)"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2012",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "type_name" : "ETR 500",
-    "road_number" : "90 83 5 889 019-6",
-    "series" : "POLITENSIONE",
-    "electric_multiple_unit_type" : "POWER_CAR",
-    "railway" : "FS",
-    "epoch" : "Vb",
-    "livery" : "livrea “AV” grigio/argento",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : "NO_DCC",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 303.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": "2012",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "electric_multiple_unit_type": "POWER_CAR",
+      "railway": "FS",
+      "type_name": "ETR 500",
+      "road_number": "90 83 5 889 019-6",
+      "series": "POLITENSIONE",
+      "livery": "livrea “AV” grigio/argento",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "NO_DCC",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

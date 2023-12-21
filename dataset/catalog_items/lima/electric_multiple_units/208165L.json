@@ -1,0 +1,69 @@
+{
+  "brand": "Lima",
+  "item_number": "208165L",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Verde/grigio con riga rossa, finestrini frontali piccoli"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "1991",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "electric_multiple_unit_type": "POWER_CAR",
+      "railway": "FS",
+      "type_name": "ALe 601",
+      "road_number": "ALe 601 052",
+      "livery": "verde/grigio",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "is_dummy": false
+    },
+    {
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "railway": "FS",
+      "type_name": "Le 601",
+      "road_number": "Le 601 025",
+      "livery": "verde/grigio",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
+      },
+      "is_dummy": false
+    }
+  ],
+  "count": 2
+}

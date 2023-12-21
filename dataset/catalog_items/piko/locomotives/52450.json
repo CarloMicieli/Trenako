@@ -1,49 +1,50 @@
 {
-  "brand" : "Piko",
-  "item_number" : "52450",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva diesel D141 1003 Dep. Loc Trieste C.le nella livrea verde fasce gialle, corrimani gialli senza battipiede",
-    "en" : null
+  "brand": "Piko",
+  "item_number": "52450",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva diesel D141 1003 Dep. Loc Trieste C.le nella livrea verde fasce gialle, corrimani gialli senza battipiede"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : null,
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "D141",
-    "road_number" : "D141 1003",
-    "series" : null,
-    "locomotive_type" : "DIESEL_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IV",
-    "livery" : "verde/fasce gialle",
-    "depot" : "Trieste",
-    "dcc_interface" : "PLUX_22",
-    "control" : "DCC_SOUND",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 152.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": null,
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "D141",
+      "road_number": "D141 1003",
+      "depot": "Trieste",
+      "livery": "verde/fasce gialle",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_SOUND",
+      "dcc_interface": "PLUX_22",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

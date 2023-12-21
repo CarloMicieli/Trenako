@@ -1,169 +1,137 @@
 {
-  "brand" : "Lima",
-  "item_number" : "149781",
-  "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Set 5 elementi livrea Alitalia bianca fascia verde (art. 208353 + 2x 309658 + 208354)",
-    "en" : null
+  "brand": "Lima",
+  "item_number": "149781",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "Va",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Set 5 elementi livrea Alitalia bianca fascia verde (art. 208353 + 2x 309658 + 208354)"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : null,
-  "availability_status" : "AVAILABLE",
-  "count" : 5,
-  "rolling_stocks" : [ {
-    "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "type_name" : "ALe 601",
-    "road_number" : "ALe 601 050",
-    "series" : "prima serie",
-    "electric_multiple_unit_type" : "POWER_CAR",
-    "railway" : "FS",
-    "epoch" : "Va",
-    "livery" : "Alitalia",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : null,
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": null,
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "electric_multiple_unit_type": "POWER_CAR",
+      "railway": "FS",
+      "type_name": "ALe 601",
+      "road_number": "ALe 601 050",
+      "series": "prima serie",
+      "livery": "Alitalia",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
+      "is_dummy": false
     },
-    "is_dummy" : false
-  }, {
-    "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "type_name" : "Le 601",
-    "road_number" : "Le 601 011",
-    "series" : null,
-    "electric_multiple_unit_type" : "TRAILER_CAR",
-    "railway" : "FS",
-    "epoch" : "Va",
-    "livery" : "Alitalia",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : null,
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+    {
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "railway": "FS",
+      "type_name": "Le 601",
+      "road_number": "Le 601 011",
+      "livery": "Alitalia",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
+      "is_dummy": false
     },
-    "is_dummy" : false
-  }, {
-    "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "type_name" : "ALe 481",
-    "road_number" : "Le 481 003",
-    "series" : null,
-    "electric_multiple_unit_type" : "TRAILER_CAR",
-    "railway" : "FS",
-    "epoch" : "Va",
-    "livery" : "Alitalia",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : null,
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+    {
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "railway": "FS",
+      "type_name": "ALe 481",
+      "road_number": "Le 481 003",
+      "livery": "Alitalia",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
+      "is_dummy": false
     },
-    "is_dummy" : false
-  }, {
-    "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "type_name" : "ALe 481",
-    "road_number" : "Le 481 003",
-    "series" : null,
-    "electric_multiple_unit_type" : "TRAILER_CAR",
-    "railway" : "FS",
-    "epoch" : "Va",
-    "livery" : "Alitalia",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : null,
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+    {
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "railway": "FS",
+      "type_name": "ALe 481",
+      "road_number": "Le 481 003",
+      "livery": "Alitalia",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
+      "is_dummy": false
     },
-    "is_dummy" : false
-  }, {
-    "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "type_name" : "ALe 601",
-    "road_number" : "ALe 601 055",
-    "series" : "prima serie",
-    "electric_multiple_unit_type" : "POWER_CAR",
-    "railway" : "FS",
-    "epoch" : "Va",
-    "livery" : "Alitalia",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : null,
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+    {
+      "electric_multiple_unit_type": "POWER_CAR",
+      "railway": "FS",
+      "type_name": "ALe 601",
+      "road_number": "ALe 601 055",
+      "series": "prima serie",
+      "livery": "Alitalia",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : true
-  } ]
+      "is_dummy": true
+    }
+  ],
+  "count": 5
 }

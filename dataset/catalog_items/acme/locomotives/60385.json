@@ -1,49 +1,49 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60385",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva elettrica FS E 402B 114 nella livrea \"Frecciabianca\" bianco/grigio scuro fasce rosse, senza loghi, marcatura UIC",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60385",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva elettrica FS E 402B 114 nella livrea \"Frecciabianca\" bianco/grigio scuro fasce rosse, senza loghi, marcatura UIC"
   },
-  "details" : {
-    "it" : "Modello superdettagliato, motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione sound, fari illuminati anche il terzo faro con attivazione sia in analogico che in digitale con le funzioni F1 cabina A F2 cabina B.",
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Modello superdettagliato, motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione sound, fari illuminati anche il terzo faro con attivazione sia in analogico che in digitale con le funzioni F1 cabina A F2 cabina B."
   },
-  "delivery_date" : "2017",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E402 B",
-    "road_number" : "E402 114",
-    "series" : null,
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "VI",
-    "livery" : "Frecciabianca",
-    "depot" : null,
-    "dcc_interface" : "MTC_21",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 223.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2017",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E402 B",
+      "road_number": "E402 114",
+      "livery": "Frecciabianca",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

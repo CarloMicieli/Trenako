@@ -1,49 +1,51 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60280",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva elettrica FS E 656 569 \"Caimano\" (6a serie) nella livrea di origine blu/grigio, smorzatori, respingenti rettangolari, striscianti curvi, deposito Ancona",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60280",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "Va",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva elettrica FS E 656 569 \"Caimano\" (6a serie) nella livrea di origine blu/grigio, smorzatori, respingenti rettangolari, striscianti curvi, deposito Ancona"
   },
-  "details" : {
-    "it" : "Bellissimo e dettagliatissimo locomotore noto come \"Caimano\"; viene riprodotta la 6 serie caratterizzata dai frontali senza gocciolatoio e dai respingenti rettangolari; al vero dotato di telecomando per trainare o spingere convogli reversibili, tipo navetta, senza perditempo di cambio del locomotore. Un cenno al bellissimo imperiale con riportati molti componenti e, soprattutto, con i nuovi pantografi (ACME) tipo 52, completi di commutazione di alimentazione per l'eventuale presa aerea col sistema analogico. Motore a 5 poli con trasmissione cardanica su ambedue i carrelli di estremità; luci bianche e rosse, compreso terzo faro, con inversione automatica secondo il senso di marcia. Il modello è predisposto per il sistema DCC mediante installazione di decoder con presa a 8 poli",
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Bellissimo e dettagliatissimo locomotore noto come \"Caimano\"; viene riprodotta la 6 serie caratterizzata dai frontali senza gocciolatoio e dai respingenti rettangolari; al vero dotato di telecomando per trainare o spingere convogli reversibili, tipo navetta, senza perditempo di cambio del locomotore. Un cenno al bellissimo imperiale con riportati molti componenti e, soprattutto, con i nuovi pantografi (ACME) tipo 52, completi di commutazione di alimentazione per l'eventuale presa aerea col sistema analogico. Motore a 5 poli con trasmissione cardanica su ambedue i carrelli di estremità; luci bianche e rosse, compreso terzo faro, con inversione automatica secondo il senso di marcia. Il modello è predisposto per il sistema DCC mediante installazione di decoder con presa a 8 poli"
   },
-  "delivery_date" : "2012",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E656",
-    "road_number" : "E656 569",
-    "series" : "SESTA SERIE navetta",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "Va",
-    "livery" : "blu/grigio",
-    "depot" : "Ancona",
-    "dcc_interface" : "NEM_652",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 210.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2012",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E656",
+      "road_number": "E656 569",
+      "series": "SESTA SERIE navetta",
+      "depot": "Ancona",
+      "livery": "blu/grigio",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "NEM_652",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

@@ -1,79 +1,69 @@
 {
-  "brand" : "Lima",
-  "item_number" : "208421",
-  "category" : "ELECTRIC_MULTIPLE_UNITS",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Verde/grigio, 1a serie, finestrini lunghi, nuovi pittogrammi, scaricatori a corna",
-    "en" : null
+  "brand": "Lima",
+  "item_number": "208421",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "IV/V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Verde/grigio, 1a serie, finestrini lunghi, nuovi pittogrammi, scaricatori a corna"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "1994",
-  "availability_status" : "AVAILABLE",
-  "count" : 2,
-  "rolling_stocks" : [ {
-    "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "type_name" : "ALe 601",
-    "road_number" : "ALe 601 032",
-    "series" : null,
-    "electric_multiple_unit_type" : "POWER_CAR",
-    "railway" : "FS",
-    "epoch" : "IV/V",
-    "livery" : "verde/grigio",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : null,
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": "1994",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "electric_multiple_unit_type": "POWER_CAR",
+      "railway": "FS",
+      "type_name": "ALe 601",
+      "road_number": "ALe 601 032",
+      "livery": "verde/grigio",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
+      "is_dummy": false
     },
-    "is_dummy" : false
-  }, {
-    "category" : "ELECTRIC_MULTIPLE_UNIT",
-    "type_name" : "Le 601",
-    "road_number" : "Le 601 007",
-    "series" : null,
-    "electric_multiple_unit_type" : "TRAILER_CAR",
-    "railway" : "FS",
-    "epoch" : "IV/V",
-    "livery" : "verde/grigio",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : null,
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+    {
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "railway": "FS",
+      "type_name": "Le 601",
+      "road_number": "Le 601 007",
+      "livery": "verde/grigio",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "is_dummy": false
+    }
+  ],
+  "count": 2
 }

@@ -1,49 +1,49 @@
 {
-  "brand" : "Roco",
-  "item_number" : "72158",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Nero/rosso, cerchioni bianchi, marcatura a biacca, 1 fanale alto, carbone",
-    "en" : null
+  "brand": "Roco",
+  "item_number": "72158",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IIIa",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Nero/rosso, cerchioni bianchi, marcatura a biacca, 1 fanale alto, carbone"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2017",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "736",
-    "road_number" : "736.211",
-    "series" : "(ex S160 USATC)",
-    "locomotive_type" : "STEAM_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IIIa",
-    "livery" : "",
-    "depot" : null,
-    "dcc_interface" : null,
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : null
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": "2017",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "STEAM_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "736",
+      "road_number": "736.211",
+      "series": "(ex S160 USATC)",
+      "livery": "",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

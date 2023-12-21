@@ -1,49 +1,51 @@
 {
-  "brand" : "Piko",
-  "item_number" : "52844",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Arancio fasce gialle, logo TV, corrimani con battipiede, dep. Catania (52845 DCC)",
-    "en" : null
+  "brand": "Piko",
+  "item_number": "52844",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "Vb",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Arancio fasce gialle, logo TV, corrimani con battipiede, dep. Catania (52845 DCC)"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2020",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "D145",
-    "road_number" : "D145 2016",
-    "series" : "Serie 2000 TIBB",
-    "locomotive_type" : "DIESEL_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "Vb",
-    "livery" : "arancio/fasce gialle",
-    "depot" : "Catania",
-    "dcc_interface" : "PLUX_22",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 152.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : null,
-        "close_couplers" : "NO",
-        "digital_shunting" : "NO"
+  "delivery_date": "2020",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "D145",
+      "road_number": "D145 2016",
+      "series": "Serie 2000 TIBB",
+      "depot": "Catania",
+      "livery": "arancio/fasce gialle",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "PLUX_22",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

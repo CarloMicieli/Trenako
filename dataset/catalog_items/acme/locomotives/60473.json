@@ -1,49 +1,50 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60473",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva elettrica delle Ferrovie dello Stato E632 001 \"Tigre\" ep.IV nella livrea blu/grigio senza logotipo \"Tigre\", senza vomeri e pantografi monobraccio Faiveley.Nello stato di servizio a partire dal luglio 1981.",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60473",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IVb",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva elettrica delle Ferrovie dello Stato E632 001 \"Tigre\" ep.IV nella livrea blu/grigio senza logotipo \"Tigre\", senza vomeri e pantografi monobraccio Faiveley.Nello stato di servizio a partire dal luglio 1981."
   },
-  "details" : {
-    "it" : "Pantografi monobraccio Faiveley, nello stato 1981. Pantografi FS 52, motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione sound, fari illuminati bianco/rosso anche il terzo faro con micro led.",
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Pantografi monobraccio Faiveley, nello stato 1981. Pantografi FS 52, motore centrale con volani e trasmissione cardanica su entrambi i carrelli, presa per decoder a 21 pin con predisposizione sound, fari illuminati bianco/rosso anche il terzo faro con micro led."
   },
-  "delivery_date" : "2017",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "E633",
-    "road_number" : "E632 001",
-    "series" : "prototipo",
-    "locomotive_type" : "ELECTRIC_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IVb",
-    "livery" : "blu/grigio",
-    "depot" : null,
-    "dcc_interface" : "MTC_21",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 206.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2017",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E633",
+      "road_number": "E632 001",
+      "series": "prototipo",
+      "livery": "blu/grigio",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }

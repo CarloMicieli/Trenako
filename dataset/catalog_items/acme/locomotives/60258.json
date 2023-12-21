@@ -1,49 +1,49 @@
 {
-  "brand" : "ACME",
-  "item_number" : "60258",
-  "category" : "LOCOMOTIVES",
-  "scale" : "H0",
-  "power_method" : "DC",
-  "description" : {
-    "it" : "Locomotiva Diesel elettrica da manovra pesante \"Truman\" Ne 120 036 delle Ferrovie dello Stato con cabina corazzata e quattro marmitte, ex USATC, nella livrea castano adottata negli anni Cinquanta, 4 marmitte, fanali su pancone",
-    "en" : null
+  "brand": "ACME",
+  "item_number": "60258",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IIIa",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Locomotiva Diesel elettrica da manovra pesante \"Truman\" Ne 120 036 delle Ferrovie dello Stato con cabina corazzata e quattro marmitte, ex USATC, nella livrea castano adottata negli anni Cinquanta, 4 marmitte, fanali su pancone"
   },
-  "details" : {
-    "it" : null,
-    "en" : null
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
   },
-  "delivery_date" : "2019",
-  "availability_status" : "AVAILABLE",
-  "count" : 1,
-  "rolling_stocks" : [ {
-    "category" : "LOCOMOTIVE",
-    "class_name" : "Ne 120",
-    "road_number" : "Ne 120 036",
-    "series" : null,
-    "locomotive_type" : "DIESEL_LOCOMOTIVE",
-    "railway" : "FS",
-    "epoch" : "IIIa",
-    "livery" : "castano",
-    "depot" : null,
-    "dcc_interface" : "PLUX_22",
-    "control" : "DCC_READY",
-    "length_over_buffer" : {
-      "inches" : null,
-      "millimeters" : 153.0
-    },
-    "technical_specifications" : {
-      "minimum_radius" : 360.0,
-      "coupling" : {
-        "socket" : "NEM_362",
-        "close_couplers" : "YES",
-        "digital_shunting" : "NO"
+  "delivery_date": "2019",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "Ne 120",
+      "road_number": "Ne 120 036",
+      "livery": "castano",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "NO"
       },
-      "flywheel_fitted" : "NO",
-      "metal_body" : "NO",
-      "interior_lights" : "NO",
-      "lights" : "YES",
-      "spring_buffers" : "NO"
-    },
-    "is_dummy" : false
-  } ]
+      "control": "DCC_READY",
+      "dcc_interface": "PLUX_22",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
 }
