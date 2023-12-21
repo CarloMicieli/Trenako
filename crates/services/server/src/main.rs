@@ -1,20 +1,13 @@
 use configuration::Settings;
 use server::app;
+use server::tracing::init_tracing;
 use tokio::net::TcpListener;
-use tracing_subscriber::EnvFilter;
 
 #[tokio::main]
 async fn main() {
-    let subscriber = tracing_subscriber::fmt()
-        .with_target(false)
-        .with_thread_ids(false)
-        .with_thread_names(true)
-        .with_env_filter(EnvFilter::from_default_env())
-        .json()
-        .finish();
-    tracing::subscriber::set_global_default(subscriber).unwrap();
-
     let settings = Settings::load().expect("Failed to read configuration");
+    init_tracing(&settings.logging);
+
     let listener = TcpListener::bind(settings.address())
         .await
         .expect("Failed to bind port");

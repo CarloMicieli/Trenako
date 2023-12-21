@@ -1,5 +1,5 @@
 use crate::common::database::Database;
-use configuration::{ServerSettings, Settings};
+use configuration::{LoggingFormat, LoggingLevel, LoggingSettings, ServerSettings, Settings};
 use dockertest::{DockerTest, Source};
 use server::app;
 use sqlx::PgPool;
@@ -40,6 +40,10 @@ pub async fn spawn_app(postgres_port: u32) -> ServiceUnderTest {
             port: 0,
         },
         database: database_settings,
+        logging: LoggingSettings {
+            level: LoggingLevel::Error,
+            format: LoggingFormat::Compact,
+        },
     };
 
     let listener = TcpListener::bind("127.0.0.1:0")

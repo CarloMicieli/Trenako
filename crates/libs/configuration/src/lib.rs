@@ -13,6 +13,8 @@ pub struct Settings {
     pub database: DatabaseSettings,
     /// the HTTP server settings
     pub server: ServerSettings,
+    /// the logging and tracing settings
+    pub logging: LoggingSettings,
 }
 
 impl Settings {
@@ -35,6 +37,32 @@ impl Settings {
             .build()?;
         s.try_deserialize()
     }
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "snake_case")]
+pub enum LoggingFormat {
+    Full,
+    Compact,
+    Pretty,
+    Json,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+#[serde(rename_all = "snake_case")]
+pub enum LoggingLevel {
+    Debug,
+    Error,
+    Info,
+    Warn,
+    Trace,
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct LoggingSettings {
+    /// the logging format
+    pub format: LoggingFormat,
+    pub level: LoggingLevel,
 }
 
 /// It contains the server configuration
@@ -127,6 +155,10 @@ mod tests {
                     host: String::from("127.0.0.1"),
                     port: 8080,
                 },
+                logging: LoggingSettings {
+                    level: LoggingLevel::Debug,
+                    format: LoggingFormat::Full,
+                },
             };
 
             assert_eq!("127.0.0.1:8080", settings.address());
@@ -139,6 +171,10 @@ mod tests {
                 server: ServerSettings {
                     host: String::from("127.0.0.1"),
                     port: 8080,
+                },
+                logging: LoggingSettings {
+                    level: LoggingLevel::Debug,
+                    format: LoggingFormat::Full,
                 },
             };
 

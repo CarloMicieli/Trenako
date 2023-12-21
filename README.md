@@ -79,18 +79,20 @@ Starting the server (127.0.0.1:5000)...
 
 #### Environment variables
 
-| Variable                    | Description                            |
-|-----------------------------|----------------------------------------|
-| `SERVER__HOST`              | the server host name                   |
-| `SERVER__PORT`              | the server port number                 |
-| `DATABASE__NAME`            | the database name                      |
-| `DATABASE__USERNAME`        | the database username                  |
-| `DATABASE__PASSWORD`        | the database password                  |
-| `DATABASE__HOST`            | the database hostname                  |
-| `DATABASE__PORT`            | the database port number               |
-| `DATABASE__REQUIRE_SSL`     | the database connection requires SSL   |
-| `DATABASE__MIN_CONNECTIONS` | the database min number of connections |
-| `DATABASE__MAX_CONNECTIONS` | the database max number of connections |
+| Variable                    | Description                                                                    |
+|-----------------------------|--------------------------------------------------------------------------------|
+| `SERVER__HOST`              | the server host name                                                           |
+| `SERVER__PORT`              | the server port number                                                         |
+| `DATABASE__NAME`            | the database name                                                              |
+| `DATABASE__USERNAME`        | the database username                                                          |
+| `DATABASE__PASSWORD`        | the database password                                                          |
+| `DATABASE__HOST`            | the database hostname                                                          |
+| `DATABASE__PORT`            | the database port number                                                       |
+| `DATABASE__REQUIRE_SSL`     | the database connection requires SSL                                           |
+| `DATABASE__MIN_CONNECTIONS` | the database min number of connections                                         |
+| `DATABASE__MAX_CONNECTIONS` | the database max number of connections                                         |
+| `LOGGING__FORMAT`           | the logging format (allowed values: `json`, `compact` and `pretty`)            |
+| `LOGGING__LEVEL`            | the logging format (allowed values: `error`, `warn`, `info`, `debug`, `trace`) |
 
 ### Checks
 
