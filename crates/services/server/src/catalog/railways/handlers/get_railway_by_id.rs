@@ -10,6 +10,7 @@ use catalog::railways::railway_id::RailwayId;
 use data::catalog::railways::repositories::RailwaysRepository;
 use uuid::Uuid;
 
+#[tracing::instrument(name = "get_railway_by_id", skip(app_state))]
 pub async fn handle(
     Path(railway_id): Path<RailwayId>,
     State(app_state): State<AppState>,

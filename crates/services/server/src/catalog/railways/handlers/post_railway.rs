@@ -9,6 +9,7 @@ use catalog::railways::railway_request::RailwayRequest;
 use data::catalog::railways::repositories::RailwaysRepository;
 use uuid::Uuid;
 
+#[tracing::instrument(name = "create_railway", skip(app_state))]
 pub async fn handle(
     State(app_state): State<AppState>,
     Json(request): Json<RailwayRequest>,

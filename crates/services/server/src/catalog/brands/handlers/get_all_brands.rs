@@ -10,6 +10,7 @@ use common::queries::pagination::PageRequest;
 use data::catalog::brands::repositories::BrandsRepository;
 use uuid::Uuid;
 
+#[tracing::instrument(name = "get_all_brands", skip(app_state))]
 pub async fn handle(
     Query(_page_request): Query<PageRequest>,
     State(app_state): State<AppState>,

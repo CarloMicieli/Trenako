@@ -9,6 +9,7 @@ use catalog::catalog_items::commands::new_catalog_item::{create_new_catalog_item
 use data::catalog::catalog_item::repositories::{CatalogItemsRepository, RollingStocksRepository};
 use uuid::Uuid;
 
+#[tracing::instrument(name = "create_new_catalog_item", skip(app_state))]
 pub async fn handle(
     State(app_state): State<AppState>,
     Json(request): Json<CatalogItemRequest>,

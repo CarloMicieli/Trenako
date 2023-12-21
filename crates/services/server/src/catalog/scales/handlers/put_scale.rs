@@ -5,6 +5,7 @@ use axum::Json;
 use catalog::scales::scale_id::ScaleId;
 use catalog::scales::scale_request::ScaleRequest;
 
+#[tracing::instrument(name = "update_scale", skip(_app_state))]
 pub async fn handle(
     Path(_scale_id): Path<ScaleId>,
     State(_app_state): State<AppState>,

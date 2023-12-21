@@ -9,6 +9,7 @@ use catalog::scales::scale_request::ScaleRequest;
 use data::catalog::scales::repositories::ScalesRepository;
 use uuid::Uuid;
 
+#[tracing::instrument(name = "create_new_scale", skip(app_state))]
 pub async fn handle(
     State(app_state): State<AppState>,
     Json(request): Json<ScaleRequest>,

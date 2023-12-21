@@ -9,6 +9,7 @@ use catalog::brands::commands::new_brand::{create_new_brand, BrandCreationError}
 use data::catalog::brands::repositories::BrandsRepository;
 use uuid::Uuid;
 
+#[tracing::instrument(name = "create_new_brand", skip(app_state))]
 pub async fn handle(
     State(app_state): State<AppState>,
     Json(request): Json<BrandRequest>,

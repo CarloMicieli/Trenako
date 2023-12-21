@@ -10,6 +10,7 @@ use common::queries::pagination::PageRequest;
 use data::catalog::scales::repositories::ScalesRepository;
 use uuid::Uuid;
 
+#[tracing::instrument(name = "get_all_scales", skip(app_state))]
 pub async fn handle(
     Query(_page_request): Query<PageRequest>,
     State(app_state): State<AppState>,

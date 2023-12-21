@@ -10,6 +10,7 @@ use catalog::catalog_items::queries::find_catalog_item_by_id::find_catalog_item_
 use data::catalog::catalog_item::repositories::CatalogItemsRepository;
 use uuid::Uuid;
 
+#[tracing::instrument(name = "get_catalog_item_by_id", skip(app_state))]
 pub async fn handle(
     Path(catalog_item_id): Path<CatalogItemId>,
     State(app_state): State<AppState>,

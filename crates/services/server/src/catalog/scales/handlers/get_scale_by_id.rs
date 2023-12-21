@@ -10,6 +10,7 @@ use catalog::scales::scale_id::ScaleId;
 use data::catalog::scales::repositories::ScalesRepository;
 use uuid::Uuid;
 
+#[tracing::instrument(name = "get_scale_by_id", skip(app_state))]
 pub async fn handle(
     Path(scale_id): Path<ScaleId>,
     State(app_state): State<AppState>,

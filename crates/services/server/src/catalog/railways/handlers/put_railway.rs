@@ -5,6 +5,7 @@ use axum::Json;
 use catalog::brands::brand_request::BrandRequest;
 use catalog::railways::railway_id::RailwayId;
 
+#[tracing::instrument(name = "update_railway", skip(_app_state))]
 pub async fn handle(
     Path(_railway_id): Path<RailwayId>,
     State(_app_state): State<AppState>,
