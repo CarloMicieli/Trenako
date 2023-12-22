@@ -27,15 +27,16 @@ pub fn read_catalog_items(file_path: &str) -> Result<Vec<CatalogItemRequest>, an
                     record
                         .clone()
                         .try_into()
-                        .with_context(|| format!("LINE: {}", line))
+                        .with_context(|| format!("(at line {})", line))
                         .unwrap()
                 });
 
-                let rolling_stock: RollingStockRequest = record.try_into()?;
+                let rolling_stock: RollingStockRequest =
+                    record.try_into().with_context(|| format!("(at line {})", line))?;
                 catalog_item.rolling_stocks.push(rolling_stock);
             }
             Err(why) => {
-                eprintln!("LINE {} {:?}", line, why);
+                eprintln!("(at line {}) {:?}", line, why);
             }
         }
         line += 1;

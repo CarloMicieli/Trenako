@@ -18,6 +18,7 @@ use catalog::catalog_items::technical_specifications::{
 };
 use common::length::Length;
 use common::localized_text::LocalizedText;
+use common::measure_units::MeasureUnit;
 use rust_decimal::Decimal;
 use serde_derive::{Deserialize, Serialize};
 use std::str::FromStr;
@@ -65,10 +66,10 @@ impl TryInto<CatalogItemRequest> for CsvRecord {
             item_number: self.item_number.expect("the item number is required"),
             scale: self.scale,
             category: category_item_category(self.category.expect("the category is required")),
-            power_method: self.power_method.expect("missing power-method"),
+            power_method: self.power_method.expect("the power method is required"),
             epoch: self.epoch.expect("the epoch is required"),
             description: LocalizedText::with_italian(&self.description),
-            details: LocalizedText::default(),
+            details: LocalizedText::with_italian(&self.details),
             delivery_date: self.delivery_date,
             availability_status: self.availability,
             count: self.count.expect("the rolling stocks count is required"),
@@ -93,10 +94,17 @@ impl TryInto<RollingStockRequest> for CsvRecord {
     type Error = anyhow::Error;
 
     fn try_into(self) -> Result<RollingStockRequest, Self::Error> {
-        let tech_specs = technical_specification(&self);
-        let length = self.length.map(to_length_over_buffer);
+        let tech_specs = technical_specification(&self)?;
+        let length = if let Some(value) = self.length {
+            let length = to_length_over_buffer(value)?;
+            Some(length)
+        } else {
+            None
+        };
 
-        let rs = match self.category.expect("the category is required") {
+        let category = self.category.ok_or_else(|| anyhow!("the category is required"))?;
+
+        let rs = match category {
             RollingStockCategory::Locomotive => RollingStockRequest::LocomotiveRequest {
                 railway: self.railway,
                 livery: self.livery,
@@ -142,7 +150,8 @@ impl TryInto<RollingStockRequest> for CsvRecord {
                 road_number: self.road_number,
                 series: self.series,
                 depot: self.depot,
-                railcar_type: RailcarType::from_str(&self.subcategory)?,
+                railcar_type: RailcarType::from_str(&self.subcategory)
+                    .map_err(|_| anyhow!("railcar type is required"))?,
                 dcc_interface: self.dcc_interface,
                 control: self.control,
                 is_dummy: self.is_dummy,
@@ -156,7 +165,8 @@ impl TryInto<RollingStockRequest> for CsvRecord {
                 road_number: self.road_number,
                 series: self.series,
                 depot: self.depot,
-                electric_multiple_unit_type: ElectricMultipleUnitType::from_str(&self.subcategory)?,
+                electric_multiple_unit_type: ElectricMultipleUnitType::from_str(&self.subcategory)
+                    .map_err(|_| anyhow!("electric multiple unit type is required"))?,
                 dcc_interface: self.dcc_interface,
                 control: self.control,
                 is_dummy: self.is_dummy,
@@ -166,16 +176,22 @@ impl TryInto<RollingStockRequest> for CsvRecord {
     }
 }
 
-fn to_length_over_buffer(value: u16) -> LengthOverBuffers {
+fn to_length_over_buffer(value: u16) -> Result<LengthOverBuffers, anyhow::Error> {
     let value = Decimal::new(value as i64, 0);
-    LengthOverBuffers::from_millimeters(Length::Millimeters(value))
+    let length = Length::try_new(value, MeasureUnit::Millimeters)?;
+    Ok(LengthOverBuffers::from_millimeters(length))
 }
 
-fn technical_specification(record: &CsvRecord) -> Option<TechnicalSpecifications> {
+fn technical_specification(record: &CsvRecord) -> Result<Option<TechnicalSpecifications>, anyhow::Error> {
+    let minimum_radius = if let Some(radius) = record.minimum_radius {
+        let min_radius = radius_from_u16(radius)?;
+        Some(min_radius)
+    } else {
+        None
+    };
+
     let tech_specs = TechnicalSpecifications {
-        minimum_radius: record
-            .minimum_radius
-            .map(|radius| Radius::from_millimeters(Decimal::new(radius as i64, 0)).unwrap()),
+        minimum_radius,
         coupling: record.couplers.map(|c| coupling(&c)),
         flywheel_fitted: record.flywheel_fitted,
         metal_body: record.metal_body,
@@ -183,7 +199,11 @@ fn technical_specification(record: &CsvRecord) -> Option<TechnicalSpecifications
         lights: record.lights,
         spring_buffers: record.spring_buffers,
     };
-    Some(tech_specs)
+    Ok(Some(tech_specs))
+}
+
+fn radius_from_u16(input: u16) -> Result<Radius, anyhow::Error> {
+    Radius::from_millimeters(Decimal::new(input as i64, 0)).map_err(|_| anyhow!("invalid value for a minimum radius"))
 }
 
 fn coupling(socket: &CouplingSocket) -> Coupling {
