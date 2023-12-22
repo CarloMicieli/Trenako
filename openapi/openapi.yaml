@@ -2082,7 +2082,7 @@ components:
         epoch:
           $ref: "#/components/schemas/Epoch"
         delivery_date:
-          description: this catalog item delivery date (either the year "yyyy" or the quarter "yyyy/q[1-4]")
+          description: this catalog item delivery date (either the year "yyyy", the yearly month "yyyy/[1-12]" or the quarter "yyyy/q[1-4]")
           type: string
           example: 2022/Q1
         availability_status:
@@ -2190,7 +2190,7 @@ components:
         epoch:
           $ref: "#/components/schemas/Epoch"
         delivery_date:
-          description: this catalog item delivery date (either the year "yyyy" or the quarter "yyyy/q[1-4]")
+          description: this catalog item delivery date (either the year "yyyy", the yearly month "yyyy/[1-12]" or the quarter "yyyy/q[1-4]")
           type: string
           minLength: 4
           maxLength: 7

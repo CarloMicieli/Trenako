@@ -10,6 +10,8 @@ use thiserror::Error;
 
 /// The delivery date quarter number
 pub type Quarter = u8;
+/// The delivery date month number
+pub type Month = u8;
 /// The delivery date year
 pub type Year = i32;
 
@@ -20,17 +22,24 @@ pub enum DeliveryDate {
     ByYear(Year),
     /// A delivery date with year and quarter (ie, _"2022/Q1"_)
     ByQuarter(Year, Quarter),
+    /// A delivery date with year and month (ie, "2022/12")
+    ByYearMonth(Year, Month),
 }
 
 impl DeliveryDate {
-    /// Creates a new delivery date without the quarter
+    /// Creates a new delivery date without the quarter nor month
     pub fn by_year(year: Year) -> Self {
         DeliveryDate::ByYear(year)
     }
 
-    /// Creates a new delivery date with the quarter information
+    /// Creates a new delivery date with the quarter/year information
     pub fn by_quarter(year: Year, quarter: Quarter) -> Self {
         DeliveryDate::ByQuarter(year, quarter)
+    }
+
+    /// Creates a new delivery date with the month/year information
+    pub fn by_month(year: Year, month: Month) -> Self {
+        DeliveryDate::ByQuarter(year, month)
     }
 
     /// Returns the year component from this delivery date
@@ -38,6 +47,7 @@ impl DeliveryDate {
         match self {
             DeliveryDate::ByQuarter(y, _) => *y,
             DeliveryDate::ByYear(y) => *y,
+            DeliveryDate::ByYearMonth(y, _) => *y,
         }
     }
 
@@ -46,6 +56,16 @@ impl DeliveryDate {
         match self {
             DeliveryDate::ByQuarter(_, q) => Some(*q),
             DeliveryDate::ByYear(_) => None,
+            DeliveryDate::ByYearMonth(_, _) => None,
+        }
+    }
+
+    /// Returns the (optional) month component from this delivery date
+    pub fn month(&self) -> Option<Month> {
+        match self {
+            DeliveryDate::ByQuarter(_, _) => None,
+            DeliveryDate::ByYear(_) => None,
+            DeliveryDate::ByYearMonth(_, m) => Some(*m),
         }
     }
 
@@ -74,6 +94,21 @@ impl DeliveryDate {
 
         Ok(quarter)
     }
+
+    fn parse_month(s: &str) -> Result<Quarter, DeliveryDateParseError> {
+        if s.len() != 1 && s.len() != 2 {
+            return Err(DeliveryDateParseError::InvalidMonthValue);
+        }
+
+        let month = s
+            .parse::<Month>()
+            .map_err(|_| DeliveryDateParseError::InvalidMonthValue)?;
+        if !(1..=12).contains(&month) {
+            return Err(DeliveryDateParseError::InvalidMonthValue);
+        }
+
+        Ok(month)
+    }
 }
 
 impl str::FromStr for DeliveryDate {
@@ -84,7 +119,7 @@ impl str::FromStr for DeliveryDate {
             return Err(DeliveryDateParseError::EmptyValue);
         }
 
-        if s.contains('/') {
+        if s.contains("/Q") {
             let tokens: Vec<&str> = s.split_terminator('/').collect();
             if tokens.len() != 2 {
                 return Err(DeliveryDateParseError::InvalidDeliveryDateFormat);
@@ -93,6 +128,15 @@ impl str::FromStr for DeliveryDate {
             let year = DeliveryDate::parse_year(tokens[0])?;
             let quarter = DeliveryDate::parse_quarter(tokens[1])?;
             Ok(DeliveryDate::ByQuarter(year, quarter))
+        } else if s.contains('/') {
+            let tokens: Vec<&str> = s.split_terminator('/').collect();
+            if tokens.len() != 2 {
+                return Err(DeliveryDateParseError::InvalidDeliveryDateFormat);
+            }
+
+            let year = DeliveryDate::parse_year(tokens[0])?;
+            let month = DeliveryDate::parse_month(tokens[1])?;
+            Ok(DeliveryDate::ByYearMonth(year, month))
         } else {
             let year = DeliveryDate::parse_year(s)?;
             Ok(DeliveryDate::ByYear(year))
@@ -105,6 +149,7 @@ impl fmt::Display for DeliveryDate {
         match self {
             DeliveryDate::ByQuarter(y, q) => write!(f, "{y}/Q{q}"),
             DeliveryDate::ByYear(y) => y.fmt(f),
+            DeliveryDate::ByYearMonth(y, m) => write!(f, "{y}/{m:0>2}"),
         }
     }
 }
@@ -159,6 +204,8 @@ pub enum DeliveryDateParseError {
     InvalidYearValue,
     #[error("Delivery date quarter component is not valid")]
     InvalidQuarterValue,
+    #[error("Delivery date month component is not valid")]
+    InvalidMonthValue,
 }
 
 #[cfg(test)]
@@ -171,35 +218,57 @@ mod tests {
         use rstest::rstest;
 
         #[test]
-        fn it_should_parse_string_as_delivery_dates() {
-            let dd1 = "2020/Q1".parse::<DeliveryDate>();
-            let dd2 = "2020".parse::<DeliveryDate>();
+        fn it_should_parse_year_string_as_delivery_dates() {
+            let dd = "2020".parse::<DeliveryDate>();
+            assert!(dd.is_ok());
 
-            assert!(dd1.is_ok());
+            let dd = dd.unwrap();
+            assert_eq!(2020, dd.year());
+            assert_eq!(None, dd.quarter());
+            assert_eq!(None, dd.month());
+        }
 
-            let dd1_val = dd1.unwrap();
-            assert_eq!(2020, dd1_val.year());
-            assert_eq!(Some(1), dd1_val.quarter());
+        #[test]
+        fn it_should_parse_year_quarter_string_as_delivery_dates() {
+            let dd = "2020/Q1".parse::<DeliveryDate>();
+            assert!(dd.is_ok());
 
-            assert!(dd2.is_ok());
+            let dd = dd.unwrap();
+            assert_eq!(2020, dd.year());
+            assert_eq!(Some(1), dd.quarter());
+            assert_eq!(None, dd.month());
+        }
 
-            let dd2_val = dd2.unwrap();
-            assert_eq!(2020, dd2_val.year());
-            assert_eq!(None, dd2_val.quarter());
+        #[rstest]
+        #[case("2020/1", 1)]
+        #[case("2020/11", 11)]
+        fn it_should_parse_year_month_string_as_delivery_dates(#[case] input: &str, #[case] expected: u8) {
+            let dd = input.parse::<DeliveryDate>();
+            assert!(dd.is_ok());
+
+            let dd = dd.unwrap();
+            assert_eq!(2020, dd.year());
+            assert_eq!(None, dd.quarter());
+            assert_eq!(Some(expected), dd.month());
         }
 
         #[test]
         fn it_should_produce_string_representations_from_delivery_dates() {
             let dd1 = "2020/Q1".parse::<DeliveryDate>().unwrap();
             let dd2 = "2020".parse::<DeliveryDate>().unwrap();
+            let dd3 = "2020/11".parse::<DeliveryDate>().unwrap();
+            let dd4 = "2020/2".parse::<DeliveryDate>().unwrap();
 
             assert_eq!("2020/Q1", dd1.to_string());
             assert_eq!("2020", dd2.to_string());
+            assert_eq!("2020/11", dd3.to_string());
+            assert_eq!("2020/02", dd4.to_string());
         }
 
         #[rstest]
         #[case("2020/Q1", r#""2020/Q1""#)]
         #[case("2020", r#""2020""#)]
+        #[case("2020/11", r#""2020/11""#)]
         fn it_should_serialize_delivery_dates(#[case] input: &str, #[case] expected: &str) {
             let dd1 = input.parse::<DeliveryDate>().unwrap();
             let result = serde_json::to_string(&dd1).unwrap();
@@ -215,6 +284,8 @@ mod tests {
         #[case("1899/Q1", DeliveryDateParseError::InvalidYearValue)]
         #[case("3000/Q1", DeliveryDateParseError::InvalidYearValue)]
         #[case("3000/Q1/?", DeliveryDateParseError::InvalidDeliveryDateFormat)]
+        #[case("2022/13", DeliveryDateParseError::InvalidMonthValue)]
+        #[case("2022/0", DeliveryDateParseError::InvalidMonthValue)]
         fn it_should_fail_to_parse_invalid_delivery_dates(
             #[case] input: &str,
             #[case] expected: DeliveryDateParseError,
@@ -229,6 +300,7 @@ mod tests {
             let test_struct = TestStruct {
                 just_year: DeliveryDate::ByYear(2022),
                 with_quarter: DeliveryDate::ByQuarter(2022, 3),
+                with_month: DeliveryDate::ByYearMonth(2022, 11),
             };
 
             let json = serde_json::json!(test_struct);
@@ -241,6 +313,7 @@ mod tests {
         pub struct TestStruct {
             pub just_year: DeliveryDate,
             pub with_quarter: DeliveryDate,
+            pub with_month: DeliveryDate,
         }
     }
 }
