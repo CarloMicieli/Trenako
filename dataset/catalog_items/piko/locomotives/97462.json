@@ -1,0 +1,55 @@
+{
+  "brand": "Piko",
+  "item_number": "97462",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Locomotiva elettrica E 428 137 di 2° Serie semiaerodinamica, nella livrea castano e isabella delle FS, ep. IV. Deposito di Mestre."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/12",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVE",
+      "railway": "FS",
+      "livery": "castano/isabella",
+      "length_over_buffers": {
+        "inches": 8.5826818,
+        "millimeters": 218.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": "NO",
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "class_name": "TERZA SERIE",
+      "road_number": "E.428 137",
+      "series": null,
+      "depot": "Mestre",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "dcc_interface": "PLUX_22",
+      "control": "DCC_SOUND",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

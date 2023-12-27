@@ -1,0 +1,49 @@
+{
+  "brand": "Os.kar.",
+  "item_number": "3305",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "III/IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Carrozza Tipo 1951R di 2 classe (Cz 38352), ambientazione ante 1956 o successiva come vettura non ancora riclassata di 2. Castano e Isabella, marcatura FS gialla ombreggiata, con cifre di classe alluminio, ep. III-IV."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/11",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "castano/isabella",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Tipo 1951R",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "SECOND_CLASS"
+    }
+  ],
+  "count": 1
+}

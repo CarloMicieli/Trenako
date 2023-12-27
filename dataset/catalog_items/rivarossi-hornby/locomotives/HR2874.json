@@ -7,41 +7,47 @@
   "epoch": "V",
   "description": {
     "de": null,
-    "fr": null,
     "en": null,
-    "it": "Locomotiva elettrica E 424 nella livrea isabella, Breda, doppio coprigiunto, frontale con gocciolatoio, pantografo 42LR."
+    "fr": null,
+    "it": "FS, locomotiva elettrica E.424, livrea isabella, ep. V"
   },
   "details": {
     "de": null,
-    "fr": null,
     "en": null,
-    "it": null
+    "fr": null,
+    "it": ""
   },
-  "delivery_date": null,
+  "delivery_date": "2023/09",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "category": "LOCOMOTIVE",
       "railway": "FS",
-      "class_name": "E424",
-      "road_number": "",
       "livery": "isabella",
-      "length_over_buffers": null,
+      "length_over_buffers": {
+        "inches": 7.0078778,
+        "millimeters": 178.0
+      },
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
-          "socket": null,
-          "close_couplers": "NO",
+          "socket": "NEM_362",
+          "close_couplers": "YES",
           "digital_shunting": "NO"
         },
-        "flywheel_fitted": "NO",
-        "metal_body": "NO",
+        "flywheel_fitted": null,
+        "metal_body": null,
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "spring_buffers": null
       },
-      "control": "DCC_READY",
+      "class_name": "E.424",
+      "road_number": "E.424 015",
+      "series": null,
+      "depot": null,
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "dcc_interface": "MTC_21",
+      "control": "DCC_READY",
       "is_dummy": false
     }
   ],

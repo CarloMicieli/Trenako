@@ -1,0 +1,52 @@
+{
+  "brand": "ACME",
+  "item_number": "51182",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV/V",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "FS Carrozza bagagliaio-posta tipo 1952R, nell'ultima livrea grigio ardesia, ep. IV-V."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/11",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "grigio ardesia",
+      "length_over_buffers": {
+        "inches": 5.6692944,
+        "millimeters": 144.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Tipo 1952R",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": null
+    }
+  ],
+  "count": 1
+}

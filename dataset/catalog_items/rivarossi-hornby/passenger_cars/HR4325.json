@@ -1,0 +1,106 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR4325",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "FS, set di 3 carrozze, composto da 1 carrozza di 1a classe tipo 1946 Az13010 e 2 carrozze di 2a classe tipo 1946 Bz33010, livrea grigia, ep. IV"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/09",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "grigia",
+      "length_over_buffers": {
+        "inches": 10.3543363,
+        "millimeters": 263.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": null
+      },
+      "type_name": "Tipo 1946",
+      "road_number": "Az13010",
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "FIRST_CLASS"
+    },
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "grigia",
+      "length_over_buffers": {
+        "inches": 10.3543363,
+        "millimeters": 263.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": null
+      },
+      "type_name": "Tipo 1946",
+      "road_number": "Bz33010",
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "SECOND_CLASS"
+    },
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "grigia",
+      "length_over_buffers": {
+        "inches": 10.3543363,
+        "millimeters": 263.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": null
+      },
+      "type_name": "Tipo 1946",
+      "road_number": "Bz33010",
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "SECOND_CLASS"
+    }
+  ],
+  "count": 3
+}

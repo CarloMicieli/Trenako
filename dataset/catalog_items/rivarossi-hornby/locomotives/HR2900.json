@@ -1,0 +1,55 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2900",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Locomotiva Diesel da manovra tipo Effi Shunter 1000 nella livrea argento con strisce rosse delle FS ep. VI."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/09",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVE",
+      "railway": "Mercitalia",
+      "livery": "argento",
+      "length_over_buffers": {
+        "inches": 7.4409489,
+        "millimeters": 189.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": "NO",
+        "lights": null,
+        "spring_buffers": null
+      },
+      "class_name": "EffiShunter 1000",
+      "road_number": "744 024",
+      "series": null,
+      "depot": null,
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "dcc_interface": "MTC_21",
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

@@ -1,0 +1,51 @@
+{
+  "brand": "Lima Expert",
+  "item_number": "HL2666",
+  "scale": "H0",
+  "category": "RAILCARS",
+  "power_method": "DC",
+  "epoch": "V",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "FS, automotrice diesel ALn 668 3314, livrea pubblicitatia \"KIMBO\" bianca, vetri piani, epoca V"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q1",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "RAILCAR",
+      "railway": "FS",
+      "livery": "bianca KIMBO",
+      "length_over_buffers": {
+        "inches": 10.4330765,
+        "millimeters": 265.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": null,
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": null
+      },
+      "type_name": "ALn 668",
+      "road_number": "ALn 668 3314",
+      "series": null,
+      "depot": null,
+      "railcar_type": "POWER_CAR",
+      "dcc_interface": "NEM_652",
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

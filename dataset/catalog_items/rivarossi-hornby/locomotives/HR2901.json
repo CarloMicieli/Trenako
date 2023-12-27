@@ -9,7 +9,7 @@
     "de": null,
     "fr": null,
     "en": null,
-    "it": "Locomotiva elettrica E428 nella livrea castano/isabella, compressore meccanico, tamponi in gomma (S DCC Sound)"
+    "it": "Locomotiva elettrica E428 nella livrea castano/isabella, con compressore meccanico, tamponi in gomma"
   },
   "details": {
     "de": null,
@@ -17,17 +17,18 @@
     "en": null,
     "it": null
   },
-  "delivery_date": null,
+  "delivery_date": "2023/12",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
       "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
       "class_name": "E428",
-      "road_number": "",
+      "road_number": "E428 101",
       "series": "seconda serie con avancorpi",
       "livery": "castano/isabella",
-      "length_over_buffers": null,
+      "depot": "Milano Centrale",
+      "length_over_buffers": 222,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {

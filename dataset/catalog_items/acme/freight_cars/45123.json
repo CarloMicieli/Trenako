@@ -1,0 +1,75 @@
+{
+  "brand": "ACME",
+  "item_number": "45123",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "III",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Set di due carri FS Tipo P di cui uno con garitta entrambi con carico di casse mobili FS di varie dimensioni, così come in servizio in epoca III."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q1",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": {
+        "inches": 4.4094512,
+        "millimeters": 112.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "Tipo P",
+      "road_number": null,
+      "freight_car_type": null
+    },
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": {
+        "inches": 4.4094512,
+        "millimeters": 112.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "Tipo P",
+      "road_number": null,
+      "freight_car_type": null
+    }
+  ],
+  "count": 2
+}

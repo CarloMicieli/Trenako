@@ -1,0 +1,55 @@
+{
+  "brand": "ACME",
+  "item_number": "69122",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Locomotiva elettrica 645 047, livrea Isabella con vomere rosso, deposito locomotive di Milano smistamento, ep. IV."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVE",
+      "railway": "FS",
+      "livery": "isabella",
+      "length_over_buffers": {
+        "inches": 8.267721,
+        "millimeters": 210.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "class_name": "E 645",
+      "road_number": "E 645 047",
+      "series": "SECONDA SERIE",
+      "depot": "Milano Smistamento",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "dcc_interface": "MTC_21",
+      "control": "DCC_SOUND",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

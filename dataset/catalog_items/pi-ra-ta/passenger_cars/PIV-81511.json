@@ -1,0 +1,79 @@
+{
+  "brand": "Pi.Ra.Ta.",
+  "item_number": "PIV-81511",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Set di 2 Carrozze composto da una vettura di 2 KL. MDVC in livrea d'origine + una vettura di 2 KL. MDVE in livrea d' origine, ep. IV."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q2",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "MDVC",
+      "length_over_buffers": {
+        "inches": 11.9291403,
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "MDVC",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "SECOND_CLASS"
+    },
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "MDVE",
+      "length_over_buffers": {
+        "inches": 11.9291403,
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "MDVE",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "SECOND_CLASS"
+    }
+  ],
+  "count": 2
+}

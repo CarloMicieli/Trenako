@@ -1,0 +1,43 @@
+{
+  "brand": "Roco",
+  "item_number": "6600014",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Carro chiuso ad assi Ghks a passo lungo e tetto spiovente delle FS ep. IV"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/11",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Tipo Ghks",
+      "road_number": "21 83 165 1 326-4",
+      "freight_car_type": null
+    }
+  ],
+  "count": 1
+}

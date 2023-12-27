@@ -1,0 +1,51 @@
+{
+  "brand": "ACME",
+  "item_number": "79090",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Elettrotreno ETR 250 “Arlecchino”. Set di quattro elementi, stato anni settanta con terzo faro sul frontale."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/12",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": {
+        "inches": 44.094512,
+        "millimeters": 1120.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 450.0,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Etr 250",
+      "road_number": null,
+      "series": null,
+      "depot": null,
+      "electric_multiple_unit_type": "TRAIN_SET",
+      "dcc_interface": "MTC_21",
+      "control": "DCC_SOUND",
+      "is_dummy": false
+    }
+  ],
+  "count": 4
+}

@@ -1,0 +1,52 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR4370",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Set di 2 carrozze \"Corbellini\" 1947, livrea grigia, composto da 1 carrozza a 2 assi e 1 carrozza a 4 assi, ep. IV."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/08",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "grigio ardesia",
+      "length_over_buffers": {
+        "inches": 8.3464612,
+        "millimeters": 212.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Tipo 1947",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "SECOND_CLASS"
+    }
+  ],
+  "count": 2
+}

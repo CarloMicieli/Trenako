@@ -1,0 +1,55 @@
+{
+  "brand": "ACME",
+  "item_number": "69602",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "V/VI",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Locomotiva elettrica E 652 004 prototipo, con fanali aggettanti, in livrea XMPR con logo Trenitalia a 3 colori, con le antenne come in servizio durante gli anni 2020, ep. V-VI"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/09",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVE",
+      "railway": "FS",
+      "livery": "XMPR",
+      "length_over_buffers": {
+        "inches": 8.1102406,
+        "millimeters": 206.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "class_name": "E652",
+      "road_number": "E652 004",
+      "series": "PROTOTIPO",
+      "depot": "Verona",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "dcc_interface": "MTC_21",
+      "control": "DCC_SOUND",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

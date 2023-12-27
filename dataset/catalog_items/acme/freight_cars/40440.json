@@ -1,0 +1,50 @@
+{
+  "brand": "ACME",
+  "item_number": "40440",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Carro a sei assi Tipo Sa di proprietà della Società ITALSIDER S.p.A. per trasporto di lamiere in rotoli ed in bramme"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/09",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": "grigio",
+      "length_over_buffers": {
+        "inches": 7.5590592,
+        "millimeters": 192.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Tipo Sa",
+      "road_number": null,
+      "freight_car_type": null
+    }
+  ],
+  "count": 1
+}

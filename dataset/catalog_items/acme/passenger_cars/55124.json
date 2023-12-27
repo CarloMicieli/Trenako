@@ -1,0 +1,79 @@
+{
+  "brand": "ACME",
+  "item_number": "55124",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "III",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Set di due carrozze a tre assi del Tipo 1931R formato da una carrozza Ciy 34.000 ed una CDiy 67.000, entrambe di terza classe ed in livrea castano/Isabella."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q2",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "castano/Isabella",
+      "length_over_buffers": {
+        "inches": 5.905515,
+        "millimeters": 150.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "Tipo 1931R",
+      "road_number": "Ciy 34.000",
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "THIRD_CLASS"
+    },
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "castano/Isabella",
+      "length_over_buffers": {
+        "inches": 5.905515,
+        "millimeters": 150.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "Tipo 1931R",
+      "road_number": "CDiy 67.000",
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "THIRD_CLASS"
+    }
+  ],
+  "count": 2
+}

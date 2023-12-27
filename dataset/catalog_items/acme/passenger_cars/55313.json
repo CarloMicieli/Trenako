@@ -1,0 +1,73 @@
+{
+  "brand": "ACME",
+  "item_number": "55313",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "III",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Set di due carrozze \"Centoporte\" delle FS, di cui una BZ 39000 ed una mista ABz 67500, nell'originale livrea castano/isabella, ep. III."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/11",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "castano/isabella",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "BZ 39000",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": null
+    },
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "castano/isabella",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "ABz 67500",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": null
+    }
+  ],
+  "count": 2
+}

@@ -1,0 +1,48 @@
+{
+  "brand": "Vitrains",
+  "item_number": "1117",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "FS \"Minuetto\" MD (Diesel) in livrea regionale DTR, con illuminazione interna, ep. VI. Presa decoder PluX22"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/12",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "",
+      "road_number": null,
+      "series": null,
+      "depot": null,
+      "electric_multiple_unit_type": "TRAIN_SET",
+      "dcc_interface": "PLUX_22",
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

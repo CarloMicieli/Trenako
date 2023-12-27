@@ -1,0 +1,55 @@
+{
+  "brand": "Vitrains",
+  "item_number": "3408",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "III",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Automotrice elettrica (non motorizzata) Le 840 019 con vetri in origine,  illuminazione interna di serie e Decoder funzioni installato di serie, delle FS ep. III."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/07",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "railway": "FS",
+      "livery": "castano/isabella",
+      "length_over_buffers": {
+        "inches": 12.6771722,
+        "millimeters": 322.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Le 840",
+      "road_number": "Le 840 019",
+      "series": null,
+      "depot": null,
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "dcc_interface": null,
+      "control": null,
+      "is_dummy": true
+    }
+  ],
+  "count": 1
+}

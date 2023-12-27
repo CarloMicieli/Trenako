@@ -1,0 +1,79 @@
+{
+  "brand": "Roco",
+  "item_number": "74033",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "FS Set (2) \"MONT CENIS\" di 2 Carrozze di 1 KL. in livrea EUROFIMA, ep. IV. Tabelle di percorrenza Milano-Lyon."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q1",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "Eurofima",
+      "length_over_buffers": {
+        "inches": 11.9291403,
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "Eurofima",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "FIRST_CLASS"
+    },
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "Eurofima",
+      "length_over_buffers": {
+        "inches": 11.9291403,
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "Eurofima",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "FIRST_CLASS"
+    }
+  ],
+  "count": 2
+}

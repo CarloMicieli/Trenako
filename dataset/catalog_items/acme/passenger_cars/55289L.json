@@ -1,0 +1,106 @@
+{
+  "brand": "ACME",
+  "item_number": "55289L",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Set formato da una carrozza Az23000, una cazzozza Bz33000 e una carrozza Bz33000 con comparto ristoro, in livrea grigio ardesia, senza pittogrammi, così come in servizio negli anni Settanta."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": null,
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "grigio ardesia",
+      "length_over_buffers": {
+        "inches": 10.3149662,
+        "millimeters": 262.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "Tipo 1946",
+      "road_number": "Az 13000",
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "FIRST_CLASS"
+    },
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "grigio ardesia",
+      "length_over_buffers": {
+        "inches": 10.3149662,
+        "millimeters": 262.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "Tipo 1946",
+      "road_number": "Bz 33000",
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "SECOND_CLASS"
+    },
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "grigio ardesia",
+      "length_over_buffers": {
+        "inches": 10.3149662,
+        "millimeters": 262.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "Tipo 1946",
+      "road_number": "Bz 33000",
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "SECOND_CLASS"
+    }
+  ],
+  "count": 3
+}

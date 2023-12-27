@@ -1,0 +1,52 @@
+{
+  "brand": "ACME",
+  "item_number": "50692",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Carrozza FS Tipo 1957R “Corbellona” in livrea grigio ardesia con marcatura unificata e carrelli FS 27"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q1",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "grigio ardesia",
+      "length_over_buffers": {
+        "inches": 10.2755961,
+        "millimeters": 261.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "Tipo 1957R",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": null
+    }
+  ],
+  "count": 1
+}

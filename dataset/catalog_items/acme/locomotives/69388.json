@@ -1,0 +1,55 @@
+{
+  "brand": "ACME",
+  "item_number": "69388",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Locomotiva elettrica E 402 147 nella livrea attuale \"Intercity Day\" e con logo a tre colori, ep. VI. Presa decoder 21 MTC"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/10",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVE",
+      "railway": "FS",
+      "livery": "Intercity Day",
+      "length_over_buffers": {
+        "inches": 8.7795323,
+        "millimeters": 223.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "class_name": "E402B",
+      "road_number": "E 402 147",
+      "series": null,
+      "depot": null,
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "dcc_interface": "MTC_21",
+      "control": "DCC_SOUND",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

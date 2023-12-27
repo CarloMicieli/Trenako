@@ -1,0 +1,55 @@
+{
+  "brand": "Roco",
+  "item_number": "70467",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Locomotiva elettrica E 432 Trifase in livrea castano e isabella, ep.IV. Presa decoder PLUX22"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/12",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVE",
+      "railway": "FS",
+      "livery": "castano/isabella",
+      "length_over_buffers": {
+        "inches": 6.299216,
+        "millimeters": 160.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "class_name": "E 432",
+      "road_number": "E 432 040",
+      "series": null,
+      "depot": null,
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "dcc_interface": "PLUX_22",
+      "control": "DCC_SOUND",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

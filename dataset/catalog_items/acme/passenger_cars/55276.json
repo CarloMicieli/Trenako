@@ -1,0 +1,79 @@
+{
+  "brand": "ACME",
+  "item_number": "55276",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Set “Treno Notte” in livrea attuale di Trenitalia, formato da due carrozze Tipo UIC-Z ristrutturate."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q2",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "Treno Notte",
+      "length_over_buffers": {
+        "inches": 11.9291403,
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "UIC-Z",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": null
+    },
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "Treno Notte",
+      "length_over_buffers": {
+        "inches": 11.9291403,
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "UIC-Z",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": null
+    }
+  ],
+  "count": 2
+}

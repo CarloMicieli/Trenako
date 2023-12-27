@@ -1,0 +1,71 @@
+{
+  "brand": "Os.kar.",
+  "item_number": "2082",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Elettromotrice ALe 582 039 mista di 1° e 2° KL. con rimorchiata semipilota con comparto bagagli e ritirate Le 582 012, nei colori della società Trenord per il servizio sulle linee della Lombardia, ep. VI.Illuminazione interna di serie, fanali funzionanti con inversione."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q2",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "railway": "TRENORD",
+      "livery": "TRENORD",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": "YES",
+        "lights": "YES",
+        "spring_buffers": null
+      },
+      "type_name": "ALe 582",
+      "road_number": "ALe 582 039",
+      "series": null,
+      "depot": null,
+      "electric_multiple_unit_type": "POWER_CAR",
+      "dcc_interface": "PLUX_22",
+      "control": "DCC_READY",
+      "is_dummy": false
+    },
+    {
+      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "railway": "TRENORD",
+      "livery": "TRENORD",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": "YES",
+        "lights": "YES",
+        "spring_buffers": null
+      },
+      "type_name": "Le 582",
+      "road_number": "Le 582 012",
+      "series": null,
+      "depot": null,
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "dcc_interface": null,
+      "control": null,
+      "is_dummy": true
+    }
+  ],
+  "count": 2
+}

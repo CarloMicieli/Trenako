@@ -1,0 +1,52 @@
+{
+  "brand": "Vitrains",
+  "item_number": "3271",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Carrozza MDVE di 2a Cl. \"Sleeperette\" con illuminazione interna"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q1",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": "sleeperette",
+      "length_over_buffers": {
+        "inches": 11.9291403,
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 420.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "YES",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "type_name": "MDVE",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": "SECOND_CLASS"
+    }
+  ],
+  "count": 1
+}

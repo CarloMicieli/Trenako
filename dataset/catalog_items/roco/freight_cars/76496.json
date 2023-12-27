@@ -1,0 +1,50 @@
+{
+  "brand": "Roco",
+  "item_number": "76496",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Carro chiuso a grandi capacità tipo Gabs con porte in lega leggera con logo televisivo delle FS ep. IV."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q1",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": {
+        "inches": 9.8031549,
+        "millimeters": 249.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NOT_APPLICABLE",
+        "interior_lights": "NOT_APPLICABLE",
+        "lights": "NOT_APPLICABLE",
+        "spring_buffers": null
+      },
+      "type_name": "Gabs",
+      "road_number": "31 RIV 83-I FS 181 3 209-5 Gabs",
+      "freight_car_type": null
+    }
+  ],
+  "count": 1
+}

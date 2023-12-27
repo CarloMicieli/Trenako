@@ -1,0 +1,52 @@
+{
+  "brand": "ACME",
+  "item_number": "51077",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Carrozza ristorante CIWL ex 2764 “Pistoiesi” immatricolata presso le SNCB, ep.IV."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "SNCB",
+      "livery": "CIWL",
+      "length_over_buffers": {
+        "inches": 10.629927,
+        "millimeters": 270.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "WR 2970",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": "DINING_CAR",
+      "service_level": null
+    }
+  ],
+  "count": 1
+}

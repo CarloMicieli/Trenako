@@ -1,0 +1,55 @@
+{
+  "brand": "Vitrains",
+  "item_number": "2277",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Locomotiva Elettrica 464.199 Bimodale in livrea Intercity Sun, con monocabina Bimodale, ep.VI"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q1",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVE",
+      "railway": "FS",
+      "livery": "Intercity Sun",
+      "length_over_buffers": {
+        "inches": 7.086618,
+        "millimeters": 180.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "class_name": "E464",
+      "road_number": "E464 199",
+      "series": null,
+      "depot": null,
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "dcc_interface": "PLUX_22",
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

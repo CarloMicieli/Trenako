@@ -1,0 +1,50 @@
+{
+  "brand": "ACME",
+  "item_number": "40390",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "V/VI",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Carro complementare al treno “Nothegger” Tipo Sggmrss da 90’ AAE articolato caricato con una cassa furgonata “Nothegger” ed una cassa furgonata “TAL International”, ep. V-VI."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/08",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "PRIVAT",
+      "livery": null,
+      "length_over_buffers": {
+        "inches": 13.385834,
+        "millimeters": 340.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Tipo Sggmrss",
+      "road_number": null,
+      "freight_car_type": null
+    }
+  ],
+  "count": 1
+}

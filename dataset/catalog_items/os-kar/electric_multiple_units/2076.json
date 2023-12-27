@@ -1,0 +1,117 @@
+{
+  "brand": "Os.kar.",
+  "item_number": "2076",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Set Automotrici elettriche Ale 582 082 (motorizzata) + intermedia Le 764 144 + Le 764 145 + rimorchiata semipilota Le 682 018 per servizi regionali di Trenitalia in livrea e con logo XMPR, ep. VI"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/12",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "railway": "FS",
+      "livery": "XMPR",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "ALe 582",
+      "road_number": "ALe 582 082",
+      "series": null,
+      "depot": null,
+      "electric_multiple_unit_type": "POWER_CAR",
+      "dcc_interface": "MTC_21",
+      "control": "DCC_READY",
+      "is_dummy": false
+    },
+    {
+      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "railway": "FS",
+      "livery": "XMPR",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Le 764",
+      "road_number": "Le 764 144",
+      "series": null,
+      "depot": null,
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "dcc_interface": null,
+      "control": null,
+      "is_dummy": true
+    },
+    {
+      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "railway": "FS",
+      "livery": "XMPR",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Le 764",
+      "road_number": "Le 764 145",
+      "series": null,
+      "depot": null,
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "dcc_interface": null,
+      "control": null,
+      "is_dummy": true
+    },
+    {
+      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "railway": "FS",
+      "livery": "XMPR",
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Le 682",
+      "road_number": "Le 682 018",
+      "series": null,
+      "depot": null,
+      "electric_multiple_unit_type": "TRAILER_CAR",
+      "dcc_interface": null,
+      "control": null,
+      "is_dummy": true
+    }
+  ],
+  "count": 4
+}

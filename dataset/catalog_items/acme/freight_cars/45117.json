@@ -1,0 +1,69 @@
+{
+  "brand": "ACME",
+  "item_number": "45117",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "III",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "FS Set di due carri Poz Tipo 1920 di cui uno con sostegni per gruette ed uno con respingenti originali a bovolo, ep. III"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/11",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Tipo 1920",
+      "road_number": null,
+      "freight_car_type": null
+    },
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Tipo 1920",
+      "road_number": null,
+      "freight_car_type": null
+    }
+  ],
+  "count": 2
+}

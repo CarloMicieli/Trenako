@@ -1,0 +1,55 @@
+{
+  "brand": "ACME",
+  "item_number": "60395",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "V",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Locomotiva elettrica E 655 542 \"Cargo\" di quinta serie, nella livrea d'origine del Deposito Locomotive di Genova Rivarolo ep. V"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q1",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVE",
+      "railway": "FS",
+      "livery": "blu/grigio",
+      "length_over_buffers": {
+        "inches": 8.267721,
+        "millimeters": 210.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "YES"
+      },
+      "class_name": "E655",
+      "road_number": "E655 542",
+      "series": "QUINTA SERIE",
+      "depot": "Genova Rivarolo",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "dcc_interface": "MTC_21",
+      "control": "DCC_READY",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

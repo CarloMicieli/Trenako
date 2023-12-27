@@ -1,0 +1,50 @@
+{
+  "brand": "BLACKSTAR",
+  "item_number": "BS10021",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Carro tramoggia da 101m3 tipo Tagnpps \"NACCO-VERONESI\" in livrea gialla. Carro prodotto da NME in esclusiva per Black Star. Epoca VI. Equipaggiato Con lanterne di coda lampeggianti FS, DC-DCC"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q1",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": "VERONESI",
+      "length_over_buffers": {
+        "inches": 7.2834685,
+        "millimeters": 185.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "YES"
+      },
+      "type_name": "Tagnpps",
+      "road_number": "3783 0764 001-1",
+      "freight_car_type": null
+    }
+  ],
+  "count": 1
+}

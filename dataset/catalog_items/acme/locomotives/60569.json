@@ -1,0 +1,85 @@
+{
+  "brand": "ACME",
+  "item_number": "60569",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "FS Set di due locomotive prodotte a Vado Ligure formato dalle E 652 172 (1000 locomotiva) e 494 039 (2000 locomotiva), entrambe motorizzate, nelle livree attuali di Mercitalia Rail, ep. VI"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/12",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "class_name": "E652",
+      "road_number": "E652 172",
+      "series": null,    
+      "category": "LOCOMOTIVE",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "livery": "XPMR",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 206.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "YES"
+      },
+      "depot": null,
+      "dcc_interface": "MTC_21",
+      "control": "DCC_READY",
+      "is_dummy": false
+    },
+    {
+      "class_name": "E494",
+      "road_number": "E494 039",
+      "series": null,    
+      "category": "LOCOMOTIVE",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "livery": "Mercitalia",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 217.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "spring_buffers": "YES"
+      },
+      "depot": null,
+      "dcc_interface": "MTC_21",
+      "control": "DCC_READY",
+      "is_dummy": false
+    }   
+  ],
+  "count": 2
+}

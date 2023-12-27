@@ -1,0 +1,65 @@
+{
+  "brand": "ACME",
+  "item_number": "55278",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Set di due carrozze letti di cui una Tipo Ub 3830 con riscaldamento a gasolio ed una Tipo MU 4858, entrambe del parco italiano, ep. IV"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/Q1",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Tipo Ub 3830",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": null
+    },
+    {
+      "category": "PASSENGER_CAR",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": null,
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "Tipo MU 4858",
+      "road_number": null,
+      "series": null,
+      "passenger_car_type": null,
+      "service_level": null
+    }
+  ],
+  "count": 2
+}

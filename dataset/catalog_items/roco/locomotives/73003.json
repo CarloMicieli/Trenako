@@ -1,0 +1,55 @@
+{
+  "brand": "Roco",
+  "item_number": "73003",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Locomotiva Diesel D 343 2015, in livrea verde isabella, ep. IV"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVE",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": {
+        "inches": 6.0236253,
+        "millimeters": 153.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "class_name": "D 343",
+      "road_number": "D 343 2015",
+      "series": null,
+      "depot": null,
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "dcc_interface": "PLUX_22",
+      "control": "DCC_SOUND",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

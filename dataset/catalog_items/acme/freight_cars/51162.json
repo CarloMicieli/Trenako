@@ -1,0 +1,50 @@
+{
+  "brand": "ACME",
+  "item_number": "51162",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Bagagliaio postale a due assi con cassa in legno Tipo DUI 1909 in livrea grigio ardesia, ep. IV"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023/08",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": "grigio ardesia",
+      "length_over_buffers": {
+        "inches": 5.6692944,
+        "millimeters": 144.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "type_name": "DUI 1909",
+      "road_number": "DUI 96704",
+      "freight_car_type": null
+    }
+  ],
+  "count": 1
+}

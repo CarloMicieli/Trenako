@@ -1,0 +1,55 @@
+{
+  "brand": "Roco",
+  "item_number": "73163",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Locomotiva elettrica E 656 072 \"Caimano\" in livrea d'origine, ep. IV. Decoder DCC Sound installato di serie."
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": ""
+  },
+  "delivery_date": "2023",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVE",
+      "railway": "FS",
+      "livery": null,
+      "length_over_buffers": {
+        "inches": 8.267721,
+        "millimeters": 210.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "spring_buffers": null
+      },
+      "class_name": "E 656",
+      "road_number": "E 656 072",
+      "series": "PRIMA SERIE",
+      "depot": "Torino",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "dcc_interface": "PLUX_16",
+      "control": "DCC_SOUND",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}
