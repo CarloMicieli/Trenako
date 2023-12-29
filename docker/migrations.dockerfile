@@ -4,7 +4,7 @@ COPY ./migrations ./migrations
 
 RUN cargo install sqlx-cli --no-default-features --features native-tls,postgres
 
-FROM debian:bookworm-slim@sha256:93ff361288a7c365614a5791efa3633ce4224542afb6b53a1790330a8e52fc7d as runtime
+FROM debian:bookworm-slim@sha256:45287d89d96414e57c7705aa30cb8f9836ef30ae8897440dd8f06c4cff801eec as runtime
 
 LABEL maintainer="Carlo Micieli <mail@trenako.com>"
 LABEL description="The trenako database migrations"

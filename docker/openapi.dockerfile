@@ -11,7 +11,7 @@ RUN npm install redoc-cli -g
 
 RUN redoc-cli build openapi.yaml --options.theme.colors.primary.main=blue
 
-FROM nginx:alpine@sha256:7e528502b614e1ed9f88e495f2af843c255905e0e549b935fdedd95336e6de8d as runtime
+FROM nginx:alpine@sha256:2d2a2257c6e9d2e5b50d4fbeb436d8d2b55631c2a89935a425b417eb95212686 as runtime
 LABEL maintainer="Carlo Micieli <mail@trenako.com>"
 LABEL description="The trenako openapi documentation"
 
