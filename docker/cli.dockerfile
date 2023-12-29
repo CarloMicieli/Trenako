@@ -1,4 +1,4 @@
-FROM rust:1.74.0-slim-bookworm@sha256:2be643123c6835c2666ef59acab42dd5ca67cee1fcded9ef987209b910d5db4b as builder
+FROM rust:1.75.0-slim-bookworm@sha256:90a3721bb0a8f79ab4a4cb20e7f78c050c9cc253908f704b8b49d0427818b8f5 as builder
 WORKDIR /app
 
 COPY Cargo.toml .

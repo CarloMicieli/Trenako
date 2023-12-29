@@ -1,4 +1,4 @@
-FROM rust:1.74.0-bookworm@sha256:e0740b99be8107433f623772f3ee44f63da96df56306a8b599bfd501a256e9b9 as builder
+FROM rust:1.75.0-bookworm@sha256:85dcf8f6723b3045a200d1b5ac60f75bb26efe43788071d5f838a35e10003af2 as builder
 WORKDIR /app
 COPY ./migrations ./migrations
 

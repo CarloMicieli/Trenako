@@ -92,7 +92,7 @@ async fn it_should_find_catalog_items_by_id() {
 
         assert_eq!(body.rolling_stocks.len(), 1);
 
-        let rolling_stock: &RollingStock = body.rolling_stocks.get(0).expect("no rolling stock found");
+        let rolling_stock: &RollingStock = body.rolling_stocks.first().expect("no rolling stock found");
         let rolling_stock = rolling_stock.clone();
         assert_eq!(rolling_stock.category(), RollingStockCategory::Locomotive);
 
@@ -453,7 +453,7 @@ async fn it_should_create_a_new_locomotive() {
         assert_eq!(Some(AvailabilityStatus::Available), item.availability_status);
         assert_eq!(1, item.count);
 
-        let rs = saved.rolling_stocks.get(0).expect("no saved rolling stock found");
+        let rs = saved.rolling_stocks.first().expect("no saved rolling stock found");
 
         assert_ne!("", rs.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs.railway_id);
@@ -622,7 +622,10 @@ async fn it_should_create_a_new_electric_multiple_unit() {
 
         assert_eq!(2, saved.rolling_stocks.len());
 
-        let rs1 = saved.rolling_stocks.get(0).unwrap();
+        let rs1 = saved
+            .rolling_stocks
+            .first()
+            .expect("the first rolling stock is not found");
 
         assert_ne!("", rs1.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs1.railway_id);
@@ -656,7 +659,10 @@ async fn it_should_create_a_new_electric_multiple_unit() {
         assert_eq!(Some(FeatureFlag::Yes), rs1.lights);
         assert_eq!(Some(FeatureFlag::No), rs1.spring_buffers);
 
-        let rs2 = saved.rolling_stocks.get(1).unwrap();
+        let rs2 = saved
+            .rolling_stocks
+            .get(1)
+            .expect("the second rolling stock is not found");
 
         assert_ne!("", rs2.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs2.railway_id);
@@ -823,7 +829,10 @@ async fn it_should_create_a_new_railcar() {
 
         assert_eq!(2, saved.rolling_stocks.len());
 
-        let rs1 = saved.rolling_stocks.get(0).unwrap();
+        let rs1 = saved
+            .rolling_stocks
+            .first()
+            .expect("the first rolling stock is not found");
 
         assert_ne!("", rs1.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs1.railway_id);
@@ -854,7 +863,10 @@ async fn it_should_create_a_new_railcar() {
         assert_eq!(Some(FeatureFlag::Yes), rs1.lights);
         assert_eq!(Some(FeatureFlag::No), rs1.spring_buffers);
 
-        let rs2 = saved.rolling_stocks.get(1).unwrap();
+        let rs2 = saved
+            .rolling_stocks
+            .get(1)
+            .expect("the second rolling stock is not found");
 
         assert_ne!("", rs2.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs2.railway_id);
@@ -982,7 +994,7 @@ async fn it_should_create_a_new_passenger_car() {
         assert_eq!(Some(AvailabilityStatus::Announced), item.availability_status);
         assert_eq!(1, item.count);
 
-        let rs = saved.rolling_stocks.get(0).expect("no saved rolling stock found");
+        let rs = saved.rolling_stocks.first().expect("the rolling stock is not found");
 
         assert_ne!("", rs.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs.railway_id);
@@ -1110,7 +1122,7 @@ async fn it_should_create_a_new_freight_car() {
         assert_eq!(Some(AvailabilityStatus::Announced), item.availability_status);
         assert_eq!(1, item.count);
 
-        let rs = saved.rolling_stocks.get(0).expect("no saved rolling stock found");
+        let rs = saved.rolling_stocks.first().expect("the rolling stock is not found");
 
         assert_ne!("", rs.rolling_stock_id.to_string());
         assert_eq!(RailwayId::new("FS"), rs.railway_id);
