@@ -41,19 +41,19 @@ jobs:
           sqlx --version
 
       - name: Check the database migrations
-        run: sqlx prepare --check
+        run: cargo sqlx prepare --check
 
       - name: List available migrations
-        run: sqlx migrate info
+        run: cargo sqlx migrate info
 
       - name: List the database migrations to apply
-        run: sqlx migrate run --dry-run
+        run: cargo sqlx migrate run --dry-run
 
       - name: Run the database migrations (up)
-        run: sqlx migrate run
+        run: cargo sqlx migrate run
 
       - name: List the database migrations to revert
-        run: sqlx migrate revert --dry-run --target-version 0
+        run: cargo sqlx migrate revert --dry-run --target-version 0
 
       - name: Run the database migrations (down)
-        run: sqlx migrate revert --target-version 0
+        run: cargo sqlx migrate revert --target-version 0
