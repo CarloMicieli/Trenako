@@ -76,8 +76,8 @@
             "name": "brand_kind",
             "kind": {
               "Enum": [
-                "INDUSTRIAL",
-                "BRASS_MODELS"
+                "BRASS_MODELS",
+                "INDUSTRIAL"
               ]
             }
           }

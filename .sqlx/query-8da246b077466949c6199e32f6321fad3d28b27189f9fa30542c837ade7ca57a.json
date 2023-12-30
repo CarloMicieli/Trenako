@@ -51,7 +51,7 @@
         "Numeric",
         {
           "Custom": {
-            "name": "gauge",
+            "name": "track_gauge",
             "kind": {
               "Enum": [
                 "BROAD",

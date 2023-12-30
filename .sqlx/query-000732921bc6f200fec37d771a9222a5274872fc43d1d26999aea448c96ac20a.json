@@ -108,7 +108,7 @@
         "name": "track_gauge?: TrackGauge",
         "type_info": {
           "Custom": {
-            "name": "gauge",
+            "name": "track_gauge",
             "kind": {
               "Enum": [
                 "BROAD",

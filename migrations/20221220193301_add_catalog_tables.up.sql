@@ -1,7 +1,19 @@
 -- noinspection SqlNoDataSourceInspectionForFile
-CREATE TYPE brand_kind AS ENUM ('INDUSTRIAL', 'BRASS_MODELS');
-CREATE TYPE brand_status AS ENUM ('ACTIVE', 'OUT_OF_BUSINESS');
-CREATE TYPE gauge AS ENUM ('BROAD', 'MEDIUM', 'MINIMUM', 'NARROW', 'STANDARD');
+CREATE TYPE brand_kind AS ENUM (
+    'BRASS_MODELS',
+    'INDUSTRIAL'
+    );
+CREATE TYPE brand_status AS ENUM (
+    'ACTIVE',
+    'OUT_OF_BUSINESS'
+    );
+CREATE TYPE track_gauge AS ENUM (
+    'BROAD',
+    'MEDIUM',
+    'MINIMUM',
+    'NARROW',
+    'STANDARD'
+    );
 CREATE TYPE organization_entity_type AS ENUM (
     'CIVIL_LAW_PARTNERSHIP',
     'ENTREPRENEURIAL_COMPANY',
@@ -16,8 +28,16 @@ CREATE TYPE organization_entity_type AS ENUM (
     'SOLE_TRADER',
     'STATE_OWNED_ENTERPRISE'
     );
-CREATE TYPE railway_status AS ENUM ('ACTIVE', 'INACTIVE');
-CREATE TYPE scale_standard AS ENUM ('BRITISH', 'JAPANESE', 'NEM', 'NMRA');
+CREATE TYPE railway_status AS ENUM (
+    'ACTIVE',
+    'INACTIVE'
+    );
+CREATE TYPE scale_standard AS ENUM (
+    'BRITISH',
+    'JAPANESE',
+    'NEM',
+    'NMRA'
+    );
 
 CREATE TABLE IF NOT EXISTS public.brands
 (
@@ -68,7 +88,7 @@ CREATE TABLE IF NOT EXISTS public.railways
     operating_until          date,
     status                   railway_status,
     gauge_meters             numeric(5, 3),
-    track_gauge              gauge,
+    track_gauge              track_gauge,
     headquarters             varchar(250) array,
     total_length_mi          numeric(7, 1),
     total_length_km          numeric(7, 1),
@@ -90,10 +110,10 @@ CREATE TABLE IF NOT EXISTS public.scales
 (
     scale_id          varchar(50)    NOT NULL,
     name              varchar(50)    NOT NULL,
-    ratio             numeric(6, 2) NOT NULL,
+    ratio             numeric(6, 2)  NOT NULL,
     gauge_millimeters numeric(4, 1),
     gauge_inches      numeric(5, 2),
-    track_gauge       gauge          NOT NULL,
+    track_gauge       track_gauge    NOT NULL,
     description_de    varchar(2500),
     description_en    varchar(2500),
     description_fr    varchar(2500),
