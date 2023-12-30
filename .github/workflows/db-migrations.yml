@@ -1,0 +1,59 @@
+name: db-migrations
+
+on:
+  push:
+    paths:
+      - '.sqlx/**'
+      - 'migrations/**'
+  workflow_dispatch:
+
+env:
+  DATABASE_URL: postgresql://postgres:mysecretpassword@127.0.0.1:5432/trenakodb
+
+jobs:
+  validate:
+    runs-on: ubuntu-22.04
+
+    services:
+      postgres:
+        image: postgres:16.1-alpine@sha256:6cec07cb67f8e819dfe044dd6fc07d87c2c58051f90273d0d8c2611a4d24da16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: mysecretpassword
+          POSTGRES_DB: trenakodb
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Setup the rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install sqlx cli
+        run: cargo install sqlx-cli --no-default-features --features native-tls,postgres
+
+      - name: Toolchain info
+        run: |
+          rustc --version
+          cargo --version --verbose
+          sqlx --version
+
+      - name: Check the database migrations
+        run: sqlx prepare --check
+
+      - name: List available migrations
+        run: sqlx migrate info
+
+      - name: List the database migrations to apply
+        run: sqlx migrate run --dry-run
+
+      - name: Run the database migrations (up)
+        run: sqlx migrate run
+
+      - name: List the database migrations to revert
+        run: sqlx migrate revert --dry-run --target-version 0
+
+      - name: Run the database migrations (down)
+        run: sqlx migrate revert --target-version 0
