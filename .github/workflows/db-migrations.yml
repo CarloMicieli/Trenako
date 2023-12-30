@@ -34,26 +34,30 @@ jobs:
       - name: Install sqlx cli
         run: cargo install sqlx-cli --no-default-features --features native-tls,postgres
 
+      - name: Set up cargo cache
+        uses: Swatinem/rust-cache@v2
+        continue-on-error: false
+
       - name: Toolchain info
         run: |
           rustc --version
           cargo --version --verbose
           sqlx --version
 
-      - name: Check the database migrations
-        run: cargo sqlx prepare --check
-
       - name: List available migrations
-        run: cargo sqlx migrate info
+        run: cargo sqlx migrate info --workspace
 
       - name: List the database migrations to apply
-        run: cargo sqlx migrate run --dry-run
+        run: cargo sqlx migrate run --dry-run --workspace
 
       - name: Run the database migrations (up)
-        run: cargo sqlx migrate run
+        run: cargo sqlx migrate run --workspace
+
+      - name: Check the database migrations
+        run: cargo sqlx prepare --check --workspace
 
       - name: List the database migrations to revert
-        run: cargo sqlx migrate revert --dry-run --target-version 0
+        run: cargo sqlx migrate revert --dry-run --target-version 0 --workspace
 
       - name: Run the database migrations (down)
-        run: cargo sqlx migrate revert --target-version 0
+        run: cargo sqlx migrate revert --target-version 0 --workspace
