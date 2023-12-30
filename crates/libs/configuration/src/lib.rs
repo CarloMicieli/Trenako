@@ -31,8 +31,13 @@ impl Settings {
     /// Load the settings from the configuration file (configuration/application.yaml)
     /// and environment variables.
     pub fn load() -> Result<Settings, config::ConfigError> {
+        Self::load_from_path("config/application")
+    }
+
+    /// Load the settings from the configuration file and environment variables.
+    pub fn load_from_path(config_file: &str) -> Result<Settings, config::ConfigError> {
         let s = Config::builder()
-            .add_source(File::with_name("config/application").required(false))
+            .add_source(File::with_name(config_file).required(false))
             .add_source(Environment::default().separator("__").ignore_empty(true))
             .build()?;
         s.try_deserialize()
