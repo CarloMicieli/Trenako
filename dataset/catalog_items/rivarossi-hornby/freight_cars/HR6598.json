@@ -1,0 +1,73 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR6598",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "V/VI",
+  "description": {
+    "de": "FS, 2-tlg. Set Schiebewandwagen Habillss in XMPR-Farbgebung, Ep. V-VI",
+    "en": "FS, 2-unit set of sliding walls wagon Habillss, XMPR livery, ep. V-VI",
+    "fr": "FS, coffret de 2 wagons à parois coulissantes Habillss, livrée XMPR, ép. V-VI",
+    "it": "FS, set di 2 carri a pareti scorrevoli Habillss, livrea XMPR, ep. V-VI"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": null
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": "XMPR",
+      "length_over_buffers": {
+        "millimeters": 267.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "NO"
+      },
+      "type_name": "Habillss",
+      "road_number": null,
+      "freight_car_type": null
+    },
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": "XMPR",
+      "length_over_buffers": {
+        "millimeters": 267.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "NO"
+      },
+      "type_name": "Habillss",
+      "road_number": null,
+      "freight_car_type": null
+    }
+  ],
+  "count": 2
+}

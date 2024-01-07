@@ -1,32 +1,31 @@
 {
   "brand": "Rivarossi/Hornby",
-  "item_number": "HR4364",
+  "item_number": "HR6552",
   "scale": "H0",
-  "category": "PASSENGER_CARS",
+  "category": "FREIGHT_CARS",
   "power_method": "DC",
-  "epoch": "IV",
+  "epoch": "VI",
   "description": {
-    "de": null,
-    "en": null,
-    "fr": null,
-    "it": "FS Bagagliaio UIC-X '70 con grandi carenature in livrea \"Bandiera\", ep. IV."
+    "de": "FS, vierachsiger Rungenwagen der Bauart Res, in grüner Farbgebung, Ep. VI",
+    "en": "FS, 2-unit set of sliding walls wagon Habillss, XMPR livery, ep. V-VI",
+    "fr": "FS, wagon plateforme à 4 essieux Res, livrée verte, ép. VI",
+    "it": "FS, 4-axle stake wagon Res, green livery, ep. VI"
   },
   "details": {
     "de": null,
     "en": null,
     "fr": null,
-    "it": ""
+    "it": null
   },
-  "delivery_date": "2023/11",
-  "availability_status": "AVAILABLE",
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "FREIGHT_CAR",
       "railway": "FS",
-      "livery": "bandiera",
+      "livery": "verde",
       "length_over_buffers": {
-        "inches": 11.9291403,
-        "millimeters": 303.0
+        "millimeters": 229.0
       },
       "technical_specifications": {
         "minimum_radius": 360.0,
@@ -39,13 +38,11 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "spring_buffers": "NO"
       },
-      "type_name": "UIC-X",
+      "type_name": "Res",
       "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": null
+      "freight_car_type": null
     }
   ],
   "count": 1

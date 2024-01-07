@@ -1,0 +1,55 @@
+
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR2910",
+    "scale": "H0",
+    "category": "LOCOMOTIVES",
+    "power_method": "DC",
+    "epoch": "V",
+    "description": {
+      "de": "Rottenkraftwagen KLV 53 in gelber Lackierung, „Sirti”, Ep. V",
+      "en": "Maintenance vehicle type KLV 53, yellow livery, “Sirti”, period V",
+      "fr": "Draisine KLV 53, livrée jaune, « Sirti », ép. V",
+      "it": "Draisina KLV 53, livrea gialla, “Sirti”, ep. V"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "LOCOMOTIVE",
+        "railway": "SIRTI",
+        "livery": "gialla",
+        "length_over_buffers": {
+          "millimeters": 155.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "NO",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "YES",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "NO"
+        },
+        "class_name": "KLV 53",
+        "road_number": "KLV 53 ???",
+        "series": null,
+        "depot": null,
+        "locomotive_type": "DIESEL_LOCOMOTIVE",
+        "dcc_interface": "NEXT_18",
+        "control": "DCC_READY",
+        "is_dummy": false
+      }
+    ],
+    "count": 1
+  }

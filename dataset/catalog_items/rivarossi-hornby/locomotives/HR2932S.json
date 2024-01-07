@@ -1,0 +1,55 @@
+
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR2932S",
+    "scale": "H0",
+    "category": "LOCOMOTIVES",
+    "power_method": "DC",
+    "epoch": "VI",
+    "description": {
+      "de": "Mercitalia Shunting & Terminal, Diesel-Rangierlokomotive Rh. 245 in rot/dunkelgrauer Lackierung mit weißem Streifen, Ep. VI",
+      "en": "Mercitalia Shunting & Terminal, diesel shunting locomotive class 245, red/dark grey livery with white stripes, period VI",
+      "fr": "Mercitalia Shunting & Terminal, locomotive de manœuvre diesel classe 245, livrée rouge/gris foncé avec bandes blanches, ép. VI",
+      "it": "Mercitalia Shunting & Terminal, locomotiva diesel da manovra gruppo 245, livrea rossa/grigio scura con strisce bianche, ep. VI"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "LOCOMOTIVE",
+        "railway": "Mercitalia",
+        "livery": "rossa/grigio scura con strisce bianche",
+        "length_over_buffers": {
+          "millimeters": 106.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "NO",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "YES",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "YES",
+          "spring_buffers": "NO"
+        },
+        "class_name": "D 245",
+        "road_number": "D 245 ???",
+        "series": null,
+        "depot": null,
+        "locomotive_type": "DIESEL_LOCOMOTIVE",
+        "dcc_interface": "NEXT_18",
+        "control": "DCC_SOUND",
+        "is_dummy": false
+      }
+    ],
+    "count": 1
+  }

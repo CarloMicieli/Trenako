@@ -1,0 +1,55 @@
+
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR2933",
+    "scale": "H0",
+    "category": "LOCOMOTIVES",
+    "power_method": "DC",
+    "epoch": "IV/V",
+    "description": {
+      "de": "FS, Elektrolokomotive E.645, 1. Serie, castano/Isabella-Lackierung mit vereinfachtem FS-Logo, Stromabnehmer 52, Ep. IV-V",
+      "en": "FS, electric locomotive E.645, 1st series, castano/Isabella livery with simplified FS logo, pantographs 52, period IV-V",
+      "fr": "FS, locomotive électrique E.645, 1ère série, livrée castano/Isabella avec logo FS simplifié, pantographes 52, ép. IV-V",
+      "it": "FS, locomotiva elettrica E.645, 1a serie, livrea castano/Isabella con logo FS semplificato, pantografi 52, ep. IV-V"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": "* Nuovi stampi per le carrozzerie, con riproduzione accurata di tutte le caratteristiche tipiche delle macchine di prima serie nell’ambientazione da fine anni ’80, con modifiche ai gocciolatoi delle cabine, pannelli laterali, fregio FS frontale in diverse posizioni a seconda dell’unità riprodotta, serpentina sul ricasco del tetto, scalette e corrimani coerenti con l’epoca\n* Collaudata ed affidabile meccanica con telaio articolato e scatole ingranaggi in metallo, potente motore centrale a 5 poli con trasmissione a doppio albero cardanico su entrambi gli assi dei carrelli di estremità, due ruote con anello di aderenza\n* Nuovo impianto elettrico con presa 21 poli NEM 660/21MTC per decoder DCC e DCC Sound, con predisposizione per altoparlante circolare da 23 mm oppure di tipo “sugar cube” da 11x15 mm\n* Versioni “S” con decoder sonoro ESU Loksound V5 ed altoparlante installati di serie, con suoni specifici per il modello\n* Luci bianche di testa e rosse di coda con commutazione automatica in base al senso di marcia e con possibilità di esclusione indipendente tra le due cabine, sia in analogico (tramite DIP SWITCH sulla PCB principale) che in      digitale (tramite decoder)\n* Possibilità di installazione del pattino centrale per funzionamento su sistemi a 3 rotaie, con commutazione del sistema tramite jumper sul circuito stampato\n* Portagancio NEM 362 con timone di allontanamento per aggancio corto su entrambe le testate, con possibilità di smontaggio del portagancio per allestire i frontali con tutti i particolari realistici\n* Riproduzione accurata dei pantografi Tipo 52 o 42U FS (a seconda dell’unità riprodotta) interamente in metallo con possibilità di captazione di corrente; posizione di riposo estremamente piatta e realistica\n* Carrelli U1250 con 4 o 12 sabbiere, a seconda del periodo di ambientazione; riproduzione dei cacciapietre di origine oppure dotati di captatori della Ripetizione Segnali, a seconda della versione riprodotta\n* Numerosi particolari riportati in metallo o plastica per il massimo realismo, tra cui nuovi supporti reggitabella sui panconi in fotoincisione installati in fabbrica\n\n* Livrea castano/isabella con carrelli neri\n* Fregio FS a scudo senza baffi in posizione alta, con sfondo castano\n* Cabine con gocciolatoio lato macchinista ridotto e senza gocciolatoio frontale\n* Epoca IVb-Va (fine anni ’80/inizio ‘90)\n* 12 sabbiere sui carrelli\n* Serpentina su ricasco tetto semicassa B\n* Cacciapietre di origine\n* Pantografi Tipo 52 FS con strisciante curvo\n* Vomeri a lame curve con strisce gialle/nere"
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "LOCOMOTIVE",
+        "railway": "FS",
+        "livery": "castano/Isabella",
+        "length_over_buffers": {
+          "millimeters": 211.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "YES",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "YES",
+          "spring_buffers": "NO"
+        },
+        "class_name": "E.645",
+        "road_number": "E.645 ???",
+        "series": "PRIMA SERIE",
+        "depot": null,
+        "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+        "dcc_interface": "MTC_21",
+        "control": "DCC_READY",
+        "is_dummy": false
+      }
+    ],
+    "count": 1
+  }

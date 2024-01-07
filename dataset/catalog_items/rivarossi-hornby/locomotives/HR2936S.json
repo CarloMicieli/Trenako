@@ -1,0 +1,55 @@
+
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR2936S",
+    "scale": "H0",
+    "category": "LOCOMOTIVES",
+    "power_method": "DC",
+    "epoch": "IV/V",
+    "description": {
+      "de": "FS, Elektrolokomotive E.636, 3. Bauserie ohne Regenrinnen in brauner Castano/Isabella-Lackierung, Ep. IV-V",
+      "en": "FS, electric locomotive E.636, 3rd series, without gutters, castano/Isabella livery, period IV-V",
+      "fr": "FS, locomotive électrique E.636, 3éme série, livrée castano/Isabella, sans gouttières, ép. IV-V",
+      "it": "FS, locomotiva elettrica E.636, 3a serie, senza gocciolatoi frontali, livrea castano/Isabella, ep. IV-V"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "LOCOMOTIVE",
+        "railway": "FS",
+        "livery": "castano/Isabella",
+        "length_over_buffers": {
+          "millimeters": 211.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "YES",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "YES",
+          "spring_buffers": "NO"
+        },
+        "class_name": "E.636",
+        "road_number": "E.636 ???",
+        "series": "TERZA SERIE",
+        "depot": null,
+        "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+        "dcc_interface": "MTC_21",
+        "control": "DCC_SOUND",
+        "is_dummy": false
+      }
+    ],
+    "count": 1
+  }

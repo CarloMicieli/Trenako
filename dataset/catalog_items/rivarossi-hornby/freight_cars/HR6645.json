@@ -1,0 +1,73 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR6645",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": "FS, 2-tg. Set gedeckter Güterwagen der Bauart Gs (holzbeplankte Wände), einer mit roten Schlusslichtern, Ep. IV",
+    "en": "FS, 2-unit pack Gs wagons (walls made from wooden planks), one with red rear lights, ep. IV",
+    "fr": "FS, coffret de 2 wagons Gs, parois frises de bois, un avec feux fin de convoi, ép. IV",
+    "it": "FS, set di 2 carri Gs, cassa a doghe in legno, uno con luci di coda, ep. IV"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": "Luci di coda\n* Esatta riproduzione delle lanterne di coda di tipo FS.\n* Le luci rosse sono funzionanti, con un realistico lampeggio asincrono tra le due lanterne.\n* L’alimentazione è garantita da una pila a bottone all’interno del carro (non fornita).\n* Il funzionamento delle luci di coda è controllato da un magnete (incluso nella confezione). Sulla testata del carro equipaggiato con luci di coda vi è un contatto reed nascosto subito sotto il tetto del carro. Avvicinando il magnete vicino alla fine del tetto di questo carro, il contatto reed viene attivato e le luci di coda vengono accese o spente."
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": "rosso vagone",
+      "length_over_buffers": {
+        "millimeters": 121.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "NO"
+      },
+      "type_name": "Gs",
+      "road_number": null,
+      "freight_car_type": null
+    },
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": "rosso vagone",
+      "length_over_buffers": {
+        "millimeters": 121.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "NO"
+      },
+      "type_name": "Gs",
+      "road_number": null,
+      "freight_car_type": null
+    }
+  ],
+  "count": 2
+}

@@ -1,0 +1,55 @@
+
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR2966S",
+    "scale": "H0",
+    "category": "LOCOMOTIVES",
+    "power_method": "DC",
+    "epoch": "IV",
+    "description": {
+      "de": "FS, schwere sechsachsige Elektrolokomotive der Reihe E.656, 2. Serie in Originalfarbgebung, mit Regenrinne, Ep. IV",
+      "en": "FS, six-axle electric locomotive E.656, 2nd series original livery, with gutter, ep. IV",
+      "fr": "FS, locomotive électrique E.656, 2e série, livrée d’origine, avec gouttière, ép. IV",
+      "it": "FS, locomotiva elettrica E.656, 2a serie, livrea di origine, con gocciolatoio, ep. IV"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": "* Portagancio NEM 362 con timone di allontanamento per aggancio corto su entrambe le testate, con possibilità di smontaggio del portagancio per allestire i frontali con tutti i particolari realistici.\n* Riproduzione accurata dei pantografi Tipo 52 FS interamente in metallo con possibilità di captazione di corrente; posizione di riposo estremamente piatta e realistica.\n* Riproduzione accurata del tetto con numerose parti riportate, griglie dei praticabili in fotoincisione conformi al vero,condizionatori completi di tubazioni dove presenti.\n* Interni cabina e parete corridoio fedelmente riprodotti, con parti riportate e decorazioni differenziate tra cabine A e B come al vero.\n* Carrelli Um1250 estremamente realistici, con sospensione secondaria e trave oscillante come pezzi riportati; con o senza riproduzione degli smorzatori antiserpeggio e con 4 o 12 sabbiere, a seconda del periodo di ambientazione; riproduzione dei captatori della Ripetizione Segnali in cabina con boe SCMT dove presenti.\n* Numerosi particolari riportati in metallo o plastica per il massimo realismo."
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "LOCOMOTIVE",
+        "railway": "FS",
+        "livery": "grigio perla/blu orientale",
+        "length_over_buffers": {
+          "millimeters": 210.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "YES",
+          "metal_body": "NO",
+          "interior_lights": "YES",
+          "lights": "YES",
+          "spring_buffers": "NO"
+        },
+        "class_name": "E.656",
+        "road_number": "E.656 ???",
+        "series": "SECONDA SERIE",
+        "depot": null,
+        "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+        "dcc_interface": "MTC_21",
+        "control": "DCC_SOUND",
+        "is_dummy": false
+      }
+    ],
+    "count": 1
+  }

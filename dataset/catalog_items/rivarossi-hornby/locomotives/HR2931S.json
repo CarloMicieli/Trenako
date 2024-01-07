@@ -1,0 +1,55 @@
+
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR2931S",
+    "scale": "H0",
+    "category": "LOCOMOTIVES",
+    "power_method": "DC",
+    "epoch": "IV",
+    "description": {
+      "de": "FS, Diesel-Rangierlokomotive Rh. 245, ohne seitliche Geländer, in grüner Lackierung mit gelbem Streifen, Ep. IV",
+      "en": "FS, diesel shunting locomotive class 245, without side handrails, green livery with yellow stripes, period IV",
+      "fr": "FS, locomotive de manœuvre diesel classe 245, sans mains courantes latérales, livrée verte avec bandes janues, ép. IV",
+      "it": "FS, locomotiva diesel da manovra gruppo 245, senza corrimani laterali, livrea verde con strisce gialle, ep. IV"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": ""
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "LOCOMOTIVE",
+        "railway": "FS",
+        "livery": "verde con strisce gialle",
+        "length_over_buffers": {
+          "millimeters": 106.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "NO",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "YES",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "YES",
+          "spring_buffers": "NO"
+        },
+        "class_name": "D 245",
+        "road_number": "D 245 ???",
+        "series": null,
+        "depot": null,
+        "locomotive_type": "DIESEL_LOCOMOTIVE",
+        "dcc_interface": "NEXT_18",
+        "control": "DCC_SOUND",
+        "is_dummy": false
+      }
+    ],
+    "count": 1
+  }

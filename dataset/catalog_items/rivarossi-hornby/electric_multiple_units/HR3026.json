@@ -1,0 +1,50 @@
+
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR3026",
+    "scale": "H0",
+    "category": "ELECTRIC_MULTIPLE_UNITS",
+    "power_method": "DC",
+    "epoch": "V",
+    "description": {
+      "de": "Cisalpino, 5-tlg. Set Zwischenwagen für Hochgeschwindigkeitszug mit Neigetechnik der Reihe ETR 470, Ep. V",
+      "en": "SBB, 5-tlg. Set Zwischenwagen für Hochgeschwindigkeitszug mit Neigetechnik der Reihe ETR 470, Ep. V",
+      "fr": "FFS, coffret de 5 voitures intermédiaires supplémentaires pour le train pendulaire à grande vitesse ETR 470, livrée argentée avec bande bleue, ép. V",
+      "it": "FFS, set di 5 carrozze intermedie per il treno ad alta velocità ad assetto variabile ETR 470, livrea argento con striscia blu, ep. V"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "electric_multiple_unit_type": "TRAIN_SET",
+        "railway": "SBB",
+        "livery": "livrea argento con striscia blu",
+        "length_over_buffers": {
+          "millimeters": 1490.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "NO",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "NO"
+        },
+        "class_name": "Etr 470",
+        "road_number": "Etr 470 ???",
+        "is_dummy": true
+      }
+    ],
+    "count": 5
+  }
