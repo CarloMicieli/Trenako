@@ -1,0 +1,55 @@
+
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR2965S",
+    "scale": "H0",
+    "category": "LOCOMOTIVES",
+    "power_method": "DC",
+    "epoch": "IV",
+    "description": {
+      "de": "FS, schwere sechsachsige Elektrolokomotive der Reihe E.656, 1. Serie in experimenteller TEE-Farbgebung, Ep. IV",
+      "en": "FS, six-axle electric locomotive E.656, 1st series in experimental TEE livery, ep. IV",
+      "fr": "FS, locomotive électrique E.656, 1ère série, livrée expérimentale TEE, ép. IV",
+      "it": "FS, locomotiva elettrica E.656, 1a serie, livrea sperimentale TEE, ep. IV"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": "* Nuovi stampi per cassa, carrelli e relative parti riportate, con riproduzione accurata di tutte le caratteristiche tipiche delle diverse serie costruttive su frontali, fiancate e tetto.\n* Affidabile meccanica con telaio articolato e scatole ingranaggi in metallo, potente motore centrale a 5 poli con trasmissione a doppio albero cardanico su entrambi gli assi dei carrelli di estremità, due ruote con anello di aderenza.\n* Impianto elettrico interamente nuovo, con presa 21 poli NEM 660/21MTC per decoder DCC e DCC Sound, con predisposizione per altoparlante “sugar cube” 11 x 15 mm.\n* Versioni “S” con decoder sonoro Hornby HM7000 ed altoparlante installati di serie, con suoni specifici per il modello.\n* Luci bianche di testa e rosse di coda con commutazione automatica in base al senso di marcia e con possibilità di esclusione indipendente tra le due cabine. Posizione dei fanali rossi coerentemente differenziata in base all’unità riprodotta.\n* Terzo faro con comando indipendente dai fanali bassi.\n* Illuminazione interna di entrambe le cabine e del corridoio laterale con comando indipendente.\n* Possibilità di installazione del pattino centrale per funzionamento su sistemi a 3 rotaie, con commutazione del sistema tramite jumper sul circuito stampato."
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "LOCOMOTIVE",
+        "railway": "FS",
+        "livery": "TEE",
+        "length_over_buffers": {
+          "millimeters": 210.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "YES",
+          "metal_body": "NO",
+          "interior_lights": "YES",
+          "lights": "YES",
+          "spring_buffers": "NO"
+        },
+        "class_name": "E 656",
+        "road_number": "E 656 ???",
+        "series": "PRIMA SERIE",
+        "depot": null,
+        "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+        "dcc_interface": "MTC_21",
+        "control": "DCC_SOUND",
+        "is_dummy": false
+      }
+    ],
+    "count": 1
+  }

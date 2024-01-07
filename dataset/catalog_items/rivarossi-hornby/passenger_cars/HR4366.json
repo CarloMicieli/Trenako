@@ -1,0 +1,76 @@
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR4366",
+    "scale": "H0",
+    "category": "PASSENGER_CARS",
+    "power_method": "DC",
+    "epoch": "IV",
+    "description": {
+      "de": "FS, 2-tlg. Set Reisezugwagen, in grauer Farbgebung, bestehend aus 1 x Gepäckwagen Dz 83000 für Fahrradtransport und 1 x 2.Kl. Wagen Bz33010 - Typ 1946, Ep. IV",
+      "en": "FS, 2-unit pack of coaches, grey livery, including 1 luggage van for bicycles transport Dz 83000 and 1 2nd class coach Bz 33010 Type 1946, ep. IV",
+      "fr": "FS, coffret de 2 voitures, livrée grise, composé de 1 fourgon Dz 83000 pour le transport de vélos et 1 voiture de 2éme classe Bz33010 Type 1946, ép. IV",
+      "it": "FS, set di 2 carrozze Tipo 1946, composto da 1 bagagliaio per trasporto biciclette Dz 83000 e 1 carrozza di 2a classe Bz 33010, livrea grigia, ep. IV"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "PASSENGER_CAR",
+        "railway": "FS",
+        "livery": "grigio ardesia",
+        "length_over_buffers": {
+          "millimeters": 262.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "YES"
+        },
+        "type_name": "Tipo 46",
+        "road_number": null,
+        "series": null,
+        "passenger_car_type": null,
+        "service_level": "SECOND_CLASS"
+      },
+      {
+        "category": "PASSENGER_CAR",
+        "railway": "FS",
+        "livery": "grigio ardesia",
+        "length_over_buffers": {
+          "millimeters": 262.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "YES"
+        },
+        "type_name": "Tipo 46",
+        "road_number": null,
+        "series": null,
+        "passenger_car_type": null
+      }
+    ],
+    "count": 2
+  }

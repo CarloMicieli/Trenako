@@ -1,0 +1,77 @@
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR4376",
+    "scale": "H0",
+    "category": "PASSENGER_CARS",
+    "power_method": "DC",
+    "epoch": "V",
+    "description": {
+      "de": "FS, 2-tlg. Set Liegewagen UIC-X ‘68, in XMPR-Farbgebung, Ep. V",
+      "en": "FS, 2-unit pack of couchette coaches UIC-X ‘68, XMPR livery, ep. V",
+      "fr": "FS, coffret de 2 voitures couchettes UIC-X Type 1968, livrée XMPR, ép. V",
+      "it": "FS, set di 2 carrozze cuccette UIC-X Tipo 1968, livrea XMPR, ep. V"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "PASSENGER_CAR",
+        "railway": "FS",
+        "livery": "XMPR",
+        "length_over_buffers": {
+          "millimeters": 303.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "YES"
+        },
+        "type_name": "UIC-X 68",
+        "road_number": null,
+        "series": null,
+        "passenger_car_type": null,
+        "service_level": "SECOND_CLASS"
+      },
+      {
+        "category": "PASSENGER_CAR",
+        "railway": "FS",
+        "livery": "XMPR",
+        "length_over_buffers": {
+          "millimeters": 303.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "YES"
+        },
+        "type_name": "UIC-X 68",
+        "road_number": null,
+        "series": null,
+        "passenger_car_type": null,
+        "service_level": "SECOND_CLASS"
+      }
+    ],
+    "count": 2
+  }

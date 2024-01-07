@@ -1,32 +1,31 @@
 {
   "brand": "Rivarossi/Hornby",
-  "item_number": "HR4364",
+  "item_number": "HR6601",
   "scale": "H0",
-  "category": "PASSENGER_CARS",
+  "category": "FREIGHT_CARS",
   "power_method": "DC",
-  "epoch": "IV",
+  "epoch": "V",
   "description": {
-    "de": null,
-    "en": null,
-    "fr": null,
-    "it": "FS Bagagliaio UIC-X '70 con grandi carenature in livrea \"Bandiera\", ep. IV."
+    "de": "FS, dreiachsiger Schiebeplanenwagen Lails, „Indesit“, Ep. V",
+    "en": "FS, 3-axle tarpaulin wagon Lails, “Indesit », ep. V",
+    "fr": "FS, wagon bâché à 3 essieux type Lails, « Indesit », ép. V",
+    "it": "FS, carro articolato a 3 assi telonato tipo Lails, “Indesit”, ep. V"
   },
   "details": {
     "de": null,
     "en": null,
     "fr": null,
-    "it": ""
+    "it": null
   },
-  "delivery_date": "2023/11",
-  "availability_status": "AVAILABLE",
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "FREIGHT_CAR",
       "railway": "FS",
-      "livery": "bandiera",
+      "livery": "Indesit",
       "length_over_buffers": {
-        "inches": 11.9291403,
-        "millimeters": 303.0
+        "millimeters": 304.0
       },
       "technical_specifications": {
         "minimum_radius": 360.0,
@@ -39,13 +38,11 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "spring_buffers": "NO"
       },
-      "type_name": "UIC-X",
+      "type_name": "Lails",
       "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": null
+      "freight_car_type": null
     }
   ],
   "count": 1

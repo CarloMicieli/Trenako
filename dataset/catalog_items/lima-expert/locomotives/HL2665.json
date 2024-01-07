@@ -6,10 +6,10 @@
   "power_method": "DC",
   "epoch": "VI",
   "description": {
-    "de": null,
-    "fr": null,
-    "en": null,
-    "it": "FS Trenitalia livrea Intercity Giorno bianco fasce grigio/rosso, telaio grigio scuro, gancio automatico"
+    "de": "FS Trenitalia, Elektrolokomotive E.464 in „Intercity”-Lackierung, Ep. VI",
+    "fr": "FS Trenitalia, locomotive électrique E.464, livrée « Intercity », ép. VI",
+    "en": "FS Trenitalia, electric locomotive E.464, “Intercity” livery, period VI",
+    "it": "FS Trenitalia, locomotiva elettrica E.464, livrea “Intercity”, ep. VI"
   },
   "details": {
     "de": null,
@@ -23,24 +23,27 @@
     {
       "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
-      "class_name": "E464",
-      "road_number": "",
-      "livery": "",
-      "length_over_buffers": null,
+      "class_name": "E.464",
+      "road_number": "E.464 309",
+      "livery": "Intercity",
+      "length_over_buffers": {
+        "millimeters": 179.0
+      },
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
-          "socket": null,
-          "close_couplers": "NO",
+          "socket": "NEM_362",
+          "close_couplers": "YES",
           "digital_shunting": "NO"
         },
-        "flywheel_fitted": "NO",
+        "flywheel_fitted": "YES",
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
         "spring_buffers": "NO"
       },
       "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     }
   ],

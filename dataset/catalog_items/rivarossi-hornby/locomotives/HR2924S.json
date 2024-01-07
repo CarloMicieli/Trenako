@@ -1,0 +1,55 @@
+
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR2924S",
+    "scale": "H0",
+    "category": "LOCOMOTIVES",
+    "power_method": "DC",
+    "epoch": "VI",
+    "description": {
+      "de": "FNM/Trenord, Diesellokomotive EffiShunter 1000, in grau/blau/grüner Farbgebung, Ep. VI",
+      "en": "FNM/Trenord, diesel locomotive EffiShunter 1000, grey/blue/green livery, ep. VI",
+      "fr": "FNM/Trenord, locomotive de manœuvre diesel EffiShunter 1000, livrée grise/bleue/verte, ép. VI",
+      "it": "FNM/Trenord, locomotiva diesel da manovra EffiShunter 1000, livrea grigia/blu/verde, ep. VI"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "LOCOMOTIVE",
+        "railway": "FNM",
+        "livery": "grigia/blu/verde",
+        "length_over_buffers": {
+          "millimeters": 189.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "YES",
+          "metal_body": "NO",
+          "interior_lights": "YES",
+          "lights": "YES",
+          "spring_buffers": "NO"
+        },
+        "class_name": "EffiShunter 1000",
+        "road_number": "EffiShunter 1000 ???",
+        "series": null,
+        "depot": null,
+        "locomotive_type": "DIESEL_LOCOMOTIVE",
+        "dcc_interface": "NEXT_18",
+        "control": "DCC_SOUND",
+        "is_dummy": false
+      }
+    ],
+    "count": 1
+  }

@@ -1,0 +1,49 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR6555",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": "FS, 4-achs. Flachwagen Rgs, beladen mit 2 x 20’ Coil-Container „Gruppo Bernardini“, Ep. V",
+    "en": "FS, flat wagon Rgs, loaded with 2 x 20’ coil containers “Gruppo Bernardini”, ep. V",
+    "fr": "FS, wagon plateforme à 4 essieux Rgs, chargé avec 2 conteneurs porte-bobines de 20’ « Gruppo Bernardini », ép. V",
+    "it": "FS, carro pianale a 4 assi Rgs, caricato con 2 coil container “Gruppo Bernardini” da 20 piedi, ep. V"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": null
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": "rosso vagone",
+      "length_over_buffers": {
+        "millimeters": 229.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "NO"
+      },
+      "type_name": "Rgs",
+      "road_number": null,
+      "freight_car_type": null
+    }
+  ],
+  "count": 1
+}

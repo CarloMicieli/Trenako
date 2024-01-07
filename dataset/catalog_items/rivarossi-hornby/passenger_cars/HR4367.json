@@ -1,0 +1,77 @@
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR4367",
+    "scale": "H0",
+    "category": "PASSENGER_CARS",
+    "power_method": "DC",
+    "epoch": "III",
+    "description": {
+      "de": "FS, 2-tlg. Set 2.Klasse Reisezugwagen Bz 33010 - Typ 1946, in brauner Castano/Isabella-Farbgebung, einer davon mit Buffett-Abteil, Ep. II",
+      "en": "FS, 2-unit pack of coaches, Castano/Isabella livery, including 1 x 2nd class coach Bz 33010 Type 1946 with “ristoro” compartment and 1 x 2nd class coach Bz 33010, ep. II",
+      "fr": "FS, coffret de 2 voitures, livrée castano/Isabella, composé de 1 voiture de 2éme classe avec compartiment buffet Bz 33010 Type 1946 et 1 voiture de 2éme classe Bz 33010 Type 1946, ép. III",
+      "it": "FS, set di 2 carrozze Tipo 1946, composto da 2 carrozze di 2a classe Bz 33010, una con comparto ristoro, livrea castano/Isabella, ep. III"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "PASSENGER_CAR",
+        "railway": "FS",
+        "livery": "castano/Isabella",
+        "length_over_buffers": {
+          "millimeters": 262.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "YES"
+        },
+        "type_name": "Tipo 46",
+        "road_number": null,
+        "series": null,
+        "passenger_car_type": null,
+        "service_level": "SECOND_CLASS"
+      },
+      {
+        "category": "PASSENGER_CAR",
+        "railway": "FS",
+        "livery": "castano/Isabella",
+        "length_over_buffers": {
+          "millimeters": 262.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "YES"
+        },
+        "type_name": "Tipo 46",
+        "road_number": null,
+        "series": null,
+        "passenger_car_type": null,
+        "service_level": "SECOND_CLASS"
+      }
+    ],
+    "count": 2
+  }

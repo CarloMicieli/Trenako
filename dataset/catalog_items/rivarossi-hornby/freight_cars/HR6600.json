@@ -1,0 +1,49 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR6600",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "IV/V",
+  "description": {
+    "de": "FS, dreiachsiger Schiebeplanenwagen Lails, „Ausiliare Milano“, Ep. IV-V",
+    "en": "FS, 3-axle tarpaulin wagon Lails, “Ausiliare Milano », ep. IV-V",
+    "fr": "FS, wagon bâché à 3 essieux type Lails, « Ausiliare Milano », ép. IV-V",
+    "it": "FS, carro articolato a 3 assi telonato tipo Lails, “Ausiliare Milano”, ep. IV-V"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": null
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": "Ausiliare Milano",
+      "length_over_buffers": {
+        "millimeters": 304.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "NO"
+      },
+      "type_name": "Lails",
+      "road_number": null,
+      "freight_car_type": null
+    }
+  ],
+  "count": 1
+}

@@ -6,10 +6,10 @@
   "power_method": "DC",
   "epoch": "VI",
   "description": {
-    "de": null,
-    "fr": null,
-    "en": null,
-    "it": "FS Trenitalia livrea QUATTROSEIQUATTRO verde/bianco/rosso"
+    "de": "FS Trenitalia, Elektrolokomotive E.464 464 in „Quattroseiquattro”-Lackierung, Ep. VI",
+    "fr": "FS Trenitalia, locomotive électrique E.464 464, livrée « Quattroseiquattro », ép. VI",
+    "en": "FS Trenitalia, electric locomotive E.464 464, “Quattroseiquattro” livery, period VI",
+    "it": "FS Trenitalia, locomotiva elettrica E.464 464, livrea “Quattroseiquattro”, ep. V"
   },
   "details": {
     "de": null,
@@ -17,30 +17,33 @@
     "en": null,
     "it": null
   },
-  "delivery_date": null,
+  "delivery_date": "2023",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
       "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
-      "class_name": "E464",
-      "road_number": "E464 464",
-      "livery": "",
-      "length_over_buffers": null,
+      "class_name": "E.464",
+      "road_number": "E.464 464",
+      "livery": "Quattroseiquattro",
+      "length_over_buffers": {
+        "millimeters": 179.0
+      },
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
-          "socket": null,
-          "close_couplers": "NO",
+          "socket": "NEM_362",
+          "close_couplers": "YES",
           "digital_shunting": "NO"
         },
-        "flywheel_fitted": "NO",
+        "flywheel_fitted": "YES",
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
         "spring_buffers": "NO"
       },
       "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     }
   ],

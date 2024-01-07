@@ -1,0 +1,50 @@
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR4400",
+    "scale": "H0",
+    "category": "PASSENGER_CARS",
+    "power_method": "DC",
+    "epoch": "IV",
+    "description": {
+      "de": "FS, Schlafwagen der Bauart MU ‘73 in CIWL-Farbgebung mit Emblem, Ep. IV",
+      "en": "FS, sleeping coach type MU ‘73 in CIWL livery with emblem, ep. IV",
+      "fr": "FS, voiture-lits type MU ‘73 en livrée CIWL avec emblème, ép. IV",
+      "it": "FS, carrozza letti tipo MU ‘73 in livrea CIWL con emblema, ep. IV"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "PASSENGER_CAR",
+        "railway": "FS",
+        "livery": "CIWL",
+        "length_over_buffers": {
+          "millimeters": 262.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "YES"
+        },
+        "type_name": "MU Tipo 73",
+        "road_number": null,
+        "series": null,
+        "passenger_car_type": null
+      }
+    ],
+    "count": 1
+  }

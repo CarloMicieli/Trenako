@@ -1,0 +1,128 @@
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR4375",
+    "scale": "H0",
+    "category": "PASSENGER_CARS",
+    "power_method": "DC",
+    "epoch": "V",
+    "description": {
+      "de": "„Italien-Holland-Express“, 4-tlg. Set Reisezugwagen, bestehend aus 1 x DB Bcm 243, in blau/beiger Farbgebung, 1 x FS 2.Kl. UIC-X, in rot/grauer Farbgebung, 1 x FS 2.Kl. UIC-X, in grauer Farbgebung und 1 x FS-Liegewagen UIC-X ‘68, in rot/grauer Farbgebung, Ep. ",
+      "en": "“Italien-Holland-Express”, 4-unit pack of coaches, including 1 x DB coach Bcm 243 in blue/beige livery, 1 x FS 2nd class coach UIC-X in red/grey livery, 1 x FS 2nd class coach UIC-X in grey livery and 1 x FS couchette coach UIC-X ‘68 in red/grey livery, ep. V",
+      "fr": "« Italien-Holland-Express », composé de 1 voiture DB Bcm 243 en livrée bleue/beige, 1 voiture FS de 2éme classe UIC-X en livrée rouge/grise, 1 voiture FS de 2éme classe UIC-X en livrée grise et 1 voiture-couchette FS en livrée rouge/grise UIC-X ‘68, ép. V",
+      "it": "“Italien-Holland Express”, set di 4 carrozze, 1 cuccetta DB Bcm 243 blu/beige, 1 UIC-X 2a cl. FS rosso fegato, 1 UIC-X 2a cl. FS grigio ardesia e 1 cuccetta UIC-X ‘68 FS rosso fegato, ep. V"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "PASSENGER_CAR",
+        "railway": "FS",
+        "livery": "rosso fegato",
+        "length_over_buffers": {
+          "millimeters": 303.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "YES"
+        },
+        "type_name": "UIC-X",
+        "road_number": null,
+        "series": null,
+        "passenger_car_type": null,
+        "service_level": "SECOND_CLASS"
+      },
+      {
+        "category": "PASSENGER_CAR",
+        "railway": "FS",
+        "livery": "grigio ardesia",
+        "length_over_buffers": {
+          "millimeters": 303.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "YES"
+        },
+        "type_name": "UIC-X",
+        "road_number": null,
+        "series": null,
+        "passenger_car_type": null,
+        "service_level": "SECOND_CLASS"
+      },
+      {
+        "category": "PASSENGER_CAR",
+        "railway": "FS",
+        "livery": "rosso fegato",
+        "length_over_buffers": {
+          "millimeters": 303.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "YES"
+        },
+        "type_name": "UIC-X",
+        "road_number": null,
+        "series": null,
+        "passenger_car_type": null,
+        "service_level": "SECOND_CLASS"
+      },
+      {
+        "category": "PASSENGER_CAR",
+        "railway": "DB",
+        "livery": "blu/beige",
+        "length_over_buffers": {
+          "millimeters": 303.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "NOT_APPLICABLE",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "NO",
+          "spring_buffers": "YES"
+        },
+        "type_name": "Bcm 243",
+        "road_number": null,
+        "series": null,
+        "passenger_car_type": null
+      }
+    ],
+    "count": 4
+  }

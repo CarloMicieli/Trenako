@@ -1,0 +1,54 @@
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR2914",
+    "scale": "H0",
+    "category": "LOCOMOTIVES",
+    "power_method": "DC",
+    "epoch": "III",
+    "description": {
+      "de": "FS, Dampflokomotive Gr. 685, 2. Serie, mit kurzem Kessel und Öllampen, Ep. III",
+      "en": "FS, steam locomotive Gr. 685, 2nd series, with short boiler and oil lamps, period III",
+      "fr": "FS, locomotive à vapeur Gr. 685, 2éme série, avec chaudière courte et lampes à huile, ép. III",
+      "it": "FS, locomotiva a vapore Gr. 685, 2a serie, con caldaia corta e fanali a petrolio, ep. III"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "LOCOMOTIVE",
+        "railway": "FS",
+        "livery": "nera",
+        "length_over_buffers": {
+          "millimeters": 210.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 420.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "YES",
+          "metal_body": "NO",
+          "interior_lights": "NO",
+          "lights": "YES",
+          "spring_buffers": "NO"
+        },
+        "class_name": "Gr 685",
+        "road_number": "Gr 685 ???",
+        "series": "SECONDA SERIE",
+        "depot": null,
+        "locomotive_type": "STEAM_LOCOMOTIVE",
+        "dcc_interface": "MTC_21",
+        "control": "DCC_READY",
+        "is_dummy": false
+      }
+    ],
+    "count": 1
+  }

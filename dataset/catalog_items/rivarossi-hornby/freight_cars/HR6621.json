@@ -1,0 +1,73 @@
+{
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR6621",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": "FS, 2-tlg. Set 2-achs. Gaskesselwagen in silberner Farbgebung, „Pibigas”, Ep. IV",
+    "en": "FS, 2-unit set of 2-axle gas tank wagons, silver livery, “Pibigas”, ep. IV",
+    "fr": "FS, coffret de 2 wagons citernes à 2 essieux à gaz, livrée argent, « Pibigas », ép. IV",
+    "it": "FS, set di 2 carri cisterna a 2 assi per trasporto gas, livrea argento, “Pibigas”, ep. IV"
+  },
+  "details": {
+    "de": null,
+    "en": null,
+    "fr": null,
+    "it": null
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": "argento",
+      "length_over_buffers": {
+        "millimeters": 121.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "NO"
+      },
+      "type_name": "Zgkk",
+      "road_number": null,
+      "freight_car_type": null
+    },
+    {
+      "category": "FREIGHT_CAR",
+      "railway": "FS",
+      "livery": "argento",
+      "length_over_buffers": {
+        "millimeters": 121.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "spring_buffers": "NO"
+      },
+      "type_name": "Zgkk",
+      "road_number": null,
+      "freight_car_type": null
+    }
+  ],
+  "count": 2
+}

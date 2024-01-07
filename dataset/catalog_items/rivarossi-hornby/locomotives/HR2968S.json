@@ -1,0 +1,55 @@
+
+{
+    "brand": "Rivarossi/Hornby",
+    "item_number": "HR2968S",
+    "scale": "H0",
+    "category": "LOCOMOTIVES",
+    "power_method": "DC",
+    "epoch": "V",
+    "description": {
+      "de": "FS, schwere sechsachsige Elektrolokomotive der Reihe E.656, 4. Serie in OriginalFarbgebung, ohne Regenrinne, mit Dämpfern, Ep. V",
+      "en": "FS, six-axle electric locomotive E.656, 4th series original livery, without gutter, with dampers, ep. V",
+      "fr": "FS, locomotive électrique E.656, 4ème série, livrée d’origine, sans gouttière et avec ventilateurs, ép. V",
+      "it": "FS, locomotiva elettrica E.656, 4a serie, livrea di origine, senza gocciolatoio, con smorzatori, ep. V"
+    },
+    "details": {
+      "de": null,
+      "en": null,
+      "fr": null,
+      "it": null
+    },
+    "delivery_date": "2024",
+    "availability_status": "ANNOUNCED",
+    "rolling_stocks": [
+      {
+        "category": "LOCOMOTIVE",
+        "railway": "FS",
+        "livery": "grigio perla/blu orientale",
+        "length_over_buffers": {
+          "millimeters": 210.0
+        },
+        "technical_specifications": {
+          "minimum_radius": 360.0,
+          "coupling": {
+            "socket": "NEM_362",
+            "close_couplers": "YES",
+            "digital_shunting": "NO"
+          },
+          "flywheel_fitted": "YES",
+          "metal_body": "NO",
+          "interior_lights": "YES",
+          "lights": "YES",
+          "spring_buffers": "NO"
+        },
+        "class_name": "E.656",
+        "road_number": "E.656 ???",
+        "series": "QUARTA SERIE",
+        "depot": null,
+        "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+        "dcc_interface": "MTC_21",
+        "control": "DCC_SOUND",
+        "is_dummy": false
+      }
+    ],
+    "count": 1
+  }
