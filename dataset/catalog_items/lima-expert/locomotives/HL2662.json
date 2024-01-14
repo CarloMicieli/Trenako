@@ -21,12 +21,14 @@
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
+      "category": "LOCOMOTIVES",
       "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
       "class_name": "E464",
       "road_number": "E464 497",
       "livery": "verde/bianco/grigio fasce rosse",
       "length_over_buffers": {
+        "inches": null,
         "millimeters": 179.0
       },
       "technical_specifications": {
@@ -40,7 +42,7 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "DCC_READY",
       "dcc_interface": "MTC_21",

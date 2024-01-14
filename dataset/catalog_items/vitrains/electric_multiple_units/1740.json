@@ -7,25 +7,28 @@
   "epoch": "III",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set elettromotrice ALe 840 027 + Le 840 026 rimorchiata (non motorizzata) con vetri di origine, delle FS ep. III. Illuminazione interna, rimorchiata con decoder funzioni integrato."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/07",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "category": "ELECTRIC_MULTIPLE_UNITS",
+      "electric_multiple_unit_type": "POWER_CAR",
       "railway": "FS",
+      "type_name": "ALe 840",
+      "road_number": "ALe 840 027",
       "livery": "castano/isabella",
       "length_over_buffers": {
-        "inches": 12.6771722,
+        "inches": 12.677173,
         "millimeters": 322.0
       },
       "technical_specifications": {
@@ -39,23 +42,20 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "ALe 840",
-      "road_number": "ALe 840 027",
-      "series": null,
-      "depot": null,
-      "electric_multiple_unit_type": "POWER_CAR",
-      "dcc_interface": null,
       "control": "DCC_SOUND",
       "is_dummy": false
     },
     {
-      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "category": "ELECTRIC_MULTIPLE_UNITS",
+      "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
+      "type_name": "Le 840",
+      "road_number": "Le 840 026",
       "livery": "castano/isabella",
       "length_over_buffers": {
-        "inches": 12.6771722,
+        "inches": 12.677173,
         "millimeters": 322.0
       },
       "technical_specifications": {
@@ -69,14 +69,8 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Le 840",
-      "road_number": "Le 840 026",
-      "series": null,
-      "depot": null,
-      "electric_multiple_unit_type": "TRAILER_CAR",
-      "dcc_interface": null,
       "control": "DCC_SOUND",
       "is_dummy": true
     }

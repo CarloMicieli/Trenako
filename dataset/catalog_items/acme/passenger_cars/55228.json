@@ -7,25 +7,27 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set di 3 carrozze con filetto rosso per treni Rapidi, composto da una carrozza ristorante 1925R Pistoiesi, una carrozza di 1 KL. UIC-Y con impianto di condizionamento Galileo e una UIC-X 1968 di 2 KL. ep. IV. "
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "UIC-X",
       "livery": "grigio ardesia",
+      "service_level": "SECOND_CLASS",
       "length_over_buffers": {
-        "inches": 11.9291403,
+        "inches": 11.92914,
         "millimeters": 303.0
       },
       "technical_specifications": {
@@ -39,20 +41,18 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "UIC-X",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "SECOND_CLASS"
+      "is_dummy": null
     },
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "UIC-Y",
       "livery": "grigio ardesia",
+      "service_level": "FIRST_CLASS",
       "length_over_buffers": {
-        "inches": 11.3385888,
+        "inches": 11.338589,
         "millimeters": 288.0
       },
       "technical_specifications": {
@@ -66,17 +66,15 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "UIC-Y",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "FIRST_CLASS"
+      "is_dummy": null
     },
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
+      "passenger_car_type": "DINING_CAR",
       "railway": "FS",
+      "type_name": "WR 2970",
       "livery": "CIWL",
       "length_over_buffers": {
         "inches": 10.629927,
@@ -93,13 +91,9 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "WR 2970",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": "DINING_CAR",
-      "service_level": null
+      "is_dummy": null
     }
   ],
   "count": 3

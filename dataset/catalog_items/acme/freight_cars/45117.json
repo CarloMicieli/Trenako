@@ -7,24 +7,23 @@
   "epoch": "III",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FS Set di due carri Poz Tipo 1920 di cui uno con sostegni per gruette ed uno con respingenti originali a bovolo, ep. III"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/11",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
-      "livery": null,
-      "length_over_buffers": null,
+      "type_name": "Tipo 1920",
       "technical_specifications": {
         "minimum_radius": null,
         "coupling": {
@@ -36,17 +35,14 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Tipo 1920",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     },
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
-      "livery": null,
-      "length_over_buffers": null,
+      "type_name": "Tipo 1920",
       "technical_specifications": {
         "minimum_radius": null,
         "coupling": {
@@ -58,11 +54,9 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Tipo 1920",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     }
   ],
   "count": 2

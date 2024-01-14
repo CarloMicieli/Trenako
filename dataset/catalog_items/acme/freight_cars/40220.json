@@ -7,23 +7,24 @@
   "epoch": "V",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Carro FS Rlmmp-t per trasporti di mezzi corazzati con calzatoie fisse"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
-      "livery": null,
+      "type_name": "Rlmmp-t",
+      "road_number": "31 83 389 0 335-0",
       "length_over_buffers": {
         "inches": 5.6692944,
         "millimeters": 144.0
@@ -39,11 +40,9 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "type_name": "Rlmmp-t",
-      "road_number": "31 83 389 0 335-0",
-      "freight_car_type": null
+      "is_dummy": null
     }
   ],
   "count": 1

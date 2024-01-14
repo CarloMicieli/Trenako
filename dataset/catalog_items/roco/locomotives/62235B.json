@@ -21,12 +21,12 @@
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
+      "category": "LOCOMOTIVES",
       "locomotive_type": "STEAM_LOCOMOTIVE",
       "railway": "FS",
       "class_name": "875",
       "road_number": "875 039",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -38,7 +38,7 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "DCC_READY",
       "is_dummy": false

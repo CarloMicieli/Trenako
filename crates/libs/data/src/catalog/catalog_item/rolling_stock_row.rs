@@ -43,7 +43,7 @@ pub struct RollingStockRow {
     pub metal_body: Option<FeatureFlag>,
     pub interior_lights: Option<FeatureFlag>,
     pub lights: Option<FeatureFlag>,
-    pub spring_buffers: Option<FeatureFlag>,
+    pub sprung_buffers: Option<FeatureFlag>,
 }
 
 #[cfg(test)]
@@ -82,7 +82,7 @@ pub mod test {
             metal_body: Some(FeatureFlag::NotApplicable),
             interior_lights: Some(FeatureFlag::NotApplicable),
             lights: Some(FeatureFlag::NotApplicable),
-            spring_buffers: Some(FeatureFlag::NotApplicable),
+            sprung_buffers: Some(FeatureFlag::NotApplicable),
         }
     }
 }

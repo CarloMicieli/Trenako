@@ -7,25 +7,27 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Coppia di automotrici Diesel tipo Aln 442/448 nella livrea \"TEE\" di costruzione \"Breda\" delle FS ep. IV. Illuminazione interna di serie."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/10",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "RAILCAR",
+      "category": "RAILCARS",
+      "railcar_type": "POWER_CAR",
       "railway": "FS",
+      "type_name": "ALn 442",
       "livery": "TEE",
       "length_over_buffers": {
-        "inches": 12.7165423,
+        "inches": 12.716542,
         "millimeters": 323.0
       },
       "technical_specifications": {
@@ -35,23 +37,20 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "ALn 442",
-      "road_number": null,
-      "series": null,
-      "depot": null,
-      "railcar_type": "POWER_CAR",
-      "dcc_interface": "PLUX_22",
       "control": "DCC_READY",
+      "dcc_interface": "PLUX_22",
       "is_dummy": false
     },
     {
-      "category": "RAILCAR",
+      "category": "RAILCARS",
+      "railcar_type": "TRAILER_CAR",
       "railway": "FS",
+      "type_name": "Ln 448",
       "livery": "TEE",
       "length_over_buffers": {
-        "inches": 12.7165423,
+        "inches": 12.716542,
         "millimeters": 323.0
       },
       "technical_specifications": {
@@ -61,15 +60,8 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Ln 448",
-      "road_number": null,
-      "series": null,
-      "depot": null,
-      "railcar_type": "TRAILER_CAR",
-      "dcc_interface": null,
-      "control": null,
       "is_dummy": true
     }
   ],

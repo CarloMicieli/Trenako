@@ -1,55 +1,53 @@
-
 {
-    "brand": "Rivarossi/Hornby",
-    "item_number": "HR2909D",
-    "scale": "H0",
-    "category": "LOCOMOTIVES",
-    "power_method": "DC",
-    "epoch": "V/VI",
-    "description": {
-      "de": "FS, Rottenkraftwagen KLV 53 in gelber „RFI”-Lackierung, Ep. V-VI",
-      "en": "FS, maintenance vehicle type KLV 53, yellow “RFI” livery, period V-VI",
-      "fr": "FS, draisine KLV 53, livrée jaune « RFI », ép. V-VI",
-      "it": "FS, draisina KLV 53, livrea gialla RFI, ep. V-VI"
-    },
-    "details": {
-      "de": null,
-      "en": null,
-      "fr": null,
-      "it": null
-    },
-    "delivery_date": "2024",
-    "availability_status": "ANNOUNCED",
-    "rolling_stocks": [
-      {
-        "category": "LOCOMOTIVE",
-        "railway": "FS",
-        "livery": "gialla",
-        "length_over_buffers": {
-          "millimeters": 155.0
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2909D",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "V/VI",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": "FS, maintenance vehicle type KLV 53, yellow “RFI” livery, period V-VI",
+    "it": "FS, draisina KLV 53, livrea gialla RFI, ep. V-VI"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "KLV 53",
+      "road_number": "KLV 53 ???",
+      "livery": "gialla",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 155.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
         },
-        "technical_specifications": {
-          "minimum_radius": 360.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "NO",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "YES",
-          "metal_body": "NO",
-          "interior_lights": "NO",
-          "lights": "NO",
-          "spring_buffers": "NO"
-        },
-        "class_name": "KLV 53",
-        "road_number": "KLV 53 ???",
-        "series": null,
-        "depot": null,
-        "locomotive_type": "DIESEL_LOCOMOTIVE",
-        "dcc_interface": "NEXT_18",
-        "control": "DCC",
-        "is_dummy": false
-      }
-    ],
-    "count": 1
-  }
+        "flywheel_fitted": "YES",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": "NO"
+      },
+      "control": "DCC",
+      "dcc_interface": "NEXT_18",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

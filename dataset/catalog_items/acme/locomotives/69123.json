@@ -7,22 +7,27 @@
   "epoch": "V/VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Locomotiva elettrica 645 335, in livrea XMPR, con fanaleria modificata, logo \"Cargo\" e portelli laterali alti, assegnata all'O.M.R. Marcianise, ep. V-VI"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/09",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
+      "class_name": "E645",
+      "road_number": "E645 335",
+      "series": "SECONDA SERIE",
+      "depot": "Marcianise",
       "livery": "XMPR",
       "length_over_buffers": {
         "inches": 8.267721,
@@ -39,15 +44,10 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "class_name": "E645",
-      "road_number": "E645 335",
-      "series": "SECONDA SERIE",
-      "depot": "Marcianise",
-      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
-      "dcc_interface": "MTC_21",
       "control": "DCC_SOUND",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     }
   ],

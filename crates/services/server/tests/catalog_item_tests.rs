@@ -327,7 +327,7 @@ async fn it_should_return_422_when_the_railway_is_not_found() {
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "YES",
-                  "spring_buffers" : "NO"
+                  "sprung_buffers" : "NO"
                 },
                 "is_dummy" : false
               }]
@@ -409,7 +409,7 @@ async fn it_should_create_a_new_locomotive() {
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "YES",
-                  "spring_buffers" : "NO"
+                  "sprung_buffers" : "NO"
                 },
                 "is_dummy" : false
               }]
@@ -482,7 +482,7 @@ async fn it_should_create_a_new_locomotive() {
         assert_eq!(Some(FeatureFlag::No), rs.metal_body);
         assert_eq!(Some(FeatureFlag::No), rs.interior_lights);
         assert_eq!(Some(FeatureFlag::Yes), rs.lights);
-        assert_eq!(Some(FeatureFlag::No), rs.spring_buffers);
+        assert_eq!(Some(FeatureFlag::No), rs.sprung_buffers);
     })
     .await
 }
@@ -548,7 +548,7 @@ async fn it_should_create_a_new_electric_multiple_unit() {
                   "minimum_radius": 360.0,
                   "interior_lights" : "YES",
                   "lights" : "YES",
-                  "spring_buffers" : "NO"
+                  "sprung_buffers" : "NO"
                 },
                 "is_dummy" : false
               },
@@ -575,7 +575,7 @@ async fn it_should_create_a_new_electric_multiple_unit() {
                   "minimum_radius": 360.0,
                   "interior_lights" : "YES",
                   "lights" : "YES",
-                  "spring_buffers" : "NO"
+                  "sprung_buffers" : "NO"
                 },
                 "is_dummy" : true
               }]
@@ -657,7 +657,7 @@ async fn it_should_create_a_new_electric_multiple_unit() {
         assert_eq!(Some(FeatureFlag::No), rs1.metal_body);
         assert_eq!(Some(FeatureFlag::Yes), rs1.interior_lights);
         assert_eq!(Some(FeatureFlag::Yes), rs1.lights);
-        assert_eq!(Some(FeatureFlag::No), rs1.spring_buffers);
+        assert_eq!(Some(FeatureFlag::No), rs1.sprung_buffers);
 
         let rs2 = saved
             .rolling_stocks
@@ -694,7 +694,7 @@ async fn it_should_create_a_new_electric_multiple_unit() {
         assert_eq!(Some(FeatureFlag::No), rs2.metal_body);
         assert_eq!(Some(FeatureFlag::Yes), rs2.interior_lights);
         assert_eq!(Some(FeatureFlag::Yes), rs2.lights);
-        assert_eq!(Some(FeatureFlag::No), rs2.spring_buffers);
+        assert_eq!(Some(FeatureFlag::No), rs2.sprung_buffers);
     })
     .await
 }
@@ -759,7 +759,7 @@ async fn it_should_create_a_new_railcar() {
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "YES",
-                  "spring_buffers" : "NO"
+                  "sprung_buffers" : "NO"
                 },
                 "is_dummy" : false
               },
@@ -786,7 +786,7 @@ async fn it_should_create_a_new_railcar() {
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "YES",
-                  "spring_buffers" : "NO"
+                  "sprung_buffers" : "NO"
                 },
                 "is_dummy" : true
               }]
@@ -861,7 +861,7 @@ async fn it_should_create_a_new_railcar() {
         assert_eq!(Some(FeatureFlag::No), rs1.metal_body);
         assert_eq!(Some(FeatureFlag::No), rs1.interior_lights);
         assert_eq!(Some(FeatureFlag::Yes), rs1.lights);
-        assert_eq!(Some(FeatureFlag::No), rs1.spring_buffers);
+        assert_eq!(Some(FeatureFlag::No), rs1.sprung_buffers);
 
         let rs2 = saved
             .rolling_stocks
@@ -895,7 +895,7 @@ async fn it_should_create_a_new_railcar() {
         assert_eq!(Some(FeatureFlag::No), rs2.metal_body);
         assert_eq!(Some(FeatureFlag::No), rs2.interior_lights);
         assert_eq!(Some(FeatureFlag::Yes), rs2.lights);
-        assert_eq!(Some(FeatureFlag::No), rs2.spring_buffers);
+        assert_eq!(Some(FeatureFlag::No), rs2.sprung_buffers);
     })
     .await
 }
@@ -959,7 +959,7 @@ async fn it_should_create_a_new_passenger_car() {
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "NO",
-                  "spring_buffers" : "NO"
+                  "sprung_buffers" : "NO"
                 }
               }]
         });
@@ -1020,7 +1020,7 @@ async fn it_should_create_a_new_passenger_car() {
         assert_eq!(Some(FeatureFlag::No), rs.metal_body);
         assert_eq!(Some(FeatureFlag::No), rs.interior_lights);
         assert_eq!(Some(FeatureFlag::No), rs.lights);
-        assert_eq!(Some(FeatureFlag::No), rs.spring_buffers);
+        assert_eq!(Some(FeatureFlag::No), rs.sprung_buffers);
     })
     .await
 }
@@ -1082,7 +1082,7 @@ async fn it_should_create_a_new_freight_car() {
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "NO",
-                  "spring_buffers" : "NO"
+                  "sprung_buffers" : "NO"
                 }
               }]
         });
@@ -1148,7 +1148,7 @@ async fn it_should_create_a_new_freight_car() {
         assert_eq!(Some(FeatureFlag::No), rs.metal_body);
         assert_eq!(Some(FeatureFlag::No), rs.interior_lights);
         assert_eq!(Some(FeatureFlag::No), rs.lights);
-        assert_eq!(Some(FeatureFlag::No), rs.spring_buffers);
+        assert_eq!(Some(FeatureFlag::No), rs.sprung_buffers);
     })
     .await
 }
@@ -1207,7 +1207,7 @@ async fn fetch_saved_catalog_item(catalog_item_id: CatalogItemId, pg_pool: &PgPo
             metal_body as "metal_body: FeatureFlag",
             interior_lights as "interior_lights: FeatureFlag",
             lights as "lights: FeatureFlag",
-            spring_buffers as "spring_buffers: FeatureFlag"
+            sprung_buffers as "sprung_buffers: FeatureFlag"
         FROM rolling_stocks
         WHERE catalog_item_id = $1"#,
         catalog_item_id as CatalogItemId
@@ -1274,5 +1274,5 @@ struct SavedRollingStock {
     metal_body: Option<FeatureFlag>,
     interior_lights: Option<FeatureFlag>,
     lights: Option<FeatureFlag>,
-    spring_buffers: Option<FeatureFlag>,
+    sprung_buffers: Option<FeatureFlag>,
 }

@@ -7,24 +7,26 @@
   "epoch": "V/VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FS Ln 882.1515 livrea FER, senza logo Trenitalia, ep.V-VI. Con illuminazione e decoder funzioni integrata"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "RAILCAR",
+      "category": "RAILCARS",
+      "railcar_type": "TRAILER_CAR",
       "railway": "FS",
+      "type_name": "Ln 882",
+      "road_number": "Ln 882 1515",
       "livery": "FER",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -36,15 +38,8 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "type_name": "Ln 882",
-      "road_number": "Ln 882 1515",
-      "series": null,
-      "depot": null,
-      "railcar_type": "TRAILER_CAR",
-      "dcc_interface": null,
-      "control": null,
       "is_dummy": true
     }
   ],

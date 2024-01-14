@@ -7,24 +7,25 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Carrozza Tipo 1951R di 2 classe (29-08 046-1 B), livrea grigio ardesia, marcatura uniforme UIC e logo  FS, con contrassegni fumatori"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/11",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "Tipo 1951R",
       "livery": "grigio ardesia",
-      "length_over_buffers": null,
+      "service_level": "SECOND_CLASS",
       "technical_specifications": {
         "minimum_radius": null,
         "coupling": {
@@ -36,13 +37,9 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Tipo 1951R",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "SECOND_CLASS"
+      "is_dummy": null
     }
   ],
   "count": 1

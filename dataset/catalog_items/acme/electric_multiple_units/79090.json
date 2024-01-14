@@ -7,25 +7,26 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Elettrotreno ETR 250 “Arlecchino”. Set di quattro elementi, stato anni settanta con terzo faro sul frontale."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/12",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "category": "ELECTRIC_MULTIPLE_UNITS",
+      "electric_multiple_unit_type": "TRAIN_SET",
       "railway": "FS",
-      "livery": null,
+      "type_name": "Etr 250",
       "length_over_buffers": {
-        "inches": 44.094512,
+        "inches": 44.094513,
         "millimeters": 1120.0
       },
       "technical_specifications": {
@@ -35,15 +36,10 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Etr 250",
-      "road_number": null,
-      "series": null,
-      "depot": null,
-      "electric_multiple_unit_type": "TRAIN_SET",
-      "dcc_interface": "MTC_21",
       "control": "DCC_SOUND",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     }
   ],

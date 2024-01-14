@@ -7,24 +7,24 @@
   "epoch": "III",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set di 3 carri refrigerati a 2 assi Hgb di cui 2 senza garitta ed 1 con garitta, a sagoma inglese, in livrea bianca con striscia rossa, ep. III."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
+      "type_name": "Hgb",
       "livery": "bianca",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -36,17 +36,15 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "type_name": "Hgb",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     },
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
+      "type_name": "Hgb",
       "livery": "bianca",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -58,17 +56,15 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "type_name": "Hgb",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     },
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
+      "type_name": "Hgb",
       "livery": "bianca",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -80,11 +76,9 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "type_name": "Hgb",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     }
   ],
   "count": 3

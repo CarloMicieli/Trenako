@@ -6,25 +6,27 @@
   "power_method": "DC",
   "epoch": "IV/V",
   "description": {
-    "de": "FS, 2-tlg. Set Flachwagen, bestehend aus 1 x Rgs beladen mit 2 x 20’ Container und 1 x Rgmms beladen mit zwei Militärfahrzeugen vom Typ M113, Ep. IV-V",
+    "de": null,
+    "fr": null,
     "en": "FS, 2-unit pack of flat wagons, including 1 x Rgs wagon loaded with 2 x 20’ containers and 1 x Rgmms wagon loaded with two military vehicles M113, ep. IV-V",
-    "fr": "FS, coffret de 2 wagons plateforme à 4 essieux, composé d’ 1 wagon Rgs chargé avec 2 conteneurs de 20’ et 1 wagon Rgmms chargé avec 2 véhicules militaires M113, ép. IV-V",
     "it": "FS, set di 2 carri pianale a 4 assi composto da 1 carro Rgs caricato con 2 container da 20 piedi e 1 carro Rgmms caricato con 2 veicoli militari M113, ep. IV-V"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": null
   },
   "delivery_date": "2024",
   "availability_status": "ANNOUNCED",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
+      "type_name": "Rgs",
       "livery": "rosso vagone",
       "length_over_buffers": {
+        "inches": null,
         "millimeters": 229.0
       },
       "technical_specifications": {
@@ -38,17 +40,17 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
-      "type_name": "Rgs",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     },
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
+      "type_name": "Rgmms",
       "livery": "rosso vagone",
       "length_over_buffers": {
+        "inches": null,
         "millimeters": 121.0
       },
       "technical_specifications": {
@@ -62,11 +64,9 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
-      "type_name": "Rgmms",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     }
   ],
   "count": 2

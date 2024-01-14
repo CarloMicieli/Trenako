@@ -3573,7 +3573,7 @@ components:
           $ref: "#/components/schemas/FeatureFlag"
         lights:
           $ref: "#/components/schemas/FeatureFlag"
-        spring_buffers:
+        sprung_buffers:
           $ref: "#/components/schemas/FeatureFlag"
     TrackGauge:
       description: the track gauge

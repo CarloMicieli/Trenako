@@ -1,55 +1,53 @@
-
 {
-    "brand": "Rivarossi/Hornby",
-    "item_number": "HR2923S",
-    "scale": "H0",
-    "category": "LOCOMOTIVES",
-    "power_method": "DC",
-    "epoch": "VI",
-    "description": {
-      "de": "Dinazzano Po/TPER, Diesellokomotive EffiShunter 1000, in orange/grauer Farbgebung, Ep. VI",
-      "en": "Dinazzano Po/TPER, diesel shunting locomotive EffiShunter 1000, orange/grey livery, ep. VI",
-      "fr": "Dinazzano Po/TPER, locomotive de manœuvre diesel EffiShunter 1000, livrée orange/grise, ép. VI",
-      "it": "Dinazzano Po/TPER, locomotiva diesel da manovra EffiShunter 1000, livrea arancio/grigia, ep. VI"
-    },
-    "details": {
-      "de": null,
-      "en": null,
-      "fr": null,
-      "it": null
-    },
-    "delivery_date": "2024",
-    "availability_status": "ANNOUNCED",
-    "rolling_stocks": [
-      {
-        "category": "LOCOMOTIVE",
-        "railway": "DINAZZANO PO/TPER",
-        "livery": "arancio/grigia",
-        "length_over_buffers": {
-          "millimeters": 189.0
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2923S",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": "Dinazzano Po/TPER, diesel shunting locomotive EffiShunter 1000, orange/grey livery, ep. VI",
+    "it": "Dinazzano Po/TPER, locomotiva diesel da manovra EffiShunter 1000, livrea arancio/grigia, ep. VI"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "DINAZZANO PO/TPER",
+      "class_name": "EffiShunter 1000",
+      "road_number": "EffiShunter 1000 ???",
+      "livery": "arancio/grigia",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 189.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
         },
-        "technical_specifications": {
-          "minimum_radius": 360.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "YES",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "YES",
-          "metal_body": "NO",
-          "interior_lights": "YES",
-          "lights": "YES",
-          "spring_buffers": "NO"
-        },
-        "class_name": "EffiShunter 1000",
-        "road_number": "EffiShunter 1000 ???",
-        "series": null,
-        "depot": null,
-        "locomotive_type": "DIESEL_LOCOMOTIVE",
-        "dcc_interface": "NEXT_18",
-        "control": "DCC_SOUND",
-        "is_dummy": false
-      }
-    ],
-    "count": 1
-  }
+        "flywheel_fitted": "YES",
+        "metal_body": "NO",
+        "interior_lights": "YES",
+        "lights": "YES",
+        "sprung_buffers": "NO"
+      },
+      "control": "DCC_SOUND",
+      "dcc_interface": "NEXT_18",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

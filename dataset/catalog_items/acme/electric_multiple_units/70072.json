@@ -21,13 +21,13 @@
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
       "type_name": "ETR 500",
       "road_number": "70 83 17-98 500-8",
       "series": "Diagnostici",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -39,19 +39,19 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "NO_DCC",
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
       "type_name": "ETR 500",
       "road_number": "70 83 17-98 504-0",
       "series": "Diagnostici",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -63,7 +63,7 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "NO_DCC",
       "is_dummy": false

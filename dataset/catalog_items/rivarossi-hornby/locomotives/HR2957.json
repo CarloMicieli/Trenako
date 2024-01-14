@@ -1,55 +1,53 @@
-
 {
-    "brand": "Rivarossi/Hornby",
-    "item_number": "HR2957",
-    "scale": "H0",
-    "category": "LOCOMOTIVES",
-    "power_method": "DC",
-    "epoch": "III/IV",
-    "description": {
-      "de": "FS, vierachsige Tenderlokomotive der Reihe 940, mit elektrischen Lampen, Ep. III-IV",
-      "en": "FS, steam tender locomotive Gr. 940, with electric lamps, ep. III-IV",
-      "fr": "FS, locomotive à tender à vapeur Gr. 940, avec lampes électriques, ép. III-IV",
-      "it": "FS, locomotiva a vapore Gr. 940, con fanali elettrici, ep. III-IV"
-    },
-    "details": {
-      "de": null,
-      "en": null,
-      "fr": null,
-      "it": "* Nuovo impianto elettrico con interfaccia per decoder (NEM 662)\n* Nuovo impianto sonoro, con altoparlante “sugar cube” 11 x 15 mm\n* Versioni DCC Sound di fabbrica, mai prodotte in precedenza\n* Nuova riproduzione della traversa completa del carrello anteriore\n* Nuovi dettagli su caldaia, cabina e sottocassa differenziati in base all’epoca\n* Numerazioni inedite"
-    },
-    "delivery_date": "2024",
-    "availability_status": "ANNOUNCED",
-    "rolling_stocks": [
-      {
-        "category": "LOCOMOTIVE",
-        "railway": "FS",
-        "livery": "nera",
-        "length_over_buffers": {
-          "millimeters": 152.0
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2957",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "III/IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": "FS, steam tender locomotive Gr. 940, with electric lamps, ep. III-IV",
+    "it": "FS, locomotiva a vapore Gr. 940, con fanali elettrici, ep. III-IV"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "* Nuovo impianto elettrico con interfaccia per decoder (NEM 662)\n* Nuovo impianto sonoro, con altoparlante “sugar cube” 11 x 15 mm\n* Versioni DCC Sound di fabbrica, mai prodotte in precedenza\n* Nuova riproduzione della traversa completa del carrello anteriore\n* Nuovi dettagli su caldaia, cabina e sottocassa differenziati in base all’epoca\n* Numerazioni inedite"
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "STEAM_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "Gr 940",
+      "road_number": "Gr 940 ???",
+      "livery": "nera",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 152.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 420.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
         },
-        "technical_specifications": {
-          "minimum_radius": 420.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "YES",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "YES",
-          "metal_body": "NO",
-          "interior_lights": "NO",
-          "lights": "YES",
-          "spring_buffers": "NO"
-        },
-        "class_name": "Gr 940",
-        "road_number": "Gr 940 ???",
-        "series": null,
-        "depot": null,
-        "locomotive_type": "STEAM_LOCOMOTIVE",
-        "dcc_interface": "NEXT_18",
-        "control": "DCC_READY",
-        "is_dummy": false
-      }
-    ],
-    "count": 1
-  }
+        "flywheel_fitted": "YES",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "sprung_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "dcc_interface": "NEXT_18",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

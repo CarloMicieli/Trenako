@@ -7,25 +7,25 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Carro tipo Gabs 31 RIV 83 I-TI 181 2 022-3 con logo televisore, porte in lega (2 porte nuovo tipo), tetto alluminio, ep. IV"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/10",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
-      "livery": null,
+      "type_name": "Gabs",
       "length_over_buffers": {
-        "inches": 9.7244147,
+        "inches": 9.724415,
         "millimeters": 247.0
       },
       "technical_specifications": {
@@ -39,11 +39,9 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Gabs",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     }
   ],
   "count": 1

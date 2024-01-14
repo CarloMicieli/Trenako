@@ -7,24 +7,26 @@
   "epoch": "V",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Rimorchiata intermedia Le 763 135 di 2° KL. in livrea caffè KIMBO, ep. V. Illuminazione interna di serie. Illuminazione interna di serie, fanali funzionanti con inversione."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q2",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "category": "ELECTRIC_MULTIPLE_UNITS",
+      "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
+      "type_name": "Le 763",
+      "road_number": "Le 763 135",
       "livery": "KIMBO",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": null,
@@ -32,15 +34,8 @@
         "metal_body": null,
         "interior_lights": "YES",
         "lights": "NO",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Le 763",
-      "road_number": "Le 763 135",
-      "series": null,
-      "depot": null,
-      "electric_multiple_unit_type": "TRAILER_CAR",
-      "dcc_interface": null,
-      "control": null,
       "is_dummy": true
     }
   ],

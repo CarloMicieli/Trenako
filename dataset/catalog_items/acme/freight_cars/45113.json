@@ -7,23 +7,23 @@
   "epoch": "V/VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set di due carri intermodali articolati Tipo Sggmrss da 90’ di cui uno VTG caricato con una cassa telonata ed una cassa furgonata “Nothegger” ed uno AAE caricato con una cassa furgonata \"Unit45\" noleggiata a Nothegger ed una cassa telonata \"Nothegger\", ep. V-VI."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/08",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "PRIVAT",
-      "livery": null,
+      "type_name": "Tipo Sggmrss",
       "length_over_buffers": {
         "inches": 13.385834,
         "millimeters": 340.0
@@ -39,16 +39,14 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Tipo Sggmrss",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     },
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "PRIVAT",
-      "livery": null,
+      "type_name": "Tipo Sggmrss",
       "length_over_buffers": {
         "inches": 13.385834,
         "millimeters": 340.0
@@ -64,11 +62,9 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Tipo Sggmrss",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     }
   ],
   "count": 2

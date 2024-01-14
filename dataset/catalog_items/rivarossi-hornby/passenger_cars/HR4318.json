@@ -7,24 +7,25 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set \"Celerone\" di tre unità composto da un postale a carrelli tipo ULz 1400 nella livrea grigio/ardesia, un bagagliaio/postale tipo DUz 93100 nella livrea grigio/ardesia ed un carro chiuso ad assi tipo Hcs-uvwy con mantici di comunicazione, delle FS ep. IV."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/08",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
+      "passenger_car_type": "RAILWAY_POST_OFFICE",
       "railway": "FS",
+      "type_name": "ULz 1400",
       "livery": "grigio ardesia",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": null,
         "coupling": {
@@ -36,13 +37,50 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "ULz 1400",
-      "road_number": null,
-      "series": null,
+      "is_dummy": null
+    },
+    {
+      "category": "PASSENGER_CARS",
       "passenger_car_type": "RAILWAY_POST_OFFICE",
-      "service_level": null
+      "railway": "FS",
+      "type_name": "DUz 93100",
+      "livery": "grigio ardesia",
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "sprung_buffers": null
+      },
+      "is_dummy": null
+    },
+    {
+      "category": null,
+      "railway": "FS",
+      "type_name": "Hcs-uvwy",
+      "livery": "grigio ardesia",
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "sprung_buffers": null
+      },
+      "is_dummy": null
     }
   ],
   "count": 3

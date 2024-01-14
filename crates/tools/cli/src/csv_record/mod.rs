@@ -52,7 +52,7 @@ pub struct CsvRecord {
     pub metal_body: Option<FeatureFlag>,
     pub interior_lights: Option<FeatureFlag>,
     pub lights: Option<FeatureFlag>,
-    pub spring_buffers: Option<FeatureFlag>,
+    pub sprung_buffers: Option<FeatureFlag>,
     pub minimum_radius: Option<u16>,
     pub service_level: Option<ServiceLevel>,
 }
@@ -197,7 +197,7 @@ fn technical_specification(record: &CsvRecord) -> Result<Option<TechnicalSpecifi
         metal_body: record.metal_body,
         interior_lights: record.interior_lights,
         lights: record.lights,
-        spring_buffers: record.spring_buffers,
+        sprung_buffers: record.sprung_buffers,
     };
     Ok(Some(tech_specs))
 }

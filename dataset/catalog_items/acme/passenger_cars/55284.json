@@ -7,25 +7,26 @@
   "epoch": "VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set \"Frecciabianca\" formato da una carrozza di 1 KL., una carrozza BRH e due carrozze di 2 KL., ep. VI."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "",
       "livery": "frecciabianca",
       "length_over_buffers": {
-        "inches": 11.9291403,
+        "inches": 11.92914,
         "millimeters": 303.0
       },
       "technical_specifications": {
@@ -39,20 +40,17 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": null
+      "is_dummy": null
     },
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "",
       "livery": "frecciabianca",
       "length_over_buffers": {
-        "inches": 11.9291403,
+        "inches": 11.92914,
         "millimeters": 303.0
       },
       "technical_specifications": {
@@ -66,20 +64,17 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": null
+      "is_dummy": null
     },
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "",
       "livery": "frecciabianca",
       "length_over_buffers": {
-        "inches": 11.9291403,
+        "inches": 11.92914,
         "millimeters": 303.0
       },
       "technical_specifications": {
@@ -93,20 +88,17 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": null
+      "is_dummy": null
     },
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "",
       "livery": "frecciabianca",
       "length_over_buffers": {
-        "inches": 11.9291403,
+        "inches": 11.92914,
         "millimeters": 303.0
       },
       "technical_specifications": {
@@ -120,13 +112,9 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": null
+      "is_dummy": null
     }
   ],
   "count": 4

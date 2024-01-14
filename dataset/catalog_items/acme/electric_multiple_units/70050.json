@@ -21,12 +21,12 @@
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "POWER_CAR",
       "railway": "FS",
       "type_name": "ALe 801",
       "road_number": "ALe 801 020",
       "livery": "livrea originale giallo/arancio",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -38,18 +38,18 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "DCC_READY",
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
       "type_name": "Le 108",
       "road_number": "Le 108 029",
       "livery": "livrea originale giallo/arancio",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -61,18 +61,18 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "DCC_READY",
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
       "type_name": "Le 108",
       "road_number": "Le 108 026",
       "livery": "livrea originale giallo/arancio",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -84,18 +84,18 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "DCC_READY",
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "POWER_CAR",
       "railway": "FS",
       "type_name": "ALe 940",
       "road_number": "ALe 940 012",
       "livery": "livrea originale giallo/arancio",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -107,7 +107,7 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "DCC_READY",
       "is_dummy": false

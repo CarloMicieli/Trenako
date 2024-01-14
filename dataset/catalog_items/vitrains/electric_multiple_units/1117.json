@@ -7,24 +7,24 @@
   "epoch": "VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FS \"Minuetto\" MD (Diesel) in livrea regionale DTR, con illuminazione interna, ep. VI. Presa decoder PluX22"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/12",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "category": "ELECTRIC_MULTIPLE_UNITS",
+      "electric_multiple_unit_type": "TRAIN_SET",
       "railway": "FS",
-      "livery": null,
-      "length_over_buffers": null,
+      "type_name": "",
       "technical_specifications": {
         "minimum_radius": null,
         "coupling": null,
@@ -32,15 +32,10 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "",
-      "road_number": null,
-      "series": null,
-      "depot": null,
-      "electric_multiple_unit_type": "TRAIN_SET",
-      "dcc_interface": "PLUX_22",
       "control": "DCC_READY",
+      "dcc_interface": "PLUX_22",
       "is_dummy": false
     }
   ],

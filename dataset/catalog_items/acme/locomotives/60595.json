@@ -7,22 +7,27 @@
   "epoch": "V",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Locomotiva E646 081 navetta in livrea MDVC, deposito di Milano Smistamento, con vetri frontali corazzati, sfogatoi sul tetto di tipo piccolo, senza smorzatori. Nello stato del 1988"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
+      "class_name": "E646",
+      "road_number": "E646 081",
+      "series": "SECONDA SERIE NAVETTA",
+      "depot": "Milano Smistamento",
       "livery": "MDVC",
       "length_over_buffers": {
         "inches": 8.267721,
@@ -39,15 +44,10 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "class_name": "E646",
-      "road_number": "E646 081",
-      "series": "SECONDA SERIE NAVETTA",
-      "depot": "Milano Smistamento",
-      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
-      "dcc_interface": "MTC_21",
       "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     }
   ],

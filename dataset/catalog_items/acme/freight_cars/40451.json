@@ -7,25 +7,26 @@
   "epoch": "V",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Carro per trasporto auto al seguito tipo DDm nella livrea grigio/ardesia con logo a losanga e ambientato in epoca V, per il periodo nel decennio 1985-1995."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/07",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
+      "type_name": "Tipo DDm",
       "livery": "grigio ardesia",
       "length_over_buffers": {
-        "inches": 11.9291403,
+        "inches": 11.92914,
         "millimeters": 303.0
       },
       "technical_specifications": {
@@ -39,11 +40,9 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Tipo DDm",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     }
   ],
   "count": 1

@@ -1,55 +1,54 @@
-
 {
-    "brand": "Rivarossi/Hornby",
-    "item_number": "HR2967S",
-    "scale": "H0",
-    "category": "LOCOMOTIVES",
-    "power_method": "DC",
-    "epoch": "V/VI",
-    "description": {
-      "de": "FS, schwere sechsachsige Elektrolokomotive der Reihe E.655, 2. Serie in XMPR-Farbgebung, Ep. V-VI",
-      "en": "FS, six-axle electric locomotive E.655, 2nd series XMPR livery, ep. V-V",
-      "fr": "FS, locomotive électrique E.655, 2ème série, livrée XMPR, ép. V-VI",
-      "it": "FS, locomotiva elettrica E.655, 2a serie, livrea XMPR, ep. V-VI"
-    },
-    "details": {
-      "de": null,
-      "en": null,
-      "fr": null,
-      "it": null
-    },
-    "delivery_date": "2024",
-    "availability_status": "ANNOUNCED",
-    "rolling_stocks": [
-      {
-        "category": "LOCOMOTIVE",
-        "railway": "FS",
-        "livery": "XMPR",
-        "length_over_buffers": {
-          "millimeters": 210.0
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2967S",
+  "scale": "H0",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "V/VI",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": "FS, six-axle electric locomotive E.655, 2nd series XMPR livery, ep. V-V",
+    "it": "FS, locomotiva elettrica E.655, 2a serie, livrea XMPR, ep. V-VI"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E.656",
+      "road_number": "E.656 ???",
+      "series": "SECONDA SERIE",
+      "livery": "XMPR",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 210.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
         },
-        "technical_specifications": {
-          "minimum_radius": 360.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "YES",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "YES",
-          "metal_body": "NO",
-          "interior_lights": "YES",
-          "lights": "YES",
-          "spring_buffers": "NO"
-        },
-        "class_name": "E.656",
-        "road_number": "E.656 ???",
-        "series": "SECONDA SERIE",
-        "depot": null,
-        "locomotive_type": "ELECTRIC_LOCOMOTIVE",
-        "dcc_interface": "MTC_21",
-        "control": "DCC_SOUND",
-        "is_dummy": false
-      }
-    ],
-    "count": 1
-  }
+        "flywheel_fitted": "YES",
+        "metal_body": "NO",
+        "interior_lights": "YES",
+        "lights": "YES",
+        "sprung_buffers": "NO"
+      },
+      "control": "DCC_SOUND",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

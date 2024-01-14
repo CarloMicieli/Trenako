@@ -7,25 +7,29 @@
   "epoch": "V",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FS locomotiva elettrica E.652 002 prototipo, livrea grigio perla e blu orientale, ep.V"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/10",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
+      "class_name": "E652",
+      "road_number": "E652 002",
+      "series": "PROTOTIPO",
       "livery": "grigio perla/blu orientale",
       "length_over_buffers": {
-        "inches": 8.1102406,
+        "inches": 8.110241,
         "millimeters": 206.0
       },
       "technical_specifications": {
@@ -39,15 +43,10 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "class_name": "E652",
-      "road_number": "E652 002",
-      "series": "PROTOTIPO",
-      "depot": null,
-      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
-      "dcc_interface": "MTC_21",
       "control": "DCC_SOUND",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     }
   ],

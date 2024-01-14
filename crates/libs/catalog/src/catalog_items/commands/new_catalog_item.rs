@@ -227,7 +227,7 @@ pub struct RollingStockPayload {
     pub metal_body: Option<FeatureFlag>,
     pub interior_lights: Option<FeatureFlag>,
     pub lights: Option<FeatureFlag>,
-    pub spring_buffers: Option<FeatureFlag>,
+    pub sprung_buffers: Option<FeatureFlag>,
 }
 
 impl TryFrom<RollingStockRequest> for RollingStockPayload {
@@ -235,7 +235,7 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
 
     fn try_from(request: RollingStockRequest) -> result::Result<Self, Self::Error> {
         let category = request.category();
-        let (minimum_radius, coupling, flywheel_fitted, metal_body, interior_lights, lights, spring_buffers) =
+        let (minimum_radius, coupling, flywheel_fitted, metal_body, interior_lights, lights, sprung_buffers) =
             if let Some(ts) = request.technical_specifications() {
                 (
                     ts.minimum_radius,
@@ -244,7 +244,7 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                     ts.metal_body,
                     ts.interior_lights,
                     ts.lights,
-                    ts.spring_buffers,
+                    ts.sprung_buffers,
                 )
             } else {
                 (None, None, None, None, None, None, None)
@@ -297,7 +297,7 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 metal_body,
                 interior_lights,
                 lights,
-                spring_buffers,
+                sprung_buffers,
                 ..RollingStockPayload::default()
             }),
             RollingStockRequest::RailcarRequest {
@@ -334,7 +334,7 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 metal_body,
                 interior_lights,
                 lights,
-                spring_buffers,
+                sprung_buffers,
                 ..RollingStockPayload::default()
             }),
             RollingStockRequest::LocomotiveRequest {
@@ -371,7 +371,7 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 metal_body,
                 interior_lights,
                 lights,
-                spring_buffers,
+                sprung_buffers,
                 ..RollingStockPayload::default()
             }),
             RollingStockRequest::PassengerCarRequest {
@@ -402,7 +402,7 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 metal_body,
                 interior_lights,
                 lights,
-                spring_buffers,
+                sprung_buffers,
                 ..RollingStockPayload::default()
             }),
             RollingStockRequest::FreightCarRequest {
@@ -429,7 +429,7 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 metal_body,
                 interior_lights,
                 lights,
-                spring_buffers,
+                sprung_buffers,
                 ..RollingStockPayload::default()
             }),
         }

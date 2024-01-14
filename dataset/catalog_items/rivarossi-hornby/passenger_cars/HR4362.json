@@ -1,102 +1,99 @@
 {
-    "brand": "Rivarossi/Hornby",
-    "item_number": "HR4362",
-    "scale": "H0",
-    "category": "PASSENGER_CARS",
-    "power_method": "DC",
-    "epoch": "IV",
-    "description": {
-      "de": "FS, 3-tlg. Set Reisezugwagen „Alpen-Express“, bestehend aus 2 x 2.Kl. Wagen UIC-X in rot/grauer Farbgebung und 1 x Gepäckwagen UIC-X ‘70, Ep. IV",
-      "en": "FS, 3-unit pack of coaches “Alpen-Express”, including 2 x 2nd coaches UIC-X in red/grey livery and 1 x luggage van UIC-X ‘70 in grey livery, ep. IV",
-      "fr": "FS, coffret de 3 voitures « Alpen-Express », composé de 2 voitures de 2éme classe UIC-X en livrée rouge/grise et 1 fourgon UIC-X ‘70 en livrée grise, ép. IV",
-      "it": "FS, set di 3 carrozze “Alpen-Express”, composto da 2 carrozze UIC-X di 2a classe in livrea rosso fegato e 1 bagagliaio UIC-X ‘70 in livrea grigio ardesia, ep. IV"
-    },
-    "details": {
-      "de": null,
-      "en": null,
-      "fr": null,
-      "it": "Carrozze UIC-X FS\n* Carrozze di 1ª o 2ª classe dei tipi 1968, 1975 o 1982 e bagagliaio Tipo 1970 senza carenature in livrea rosso fegato o grigio ardesia in base alla versione riprodotta, in numerazioni e varianti inedite• Nuovi predellini sulle porte di salita\n* Nuova riproduzione dei freni a disco sui carrelli\n* Targhe di percorrenza specifiche in fotoincisione fornite in bustina"
-    },
-    "delivery_date": "2024",
-    "availability_status": "ANNOUNCED",
-    "rolling_stocks": [
-      {
-        "category": "PASSENGER_CAR",
-        "railway": "FS",
-        "livery": "rosso fegato",
-        "length_over_buffers": {
-          "millimeters": 303.0
-        },
-        "technical_specifications": {
-          "minimum_radius": 360.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "YES",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "NOT_APPLICABLE",
-          "metal_body": "NO",
-          "interior_lights": "NO",
-          "lights": "NO",
-          "spring_buffers": "YES"
-        },
-        "type_name": "UIC-X",
-        "road_number": null,
-        "series": null,
-        "passenger_car_type": null,
-        "service_level": "SECOND_CLASS"
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR4362",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": "FS, 3-unit pack of coaches “Alpen-Express”, including 2 x 2nd coaches UIC-X in red/grey livery and 1 x luggage van UIC-X ‘70 in grey livery, ep. IV",
+    "it": "FS, set di 3 carrozze “Alpen-Express”, composto da 2 carrozze UIC-X di 2a classe in livrea rosso fegato e 1 bagagliaio UIC-X ‘70 in livrea grigio ardesia, ep. IV"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Carrozze UIC-X FS\n* Carrozze di 1ª o 2ª classe dei tipi 1968, 1975 o 1982 e bagagliaio Tipo 1970 senza carenature in livrea rosso fegato o grigio ardesia in base alla versione riprodotta, in numerazioni e varianti inedite• Nuovi predellini sulle porte di salita\n* Nuova riproduzione dei freni a disco sui carrelli\n* Targhe di percorrenza specifiche in fotoincisione fornite in bustina"
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
+      "type_name": "UIC-X",
+      "livery": "rosso fegato",
+      "service_level": "SECOND_CLASS",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 303.0
       },
-      {
-        "category": "PASSENGER_CAR",
-        "railway": "FS",
-        "livery": "rosso fegato",
-        "length_over_buffers": {
-          "millimeters": 303.0
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
         },
-        "technical_specifications": {
-          "minimum_radius": 360.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "YES",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "NOT_APPLICABLE",
-          "metal_body": "NO",
-          "interior_lights": "NO",
-          "lights": "NO",
-          "spring_buffers": "YES"
-        },
-        "type_name": "UIC-X",
-        "road_number": null,
-        "series": null,
-        "passenger_car_type": null,
-        "service_level": "SECOND_CLASS"
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": "YES"
       },
-      {
-        "category": "PASSENGER_CAR",
-        "railway": "FS",
-        "livery": "grigio ardesia",
-        "length_over_buffers": {
-          "millimeters": 303.0
+      "is_dummy": null
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
+      "type_name": "UIC-X",
+      "livery": "rosso fegato",
+      "service_level": "SECOND_CLASS",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
         },
-        "technical_specifications": {
-          "minimum_radius": 360.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "YES",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "NOT_APPLICABLE",
-          "metal_body": "NO",
-          "interior_lights": "NO",
-          "lights": "NO",
-          "spring_buffers": "YES"
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": "YES"
+      },
+      "is_dummy": null
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
+      "type_name": "UIC-X 70",
+      "livery": "grigio ardesia",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
         },
-        "type_name": "UIC-X 70",
-        "road_number": null,
-        "series": null,
-        "passenger_car_type": null
-      }
-    ],
-    "count": 3
-  }
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": "YES"
+      },
+      "is_dummy": null
+    }
+  ],
+  "count": 3
+}

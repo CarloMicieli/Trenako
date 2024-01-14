@@ -6,25 +6,27 @@
   "power_method": "DC",
   "epoch": "VI",
   "description": {
-    "de": "FS, vierachsiger Rungenwagen der Bauart Res, in grüner Farbgebung, beladen mit Drahtrollen, Ep. VI",
+    "de": null,
+    "fr": null,
     "en": "FS, 4-axle stake wagon Res, green livery, loaded with wire coils, ep. VI",
-    "fr": "FS, wagon plateforme à 4 essieux Res, livrée verte, chargement bobines de fil, ép. VI",
     "it": "FS, carro pianale a stanti a 4 assi Res, livrea verde, caricato con bobine di filo, ep. VI"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": null
   },
   "delivery_date": "2024",
   "availability_status": "ANNOUNCED",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
+      "type_name": "Res",
       "livery": "verde",
       "length_over_buffers": {
+        "inches": null,
         "millimeters": 229.0
       },
       "technical_specifications": {
@@ -38,11 +40,9 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
-      "type_name": "Res",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     }
   ],
   "count": 1

@@ -46,7 +46,7 @@ Content-Type: application/json
       "metal_body" : "NO",
       "interior_lights" : "NO",
       "lights" : "YES",
-      "spring_buffers" : "NO"
+      "sprung_buffers" : "NO"
     },
     "is_dummy" : false
   } ]

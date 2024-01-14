@@ -7,25 +7,27 @@
   "epoch": "Vb",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FS, set di 3 carrozze IC 507/530 “Sila”, Torino - Reggio Calabria, livrea “Intercity Plus”, composto da 2 carrozze salone Gran Confort 1985 e 1 carrozza ristorante Gran Confort WR83 con tetto liscio, ep. Vb"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/09",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "Gran Confort 1985",
       "livery": "Intercity Plus",
+      "service_level": "FIRST_CLASS",
       "length_over_buffers": {
-        "inches": 11.9291403,
+        "inches": 11.92914,
         "millimeters": 303.0
       },
       "technical_specifications": {
@@ -39,20 +41,18 @@
         "metal_body": null,
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Gran Confort 1985",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "FIRST_CLASS"
+      "is_dummy": null
     },
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "Gran Confort 1985",
       "livery": "Intercity Plus",
+      "service_level": "FIRST_CLASS",
       "length_over_buffers": {
-        "inches": 11.9291403,
+        "inches": 11.92914,
         "millimeters": 303.0
       },
       "technical_specifications": {
@@ -66,40 +66,34 @@
         "metal_body": null,
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Gran Confort 1985",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "FIRST_CLASS"
+      "is_dummy": null
     },
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
-      "livery": "Intercity Plus",
-      "length_over_buffers": {
-        "inches": 11.9291403,
-        "millimeters": 303.0
-      },
-      "technical_specifications": {
-        "minimum_radius": 360.0,
-        "coupling": {
-          "socket": "NEM_362",
-          "close_couplers": "YES",
-          "digital_shunting": "NO"
-        },
-        "flywheel_fitted": "NOT_APPLICABLE",
-        "metal_body": null,
-        "interior_lights": "NO",
-        "lights": "NO",
-        "spring_buffers": null
-      },
       "type_name": "Gran Confort WR83",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "FIRST_CLASS"
+      "livery": "Intercity Plus",
+      "service_level": "FIRST_CLASS",
+      "length_over_buffers": {
+        "inches": 11.92914,
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": null
     }
   ],
   "count": 3

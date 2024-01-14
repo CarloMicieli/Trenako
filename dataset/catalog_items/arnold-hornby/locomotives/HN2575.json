@@ -1,55 +1,54 @@
-
 {
-    "brand": "Arnold/Hornby",
-    "item_number": "HN2575",
-    "scale": "N",
-    "category": "LOCOMOTIVES",
-    "power_method": "DC",
-    "epoch": "VI",
-    "description": {
-      "de": "FS, Diesellokomotive D.445 der 3. Bauserie mit vier Stirnlampen in XMPR-Farbgebung, Ep. VI",
-      "en": "FS, diesel locomotive D.445, 3rd series, 4 low lamps, XMPR livery, ep. VI",
-      "fr": "FS, locomotive diesel D.445, 3éme série, 4 phares inférieurs, livrée XMPR, ép. VI",
-      "it": "FS, locomotiva diesel D.445, 3a serie, 4 luci basse, livrea XMPR, ep. VI"
-    },
-    "details": {
-      "de": null,
-      "en": null,
-      "fr": null,
-      "it": null
-    },
-    "delivery_date": "2024",
-    "availability_status": "ANNOUNCED",
-    "rolling_stocks": [
-      {
-        "category": "LOCOMOTIVE",
-        "railway": "FS",
-        "livery": "XMPR",
-        "length_over_buffers": {
-          "millimeters": 88.0
+  "brand": "Arnold/Hornby",
+  "item_number": "HN2575",
+  "scale": "N",
+  "category": "LOCOMOTIVES",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": "FS, diesel locomotive D.445, 3rd series, 4 low lamps, XMPR livery, ep. VI",
+    "it": "FS, locomotiva diesel D.445, 3a serie, 4 luci basse, livrea XMPR, ep. VI"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "railway": "FS",
+      "class_name": "E.445",
+      "road_number": "E.445 ???",
+      "series": "TERZA SERIE",
+      "livery": "XMPR",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 88.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 192.0,
+        "coupling": {
+          "socket": null,
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
         },
-        "technical_specifications": {
-          "minimum_radius": 192.0,
-          "coupling": {
-            "socket": null,
-            "close_couplers": "YES",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "YES",
-          "metal_body": "NO",
-          "interior_lights": "YES",
-          "lights": "YES",
-          "spring_buffers": "NO"
-        },
-        "class_name": "E.445",
-        "road_number": "E.445 ???",
-        "series": "TERZA SERIE",
-        "depot": null,
-        "locomotive_type": "DIESEL_LOCOMOTIVE",
-        "dcc_interface": "NEXT_18",
-        "control": "DCC_READY",
-        "is_dummy": false
-      }
-    ],
-    "count": 1
-  }
+        "flywheel_fitted": "YES",
+        "metal_body": "NO",
+        "interior_lights": "YES",
+        "lights": "YES",
+        "sprung_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "dcc_interface": "NEXT_18",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

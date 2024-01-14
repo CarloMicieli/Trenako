@@ -1,53 +1,53 @@
-
 {
-    "brand": "Rivarossi/Hornby",
-    "item_number": "HR2964",
-    "scale": "H0",
-    "category": "ELECTRIC_MULTIPLE_UNITS",
-    "power_method": "DC",
-    "epoch": "V",
-    "description": {
-      "de": "SBB, Hochgeschwindigkeitszug mit Neigetechnik der Reihe ETR 470, 4-tlg. Grundset, Ep. V",
-      "en": "SBB, tilting high-speed train type ETR 470 silver livery with blue stripe, 4-unit base set, ep. V",
-      "fr": "FFS, coffret de 3 unités, train pendulaire à grande vitesse ETR 470, livrée argentée avec bande bleue, ép. V",
-      "it": "FFS, set di 4 unità, treno ad alta velocità ad assetto variabile ETR 470, livrea argento con strisce blu, ep. V"
-    },
-    "details": {
-      "de": null,
-      "en": null,
-      "fr": null,
-      "it": null
-    },
-    "delivery_date": "2024",
-    "availability_status": "ANNOUNCED",
-    "rolling_stocks": [
-      {
-        "electric_multiple_unit_type": "TRAIN_SET",
-        "railway": "SBB",
-        "livery": "livrea argento con strisce blu",
-        "length_over_buffers": {
-          "millimeters": 1228.0
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2964",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": "SBB, tilting high-speed train type ETR 470 silver livery with blue stripe, 4-unit base set, ep. V",
+    "it": "FFS, set di 4 unità, treno ad alta velocità ad assetto variabile ETR 470, livrea argento con strisce blu, ep. V"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
+      "electric_multiple_unit_type": "TRAIN_SET",
+      "railway": "SBB",
+      "class_name": "Etr 470",
+      "road_number": "Etr 470 ???",
+      "livery": "livrea argento con strisce blu",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 1228.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
         },
-        "technical_specifications": {
-          "minimum_radius": 360.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "NO",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "YES",
-          "metal_body": "NO",
-          "interior_lights": "NO",
-          "lights": "YES",
-          "spring_buffers": "NO"
-        },
-        "class_name": "Etr 470",
-        "road_number": "Etr 470 ???",
-        "depot": null,
-        "dcc_interface": "MTC_21",
-        "control": "DCC_READY",
-        "is_dummy": false
-      }
-    ],
-    "count": 4
-  }
+        "flywheel_fitted": "YES",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "sprung_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 4
+}

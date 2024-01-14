@@ -21,13 +21,13 @@
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
+      "category": "LOCOMOTIVES",
       "locomotive_type": "STEAM_LOCOMOTIVE",
       "railway": "FS",
       "class_name": "728",
       "road_number": "728 022",
       "series": "(ex BR 156 ÖBB / 270 K.k.St.B.)",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -39,7 +39,7 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "DCC_READY",
       "is_dummy": false

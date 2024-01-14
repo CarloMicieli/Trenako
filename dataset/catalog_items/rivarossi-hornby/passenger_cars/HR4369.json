@@ -7,25 +7,27 @@
   "epoch": "V/VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set di 3 carrozze a 2 assi \"Corbellini\" 1947 di 3a classe per treni storici, livrea castano/Isabella, ep. V-VI"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/08",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "Tipo 1947",
       "livery": "castano isabella",
+      "service_level": "THIRD_CLASS",
       "length_over_buffers": {
-        "inches": 8.3464612,
+        "inches": 8.346461,
         "millimeters": 212.0
       },
       "technical_specifications": {
@@ -39,13 +41,59 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
+      "is_dummy": null
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
       "type_name": "Tipo 1947",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "THIRD_CLASS"
+      "livery": "castano isabella",
+      "service_level": "THIRD_CLASS",
+      "length_over_buffers": {
+        "inches": 8.346461,
+        "millimeters": 212.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "sprung_buffers": null
+      },
+      "is_dummy": null
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
+      "type_name": "Tipo 1947",
+      "livery": "castano isabella",
+      "service_level": "THIRD_CLASS",
+      "length_over_buffers": {
+        "inches": 8.346461,
+        "millimeters": 212.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "sprung_buffers": null
+      },
+      "is_dummy": null
     }
   ],
   "count": 3

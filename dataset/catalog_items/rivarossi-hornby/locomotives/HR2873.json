@@ -7,25 +7,29 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FS, locomotiva elettrica E.424, livrea castano/isabella, ep. IV"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/09",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
+      "class_name": "E.424",
+      "road_number": "E.424 110",
+      "depot": "Cremona",
       "livery": "castano/isabella",
       "length_over_buffers": {
-        "inches": 7.0078778,
+        "inches": 7.007878,
         "millimeters": 178.0
       },
       "technical_specifications": {
@@ -39,15 +43,10 @@
         "metal_body": null,
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "class_name": "E.424",
-      "road_number": "E.424 110",
-      "series": null,
-      "depot": "Cremona",
-      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
-      "dcc_interface": "MTC_21",
       "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     }
   ],

@@ -21,14 +21,18 @@
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
+      "category": "LOCOMOTIVES",
       "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
       "class_name": "E428",
       "road_number": "E428 101",
       "series": "seconda serie con avancorpi",
-      "livery": "castano/isabella",
       "depot": "Milano Centrale",
-      "length_over_buffers": 222,
+      "livery": "castano/isabella",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 222.0
+      },
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -40,7 +44,7 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
       "control": "DCC_SOUND",
       "dcc_interface": "MTC_21",

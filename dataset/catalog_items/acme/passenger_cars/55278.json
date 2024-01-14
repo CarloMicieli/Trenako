@@ -7,24 +7,23 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set di due carrozze letti di cui una Tipo Ub 3830 con riscaldamento a gasolio ed una Tipo MU 4858, entrambe del parco italiano, ep. IV"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
-      "livery": null,
-      "length_over_buffers": null,
+      "type_name": "Tipo Ub 3830",
       "technical_specifications": {
         "minimum_radius": null,
         "coupling": null,
@@ -32,19 +31,14 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Tipo Ub 3830",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": null
+      "is_dummy": null
     },
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
-      "livery": null,
-      "length_over_buffers": null,
+      "type_name": "Tipo MU 4858",
       "technical_specifications": {
         "minimum_radius": null,
         "coupling": null,
@@ -52,13 +46,9 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Tipo MU 4858",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": null
+      "is_dummy": null
     }
   ],
   "count": 2

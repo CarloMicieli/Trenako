@@ -7,52 +7,28 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set di due carrozze “Centoporte lunghe” nella livrea grigio-ardesia, di cui una di prima classe (Az 57005) Tipo 1949R ed una di seconda classe (Bz 39118) Tipo 1928R delle FS., epoca IV"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/08",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
-      "livery": "grigio ardesia",
-      "length_over_buffers": {
-        "inches": 5.5511841,
-        "millimeters": 141.0
-      },
-      "technical_specifications": {
-        "minimum_radius": null,
-        "coupling": {
-          "socket": "NEM_362",
-          "close_couplers": "YES",
-          "digital_shunting": "NO"
-        },
-        "flywheel_fitted": null,
-        "metal_body": null,
-        "interior_lights": null,
-        "lights": null,
-        "spring_buffers": null
-      },
       "type_name": "Tipo 1949R",
       "road_number": "Az 57005",
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "FIRST_CLASS"
-    },
-    {
-      "category": "PASSENGER_CAR",
-      "railway": "FS",
       "livery": "grigio ardesia",
+      "service_level": "FIRST_CLASS",
       "length_over_buffers": {
-        "inches": 5.5511841,
+        "inches": 5.551184,
         "millimeters": 141.0
       },
       "technical_specifications": {
@@ -66,13 +42,35 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
+      "is_dummy": null
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
       "type_name": "Tipo 1928R",
       "road_number": "Bz 39118",
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "SECOND_CLASS"
+      "livery": "grigio ardesia",
+      "service_level": "SECOND_CLASS",
+      "length_over_buffers": {
+        "inches": 5.551184,
+        "millimeters": 141.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "metal_body": null,
+        "interior_lights": null,
+        "lights": null,
+        "sprung_buffers": null
+      },
+      "is_dummy": null
     }
   ],
   "count": 2

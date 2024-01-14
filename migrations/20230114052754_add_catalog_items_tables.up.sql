@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS public.rolling_stocks
     metal_body                  feature_flag,
     interior_lights             feature_flag,
     lights                      feature_flag,
-    spring_buffers              feature_flag,
+    sprung_buffers              feature_flag,
     CONSTRAINT "PK_rolling_stocks" PRIMARY KEY (rolling_stock_id),
     CONSTRAINT "FK_rolling_stocks_catalog_items" FOREIGN KEY (catalog_item_id)
         REFERENCES public.catalog_items (catalog_item_id) MATCH SIMPLE

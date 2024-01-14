@@ -7,25 +7,28 @@
   "epoch": "VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FS RFI, locomotiva elettrica E.402B, livrea gialla/blu, ep. VI"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/09",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
+      "class_name": "E.402B",
+      "road_number": "E.402B 142",
       "livery": "gialla/blu",
       "length_over_buffers": {
-        "inches": 8.7795323,
+        "inches": 8.779532,
         "millimeters": 223.0
       },
       "technical_specifications": {
@@ -39,15 +42,10 @@
         "metal_body": null,
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "class_name": "E.402B",
-      "road_number": "E.402B 142",
-      "series": null,
-      "depot": null,
-      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
-      "dcc_interface": "MTC_21",
       "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     }
   ],

@@ -21,12 +21,12 @@
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "POWER_CAR",
       "railway": "FS",
       "type_name": "ALe 840",
       "road_number": "ALe 840 052",
       "livery": "castano/isabella",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -38,19 +38,19 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "DCC",
       "dcc_interface": "PLUX_22",
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
       "type_name": "Le 840",
       "road_number": "Le 840 061",
       "livery": "castano/isabella",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -62,7 +62,7 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "NO_DCC",
       "is_dummy": false

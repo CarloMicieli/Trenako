@@ -7,25 +7,26 @@
   "epoch": "VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set “Treno Notte” in livrea attuale di Trenitalia, formato da due carrozze Tipo UIC-Z ristrutturate."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q2",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "UIC-Z",
       "livery": "Treno Notte",
       "length_over_buffers": {
-        "inches": 11.9291403,
+        "inches": 11.92914,
         "millimeters": 303.0
       },
       "technical_specifications": {
@@ -39,20 +40,17 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "type_name": "UIC-Z",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": null
+      "is_dummy": null
     },
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "UIC-Z",
       "livery": "Treno Notte",
       "length_over_buffers": {
-        "inches": 11.9291403,
+        "inches": 11.92914,
         "millimeters": 303.0
       },
       "technical_specifications": {
@@ -66,13 +64,9 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "type_name": "UIC-Z",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": null
+      "is_dummy": null
     }
   ],
   "count": 2

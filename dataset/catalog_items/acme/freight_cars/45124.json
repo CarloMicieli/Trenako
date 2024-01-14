@@ -7,25 +7,25 @@
   "epoch": "III",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set di due carri FS tipo P caricati con i caratteristici contenitori per il trasporto birra, (Pilsen Padova e Moretti), così come in servizio nell'epoca III"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
-      "livery": null,
+      "type_name": "Tipo P",
       "length_over_buffers": {
-        "inches": 4.4094512,
+        "inches": 4.409451,
         "millimeters": 112.0
       },
       "technical_specifications": {
@@ -39,18 +39,16 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "type_name": "Tipo P",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     },
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
-      "livery": null,
+      "type_name": "Tipo P",
       "length_over_buffers": {
-        "inches": 4.4094512,
+        "inches": 4.409451,
         "millimeters": 112.0
       },
       "technical_specifications": {
@@ -64,11 +62,9 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "type_name": "Tipo P",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     }
   ],
   "count": 2

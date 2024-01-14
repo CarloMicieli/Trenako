@@ -225,7 +225,7 @@ impl OptionConverter<RollingStockRow> for TechnicalSpecifications {
             metal_body: row.metal_body,
             interior_lights: row.interior_lights,
             lights: row.lights,
-            spring_buffers: row.spring_buffers,
+            sprung_buffers: row.sprung_buffers,
         }))
     }
 }
@@ -471,7 +471,7 @@ mod test {
                     let technical_specifications = technical_specifications.unwrap();
                     assert_eq!(technical_specifications.lights, row.lights);
                     assert_eq!(technical_specifications.interior_lights, row.interior_lights);
-                    assert_eq!(technical_specifications.spring_buffers, row.spring_buffers);
+                    assert_eq!(technical_specifications.sprung_buffers, row.sprung_buffers);
                     assert_eq!(technical_specifications.metal_body, row.metal_body);
                     assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
@@ -566,7 +566,7 @@ mod test {
                     let technical_specifications = technical_specifications.unwrap();
                     assert_eq!(technical_specifications.lights, row.lights);
                     assert_eq!(technical_specifications.interior_lights, row.interior_lights);
-                    assert_eq!(technical_specifications.spring_buffers, row.spring_buffers);
+                    assert_eq!(technical_specifications.sprung_buffers, row.sprung_buffers);
                     assert_eq!(technical_specifications.metal_body, row.metal_body);
                     assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
@@ -661,7 +661,7 @@ mod test {
                     let technical_specifications = technical_specifications.unwrap();
                     assert_eq!(technical_specifications.lights, row.lights);
                     assert_eq!(technical_specifications.interior_lights, row.interior_lights);
-                    assert_eq!(technical_specifications.spring_buffers, row.spring_buffers);
+                    assert_eq!(technical_specifications.sprung_buffers, row.sprung_buffers);
                     assert_eq!(technical_specifications.metal_body, row.metal_body);
                     assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
@@ -749,7 +749,7 @@ mod test {
                     let technical_specifications = technical_specifications.unwrap();
                     assert_eq!(technical_specifications.lights, row.lights);
                     assert_eq!(technical_specifications.interior_lights, row.interior_lights);
-                    assert_eq!(technical_specifications.spring_buffers, row.spring_buffers);
+                    assert_eq!(technical_specifications.sprung_buffers, row.sprung_buffers);
                     assert_eq!(technical_specifications.metal_body, row.metal_body);
                     assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
@@ -832,7 +832,7 @@ mod test {
                     let technical_specifications = technical_specifications.unwrap();
                     assert_eq!(technical_specifications.lights, row.lights);
                     assert_eq!(technical_specifications.interior_lights, row.interior_lights);
-                    assert_eq!(technical_specifications.spring_buffers, row.spring_buffers);
+                    assert_eq!(technical_specifications.sprung_buffers, row.sprung_buffers);
                     assert_eq!(technical_specifications.metal_body, row.metal_body);
                     assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(

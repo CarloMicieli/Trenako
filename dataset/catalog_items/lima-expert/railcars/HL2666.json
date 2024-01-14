@@ -7,25 +7,28 @@
   "epoch": "V",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FS, automotrice diesel ALn 668 3314, livrea pubblicitatia \"KIMBO\" bianca, vetri piani, epoca V"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "RAILCAR",
+      "category": "RAILCARS",
+      "railcar_type": "POWER_CAR",
       "railway": "FS",
+      "type_name": "ALn 668",
+      "road_number": "ALn 668 3314",
       "livery": "bianca KIMBO",
       "length_over_buffers": {
-        "inches": 10.4330765,
+        "inches": 10.433077,
         "millimeters": 265.0
       },
       "technical_specifications": {
@@ -35,15 +38,10 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "ALn 668",
-      "road_number": "ALn 668 3314",
-      "series": null,
-      "depot": null,
-      "railcar_type": "POWER_CAR",
-      "dcc_interface": "NEM_652",
       "control": "DCC_READY",
+      "dcc_interface": "NEM_652",
       "is_dummy": false
     }
   ],

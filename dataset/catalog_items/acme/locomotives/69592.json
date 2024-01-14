@@ -7,22 +7,27 @@
   "epoch": "V",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Locomotiva E646.210 navetta in livrea XMPR. OML Milano."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
+      "class_name": "E646",
+      "road_number": "E646 210",
+      "series": "SECONDA SERIE NAVETTA",
+      "depot": "OML Milano",
       "livery": "XMPR",
       "length_over_buffers": {
         "inches": 8.267721,
@@ -39,15 +44,10 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "class_name": "E646",
-      "road_number": "E646 210",
-      "series": "SECONDA SERIE NAVETTA",
-      "depot": "OML Milano",
-      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
-      "dcc_interface": "MTC_21",
       "control": "DCC_SOUND",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     }
   ],

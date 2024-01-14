@@ -1,53 +1,53 @@
-
 {
-    "brand": "Rivarossi/Hornby",
-    "item_number": "HR2962",
-    "scale": "H0",
-    "category": "ELECTRIC_MULTIPLE_UNITS",
-    "power_method": "DC",
-    "epoch": "VI",
-    "description": {
-      "de": "FS, Hochgeschwindigkeitszug mit Neigetechnik der Reihe ETR 460 „Frecciabianca“, 4-tlg. Grundset, Ep. V",
-      "en": "FS, tilting high-speed train type ETR 460 “Frecciabianca”, 4-unit base set, ep. VI",
-      "fr": "FS, automotor eléctrico ETR 460 “Frecciabianca”, set base de 4 unidades, ép. VI",
-      "it": "FS, set di 4 unità, treno ad alta velocità ad assetto variabile ETR 460, livrea “Frecciabianca”, ep. VI"
-    },
-    "details": {
-      "de": null,
-      "en": null,
-      "fr": null,
-      "it": null
-    },
-    "delivery_date": "2024",
-    "availability_status": "ANNOUNCED",
-    "rolling_stocks": [
-      {
-        "electric_multiple_unit_type": "TRAIN_SET",
-        "railway": "FS",
-        "livery": "Frecciabianca",
-        "length_over_buffers": {
-          "millimeters": 1228.0
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR2962",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": "FS, tilting high-speed train type ETR 460 “Frecciabianca”, 4-unit base set, ep. VI",
+    "it": "FS, set di 4 unità, treno ad alta velocità ad assetto variabile ETR 460, livrea “Frecciabianca”, ep. VI"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
+      "electric_multiple_unit_type": "TRAIN_SET",
+      "railway": "FS",
+      "class_name": "Etr 460",
+      "road_number": "Etr 460 ???",
+      "livery": "Frecciabianca",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 1228.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "NO",
+          "digital_shunting": "NO"
         },
-        "technical_specifications": {
-          "minimum_radius": 360.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "NO",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "YES",
-          "metal_body": "NO",
-          "interior_lights": "NO",
-          "lights": "YES",
-          "spring_buffers": "NO"
-        },
-        "class_name": "Etr 460",
-        "road_number": "Etr 460 ???",
-        "depot": null,
-        "dcc_interface": "MTC_21",
-        "control": "DCC_READY",
-        "is_dummy": false
-      }
-    ],
-    "count": 4
-  }
+        "flywheel_fitted": "YES",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "YES",
+        "sprung_buffers": "NO"
+      },
+      "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
+      "is_dummy": false
+    }
+  ],
+  "count": 4
+}

@@ -7,22 +7,23 @@
   "epoch": "IV/V",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FS Carrozza bagagliaio-posta tipo 1952R, nell'ultima livrea grigio ardesia, ep. IV-V."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/11",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "Tipo 1952R",
       "livery": "grigio ardesia",
       "length_over_buffers": {
         "inches": 5.6692944,
@@ -39,13 +40,9 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Tipo 1952R",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": null
+      "is_dummy": null
     }
   ],
   "count": 1

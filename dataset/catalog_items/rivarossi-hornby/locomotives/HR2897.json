@@ -7,25 +7,28 @@
   "epoch": "VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Mercitalia Shunting & Terminal, locomotiva diesel da manovra EffiShunter 1000, livrea rossa/grigia con strisce bianche, ep. VI"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/09",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "DIESEL_LOCOMOTIVE",
       "railway": "Mercitalia",
+      "class_name": "EffiShunter 1000",
+      "road_number": "744 002",
       "livery": "rossa/grigia con strisce bianche",
       "length_over_buffers": {
-        "inches": 7.4409489,
+        "inches": 7.440949,
         "millimeters": 189.0
       },
       "technical_specifications": {
@@ -39,15 +42,10 @@
         "metal_body": null,
         "interior_lights": "NO",
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "class_name": "EffiShunter 1000",
-      "road_number": "744 002",
-      "series": null,
-      "depot": null,
-      "locomotive_type": "DIESEL_LOCOMOTIVE",
-      "dcc_interface": "MTC_21",
       "control": "DCC_READY",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     }
   ],

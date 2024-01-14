@@ -7,25 +7,28 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Automotrice diesel Breda \"PULCINAIA\" ALdn 32.2060 in livrea castano isabella, ep. IV"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "RAILCAR",
+      "category": "RAILCARS",
+      "railcar_type": "POWER_CAR",
       "railway": "FS",
+      "type_name": "ALdn 32",
+      "road_number": "ALdn 32.2060",
       "livery": "castano/isabella",
       "length_over_buffers": {
-        "inches": 10.0393755,
+        "inches": 10.039375,
         "millimeters": 255.0
       },
       "technical_specifications": {
@@ -35,15 +38,10 @@
         "metal_body": "NO",
         "interior_lights": "YES",
         "lights": "YES",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "ALdn 32",
-      "road_number": "ALdn 32.2060",
-      "series": null,
-      "depot": null,
-      "railcar_type": "POWER_CAR",
-      "dcc_interface": "PLUX_22",
       "control": "DCC_READY",
+      "dcc_interface": "PLUX_22",
       "is_dummy": false
     }
   ],

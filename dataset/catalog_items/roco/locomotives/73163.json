@@ -7,23 +7,27 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Locomotiva elettrica E 656 072 \"Caimano\" in livrea d'origine, ep. IV. Decoder DCC Sound installato di serie."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
-      "livery": null,
+      "class_name": "E 656",
+      "road_number": "E 656 072",
+      "series": "PRIMA SERIE",
+      "depot": "Torino",
       "length_over_buffers": {
         "inches": 8.267721,
         "millimeters": 210.0
@@ -39,15 +43,10 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "class_name": "E 656",
-      "road_number": "E 656 072",
-      "series": "PRIMA SERIE",
-      "depot": "Torino",
-      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
-      "dcc_interface": "PLUX_16",
       "control": "DCC_SOUND",
+      "dcc_interface": "PLUX_16",
       "is_dummy": false
     }
   ],

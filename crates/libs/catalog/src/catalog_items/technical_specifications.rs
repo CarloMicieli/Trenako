@@ -140,8 +140,8 @@ pub struct TechnicalSpecifications {
     pub interior_lights: Option<FeatureFlag>,
     /// has lights
     pub lights: Option<FeatureFlag>,
-    /// has spring buffers
-    pub spring_buffers: Option<FeatureFlag>,
+    /// has sprung buffers
+    pub sprung_buffers: Option<FeatureFlag>,
 }
 
 impl TechnicalSpecifications {
@@ -175,9 +175,9 @@ impl TechnicalSpecifications {
         self.lights
     }
 
-    /// with spring buffers
-    pub fn spring_buffers(&self) -> Option<FeatureFlag> {
-        self.spring_buffers
+    /// with sprung buffers
+    pub fn sprung_buffers(&self) -> Option<FeatureFlag> {
+        self.sprung_buffers
     }
 }
 
@@ -189,7 +189,7 @@ pub struct TechnicalSpecificationsBuilder {
     metal_body: Option<FeatureFlag>,
     interior_lights: Option<FeatureFlag>,
     lights: Option<FeatureFlag>,
-    spring_buffers: Option<FeatureFlag>,
+    sprung_buffers: Option<FeatureFlag>,
 }
 
 impl TechnicalSpecificationsBuilder {
@@ -229,9 +229,9 @@ impl TechnicalSpecificationsBuilder {
         self
     }
 
-    /// with spring buffers
-    pub fn with_spring_buffers(mut self) -> Self {
-        self.spring_buffers = Some(FeatureFlag::Yes);
+    /// with sprung buffers
+    pub fn with_sprung_buffers(mut self) -> Self {
+        self.sprung_buffers = Some(FeatureFlag::Yes);
         self
     }
 
@@ -244,7 +244,7 @@ impl TechnicalSpecificationsBuilder {
             metal_body: self.metal_body,
             interior_lights: self.interior_lights,
             lights: self.lights,
-            spring_buffers: self.spring_buffers,
+            sprung_buffers: self.sprung_buffers,
         }
     }
 }
@@ -473,7 +473,7 @@ mod test {
                 .with_minimum_radius(radius)
                 .with_interior_lights()
                 .with_lights()
-                .with_spring_buffers()
+                .with_sprung_buffers()
                 .with_flywheel_fitted()
                 .build();
 
@@ -482,7 +482,7 @@ mod test {
             assert_eq!(Some(FeatureFlag::Yes), tech_specs.metal_body());
             assert_eq!(Some(FeatureFlag::Yes), tech_specs.interior_lights());
             assert_eq!(Some(FeatureFlag::Yes), tech_specs.lights());
-            assert_eq!(Some(FeatureFlag::Yes), tech_specs.spring_buffers());
+            assert_eq!(Some(FeatureFlag::Yes), tech_specs.sprung_buffers());
             assert_eq!(Some(FeatureFlag::Yes), tech_specs.flywheel_fitted());
         }
     }

@@ -1,14 +1,22 @@
 {
   "db_name": "PostgreSQL",
-  "query": "INSERT INTO rolling_stocks (\n                        rolling_stock_id,\n                        catalog_item_id,\n                        railway_id,\n                        rolling_stock_category,\n                        livery,\n                        length_over_buffers_mm,\n                        length_over_buffers_in,\n                        type_name,\n                        road_number,\n                        series,\n                        depot,\n                        dcc_interface,\n                        control,\n                        electric_multiple_unit_type,\n                        freight_car_type,\n                        locomotive_type,\n                        passenger_car_type,\n                        railcar_type,\n                        service_level,\n                        is_dummy,\n                        minimum_radius,\n                        coupling_socket,\n                        close_couplers,\n                        digital_shunting_coupling,\n                        flywheel_fitted,\n                        metal_body,\n                        interior_lights,\n                        lights,\n                        spring_buffers\n                    )\n                    VALUES (\n                        $1, $2, $3, $4, $5, $6,\n                        $7, $8, $9, $10, $11, $12, \n                        $13, $14, $15, $16, $17, $18,\n                        $19, $20, $21, $22, $23, $24, \n                        $25, $26, $27, $28, $29\n                    )",
+  "query": "SELECT \n            rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n            railway_id as \"railway_id: RailwayId\",\n            rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n            livery,\n            length_over_buffers_mm,\n            length_over_buffers_in,\n            type_name,\n            road_number,\n            series,\n            depot,\n            dcc_interface as \"dcc_interface: DccInterface\",\n            control as \"control: Control\",\n            electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n            freight_car_type as \"freight_car_type: FreightCarType\",\n            locomotive_type as \"locomotive_type: LocomotiveType\",\n            passenger_car_type as \"passenger_car_type: PassengerCarType\",\n            railcar_type as \"railcar_type: RailcarType\",\n            service_level as \"service_level: ServiceLevel\",\n            is_dummy,\n            minimum_radius,\n            coupling_socket as \"coupling_socket: CouplingSocket\",\n            close_couplers as \"close_couplers: FeatureFlag\",\n            digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n            flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n            metal_body as \"metal_body: FeatureFlag\",\n            interior_lights as \"interior_lights: FeatureFlag\",\n            lights as \"lights: FeatureFlag\",\n            sprung_buffers as \"sprung_buffers: FeatureFlag\"\n        FROM rolling_stocks\n        WHERE catalog_item_id = $1",
   "describe": {
-    "columns": [],
-    "parameters": {
-      "Left": [
-        "Uuid",
-        "Varchar",
-        "Varchar",
-        {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "rolling_stock_id: RollingStockId",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "railway_id: RailwayId",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 2,
+        "name": "rolling_stock_category: RollingStockCategory",
+        "type_info": {
           "Custom": {
             "name": "rolling_stock_category",
             "kind": {
@@ -21,15 +29,47 @@
               ]
             }
           }
-        },
-        "Varchar",
-        "Numeric",
-        "Numeric",
-        "Varchar",
-        "Varchar",
-        "Varchar",
-        "Varchar",
-        {
+        }
+      },
+      {
+        "ordinal": 3,
+        "name": "livery",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 4,
+        "name": "length_over_buffers_mm",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 5,
+        "name": "length_over_buffers_in",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 6,
+        "name": "type_name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 7,
+        "name": "road_number",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 8,
+        "name": "series",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 9,
+        "name": "depot",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 10,
+        "name": "dcc_interface: DccInterface",
+        "type_info": {
           "Custom": {
             "name": "dcc_interface",
             "kind": {
@@ -46,8 +86,12 @@
               ]
             }
           }
-        },
-        {
+        }
+      },
+      {
+        "ordinal": 11,
+        "name": "control: Control",
+        "type_info": {
           "Custom": {
             "name": "control",
             "kind": {
@@ -59,8 +103,12 @@
               ]
             }
           }
-        },
-        {
+        }
+      },
+      {
+        "ordinal": 12,
+        "name": "electric_multiple_unit_type: ElectricMultipleUnitType",
+        "type_info": {
           "Custom": {
             "name": "electric_multiple_unit_type",
             "kind": {
@@ -74,8 +122,12 @@
               ]
             }
           }
-        },
-        {
+        }
+      },
+      {
+        "ordinal": 13,
+        "name": "freight_car_type: FreightCarType",
+        "type_info": {
           "Custom": {
             "name": "freight_car_type",
             "kind": {
@@ -102,8 +154,12 @@
               ]
             }
           }
-        },
-        {
+        }
+      },
+      {
+        "ordinal": 14,
+        "name": "locomotive_type: LocomotiveType",
+        "type_info": {
           "Custom": {
             "name": "locomotive_type",
             "kind": {
@@ -114,8 +170,12 @@
               ]
             }
           }
-        },
-        {
+        }
+      },
+      {
+        "ordinal": 15,
+        "name": "passenger_car_type: PassengerCarType",
+        "type_info": {
           "Custom": {
             "name": "passenger_car_type",
             "kind": {
@@ -134,8 +194,12 @@
               ]
             }
           }
-        },
-        {
+        }
+      },
+      {
+        "ordinal": 16,
+        "name": "railcar_type: RailcarType",
+        "type_info": {
           "Custom": {
             "name": "railcar_type",
             "kind": {
@@ -145,8 +209,12 @@
               ]
             }
           }
-        },
-        {
+        }
+      },
+      {
+        "ordinal": 17,
+        "name": "service_level: ServiceLevel",
+        "type_info": {
           "Custom": {
             "name": "service_level",
             "kind": {
@@ -160,10 +228,22 @@
               ]
             }
           }
-        },
-        "Bool",
-        "Numeric",
-        {
+        }
+      },
+      {
+        "ordinal": 18,
+        "name": "is_dummy",
+        "type_info": "Bool"
+      },
+      {
+        "ordinal": 19,
+        "name": "minimum_radius",
+        "type_info": "Numeric"
+      },
+      {
+        "ordinal": 20,
+        "name": "coupling_socket: CouplingSocket",
+        "type_info": {
           "Custom": {
             "name": "socket_type",
             "kind": {
@@ -179,80 +259,12 @@
               ]
             }
           }
-        },
-        {
-          "Custom": {
-            "name": "feature_flag",
-            "kind": {
-              "Enum": [
-                "YES",
-                "NO",
-                "NOT_AVAILABLE"
-              ]
-            }
-          }
-        },
-        {
-          "Custom": {
-            "name": "feature_flag",
-            "kind": {
-              "Enum": [
-                "YES",
-                "NO",
-                "NOT_AVAILABLE"
-              ]
-            }
-          }
-        },
-        {
-          "Custom": {
-            "name": "feature_flag",
-            "kind": {
-              "Enum": [
-                "YES",
-                "NO",
-                "NOT_AVAILABLE"
-              ]
-            }
-          }
-        },
-        {
-          "Custom": {
-            "name": "feature_flag",
-            "kind": {
-              "Enum": [
-                "YES",
-                "NO",
-                "NOT_AVAILABLE"
-              ]
-            }
-          }
-        },
-        {
-          "Custom": {
-            "name": "feature_flag",
-            "kind": {
-              "Enum": [
-                "YES",
-                "NO",
-                "NOT_AVAILABLE"
-              ]
-            }
-          }
-        },
-        {
-          "Custom": {
-            "name": "feature_flag",
-            "kind": {
-              "Enum": [
-                "YES",
-                "NO",
-                "NOT_AVAILABLE"
-              ]
-            }
-          }
-        },
-        {
+        }
+      },
+      {
+        "ordinal": 21,
+        "name": "close_couplers: FeatureFlag",
+        "type_info": {
           "Custom": {
             "name": "feature_flag",
             "kind": {
@@ -264,9 +276,139 @@
             }
           }
         }
+      },
+      {
+        "ordinal": 22,
+        "name": "digital_shunting_coupling: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 23,
+        "name": "flywheel_fitted: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 24,
+        "name": "metal_body: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 25,
+        "name": "interior_lights: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 26,
+        "name": "lights: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 27,
+        "name": "sprung_buffers: FeatureFlag",
+        "type_info": {
+          "Custom": {
+            "name": "feature_flag",
+            "kind": {
+              "Enum": [
+                "YES",
+                "NO",
+                "NOT_AVAILABLE"
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
       ]
     },
-    "nullable": []
+    "nullable": [
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
   },
-  "hash": "fcb7c2cc3542808a9d38ea98ff7ec94c8448ba95132affdd558581bfd8850765"
+  "hash": "afb194fdc70ced31595ff8e05e2fe83837bdadc7efd404af171200ab0df373d1"
 }

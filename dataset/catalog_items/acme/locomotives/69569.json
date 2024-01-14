@@ -7,26 +7,25 @@
   "epoch": "VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FS Set di due locomotive prodotte a Vado Ligure formato dalle E 652 172 (1000 locomotiva) e 494 039 (2000 locomotiva), entrambe motorizzate, nelle livree attuali di Mercitalia Rail, ep. VI"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/12",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "class_name": "E652",
-      "road_number": "E652 172",
-      "series": null,    
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
       "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
+      "class_name": "E652",
+      "road_number": "E652 172",
       "livery": "XPMR",
       "length_over_buffers": {
         "inches": null,
@@ -43,20 +42,18 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "depot": null,
-      "dcc_interface": "MTC_21",
       "control": "DCC_SOUND",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     },
     {
-      "class_name": "E494",
-      "road_number": "E494 039",
-      "series": null,    
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
       "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
+      "class_name": "E494",
+      "road_number": "E494 039",
       "livery": "Mercitalia",
       "length_over_buffers": {
         "inches": null,
@@ -73,13 +70,12 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
-      "depot": null,
-      "dcc_interface": "MTC_21",
       "control": "DCC_SOUND",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
-    }   
+    }
   ],
   "count": 2
 }

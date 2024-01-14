@@ -7,22 +7,25 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Locomotiva elettrica E 432 Trifase in livrea castano e isabella, ep.IV. Presa decoder PLUX22"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/12",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
+      "class_name": "E 432",
+      "road_number": "E 432 040",
       "livery": "castano/isabella",
       "length_over_buffers": {
         "inches": 6.299216,
@@ -39,15 +42,10 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "class_name": "E 432",
-      "road_number": "E 432 040",
-      "series": null,
-      "depot": null,
-      "locomotive_type": "ELECTRIC_LOCOMOTIVE",
-      "dcc_interface": "PLUX_22",
       "control": "DCC_SOUND",
+      "dcc_interface": "PLUX_22",
       "is_dummy": false
     }
   ],

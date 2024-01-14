@@ -21,13 +21,13 @@
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "POWER_CAR",
       "railway": "FS",
       "type_name": "ETR 400",
       "road_number": "93 83 3400 128-7 I-TI",
       "series": "Frecciarossa 1000",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -39,19 +39,19 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "DCC_SOUND",
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
       "type_name": "ETR 400",
       "road_number": "93 83 0400 228-1 I-TI",
       "series": "Frecciarossa 1000",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -63,18 +63,18 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
       "type_name": "ETR 400",
       "road_number": "93 83 5400 328-8 I-TI",
       "series": "Frecciarossa 1000",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -86,18 +86,18 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
       "type_name": "ETR 400",
       "road_number": "93 83 0400 428-7 I-TI",
       "series": "Frecciarossa 1000",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -109,18 +109,18 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
       "type_name": "ETR 400",
       "road_number": "93 83 0400 528-4 I-TI",
       "series": "Frecciarossa 1000",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -132,18 +132,18 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
       "type_name": "ETR 400",
       "road_number": "93 83 6400 628-9 I-TI",
       "series": "Frecciarossa 1000",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -155,18 +155,18 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "TRAILER_CAR",
       "railway": "FS",
       "type_name": "ETR 400",
       "road_number": "93 83 0400 728-0 I-TI",
       "series": "Frecciarossa 1000",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -178,18 +178,18 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "is_dummy": false
     },
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "POWER_CAR",
       "railway": "FS",
       "type_name": "ETR 400",
       "road_number": "93 83 4400 828-0 I-TI",
       "series": "Frecciarossa 1000",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -201,7 +201,7 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "NO_DCC",
       "is_dummy": false

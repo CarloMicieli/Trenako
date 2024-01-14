@@ -21,13 +21,13 @@
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
       "electric_multiple_unit_type": "POWER_CAR",
       "railway": "FS",
       "type_name": "ALe 601",
       "road_number": "ALe 601 007",
       "series": "prima serie",
       "livery": "verde/grigio",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -39,7 +39,7 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "is_dummy": true
     }

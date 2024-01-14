@@ -7,24 +7,25 @@
   "epoch": "III/IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Carrozza Tipo 1951R mista 1-2 classe (ABz 69184, ambientazione post 1956), livrea castano e Isabella, marcatura FS gialla ombreggiata, con cifre di classe alluminio, ep. III-IV"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/11",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "Tipo 1951R",
       "livery": "castano/isabella",
-      "length_over_buffers": null,
+      "service_level": "FIRST_AND_SECOND_CLASS",
       "technical_specifications": {
         "minimum_radius": null,
         "coupling": {
@@ -36,13 +37,9 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Tipo 1951R",
-      "road_number": null,
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "FIRST_AND_SECOND_CLASS"
+      "is_dummy": null
     }
   ],
   "count": 1

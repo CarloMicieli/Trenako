@@ -1,102 +1,99 @@
 {
-    "brand": "Rivarossi/Hornby",
-    "item_number": "HR4361",
-    "scale": "H0",
-    "category": "PASSENGER_CARS",
-    "power_method": "DC",
-    "epoch": "IV",
-    "description": {
-      "de": "FS, 3-tlg. Set Reisezugwagen „Alpen-Express“, bestehend aus 1 x CIWL Speisewagen 1925T, 1 x 1Kl. Wagen UIC-X in rot/grauer Farbgebung und 1 x 2.Kl. Wagen UIC-X in grauer Farbgebung, Ep. IV",
-      "en": "FS, 3-unit pack of coaches “Alpen-Express”, including 1 restaurant coach CIWL WR 1925T, 1 x 1st class coach UIC-X in red/grey livery and 1 x 2nd class coach UIC-X in grey livery, ep. IV-V",
-      "fr": "FS, coffret de 3 voitures « Alpen-Express », composé de 1 voiture-restaurant CIWL WR 1925T, 1 voiture de 1ére classe UIC-X en livrée rouge/grise et 1 voiture de 2éme classe UIC-X en livrée grise, ép. IV",
-      "it": "FS, set di 3 carrozze “Alpen-Express”, composto da 1 ristorante ex CIWL 1925T “Pistoiesi”, 1 UIC-X di 1a cl. rosso fegato e 1 UIC-X di 2a cl. grigio ardesia, ep. IV"
-    },
-    "details": {
-      "de": null,
-      "en": null,
-      "fr": null,
-      "it": null
-    },
-    "delivery_date": "2024",
-    "availability_status": "ANNOUNCED",
-    "rolling_stocks": [
-      {
-        "category": "PASSENGER_CAR",
-        "railway": "FS",
-        "livery": "rosso fegato",
-        "length_over_buffers": {
-          "millimeters": 303.0
-        },
-        "technical_specifications": {
-          "minimum_radius": 360.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "YES",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "NOT_APPLICABLE",
-          "metal_body": "NO",
-          "interior_lights": "NO",
-          "lights": "NO",
-          "spring_buffers": "YES"
-        },
-        "type_name": "UIC-X",
-        "road_number": null,
-        "series": null,
-        "passenger_car_type": null,
-        "service_level": "FIRST_CLASS"
+  "brand": "Rivarossi/Hornby",
+  "item_number": "HR4361",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": "FS, 3-unit pack of coaches “Alpen-Express”, including 1 restaurant coach CIWL WR 1925T, 1 x 1st class coach UIC-X in red/grey livery and 1 x 2nd class coach UIC-X in grey livery, ep. IV-V",
+    "it": "FS, set di 3 carrozze “Alpen-Express”, composto da 1 ristorante ex CIWL 1925T “Pistoiesi”, 1 UIC-X di 1a cl. rosso fegato e 1 UIC-X di 2a cl. grigio ardesia, ep. IV"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
+      "type_name": "UIC-X",
+      "livery": "rosso fegato",
+      "service_level": "FIRST_CLASS",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 303.0
       },
-      {
-        "category": "PASSENGER_CAR",
-        "railway": "FS",
-        "livery": "grigio ardesia",
-        "length_over_buffers": {
-          "millimeters": 303.0
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
         },
-        "technical_specifications": {
-          "minimum_radius": 360.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "YES",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "NOT_APPLICABLE",
-          "metal_body": "NO",
-          "interior_lights": "NO",
-          "lights": "NO",
-          "spring_buffers": "YES"
-        },
-        "type_name": "UIC-X",
-        "road_number": null,
-        "series": null,
-        "passenger_car_type": null,
-        "service_level": "SECOND_CLASS"
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": "YES"
       },
-      {
-        "category": "PASSENGER_CAR",
-        "railway": "FS",
-        "livery": "CIWL",
-        "length_over_buffers": {
-          "millimeters": 267.0
+      "is_dummy": null
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
+      "type_name": "UIC-X",
+      "livery": "grigio ardesia",
+      "service_level": "SECOND_CLASS",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
         },
-        "technical_specifications": {
-          "minimum_radius": 360.0,
-          "coupling": {
-            "socket": "NEM_362",
-            "close_couplers": "YES",
-            "digital_shunting": "NO"
-          },
-          "flywheel_fitted": "NOT_APPLICABLE",
-          "metal_body": "NO",
-          "interior_lights": "NO",
-          "lights": "NO",
-          "spring_buffers": "YES"
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": "YES"
+      },
+      "is_dummy": null
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
+      "type_name": "ristorante CIWL 1925T",
+      "livery": "CIWL",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 267.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
         },
-        "type_name": "ristorante CIWL 1925T",
-        "road_number": null,
-        "series": null,
-        "passenger_car_type": null
-      }
-    ],
-    "count": 3
-  }
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": "YES"
+      },
+      "is_dummy": null
+    }
+  ],
+  "count": 3
+}

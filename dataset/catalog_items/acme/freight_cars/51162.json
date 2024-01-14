@@ -7,22 +7,24 @@
   "epoch": "IV",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Bagagliaio postale a due assi con cassa in legno Tipo DUI 1909 in livrea grigio ardesia, ep. IV"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/08",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
+      "type_name": "DUI 1909",
+      "road_number": "DUI 96704",
       "livery": "grigio ardesia",
       "length_over_buffers": {
         "inches": 5.6692944,
@@ -39,11 +41,9 @@
         "metal_body": null,
         "interior_lights": null,
         "lights": null,
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "DUI 1909",
-      "road_number": "DUI 96704",
-      "freight_car_type": null
+      "is_dummy": null
     }
   ],
   "count": 1

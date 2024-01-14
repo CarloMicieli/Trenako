@@ -7,52 +7,28 @@
   "epoch": "IIIb",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FS, set di 4 carrozze “Treno Azzurro”, composto da 2 carrozze di 1a classe tipo 1946 Az13010 e 2 carrozze di 2a classe tipo 1946 Bz33010, una con scompartimento ristoro, ep. IIIb"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/09",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
-      "livery": "Treno Azzurro",
-      "length_over_buffers": {
-        "inches": 10.3543363,
-        "millimeters": 263.0
-      },
-      "technical_specifications": {
-        "minimum_radius": 360.0,
-        "coupling": {
-          "socket": "NEM_362",
-          "close_couplers": "YES",
-          "digital_shunting": "NO"
-        },
-        "flywheel_fitted": "NOT_APPLICABLE",
-        "metal_body": null,
-        "interior_lights": "NO",
-        "lights": "NO",
-        "spring_buffers": null
-      },
       "type_name": "Tipo 1946",
       "road_number": "Az13010",
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "FIRST_CLASS"
-    },
-    {
-      "category": "PASSENGER_CAR",
-      "railway": "FS",
       "livery": "Treno Azzurro",
+      "service_level": "FIRST_CLASS",
       "length_over_buffers": {
-        "inches": 10.3543363,
+        "inches": 10.354337,
         "millimeters": 263.0
       },
       "technical_specifications": {
@@ -66,20 +42,19 @@
         "metal_body": null,
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
+      "is_dummy": null
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
       "type_name": "Tipo 1946",
       "road_number": "Az13010",
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "FIRST_CLASS"
-    },
-    {
-      "category": "PASSENGER_CAR",
-      "railway": "FS",
       "livery": "Treno Azzurro",
+      "service_level": "FIRST_CLASS",
       "length_over_buffers": {
-        "inches": 10.3543363,
+        "inches": 10.354337,
         "millimeters": 263.0
       },
       "technical_specifications": {
@@ -93,20 +68,19 @@
         "metal_body": null,
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "Tipo 1946",
-      "road_number": "Bz33010",
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "SECOND_CLASS"
+      "is_dummy": null
     },
     {
-      "category": "PASSENGER_CAR",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
+      "type_name": "Tipo 1946",
+      "road_number": "Bz33010",
       "livery": "Treno Azzurro",
+      "service_level": "SECOND_CLASS",
       "length_over_buffers": {
-        "inches": 10.3543363,
+        "inches": 10.354337,
         "millimeters": 263.0
       },
       "technical_specifications": {
@@ -120,13 +94,35 @@
         "metal_body": null,
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
+      "is_dummy": null
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
       "type_name": "Tipo 1946",
       "road_number": "Bz33010",
-      "series": null,
-      "passenger_car_type": null,
-      "service_level": "SECOND_CLASS"
+      "livery": "Treno Azzurro",
+      "service_level": "SECOND_CLASS",
+      "length_over_buffers": {
+        "inches": 10.354337,
+        "millimeters": 263.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "metal_body": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": null
     }
   ],
   "count": 4

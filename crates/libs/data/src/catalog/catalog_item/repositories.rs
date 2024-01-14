@@ -183,7 +183,7 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for RollingStocksRep
                         metal_body,
                         interior_lights,
                         lights,
-                        spring_buffers
+                        sprung_buffers
                     )
                     VALUES (
                         $1, $2, $3, $4, $5, $6,
@@ -220,7 +220,7 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for RollingStocksRep
             request.metal_body as Option<FeatureFlag>,
             request.interior_lights as Option<FeatureFlag>,
             request.lights as Option<FeatureFlag>,
-            request.spring_buffers as Option<FeatureFlag>
+            request.sprung_buffers as Option<FeatureFlag>
         )
         .execute(&mut *unit_of_work.transaction)
         .await
@@ -334,7 +334,7 @@ impl<'db> FindRollingStocksByCatalogItemIdRepository<'db, PgUnitOfWork<'db>> for
                 rs.metal_body as "metal_body: FeatureFlag",
                 rs.interior_lights as "interior_lights: FeatureFlag",
                 rs.lights as "lights: FeatureFlag",
-                rs.spring_buffers as "spring_buffers: FeatureFlag"
+                rs.sprung_buffers as "sprung_buffers: FeatureFlag"
             FROM rolling_stocks AS rs
             JOIN railways AS r
               ON r.railway_id = rs.railway_id

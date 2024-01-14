@@ -103,7 +103,7 @@ fn it_should_parse_a_single_locomotive_from_csv_files() {
             );
             assert_eq!(
                 Some(FeatureFlag::Yes),
-                technical_specifications.as_ref().and_then(|specs| specs.spring_buffers)
+                technical_specifications.as_ref().and_then(|specs| specs.sprung_buffers)
             );
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
@@ -194,7 +194,7 @@ fn it_should_parse_multiple_passenger_cars_from_csv_files() {
             );
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
-                technical_specifications.as_ref().and_then(|specs| specs.spring_buffers)
+                technical_specifications.as_ref().and_then(|specs| specs.sprung_buffers)
             );
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
@@ -253,7 +253,7 @@ fn it_should_parse_multiple_passenger_cars_from_csv_files() {
             );
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
-                technical_specifications.as_ref().and_then(|specs| specs.spring_buffers)
+                technical_specifications.as_ref().and_then(|specs| specs.sprung_buffers)
             );
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
@@ -312,7 +312,7 @@ fn it_should_parse_multiple_passenger_cars_from_csv_files() {
             );
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
-                technical_specifications.as_ref().and_then(|specs| specs.spring_buffers)
+                technical_specifications.as_ref().and_then(|specs| specs.sprung_buffers)
             );
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
@@ -435,7 +435,7 @@ fn it_should_parse_a_single_freight_car_from_csv_files() {
             );
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
-                technical_specifications.as_ref().and_then(|specs| specs.spring_buffers)
+                technical_specifications.as_ref().and_then(|specs| specs.sprung_buffers)
             );
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),

@@ -21,6 +21,7 @@
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
+      "category": "LOCOMOTIVES",
       "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
       "class_name": "E645",
@@ -28,7 +29,6 @@
       "series": "SECONDA SERIE",
       "depot": "Milano Smistamento",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -40,13 +40,14 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "DCC_READY",
       "dcc_interface": "NEM_652",
       "is_dummy": false
     },
     {
+      "category": "LOCOMOTIVES",
       "locomotive_type": "ELECTRIC_LOCOMOTIVE",
       "railway": "FS",
       "class_name": "E645",
@@ -54,7 +55,6 @@
       "series": "SECONDA SERIE",
       "depot": "Bologna",
       "livery": "",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -66,7 +66,7 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
       "control": "DCC_READY",
       "is_dummy": true

@@ -7,24 +7,26 @@
   "epoch": "V",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set di due elettromotrici ALe 642 030 + ALe 642 024 (dummy) di 2° KL. nella livrea caffè KIMBO, ep. V. Illuminazione interna di serie, fanali funzionanti con inversione."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q2",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "category": "ELECTRIC_MULTIPLE_UNITS",
+      "electric_multiple_unit_type": "POWER_CAR",
       "railway": "FS",
+      "type_name": "ALe 642",
+      "road_number": "ALe 642 030",
       "livery": "KIMBO",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": null,
@@ -32,22 +34,19 @@
         "metal_body": null,
         "interior_lights": "YES",
         "lights": "YES",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "ALe 642",
-      "road_number": "ALe 642 030",
-      "series": null,
-      "depot": null,
-      "electric_multiple_unit_type": "POWER_CAR",
-      "dcc_interface": "PLUX_22",
       "control": "DCC_READY",
+      "dcc_interface": "PLUX_22",
       "is_dummy": false
     },
     {
-      "category": "ELECTRIC_MULTIPLE_UNIT",
+      "category": "ELECTRIC_MULTIPLE_UNITS",
+      "electric_multiple_unit_type": "POWER_CAR",
       "railway": "FS",
+      "type_name": "ALe 642",
+      "road_number": "ALe 642 024",
       "livery": "KIMBO",
-      "length_over_buffers": null,
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": null,
@@ -55,15 +54,8 @@
         "metal_body": null,
         "interior_lights": "YES",
         "lights": "YES",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "ALe 642",
-      "road_number": "ALe 642 024",
-      "series": null,
-      "depot": null,
-      "electric_multiple_unit_type": "POWER_CAR",
-      "dcc_interface": null,
-      "control": null,
       "is_dummy": true
     }
   ],

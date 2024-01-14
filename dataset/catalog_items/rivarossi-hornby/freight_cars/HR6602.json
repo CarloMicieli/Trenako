@@ -6,25 +6,27 @@
   "power_method": "DC",
   "epoch": "V",
   "description": {
-    "de": "FS, dreiachsiger Schiebeplanenwagen Lails, „Indesit + Ariston + Scholtès“, Ep. V",
+    "de": null,
+    "fr": null,
     "en": "FS, 3-axle tarpaulin wagon Lails, “Indesit + Ariston + Scholtès », ep. V",
-    "fr": "FS, wagon bâché à 3 essieux type Lails, « Indesit + Ariston + Scholtès », ép. V",
     "it": "FS, carro articolato a 3 assi telonato tipo Lails, “Indesit + Ariston + Scholtès”, ep. V"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": null
   },
   "delivery_date": "2024",
   "availability_status": "ANNOUNCED",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
+      "type_name": "Lails",
       "livery": "Indesit",
       "length_over_buffers": {
+        "inches": null,
         "millimeters": 304.0
       },
       "technical_specifications": {
@@ -38,11 +40,9 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "NO"
+        "sprung_buffers": "NO"
       },
-      "type_name": "Lails",
-      "road_number": null,
-      "freight_car_type": null
+      "is_dummy": null
     }
   ],
   "count": 1

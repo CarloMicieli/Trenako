@@ -7,25 +7,28 @@
   "epoch": "VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "FER Coppia di due Automotrici Diesel ALn 668 013 + ALn 668 018 nella livrea FER Ferrovie Emilia Romagna ep. VI."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "RAILCAR",
+      "category": "RAILCARS",
+      "railcar_type": "POWER_CAR",
       "railway": "FER",
+      "type_name": "ALn 668",
+      "road_number": "ALn 668 013",
       "livery": "FER",
       "length_over_buffers": {
-        "inches": 10.4330765,
+        "inches": 10.433077,
         "millimeters": 265.0
       },
       "technical_specifications": {
@@ -35,23 +38,21 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "ALn 668",
-      "road_number": "ALn 668 013",
-      "series": null,
-      "depot": null,
-      "railcar_type": "POWER_CAR",
-      "dcc_interface": "NEM_652",
       "control": "DCC_READY",
+      "dcc_interface": "NEM_652",
       "is_dummy": false
     },
     {
-      "category": "RAILCAR",
+      "category": "RAILCARS",
+      "railcar_type": "POWER_CAR",
       "railway": "FER",
+      "type_name": "ALn 668",
+      "road_number": "ALn 668 018",
       "livery": "FER",
       "length_over_buffers": {
-        "inches": 10.4330765,
+        "inches": 10.433077,
         "millimeters": 265.0
       },
       "technical_specifications": {
@@ -61,14 +62,8 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "type_name": "ALn 668",
-      "road_number": "ALn 668 018",
-      "series": null,
-      "depot": null,
-      "railcar_type": "POWER_CAR",
-      "dcc_interface": null,
       "control": "NO_DCC",
       "is_dummy": true
     }

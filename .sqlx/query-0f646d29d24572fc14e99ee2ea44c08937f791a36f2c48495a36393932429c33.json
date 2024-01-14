@@ -1,6 +1,6 @@
 {
   "db_name": "PostgreSQL",
-  "query": "SELECT \n                rs.rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n                rs.catalog_item_id as \"catalog_item_id: CatalogItemId\",\n                rs.railway_id as \"railway_id: RailwayId\",\n                r.name as railway_label, \n                rs.rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n                rs.livery,\n                rs.length_over_buffers_mm,\n                rs.length_over_buffers_in,\n                rs.type_name,\n                rs.road_number,\n                rs.series,\n                rs.depot,\n                rs.dcc_interface as \"dcc_interface: DccInterface\",\n                rs.control as \"control: Control\",\n                rs.electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n                rs.freight_car_type as \"freight_car_type: FreightCarType\",\n                rs.locomotive_type as \"locomotive_type: LocomotiveType\",\n                rs.passenger_car_type as \"passenger_car_type: PassengerCarType\",\n                rs.railcar_type as \"railcar_type: RailcarType\",\n                rs.service_level as \"service_level: ServiceLevel\",\n                rs.is_dummy,\n                rs.minimum_radius,\n                rs.coupling_socket as \"coupling_socket: CouplingSocket\",\n                rs.close_couplers as \"close_couplers: FeatureFlag\",\n                rs.digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n                rs.flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n                rs.metal_body as \"metal_body: FeatureFlag\",\n                rs.interior_lights as \"interior_lights: FeatureFlag\",\n                rs.lights as \"lights: FeatureFlag\",\n                rs.spring_buffers as \"spring_buffers: FeatureFlag\"\n            FROM rolling_stocks AS rs\n            JOIN railways AS r\n              ON r.railway_id = rs.railway_id\n            WHERE rs.catalog_item_id = $1",
+  "query": "SELECT \n                rs.rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n                rs.catalog_item_id as \"catalog_item_id: CatalogItemId\",\n                rs.railway_id as \"railway_id: RailwayId\",\n                r.name as railway_label, \n                rs.rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n                rs.livery,\n                rs.length_over_buffers_mm,\n                rs.length_over_buffers_in,\n                rs.type_name,\n                rs.road_number,\n                rs.series,\n                rs.depot,\n                rs.dcc_interface as \"dcc_interface: DccInterface\",\n                rs.control as \"control: Control\",\n                rs.electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n                rs.freight_car_type as \"freight_car_type: FreightCarType\",\n                rs.locomotive_type as \"locomotive_type: LocomotiveType\",\n                rs.passenger_car_type as \"passenger_car_type: PassengerCarType\",\n                rs.railcar_type as \"railcar_type: RailcarType\",\n                rs.service_level as \"service_level: ServiceLevel\",\n                rs.is_dummy,\n                rs.minimum_radius,\n                rs.coupling_socket as \"coupling_socket: CouplingSocket\",\n                rs.close_couplers as \"close_couplers: FeatureFlag\",\n                rs.digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n                rs.flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n                rs.metal_body as \"metal_body: FeatureFlag\",\n                rs.interior_lights as \"interior_lights: FeatureFlag\",\n                rs.lights as \"lights: FeatureFlag\",\n                rs.sprung_buffers as \"sprung_buffers: FeatureFlag\"\n            FROM rolling_stocks AS rs\n            JOIN railways AS r\n              ON r.railway_id = rs.railway_id\n            WHERE rs.catalog_item_id = $1",
   "describe": {
     "columns": [
       {
@@ -369,7 +369,7 @@
       },
       {
         "ordinal": 29,
-        "name": "spring_buffers: FeatureFlag",
+        "name": "sprung_buffers: FeatureFlag",
         "type_info": {
           "Custom": {
             "name": "feature_flag",
@@ -422,5 +422,5 @@
       true
     ]
   },
-  "hash": "bb617b5da05605d159784bb93f9225899acd69f025f5eafdce7763bd348903d3"
+  "hash": "0f646d29d24572fc14e99ee2ea44c08937f791a36f2c48495a36393932429c33"
 }

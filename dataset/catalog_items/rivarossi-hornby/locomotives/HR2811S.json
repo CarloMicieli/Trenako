@@ -7,22 +7,25 @@
   "epoch": "III",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Locomotiva a vapore GR 460 con caldaia a tre duomi e marcatura a biaca, fari di tipo a petrolio illuminati a micro Led, ep. III.  Presa decoder 21MTC."
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVE",
+      "category": "LOCOMOTIVES",
+      "locomotive_type": "STEAM_LOCOMOTIVE",
       "railway": "FS",
+      "class_name": "Gr. 460",
+      "road_number": "Gr. 460 030",
       "livery": "nera",
       "length_over_buffers": {
         "inches": 8.267721,
@@ -39,15 +42,10 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "YES",
-        "spring_buffers": null
+        "sprung_buffers": null
       },
-      "class_name": "Gr. 460",
-      "road_number": "Gr. 460 030",
-      "series": null,
-      "depot": null,
-      "locomotive_type": "STEAM_LOCOMOTIVE",
-      "dcc_interface": "MTC_21",
       "control": "DCC_SOUND",
+      "dcc_interface": "MTC_21",
       "is_dummy": false
     }
   ],

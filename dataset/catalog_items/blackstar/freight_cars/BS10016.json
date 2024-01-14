@@ -7,50 +7,27 @@
   "epoch": "VI",
   "description": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": "Set di 2 carri tramoggia da 101m3 tipo Tagnpps \"NACCO-VERONESI\" in livrea gialla. Carri prodotti da NME in esclusiva per Black Star. Epoca VI"
   },
   "details": {
     "de": null,
-    "en": null,
     "fr": null,
+    "en": null,
     "it": ""
   },
   "delivery_date": "2023/Q1",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "FREIGHT_CAR",
+      "category": "FREIGHT_CARS",
       "railway": "FS",
-      "livery": "VERONESI",
-      "length_over_buffers": {
-        "inches": 7.2834685,
-        "millimeters": 185.0
-      },
-      "technical_specifications": {
-        "minimum_radius": 360.0,
-        "coupling": {
-          "socket": "NEM_362",
-          "close_couplers": "YES",
-          "digital_shunting": "NO"
-        },
-        "flywheel_fitted": "NO",
-        "metal_body": "NO",
-        "interior_lights": "NO",
-        "lights": "NO",
-        "spring_buffers": "YES"
-      },
       "type_name": "Tagnpps",
       "road_number": "3783 0764 002-9",
-      "freight_car_type": null
-    },
-    {
-      "category": "FREIGHT_CAR",
-      "railway": "FS",
       "livery": "VERONESI",
       "length_over_buffers": {
-        "inches": 7.2834685,
+        "inches": 7.2834687,
         "millimeters": 185.0
       },
       "technical_specifications": {
@@ -64,11 +41,34 @@
         "metal_body": "NO",
         "interior_lights": "NO",
         "lights": "NO",
-        "spring_buffers": "YES"
+        "sprung_buffers": "YES"
       },
+      "is_dummy": null
+    },
+    {
+      "category": "FREIGHT_CARS",
+      "railway": "FS",
       "type_name": "Tagnpps",
       "road_number": "3783 0764 022-7",
-      "freight_car_type": null
+      "livery": "VERONESI",
+      "length_over_buffers": {
+        "inches": 7.2834687,
+        "millimeters": 185.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NO",
+        "metal_body": "NO",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": "YES"
+      },
+      "is_dummy": null
     }
   ],
   "count": 2
