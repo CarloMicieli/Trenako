@@ -14,7 +14,7 @@ use catalog::catalog_items::power_method::PowerMethod;
 use catalog::catalog_items::rolling_stock_request::RollingStockRequest;
 use catalog::catalog_items::service_level::ServiceLevel;
 use catalog::catalog_items::technical_specifications::{
-    Coupling, CouplingSocket, FeatureFlag, Radius, TechnicalSpecifications,
+    BodyShellType, ChassisType, Coupling, CouplingSocket, FeatureFlag, Radius, TechnicalSpecifications,
 };
 use common::length::Length;
 use common::localized_text::LocalizedText;
@@ -49,7 +49,8 @@ pub struct CsvRecord {
     pub depot: Option<String>,
     pub couplers: Option<CouplingSocket>,
     pub flywheel_fitted: Option<FeatureFlag>,
-    pub metal_body: Option<FeatureFlag>,
+    pub chassis: Option<ChassisType>,
+    pub body_shell: Option<BodyShellType>,
     pub interior_lights: Option<FeatureFlag>,
     pub lights: Option<FeatureFlag>,
     pub sprung_buffers: Option<FeatureFlag>,
@@ -194,7 +195,8 @@ fn technical_specification(record: &CsvRecord) -> Result<Option<TechnicalSpecifi
         minimum_radius,
         coupling: record.couplers.map(|c| coupling(&c)),
         flywheel_fitted: record.flywheel_fitted,
-        metal_body: record.metal_body,
+        body_shell: record.body_shell,
+        chassis: record.chassis,
         interior_lights: record.interior_lights,
         lights: record.lights,
         sprung_buffers: record.sprung_buffers,

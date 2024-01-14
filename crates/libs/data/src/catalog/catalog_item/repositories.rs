@@ -20,7 +20,7 @@ use catalog::catalog_items::queries::find_catalog_item_by_id::{
 use catalog::catalog_items::rolling_stock::RollingStock;
 use catalog::catalog_items::rolling_stock_id::RollingStockId;
 use catalog::catalog_items::service_level::ServiceLevel;
-use catalog::catalog_items::technical_specifications::{CouplingSocket, FeatureFlag};
+use catalog::catalog_items::technical_specifications::{BodyShellType, ChassisType, CouplingSocket, FeatureFlag};
 use catalog::railways::railway_id::RailwayId;
 use catalog::scales::scale_id::ScaleId;
 use common::queries::converters::ToOutputConverter;
@@ -180,7 +180,8 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for RollingStocksRep
                         close_couplers,
                         digital_shunting_coupling,
                         flywheel_fitted,
-                        metal_body,
+                        body_shell,
+                        chassis,
                         interior_lights,
                         lights,
                         sprung_buffers
@@ -190,7 +191,7 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for RollingStocksRep
                         $7, $8, $9, $10, $11, $12, 
                         $13, $14, $15, $16, $17, $18,
                         $19, $20, $21, $22, $23, $24, 
-                        $25, $26, $27, $28, $29
+                        $25, $26, $27, $28, $29, $30
                     )"#,
             rolling_stock_id as &RollingStockId,
             catalog_item_id as &CatalogItemId,
@@ -217,7 +218,8 @@ impl<'db> NewRollingStockRepository<'db, PgUnitOfWork<'db>> for RollingStocksRep
             request.close_couplers as Option<FeatureFlag>,
             request.digital_shunting_coupling as Option<FeatureFlag>,
             request.flywheel_fitted as Option<FeatureFlag>,
-            request.metal_body as Option<FeatureFlag>,
+            request.body_shell as Option<BodyShellType>,
+            request.chassis as Option<ChassisType>,
             request.interior_lights as Option<FeatureFlag>,
             request.lights as Option<FeatureFlag>,
             request.sprung_buffers as Option<FeatureFlag>
@@ -331,7 +333,8 @@ impl<'db> FindRollingStocksByCatalogItemIdRepository<'db, PgUnitOfWork<'db>> for
                 rs.close_couplers as "close_couplers: FeatureFlag",
                 rs.digital_shunting_coupling as "digital_shunting_coupling: FeatureFlag",
                 rs.flywheel_fitted as "flywheel_fitted: FeatureFlag",
-                rs.metal_body as "metal_body: FeatureFlag",
+                rs.body_shell as "body_shell: BodyShellType",
+                rs.chassis as "chassis: ChassisType",
                 rs.interior_lights as "interior_lights: FeatureFlag",
                 rs.lights as "lights: FeatureFlag",
                 rs.sprung_buffers as "sprung_buffers: FeatureFlag"

@@ -108,6 +108,14 @@ CREATE TYPE service_level AS ENUM (
     'FIRST_SECOND_AND_THIRD_CLASS',
     'SECOND_AND_THIRD_CLASS'
     );
+CREATE TYPE body_shell_type AS ENUM (
+    'METAL_DIE_CAST',
+    'PLASTIC'
+    );
+CREATE TYPE chassis_type AS ENUM (
+    'METAL_DIE_CAST',
+    'PLASTIC'
+    );
 
 CREATE TABLE IF NOT EXISTS public.catalog_items
 (
@@ -170,7 +178,8 @@ CREATE TABLE IF NOT EXISTS public.rolling_stocks
     close_couplers              feature_flag,
     digital_shunting_coupling   feature_flag,
     flywheel_fitted             feature_flag,
-    metal_body                  feature_flag,
+    body_shell                  body_shell_type,
+    chassis                     chassis_type,
     interior_lights             feature_flag,
     lights                      feature_flag,
     sprung_buffers              feature_flag,

@@ -7,7 +7,7 @@ use catalog::catalog_items::category::{
 use catalog::catalog_items::control::{Control, DccInterface};
 use catalog::catalog_items::rolling_stock_id::RollingStockId;
 use catalog::catalog_items::service_level::ServiceLevel;
-use catalog::catalog_items::technical_specifications::{CouplingSocket, FeatureFlag};
+use catalog::catalog_items::technical_specifications::{BodyShellType, ChassisType, CouplingSocket, FeatureFlag};
 use catalog::railways::railway_id::RailwayId;
 use rust_decimal::Decimal;
 
@@ -40,7 +40,8 @@ pub struct RollingStockRow {
     pub close_couplers: Option<FeatureFlag>,
     pub digital_shunting_coupling: Option<FeatureFlag>,
     pub flywheel_fitted: Option<FeatureFlag>,
-    pub metal_body: Option<FeatureFlag>,
+    pub body_shell: Option<BodyShellType>,
+    pub chassis: Option<ChassisType>,
     pub interior_lights: Option<FeatureFlag>,
     pub lights: Option<FeatureFlag>,
     pub sprung_buffers: Option<FeatureFlag>,
@@ -79,7 +80,8 @@ pub mod test {
             close_couplers: Some(FeatureFlag::NotApplicable),
             digital_shunting_coupling: Some(FeatureFlag::NotApplicable),
             flywheel_fitted: Some(FeatureFlag::NotApplicable),
-            metal_body: Some(FeatureFlag::NotApplicable),
+            body_shell: None,
+            chassis: None,
             interior_lights: Some(FeatureFlag::NotApplicable),
             lights: Some(FeatureFlag::NotApplicable),
             sprung_buffers: Some(FeatureFlag::NotApplicable),

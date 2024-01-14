@@ -1,6 +1,6 @@
 {
   "db_name": "PostgreSQL",
-  "query": "SELECT \n            rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n            railway_id as \"railway_id: RailwayId\",\n            rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n            livery,\n            length_over_buffers_mm,\n            length_over_buffers_in,\n            type_name,\n            road_number,\n            series,\n            depot,\n            dcc_interface as \"dcc_interface: DccInterface\",\n            control as \"control: Control\",\n            electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n            freight_car_type as \"freight_car_type: FreightCarType\",\n            locomotive_type as \"locomotive_type: LocomotiveType\",\n            passenger_car_type as \"passenger_car_type: PassengerCarType\",\n            railcar_type as \"railcar_type: RailcarType\",\n            service_level as \"service_level: ServiceLevel\",\n            is_dummy,\n            minimum_radius,\n            coupling_socket as \"coupling_socket: CouplingSocket\",\n            close_couplers as \"close_couplers: FeatureFlag\",\n            digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n            flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n            metal_body as \"metal_body: FeatureFlag\",\n            interior_lights as \"interior_lights: FeatureFlag\",\n            lights as \"lights: FeatureFlag\",\n            sprung_buffers as \"sprung_buffers: FeatureFlag\"\n        FROM rolling_stocks\n        WHERE catalog_item_id = $1",
+  "query": "SELECT \n            rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n            railway_id as \"railway_id: RailwayId\",\n            rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n            livery,\n            length_over_buffers_mm,\n            length_over_buffers_in,\n            type_name,\n            road_number,\n            series,\n            depot,\n            dcc_interface as \"dcc_interface: DccInterface\",\n            control as \"control: Control\",\n            electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n            freight_car_type as \"freight_car_type: FreightCarType\",\n            locomotive_type as \"locomotive_type: LocomotiveType\",\n            passenger_car_type as \"passenger_car_type: PassengerCarType\",\n            railcar_type as \"railcar_type: RailcarType\",\n            service_level as \"service_level: ServiceLevel\",\n            is_dummy,\n            minimum_radius,\n            coupling_socket as \"coupling_socket: CouplingSocket\",\n            close_couplers as \"close_couplers: FeatureFlag\",\n            digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n            flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n            body_shell as \"body_shell: BodyShellType\",\n            chassis as \"chassis: ChassisType\",\n            interior_lights as \"interior_lights: FeatureFlag\",\n            lights as \"lights: FeatureFlag\",\n            sprung_buffers as \"sprung_buffers: FeatureFlag\"\n        FROM rolling_stocks\n        WHERE catalog_item_id = $1",
   "describe": {
     "columns": [
       {
@@ -311,15 +311,14 @@
       },
       {
         "ordinal": 24,
-        "name": "metal_body: FeatureFlag",
+        "name": "body_shell: BodyShellType",
         "type_info": {
           "Custom": {
-            "name": "feature_flag",
+            "name": "body_shell_type",
             "kind": {
               "Enum": [
-                "YES",
-                "NO",
-                "NOT_AVAILABLE"
+                "METAL_DIE_CAST",
+                "PLASTIC"
               ]
             }
           }
@@ -327,6 +326,21 @@
       },
       {
         "ordinal": 25,
+        "name": "chassis: ChassisType",
+        "type_info": {
+          "Custom": {
+            "name": "chassis_type",
+            "kind": {
+              "Enum": [
+                "METAL_DIE_CAST",
+                "PLASTIC"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 26,
         "name": "interior_lights: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -342,7 +356,7 @@
         }
       },
       {
-        "ordinal": 26,
+        "ordinal": 27,
         "name": "lights: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -358,7 +372,7 @@
         }
       },
       {
-        "ordinal": 27,
+        "ordinal": 28,
         "name": "sprung_buffers: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -407,8 +421,9 @@
       true,
       true,
       true,
+      true,
       true
     ]
   },
-  "hash": "afb194fdc70ced31595ff8e05e2fe83837bdadc7efd404af171200ab0df373d1"
+  "hash": "0a2ba32da3a547ad044fdeaa6149bafa61933090913a78289bee2551669b0872"
 }

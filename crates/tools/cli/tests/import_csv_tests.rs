@@ -10,7 +10,9 @@ use catalog::catalog_items::rolling_stock_request::RollingStockRequest::{
     FreightCarRequest, LocomotiveRequest, PassengerCarRequest,
 };
 use catalog::catalog_items::service_level::ServiceLevel;
-use catalog::catalog_items::technical_specifications::{Coupling, CouplingSocket, FeatureFlag, Radius};
+use catalog::catalog_items::technical_specifications::{
+    BodyShellType, ChassisType, Coupling, CouplingSocket, FeatureFlag, Radius,
+};
 use cli::cvs_files::read_catalog_items;
 use common::length::Length;
 use pretty_assertions::assert_eq;
@@ -102,12 +104,16 @@ fn it_should_parse_a_single_locomotive_from_csv_files() {
                     .and_then(|specs| specs.interior_lights)
             );
             assert_eq!(
-                Some(FeatureFlag::Yes),
+                Some(FeatureFlag::No),
                 technical_specifications.as_ref().and_then(|specs| specs.sprung_buffers)
             );
             assert_eq!(
-                Some(FeatureFlag::NotApplicable),
-                technical_specifications.as_ref().and_then(|specs| specs.metal_body)
+                Some(BodyShellType::Plastic),
+                technical_specifications.as_ref().and_then(|specs| specs.body_shell)
+            );
+            assert_eq!(
+                Some(ChassisType::MetalDieCast),
+                technical_specifications.as_ref().and_then(|specs| specs.chassis)
             );
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
@@ -197,9 +203,10 @@ fn it_should_parse_multiple_passenger_cars_from_csv_files() {
                 technical_specifications.as_ref().and_then(|specs| specs.sprung_buffers)
             );
             assert_eq!(
-                Some(FeatureFlag::NotApplicable),
-                technical_specifications.as_ref().and_then(|specs| specs.metal_body)
+                Some(BodyShellType::Plastic),
+                technical_specifications.as_ref().and_then(|specs| specs.body_shell)
             );
+            assert_eq!(None, technical_specifications.as_ref().and_then(|specs| specs.chassis));
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
                 technical_specifications
@@ -256,9 +263,10 @@ fn it_should_parse_multiple_passenger_cars_from_csv_files() {
                 technical_specifications.as_ref().and_then(|specs| specs.sprung_buffers)
             );
             assert_eq!(
-                Some(FeatureFlag::NotApplicable),
-                technical_specifications.as_ref().and_then(|specs| specs.metal_body)
+                Some(BodyShellType::Plastic),
+                technical_specifications.as_ref().and_then(|specs| specs.body_shell)
             );
+            assert_eq!(None, technical_specifications.as_ref().and_then(|specs| specs.chassis));
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
                 technical_specifications
@@ -315,9 +323,10 @@ fn it_should_parse_multiple_passenger_cars_from_csv_files() {
                 technical_specifications.as_ref().and_then(|specs| specs.sprung_buffers)
             );
             assert_eq!(
-                Some(FeatureFlag::NotApplicable),
-                technical_specifications.as_ref().and_then(|specs| specs.metal_body)
+                Some(BodyShellType::Plastic),
+                technical_specifications.as_ref().and_then(|specs| specs.body_shell)
             );
+            assert_eq!(None, technical_specifications.as_ref().and_then(|specs| specs.chassis));
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
                 technical_specifications
@@ -438,9 +447,10 @@ fn it_should_parse_a_single_freight_car_from_csv_files() {
                 technical_specifications.as_ref().and_then(|specs| specs.sprung_buffers)
             );
             assert_eq!(
-                Some(FeatureFlag::NotApplicable),
-                technical_specifications.as_ref().and_then(|specs| specs.metal_body)
+                Some(BodyShellType::Plastic),
+                technical_specifications.as_ref().and_then(|specs| specs.body_shell)
             );
+            assert_eq!(None, technical_specifications.as_ref().and_then(|specs| specs.chassis));
             assert_eq!(
                 Some(FeatureFlag::NotApplicable),
                 technical_specifications

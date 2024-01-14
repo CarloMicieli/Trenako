@@ -222,7 +222,8 @@ impl OptionConverter<RollingStockRow> for TechnicalSpecifications {
             minimum_radius,
             coupling,
             flywheel_fitted: row.flywheel_fitted,
-            metal_body: row.metal_body,
+            body_shell: row.body_shell,
+            chassis: row.chassis,
             interior_lights: row.interior_lights,
             lights: row.lights,
             sprung_buffers: row.sprung_buffers,
@@ -472,7 +473,8 @@ mod test {
                     assert_eq!(technical_specifications.lights, row.lights);
                     assert_eq!(technical_specifications.interior_lights, row.interior_lights);
                     assert_eq!(technical_specifications.sprung_buffers, row.sprung_buffers);
-                    assert_eq!(technical_specifications.metal_body, row.metal_body);
+                    assert_eq!(technical_specifications.body_shell, row.body_shell);
+                    assert_eq!(technical_specifications.chassis, row.chassis);
                     assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
                         technical_specifications
@@ -567,7 +569,8 @@ mod test {
                     assert_eq!(technical_specifications.lights, row.lights);
                     assert_eq!(technical_specifications.interior_lights, row.interior_lights);
                     assert_eq!(technical_specifications.sprung_buffers, row.sprung_buffers);
-                    assert_eq!(technical_specifications.metal_body, row.metal_body);
+                    assert_eq!(technical_specifications.body_shell, row.body_shell);
+                    assert_eq!(technical_specifications.chassis, row.chassis);
                     assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
                         technical_specifications
@@ -662,7 +665,8 @@ mod test {
                     assert_eq!(technical_specifications.lights, row.lights);
                     assert_eq!(technical_specifications.interior_lights, row.interior_lights);
                     assert_eq!(technical_specifications.sprung_buffers, row.sprung_buffers);
-                    assert_eq!(technical_specifications.metal_body, row.metal_body);
+                    assert_eq!(technical_specifications.body_shell, row.body_shell);
+                    assert_eq!(technical_specifications.chassis, row.chassis);
                     assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
                         technical_specifications
@@ -750,7 +754,8 @@ mod test {
                     assert_eq!(technical_specifications.lights, row.lights);
                     assert_eq!(technical_specifications.interior_lights, row.interior_lights);
                     assert_eq!(technical_specifications.sprung_buffers, row.sprung_buffers);
-                    assert_eq!(technical_specifications.metal_body, row.metal_body);
+                    assert_eq!(technical_specifications.body_shell, row.body_shell);
+                    assert_eq!(technical_specifications.chassis, row.chassis);
                     assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
                         technical_specifications
@@ -833,7 +838,8 @@ mod test {
                     assert_eq!(technical_specifications.lights, row.lights);
                     assert_eq!(technical_specifications.interior_lights, row.interior_lights);
                     assert_eq!(technical_specifications.sprung_buffers, row.sprung_buffers);
-                    assert_eq!(technical_specifications.metal_body, row.metal_body);
+                    assert_eq!(technical_specifications.body_shell, row.body_shell);
+                    assert_eq!(technical_specifications.chassis, row.chassis);
                     assert_eq!(technical_specifications.flywheel_fitted, row.flywheel_fitted);
                     assert_eq!(
                         technical_specifications

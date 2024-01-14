@@ -15,7 +15,7 @@ use catalog::catalog_items::power_method::PowerMethod;
 use catalog::catalog_items::rolling_stock::RollingStock;
 use catalog::catalog_items::rolling_stock_id::RollingStockId;
 use catalog::catalog_items::service_level::ServiceLevel;
-use catalog::catalog_items::technical_specifications::{CouplingSocket, FeatureFlag};
+use catalog::catalog_items::technical_specifications::{BodyShellType, ChassisType, CouplingSocket, FeatureFlag};
 use catalog::railways::railway_id::RailwayId;
 use catalog::scales::scale_id::ScaleId;
 use reqwest::StatusCode;
@@ -323,7 +323,8 @@ async fn it_should_return_422_when_the_railway_is_not_found() {
                     "digital_shunting" : "NO"
                   },
                   "flywheel_fitted" : "NO",
-                  "metal_body" : "NO",
+                  "body_shell" : "PLASTIC",
+                  "chassis" : "METAL_DIE_CAST",
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "YES",
@@ -405,7 +406,8 @@ async fn it_should_create_a_new_locomotive() {
                     "digital_shunting" : "NO"
                   },
                   "flywheel_fitted" : "NO",
-                  "metal_body" : "NO",
+                  "body_shell" : "PLASTIC",
+                  "chassis" : "METAL_DIE_CAST",
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "YES",
@@ -479,7 +481,8 @@ async fn it_should_create_a_new_locomotive() {
         assert_eq!(Some(FeatureFlag::Yes), rs.close_couplers);
         assert_eq!(Some(FeatureFlag::No), rs.digital_shunting_coupling);
         assert_eq!(Some(FeatureFlag::No), rs.flywheel_fitted);
-        assert_eq!(Some(FeatureFlag::No), rs.metal_body);
+        assert_eq!(Some(BodyShellType::Plastic), rs.body_shell);
+        assert_eq!(Some(ChassisType::MetalDieCast), rs.chassis);
         assert_eq!(Some(FeatureFlag::No), rs.interior_lights);
         assert_eq!(Some(FeatureFlag::Yes), rs.lights);
         assert_eq!(Some(FeatureFlag::No), rs.sprung_buffers);
@@ -544,7 +547,8 @@ async fn it_should_create_a_new_electric_multiple_unit() {
                     "digital_shunting" : "NO"
                   },
                   "flywheel_fitted" : "NO",
-                  "metal_body" : "NO",
+                  "body_shell" : "PLASTIC",
+                  "chassis" : "METAL_DIE_CAST",
                   "minimum_radius": 360.0,
                   "interior_lights" : "YES",
                   "lights" : "YES",
@@ -571,7 +575,8 @@ async fn it_should_create_a_new_electric_multiple_unit() {
                     "digital_shunting" : "NO"
                   },
                   "flywheel_fitted" : "NO",
-                  "metal_body" : "NO",
+                  "body_shell" : "PLASTIC",
+                  "chassis" : "METAL_DIE_CAST",
                   "minimum_radius": 360.0,
                   "interior_lights" : "YES",
                   "lights" : "YES",
@@ -654,7 +659,8 @@ async fn it_should_create_a_new_electric_multiple_unit() {
         assert_eq!(Some(FeatureFlag::Yes), rs1.close_couplers);
         assert_eq!(Some(FeatureFlag::No), rs1.digital_shunting_coupling);
         assert_eq!(Some(FeatureFlag::No), rs1.flywheel_fitted);
-        assert_eq!(Some(FeatureFlag::No), rs1.metal_body);
+        assert_eq!(Some(BodyShellType::Plastic), rs1.body_shell);
+        assert_eq!(Some(ChassisType::MetalDieCast), rs1.chassis);
         assert_eq!(Some(FeatureFlag::Yes), rs1.interior_lights);
         assert_eq!(Some(FeatureFlag::Yes), rs1.lights);
         assert_eq!(Some(FeatureFlag::No), rs1.sprung_buffers);
@@ -691,7 +697,8 @@ async fn it_should_create_a_new_electric_multiple_unit() {
         assert_eq!(Some(FeatureFlag::Yes), rs2.close_couplers);
         assert_eq!(Some(FeatureFlag::No), rs2.digital_shunting_coupling);
         assert_eq!(Some(FeatureFlag::No), rs2.flywheel_fitted);
-        assert_eq!(Some(FeatureFlag::No), rs2.metal_body);
+        assert_eq!(Some(BodyShellType::Plastic), rs2.body_shell);
+        assert_eq!(Some(ChassisType::MetalDieCast), rs2.chassis);
         assert_eq!(Some(FeatureFlag::Yes), rs2.interior_lights);
         assert_eq!(Some(FeatureFlag::Yes), rs2.lights);
         assert_eq!(Some(FeatureFlag::No), rs2.sprung_buffers);
@@ -755,7 +762,8 @@ async fn it_should_create_a_new_railcar() {
                     "digital_shunting" : "NO"
                   },
                   "flywheel_fitted" : "NO",
-                  "metal_body" : "NO",
+                  "body_shell" : "PLASTIC",
+                  "chassis" : "METAL_DIE_CAST",
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "YES",
@@ -782,7 +790,8 @@ async fn it_should_create_a_new_railcar() {
                     "digital_shunting" : "NO"
                   },
                   "flywheel_fitted" : "NO",
-                  "metal_body" : "NO",
+                  "body_shell" : "PLASTIC",
+                  "chassis" : "METAL_DIE_CAST",
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "YES",
@@ -858,7 +867,8 @@ async fn it_should_create_a_new_railcar() {
         assert_eq!(Some(FeatureFlag::Yes), rs1.close_couplers);
         assert_eq!(Some(FeatureFlag::No), rs1.digital_shunting_coupling);
         assert_eq!(Some(FeatureFlag::No), rs1.flywheel_fitted);
-        assert_eq!(Some(FeatureFlag::No), rs1.metal_body);
+        assert_eq!(Some(BodyShellType::Plastic), rs1.body_shell);
+        assert_eq!(Some(ChassisType::MetalDieCast), rs1.chassis);
         assert_eq!(Some(FeatureFlag::No), rs1.interior_lights);
         assert_eq!(Some(FeatureFlag::Yes), rs1.lights);
         assert_eq!(Some(FeatureFlag::No), rs1.sprung_buffers);
@@ -892,7 +902,8 @@ async fn it_should_create_a_new_railcar() {
         assert_eq!(Some(FeatureFlag::Yes), rs2.close_couplers);
         assert_eq!(Some(FeatureFlag::No), rs2.digital_shunting_coupling);
         assert_eq!(Some(FeatureFlag::No), rs2.flywheel_fitted);
-        assert_eq!(Some(FeatureFlag::No), rs2.metal_body);
+        assert_eq!(Some(BodyShellType::Plastic), rs2.body_shell);
+        assert_eq!(Some(ChassisType::MetalDieCast), rs2.chassis);
         assert_eq!(Some(FeatureFlag::No), rs2.interior_lights);
         assert_eq!(Some(FeatureFlag::Yes), rs2.lights);
         assert_eq!(Some(FeatureFlag::No), rs2.sprung_buffers);
@@ -955,7 +966,8 @@ async fn it_should_create_a_new_passenger_car() {
                     "digital_shunting" : "NO"
                   },
                   "flywheel_fitted" : "NO",
-                  "metal_body" : "NO",
+                  "body_shell" : "PLASTIC",
+                  "chassis" : "METAL_DIE_CAST",
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "NO",
@@ -1017,7 +1029,8 @@ async fn it_should_create_a_new_passenger_car() {
         assert_eq!(Some(FeatureFlag::Yes), rs.close_couplers);
         assert_eq!(Some(FeatureFlag::No), rs.digital_shunting_coupling);
         assert_eq!(Some(FeatureFlag::No), rs.flywheel_fitted);
-        assert_eq!(Some(FeatureFlag::No), rs.metal_body);
+        assert_eq!(Some(BodyShellType::Plastic), rs.body_shell);
+        assert_eq!(Some(ChassisType::MetalDieCast), rs.chassis);
         assert_eq!(Some(FeatureFlag::No), rs.interior_lights);
         assert_eq!(Some(FeatureFlag::No), rs.lights);
         assert_eq!(Some(FeatureFlag::No), rs.sprung_buffers);
@@ -1078,7 +1091,8 @@ async fn it_should_create_a_new_freight_car() {
                     "digital_shunting" : "NO"
                   },
                   "flywheel_fitted" : "NO",
-                  "metal_body" : "NO",
+                  "body_shell" : "PLASTIC",
+                  "chassis" : "METAL_DIE_CAST",
                   "minimum_radius": 360.0,
                   "interior_lights" : "NO",
                   "lights" : "NO",
@@ -1145,7 +1159,8 @@ async fn it_should_create_a_new_freight_car() {
         assert_eq!(Some(FeatureFlag::Yes), rs.close_couplers);
         assert_eq!(Some(FeatureFlag::No), rs.digital_shunting_coupling);
         assert_eq!(Some(FeatureFlag::No), rs.flywheel_fitted);
-        assert_eq!(Some(FeatureFlag::No), rs.metal_body);
+        assert_eq!(Some(BodyShellType::Plastic), rs.body_shell);
+        assert_eq!(Some(ChassisType::MetalDieCast), rs.chassis);
         assert_eq!(Some(FeatureFlag::No), rs.interior_lights);
         assert_eq!(Some(FeatureFlag::No), rs.lights);
         assert_eq!(Some(FeatureFlag::No), rs.sprung_buffers);
@@ -1204,7 +1219,8 @@ async fn fetch_saved_catalog_item(catalog_item_id: CatalogItemId, pg_pool: &PgPo
             close_couplers as "close_couplers: FeatureFlag",
             digital_shunting_coupling as "digital_shunting_coupling: FeatureFlag",
             flywheel_fitted as "flywheel_fitted: FeatureFlag",
-            metal_body as "metal_body: FeatureFlag",
+            body_shell as "body_shell: BodyShellType",
+            chassis as "chassis: ChassisType",
             interior_lights as "interior_lights: FeatureFlag",
             lights as "lights: FeatureFlag",
             sprung_buffers as "sprung_buffers: FeatureFlag"
@@ -1271,7 +1287,8 @@ struct SavedRollingStock {
     close_couplers: Option<FeatureFlag>,
     digital_shunting_coupling: Option<FeatureFlag>,
     flywheel_fitted: Option<FeatureFlag>,
-    metal_body: Option<FeatureFlag>,
+    body_shell: Option<BodyShellType>,
+    chassis: Option<ChassisType>,
     interior_lights: Option<FeatureFlag>,
     lights: Option<FeatureFlag>,
     sprung_buffers: Option<FeatureFlag>,

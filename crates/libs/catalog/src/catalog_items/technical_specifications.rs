@@ -134,8 +134,10 @@ pub struct TechnicalSpecifications {
     pub coupling: Option<Coupling>,
     /// has a flywheel fitted
     pub flywheel_fitted: Option<FeatureFlag>,
-    /// has metal body
-    pub metal_body: Option<FeatureFlag>,
+    /// body shell type
+    pub body_shell: Option<BodyShellType>,
+    /// chassis type
+    pub chassis: Option<ChassisType>,
     /// has interior lighting
     pub interior_lights: Option<FeatureFlag>,
     /// has lights
@@ -160,9 +162,14 @@ impl TechnicalSpecifications {
         self.flywheel_fitted
     }
 
-    /// with metal body
-    pub fn metal_body(&self) -> Option<FeatureFlag> {
-        self.metal_body
+    /// body shell type
+    pub fn body_shell(&self) -> Option<BodyShellType> {
+        self.body_shell
+    }
+
+    /// chassis type
+    pub fn chassis(&self) -> Option<ChassisType> {
+        self.chassis
     }
 
     /// with interior lights
@@ -186,7 +193,8 @@ pub struct TechnicalSpecificationsBuilder {
     minimum_radius: Option<Radius>,
     coupling: Option<Coupling>,
     flywheel_fitted: Option<FeatureFlag>,
-    metal_body: Option<FeatureFlag>,
+    chassis: Option<ChassisType>,
+    body_shell: Option<BodyShellType>,
     interior_lights: Option<FeatureFlag>,
     lights: Option<FeatureFlag>,
     sprung_buffers: Option<FeatureFlag>,
@@ -211,9 +219,15 @@ impl TechnicalSpecificationsBuilder {
         self
     }
 
-    /// with metal body
-    pub fn with_metal_body(mut self) -> Self {
-        self.metal_body = Some(FeatureFlag::Yes);
+    /// with body shell type
+    pub fn with_body_shell(mut self, body_shell_types: BodyShellType) -> Self {
+        self.body_shell = Some(body_shell_types);
+        self
+    }
+
+    /// with chassis type
+    pub fn with_chassis(mut self, chassis_types: ChassisType) -> Self {
+        self.chassis = Some(chassis_types);
         self
     }
 
@@ -241,7 +255,8 @@ impl TechnicalSpecificationsBuilder {
             minimum_radius: self.minimum_radius,
             coupling: self.coupling,
             flywheel_fitted: self.flywheel_fitted,
-            metal_body: self.metal_body,
+            body_shell: self.body_shell,
+            chassis: self.chassis,
             interior_lights: self.interior_lights,
             lights: self.lights,
             sprung_buffers: self.sprung_buffers,
@@ -263,6 +278,26 @@ pub enum FeatureFlag {
     /// The feature is not applicable
     #[default]
     NotApplicable,
+}
+
+#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display, Type)]
+#[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
+#[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "body_shell_type", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum BodyShellType {
+    Plastic,
+    MetalDieCast,
+}
+
+#[derive(Debug, Eq, PartialEq, Copy, Clone, Serialize, Deserialize, EnumString, Display, Type)]
+#[strum(serialize_all = "SCREAMING_SNAKE_CASE")]
+#[strum(ascii_case_insensitive)]
+#[sqlx(type_name = "chassis_type", rename_all = "SCREAMING_SNAKE_CASE")]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum ChassisType {
+    Plastic,
+    MetalDieCast,
 }
 
 /// The minimum drivable radius
@@ -469,7 +504,8 @@ mod test {
             let radius = Radius::from_millimeters(dec!(360)).unwrap();
             let tech_specs = TechnicalSpecificationsBuilder::default()
                 .with_coupling(coupling)
-                .with_metal_body()
+                .with_chassis(ChassisType::Plastic)
+                .with_body_shell(BodyShellType::MetalDieCast)
                 .with_minimum_radius(radius)
                 .with_interior_lights()
                 .with_lights()
@@ -479,7 +515,8 @@ mod test {
 
             assert_eq!(Some(coupling), tech_specs.coupling());
             assert_eq!(Some(radius), tech_specs.minimum_radius());
-            assert_eq!(Some(FeatureFlag::Yes), tech_specs.metal_body());
+            assert_eq!(Some(ChassisType::Plastic), tech_specs.chassis());
+            assert_eq!(Some(BodyShellType::MetalDieCast), tech_specs.body_shell());
             assert_eq!(Some(FeatureFlag::Yes), tech_specs.interior_lights());
             assert_eq!(Some(FeatureFlag::Yes), tech_specs.lights());
             assert_eq!(Some(FeatureFlag::Yes), tech_specs.sprung_buffers());

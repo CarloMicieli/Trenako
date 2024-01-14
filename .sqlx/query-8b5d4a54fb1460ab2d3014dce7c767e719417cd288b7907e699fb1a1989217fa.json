@@ -1,6 +1,6 @@
 {
   "db_name": "PostgreSQL",
-  "query": "SELECT \n                rs.rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n                rs.catalog_item_id as \"catalog_item_id: CatalogItemId\",\n                rs.railway_id as \"railway_id: RailwayId\",\n                r.name as railway_label, \n                rs.rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n                rs.livery,\n                rs.length_over_buffers_mm,\n                rs.length_over_buffers_in,\n                rs.type_name,\n                rs.road_number,\n                rs.series,\n                rs.depot,\n                rs.dcc_interface as \"dcc_interface: DccInterface\",\n                rs.control as \"control: Control\",\n                rs.electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n                rs.freight_car_type as \"freight_car_type: FreightCarType\",\n                rs.locomotive_type as \"locomotive_type: LocomotiveType\",\n                rs.passenger_car_type as \"passenger_car_type: PassengerCarType\",\n                rs.railcar_type as \"railcar_type: RailcarType\",\n                rs.service_level as \"service_level: ServiceLevel\",\n                rs.is_dummy,\n                rs.minimum_radius,\n                rs.coupling_socket as \"coupling_socket: CouplingSocket\",\n                rs.close_couplers as \"close_couplers: FeatureFlag\",\n                rs.digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n                rs.flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n                rs.metal_body as \"metal_body: FeatureFlag\",\n                rs.interior_lights as \"interior_lights: FeatureFlag\",\n                rs.lights as \"lights: FeatureFlag\",\n                rs.sprung_buffers as \"sprung_buffers: FeatureFlag\"\n            FROM rolling_stocks AS rs\n            JOIN railways AS r\n              ON r.railway_id = rs.railway_id\n            WHERE rs.catalog_item_id = $1",
+  "query": "SELECT \n                rs.rolling_stock_id as \"rolling_stock_id: RollingStockId\",\n                rs.catalog_item_id as \"catalog_item_id: CatalogItemId\",\n                rs.railway_id as \"railway_id: RailwayId\",\n                r.name as railway_label, \n                rs.rolling_stock_category as \"rolling_stock_category: RollingStockCategory\",\n                rs.livery,\n                rs.length_over_buffers_mm,\n                rs.length_over_buffers_in,\n                rs.type_name,\n                rs.road_number,\n                rs.series,\n                rs.depot,\n                rs.dcc_interface as \"dcc_interface: DccInterface\",\n                rs.control as \"control: Control\",\n                rs.electric_multiple_unit_type as \"electric_multiple_unit_type: ElectricMultipleUnitType\",\n                rs.freight_car_type as \"freight_car_type: FreightCarType\",\n                rs.locomotive_type as \"locomotive_type: LocomotiveType\",\n                rs.passenger_car_type as \"passenger_car_type: PassengerCarType\",\n                rs.railcar_type as \"railcar_type: RailcarType\",\n                rs.service_level as \"service_level: ServiceLevel\",\n                rs.is_dummy,\n                rs.minimum_radius,\n                rs.coupling_socket as \"coupling_socket: CouplingSocket\",\n                rs.close_couplers as \"close_couplers: FeatureFlag\",\n                rs.digital_shunting_coupling as \"digital_shunting_coupling: FeatureFlag\",\n                rs.flywheel_fitted as \"flywheel_fitted: FeatureFlag\",\n                rs.body_shell as \"body_shell: BodyShellType\",\n                rs.chassis as \"chassis: ChassisType\",\n                rs.interior_lights as \"interior_lights: FeatureFlag\",\n                rs.lights as \"lights: FeatureFlag\",\n                rs.sprung_buffers as \"sprung_buffers: FeatureFlag\"\n            FROM rolling_stocks AS rs\n            JOIN railways AS r\n              ON r.railway_id = rs.railway_id\n            WHERE rs.catalog_item_id = $1",
   "describe": {
     "columns": [
       {
@@ -321,15 +321,14 @@
       },
       {
         "ordinal": 26,
-        "name": "metal_body: FeatureFlag",
+        "name": "body_shell: BodyShellType",
         "type_info": {
           "Custom": {
-            "name": "feature_flag",
+            "name": "body_shell_type",
             "kind": {
               "Enum": [
-                "YES",
-                "NO",
-                "NOT_AVAILABLE"
+                "METAL_DIE_CAST",
+                "PLASTIC"
               ]
             }
           }
@@ -337,6 +336,21 @@
       },
       {
         "ordinal": 27,
+        "name": "chassis: ChassisType",
+        "type_info": {
+          "Custom": {
+            "name": "chassis_type",
+            "kind": {
+              "Enum": [
+                "METAL_DIE_CAST",
+                "PLASTIC"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "ordinal": 28,
         "name": "interior_lights: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -352,7 +366,7 @@
         }
       },
       {
-        "ordinal": 28,
+        "ordinal": 29,
         "name": "lights: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -368,7 +382,7 @@
         }
       },
       {
-        "ordinal": 29,
+        "ordinal": 30,
         "name": "sprung_buffers: FeatureFlag",
         "type_info": {
           "Custom": {
@@ -419,8 +433,9 @@
       true,
       true,
       true,
+      true,
       true
     ]
   },
-  "hash": "0f646d29d24572fc14e99ee2ea44c08937f791a36f2c48495a36393932429c33"
+  "hash": "8b5d4a54fb1460ab2d3014dce7c767e719417cd288b7907e699fb1a1989217fa"
 }

@@ -1952,6 +1952,12 @@ components:
         - ANNOUNCED
         - AVAILABLE
         - DISCONTINUED
+    BodyShellType:
+      description: the body shell type
+      type: string
+      enum:
+        - 'METAL_DIE_CAST'
+        - 'PLASTIC'
     Brand:
       description: a model railways manufacturer
       type: object
@@ -2232,6 +2238,12 @@ components:
       required:
         - scale_id
         - display
+    ChassisType:
+      description: the chassis type
+      type: string
+      enum:
+        - 'METAL_DIE_CAST'
+        - 'PLASTIC'
     Collection:
       description: a model railway collection
       type: object
@@ -3567,8 +3579,10 @@ components:
           $ref: "#/components/schemas/Coupling"
         flywheel_fitted:
           $ref: "#/components/schemas/FeatureFlag"
-        metal_body:
-          $ref: "#/components/schemas/FeatureFlag"
+        body_shell:
+          $ref: "#/components/schemas/BodyShellType"
+        chassis:
+          $ref: "#/components/schemas/ChassisType"
         interior_lights:
           $ref: "#/components/schemas/FeatureFlag"
         lights:

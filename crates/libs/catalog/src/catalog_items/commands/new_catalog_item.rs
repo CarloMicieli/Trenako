@@ -16,7 +16,9 @@ use crate::catalog_items::power_method::PowerMethod;
 use crate::catalog_items::rolling_stock_id::RollingStockId;
 use crate::catalog_items::rolling_stock_request::RollingStockRequest;
 use crate::catalog_items::service_level::ServiceLevel;
-use crate::catalog_items::technical_specifications::{Coupling, CouplingSocket, FeatureFlag, Radius};
+use crate::catalog_items::technical_specifications::{
+    BodyShellType, ChassisType, Coupling, CouplingSocket, FeatureFlag, Radius,
+};
 use crate::railways::railway_id::RailwayId;
 use crate::scales::scale_id::ScaleId;
 use chrono::Utc;
@@ -224,7 +226,8 @@ pub struct RollingStockPayload {
     pub close_couplers: Option<FeatureFlag>,
     pub digital_shunting_coupling: Option<FeatureFlag>,
     pub flywheel_fitted: Option<FeatureFlag>,
-    pub metal_body: Option<FeatureFlag>,
+    pub body_shell: Option<BodyShellType>,
+    pub chassis: Option<ChassisType>,
     pub interior_lights: Option<FeatureFlag>,
     pub lights: Option<FeatureFlag>,
     pub sprung_buffers: Option<FeatureFlag>,
@@ -235,19 +238,20 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
 
     fn try_from(request: RollingStockRequest) -> result::Result<Self, Self::Error> {
         let category = request.category();
-        let (minimum_radius, coupling, flywheel_fitted, metal_body, interior_lights, lights, sprung_buffers) =
+        let (minimum_radius, coupling, flywheel_fitted, body_shell, chassis, interior_lights, lights, sprung_buffers) =
             if let Some(ts) = request.technical_specifications() {
                 (
                     ts.minimum_radius,
                     ts.coupling,
                     ts.flywheel_fitted,
-                    ts.metal_body,
+                    ts.body_shell,
+                    ts.chassis,
                     ts.interior_lights,
                     ts.lights,
                     ts.sprung_buffers,
                 )
             } else {
-                (None, None, None, None, None, None, None)
+                (None, None, None, None, None, None, None, None)
             };
 
         let Coupling {
@@ -294,7 +298,8 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 close_couplers,
                 digital_shunting_coupling: digital_shunting,
                 flywheel_fitted,
-                metal_body,
+                body_shell,
+                chassis,
                 interior_lights,
                 lights,
                 sprung_buffers,
@@ -331,7 +336,8 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 close_couplers,
                 digital_shunting_coupling: digital_shunting,
                 flywheel_fitted,
-                metal_body,
+                body_shell,
+                chassis,
                 interior_lights,
                 lights,
                 sprung_buffers,
@@ -368,7 +374,8 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 close_couplers,
                 digital_shunting_coupling: digital_shunting,
                 flywheel_fitted,
-                metal_body,
+                body_shell,
+                chassis,
                 interior_lights,
                 lights,
                 sprung_buffers,
@@ -399,7 +406,8 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 close_couplers,
                 digital_shunting_coupling: digital_shunting,
                 flywheel_fitted,
-                metal_body,
+                body_shell,
+                chassis,
                 interior_lights,
                 lights,
                 sprung_buffers,
@@ -426,7 +434,8 @@ impl TryFrom<RollingStockRequest> for RollingStockPayload {
                 close_couplers,
                 digital_shunting_coupling: digital_shunting,
                 flywheel_fitted,
-                metal_body,
+                body_shell,
+                chassis,
                 interior_lights,
                 lights,
                 sprung_buffers,
