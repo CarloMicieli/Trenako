@@ -37,7 +37,8 @@
           "digital_shunting": "NO"
         },
         "flywheel_fitted": "NO",
-        "metal_body": "NO",
+        "body_shell": null,
+        "chassis": null,
         "interior_lights": "NO",
         "lights": "YES",
         "sprung_buffers": "NO"
@@ -63,7 +64,8 @@
           "digital_shunting": "NO"
         },
         "flywheel_fitted": "NO",
-        "metal_body": "NO",
+        "body_shell": null,
+        "chassis": null,
         "interior_lights": "NO",
         "lights": "YES",
         "sprung_buffers": "NO"

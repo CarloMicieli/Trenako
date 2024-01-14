@@ -65,14 +65,6 @@
       "minLength": 1,
       "maxLength": 10
     },
-    "length": {
-      "type": [
-        "integer",
-        "null"
-      ],
-      "format": "uint32",
-      "minimum": 0.0
-    },
     "delivery_date": {
       "type": [
         "string",
@@ -208,6 +200,7 @@
     "RollingStock": {
       "type": "object",
       "required": [
+        "category",
         "railway",
         "technical_specifications"
       ],
@@ -215,11 +208,11 @@
         "category": {
           "type": "string",
           "enum": [
-            "ELECTRIC_MULTIPLE_UNIT",
-            "FREIGHT_CAR",
-            "LOCOMOTIVE",
-            "PASSENGER_CAR",
-            "RAILCAR"
+            "ELECTRIC_MULTIPLE_UNITS",
+            "FREIGHT_CARS",
+            "LOCOMOTIVES",
+            "PASSENGER_CARS",
+            "RAILCARS"
           ]
         },
         "control": {
@@ -316,26 +309,36 @@
     "TechnicalSpecifications": {
       "type": "object",
       "required": [
+        "body_shell",
+        "chassis",
         "coupling",
         "flywheel_fitted",
         "interior_lights",
         "lights",
-        "metal_body",
         "minimum_radius",
-        "spring_buffers"
+        "sprung_buffers"
       ],
       "properties": {
-        "minimum_radius": {
-          "type": ["number", "null"],
-          "minimum": 0.1
+        "body_shell": {
+          "type": ["string", "null"],
+          "enum": [
+            null,
+            "METAL_DIE_CAST",
+            "PLASTIC"
+          ]
+        },
+        "chassis": {
+          "type": ["string", "null"],
+          "enum": [
+            null,
+            "METAL_DIE_CAST",
+            "PLASTIC"
+          ]
         },
         "coupling": {
           "$ref": "#/definitions/Coupling"
         },
         "flywheel_fitted": {
-          "$ref": "#/definitions/FeatureFlag"
-        },
-        "metal_body": {
           "$ref": "#/definitions/FeatureFlag"
         },
         "interior_lights": {
@@ -344,7 +347,11 @@
         "lights": {
           "$ref": "#/definitions/FeatureFlag"
         },
-        "spring_buffers": {
+        "minimum_radius": {
+          "type": ["number", "null"],
+          "minimum": 0.1
+        },
+        "sprung_buffers": {
           "$ref": "#/definitions/FeatureFlag"
         }
       }

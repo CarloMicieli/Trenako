@@ -28,7 +28,8 @@
         "minimum_radius": null,
         "coupling": null,
         "flywheel_fitted": null,
-        "metal_body": null,
+        "body_shell": null,
+        "chassis": null,
         "interior_lights": null,
         "lights": null,
         "sprung_buffers": null
@@ -43,7 +44,8 @@
         "minimum_radius": null,
         "coupling": null,
         "flywheel_fitted": null,
-        "metal_body": null,
+        "body_shell": null,
+        "chassis": null,
         "interior_lights": null,
         "lights": null,
         "sprung_buffers": null

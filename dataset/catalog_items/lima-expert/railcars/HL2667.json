@@ -35,7 +35,8 @@
         "minimum_radius": 360.0,
         "coupling": null,
         "flywheel_fitted": "NO",
-        "metal_body": "NO",
+        "body_shell": null,
+        "chassis": null,
         "interior_lights": "NO",
         "lights": "YES",
         "sprung_buffers": null
@@ -59,7 +60,8 @@
         "minimum_radius": 360.0,
         "coupling": null,
         "flywheel_fitted": "NO",
-        "metal_body": "NO",
+        "body_shell": null,
+        "chassis": null,
         "interior_lights": "NO",
         "lights": "YES",
         "sprung_buffers": null

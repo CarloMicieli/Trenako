@@ -238,7 +238,7 @@ mod test {
                   "delivery_date" : "2022",
                   "availability_status" : "AVAILABLE",
                   "rolling_stocks" : [ {
-                    "category" : "LOCOMOTIVE",
+                    "category" : "LOCOMOTIVES",
                     "class_name" : "E402 A",
                     "road_number" : "E402 031",
                     "series" : "",
@@ -260,10 +260,11 @@ mod test {
                         "digital_shunting" : "NO"
                       },
                       "flywheel_fitted" : "NO",
-                      "metal_body" : "NO",
+                      "body_shell" : "PLASTIC",
+                      "chassis" : "METAL_DIE_CAST",
                       "interior_lights" : "NO",
                       "lights" : "YES",
-                      "spring_buffers" : "NO"
+                      "sprung_buffers" : "NO"
                     },
                     "is_dummy" : false
                   } ],
