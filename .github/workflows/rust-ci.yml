@@ -39,7 +39,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Install cargo make
-        run: cargo install cargo-make@0.37.5
+        run: cargo install cargo-make@0.37.7
 
       - name: Set up cargo cache
         uses: Swatinem/rust-cache@v2
