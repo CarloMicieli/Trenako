@@ -1,0 +1,75 @@
+{
+  "brand": "Piko",
+  "item_number": "58382",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Set di due carri tipo Eaos FS, logo FS inclinato, RIV EUROP"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": ""
+  },
+  "delivery_date": "2020",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CARS",
+      "railway": "FS",
+      "type_name": "Eaos",
+      "road_number": "11 83 530 1 538-1 Eaos",
+      "livery": "",
+      "length_over_buffers": {
+        "millimeters": 161.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 358.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": null
+    },
+    {
+      "category": "FREIGHT_CARS",
+      "railway": "FS",
+      "type_name": "Eaos",
+      "road_number": "11 83 530 1 614-0 Eaos",
+      "livery": "",
+      "length_over_buffers": {
+        "millimeters": 161.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 358.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": null
+    }
+  ],
+  "count": 2
+}

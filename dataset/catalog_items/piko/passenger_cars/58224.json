@@ -1,0 +1,103 @@
+{
+  "brand": "Piko",
+  "item_number": "58224",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Set di tre carrozze FS tipo UIC-Z Eurofima, logo FS inclinato."
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2021",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
+      "type_name": "UIC-Z Eurofima",
+      "road_number": "61 83 19-90 015-4 A",
+      "livery": "arancio",
+      "service_level": "FIRST_CLASS",
+      "length_over_buffers": {
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": true
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
+      "type_name": "UIC-Z Eurofima",
+      "road_number": "61 83 21-90 063-0 B",
+      "livery": "arancio",
+      "service_level": "SECOND_CLASS",
+      "length_over_buffers": {
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": true
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
+      "type_name": "UIC-Z Eurofima",
+      "road_number": "61 83 21-90 052-3 B",
+      "livery": "arancio",
+      "service_level": "SECOND_CLASS",
+      "length_over_buffers": {
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": true
+    }
+  ],
+  "count": 3
+}

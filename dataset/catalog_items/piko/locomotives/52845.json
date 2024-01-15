@@ -1,15 +1,15 @@
 {
   "brand": "Piko",
-  "item_number": "52449",
+  "item_number": "52845",
   "scale": "H0",
   "category": "LOCOMOTIVES",
   "power_method": "DC",
-  "epoch": "IV",
+  "epoch": "Vb",
   "description": {
     "de": null,
     "fr": null,
     "en": null,
-    "it": "Locomotiva diesel D141 1003 Dep. Loc Trieste C.le nella livrea verde fasce gialle, corrimani gialli senza battipiede"
+    "it": "FS, Locomotiva diesel D145 2016 nella livrea arancio fasce gialle, logo TV, corrimani con battipiede, dep. Catania"
   },
   "details": {
     "de": null,
@@ -17,26 +17,27 @@
     "en": null,
     "it": null
   },
-  "delivery_date": null,
+  "delivery_date": "2020",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
       "category": "LOCOMOTIVES",
       "locomotive_type": "DIESEL_LOCOMOTIVE",
       "railway": "FS",
-      "class_name": "D141",
-      "road_number": "D141 1003",
-      "depot": "Trieste",
-      "livery": "verde/fasce gialle",
+      "class_name": "D145",
+      "road_number": "D145 2016",
+      "series": "Serie 2000 TIBB",
+      "depot": "Catania",
+      "livery": "arancio/fasce gialle",
       "length_over_buffers": {
         "inches": null,
-        "millimeters": 152.0
+        "millimeters": 175.0
       },
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
           "socket": "NEM_362",
-          "close_couplers": "YES",
+          "close_couplers": "NO",
           "digital_shunting": "NO"
         },
         "flywheel_fitted": "NO",

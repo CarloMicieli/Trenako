@@ -1,0 +1,50 @@
+{
+  "brand": "ACME",
+  "item_number": "40153",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Bagagliaio FS ad assi con terrazzino frenatore tipo Dm 99"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": ""
+  },
+  "delivery_date": "2012",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CARS",
+      "freight_car_type": "RAILWAY_POST_OFFICE",
+      "railway": "FS",
+      "type_name": "DM 99",
+      "road_number": "DM 99517",
+      "livery": "grigio ardesia",
+      "length_over_buffers": {
+        "millimeters": 125.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": "YES"
+      },
+      "is_dummy": true
+    }
+  ],
+  "count": 1
+}

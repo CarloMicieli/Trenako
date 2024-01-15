@@ -1,0 +1,50 @@
+{
+  "brand": "Piko",
+  "item_number": "58984",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Carro cisterna a carrelli FS con terrazzino per trasporto Infiammabili \"ESSO\""
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": ""
+  },
+  "delivery_date": "2021",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CARS",
+      "railway": "FS",
+      "type_name": "Zaes",
+      "road_number": "33 83 796 0 157-2 Zaes",
+      "livery": "ESSO",
+      "length_over_buffers": {
+        "millimeters": 190.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 358.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": null
+    }
+  ],
+  "count": 1
+}

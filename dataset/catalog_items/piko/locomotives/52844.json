@@ -9,7 +9,7 @@
     "de": null,
     "fr": null,
     "en": null,
-    "it": "Arancio fasce gialle, logo TV, corrimani con battipiede, dep. Catania (52845 DCC)"
+    "it": "FS, Locomotiva diesel D145 2016 nella livrea arancio fasce gialle, logo TV, corrimani con battipiede, dep. Catania"
   },
   "details": {
     "de": null,
@@ -29,16 +29,20 @@
       "series": "Serie 2000 TIBB",
       "depot": "Catania",
       "livery": "arancio/fasce gialle",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 175.0
+      },
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
-          "socket": null,
+          "socket": "NEM_362",
           "close_couplers": "NO",
           "digital_shunting": "NO"
         },
         "flywheel_fitted": "NO",
-        "body_shell": null,
-        "chassis": null,
+        "body_shell": "PLASTIC",
+        "chassis": "METAL_DIE_CAST",
         "interior_lights": "NO",
         "lights": "YES",
         "sprung_buffers": "NO"

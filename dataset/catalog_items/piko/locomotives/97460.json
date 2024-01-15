@@ -40,10 +40,10 @@
           "digital_shunting": "NO"
         },
         "flywheel_fitted": null,
-        "body_shell": null,
-        "chassis": null,
-        "interior_lights": null,
-        "lights": null,
+        "body_shell": "PLASTIC",
+        "chassis": "METAL_DIE_CAST",
+        "interior_lights": "NO",
+        "lights": "YES",
         "sprung_buffers": null
       },
       "control": "DCC_READY",

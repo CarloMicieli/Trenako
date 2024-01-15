@@ -1,15 +1,15 @@
 {
   "brand": "Piko",
-  "item_number": "52449",
+  "item_number": "52445",
   "scale": "H0",
   "category": "LOCOMOTIVES",
   "power_method": "DC",
-  "epoch": "IV",
+  "epoch": "V",
   "description": {
     "de": null,
     "fr": null,
     "en": null,
-    "it": "Locomotiva diesel D141 1003 Dep. Loc Trieste C.le nella livrea verde fasce gialle, corrimani gialli senza battipiede"
+    "it": "Locomotiva Diesel da manovra D 141 1004 del Deposito Locomotive di Mestre nella livrea verde fasce gialle, corrimani gialli con battipiede, telo griglie, dep. Mestre"
   },
   "details": {
     "de": null,
@@ -17,7 +17,7 @@
     "en": null,
     "it": null
   },
-  "delivery_date": null,
+  "delivery_date": "2020",
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
@@ -25,8 +25,8 @@
       "locomotive_type": "DIESEL_LOCOMOTIVE",
       "railway": "FS",
       "class_name": "D141",
-      "road_number": "D141 1003",
-      "depot": "Trieste",
+      "road_number": "D141 1004",
+      "depot": "Mestre",
       "livery": "verde/fasce gialle",
       "length_over_buffers": {
         "inches": null,
@@ -46,7 +46,7 @@
         "lights": "YES",
         "sprung_buffers": "NO"
       },
-      "control": "DCC_READY",
+      "control": "DCC_SOUND",
       "dcc_interface": "PLUX_22",
       "is_dummy": false
     }

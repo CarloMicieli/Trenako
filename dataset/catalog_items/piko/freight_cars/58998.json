@@ -1,0 +1,50 @@
+{
+  "brand": "Piko",
+  "item_number": "58998",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "FS Carro chiuso ad assi con feltrino \"Pulisci binario\" con grafitti delle FS ep. V"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "I carri pulisci binari sono un aiuto \n      indispensabile per ogni modellista PIKO che vuole garantire un transito regolare dei rotabili sul proprio tracciato ferroviario. \n      Le rotaie si sporcano a causa della polvere, ma anche per l'abrasione dei pneumatici di trazione montati su alcune locomotive. \n      Questo ostacola la conduttività elettrica tra la ruota e la rotaia con la conseguenza che le locomotive iniziano a sobbalzare o a \n      fermarsi completamente. Per ovviare a tale inconveniente è necessaria una pulizia regolare delle rotaie, che può avvenire in maniera\n      semplice, mediante l'impiego del carro PIKO pulisci binari. Questo carro può completare il tuo convoglio e transitare con altri vagoni \n      sul tuo plastico. Il meccanismo per la pulizia die binari è posizionato , tramite delle molle, sotto il corpo del carro e consente la pulizia\n      di tutte le traversine che ne entrano in contatto."
+  },
+  "delivery_date": "2022/Q2",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CARS",
+      "railway": "FS",
+      "type_name": "Gbs",
+      "road_number": "",
+      "livery": "",
+      "length_over_buffers": {
+        "millimeters": 160.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 358.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": true
+    }
+  ],
+  "count": 1
+}

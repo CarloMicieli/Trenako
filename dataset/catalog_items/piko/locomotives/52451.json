@@ -9,7 +9,7 @@
     "de": null,
     "fr": null,
     "en": null,
-    "it": "Verde fasce gialle, corrimani gialli senza battipiede, tende su griglie (52452 DCC Sound)"
+    "it": "Locomotiva diesel D141 1005 nella livrea verde fasce gialle, corrimani gialli senza battipiede, tende su griglie"
   },
   "details": {
     "de": null,
@@ -28,6 +28,10 @@
       "road_number": "D141 1005",
       "depot": "Genova",
       "livery": "verde/strisce gialle",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 152.0
+      },
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -36,8 +40,8 @@
           "digital_shunting": "NO"
         },
         "flywheel_fitted": "NO",
-        "body_shell": null,
-        "chassis": null,
+        "body_shell": "PLASTIC",
+        "chassis": "METAL_DIE_CAST",
         "interior_lights": "NO",
         "lights": "YES",
         "sprung_buffers": "NO"

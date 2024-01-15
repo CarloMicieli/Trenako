@@ -1,15 +1,15 @@
 {
   "brand": "Piko",
-  "item_number": "52440",
+  "item_number": "58534",
   "scale": "H0",
-  "category": "LOCOMOTIVES",
+  "category": "PASSENGER_CARS",
   "power_method": "DC",
   "epoch": "IV",
   "description": {
     "de": null,
     "fr": null,
     "en": null,
-    "it": "Locomotiva Diesel da manovra D141 1019 del deposito locomotive di Padova, con corrimani neri e senza battipiede antinfortunistico, delle FS ep. IV."
+    "it": "Carrozza a carrelli a scompartimenti FS tipo Eurofima di 1° classe, livrea arancio C1, logo TV, epoca IV"
   },
   "details": {
     "de": null,
@@ -21,16 +21,14 @@
   "availability_status": "AVAILABLE",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVES",
-      "locomotive_type": "DIESEL_LOCOMOTIVE",
+      "category": "PASSENGER_CARS",
       "railway": "FS",
-      "class_name": "D141",
-      "road_number": "D141 1019",
-      "depot": "Padova",
-      "livery": "verde/fasce gialle",
+      "type_name": "UIC-Z Eurofima",
+      "road_number": "61 83 19-90 013-9 Az",
+      "livery": "arancio",
+      "service_level": "FIRST_CLASS",
       "length_over_buffers": {
-        "inches": null,
-        "millimeters": 152.0
+        "millimeters": 303.0
       },
       "technical_specifications": {
         "minimum_radius": 360.0,
@@ -39,16 +37,14 @@
           "close_couplers": "YES",
           "digital_shunting": "NO"
         },
-        "flywheel_fitted": "NO",
+        "flywheel_fitted": "NOT_APPLICABLE",
         "body_shell": "PLASTIC",
-        "chassis": "METAL_DIE_CAST",
+        "chassis": null,
         "interior_lights": "NO",
-        "lights": "YES",
-        "sprung_buffers": "NO"
+        "lights": "NO",
+        "sprung_buffers": null
       },
-      "control": "DCC_READY",
-      "dcc_interface": "PLUX_22",
-      "is_dummy": false
+      "is_dummy": true
     }
   ],
   "count": 1

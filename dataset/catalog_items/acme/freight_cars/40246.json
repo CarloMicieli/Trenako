@@ -1,0 +1,50 @@
+{
+  "brand": "ACME",
+  "item_number": "40246",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Carro chiuso FS Ghks a passo lungo, 8 aeratori per fiancata"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": ""
+  },
+  "delivery_date": "2018",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CARS",
+      "freight_car_type": null,
+      "railway": "FS",
+      "type_name": "Ghs",
+      "road_number": "21 83 165 1 181-3 Ghks",
+      "livery": "rosso vagone",
+      "length_over_buffers": {
+        "millimeters": 133.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": "YES"
+      },
+      "is_dummy": true
+    }
+  ],
+  "count": 1
+}

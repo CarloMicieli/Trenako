@@ -1,0 +1,103 @@
+{
+  "brand": "Piko",
+  "item_number": "58225",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Set di 3 carrozze passeggeri ÖBB tipo Eurofima di 1cl e due di 2cl per treni rapidi"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2021",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "OBB",
+      "type_name": "UIC-Z Eurofima",
+      "road_number": "61 81 19-71 022-5 Amz",
+      "livery": "rosso/grigio scuro",
+      "service_level": "FIRST_CLASS",
+      "length_over_buffers": {
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": true
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "OBB",
+      "type_name": "UIC-Z Eurofima",
+      "road_number": "61 81 21-71 035-3 Bmz",
+      "livery": "rosso/grigio scuro",
+      "service_level": "SECOND_CLASS",
+      "length_over_buffers": {
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": true
+    },
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "OBB",
+      "type_name": "UIC-Z Eurofima",
+      "road_number": "61 81 21-71 040-3 Bmz",
+      "livery": "rosso/grigio scuro",
+      "service_level": "SECOND_CLASS",
+      "length_over_buffers": {
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": true
+    }
+  ],
+  "count": 3
+}

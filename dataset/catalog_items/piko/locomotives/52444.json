@@ -9,7 +9,7 @@
     "de": null,
     "fr": null,
     "en": null,
-    "it": "Locomotiva Diesel da manovra D 141 1004 del Deposito Locomotive di Mestre nella livrea verde fasce gialle, corrimani gialli con battipiede, telo griglie, dep. Mestre (52445 DCC Sound)"
+    "it": "Locomotiva Diesel da manovra D 141 1004 del Deposito Locomotive di Mestre nella livrea verde fasce gialle, corrimani gialli con battipiede, telo griglie, dep. Mestre"
   },
   "details": {
     "de": null,
@@ -28,6 +28,10 @@
       "road_number": "D141 1004",
       "depot": "Mestre",
       "livery": "verde/fasce gialle",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 152.0
+      },
       "technical_specifications": {
         "minimum_radius": 360.0,
         "coupling": {
@@ -36,8 +40,8 @@
           "digital_shunting": "NO"
         },
         "flywheel_fitted": "NO",
-        "body_shell": null,
-        "chassis": null,
+        "body_shell": "PLASTIC",
+        "chassis": "METAL_DIE_CAST",
         "interior_lights": "NO",
         "lights": "YES",
         "sprung_buffers": "NO"
