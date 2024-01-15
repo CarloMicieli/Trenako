@@ -1,15 +1,15 @@
 {
   "brand": "Piko",
-  "item_number": "52854",
+  "item_number": "59126",
   "scale": "H0",
-  "category": "LOCOMOTIVES",
+  "category": "RAILCARS",
   "power_method": "DC",
-  "epoch": "V/VI",
+  "epoch": "VI",
   "description": {
     "de": null,
     "fr": null,
     "en": null,
-    "it": "Arancio fasce gialle, logo TV, SSC, marc. EVN RFI, O.M.R. Messina"
+    "it": "GTW 2/6 „Stadler” ATR 115 Ferrovia Nord Milano Ep. VI"
   },
   "details": {
     "de": null,
@@ -17,24 +17,23 @@
     "en": null,
     "it": null
   },
-  "delivery_date": "2022",
-  "availability_status": "AVAILABLE",
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
   "rolling_stocks": [
     {
-      "category": "LOCOMOTIVES",
-      "locomotive_type": "DIESEL_LOCOMOTIVE",
-      "railway": "FS",
-      "class_name": "D145",
-      "road_number": "D145 2006",
-      "series": "Serie 2000 TIBB",
-      "depot": "Messina",
-      "livery": "arancio/fasce gialle",
+      "category": "RAILCARS",
+      "railcar_type": null,
+      "railway": "FNM",
+      "class_name": "ATR 115",
+      "road_number": "ATR 115 ???",
+      "series": "",
+      "livery": "",
       "length_over_buffers": {
         "inches": null,
-        "millimeters": 175.0
+        "millimeters": 444.0
       },
       "technical_specifications": {
-        "minimum_radius": 360.0,
+        "minimum_radius": 358.0,
         "coupling": {
           "socket": "NEM_362",
           "close_couplers": "NO",
@@ -48,7 +47,7 @@
         "sprung_buffers": "NO"
       },
       "control": "DCC_READY",
-      "dcc_interface": "PLUX_22",
+      "dcc_interface": "NEM_652",
       "is_dummy": false
     }
   ],

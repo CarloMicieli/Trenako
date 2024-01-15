@@ -1,0 +1,73 @@
+{
+  "brand": "Piko",
+  "item_number": "58295",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "Set di 2 carri telescopici FS, Ep.IV"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": ""
+  },
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CARS",
+      "railway": "FS",
+      "type_name": "Shimmns",
+      "livery": "",
+      "length_over_buffers": {
+        "millimeters": 138.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 358.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "body_shell": null,
+        "chassis": null,
+        "interior_lights": null,
+        "lights": null,
+        "sprung_buffers": null
+      },
+      "is_dummy": null
+    },
+    {
+      "category": "FREIGHT_CARS",
+      "railway": "FS",
+      "type_name": "Shimmns",
+      "livery": "",
+      "length_over_buffers": {
+        "millimeters": 138.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 358.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": null,
+        "body_shell": null,
+        "chassis": null,
+        "interior_lights": null,
+        "lights": null,
+        "sprung_buffers": null
+      },
+      "is_dummy": null
+    }
+  ],
+  "count": 2
+}

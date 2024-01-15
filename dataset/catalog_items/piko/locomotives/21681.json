@@ -1,15 +1,15 @@
 {
   "brand": "Piko",
-  "item_number": "99004D",
+  "item_number": "21681",
   "scale": "H0",
   "category": "LOCOMOTIVES",
   "power_method": "DC",
-  "epoch": "III/IV",
+  "epoch": "VI",
   "description": {
     "de": null,
     "fr": null,
     "en": null,
-    "it": "Locomotiva Elettrica E.428 FS di quarta serie aerodinamica"
+    "it": "Locomotiva Elettrica E.191 DB Italia"
   },
   "details": {
     "de": null,
@@ -17,32 +17,37 @@
     "en": null,
     "it": null
   },
-  "delivery_date": "2023",
-  "availability_status": "AVAILABLE",
+  "delivery_date": "2024",
+  "availability_status": "ANNOUNCED",
   "rolling_stocks": [
     {
       "category": "LOCOMOTIVES",
       "locomotive_type": "ELECTRIC_LOCOMOTIVE",
-      "railway": "FS",
-      "class_name": "E428",
-      "road_number": "E428.999",
-      "series": "quarta serie",
-      "livery": "",
+      "railway": "DB Italia",
+      "class_name": "E191",
+      "road_number": "E191 ???",
+      "series": "",
+      "livery": "rossa",
+      "length_over_buffers": {
+        "inches": null,
+        "millimeters": 218.0
+      },
       "technical_specifications": {
-        "minimum_radius": 360.0,
+        "minimum_radius": 358.0,
         "coupling": {
-          "socket": null,
+          "socket": "NEM_362",
           "close_couplers": "NO",
           "digital_shunting": "NO"
         },
         "flywheel_fitted": "NO",
-        "body_shell": null,
-        "chassis": null,
+        "body_shell": "PLASTIC",
+        "chassis": "METAL_DIE_CAST",
         "interior_lights": "NO",
         "lights": "YES",
         "sprung_buffers": "NO"
       },
-      "control": "DCC",
+      "control": "DCC_READY",
+      "dcc_interface": "PLUX_22",
       "is_dummy": false
     }
   ],
