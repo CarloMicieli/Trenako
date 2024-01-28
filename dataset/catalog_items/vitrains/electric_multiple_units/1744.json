@@ -1,0 +1,48 @@
+{
+  "brand": "Vitrains",
+  "item_number": "1744",
+  "scale": "H0",
+  "category": "ELECTRIC_MULTIPLE_UNITS",
+  "power_method": "DC",
+  "epoch": "VI",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "FS Set di tre elementi del \"Minuetto\" elettrico ME-088 nella nuova livrea regionale delle FS ep. VI. Illuminazione interna di serie, articolo predisposto per il Sound."
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2023/12",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "ELECTRIC_MULTIPLE_UNITS",
+      "electric_multiple_unit_type": "TRAIN_SET",
+      "railway": "FS",
+      "type_name": "Minuetto",
+      "road_number": "ME-008",
+      "length_over_buffers": {
+        "millimeters": 601.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 360,
+        "coupling": null,
+        "flywheel_fitted": null,
+        "body_shell": null,
+        "chassis": null,
+        "interior_lights": "YES",
+        "lights": "YES",
+        "sprung_buffers": null
+      },
+      "control": "DCC_SOUND",
+      "dcc_interface": "PLUX_22",
+      "is_dummy": false
+    }
+  ],
+  "count": 1
+}

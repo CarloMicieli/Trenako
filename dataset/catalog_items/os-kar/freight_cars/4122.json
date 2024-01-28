@@ -1,0 +1,48 @@
+{
+  "brand": "Os.kar.",
+  "item_number": "4122",
+  "scale": "H0",
+  "category": "FREIGHT_CARS",
+  "power_method": "DC",
+  "epoch": "IV/V",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "FS Carro tipo Gabs 31 RIV 83 FS 181 1 550-4 con logo televisore, porte in lega e tetto alluminio, ep. IV-V"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2024/01",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "FREIGHT_CARS",
+      "railway": "FS",
+      "type_name": "Gabs",
+      "length_over_buffers": {
+        "millimeters": 247.0
+      },
+      "technical_specifications": {
+        "minimum_radius": null,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": "PLASTIC",
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": null
+      },
+      "is_dummy": null
+    }
+  ],
+  "count": 1
+}

@@ -1,0 +1,51 @@
+{
+  "brand": "Vitrains",
+  "item_number": "3268",
+  "scale": "H0",
+  "category": "PASSENGER_CARS",
+  "power_method": "DC",
+  "epoch": "IV",
+  "description": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": "FS Carrozza di 1 KL. \"SLEEPERETTE\" sedili a correre 50 83 19-78 510-3 ep. IV"
+  },
+  "details": {
+    "de": null,
+    "fr": null,
+    "en": null,
+    "it": null
+  },
+  "delivery_date": "2024/01",
+  "availability_status": "AVAILABLE",
+  "rolling_stocks": [
+    {
+      "category": "PASSENGER_CARS",
+      "railway": "FS",
+      "type_name": "SLEEPERETTE",
+      "road_number": "50 83 19-78 510-3",
+      "livery": null,
+      "service_level": "FIRST_CLASS",
+      "length_over_buffers": {
+        "millimeters": 303.0
+      },
+      "technical_specifications": {
+        "minimum_radius": 420.0,
+        "coupling": {
+          "socket": "NEM_362",
+          "close_couplers": "YES",
+          "digital_shunting": "NO"
+        },
+        "flywheel_fitted": "NOT_APPLICABLE",
+        "body_shell": null,
+        "chassis": null,
+        "interior_lights": "NO",
+        "lights": "NO",
+        "sprung_buffers": "YES"
+      },
+      "is_dummy": null
+    }
+  ],
+  "count": 1
+}
