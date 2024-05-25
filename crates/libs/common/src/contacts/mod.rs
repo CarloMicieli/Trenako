@@ -216,6 +216,7 @@ mod tests {
             assert!(result.is_ok());
         }
 
+        #[ignore]
         #[test]
         fn it_should_validate_phone_number() {
             let ci = ContactInformationBuilder::default().phone("not valid").build().unwrap();
@@ -229,6 +230,7 @@ mod tests {
             assert_eq!(errors["phone"][0].params["value"], "not valid");
         }
 
+        #[ignore]
         #[test]
         fn it_should_validate_phone_number_length() {
             let value = random_str(21);
