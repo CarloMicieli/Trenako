@@ -13,13 +13,13 @@ pub struct ScaleRequest {
     #[validate(length(min = 1, max = 50))]
     pub name: String,
     /// the ratio between the real world and the model (e.g. 1/87 or 1:87)
-    #[validate(required, custom = "crate::scales::ratio::validate_ratio")]
+    #[validate(required, custom(function = "crate::scales::ratio::validate_ratio"))]
     pub ratio: Option<Ratio>,
     /// the track gauge
     #[validate(required)]
     pub gauge: Option<Gauge>,
     /// the modelling scale description
-    #[validate]
+    #[validate(nested)]
     pub description: LocalizedText,
     /// the list of standards
     #[serde(default)]

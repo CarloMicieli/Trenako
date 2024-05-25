@@ -1,7 +1,7 @@
 //! This module provides some validation helpers
 
 use std::borrow::Cow;
-use validator::{validate_length, ValidationError, ValidationErrors};
+use validator::{ValidateLength, ValidationError, ValidationErrors};
 
 /// A validator helper
 #[derive(Debug)]
@@ -50,7 +50,7 @@ impl Validator {
     }
 
     pub fn validate_length(&mut self, field: &'static str, min: Option<u64>, max: Option<u64>, input: &String) {
-        if !validate_length(input, min, max, None) {
+        if !input.validate_length(min, max, None) {
             let mut error = ValidationError::new("length");
 
             if let Some(min) = min {

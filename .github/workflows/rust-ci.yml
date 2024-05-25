@@ -39,7 +39,7 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Install cargo make
-        run: cargo install cargo-make@0.37.8
+        run: cargo install cargo-make@0.37.12
 
       - name: Set up cargo cache
         uses: Swatinem/rust-cache@v2
@@ -163,4 +163,3 @@ jobs:
 
       - name: List docker images
         run: docker image ls
-      

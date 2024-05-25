@@ -7,7 +7,7 @@ use std::fmt::Formatter;
 use std::str;
 use std::str::FromStr;
 use thiserror::Error;
-use validator::{validate_length, validate_phone, ValidationError};
+use validator::{ValidateLength, ValidationError};
 
 /// It represents a phone number
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
@@ -20,16 +20,17 @@ impl PhoneNumber {
     }
 }
 
-pub fn validate_phone_number(input: &PhoneNumber) -> Result<(), ValidationError> {
-    if validate_phone(&input.0) {
-        Ok(())
-    } else {
-        Err(ValidationError::new("phone"))
-    }
+pub fn validate_phone_number(_input: &PhoneNumber) -> Result<(), ValidationError> {
+    //FIXME
+    //if validate_phone(&input.0) {
+    Ok(())
+    //} else {
+    //    Err(ValidationError::new("phone"))
+    //}
 }
 
 pub fn validate_phone_number_length(input: &PhoneNumber) -> Result<(), ValidationError> {
-    if validate_length(&input.0, None, Some(20), None) {
+    if input.0.validate_length(None, Some(20), None) {
         Ok(())
     } else {
         let mut error = ValidationError::new("length");

@@ -24,20 +24,20 @@ pub struct BrandRequest {
     #[validate(length(max = 100))]
     pub group_name: Option<String>,
     /// the description
-    #[validate]
+    #[validate(nested)]
     pub description: LocalizedText,
     /// the brand main address
-    #[validate]
+    #[validate(nested)]
     pub address: Option<Address>,
     /// the contact information
-    #[validate]
+    #[validate(nested)]
     pub contact_info: Option<ContactInformation>,
     /// the brand kind
     pub kind: BrandKind,
     /// the brand status
     pub status: Option<BrandStatus>,
     /// the brand social profiles
-    #[validate]
+    #[validate(nested)]
     pub socials: Option<Socials>,
 }
 

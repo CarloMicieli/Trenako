@@ -25,29 +25,29 @@ pub struct RailwayRequest {
     /// the organization entity type
     pub organization_entity_type: Option<OrganizationEntityType>,
     /// the railway description
-    #[validate]
+    #[validate(nested)]
     pub description: LocalizedText,
     /// the registration country
     #[validate(required)]
     pub country: Option<CountryCode>,
     /// the period of activity
-    #[validate(custom = "crate::railways::period_of_activity::validate_period_of_activity")]
+    #[validate(custom(function = "crate::railways::period_of_activity::validate_period_of_activity"))]
     pub period_of_activity: Option<PeriodOfActivity>,
     /// the track gauge
-    #[validate]
+    #[validate(nested)]
     pub gauge: Option<RailwayGauge>,
     /// the railway headquarter
     #[validate(length(max = 100))]
     #[serde(default)]
     pub headquarters: Vec<String>,
     /// the railway total length
-    #[validate]
+    #[validate(nested)]
     pub total_length: Option<RailwayLength>,
     /// the contacts information
-    #[validate]
+    #[validate(nested)]
     pub contact_info: Option<ContactInformation>,
     /// the social profiles
-    #[validate]
+    #[validate(nested)]
     pub socials: Option<Socials>,
 }
 

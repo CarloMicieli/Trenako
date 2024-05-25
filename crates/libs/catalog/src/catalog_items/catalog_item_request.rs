@@ -17,7 +17,7 @@ pub struct CatalogItemRequest {
     #[validate(length(min = 3, max = 50))]
     pub brand: String,
     /// the item number
-    #[validate(custom = "crate::catalog_items::item_number::validate_item_number")]
+    #[validate(custom(function = "crate::catalog_items::item_number::validate_item_number"))]
     pub item_number: ItemNumber,
     /// the scale
     #[validate(length(min = 1, max = 50))]
@@ -29,17 +29,17 @@ pub struct CatalogItemRequest {
     /// the epoch
     pub epoch: Epoch,
     /// the catalog item description
-    #[validate]
+    #[validate(nested)]
     pub description: LocalizedText,
     /// the catalog item details
-    #[validate]
+    #[validate(nested)]
     pub details: LocalizedText,
     /// the delivery date
     pub delivery_date: Option<DeliveryDate>,
     /// the availability status
     pub availability_status: Option<AvailabilityStatus>,
     /// the rolling stocks included in this catalog item
-    #[validate]
+    #[validate(nested)]
     pub rolling_stocks: Vec<RollingStockRequest>,
     /// the number of rolling stocks for this catalog item
     #[validate(range(min = 1, max = 99))]

@@ -20,22 +20,22 @@ pub use website_urls::WebsiteUrl;
 pub struct ContactInformation {
     /// the email address
     #[validate(
-        custom = "crate::contacts::emails::validate_mail_address",
-        custom = "crate::contacts::emails::validate_mail_address_length"
+        custom(function = "crate::contacts::emails::validate_mail_address"),
+        custom(function = "crate::contacts::emails::validate_mail_address_length")
     )]
     pub email: Option<MailAddress>,
 
     /// the phone number
     #[validate(
-        custom = "crate::contacts::phones::validate_phone_number",
-        custom = "crate::contacts::phones::validate_phone_number_length"
+        custom(function = "crate::contacts::phones::validate_phone_number"),
+        custom(function = "crate::contacts::phones::validate_phone_number_length")
     )]
     pub phone: Option<PhoneNumber>,
 
     /// the website url
     #[validate(
-        custom = "crate::contacts::website_urls::validate_website_url",
-        custom = "crate::contacts::website_urls::validate_website_url_length"
+        custom(function = "crate::contacts::website_urls::validate_website_url"),
+        custom(function = "crate::contacts::website_urls::validate_website_url_length")
     )]
     pub website_url: Option<WebsiteUrl>,
 }

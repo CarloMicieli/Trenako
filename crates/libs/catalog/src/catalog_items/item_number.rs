@@ -7,9 +7,9 @@ use std::fmt::Formatter;
 use std::str::FromStr;
 use std::{convert, fmt, ops, str};
 use thiserror::Error;
-use validator::{validate_length, ValidationError};
+use validator::{ValidateLength, ValidationError};
 
-/// It represent a catalog item number.
+/// It represents a catalog item number.
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Clone, Serialize, Deserialize, Type)]
 #[sqlx(transparent)]
 pub struct ItemNumber(String);
@@ -28,7 +28,7 @@ impl ItemNumber {
 }
 
 pub fn validate_item_number(input: &ItemNumber) -> Result<(), ValidationError> {
-    if !validate_length(&input.0, Some(1), Some(25), None) {
+    if !input.0.validate_length(Some(1), Some(25), None) {
         let mut error = ValidationError::new("length");
         error.add_param(Cow::from("min"), &1);
         error.add_param(Cow::from("max"), &25);

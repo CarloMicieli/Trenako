@@ -7,7 +7,7 @@ use std::fmt::Formatter;
 use std::str;
 use std::str::FromStr;
 use thiserror::Error;
-use validator::{validate_email, validate_length, ValidationError};
+use validator::{ValidateEmail, ValidateLength, ValidationError};
 
 /// It represents a mail address
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
@@ -21,7 +21,7 @@ impl MailAddress {
 }
 
 pub fn validate_mail_address(input: &MailAddress) -> Result<(), ValidationError> {
-    if validate_email(&input.0) {
+    if input.0.validate_email() {
         Ok(())
     } else {
         let mut error = ValidationError::new("email");
@@ -31,7 +31,7 @@ pub fn validate_mail_address(input: &MailAddress) -> Result<(), ValidationError>
 }
 
 pub fn validate_mail_address_length(input: &MailAddress) -> Result<(), ValidationError> {
-    if validate_length(&input.0, None, Some(250), None) {
+    if input.0.validate_length(None, Some(250), None) {
         Ok(())
     } else {
         let mut error = ValidationError::new("length");

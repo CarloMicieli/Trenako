@@ -8,7 +8,7 @@ use std::str;
 use std::str::FromStr;
 use thiserror::Error;
 use url::Url;
-use validator::{validate_length, validate_url, ValidationError};
+use validator::{ValidateLength, ValidateUrl, ValidationError};
 
 /// It represents a website url
 #[derive(Debug, Eq, PartialEq, Clone, Serialize, Deserialize, Type)]
@@ -16,7 +16,7 @@ use validator::{validate_length, validate_url, ValidationError};
 pub struct WebsiteUrl(String);
 
 pub fn validate_website_url(input: &WebsiteUrl) -> Result<(), ValidationError> {
-    if validate_url(input.0.as_str()) {
+    if input.0.validate_url() {
         Ok(())
     } else {
         let mut error = ValidationError::new("url");
@@ -26,7 +26,7 @@ pub fn validate_website_url(input: &WebsiteUrl) -> Result<(), ValidationError> {
 }
 
 pub fn validate_website_url_length(input: &WebsiteUrl) -> Result<(), ValidationError> {
-    if validate_length(input.0.as_str(), None, Some(100), None) {
+    if input.0.validate_length(None, Some(100), None) {
         Ok(())
     } else {
         let mut error = ValidationError::new("length");

@@ -128,7 +128,7 @@ pub enum CouplingSocket {
 #[derive(Debug, Eq, PartialEq, Clone, Default, Serialize, Deserialize, Validate)]
 pub struct TechnicalSpecifications {
     /// the minimum drivable radius
-    #[validate(custom = "validate_radius")]
+    #[validate(custom(function = "validate_radius"))]
     pub minimum_radius: Option<Radius>,
     /// the coupling
     pub coupling: Option<Coupling>,
