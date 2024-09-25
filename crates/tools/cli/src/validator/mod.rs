@@ -1,6 +1,6 @@
 use crate::dataset::{Dataset, Resource, ResourceType};
 use crate::schemas;
-use jsonschema::{Draft, JSONSchema};
+use jsonschema::{Draft, Validator};
 use serde_derive::Serialize;
 use serde_json::Value;
 use std::str::FromStr;
@@ -23,13 +23,13 @@ pub fn validate_dataset(dataset: Dataset) -> Result<Vec<Validated>, ValidatorErr
 }
 
 /// It represents a resource validator, against a JSON schema.
-pub struct Validator(JSONSchema);
+pub struct JsonSchemaValidator(Validator);
 
-impl Validator {
+impl JsonSchemaValidator {
     /// Creates a new schema validator for the dataset resources
     pub fn new(schema: &str) -> Result<Self, ValidatorError> {
         let json_schema = json_schema_from_str(schema)?;
-        Ok(Validator(json_schema))
+        Ok(JsonSchemaValidator(json_schema))
     }
 
     /// Validate the resource with the current validator schema
@@ -95,11 +95,11 @@ impl Error {
     }
 }
 
-fn json_schema_from_str(input: &str) -> Result<JSONSchema, ValidatorError> {
+fn json_schema_from_str(input: &str) -> Result<Validator, ValidatorError> {
     let schema = serde_json::from_str(input)?;
-    let compiled = JSONSchema::options()
+    let compiled = Validator::options()
         .with_draft(Draft::Draft7)
-        .compile(&schema)
+        .build(&schema)
         .map_err(|_| ValidatorError::InvalidSchema);
     compiled
 }
@@ -114,19 +114,19 @@ pub enum ValidatorError {
 }
 
 pub struct Validators {
-    brands: Validator,
-    catalog_items: Validator,
-    railways: Validator,
-    scales: Validator,
+    brands: JsonSchemaValidator,
+    catalog_items: JsonSchemaValidator,
+    railways: JsonSchemaValidator,
+    scales: JsonSchemaValidator,
 }
 
 impl Validators {
     /// Creates a new schema validator for the dataset resources
     pub fn new() -> Result<Self, ValidatorError> {
-        let brands = Validator::new(schemas::BRANDS_SCHEMA)?;
-        let catalog_items = Validator::new(schemas::CATALOG_ITEMS_SCHEMA)?;
-        let railways = Validator::new(schemas::RAILWAYS_SCHEMA)?;
-        let scales = Validator::new(schemas::SCALES_SCHEMA)?;
+        let brands = JsonSchemaValidator::new(schemas::BRANDS_SCHEMA)?;
+        let catalog_items = JsonSchemaValidator::new(schemas::CATALOG_ITEMS_SCHEMA)?;
+        let railways = JsonSchemaValidator::new(schemas::RAILWAYS_SCHEMA)?;
+        let scales = JsonSchemaValidator::new(schemas::SCALES_SCHEMA)?;
 
         Ok(Self {
             brands,

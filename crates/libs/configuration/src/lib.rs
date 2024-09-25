@@ -1,7 +1,7 @@
 //! the service configuration settings
 
 use config::{Config, Environment, File};
-use secrecy::{ExposeSecret, Secret};
+use secrecy::{ExposeSecret, SecretString};
 use serde::{Deserialize, Serialize};
 use sqlx::postgres::{PgConnectOptions, PgPoolOptions, PgSslMode};
 use sqlx::PgPool;
@@ -86,7 +86,7 @@ pub struct DatabaseSettings {
     pub username: String,
     /// the password
     #[serde(skip_serializing)]
-    pub password: Secret<String>,
+    pub password: SecretString,
     /// the host name
     pub host: String,
     /// the port number
@@ -106,7 +106,7 @@ impl DatabaseSettings {
     pub fn new(username: &str, password: &str, host: &str, port: u16, name: &str) -> DatabaseSettings {
         DatabaseSettings {
             username: username.to_owned(),
-            password: Secret::new(password.to_owned()),
+            password: SecretString::from(password.to_owned()),
             host: host.to_owned(),
             port,
             name: name.to_owned(),
